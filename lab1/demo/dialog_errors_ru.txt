@@ -1,0 +1,11 @@
+# Error scenarios. Run with Elasticsearch STOPPED (docker compose stop) to show MCP/ES failure handling:
+#   docker compose stop
+#   python -m organizer.cli --script demo/dialog_errors_ru.txt
+#   docker compose start   # then rerun the last two lines interactively to show the retry fixing the path
+Покажи содержимое data.
+Положи документ про рекомендательную систему в Elastic.
+Перенеси документ про рекомендательную систему в папку courses.
+Покажи статус индексации этого документа в каталоге.
+Попробуй ещё раз синхронизировать индекс.
+/check
+/exit

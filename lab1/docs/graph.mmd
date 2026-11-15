@@ -1,0 +1,23 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	model(model)
+	tools(tools<hr/><small><em>__tools = read, head, tail, grep, ls, write, move, web_fetch, catalog_view, catalog_update, build_excerpts, load_skill, upsert_excerpts, search_excerpts, update_document_path, get_document_excerpts, delete_document_excerpts, index_stats</em></small>)
+	ModelCallLimitMiddleware\2ebefore_model(ModelCallLimitMiddleware.before_model)
+	ModelCallLimitMiddleware\2eafter_model(ModelCallLimitMiddleware.after_model)
+	__end__([<p>__end__</p>]):::last
+	ModelCallLimitMiddleware\2eafter_model -.-> ModelCallLimitMiddleware\2ebefore_model;
+	ModelCallLimitMiddleware\2eafter_model -.-> __end__;
+	ModelCallLimitMiddleware\2eafter_model -.-> tools;
+	ModelCallLimitMiddleware\2ebefore_model -.-> __end__;
+	ModelCallLimitMiddleware\2ebefore_model -.-> model;
+	__start__ --> ModelCallLimitMiddleware\2ebefore_model;
+	model --> ModelCallLimitMiddleware\2eafter_model;
+	tools -.-> ModelCallLimitMiddleware\2ebefore_model;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

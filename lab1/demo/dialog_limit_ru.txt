@@ -1,0 +1,7 @@
+# Execution-limit scenario with the real model. Run with a tiny per-turn model-call budget:
+#   PowerShell:  $env:AGENT_MODEL_CALLS_PER_TURN="3"; python -m organizer.cli --script demo/dialog_limit_ru.txt
+# The turn is stopped by ModelCallLimitMiddleware (exit_behavior="end"); history stays valid.
+Прочитай по очереди КАЖДЫЙ файл во всех папках data, по одному вызову read на файл, и только потом дай сводку.
+/check
+Сколько файлов ты успел прочитать?
+/exit

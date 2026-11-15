@@ -1,0 +1,21 @@
+# Dedicated teaching Elasticsearch for lab 1 (single node, no auth, local only).
+services:
+  elasticsearch:
+    image: docker.io/library/elasticsearch:9.5.5
+    container_name: itmo-lab-es
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "127.0.0.1:9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:9200/_cluster/health?wait_for_status=yellow || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+volumes:
+  esdata:
