@@ -1,0 +1,302 @@
+{
+  "task": {
+    "task_id": "E1",
+    "kind": "local",
+    "status": "cancelled",
+    "status_reason": "cancel requested by the user; the in-flight operation was interrupted",
+    "runs": 1,
+    "request": "Изучи документы в data/search по теме поиска: выдели подходы, ограничения и спорные утверждения. Сохраняй выдержки с источниками и постепенно собирай обзор. Обязательно найди решения архитектурного совета (АС-…) в справочнике, решение кафедры о метрике качества в конспекте курса и разбор инцидента INC-2026-017. После остановки продолжи с сохранённого места.",
+    "plan": [
+      {
+        "title": "Инвентаризация документов (doc_info)",
+        "status": "doing"
+      },
+      {
+        "title": "Поиск: АС-01/02/03 в справочнике",
+        "status": "todo"
+      },
+      {
+        "title": "Поиск: решение кафедры о метрике качества в конспекте",
+        "status": "todo"
+      },
+      {
+        "title": "Поиск: разбор INC-2026-017",
+        "status": "todo"
+      },
+      {
+        "title": "Поиск подходов/ограничений/спорных утверждений",
+        "status": "todo"
+      },
+      {
+        "title": "Чтение найденных страниц",
+        "status": "todo"
+      },
+      {
+        "title": "save_evidence по каждому документу",
+        "status": "todo"
+      },
+      {
+        "title": "Секции обзора (approaches, limitations, disputed, decisions, summary)",
+        "status": "todo"
+      },
+      {
+        "title": "Проверка критериев и завершение",
+        "status": "todo"
+      }
+    ],
+    "completion": {},
+    "limits": {
+      "max_total_tokens": 1500000,
+      "max_model_calls": 90,
+      "max_tool_calls": 300,
+      "task_deadline_s": 5400,
+      "max_search_calls": 12,
+      "max_http_requests": 80,
+      "max_fetch_bytes": 1000000,
+      "max_redirects": 5,
+      "http_timeout_s": 10.0,
+      "http_retries": 2,
+      "backoff_base_s": 0.5,
+      "working_context_tokens": 28000,
+      "response_reserve_tokens": 2048,
+      "estimate_margin": 0.1,
+      "compaction_trigger": 0.75,
+      "compaction_target": 0.45,
+      "compaction_min_gain": 0.05,
+      "summary_max_tokens": 1200,
+      "summary_tool_clip_chars": 1200,
+      "max_compaction_chunks": 4,
+      "max_tool_result_chars": 6000,
+      "max_step_result_chars": 12000,
+      "preview_chars": 1200,
+      "max_pages_per_read": 5,
+      "max_lines_per_read": 300,
+      "llm_timeout_s": 180.0,
+      "llm_retries": 2,
+      "tool_timeout_s": 60.0
+    }
+  },
+  "constraints": [
+    "[C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.",
+    "[C2] Использовать только документы из data/search, без интернета.",
+    "[C3] Обзор не длиннее 1200 слов.",
+    "[C4] Спорные утверждения — отдельным разделом, с аргументами за и против.",
+    "[C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы."
+  ],
+  "criteria": {
+    "min_evidence": 8,
+    "evidence_in_every_scope_document": true,
+    "required_sections": [
+      "approaches",
+      "limitations",
+      "disputed",
+      "decisions",
+      "summary"
+    ]
+  },
+  "budget": {
+    "tokens": {
+      "spent": 70915,
+      "reserved": 20782,
+      "limit": 1500000,
+      "of_which": {
+        "input_tokens": 69635,
+        "output_tokens": 1280,
+        "compaction_input_tokens": 0,
+        "compaction_output_tokens": 0,
+        "failed_call_tokens": 0,
+        "interrupted_call_tokens": 0
+      }
+    },
+    "model_calls": {
+      "used": 6,
+      "limit": 90
+    },
+    "compaction_calls": 0,
+    "failed_calls": 0,
+    "tool_calls": {
+      "used": 20,
+      "limit": 300
+    },
+    "search_calls": {
+      "used": 0,
+      "limit": 12
+    },
+    "http_requests": {
+      "used": 0,
+      "limit": 80
+    },
+    "cache_hits": 0,
+    "bytes_downloaded": 0,
+    "active_seconds": {
+      "used": 17.4,
+      "limit": 5400
+    },
+    "peak_input_tokens": 16733
+  },
+  "queue": {
+    "found": 0,
+    "pending": 0,
+    "running": 0,
+    "done": 0,
+    "error": 0,
+    "skipped": 0,
+    "found_total": 0,
+    "selected_total": 0,
+    "read_total": 0
+  },
+  "documents": [
+    {
+      "task_id": "E1",
+      "path": "data/search/ir_course_lectures.md",
+      "document_id": "8d702971-b28d-4c49-a448-c32afce650c2",
+      "content_hash": "sha256:841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
+      "pages": 90,
+      "lines": 1289,
+      "chars": 92443,
+      "searched": 1,
+      "status": "pending",
+      "updated_at": "2026-11-15T22:22:00+00:00"
+    },
+    {
+      "task_id": "E1",
+      "path": "data/search/search_engineering_handbook.md",
+      "document_id": "61dd80ad-bb83-4e45-9e6c-a8dce2f29ef6",
+      "content_hash": "sha256:7fa2082bb3ac0c85c84bf3f7fd3e41e38ed9eec15ee61c8d6d33d1d196800b4c",
+      "pages": 520,
+      "lines": 8611,
+      "chars": 685785,
+      "searched": 1,
+      "status": "pending",
+      "updated_at": "2026-11-15T22:21:57+00:00"
+    },
+    {
+      "task_id": "E1",
+      "path": "data/search/search_incident_reports.md",
+      "document_id": "ff000dc4-d816-4603-bbb5-52c40e9f73c1",
+      "content_hash": "sha256:519137486bb60131646bf252fa5c9f379aa7354eab3310119782c934c50b1531",
+      "pages": 45,
+      "lines": 627,
+      "chars": 24980,
+      "searched": 1,
+      "status": "pending",
+      "updated_at": "2026-11-15T22:22:01+00:00"
+    }
+  ],
+  "summary_version": 0,
+  "compactions": [],
+  "model_calls": [
+    {
+      "id": 122,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:46+00:00",
+      "kind": "agent",
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "actual_input": 7105,
+      "actual_output": 54,
+      "duration_s": 0.89,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 123,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:47+00:00",
+      "kind": "agent",
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "actual_input": 8180,
+      "actual_output": 416,
+      "duration_s": 3.43,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 124,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:51+00:00",
+      "kind": "agent",
+      "estimated_input": 11563,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.33)",
+      "actual_input": 9706,
+      "actual_output": 292,
+      "duration_s": 2.61,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 125,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:53+00:00",
+      "kind": "agent",
+      "estimated_input": 14123,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.43)",
+      "actual_input": 13187,
+      "actual_output": 117,
+      "duration_s": 1.77,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 126,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:55+00:00",
+      "kind": "agent",
+      "estimated_input": 15684,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "actual_input": 14724,
+      "actual_output": 165,
+      "duration_s": 2.32,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 127,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:21:57+00:00",
+      "kind": "agent",
+      "estimated_input": 17795,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.33)",
+      "actual_input": 16733,
+      "actual_output": 236,
+      "duration_s": 3.09,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 128,
+      "task_id": "E1",
+      "ts": "2026-11-15T22:22:01+00:00",
+      "kind": "agent",
+      "estimated_input": 18734,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.28)",
+      "actual_input": null,
+      "actual_output": null,
+      "duration_s": null,
+      "status": "planned",
+      "note": null
+    }
+  ]
+}

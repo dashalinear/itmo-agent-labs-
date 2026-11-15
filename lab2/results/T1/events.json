@@ -1,0 +1,147 @@
+[
+  {
+    "id": 352,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:24+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 353,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:28+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "run"
+    }
+  },
+  {
+    "id": 354,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 355,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 356,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11341,
+      "actual_input": 7105,
+      "actual_output": 54,
+      "duration_s": 0.85,
+      "calibrated_cpt": 3.067
+    }
+  },
+  {
+    "id": 357,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "total": 12997,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 358,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "total": 12997,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)"
+    }
+  },
+  {
+    "id": 359,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:30+00:00",
+    "kind": "model_call_error",
+    "data": {
+      "attempt": 1,
+      "error": "TimeoutError: ",
+      "retry": true
+    }
+  },
+  {
+    "id": 360,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:33+00:00",
+    "kind": "model_call_error",
+    "data": {
+      "attempt": 2,
+      "error": "TimeoutError: ",
+      "retry": true
+    }
+  },
+  {
+    "id": 361,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:38+00:00",
+    "kind": "model_call_error",
+    "data": {
+      "attempt": 3,
+      "error": "TimeoutError: ",
+      "retry": false
+    }
+  },
+  {
+    "id": 362,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:38+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "LLM unavailable after 3 attempts: TimeoutError: "
+    }
+  },
+  {
+    "id": 363,
+    "task_id": "T1",
+    "ts": "2026-11-15T22:21:38+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "paused",
+      "reason": "LLM unavailable after 3 attempts: TimeoutError: "
+    }
+  }
+]

@@ -1,0 +1,3498 @@
+[
+  {
+    "id": 391,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:10+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 392,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:14+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "run"
+    }
+  },
+  {
+    "id": 393,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11151,
+      "reserve": 2048,
+      "total": 13199,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 394,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11151,
+      "reserve": 2048,
+      "total": 13199,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 395,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11151,
+      "actual_input": 6988,
+      "actual_output": 27,
+      "duration_s": 0.7,
+      "calibrated_cpt": 3.067
+    }
+  },
+  {
+    "id": 396,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10266,
+      "reserve": 2048,
+      "total": 12314,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 397,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10266,
+      "reserve": 2048,
+      "total": 12314,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)"
+    }
+  },
+  {
+    "id": 398,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10266,
+      "actual_input": 7528,
+      "actual_output": 149,
+      "duration_s": 1.49,
+      "calibrated_cpt": 3.357
+    }
+  },
+  {
+    "id": 399,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9739,
+      "reserve": 2048,
+      "total": 11787,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.36)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 400,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:16+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9739,
+      "reserve": 2048,
+      "total": 11787,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.36)"
+    }
+  },
+  {
+    "id": 401,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9739,
+      "actual_input": 7836,
+      "actual_output": 89,
+      "duration_s": 1.16,
+      "calibrated_cpt": 3.525
+    }
+  },
+  {
+    "id": 402,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:33+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "LangGraph checkpointer state persistence agent",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=E_zATWXLJ3M79QseKwFuTJd0;_ylu=A14JQ6-2nZebqZcs6t_bHMXNiRQxTbasDg-tH6uKmjki2CU?p=LangGraph+checkpointer+state+persistence+agent) > operation timed out"
+    }
+  },
+  {
+    "id": 403,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:33+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "LLM agent state management approaches memory persistence",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=4K6NzpWioYH_xqWmxXEIjuoj;_ylu=pTqCL7I9_YhvXlNYPV2ZHSVvai9kX9AZAlwmxPCu-sh-8dg?p=LLM+agent+state+management+approaches+memory+persistence) > operation timed out"
+    }
+  },
+  {
+    "id": 404,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9627,
+      "reserve": 2048,
+      "total": 11675,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.53)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 405,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9627,
+      "reserve": 2048,
+      "total": 11675,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.53)"
+    }
+  },
+  {
+    "id": 406,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9627,
+      "actual_input": 8192,
+      "actual_output": 59,
+      "duration_s": 1.12,
+      "calibrated_cpt": 3.612
+    }
+  },
+  {
+    "id": 407,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:50+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "LLM agent state management memory persistence",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=DkepFD8jBVivWVwZr6sHetVn;_ylu=O0PK5vqW4pVkcXSEHutLW9kqKs9dCX3DIbB_Yn35r-VpdRE?p=LLM+agent+state+management+memory+persistence) > operation timed out"
+    }
+  },
+  {
+    "id": 408,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9581,
+      "reserve": 2048,
+      "total": 11629,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 409,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9581,
+      "reserve": 2048,
+      "total": 11629,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 410,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:22:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9581,
+      "actual_input": 8393,
+      "actual_output": 42,
+      "duration_s": 0.91,
+      "calibrated_cpt": 3.655
+    }
+  },
+  {
+    "id": 411,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:07+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "LangGraph checkpointer persistence",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=pp6aZN_PBmEM0F-SY09_zwM_;_ylu=TRlE5AwIBlNW10_TLCSYeEGA4ROX3jTYXWZ5q1PfBDWENF4?p=LangGraph+checkpointer+persistence) > operation timed out"
+    }
+  },
+  {
+    "id": 412,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9633,
+      "reserve": 2048,
+      "total": 11681,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 413,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9633,
+      "reserve": 2048,
+      "total": 11681,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)"
+    }
+  },
+  {
+    "id": 414,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9633,
+      "actual_input": 8567,
+      "actual_output": 40,
+      "duration_s": 1.0,
+      "calibrated_cpt": 3.674
+    }
+  },
+  {
+    "id": 415,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:23+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "agent state persistence",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=kxgt0FRc-qj6aJ66Y98pNy63;_ylu=qz5cqKI0l5meMcSbQ1cBlls_p9KLmXDMSWTjXu56J0VXCDY?p=agent+state+persistence) > operation timed out"
+    }
+  },
+  {
+    "id": 416,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9740,
+      "reserve": 2048,
+      "total": 11788,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 417,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9740,
+      "reserve": 2048,
+      "total": 11788,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)"
+    }
+  },
+  {
+    "id": 418,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9740,
+      "actual_input": 8741,
+      "actual_output": 74,
+      "duration_s": 1.33,
+      "calibrated_cpt": 3.678
+    }
+  },
+  {
+    "id": 419,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:57+00:00",
+    "kind": "fetch_error",
+    "data": {
+      "url": "https://langchain-ai.github.io/langgraph/concepts/persistence/",
+      "type": "timeout_retries_exhausted",
+      "log": [
+        {
+          "url": "https://langchain-ai.github.io/langgraph/concepts/persistence/",
+          "attempt": 1,
+          "error": "timeout"
+        },
+        {
+          "url": "https://langchain-ai.github.io/langgraph/concepts/persistence/",
+          "attempt": 2,
+          "error": "timeout"
+        },
+        {
+          "url": "https://langchain-ai.github.io/langgraph/concepts/persistence/",
+          "attempt": 3,
+          "error": "timeout"
+        }
+      ]
+    }
+  },
+  {
+    "id": 420,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10064,
+      "reserve": 2048,
+      "total": 12112,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 421,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10064,
+      "reserve": 2048,
+      "total": 12112,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 422,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10064,
+      "actual_input": 9064,
+      "actual_output": 38,
+      "duration_s": 0.98,
+      "calibrated_cpt": 3.675
+    }
+  },
+  {
+    "id": 423,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:59+00:00",
+    "kind": "fetch_error",
+    "data": {
+      "url": "https://en.wikipedia.org/wiki/Agent-based_software_development",
+      "type": "http_error",
+      "log": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Agent-based_software_development",
+          "attempt": 1,
+          "status": 403
+        }
+      ]
+    }
+  },
+  {
+    "id": 424,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10271,
+      "reserve": 2048,
+      "total": 12319,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 425,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:23:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10271,
+      "reserve": 2048,
+      "total": 12319,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 426,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10271,
+      "actual_input": 9253,
+      "actual_output": 33,
+      "duration_s": 0.85,
+      "calibrated_cpt": 3.671
+    }
+  },
+  {
+    "id": 427,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:00+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_2b80c39b302416cd380e",
+      "total_chars": 9386,
+      "passed_chars": 2488,
+      "reason": "single result 9386 chars > limit 6000",
+      "step": "lc_run--01a1e14f-653f-75f4-8258-b6d79fa89a54-0"
+    }
+  },
+  {
+    "id": 428,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11095,
+      "reserve": 2048,
+      "total": 13143,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 429,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11095,
+      "reserve": 2048,
+      "total": 13143,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)"
+    }
+  },
+  {
+    "id": 430,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11095,
+      "actual_input": 10038,
+      "actual_output": 61,
+      "duration_s": 1.11,
+      "calibrated_cpt": 3.659
+    }
+  },
+  {
+    "id": 431,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12937,
+      "reserve": 2048,
+      "total": 14985,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 432,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12937,
+      "reserve": 2048,
+      "total": 14985,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)"
+    }
+  },
+  {
+    "id": 433,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12937,
+      "actual_input": 11740,
+      "actual_output": 44,
+      "duration_s": 1.25,
+      "calibrated_cpt": 3.645
+    }
+  },
+  {
+    "id": 434,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:18+00:00",
+    "kind": "search_error",
+    "data": {
+      "query": "LLM agent state management memory persistence",
+      "error": "TimeoutException: error sending request for url (https://search.yahoo.com/search;_ylt=Ft3mnJiBndBfJvXT4w0X7qSf;_ylu=Q6Jtf94679-ht3R2zgnf8HcZUF6rEzdn-uc8e-SRc-p3UPs?p=LLM+agent+state+management+memory+persistence) > operation timed out"
+    }
+  },
+  {
+    "id": 435,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13160,
+      "reserve": 2048,
+      "total": 15208,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 436,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13160,
+      "reserve": 2048,
+      "total": 15208,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)"
+    }
+  },
+  {
+    "id": 437,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13160,
+      "actual_input": 11930,
+      "actual_output": 38,
+      "duration_s": 1.26,
+      "calibrated_cpt": 3.63
+    }
+  },
+  {
+    "id": 438,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:53+00:00",
+    "kind": "fetch_error",
+    "data": {
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "type": "timeout_retries_exhausted",
+      "log": [
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "attempt": 1,
+          "error": "timeout"
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "attempt": 2,
+          "error": "timeout"
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "attempt": 3,
+          "error": "timeout"
+        }
+      ]
+    }
+  },
+  {
+    "id": 439,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13481,
+      "reserve": 2048,
+      "total": 15529,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 440,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13481,
+      "reserve": 2048,
+      "total": 15529,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 441,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13481,
+      "actual_input": 12185,
+      "actual_output": 35,
+      "duration_s": 1.33,
+      "calibrated_cpt": 3.619
+    }
+  },
+  {
+    "id": 442,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:55+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_79e16552546f34dc2e17",
+      "total_chars": 8234,
+      "passed_chars": 2479,
+      "reason": "single result 8234 chars > limit 6000",
+      "step": "lc_run--01a1e150-374c-7097-ab18-9a3db209f532-0"
+    }
+  },
+  {
+    "id": 443,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14341,
+      "reserve": 2048,
+      "total": 16389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 444,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14341,
+      "reserve": 2048,
+      "total": 16389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)"
+    }
+  },
+  {
+    "id": 445,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14341,
+      "actual_input": 12971,
+      "actual_output": 61,
+      "duration_s": 1.45,
+      "calibrated_cpt": 3.607
+    }
+  },
+  {
+    "id": 446,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16220,
+      "reserve": 2048,
+      "total": 18268,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 447,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16220,
+      "reserve": 2048,
+      "total": 18268,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 448,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16220,
+      "actual_input": 14656,
+      "actual_output": 39,
+      "duration_s": 1.58,
+      "calibrated_cpt": 3.598
+    }
+  },
+  {
+    "id": 449,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:59+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_f2e2e9141492ca3ddd29",
+      "total_chars": 8967,
+      "passed_chars": 2537,
+      "reason": "single result 8967 chars > limit 6000",
+      "step": "lc_run--01a1e150-44e6-7703-b428-fca5ff97b0ca-0"
+    }
+  },
+  {
+    "id": 450,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17113,
+      "reserve": 2048,
+      "total": 19161,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 451,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:24:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17113,
+      "reserve": 2048,
+      "total": 19161,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)"
+    }
+  },
+  {
+    "id": 452,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17113,
+      "actual_input": 15457,
+      "actual_output": 69,
+      "duration_s": 1.76,
+      "calibrated_cpt": 3.589
+    }
+  },
+  {
+    "id": 453,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17282,
+      "reserve": 2048,
+      "total": 19330,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.59)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 454,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17282,
+      "reserve": 2048,
+      "total": 19330,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.59)"
+    }
+  },
+  {
+    "id": 455,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17282,
+      "actual_input": 15606,
+      "actual_output": 58,
+      "duration_s": 1.74,
+      "calibrated_cpt": 3.579
+    }
+  },
+  {
+    "id": 456,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19151,
+      "reserve": 2048,
+      "total": 21199,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 457,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:13+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19151,
+      "after_tokens": 12135,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 29,
+      "kept_messages": 7,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4186,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n\n## Прогресс\n- **Выполнено**:\n  - Загрузка навыка `research_web`.\n  - Обновление плана (`update_plan`).\n  - Попытки поиска через `web_search` (5 попыток) — все завершились ошибкой `TimeoutException` (Yahoo Search).\n  - Попытки чтения документации LangGraph (`langchain-ai.github.io`, `docs.langchain.com`) — все завершились ошибкой `timeout_retries_exhausted`.\n  - Попытка чтения Wikipedia (`en.wikipedia.org`) — ошибка `HTTP 403`.\n  - Успешное чтение двух страниц:\n    1. `https://www.langchain.com/langgraph` (артефакт `art_2b80c39b302416cd380e` / внутренний `art_332c17965499bb5633f9`).\n    2. `https://www.langchain.com/deep-agents` (артефакт `art_79e16552546f34dc2e17` / внутренний `art_f880c6a6af0fb92d3519`).\n- **Осталось**:\n  - Найти и прочитать еще минимум 3 страницы (итого 5+).\n  - Сохранить минимум 6 цитат через `save_evidence`.\n  - Написать разделы отчета.\n  - Завершить задачу.\n\n## Открытые вопросы и следующий шаг\n- **Проблема**: Поисковый бэкенд (Yahoo) и часть документации (GitHub Pages, Docs) недоступны из-за тайм-аутов.\n- **Следующий шаг**: Продолжить попытки чтения других доступных URL (например, блоги LangChain, статьи на Medium/HackerNews, другие фреймворки вроде AutoGen, CrewAI, или общие статьи о state management в AI). Необходимо обойти блокировки и тайм-ауты, пробуя разные источники. Если поиск останется недоступным, полагаться на прямые URL известных ресурсов.\n\n## Артефакты\n- `art_2b80c39"
+    }
+  },
+  {
+    "id": 458,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12135,
+      "reserve": 2048,
+      "total": 14183,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 459,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12135,
+      "actual_input": 10786,
+      "actual_output": 59,
+      "duration_s": 1.19,
+      "calibrated_cpt": 3.605
+    }
+  },
+  {
+    "id": 460,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13712,
+      "reserve": 2048,
+      "total": 15760,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 461,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13712,
+      "reserve": 2048,
+      "total": 15760,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 462,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13712,
+      "actual_input": 12140,
+      "actual_output": 72,
+      "duration_s": 1.43,
+      "calibrated_cpt": 3.637
+    }
+  },
+  {
+    "id": 463,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15284,
+      "reserve": 2048,
+      "total": 17332,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 464,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15284,
+      "reserve": 2048,
+      "total": 17332,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)"
+    }
+  },
+  {
+    "id": 465,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15284,
+      "actual_input": 13405,
+      "actual_output": 73,
+      "duration_s": 1.59,
+      "calibrated_cpt": 3.682
+    }
+  },
+  {
+    "id": 466,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16781,
+      "reserve": 2048,
+      "total": 18829,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 467,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16781,
+      "reserve": 2048,
+      "total": 18829,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 468,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:19+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16781,
+      "actual_input": 14636,
+      "actual_output": 44,
+      "duration_s": 1.57,
+      "calibrated_cpt": 3.736
+    }
+  },
+  {
+    "id": 469,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:20+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_136d9070b5ce45082433",
+      "total_chars": 8475,
+      "passed_chars": 2517,
+      "reason": "single result 8475 chars > limit 6000",
+      "step": "lc_run--01a1e150-9714-707d-b330-ff104e8aff3b-0"
+    }
+  },
+  {
+    "id": 470,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17358,
+      "reserve": 2048,
+      "total": 19406,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.74)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 471,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17358,
+      "reserve": 2048,
+      "total": 19406,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.74)"
+    }
+  },
+  {
+    "id": 472,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17358,
+      "actual_input": 15416,
+      "actual_output": 62,
+      "duration_s": 1.74,
+      "calibrated_cpt": 3.762
+    }
+  },
+  {
+    "id": 473,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18871,
+      "reserve": 2048,
+      "total": 20919,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 474,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18871,
+      "reserve": 2048,
+      "total": 20919,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)"
+    }
+  },
+  {
+    "id": 475,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18871,
+      "actual_input": 16753,
+      "actual_output": 75,
+      "duration_s": 2.09,
+      "calibrated_cpt": 3.788
+    }
+  },
+  {
+    "id": 476,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20400,
+      "reserve": 2048,
+      "total": 22448,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 477,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 20400,
+      "after_tokens": 10502,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 16,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4482,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n\n## Прогресс\n- **Выполнено**:\n  - Загрузка навыка `research_web`.\n  - Обновление плана (`update_plan`).\n  - Попытки поиска через `web_search` (5 попыток) — все завершились ошибкой `TimeoutException` (Yahoo Search).\n  - Попытки чтения документации LangGraph (`langchain-ai.github.io`, `docs.langchain.com`) — все завершились ошибкой `timeout_retries_exhausted`.\n  - Попытка чтения Wikipedia (`en.wikipedia.org`) — ошибка `HTTP 403`.\n  - Успешное чтение четырех страниц:\n    1. `https://www.langchain.com/langgraph` (артефакт `art_2b80c39b302416cd380e` / внутренний `art_332c17965499bb5633f9`).\n    2. `"
+    }
+  },
+  {
+    "id": 478,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10502,
+      "reserve": 2048,
+      "total": 12550,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)"
+    }
+  },
+  {
+    "id": 479,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10502,
+      "actual_input": 9607,
+      "actual_output": 74,
+      "duration_s": 1.22,
+      "calibrated_cpt": 3.775
+    }
+  },
+  {
+    "id": 480,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12027,
+      "reserve": 2048,
+      "total": 14075,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.77)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 481,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12027,
+      "reserve": 2048,
+      "total": 14075,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.77)"
+    }
+  },
+  {
+    "id": 482,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12027,
+      "actual_input": 11079,
+      "actual_output": 73,
+      "duration_s": 1.33,
+      "calibrated_cpt": 3.75
+    }
+  },
+  {
+    "id": 483,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13748,
+      "reserve": 2048,
+      "total": 15796,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 484,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13748,
+      "reserve": 2048,
+      "total": 15796,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)"
+    }
+  },
+  {
+    "id": 485,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13748,
+      "actual_input": 12427,
+      "actual_output": 71,
+      "duration_s": 1.47,
+      "calibrated_cpt": 3.753
+    }
+  },
+  {
+    "id": 486,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15343,
+      "reserve": 2048,
+      "total": 17391,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 487,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15343,
+      "reserve": 2048,
+      "total": 17391,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)"
+    }
+  },
+  {
+    "id": 488,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15343,
+      "actual_input": 13793,
+      "actual_output": 72,
+      "duration_s": 1.6,
+      "calibrated_cpt": 3.763
+    }
+  },
+  {
+    "id": 489,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16935,
+      "reserve": 2048,
+      "total": 18983,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 490,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16935,
+      "reserve": 2048,
+      "total": 18983,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)"
+    }
+  },
+  {
+    "id": 491,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16935,
+      "actual_input": 15058,
+      "actual_output": 72,
+      "duration_s": 1.85,
+      "calibrated_cpt": 3.789
+    }
+  },
+  {
+    "id": 492,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18453,
+      "reserve": 2048,
+      "total": 20501,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 493,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:39+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18453,
+      "reserve": 2048,
+      "total": 20501,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)"
+    }
+  },
+  {
+    "id": 494,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18453,
+      "actual_input": 16288,
+      "actual_output": 74,
+      "duration_s": 2.06,
+      "calibrated_cpt": 3.827
+    }
+  },
+  {
+    "id": 495,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19042,
+      "reserve": 2048,
+      "total": 21090,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 496,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:50+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19042,
+      "after_tokens": 11195,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 10,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3566,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n- **Anthropic (Effective harnesses)**: Инициализирующий агент (initializer agent) создает файл `feature_list.json` с требованиями к функциям, чтобы предотвратить преждевременное завершение проекта. При старте сессии агент читает `claude-progress.txt`, `feature_list.json` и git log, проверяет работоспособность приложения и исправляет ошибки перед началом новой работы.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строки 51-104).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация"
+    }
+  },
+  {
+    "id": 497,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11195,
+      "reserve": 2048,
+      "total": 13243,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)"
+    }
+  },
+  {
+    "id": 498,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11195,
+      "actual_input": 10489,
+      "actual_output": 76,
+      "duration_s": 1.32,
+      "calibrated_cpt": 3.776
+    }
+  },
+  {
+    "id": 499,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13013,
+      "reserve": 2048,
+      "total": 15061,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 500,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13013,
+      "reserve": 2048,
+      "total": 15061,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)"
+    }
+  },
+  {
+    "id": 501,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13013,
+      "actual_input": 12139,
+      "actual_output": 72,
+      "duration_s": 1.46,
+      "calibrated_cpt": 3.732
+    }
+  },
+  {
+    "id": 502,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14427,
+      "reserve": 2048,
+      "total": 16475,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 503,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14427,
+      "reserve": 2048,
+      "total": 16475,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)"
+    }
+  },
+  {
+    "id": 504,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14427,
+      "actual_input": 13568,
+      "actual_output": 73,
+      "duration_s": 1.67,
+      "calibrated_cpt": 3.675
+    }
+  },
+  {
+    "id": 505,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15496,
+      "reserve": 2048,
+      "total": 17544,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 506,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:54+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15496,
+      "reserve": 2048,
+      "total": 17544,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 507,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15496,
+      "actual_input": 14435,
+      "actual_output": 74,
+      "duration_s": 1.83,
+      "calibrated_cpt": 3.632
+    }
+  },
+  {
+    "id": 508,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17372,
+      "reserve": 2048,
+      "total": 19420,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 509,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17372,
+      "reserve": 2048,
+      "total": 19420,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 510,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17372,
+      "actual_input": 15784,
+      "actual_output": 75,
+      "duration_s": 1.99,
+      "calibrated_cpt": 3.625
+    }
+  },
+  {
+    "id": 511,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:25:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19139,
+      "reserve": 2048,
+      "total": 21187,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 512,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:07+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 19139,
+      "after_tokens": 11028,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4252,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n- **Anthropic (Effective harnesses)**: Инициализирующий агент (initializer agent) создает файл `feature_list.json` с требованиями к функциям, чтобы предотвратить преждевременное завершение проекта. При старте сессии агент читает `claude-progress.txt`, `feature_list.json` и git log, проверяет работоспособность приложения и исправляет ошибки перед началом новой работы.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строки 51-104).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация"
+    }
+  },
+  {
+    "id": 513,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11028,
+      "reserve": 2048,
+      "total": 13076,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 514,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11028,
+      "actual_input": 9607,
+      "actual_output": 74,
+      "duration_s": 1.22,
+      "calibrated_cpt": 3.685
+    }
+  },
+  {
+    "id": 515,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12375,
+      "reserve": 2048,
+      "total": 14423,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 516,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12375,
+      "reserve": 2048,
+      "total": 14423,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 517,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12375,
+      "actual_input": 11079,
+      "actual_output": 73,
+      "duration_s": 1.36,
+      "calibrated_cpt": 3.703
+    }
+  },
+  {
+    "id": 518,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13978,
+      "reserve": 2048,
+      "total": 16026,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 519,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13978,
+      "reserve": 2048,
+      "total": 16026,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)"
+    }
+  },
+  {
+    "id": 520,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13978,
+      "actual_input": 12427,
+      "actual_output": 71,
+      "duration_s": 1.55,
+      "calibrated_cpt": 3.73
+    }
+  },
+  {
+    "id": 521,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15489,
+      "reserve": 2048,
+      "total": 17537,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 522,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15489,
+      "reserve": 2048,
+      "total": 17537,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)"
+    }
+  },
+  {
+    "id": 523,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15489,
+      "actual_input": 13793,
+      "actual_output": 72,
+      "duration_s": 1.76,
+      "calibrated_cpt": 3.755
+    }
+  },
+  {
+    "id": 524,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17025,
+      "reserve": 2048,
+      "total": 19073,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 525,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17025,
+      "reserve": 2048,
+      "total": 19073,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)"
+    }
+  },
+  {
+    "id": 526,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17025,
+      "actual_input": 15058,
+      "actual_output": 72,
+      "duration_s": 1.9,
+      "calibrated_cpt": 3.79
+    }
+  },
+  {
+    "id": 527,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18506,
+      "reserve": 2048,
+      "total": 20554,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 528,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18506,
+      "reserve": 2048,
+      "total": 20554,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)"
+    }
+  },
+  {
+    "id": 529,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18506,
+      "actual_input": 16288,
+      "actual_output": 74,
+      "duration_s": 2.1,
+      "calibrated_cpt": 3.832
+    }
+  },
+  {
+    "id": 530,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19072,
+      "reserve": 2048,
+      "total": 21120,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 531,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:25+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 5,
+      "before_tokens": 19072,
+      "after_tokens": 11170,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 10,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3566,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация ответа одной моделью и оценка другой в цикле).\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 68, 70-71, 108-109).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n- **Anthropic (Effective harnesses)**: Инициализирующий агент (initializer agent) создает файл `feature_list.json` с требованиями к функциям, чтобы предотвратить преждевременное завершение проекта. При старте сессии агент читает `claude-progress.txt`, `feature_list.json` и git log, проверя"
+    }
+  },
+  {
+    "id": 532,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:25+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11170,
+      "reserve": 2048,
+      "total": 13218,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)"
+    }
+  },
+  {
+    "id": 533,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11170,
+      "actual_input": 10489,
+      "actual_output": 76,
+      "duration_s": 1.32,
+      "calibrated_cpt": 3.777
+    }
+  },
+  {
+    "id": 534,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12997,
+      "reserve": 2048,
+      "total": 15045,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 535,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12997,
+      "reserve": 2048,
+      "total": 15045,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)"
+    }
+  },
+  {
+    "id": 536,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12997,
+      "actual_input": 12139,
+      "actual_output": 72,
+      "duration_s": 1.46,
+      "calibrated_cpt": 3.731
+    }
+  },
+  {
+    "id": 537,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13946,
+      "reserve": 2048,
+      "total": 15994,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 538,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13946,
+      "reserve": 2048,
+      "total": 15994,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)"
+    }
+  },
+  {
+    "id": 539,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13946,
+      "actual_input": 13153,
+      "actual_output": 73,
+      "duration_s": 1.61,
+      "calibrated_cpt": 3.67
+    }
+  },
+  {
+    "id": 540,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15504,
+      "reserve": 2048,
+      "total": 17552,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 541,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15504,
+      "reserve": 2048,
+      "total": 17552,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)"
+    }
+  },
+  {
+    "id": 542,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15504,
+      "actual_input": 14435,
+      "actual_output": 74,
+      "duration_s": 1.77,
+      "calibrated_cpt": 3.628
+    }
+  },
+  {
+    "id": 543,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17379,
+      "reserve": 2048,
+      "total": 19427,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 544,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17379,
+      "reserve": 2048,
+      "total": 19427,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 545,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17379,
+      "actual_input": 15784,
+      "actual_output": 75,
+      "duration_s": 2.01,
+      "calibrated_cpt": 3.622
+    }
+  },
+  {
+    "id": 546,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19145,
+      "reserve": 2048,
+      "total": 21193,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 547,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:41+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 6,
+      "before_tokens": 19145,
+      "after_tokens": 11027,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4294,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация ответа одной моделью и оценка другой в цикле).\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 68, 70-71, 108-109).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n- **Anthropic (Effective harnesses)**: Инициализирующий агент (initializer agent) создает файл `feature_list.json` с требованиями к функциям, чтобы предотвратить преждевременное завершение проекта. При старте сессии агент читает `claude-progress.txt`, `feature_list.json` и git log, проверя"
+    }
+  },
+  {
+    "id": 548,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11027,
+      "reserve": 2048,
+      "total": 13075,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)"
+    }
+  },
+  {
+    "id": 549,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11027,
+      "actual_input": 9607,
+      "actual_output": 74,
+      "duration_s": 1.19,
+      "calibrated_cpt": 3.681
+    }
+  },
+  {
+    "id": 550,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12375,
+      "reserve": 2048,
+      "total": 14423,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 551,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12375,
+      "reserve": 2048,
+      "total": 14423,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.68)"
+    }
+  },
+  {
+    "id": 552,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12375,
+      "actual_input": 11079,
+      "actual_output": 73,
+      "duration_s": 1.38,
+      "calibrated_cpt": 3.699
+    }
+  },
+  {
+    "id": 553,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13980,
+      "reserve": 2048,
+      "total": 16028,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 554,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13980,
+      "reserve": 2048,
+      "total": 16028,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)"
+    }
+  },
+  {
+    "id": 555,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13980,
+      "actual_input": 12427,
+      "actual_output": 33,
+      "duration_s": 1.25,
+      "calibrated_cpt": 3.727
+    }
+  },
+  {
+    "id": 556,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15290,
+      "reserve": 2048,
+      "total": 17338,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 557,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15290,
+      "reserve": 2048,
+      "total": 17338,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)"
+    }
+  },
+  {
+    "id": 558,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15290,
+      "actual_input": 13543,
+      "actual_output": 35,
+      "duration_s": 1.38,
+      "calibrated_cpt": 3.76
+    }
+  },
+  {
+    "id": 559,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16558,
+      "reserve": 2048,
+      "total": 18606,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 560,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16558,
+      "reserve": 2048,
+      "total": 18606,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)"
+    }
+  },
+  {
+    "id": 561,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16558,
+      "actual_input": 14662,
+      "actual_output": 39,
+      "duration_s": 1.57,
+      "calibrated_cpt": 3.792
+    }
+  },
+  {
+    "id": 562,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:50+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_3e8c1469e1a0bab3b882",
+      "total_chars": 8902,
+      "passed_chars": 2472,
+      "reason": "single result 8902 chars > limit 6000",
+      "step": "lc_run--01a1e151-f4a3-7344-ade0-e284732a8935-0"
+    }
+  },
+  {
+    "id": 563,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17204,
+      "reserve": 2048,
+      "total": 19252,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 564,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17204,
+      "reserve": 2048,
+      "total": 19252,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)"
+    }
+  },
+  {
+    "id": 565,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17204,
+      "actual_input": 15453,
+      "actual_output": 72,
+      "duration_s": 1.85,
+      "calibrated_cpt": 3.802
+    }
+  },
+  {
+    "id": 566,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18879,
+      "reserve": 2048,
+      "total": 20927,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 567,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18879,
+      "reserve": 2048,
+      "total": 20927,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)"
+    }
+  },
+  {
+    "id": 568,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18879,
+      "actual_input": 17054,
+      "actual_output": 71,
+      "duration_s": 2.02,
+      "calibrated_cpt": 3.804
+    }
+  },
+  {
+    "id": 569,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:26:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19085,
+      "reserve": 2048,
+      "total": 21133,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 570,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:02+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 7,
+      "before_tokens": 19085,
+      "after_tokens": 10779,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3928,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n- Для страниц с большим объемом текста (offloaded) используется инструмент `read_artifact` с параметрами `start_line` и `max_lines` для постраничного чтения.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 65-67).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация ответа одной моделью и оценка другой в цикле).\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_bbeab7c58414a62b6dc9`, строки 68, 70-71, 108-109).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется файл `claude-progress.txt` вместе с git-историей, чтобы агент мог быстро понять состояние работы при запуске с новым контекстным окном.\n  - *Источник*: `https://www.anthropic.com/research/effective-harnesses-for-long-running-agents` (артефакт `art_436d9649c7c17cc07b96`, строка 49).\n- **Anthropic (Effective harnesses)**: Инициализирующий агент (initializer agent) создает файл `feature_list.json` с требованиями"
+    }
+  },
+  {
+    "id": 571,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10779,
+      "reserve": 2048,
+      "total": 12827,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)"
+    }
+  },
+  {
+    "id": 572,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10779,
+      "actual_input": 10066,
+      "actual_output": 71,
+      "duration_s": 1.17,
+      "calibrated_cpt": 3.758
+    }
+  },
+  {
+    "id": 573,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12651,
+      "reserve": 2048,
+      "total": 14699,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 574,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12651,
+      "reserve": 2048,
+      "total": 14699,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.76)"
+    }
+  },
+  {
+    "id": 575,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12651,
+      "actual_input": 11666,
+      "actual_output": 39,
+      "duration_s": 1.12,
+      "calibrated_cpt": 3.73
+    }
+  },
+  {
+    "id": 576,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14140,
+      "reserve": 2048,
+      "total": 16188,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 577,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14140,
+      "reserve": 2048,
+      "total": 16188,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.73)"
+    }
+  },
+  {
+    "id": 578,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14140,
+      "actual_input": 12718,
+      "actual_output": 73,
+      "duration_s": 1.53,
+      "calibrated_cpt": 3.739
+    }
+  },
+  {
+    "id": 579,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15716,
+      "reserve": 2048,
+      "total": 17764,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.74)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 580,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15716,
+      "reserve": 2048,
+      "total": 17764,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.74)"
+    }
+  },
+  {
+    "id": 581,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15716,
+      "actual_input": 14088,
+      "actual_output": 74,
+      "duration_s": 1.71,
+      "calibrated_cpt": 3.753
+    }
+  },
+  {
+    "id": 582,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17298,
+      "reserve": 2048,
+      "total": 19346,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 583,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17298,
+      "reserve": 2048,
+      "total": 19346,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.75)"
+    }
+  },
+  {
+    "id": 584,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17298,
+      "actual_input": 15357,
+      "actual_output": 75,
+      "duration_s": 1.87,
+      "calibrated_cpt": 3.78
+    }
+  },
+  {
+    "id": 585,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18812,
+      "reserve": 2048,
+      "total": 20860,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 586,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18812,
+      "reserve": 2048,
+      "total": 20860,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.78)"
+    }
+  },
+  {
+    "id": 587,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18812,
+      "actual_input": 16592,
+      "actual_output": 75,
+      "duration_s": 2.03,
+      "calibrated_cpt": 3.818
+    }
+  },
+  {
+    "id": 588,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20193,
+      "reserve": 2048,
+      "total": 22241,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.82)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 589,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:20+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 8,
+      "before_tokens": 20193,
+      "after_tokens": 10381,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 14,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4097,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n- Для страниц с большим объемом текста (offloaded) используется инструмент `read_artifact` с параметрами `start_line` и `max_lines` для постраничного чтения.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 65-67).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация ответа одной моделью и оценка другой в цикле).\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 68, 70-71, 108-109).\n- **Anthropic (Building effective agents)**: Рекомендуется начинать с простейших решений и увеличивать сложность только при необходимости. Разработчикам советуют использовать LLM API напрямую, а при использовании фреймворков — понимать внутреннюю логику кода.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 143-144 и финальный фрагмент).\n- **Anthropic (Effective harnesses)**: Для долгосрочных агентов используется"
+    }
+  },
+  {
+    "id": 590,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10381,
+      "reserve": 2048,
+      "total": 12429,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.82)"
+    }
+  },
+  {
+    "id": 591,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10381,
+      "actual_input": 9600,
+      "actual_output": 73,
+      "duration_s": 1.17,
+      "calibrated_cpt": 3.788
+    }
+  },
+  {
+    "id": 592,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12090,
+      "reserve": 2048,
+      "total": 14138,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 593,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12090,
+      "reserve": 2048,
+      "total": 14138,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.79)"
+    }
+  },
+  {
+    "id": 594,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12090,
+      "actual_input": 10871,
+      "actual_output": 74,
+      "duration_s": 1.33,
+      "calibrated_cpt": 3.8
+    }
+  },
+  {
+    "id": 595,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13670,
+      "reserve": 2048,
+      "total": 15718,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 596,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:22+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13670,
+      "reserve": 2048,
+      "total": 15718,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.80)"
+    }
+  },
+  {
+    "id": 597,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:24+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13670,
+      "actual_input": 12108,
+      "actual_output": 44,
+      "duration_s": 1.34,
+      "calibrated_cpt": 3.834
+    }
+  },
+  {
+    "id": 598,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:27+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "web_fetch",
+      "artifact_id": "art_de6e42b502ca88e5b315",
+      "total_chars": 9003,
+      "passed_chars": 2601,
+      "reason": "single result 9003 chars > limit 6000",
+      "step": "lc_run--01a1e152-807f-730a-baa1-6c172ed8a2cf-0"
+    }
+  },
+  {
+    "id": 599,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14371,
+      "reserve": 2048,
+      "total": 16419,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 600,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14371,
+      "reserve": 2048,
+      "total": 16419,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.83)"
+    }
+  },
+  {
+    "id": 601,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14371,
+      "actual_input": 12896,
+      "actual_output": 70,
+      "duration_s": 1.51,
+      "calibrated_cpt": 3.847
+    }
+  },
+  {
+    "id": 602,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16022,
+      "reserve": 2048,
+      "total": 18070,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.85)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 603,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16022,
+      "reserve": 2048,
+      "total": 18070,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.85)"
+    }
+  },
+  {
+    "id": 604,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16022,
+      "actual_input": 14502,
+      "actual_output": 71,
+      "duration_s": 1.69,
+      "calibrated_cpt": 3.846
+    }
+  },
+  {
+    "id": 605,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17576,
+      "reserve": 2048,
+      "total": 19624,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.85)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 606,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17576,
+      "reserve": 2048,
+      "total": 19624,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.85)"
+    }
+  },
+  {
+    "id": 607,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17576,
+      "actual_input": 15762,
+      "actual_output": 71,
+      "duration_s": 1.86,
+      "calibrated_cpt": 3.859
+    }
+  },
+  {
+    "id": 608,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19093,
+      "reserve": 2048,
+      "total": 21141,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.86)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 609,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:40+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 9,
+      "before_tokens": 19093,
+      "after_tokens": 10308,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3854,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием и персистентности памяти в LLM-агентах. Задача включает поиск источников, их отбор, полное чтение страниц, сбор верифицированных цитат (evidence) и написание отчета с разделами: подходы, ограничения, сравнение, непроверенные утверждения.\n\n## Ограничения пользователя\n- Требуется использовать навык `research_web`.\n- Необходимо сформулировать 3-6 аспектов темы и выполнить поисковые запросы.\n- Обязательна отборка источников с указанием причин (queue/reject).\n- Минимум 5 полностью прочитанных страниц.\n- Минимум 6 цитат (evidence) для верификации фактов.\n- Отчет должен содержать разделы: approaches, limitations, comparison, unverified.\n- Завершение задачи через `complete_task` или `stop_partial` при достижении критериев или исчерпании лимитов.\n\n## Решения и договорённости\n- План работы утвержден: 1) Поисковые запросы (3+), 2) Отбор источников, 3) Чтение 5+ страниц, 4) Сбор 6+ цитат, 5) Написание разделов отчета, 6) Завершение задачи.\n- Стратегия поиска: использование русскоязычных и англоязычных запросов.\n- При сбое поискового бэкенда (Yahoo) принято решение переходить к прямому чтению известных URL-адресов документации и сайтов.\n- В случае тайм-аутов на GitHub Pages и Docs, фокус смещен на корпоративные блоги (Anthropic, LangChain) и исследовательские статьи.\n- Для страниц с большим объемом текста (offloaded) используется инструмент `read_artifact` с параметрами `start_line` и `max_lines` для постраничного чтения.\n\n## Подтверждённые факты (с источниками)\n*Примечание: В текущем фрагменте нет сохраненных через `save_evidence` цитат, но из прочитанных артефактов извлечены следующие данные:*\n- **LangGraph**: Описан как фреймворк оркестрации агентов для надежных AI-агентов. Поддерживает human-in-the-loop проверки, модерацию и контроль качества.\n  - *Источник*: `https://www.langchain.com/langgraph` (артефакт `art_332c17965499bb5633f9`, заголовок: \"LangGraph: Agent Orchestration Framework for Reliable AI Agents\").\n- **Deep Agents**: Описан как open-source агентный harness, предназначенный для автономных агентов, работающих над сложными задачами (исследования, кодирование, многошаговые workflows) в течение длительного времени. Предоставляет примитивы для разбивки сложных целей (Planning tools).\n  - *Источник*: `https://www.langchain.com/deep-agents` (артефакт `art_f880c6a6af0fb92d3519`, заголовок: \"Deep Agents: Open Source Agent Harness | LangChain\").\n- **LangChain**: Провела раунд финансирования Series C на сумму $300M при оценке $3B.\n  - *Источник*: Ссылка в навигации на `https://www.langchain.com/blog/series-c` (найдена в обоих прочитанных артефактах).\n- **Anthropic (Building effective agents)**: Базовым строительным блоком агентных систем является LLM, усиленный дополнениями (retrieval, tools, memory). Модели могут активно использовать эти возможности, генерируя запросы, выбирая инструменты и определяя, какую информацию сохранять.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 64-65).\n- **Anthropic (Building effective agents)**: Рекомендуется использовать Model Context Protocol (MCP) для интеграции с экосистемой сторонних инструментов. Описаны паттерны: Prompt chaining (разбиение задачи на последовательность шагов) и Evaluator-optimizer (генерация ответа одной моделью и оценка другой в цикле).\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 68, 108-109).\n- **Anthropic (Building effective agents)**: Рекомендуется начинать с простейших решений и увеличивать сложность только при необходимости. Разработчикам советуют использовать LLM API напрямую, а при использовании фреймворков — понимать внутреннюю логику кода.\n  - *Источник*: `https://www.anthropic.com/research/building-effective-agents` (артефакт `art_86a07c9a784f9c3cac84`, строки 143-144 и финальный фрагмент).\n- **Anthropic (Building effective agents)**: Описаны области применения: Customer support (программная обработка действий,"
+    }
+  },
+  {
+    "id": 610,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10308,
+      "reserve": 2048,
+      "total": 12356,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.86)"
+    }
+  },
+  {
+    "id": 611,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10308,
+      "actual_input": 9364,
+      "actual_output": 71,
+      "duration_s": 1.09,
+      "calibrated_cpt": 3.856
+    }
+  },
+  {
+    "id": 612,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11902,
+      "reserve": 2048,
+      "total": 13950,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.86)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 613,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11902,
+      "reserve": 2048,
+      "total": 13950,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.86)"
+    }
+  },
+  {
+    "id": 614,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11902,
+      "actual_input": 10489,
+      "actual_output": 71,
+      "duration_s": 1.28,
+      "calibrated_cpt": 3.899
+    }
+  },
+  {
+    "id": 615,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13358,
+      "reserve": 2048,
+      "total": 15406,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.90)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 616,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13358,
+      "reserve": 2048,
+      "total": 15406,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.90)"
+    }
+  },
+  {
+    "id": 617,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13358,
+      "actual_input": 11638,
+      "actual_output": 71,
+      "duration_s": 1.37,
+      "calibrated_cpt": 3.961
+    }
+  },
+  {
+    "id": 618,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13949,
+      "reserve": 2048,
+      "total": 15997,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.96)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 619,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13949,
+      "reserve": 2048,
+      "total": 15997,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.96)"
+    }
+  },
+  {
+    "id": 620,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13949,
+      "actual_input": 12420,
+      "actual_output": 33,
+      "duration_s": 1.2,
+      "calibrated_cpt": 3.986
+    }
+  },
+  {
+    "id": 621,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15183,
+      "reserve": 2048,
+      "total": 17231,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.99)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 622,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15183,
+      "reserve": 2048,
+      "total": 17231,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.99)"
+    }
+  },
+  {
+    "id": 623,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15183,
+      "actual_input": 13536,
+      "actual_output": 35,
+      "duration_s": 1.3,
+      "calibrated_cpt": 4.009
+    }
+  },
+  {
+    "id": 624,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16411,
+      "reserve": 2048,
+      "total": 18459,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=4.01)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 625,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16411,
+      "reserve": 2048,
+      "total": 18459,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=4.01)"
+    }
+  },
+  {
+    "id": 626,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16411,
+      "actual_input": 14655,
+      "actual_output": 289,
+      "duration_s": 3.69,
+      "calibrated_cpt": 4.029
+    }
+  },
+  {
+    "id": 627,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16802,
+      "reserve": 2048,
+      "total": 18850,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=4.03)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 628,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16802,
+      "reserve": 2048,
+      "total": 18850,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=4.03)"
+    }
+  },
+  {
+    "id": 629,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "token_budget",
+      "resource": "model_calls",
+      "needed": 1,
+      "remaining": 0,
+      "limit": 70
+    }
+  },
+  {
+    "id": 630,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 70)"
+    }
+  },
+  {
+    "id": 631,
+    "task_id": "B1",
+    "ts": "2026-11-15T22:27:50+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 70)"
+    }
+  }
+]

@@ -1,0 +1,367 @@
+[
+  {
+    "id": 364,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:42+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 365,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:46+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "run"
+    }
+  },
+  {
+    "id": 366,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 367,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:46+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 368,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11341,
+      "actual_input": 7105,
+      "actual_output": 54,
+      "duration_s": 0.89,
+      "calibrated_cpt": 3.067
+    }
+  },
+  {
+    "id": 369,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "total": 12997,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 370,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "total": 12997,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)"
+    }
+  },
+  {
+    "id": 371,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10949,
+      "actual_input": 8180,
+      "actual_output": 416,
+      "duration_s": 3.43,
+      "calibrated_cpt": 3.329
+    }
+  },
+  {
+    "id": 372,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11563,
+      "reserve": 2048,
+      "total": 13611,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.33)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 373,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11563,
+      "reserve": 2048,
+      "total": 13611,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.33)"
+    }
+  },
+  {
+    "id": 374,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11563,
+      "actual_input": 9706,
+      "actual_output": 292,
+      "duration_s": 2.61,
+      "calibrated_cpt": 3.431
+    }
+  },
+  {
+    "id": 375,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14123,
+      "reserve": 2048,
+      "total": 16171,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.43)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 376,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14123,
+      "reserve": 2048,
+      "total": 16171,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.43)"
+    }
+  },
+  {
+    "id": 377,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14123,
+      "actual_input": 13187,
+      "actual_output": 117,
+      "duration_s": 1.77,
+      "calibrated_cpt": 3.385
+    }
+  },
+  {
+    "id": 378,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15684,
+      "reserve": 2048,
+      "total": 17732,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 379,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15684,
+      "reserve": 2048,
+      "total": 17732,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 380,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15684,
+      "actual_input": 14724,
+      "actual_output": 165,
+      "duration_s": 2.32,
+      "calibrated_cpt": 3.331
+    }
+  },
+  {
+    "id": 381,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:57+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "search_text",
+      "artifact_id": "art_c6e539b6da47fd9dbe25",
+      "total_chars": 12717,
+      "passed_chars": 1684,
+      "reason": "single result 12717 chars > limit 6000",
+      "step": "lc_run--01a1e14d-8199-7442-8f36-0d6a8b164fec-0"
+    }
+  },
+  {
+    "id": 382,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:57+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "search_text",
+      "artifact_id": "art_1ce56fe0605810866f52",
+      "total_chars": 10261,
+      "passed_chars": 1696,
+      "reason": "single result 10261 chars > limit 6000",
+      "step": "lc_run--01a1e14d-8199-7442-8f36-0d6a8b164fec-0"
+    }
+  },
+  {
+    "id": 383,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17795,
+      "reserve": 2048,
+      "total": 19843,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.33)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 384,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:21:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17795,
+      "reserve": 2048,
+      "total": 19843,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.33)"
+    }
+  },
+  {
+    "id": 385,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17795,
+      "actual_input": 16733,
+      "actual_output": 236,
+      "duration_s": 3.09,
+      "calibrated_cpt": 3.276
+    }
+  },
+  {
+    "id": 386,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18734,
+      "reserve": 2048,
+      "total": 20782,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.28)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 387,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18734,
+      "reserve": 2048,
+      "total": 20782,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.28)"
+    }
+  },
+  {
+    "id": 388,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:03+00:00",
+    "kind": "control_requested",
+    "data": {
+      "action": "cancel",
+      "reason": "demo: cancel from another terminal"
+    }
+  },
+  {
+    "id": 389,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:04+00:00",
+    "kind": "status",
+    "data": {
+      "status": "cancelled",
+      "reason": "cancel requested by the user; the in-flight operation was interrupted"
+    }
+  },
+  {
+    "id": 390,
+    "task_id": "E1",
+    "ts": "2026-11-15T22:22:04+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "cancelled",
+      "reason": "cancel requested by the user; the in-flight operation was interrupted"
+    }
+  }
+]

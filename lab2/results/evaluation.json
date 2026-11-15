@@ -1,0 +1,402 @@
+{
+  "tasks": {
+    "A1": {
+      "status": "completed",
+      "reason": "Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), 9 evidence (минимум 8), все 3 документа в scope имеют evidence. Решения АС-01…03 приведены дословно с номерами страниц, решение кафедры о nDCG@10 найдено, INC-2026-017 разобран. Спорные утверждения выделены отдельным раз",
+      "runs": 2,
+      "success": true,
+      "peak_input_tokens": 17654,
+      "max_estimate_plus_reserve": 20682,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 525420,
+      "compaction_tokens": 36861,
+      "model_calls": 39,
+      "compaction_calls": 5,
+      "failed_calls": 0,
+      "tool_calls": 76,
+      "search_calls": 0,
+      "http_requests": 0,
+      "cache_hits": 0,
+      "active_seconds": 140.8,
+      "compactions": 5,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 0,
+        "error": 0,
+        "skipped": 0,
+        "found_total": 0,
+        "selected_total": 0,
+        "read_total": 0
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0
+    },
+    "B1": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 70)",
+      "runs": 1,
+      "success": false,
+      "peak_input_tokens": 17054,
+      "max_estimate_plus_reserve": 20927,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 925108,
+      "compaction_tokens": 47025,
+      "model_calls": 70,
+      "compaction_calls": 9,
+      "failed_calls": 0,
+      "tool_calls": 72,
+      "search_calls": 6,
+      "http_requests": 18,
+      "cache_hits": 5,
+      "active_seconds": 336.4,
+      "compactions": 9,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 6,
+        "error": 3,
+        "skipped": 0,
+        "found_total": 9,
+        "selected_total": 9,
+        "read_total": 6
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 1
+    },
+    "C1": {
+      "status": "completed",
+      "reason": "Обзор готов: 4 раздела (approaches, limitations, comparison, unverified), 16 подтверждённых evidence с точными цитатами с 10 прочитанных страниц, очередь 56 URL (>=50), охвачены все 8 подтем. Ограничения подходов сопоставлены в разделе comparison. Непроверенное явно выделено.",
+      "runs": 1,
+      "success": true,
+      "peak_input_tokens": 17435,
+      "max_estimate_plus_reserve": 20918,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 325945,
+      "compaction_tokens": 25255,
+      "model_calls": 23,
+      "compaction_calls": 3,
+      "failed_calls": 0,
+      "tool_calls": 62,
+      "search_calls": 10,
+      "http_requests": 10,
+      "cache_hits": 0,
+      "active_seconds": 129.9,
+      "compactions": 3,
+      "queue": {
+        "found": 33,
+        "pending": 11,
+        "running": 0,
+        "done": 10,
+        "error": 0,
+        "skipped": 2,
+        "found_total": 56,
+        "selected_total": 21,
+        "read_total": 10
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0
+    },
+    "D1": {
+      "status": "completed",
+      "reason": "Обзор завершён: 5 разделов (approaches, limitations, disputed, decisions, summary), 8 evidence, все решения АС-01/02/03 приведены дословно с номерами страниц, INC-2026-017 и INC-2026-016 разобраны, решение кафедры о nDCG@10 зафиксировано.",
+      "runs": 2,
+      "success": true,
+      "peak_input_tokens": 17613,
+      "max_estimate_plus_reserve": 20948,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 939507,
+      "compaction_tokens": 46978,
+      "model_calls": 68,
+      "compaction_calls": 6,
+      "failed_calls": 0,
+      "tool_calls": 128,
+      "search_calls": 0,
+      "http_requests": 0,
+      "cache_hits": 0,
+      "active_seconds": 204.8,
+      "compactions": 6,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 0,
+        "error": 0,
+        "skipped": 0,
+        "found_total": 0,
+        "selected_total": 0,
+        "read_total": 0
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 1
+    },
+    "E1": {
+      "status": "cancelled",
+      "reason": "cancel requested by the user; the in-flight operation was interrupted",
+      "runs": 1,
+      "success": false,
+      "peak_input_tokens": 16733,
+      "max_estimate_plus_reserve": 20782,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 70915,
+      "compaction_tokens": 0,
+      "model_calls": 6,
+      "compaction_calls": 0,
+      "failed_calls": 0,
+      "tool_calls": 20,
+      "search_calls": 0,
+      "http_requests": 0,
+      "cache_hits": 0,
+      "active_seconds": 17.4,
+      "compactions": 0,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 0,
+        "error": 0,
+        "skipped": 0,
+        "found_total": 0,
+        "selected_total": 0,
+        "read_total": 0
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0
+    },
+    "G1": {
+      "status": "paused",
+      "reason": "waiting for user input",
+      "runs": 12,
+      "success": false,
+      "peak_input_tokens": 13191,
+      "max_estimate_plus_reserve": 17256,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 240683,
+      "compaction_tokens": 5490,
+      "model_calls": 26,
+      "compaction_calls": 1,
+      "failed_calls": 0,
+      "tool_calls": 15,
+      "search_calls": 0,
+      "http_requests": 6,
+      "cache_hits": 0,
+      "active_seconds": 61.6,
+      "compactions": 1,
+      "queue": {
+        "found": 0,
+        "pending": 1,
+        "running": 0,
+        "done": 1,
+        "error": 1,
+        "skipped": 0,
+        "found_total": 3,
+        "selected_total": 3,
+        "read_total": 1
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0
+    },
+    "T1": {
+      "status": "paused",
+      "reason": "LLM unavailable after 3 attempts: TimeoutError: ",
+      "runs": 1,
+      "success": false,
+      "peak_input_tokens": 7105,
+      "max_estimate_plus_reserve": 13389,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 40006,
+      "compaction_tokens": 0,
+      "model_calls": 1,
+      "compaction_calls": 0,
+      "failed_calls": 3,
+      "tool_calls": 2,
+      "search_calls": 0,
+      "http_requests": 0,
+      "cache_hits": 0,
+      "active_seconds": 9.9,
+      "compactions": 0,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 0,
+        "error": 0,
+        "skipped": 0,
+        "found_total": 0,
+        "selected_total": 0,
+        "read_total": 0
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0
+    }
+  },
+  "facts": {
+    "A1": {
+      "facts": [
+        {
+          "fact": "F1",
+          "position": "beginning",
+          "expected_page": 4,
+          "file": "search_engineering_handbook.md",
+          "in_evidence": true,
+          "evidence_pages": [
+            4
+          ],
+          "page_correct": true,
+          "in_report": true,
+          "in_final_summary": true,
+          "summaries_after_first_mention": "5/5"
+        },
+        {
+          "fact": "F2",
+          "position": "middle",
+          "expected_page": 261,
+          "file": "search_engineering_handbook.md",
+          "in_evidence": true,
+          "evidence_pages": [
+            261
+          ],
+          "page_correct": true,
+          "in_report": true,
+          "in_final_summary": true,
+          "summaries_after_first_mention": "5/5"
+        },
+        {
+          "fact": "F3",
+          "position": "end",
+          "expected_page": 517,
+          "file": "search_engineering_handbook.md",
+          "in_evidence": true,
+          "evidence_pages": [
+            517
+          ],
+          "page_correct": true,
+          "in_report": true,
+          "in_final_summary": true,
+          "summaries_after_first_mention": "5/5"
+        },
+        {
+          "fact": "F4",
+          "position": "middle",
+          "expected_page": 47,
+          "file": "ir_course_lectures.md",
+          "in_evidence": true,
+          "evidence_pages": [
+            47
+          ],
+          "page_correct": true,
+          "in_report": true,
+          "in_final_summary": true,
+          "summaries_after_first_mention": "5/5"
+        },
+        {
+          "fact": "F5",
+          "position": "beginning",
+          "expected_page": 17,
+          "file": "search_incident_reports.md",
+          "in_evidence": true,
+          "evidence_pages": [
+            17
+          ],
+          "page_correct": true,
+          "in_report": true,
+          "in_final_summary": true,
+          "summaries_after_first_mention": "5/5"
+        }
+      ],
+      "constraints": [
+        {
+          "constraint": "[C1]",
+          "pinned_in_every_call": true,
+          "in_compaction_summaries": "0/5"
+        },
+        {
+          "constraint": "[C2]",
+          "pinned_in_every_call": true,
+          "in_compaction_summaries": "0/5"
+        },
+        {
+          "constraint": "[C3]",
+          "pinned_in_every_call": true,
+          "in_compaction_summaries": "0/5"
+        },
+        {
+          "constraint": "[C4]",
+          "pinned_in_every_call": true,
+          "in_compaction_summaries": "0/5"
+        },
+        {
+          "constraint": "[C5]",
+          "pinned_in_every_call": true,
+          "in_compaction_summaries": "0/5"
+        }
+      ],
+      "compactions": 5
+    }
+  },
+  "comparison": {
+    "harness": {
+      "status": "completed",
+      "reason": "Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), 9 evidence (минимум 8), все 3 документа в scope имеют evidence. Решения АС-01…03 приведены дословно с номерами страниц, решение кафедры о nDCG@10 найдено, INC-2026-017 разобран. Спорные утверждения выделены отдельным раз",
+      "runs": 2,
+      "success": true,
+      "peak_input_tokens": 17654,
+      "max_estimate_plus_reserve": 20682,
+      "working_limit": 28000,
+      "window": 262144,
+      "tokens_total": 525420,
+      "compaction_tokens": 36861,
+      "model_calls": 39,
+      "compaction_calls": 5,
+      "failed_calls": 0,
+      "tool_calls": 76,
+      "search_calls": 0,
+      "http_requests": 0,
+      "cache_hits": 0,
+      "active_seconds": 140.8,
+      "compactions": 5,
+      "queue": {
+        "found": 0,
+        "pending": 0,
+        "running": 0,
+        "done": 0,
+        "error": 0,
+        "skipped": 0,
+        "found_total": 0,
+        "selected_total": 0,
+        "read_total": 0
+      },
+      "calls_over_working_limit": 0,
+      "blocked_calls": 0,
+      "facts_confirmed": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ]
+    },
+    "baseline": {
+      "status": "finished",
+      "error": null,
+      "success": false,
+      "peak_input_tokens": 132412,
+      "peak_estimated_input": 167933,
+      "tokens_total": 2455084,
+      "model_calls": 40,
+      "failed_calls": 0,
+      "tool_calls": 49,
+      "duration_s": 114.2,
+      "facts_in_answer": []
+    }
+  }
+}
