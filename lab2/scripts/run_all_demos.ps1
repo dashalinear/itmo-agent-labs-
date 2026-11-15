@@ -21,7 +21,8 @@ Scenarios (task ids):
 param(
     [ValidateSet("all", "web", "guard")][string]$Part = "all",
     [switch]$SkipPush,
-    [switch]$SkipTests
+    [switch]$SkipTests,
+    [string]$EnvFile = ".env"
 )
 
 $ErrorActionPreference = "Stop"
@@ -30,13 +31,15 @@ Set-Location $lab
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $env:PYTHONIOENCODING = "utf-8"
 $py = Join-Path $lab ".venv\Scripts\python.exe"
+$EnvFile = Join-Path $lab $EnvFile
+$env:HARNESS_ENV_FILE = $EnvFile      # every python step reads the same settings file
 
 function Step($text) { Write-Host "`n=== $text ===" -ForegroundColor Cyan }
 function Run-Py { & $py @args | Out-Host; if ($LASTEXITCODE -ne 0) { throw "python $($args -join ' ') failed with exit code $LASTEXITCODE" } }
 function Harness { & $py -m harness.cli @args | Out-Host; return $LASTEXITCODE }
 function Task-Status($id) { return (& $py -m harness.cli status --task-id $id --json | Out-String | ConvertFrom-Json) }
 function Read-Env($name) {
-    $line = Get-Content .env -Encoding UTF8 | Where-Object { $_ -match "^$name=" } | Select-Object -First 1
+    $line = Get-Content $EnvFile -Encoding UTF8 | Where-Object { $_ -match "^$name=" } | Select-Object -First 1
     if (-not $line) { return "" }
     return $line.Substring($name.Length + 1).Trim()
 }
@@ -60,7 +63,7 @@ if (-not (Test-Path $py)) {
     python -m venv .venv
     & $py -m pip install -r requirements.txt
 }
-if (-not (Test-Path .env)) { throw ".env not found: copy .env.example to .env and set LLM_API_KEY" }
+if (-not (Test-Path $EnvFile)) { throw "$EnvFile not found: copy .env.example to .env and set LLM_API_KEY" }
 
 Step "1. ITMO LLM reachability and the real context window"
 $base = Read-Env "LLM_BASE_URL"

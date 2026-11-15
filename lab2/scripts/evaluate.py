@@ -24,9 +24,20 @@ def load(task: str, name: str, default=None):
     return json.loads(p.read_text(encoding="utf-8")) if p.suffix == ".json" else p.read_text(encoding="utf-8")
 
 
+def agent_sections(report: str) -> str:
+    """Report text written by the agent: without the copied request and user constraints."""
+    out, keep = [], True
+    for line in report.splitlines():
+        if line.startswith("## "):
+            keep = line[3:].strip() not in ("Запрос", "Ограничения пользователя")
+        if keep:
+            out.append(line)
+    return "\n".join(out)
+
+
 def facts_check(task: str, manifest: dict) -> dict:
     ev = load(task, "evidence.json", []) or []
-    report = load(task, "report.md", "") or ""
+    report = agent_sections(load(task, "report.md", "") or "")
     comps = load(task, "compactions.json", []) or []
     summary = load(task, "summary.md", "") or ""
     rows = []
@@ -48,8 +59,7 @@ def facts_check(task: str, manifest: dict) -> dict:
     for c in cons:
         tag = CONSTRAINT.match(c).group(0) if CONSTRAINT.match(c) else c[:6]
         in_s = sum(1 for x in comps if tag in (x.get("summary") or ""))
-        cons_rows.append({"constraint": tag, "pinned_in_every_call": True, "in_compaction_summaries": f"{in_s}/{len(comps)}",
-                          "in_report": tag in report or c in report})
+        cons_rows.append({"constraint": tag, "pinned_in_every_call": True, "in_compaction_summaries": f"{in_s}/{len(comps)}"})
     return {"facts": rows, "constraints": cons_rows, "compactions": len(comps)}
 
 
@@ -126,10 +136,10 @@ def main() -> None:
             md.append(f"| {r['fact']} | {r['position']} ({r['file']}) | {r['expected_page']} | {'✔' if r['in_evidence'] else '✘'} | "
                       f"{r['evidence_pages']} | {'✔' if r['in_report'] else '✘'} | {'✔' if r['in_final_summary'] else '✘'} | "
                       f"{r['summaries_after_first_mention']} |")
-        md += ["", "| ограничение | закреплено в каждом вызове (TASK CONTRACT) | в summary компактификаций | в отчёте |",
-               "|---|---|---|---|"]
+        md += ["", "| ограничение | закреплено в каждом вызове (TASK CONTRACT) | в summary компактификаций |",
+               "|---|---|---|"]
         for c in fc["constraints"]:
-            md.append(f"| {c['constraint']} | ✔ | {c['in_compaction_summaries']} | {'✔' if c['in_report'] else '✘'} |")
+            md.append(f"| {c['constraint']} | ✔ | {c['in_compaction_summaries']} |")
         md.append("")
     if out["comparison"]:
         h, b = out["comparison"]["harness"], out["comparison"]["baseline"]

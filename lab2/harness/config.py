@@ -117,7 +117,7 @@ class HarnessConfig:
 
 
 def load_config(env_file: str | os.PathLike | None = None, root: Path | None = None) -> HarnessConfig:
-    env = Path(env_file) if env_file else LAB2_ROOT / ".env"
+    env = Path(env_file) if env_file else Path(os.getenv("HARNESS_ENV_FILE") or LAB2_ROOT / ".env")
     load_dotenv(env, override=False)
     base = load_settings(env)
     ws = root or Path(os.getenv("TASK_ROOT", str(LAB2_ROOT / "workspace")))
