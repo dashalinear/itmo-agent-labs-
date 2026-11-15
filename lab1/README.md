@@ -299,13 +299,21 @@ graph TD;
 
 Токены вида `sk-…` и `Bearer …` в трассах маскируются.
 
-| Сценарий | Файл |
-|---|---|
-| основной диалог (организация, просмотр, перенос, индексация, поиск, повтор, пополнение, ошибки tools) | `demo/dialog_ru.txt` |
-| ошибки tools через реальные вызовы: `n=0`, `n=-2`, `../`, абсолютный путь, junction наружу, `move` наружу и в занятое имя, HTTP-ошибка | `demo/dialog_guard_ru.txt` |
-| недоступный MCP/ES: неудачный upsert → `error`; перенос проиндексированного файла → `pending_sync` | `demo/dialog_errors_ru.txt` (при остановленном ES) |
-| повторная синхронизация после восстановления ES | `demo/dialog_retry_ru.txt` |
-| завершение зацикленного хода по лимиту | `demo/dialog_limit_ru.txt` (`AGENT_MODEL_CALLS_PER_TURN=3`) |
+Все трассы ниже записаны с реальной моделью `qwen3.8-27b` (сервер ИТМО), история корректна во всех ходах.
+
+| Сценарий | Диалог | Трасса (`traces/`) |
+|---|---|---|
+| основной диалог (организация, просмотр, перенос, индексация, поиск, повтор, пополнение) | `demo/dialog_ru.txt` | `session_20261115_194057_476109` |
+| завершение зацикленного хода по лимиту | `demo/dialog_limit_ru.txt` (`AGENT_MODEL_CALLS_PER_TURN=3`) | `session_20261115_194427_19cb05` |
+| ошибки tools через реальные вызовы: `n=0` и `n=-2` → `invalid_argument`; `../`, `C:\Windows\win.ini`, junction наружу, `move` наружу → `outside_workspace`; `move` в занятое имя → `name_conflict` + `suggested_name`; недоступный URL → `network_error` | `demo/dialog_guard_ru.txt` | `session_20261115_214157_787bfb` |
+| ES остановлен: upsert ReAct → `es_unavailable`, статус `error`; перенос проиндексированной заметки → файл перенесён, `update_document_path` упал, статус `pending_sync` с текстом ошибки | `demo/dialog_errors_ru.txt` | `session_20261115_214237_a9a9cf` |
+| ES снова запущен: `update_document_path` → `updated=1`, upsert ReAct → `created=4`; ошибок и `pending_sync` в каталоге нет, поиск возвращает новый путь | `demo/dialog_retry_ru.txt` | `session_20261115_214518_548422` |
+
+Ранние трассы `session_20261115_194448_b35bbe` и `session_20261115_194623_148edc` — первая версия сценариев ошибок
+(без переноса проиндексированного файла); оставлены для истории.
+
+Итоговые проверки: `results/verify_report.json` (5/5 ✔, 7 документов проиндексировано, 18 выдержек),
+`results/verify_report_main.json` — после основного диалога.
 
 ## 10. Тесты и проверочные сценарии
 
@@ -336,7 +344,7 @@ python scripts/verify.py             # проверки результата п�
 | Индексация и поиск через MCP | ходы 6–7, `verify.py` (проверка 4), `test_mcp_upsert_idempotent_search_and_path_update` |
 | Повтор и перенос после индексации | ходы 8–11, `test_end_to_end_scripted_agent_with_real_mcp` |
 | Skills | `load_skill` в трассе, `test_skills_metadata_and_on_demand_load` |
-| Конфликты и ошибки | одноимённые `notes.md`, пустой файл, ходы с `n=0`, `../`, несуществующим файлом, `dialog_errors_ru.txt`, тесты path guard |
+| Конфликты и ошибки | одноимённые `notes.md`, пустой файл, `dialog_guard_ru.txt`, `dialog_errors_ru.txt` + `dialog_retry_ru.txt` (`error`/`pending_sync` → `indexed`), тесты path guard |
 | Контракты tools | `test_tools_fs.py`, `test_web_fetch.py` |
 | Граф и завершение | раздел 4, `transitions` в трассе, `dialog_limit_ru.txt`, `test_looping_*`, `/exit` |
 
