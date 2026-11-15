@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "files_present_once": true,
+    "topic_folders>=3": true,
+    "catalog_consistent": true,
+    "es_consistent": true,
+    "indexed_docs>=3": true
+  },
+  "problems": [],
+  "topics": {
+    "courses": 4,
+    "howto": 2,
+    "meetings": 3,
+    "projects": 2,
+    "search": 2
+  },
+  "catalog": {
+    "documents": 14,
+    "status": {
+      "not_indexed": 9,
+      "indexed": 5
+    }
+  },
+  "es": {
+    "excerpts_per_document": {
+      "data/courses/es_seminar_analyzers_shards.md": 2,
+      "data/courses/search_quality_thoughts.md": 1,
+      "data/projects/project_docsearch.md": 2,
+      "data/search/ir_lecture_inverted_index.md": 2,
+      "data/search/vector_search_lecture.md": 3
+    }
+  }
+}
