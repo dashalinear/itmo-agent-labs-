@@ -222,6 +222,8 @@ async def amain(argv: list[str] | None = None) -> int:
             p.add_argument("--lines", type=int, default=40)
         if name == "chat":
             p.add_argument("--script", type=Path)
+        if name == "window":
+            p.add_argument("--refresh", action="store_true", help="measure again, ignore the cache")
         if name == "baseline":
             p.add_argument("--max-model-calls", type=int, default=40)
     args = ap.parse_args(argv)
@@ -235,7 +237,8 @@ async def amain(argv: list[str] | None = None) -> int:
     if args.cmd == "window":
         # real context window of the configured model, as one JSON line (used by run_all_demos.ps1)
         from .tokens import detect_window
-        w, src = detect_window(cfg.base.llm_base_url, cfg.base.llm_api_key, cfg.base.llm_model)
+        w, src = detect_window(cfg.base.llm_base_url, cfg.base.llm_api_key, cfg.base.llm_model,
+                               cache=cfg.window_cache, refresh=args.refresh)
         if not w and cfg.context_window:
             w, src = cfg.context_window, f"LLM_CONTEXT_WINDOW (.env); server: {src}"
         print(json.dumps({"model": cfg.base.llm_model, "window": w, "source": src}, ensure_ascii=False))

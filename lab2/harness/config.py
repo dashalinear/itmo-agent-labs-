@@ -110,6 +110,11 @@ class HarnessConfig:
     def state_dir(self) -> Path:
         return self.root / ".harness"
 
+    @property
+    def window_cache(self) -> Path:
+        """Measured context window (per base_url + model); outside the task root, git-ignored."""
+        return LAB2_ROOT / ".cache" / "window.json"
+
 
 def load_config(env_file: str | os.PathLike | None = None, root: Path | None = None) -> HarnessConfig:
     env = Path(env_file) if env_file else LAB2_ROOT / ".env"

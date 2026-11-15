@@ -72,10 +72,11 @@ try {
 }
 $m = $models.data | Select-Object -First 1
 Write-Host ("LLM server OK, model: " + $m.id)
-# real window: GET /models fields -> POST /tokenize -> server error message for an impossible max_tokens
+# real window: GET /models fields -> POST /tokenize -> rejection message -> measurement from accept/reject
+Write-Host "detecting the context window (first time may take a few minutes; cached in .cache\window.json)"
 $wj = (& $py -m harness.cli window | Out-String | ConvertFrom-Json)
 Write-Host ("context window: " + $wj.window + "  (source: " + $wj.source + ")")
-if (-not $wj.window) { throw "The server did not reveal the context window: set LLM_CONTEXT_WINDOW in .env (value from the course page/admin)" }
+if (-not $wj.window) { throw "The server did not reveal the context window: see the source line above; LLM_CONTEXT_WINDOW in .env is the last resort" }
 $win = [int]$wj.window
 $work = 28000
 if ([int]$win -lt 32000) { $work = [int]([int]$win * 0.8) }

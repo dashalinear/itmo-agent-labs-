@@ -171,7 +171,7 @@ async def test_mcp_outputs_are_bounded_and_offloaded(cfg, web):
         st.drop_index()
 
 
-@pytest.mark.parametrize("mode,expected_src", [("tokenize", "POST /tokenize"), ("error", "probe: server error message")])
+@pytest.mark.parametrize("mode,expected_src", [("tokenize", "POST /tokenize"), ("error", "rejection message")])
 def test_window_detected_without_models_field(mode, expected_src):
     """/models without max_model_len (like the ITMO server): /tokenize or the rejection message reveals the window."""
     class H(BaseHTTPRequestHandler):
@@ -201,5 +201,51 @@ def test_window_detected_without_models_field(mode, expected_src):
     try:
         w, src = detect_window(f"http://127.0.0.1:{srv.server_address[1]}/v1", "k", "m")
         assert w == (65536 if mode == "tokenize" else 40960) and src.startswith(expected_src)
+    finally:
+        srv.shutdown()
+
+
+@pytest.mark.parametrize("output_cap", [None, 8192])
+def test_window_measured_from_server_behaviour(output_cap, tmp_path):
+    """Server reveals nothing (no field, no /tokenize, opaque 400): the window is measured from accept/reject."""
+    W = 40960
+
+    class H(BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def _send(self, code, obj):
+            body = json.dumps(obj).encode()
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def do_GET(self):
+            self._send(200, {"data": [{"id": "m"}]})
+
+        def do_POST(self):
+            req = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            if self.path != "/v1/chat/completions":
+                return self._send(404, {})
+            prompt = len(req["messages"][0]["content"].split()) + 12
+            mt = req["max_tokens"]
+            if prompt + mt > W or (output_cap and mt > output_cap):
+                return self._send(400, {"error": {"message": "Bad request", "code": 400}})
+            self._send(200, {"choices": [{"message": {"content": "ok"}}], "usage": {"prompt_tokens": prompt}})
+
+    srv = ThreadingHTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    cache = tmp_path / "window.json"
+    try:
+        base = f"http://127.0.0.1:{srv.server_address[1]}/v1"
+        w, src = detect_window(base, "k", "m", cache=cache)
+        if output_cap is None:
+            assert w == W and src.startswith("measured: max accepted max_tokens")
+        else:
+            assert W - 64 <= w <= W and "measured by prompt length" in src and "output cap" in src
+        w2, src2 = detect_window(base, "k", "m", cache=cache)          # second call: from the cache, no probes
+        assert w2 == w and "[cached" in src2
     finally:
         srv.shutdown()

@@ -104,7 +104,8 @@ class TaskRunner:
 
     def window(self, counter_window: int | None = None) -> tuple[int, str]:
         if self._model is None:
-            w, src = detect_window(self.cfg.base.llm_base_url, self.cfg.base.llm_api_key, self.cfg.base.llm_model)
+            w, src = detect_window(self.cfg.base.llm_base_url, self.cfg.base.llm_api_key, self.cfg.base.llm_model,
+                                   cache=self.cfg.window_cache)
             if w:
                 return w, src
         if counter_window:

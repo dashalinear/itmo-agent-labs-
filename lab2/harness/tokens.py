@@ -17,6 +17,7 @@ import math
 import re
 import threading
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Sequence
 
 import httpx
@@ -72,17 +73,136 @@ def _find_key(obj: Any) -> tuple[str, int] | None:
     return None
 
 
-def detect_window(base_url: str, api_key: str, model: str, timeout: float = 10.0,
-                  probe: bool = True) -> tuple[int | None, str]:
+class _Prober:
+    """Measures the context window from the server's BEHAVIOUR (no reliance on error wording).
+
+    A request is accepted (HTTP 200) iff prompt_tokens + max_tokens <= window (vLLM-style validation);
+    exact prompt sizes come from usage.prompt_tokens of accepted answers. Accepted probes ask for a
+    one-word answer with thinking disabled, so they are short; rejected ones cost nothing.
+    """
+
+    def __init__(self, base: str, headers: dict, model: str, timeout: float) -> None:
+        self.base, self.headers, self.model, self.timeout = base, headers, model, timeout
+        self.client = httpx.Client(timeout=timeout, headers=headers)     # one keep-alive connection for all probes
+        self.extra = {"chat_template_kwargs": {"enable_thinking": False}}
+        self.requests = 0
+        self.last_error = ""
+
+    def call(self, content: str, max_tokens: int) -> tuple[bool, int | None]:
+        body = {"model": self.model, "messages": [{"role": "user", "content": content}], "max_tokens": max_tokens,
+                "temperature": 0, **self.extra}
+        self.requests += 1
+        r = self.client.post(self.base + "/chat/completions", json=body)
+        if r.status_code == 200:
+            return True, int((r.json().get("usage") or {}).get("prompt_tokens") or 0) or None
+        if r.status_code in (400, 413, 422):
+            self.last_error = r.text[:300]
+            return False, None
+        raise RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}")
+
+    def ready(self) -> bool:
+        ok, _ = self.call("Reply with one word: ok", 8)
+        if not ok:                                    # a gateway may reject the vLLM-specific field
+            self.extra = {}
+            ok, _ = self.call("Reply with one word: ok", 8)
+        return ok
+
+    def threshold(self, content: str, hi_cap: int = 4_194_304, start: int = 1024) -> tuple[int | None, int | None]:
+        """Largest accepted max_tokens for this prompt and its prompt_tokens; (None, p) if never rejected."""
+        lo, p = 8, None
+        m = start
+        while m <= hi_cap:
+            ok, pt = self.call(content, m)
+            if not ok:
+                break
+            lo, p = m, pt or p
+            m *= 2
+        else:
+            return None, p
+        hi = m
+        while hi - lo > 1:
+            mid = (lo + hi) // 2
+            ok, pt = self.call(content, mid)
+            if ok:
+                lo, p = mid, pt or p
+            else:
+                hi = mid
+        if p is None:
+            _, p = self.call(content, 8)
+        return lo, p
+
+    def prompt_limit(self, cap_units: int = 300_000) -> tuple[int | None, str]:
+        """Largest accepted prompt (max_tokens=1) by growing padding; window >= prompt_tokens + 1."""
+        unit = "ok "
+        best, n, rejected_at = None, 2048, None
+        while n <= cap_units:
+            ok, pt = self.call(unit * n + "\nReply with one word: ok", 1)
+            if not ok:
+                rejected_at = n
+                break
+            best = (n, pt)
+            n *= 2
+        if rejected_at is None:
+            return (best[1] + 1 if best and best[1] else None), "no rejection up to the probe cap (lower bound)"
+        lo = best[0] if best else 0
+        hi = rejected_at
+        while hi - lo > 32:
+            mid = (lo + hi) // 2
+            ok, pt = self.call(unit * mid + "\nReply with one word: ok", 1)
+            if ok:
+                lo, best = mid, (mid, pt)
+            else:
+                hi = mid
+        return (best[1] + 1 if best and best[1] else None), "largest accepted prompt + 1 (precision ~32 tokens, rounded down)"
+
+
+def measure_window(base_url: str, api_key: str, model: str, timeout: float = 180.0) -> tuple[int | None, str]:
+    base = base_url.rstrip("/")
+    pr = _Prober(base, {"Authorization": f"Bearer {api_key}"}, model, timeout)
+    try:
+        return _measure(pr)
+    finally:
+        pr.client.close()
+
+
+def _measure(pr: "_Prober") -> tuple[int | None, str]:
+    if not pr.ready():
+        return None, f"probe: even a tiny request was rejected: {pr.last_error[:150]}"
+    t1, p1 = pr.threshold("Reply with one word: ok")
+    if t1 is not None and p1:
+        pad = "ok " * 1500 + "\nReply with one word: ok"
+        t2, p2 = pr.threshold(pad, hi_cap=t1, start=max(min(t1 // 2, 1 << 20), 8))
+        if t2 is not None and p2 and abs((t1 + p1) - (t2 + p2)) <= 32:
+            return t1 + p1, (f"measured: max accepted max_tokens {t1} + prompt {p1} = {t1 + p1}, confirmed with "
+                             f"prompt {p2} -> {t2 + p2} ({pr.requests} probe requests)")
+        note = f"max_tokens is capped at {t1} independently of the prompt (output cap, not the window)"
+    else:
+        note = "max_tokens is not validated by the server"
+    w, how = pr.prompt_limit()
+    if w:
+        return w, f"measured by prompt length: {how}; {note} ({pr.requests} probe requests)"
+    return None, f"probe could not measure the window: {note}; last rejection: {pr.last_error[:150]}"
+
+
+def detect_window(base_url: str, api_key: str, model: str, timeout: float = 10.0, probe: bool = True,
+                  cache: Path | None = None, refresh: bool = False) -> tuple[int | None, str]:
     """Ask an OpenAI-compatible server for the REAL context window of the model.
 
-    1. GET {base}/models: max_model_len / context_length / ... of the model entry (vLLM, LM Studio, TGI ...);
+    1. GET {base}/models: max_model_len / context_length / ... of the model entry;
     2. POST {root}/tokenize (vLLM): response field max_model_len;
-    3. probe: a chat request with an impossible max_tokens; the server REJECTS it before generation with
-       "This model's maximum context length is N tokens ..." (vLLM / OpenAI wording) -> N.
+    3. rejection message for an impossible max_tokens ("maximum context length is N");
+    4. measurement from behaviour (_Prober): accepted/rejected requests + usage.prompt_tokens.
+    Results of 3-4 are cached in `cache` (per base_url + model) so the probes run once.
     """
     if not base_url:
         return None, "no base_url"
+    if cache and cache.exists() and not refresh:
+        try:
+            c = json.loads(cache.read_text(encoding="utf-8"))
+            if c.get("base_url") == base_url and c.get("model") == model and c.get("window"):
+                return int(c["window"]), f"{c['source']} [cached {c['measured_at']}]"
+        except Exception:  # noqa: BLE001
+            pass
     headers = {"Authorization": f"Bearer {api_key}"}
     base = base_url.rstrip("/")
     notes = []
@@ -105,17 +225,36 @@ def detect_window(base_url: str, api_key: str, model: str, timeout: float = 10.0
         notes.append(f"POST /tokenize: HTTP {r.status_code}")
     except Exception as e:  # noqa: BLE001
         notes.append(f"POST /tokenize failed: {type(e).__name__}")
-    if probe:
+    if not probe:
+        return None, "; ".join(notes)
+    w, src = None, ""
+    try:
+        r = httpx.post(base + "/chat/completions", headers=headers, timeout=max(timeout, 30.0),
+                       json={"model": model, "messages": [{"role": "user", "content": "ping"}],
+                             "max_tokens": 10_000_000, "temperature": 0})
+        m = _CTX_ERR.search(r.text)
+        if r.status_code >= 400 and m:
+            w, src = int(m.group(1)), f"rejection message (HTTP {r.status_code}) -> {m.group(0)[:60]}"
+        else:
+            notes.append(f"impossible max_tokens: HTTP {r.status_code}, text: {r.text[:160]!r}")
+    except Exception as e:  # noqa: BLE001
+        notes.append(f"rejection probe failed: {type(e).__name__}")
+    if not w:
         try:
-            r = httpx.post(base + "/chat/completions", headers=headers, timeout=max(timeout, 20.0),
-                           json={"model": model, "messages": [{"role": "user", "content": "ping"}],
-                                 "max_tokens": 10_000_000, "temperature": 0})
-            m = _CTX_ERR.search(r.text)
-            if r.status_code >= 400 and m:
-                return int(m.group(1)), f"probe: server error message (HTTP {r.status_code}) -> {m.group(0)[:60]}"
-            notes.append(f"probe: HTTP {r.status_code}, no window in the answer")
+            w, src = measure_window(base_url, api_key, model)
         except Exception as e:  # noqa: BLE001
-            notes.append(f"probe failed: {type(e).__name__}")
+            notes.append(f"measurement failed: {type(e).__name__}: {e}"[:200])
+    if w:
+        src = f"{src}; before: {'; '.join(notes)}" if notes else src
+        if cache:
+            from datetime import datetime, timezone
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_text(json.dumps({"base_url": base_url, "model": model, "window": w, "source": src,
+                                         "measured_at": datetime.now(timezone.utc).isoformat(timespec="seconds")},
+                                        ensure_ascii=False, indent=2), encoding="utf-8")
+        return w, src
+    if src:
+        notes.append(src)
     return None, "; ".join(notes)
 
 
