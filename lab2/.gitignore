@@ -1,0 +1,6 @@
+.env
+.venv/
+workspace/
+outside_notes.txt
+__pycache__/
+.pytest_cache/

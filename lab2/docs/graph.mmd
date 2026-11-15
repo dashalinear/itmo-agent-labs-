@@ -1,0 +1,21 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	model(model)
+	tools(tools<hr/><small><em>__tools = read, head, tail, grep, ls, write, move, catalog_view, catalog_update, build_excerpts, load_skill, doc_info, read_pages, read_lines, search_text, read_artifact, search_artifact, web_search, select_sources, web_fetch, queue_status, save_evidence, write_report_section, update_plan, task_progress, complete_task, stop_partial</em></small>)
+	CompactionMiddleware\2ebefore_model(CompactionMiddleware.before_model)
+	__end__([<p>__end__</p>]):::last
+	CompactionMiddleware\2ebefore_model -.-> __end__;
+	CompactionMiddleware\2ebefore_model -.-> model;
+	__start__ --> CompactionMiddleware\2ebefore_model;
+	model -.-> CompactionMiddleware\2ebefore_model;
+	model -.-> __end__;
+	model -.-> tools;
+	tools -.-> CompactionMiddleware\2ebefore_model;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

@@ -1,0 +1,37 @@
+{
+  "task_id": "B1",
+  "kind": "web",
+  "search_provider": "ddgs",
+  "request": "Разберись в подходах к хранению состояния LLM-агентов. Сам найди источники, изучи их, сопоставь ограничения и подготовь обзор с подтверждениями. Работай в пределах бюджета и явно укажи, что осталось непроверенным.",
+  "constraints": [
+    "[W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.",
+    "[W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.",
+    "[W3] Обзор не длиннее 900 слов.",
+    "[W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.",
+    "[W5] Сравнить подходы по их ограничениям."
+  ],
+  "criteria": {
+    "min_search_queries": 3,
+    "min_web_pages_read": 5,
+    "min_web_sources_cited": 4,
+    "min_evidence": 6,
+    "required_sections": [
+      "approaches",
+      "limitations",
+      "comparison",
+      "unverified"
+    ]
+  },
+  "limits": {
+    "working_context_tokens": 28000,
+    "response_reserve_tokens": 2048,
+    "compaction_trigger": 0.75,
+    "compaction_target": 0.45,
+    "max_total_tokens": 1200000,
+    "max_model_calls": 70,
+    "max_tool_calls": 300,
+    "task_deadline_s": 5400,
+    "max_search_calls": 8,
+    "max_http_requests": 40
+  }
+}

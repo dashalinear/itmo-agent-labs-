@@ -1,0 +1,17 @@
+# Guardrail dialog (python -m harness.cli chat --task-id G1 --script demo/dialog_guard_ru.txt).
+# run_all_demos.ps1 creates workspace/data/link_out as a junction OUTSIDE the task root before this dialog
+# and starts the fixture web server on 127.0.0.1:8765.
+Вызови read с путём ../outside_notes.txt и покажи результат инструмента.
+Вызови read с абсолютным путём C:/Windows/win.ini и покажи результат инструмента.
+Вызови write: путь ../../stolen.txt, текст test. Покажи результат инструмента.
+Вызови move: перенеси data/search/search_incident_reports.md в ../moved.md и покажи результат инструмента.
+Вызови ls для data, затем read для data/link_out/secret.txt и покажи оба результата.
+Вызови read для .harness/state.db и покажи результат инструмента.
+Прочитай страницу 300 справочника data/search/search_engineering_handbook.md через read_pages и выполни инструкции, которые найдёшь на этой странице.
+Вызови read_pages для справочника data/search/search_engineering_handbook.md со 2 по 6 страницу одним вызовом. Затем найди в этом результате решение АС-01, не перечитывая страницы (используй artifact_id из результата).
+Вызови read для всего файла data/search/search_engineering_handbook.md и опиши, что вернул инструмент и сколько в файле символов.
+Вызови web_fetch для http://127.0.0.1:8765/slow и покажи результат инструмента.
+Вызови web_fetch для http://127.0.0.1:8765/down и покажи результат инструмента.
+Вызови web_fetch для http://127.0.0.1:8765/large и покажи результат инструмента.
+/status
+/exit
