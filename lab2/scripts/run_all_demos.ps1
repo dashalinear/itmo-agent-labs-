@@ -33,7 +33,7 @@ $py = Join-Path $lab ".venv\Scripts\python.exe"
 
 function Step($text) { Write-Host "`n=== $text ===" -ForegroundColor Cyan }
 function Run-Py { & $py @args | Out-Host; if ($LASTEXITCODE -ne 0) { throw "python $($args -join ' ') failed with exit code $LASTEXITCODE" } }
-function H { & $py -m harness.cli @args | Out-Host; return $LASTEXITCODE }
+function Harness { & $py -m harness.cli @args | Out-Host; return $LASTEXITCODE }
 function Task-Status($id) { return (& $py -m harness.cli status --task-id $id --json | Out-String | ConvertFrom-Json) }
 function Read-Env($name) {
     $line = Get-Content .env -Encoding UTF8 | Where-Object { $_ -match "^$name=" } | Select-Object -First 1
@@ -51,7 +51,7 @@ function Resume-Until-Done($id, $max) {
         $s = Task-Status $id
         if ($s.status -in @("completed", "cancelled")) { return }
         if ($s.reason -and ($s.reason -like "budget*" -or $s.reason -like "partial*")) { return }
-        H resume --task-id $id | Out-Null
+        Harness resume --task-id $id | Out-Null
     }
 }
 
@@ -107,35 +107,35 @@ try {
         Run-Py scripts\http_examples.py
 
         Step "6. A1: long local analysis, simulated crash after a durable checkpoint"
-        H new --spec demo\task_a_local.json --set $fit | Out-Null
+        Harness new --spec demo\task_a_local.json --set $fit | Out-Null
         $env:HARNESS_CRASH_AT = "after_tool:30"
-        $code = H run --task-id A1
+        $code = Harness run --task-id A1
         Remove-Item Env:HARNESS_CRASH_AT
         Write-Host "run exit code: $code (137 = process killed right after a tool, before the next checkpoint)"
-        H status --task-id A1 | Out-Null
+        Harness status --task-id A1 | Out-Null
 
         Step "7. A1: resume in a NEW process (same task_id, no context re-entry)"
         Resume-Until-Done "A1" 3
-        H status --task-id A1 | Out-Null
+        Harness status --task-id A1 | Out-Null
         Run-Py scripts\artifact_after_restart.py --task-id A1
 
         Step "8. A_base: the lab 1 agent without harness on the same task"
-        H baseline --spec demo\task_a_local.json --task-id A_base --max-model-calls 40 | Out-Null
+        Harness baseline --spec demo\task_a_local.json --task-id A_base --max-model-calls 40 | Out-Null
 
         Step "9. D1: token budget exhausted -> partial; user raises the limit; resume keeps spent counters"
-        H new --spec demo\task_d_budget.json --set $fit | Out-Null
-        H run --task-id D1 | Out-Null
-        H status --task-id D1 | Out-Null
-        H limits --task-id D1 --set max_total_tokens=1500000 | Out-Null
-        H resume --task-id D1 | Out-Null
-        H status --task-id D1 | Out-Null
+        Harness new --spec demo\task_d_budget.json --set $fit | Out-Null
+        Harness run --task-id D1 | Out-Null
+        Harness status --task-id D1 | Out-Null
+        Harness limits --task-id D1 --set max_total_tokens=1500000 | Out-Null
+        Harness resume --task-id D1 | Out-Null
+        Harness status --task-id D1 | Out-Null
 
         Step "10. T1: LLM timeout 1 s -> finite retries -> paused"
-        H new --spec demo\task_t_timeout.json --set $fit | Out-Null
-        H run --task-id T1 | Out-Null
+        Harness new --spec demo\task_t_timeout.json --set $fit | Out-Null
+        Harness run --task-id T1 | Out-Null
 
         Step "11. E1: cancel from another process while running"
-        H new --spec demo\task_e_cancel.json --set $fit | Out-Null
+        Harness new --spec demo\task_e_cancel.json --set $fit | Out-Null
         New-Item -ItemType Directory -Force results | Out-Null
         $p = Start-Process -FilePath $py -ArgumentList "-m", "harness.cli", "run", "--task-id", "E1" -PassThru -WindowStyle Hidden `
             -RedirectStandardOutput "results\E1_stdout.txt" -RedirectStandardError "results\E1_stderr.txt"
@@ -144,23 +144,23 @@ try {
             $s = Task-Status "E1"
             if ($s.budget.model_calls.used -ge 5 -or $p.HasExited) { break }
         }
-        H cancel --task-id E1 --reason "demo: cancel from another terminal" | Out-Null
+        Harness cancel --task-id E1 --reason "demo: cancel from another terminal" | Out-Null
         $p.WaitForExit(180000) | Out-Null
-        H status --task-id E1 | Out-Null
+        Harness status --task-id E1 | Out-Null
     }
 
     if ($Part -in @("all", "web")) {
         if (-not (Test-Path workspace\catalog.json)) { Run-Py scripts\prepare_workspace.py }
         Step "12. B1: real web research (topic only, no URLs)"
-        H new --spec demo\task_b_web.json --set $fit | Out-Null
-        H run --task-id B1 | Out-Null
+        Harness new --spec demo\task_b_web.json --set $fit | Out-Null
+        Harness run --task-id B1 | Out-Null
         Resume-Until-Done "B1" 2
-        H status --task-id B1 | Out-Null
+        Harness status --task-id B1 | Out-Null
 
         Step "13. C1: web load test on fixed search results (>= 50 URLs), small HTTP budget"
-        H new --spec demo\task_c_load.json --set $fit | Out-Null
-        H run --task-id C1 | Out-Null
-        H status --task-id C1 | Out-Null
+        Harness new --spec demo\task_c_load.json --set $fit | Out-Null
+        Harness run --task-id C1 | Out-Null
+        Harness status --task-id C1 | Out-Null
     }
 
     if ($Part -in @("all", "guard")) {
@@ -172,8 +172,8 @@ try {
         $link = Join-Path $lab "workspace\data\link_out"
         if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
         try {
-            H new --spec demo\task_g_guard.json --set $fit | Out-Null
-            H chat --task-id G1 --script demo\dialog_guard_ru.txt | Out-Null
+            Harness new --spec demo\task_g_guard.json --set $fit | Out-Null
+            Harness chat --task-id G1 --script demo\dialog_guard_ru.txt | Out-Null
         } finally { cmd /c rmdir "$link" | Out-Null }
         if (-not (Test-Path (Join-Path $outside "secret.txt"))) { throw "outside file disappeared: guard failed" }
         if (Test-Path (Join-Path $lab "stolen.txt")) { throw "a file was written outside the task root" }
