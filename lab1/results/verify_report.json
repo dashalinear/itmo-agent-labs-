@@ -8,25 +8,26 @@
   },
   "problems": [],
   "topics": {
-    "courses": 5,
+    "courses": 4,
     "howto": 2,
     "meetings": 3,
-    "projects": 1,
+    "projects": 2,
     "search": 2
   },
   "catalog": {
     "documents": 14,
     "status": {
-      "not_indexed": 8,
-      "indexed": 6
+      "not_indexed": 7,
+      "indexed": 7
     }
   },
   "es": {
     "excerpts_per_document": {
+      "data/courses/agents_seminar_react.txt": 4,
       "data/courses/es_seminar_analyzers_shards.md": 2,
       "data/courses/project_recsys.md": 4,
-      "data/courses/search_quality_thoughts.md": 1,
       "data/projects/project_docsearch.md": 2,
+      "data/projects/search_quality_thoughts.md": 1,
       "data/search/ir_lecture_inverted_index.md": 2,
       "data/search/vector_search_lecture.md": 3
     }

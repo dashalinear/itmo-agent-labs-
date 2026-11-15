@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-15T16:46:47+00:00",
+  "updated_at": "2026-11-15T18:45:44+00:00",
   "documents": [
     {
       "document_id": "d6534e03-f103-46fa-8b69-f1d042221417",
@@ -39,10 +39,35 @@
       "line_count": 18,
       "is_empty": false,
       "note": "",
-      "indexing_status": "not_indexed",
+      "indexing_status": "indexed",
       "index_error": null,
-      "excerpts": [],
-      "indexed_at": null,
+      "excerpts": [
+        {
+          "excerpt_id": "85a6bfe9-6701-5c37-bc2a-34df3f358386",
+          "start_line": 3,
+          "end_line": 4,
+          "summary": "Определение паттерна ReAct: чередование рассуждения и действия"
+        },
+        {
+          "excerpt_id": "33f55dbe-950d-521d-8f18-aed7e9862519",
+          "start_line": 6,
+          "end_line": 9,
+          "summary": "Сборка агента в LangGraph: create_agent, узлы model и tools"
+        },
+        {
+          "excerpt_id": "916b8978-ff48-51ce-a60d-f2b878f9715f",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Состояние графа: messages, reducer add_messages, checkpointer по thread_id"
+        },
+        {
+          "excerpt_id": "d1cc8d86-5c63-57cd-a9cb-6fe9339f4bef",
+          "start_line": 14,
+          "end_line": 15,
+          "summary": "Ограничение числа шагов через recursion_limit"
+        }
+      ],
+      "indexed_at": "2026-11-15T18:45:44+00:00",
       "registered_at": "2026-11-15T16:41:17+00:00",
       "moves": [
         {
@@ -167,43 +192,6 @@
           "from": "data/projects/project_recsys.md",
           "to": "data/courses/project_recsys.md",
           "at": "2026-11-15T16:45:25+00:00"
-        }
-      ]
-    },
-    {
-      "document_id": "7818895d-38c8-4186-9203-58826e59034d",
-      "original_path": "input/search_quality_thoughts.md",
-      "current_path": "data/courses/search_quality_thoughts.md",
-      "title": "Заметка: как оценивать качество поиска",
-      "category": "courses",
-      "description": "Мысли о метриках качества поиска (Precision@k, Recall@k, MRR, nDCG) и идея разметки 30 запросов для DocSearch.",
-      "content_hash": "sha256:95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
-      "size_bytes": 972,
-      "line_count": 13,
-      "is_empty": false,
-      "note": "ambiguous: касается и курса по ИР, и проекта DocSearch; по просьбе пользователя перенесено из projects в courses.",
-      "indexing_status": "indexed",
-      "index_error": null,
-      "excerpts": [
-        {
-          "excerpt_id": "e70545a4-c7c1-54ce-8c8c-e597d9f255c2",
-          "start_line": 5,
-          "end_line": 10,
-          "summary": "Метрики качества поиска и идея разметки 30 запросов для DocSearch"
-        }
-      ],
-      "indexed_at": "2026-11-15T16:42:30+00:00",
-      "registered_at": "2026-11-15T16:41:17+00:00",
-      "moves": [
-        {
-          "from": "input/search_quality_thoughts.md",
-          "to": "data/projects/search_quality_thoughts.md",
-          "at": "2026-11-15T16:41:17+00:00"
-        },
-        {
-          "from": "data/projects/search_quality_thoughts.md",
-          "to": "data/courses/search_quality_thoughts.md",
-          "at": "2026-11-15T16:41:44+00:00"
         }
       ]
     },
@@ -367,6 +355,48 @@
           "from": "input/project_docsearch.md",
           "to": "data/projects/project_docsearch.md",
           "at": "2026-11-15T16:41:17+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "7818895d-38c8-4186-9203-58826e59034d",
+      "original_path": "input/search_quality_thoughts.md",
+      "current_path": "data/projects/search_quality_thoughts.md",
+      "title": "Заметка: как оценивать качество поиска",
+      "category": "projects",
+      "description": "Мысли о метриках качества поиска (Precision@k, Recall@k, MRR, nDCG) и идея разметки 30 запросов для DocSearch.",
+      "content_hash": "sha256:95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
+      "size_bytes": 972,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "ambiguous: касается и курса по ИР, и проекта DocSearch; по просьбе пользователя перенесено из projects в courses.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e70545a4-c7c1-54ce-8c8c-e597d9f255c2",
+          "start_line": 5,
+          "end_line": 10,
+          "summary": "Метрики качества поиска и идея разметки 30 запросов для DocSearch"
+        }
+      ],
+      "indexed_at": "2026-11-15T16:42:30+00:00",
+      "registered_at": "2026-11-15T16:41:17+00:00",
+      "moves": [
+        {
+          "from": "input/search_quality_thoughts.md",
+          "to": "data/projects/search_quality_thoughts.md",
+          "at": "2026-11-15T16:41:17+00:00"
+        },
+        {
+          "from": "data/projects/search_quality_thoughts.md",
+          "to": "data/courses/search_quality_thoughts.md",
+          "at": "2026-11-15T16:41:44+00:00"
+        },
+        {
+          "from": "data/courses/search_quality_thoughts.md",
+          "to": "data/projects/search_quality_thoughts.md",
+          "at": "2026-11-15T18:44:29+00:00"
         }
       ]
     },
