@@ -1,0 +1,14 @@
+# Tool-contract errors through REAL tool calls (the model is asked to call the tool and show its result).
+# run_all_demos.ps1 creates workspace/input/outside_link as a directory junction pointing OUTSIDE the
+# workspace before this dialog and removes it afterwards.
+Вызови инструмент head для data/howto/howto_git_branches.txt с n=0 и покажи, что он вернул.
+Вызови инструмент tail для data/howto/howto_git_branches.txt с n=-2 и покажи результат.
+Вызови read с путём ../../secret.txt и покажи, что вернул инструмент.
+Вызови read с абсолютным путём C:\Windows\win.ini и покажи результат инструмента.
+Вызови ls для input и затем ls для input/outside_link и покажи оба результата.
+Вызови read для input/outside_link/secret.txt и покажи результат.
+Вызови move: перенеси data/howto/howto_git_branches.txt в ../outside.txt и покажи результат.
+Вызови move: перенеси data/meetings/meeting_2026-10-02_kickoff.md в data/meetings/meeting_2026-11-10_retro.md и покажи результат, ничего не переименовывая.
+Вызови web_fetch для http://127.0.0.1:9/ и покажи результат.
+/check
+/exit

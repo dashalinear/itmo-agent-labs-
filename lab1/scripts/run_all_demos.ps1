@@ -1,15 +1,20 @@
 <#
-Records every lab 1 demo trace with the real ITMO model and publishes the results.
-Run from any folder, INSIDE the ITMO network (the LLM server is not reachable outside):
+Records the lab 1 demo traces with the real ITMO model and publishes the results.
+Run INSIDE the ITMO network (the LLM server is not reachable outside):
 
-    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1
-    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -SkipPush   # no git commit/push
+    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1                # everything from scratch
+    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part extra    # only guard/errors/retry on the current workspace
+    ... -SkipPush                                                                       # no git commit/push
 
-Steps: LLM check -> Elasticsearch up -> fresh workspace/index -> main dialog -> verify/export
--> limit dialog -> errors dialog with ES stopped -> retry dialog with ES started -> final verify/export
--> secret scan -> git commit + push of traces/ and results/.
+Part "all":   LLM check -> ES up -> fresh workspace/index -> main dialog -> verify/export -> limit dialog
+              -> then everything from part "extra".
+Part "extra": guard dialog (tool errors, junction outside the workspace) -> errors dialog with ES stopped
+              -> retry dialog with ES started -> final verify/export -> secret scan -> git commit + push.
 #>
-param([switch]$SkipPush)
+param(
+    [ValidateSet("all", "extra")][string]$Part = "all",
+    [switch]$SkipPush
+)
 
 $ErrorActionPreference = "Stop"
 $lab = Split-Path -Parent $PSScriptRoot
@@ -54,44 +59,60 @@ docker compose up -d
 if ($LASTEXITCODE -ne 0) { throw "docker compose up failed: is Docker Desktop running?" }
 Wait-ES
 
-Step "3. Fresh workspace and empty index"
-Run-Py scripts\prepare_workspace.py --reset-index
+if ($Part -eq "all") {
+    Step "3. Fresh workspace and empty index"
+    Run-Py scripts\prepare_workspace.py --reset-index
 
-Step "4. Main dialog (organize, browse, move, index, search, re-index, late files, tool errors)"
-Run-Py -m organizer.cli --script demo\dialog_ru.txt
+    Step "4. Main dialog (organize, browse, move, index, search, re-index, late files)"
+    Run-Py -m organizer.cli --script demo\dialog_ru.txt
 
-Step "5. Verify and export after the main dialog"
-& $py scripts\verify.py
-Copy-Item results\verify_report.json results\verify_report_main.json -Force
-Run-Py scripts\export_index.py
+    Step "5. Verify and export after the main dialog"
+    & $py scripts\verify.py
+    Copy-Item results\verify_report.json results\verify_report_main.json -Force
+    Run-Py scripts\export_index.py
 
-Step "6. Execution-limit dialog (AGENT_MODEL_CALLS_PER_TURN=3)"
-$env:AGENT_MODEL_CALLS_PER_TURN = "3"
-try { Run-Py -m organizer.cli --script demo\dialog_limit_ru.txt } finally { Remove-Item Env:AGENT_MODEL_CALLS_PER_TURN }
+    Step "6. Execution-limit dialog (AGENT_MODEL_CALLS_PER_TURN=3)"
+    $env:AGENT_MODEL_CALLS_PER_TURN = "3"
+    try { Run-Py -m organizer.cli --script demo\dialog_limit_ru.txt } finally { Remove-Item Env:AGENT_MODEL_CALLS_PER_TURN }
+} elseif (-not (Test-Path workspace\catalog.json)) {
+    throw "workspace\catalog.json not found: run the full demo first (without -Part extra)"
+}
 
-Step "7. Errors dialog with Elasticsearch STOPPED"
+Step "7. Guard dialog: tool errors and a junction pointing outside the workspace"
+$outside = Join-Path $env:TEMP "itmo_lab1_outside"
+New-Item -ItemType Directory -Force $outside | Out-Null
+Set-Content -Path (Join-Path $outside "secret.txt") -Value "outside-the-workspace secret" -Encoding UTF8
+$link = Join-Path $lab "workspace\input\outside_link"
+if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
+try { Run-Py -m organizer.cli --script demo\dialog_guard_ru.txt }
+finally { cmd /c rmdir "$link" | Out-Null }   # removes only the junction, never the target
+if (-not (Test-Path (Join-Path $outside "secret.txt"))) { throw "outside file disappeared: guard failed" }
+
+Step "8. Errors dialog with Elasticsearch STOPPED"
 docker compose stop
 try { Run-Py -m organizer.cli --script demo\dialog_errors_ru.txt } finally { docker compose start; Wait-ES }
 
-Step "8. Retry dialog with Elasticsearch running again"
+Step "9. Retry dialog with Elasticsearch running again"
 Run-Py -m organizer.cli --script demo\dialog_retry_ru.txt
 
-Step "9. Final verify and export"
+Step "10. Final verify and export"
 & $py scripts\verify.py
 $verifyExit = $LASTEXITCODE
 Run-Py scripts\export_index.py
 Run-Py scripts\export_graph.py | Out-Null
 
-Step "10. Secret scan"
+Step "11. Secret scan"
 $leaks = Get-ChildItem traces, results -Recurse -File | Select-String -SimpleMatch -Pattern $key -List
 if ($leaks) { throw "The LLM token was found in: $($leaks.Path -join ', '). Nothing was committed." }
 Write-Host "No token in traces/ and results/."
 
 if ($SkipPush) { Write-Host "`nDone (git skipped). verify exit code: $verifyExit"; exit 0 }
 
-Step "11. Commit and push"
+Step "12. Commit and push"
 git add traces results docs demo
-git commit -m "Lab 1: demo traces with qwen3.8-27b, verify report, index export and workspace snapshot"
+if ($Part -eq "all") { $msg = "Lab 1: demo traces with qwen3.8-27b, verify report, index export and workspace snapshot" }
+else { $msg = "Lab 1: guard, ES-failure and retry traces with qwen3.8-27b; updated results" }
+git commit -m $msg
 if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
 git push
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }

@@ -108,6 +108,9 @@ python scripts/export_index.py    # results/index_export.jsonl, catalog.json, da
 powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1
 ```
 
+Только сценарии ошибок поверх уже разобранного workspace (без повторного основного диалога):
+`powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part extra`.
+
 Воспроизведение индекса без LLM (вход для лабы 3): `python scripts/restore_index.py` создаёт индекс заново
 из `results/index_export.jsonl`.
 
@@ -299,7 +302,8 @@ graph TD;
 | Сценарий | Файл |
 |---|---|
 | основной диалог (организация, просмотр, перенос, индексация, поиск, повтор, пополнение, ошибки tools) | `demo/dialog_ru.txt` |
-| недоступный MCP/ES | `demo/dialog_errors_ru.txt` (при остановленном ES) |
+| ошибки tools через реальные вызовы: `n=0`, `n=-2`, `../`, абсолютный путь, junction наружу, `move` наружу и в занятое имя, HTTP-ошибка | `demo/dialog_guard_ru.txt` |
+| недоступный MCP/ES: неудачный upsert → `error`; перенос проиндексированного файла → `pending_sync` | `demo/dialog_errors_ru.txt` (при остановленном ES) |
 | повторная синхронизация после восстановления ES | `demo/dialog_retry_ru.txt` |
 | завершение зацикленного хода по лимиту | `demo/dialog_limit_ru.txt` (`AGENT_MODEL_CALLS_PER_TURN=3`) |
 

@@ -1,11 +1,10 @@
-# Error scenarios. Run with Elasticsearch STOPPED (docker compose stop) to show MCP/ES failure handling:
-#   docker compose stop
-#   python -m organizer.cli --script demo/dialog_errors_ru.txt
-#   docker compose start   # then rerun the last two lines interactively to show the retry fixing the path
+# Error scenarios. Run with Elasticsearch STOPPED (docker compose stop), after the main dialog:
+#   - upsert of a new document fails  -> catalog status "error", nothing claimed as indexed
+#   - move of an INDEXED document succeeds, index path update fails -> catalog status "pending_sync"
+# Then start ES and run demo/dialog_retry_ru.txt: the retry fixes both.
 Покажи содержимое data.
-Положи документ про рекомендательную систему в Elastic.
-Перенеси документ про рекомендательную систему в папку courses.
-Покажи статус индексации этого документа в каталоге.
-Попробуй ещё раз синхронизировать индекс.
+Положи семинар про паттерн ReAct в Elastic.
+Перенеси заметку про оценку качества поиска (search_quality_thoughts.md) в папку projects и обнови путь в индексе.
+Покажи статусы индексации этих двух документов в каталоге.
 /check
 /exit
