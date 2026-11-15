@@ -100,6 +100,14 @@ python scripts/verify.py          # детерминированные пров�
 python scripts/export_index.py    # results/index_export.jsonl, catalog.json, data_tree.txt, workspace_snapshot/
 ```
 
+**Все трассы одной командой** (из сети ИТМО): проверка LLM, запуск ES, сброс workspace, основной диалог,
+`verify` и экспорт, сценарий лимита, сценарий ошибок при остановленном ES, повторная синхронизация,
+поиск токена в результатах, коммит и пуш `traces/` и `results/`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1
+```
+
 Воспроизведение индекса без LLM (вход для лабы 3): `python scripts/restore_index.py` создаёт индекс заново
 из `results/index_export.jsonl`.
 
@@ -291,7 +299,8 @@ graph TD;
 | Сценарий | Файл |
 |---|---|
 | основной диалог (организация, просмотр, перенос, индексация, поиск, повтор, пополнение, ошибки tools) | `demo/dialog_ru.txt` |
-| недоступный MCP/ES и повторная синхронизация | `demo/dialog_errors_ru.txt` (при остановленном ES) |
+| недоступный MCP/ES | `demo/dialog_errors_ru.txt` (при остановленном ES) |
+| повторная синхронизация после восстановления ES | `demo/dialog_retry_ru.txt` |
 | завершение зацикленного хода по лимиту | `demo/dialog_limit_ru.txt` (`AGENT_MODEL_CALLS_PER_TURN=3`) |
 
 ## 10. Тесты и проверочные сценарии

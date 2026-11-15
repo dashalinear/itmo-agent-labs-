@@ -1,0 +1,6 @@
+# Run AFTER dialog_errors_ru.txt with Elasticsearch started again: the retry fixes the path in the index.
+Покажи документы каталога со статусом pending_sync или error.
+Синхронизируй индекс для этих документов: обнови пути, а если документ не проиндексирован — проиндексируй его.
+Найди в Elastic выдержки про рекомендательную систему и покажи путь к файлу.
+/check
+/exit
