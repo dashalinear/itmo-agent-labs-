@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import threading
 from dataclasses import dataclass
 from typing import Any, Sequence
@@ -49,21 +50,73 @@ def render_message(m: BaseMessage) -> str:
     return "\n".join(parts)
 
 
-def detect_window(base_url: str, api_key: str, model: str, timeout: float = 10.0) -> tuple[int | None, str]:
-    """Ask an OpenAI-compatible server for the real context window of the model."""
+WINDOW_KEYS = ("max_model_len", "context_length", "max_context_length", "context_window", "max_position_embeddings")
+_CTX_ERR = re.compile(r"(?:maximum context length is|max_model_len\W{0,3}|context length of|context window of)\s*(\d{3,8})", re.I)
+
+
+def _find_key(obj: Any) -> tuple[str, int] | None:
+    if isinstance(obj, dict):
+        for k in WINDOW_KEYS:
+            v = obj.get(k)
+            if isinstance(v, (int, str)) and str(v).isdigit() and int(v) > 0:
+                return k, int(v)
+        for v in obj.values():
+            hit = _find_key(v)
+            if hit:
+                return hit
+    elif isinstance(obj, list):
+        for v in obj:
+            hit = _find_key(v)
+            if hit:
+                return hit
+    return None
+
+
+def detect_window(base_url: str, api_key: str, model: str, timeout: float = 10.0,
+                  probe: bool = True) -> tuple[int | None, str]:
+    """Ask an OpenAI-compatible server for the REAL context window of the model.
+
+    1. GET {base}/models: max_model_len / context_length / ... of the model entry (vLLM, LM Studio, TGI ...);
+    2. POST {root}/tokenize (vLLM): response field max_model_len;
+    3. probe: a chat request with an impossible max_tokens; the server REJECTS it before generation with
+       "This model's maximum context length is N tokens ..." (vLLM / OpenAI wording) -> N.
+    """
     if not base_url:
         return None, "no base_url"
+    headers = {"Authorization": f"Bearer {api_key}"}
+    base = base_url.rstrip("/")
+    notes = []
     try:
-        r = httpx.get(base_url.rstrip("/") + "/models", headers={"Authorization": f"Bearer {api_key}"}, timeout=timeout)
+        r = httpx.get(base + "/models", headers=headers, timeout=timeout)
         r.raise_for_status()
-        for item in r.json().get("data", []):
-            if item.get("id") == model or len(r.json().get("data", [])) == 1:
-                for key in ("max_model_len", "context_length", "max_context_length", "context_window"):
-                    if item.get(key):
-                        return int(item[key]), f"GET /models -> {key}"
-        return None, "server did not report the window"
+        data = r.json().get("data", [])
+        items = [i for i in data if i.get("id") == model] or data[:1]
+        hit = _find_key(items)
+        if hit:
+            return hit[1], f"GET /models -> {hit[0]}"
+        notes.append("GET /models: no window field")
     except Exception as e:  # noqa: BLE001
-        return None, f"window probe failed: {type(e).__name__}"
+        notes.append(f"GET /models failed: {type(e).__name__}")
+    root = base[:-3] if base.endswith("/v1") else base
+    try:
+        r = httpx.post(root + "/tokenize", json={"model": model, "prompt": "ping"}, headers=headers, timeout=timeout)
+        if r.status_code == 200 and r.json().get("max_model_len"):
+            return int(r.json()["max_model_len"]), "POST /tokenize -> max_model_len"
+        notes.append(f"POST /tokenize: HTTP {r.status_code}")
+    except Exception as e:  # noqa: BLE001
+        notes.append(f"POST /tokenize failed: {type(e).__name__}")
+    if probe:
+        try:
+            r = httpx.post(base + "/chat/completions", headers=headers, timeout=max(timeout, 20.0),
+                           json={"model": model, "messages": [{"role": "user", "content": "ping"}],
+                                 "max_tokens": 10_000_000, "temperature": 0})
+            m = _CTX_ERR.search(r.text)
+            if r.status_code >= 400 and m:
+                return int(m.group(1)), f"probe: server error message (HTTP {r.status_code}) -> {m.group(0)[:60]}"
+            notes.append(f"probe: HTTP {r.status_code}, no window in the answer")
+        except Exception as e:  # noqa: BLE001
+            notes.append(f"probe failed: {type(e).__name__}")
+    return None, "; ".join(notes)
 
 
 class TokenCounter:

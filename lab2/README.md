@@ -86,7 +86,7 @@ python -m harness.cli baseline --spec demo\task_a_local.json --task-id A_base   
 | Параметр | Значение / способ |
 |---|---|
 | Модель | `qwen3.8-27b`, OpenAI-совместимый vLLM-сервер ИТМО (`LLM_BASE_URL`) |
-| Фактическое окно | `GET /v1/models → max_model_len`. Резерв — `LLM_CONTEXT_WINDOW` в `.env`. Значение пишется в `session_start.window` каждой трассы |
+| Фактическое окно | спрашивается у сервера (`python -m harness.cli window`): 1) поле `max_model_len`/`context_length` в `GET /v1/models`; 2) `max_model_len` из `POST /tokenize`; 3) запрос с заведомо невозможным `max_tokens` — сервер отклоняет его до генерации с текстом «maximum context length is N tokens», берётся N. Сервер ИТМО не отдаёт окно в `/models`, поэтому используется следующий способ; источник пишется в `session_start.window_source`. `LLM_CONTEXT_WINDOW` в `.env` — только если сервер не раскрыл окно ни одним способом |
 | Рабочий лимит | `working_context_tokens` = 28 000 для воспроизводимого теста. Проверяется `≤ окна`, иначе запуск отклоняется. Если окно < 32 000, скрипт берёт 80 % окна |
 | Резерв ответа | `response_reserve_tokens` = 2048 = `max_tokens` каждого вызова агента. Thinking Qwen3 выключен (`LLM_ENABLE_THINKING=false`), чтобы рассуждение не съедало резерв |
 | Запас оценки | `estimate_margin` = 10 % к эвристике, 2 % к серверному счёту |

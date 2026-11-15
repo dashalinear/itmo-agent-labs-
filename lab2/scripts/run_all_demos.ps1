@@ -71,10 +71,12 @@ try {
     throw "LLM server $base is not reachable. Connect to the ITMO network (or VPN) and run again. Details: $($_.Exception.Message)"
 }
 $m = $models.data | Select-Object -First 1
-$win = $m.max_model_len
-if (-not $win) { $win = Read-Env "LLM_CONTEXT_WINDOW" }
-Write-Host ("LLM server OK, model: " + $m.id + ", max_model_len: " + $win)
-if (-not $win) { throw "The server does not report max_model_len: set LLM_CONTEXT_WINDOW in .env" }
+Write-Host ("LLM server OK, model: " + $m.id)
+# real window: GET /models fields -> POST /tokenize -> server error message for an impossible max_tokens
+$wj = (& $py -m harness.cli window | Out-String | ConvertFrom-Json)
+Write-Host ("context window: " + $wj.window + "  (source: " + $wj.source + ")")
+if (-not $wj.window) { throw "The server did not reveal the context window: set LLM_CONTEXT_WINDOW in .env (value from the course page/admin)" }
+$win = [int]$wj.window
 $work = 28000
 if ([int]$win -lt 32000) { $work = [int]([int]$win * 0.8) }
 $fit = "working_context_tokens=$work"

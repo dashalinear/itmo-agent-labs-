@@ -169,3 +169,37 @@ async def test_mcp_outputs_are_bounded_and_offloaded(cfg, web):
             assert off[0]["data"]["passed_chars"] < off[0]["data"]["total_chars"]
     finally:
         st.drop_index()
+
+
+@pytest.mark.parametrize("mode,expected_src", [("tokenize", "POST /tokenize"), ("error", "probe: server error message")])
+def test_window_detected_without_models_field(mode, expected_src):
+    """/models without max_model_len (like the ITMO server): /tokenize or the rejection message reveals the window."""
+    class H(BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def _send(self, code, obj):
+            body = json.dumps(obj).encode()
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def do_GET(self):
+            self._send(200, {"data": [{"id": "m", "object": "model"}]})
+
+        def do_POST(self):
+            self.rfile.read(int(self.headers["Content-Length"]))
+            if self.path == "/tokenize":
+                return self._send(200, {"count": 1, "max_model_len": 65536}) if mode == "tokenize" else self._send(404, {})
+            self._send(400, {"error": {"message": "This model's maximum context length is 40960 tokens. However, you "
+                                                  "requested 10000009 tokens (9 in the messages, 10000000 in the completion)."}})
+
+    srv = ThreadingHTTPServer(("127.0.0.1", 0), H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    try:
+        w, src = detect_window(f"http://127.0.0.1:{srv.server_address[1]}/v1", "k", "m")
+        assert w == (65536 if mode == "tokenize" else 40960) and src.startswith(expected_src)
+    finally:
+        srv.shutdown()

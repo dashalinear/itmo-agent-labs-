@@ -204,9 +204,9 @@ async def amain(argv: list[str] | None = None) -> int:
     ap.add_argument("--provider", choices=["ddgs", "fixture"])
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("new", "run", "resume", "status", "pause", "cancel", "limits", "report", "artifact", "chat",
-                 "baseline", "list", "export"):
+                 "baseline", "list", "export", "window"):
         p = sub.add_parser(name)
-        if name != "list":
+        if name not in ("list", "window"):
             p.add_argument("--task-id", required=name not in ("new", "baseline"))
         if name in ("new", "baseline"):
             p.add_argument("--spec", type=Path, required=True)
@@ -231,6 +231,15 @@ async def amain(argv: list[str] | None = None) -> int:
     cfg = load_config(args.env, args.root)
     if args.provider:
         cfg = replace(cfg, search_provider=args.provider)
+
+    if args.cmd == "window":
+        # real context window of the configured model, as one JSON line (used by run_all_demos.ps1)
+        from .tokens import detect_window
+        w, src = detect_window(cfg.base.llm_base_url, cfg.base.llm_api_key, cfg.base.llm_model)
+        if not w and cfg.context_window:
+            w, src = cfg.context_window, f"LLM_CONTEXT_WINDOW (.env); server: {src}"
+        print(json.dumps({"model": cfg.base.llm_model, "window": w, "source": src}, ensure_ascii=False))
+        return 0 if w else 3
 
     if args.cmd in ("status", "pause", "cancel", "list", "report", "artifact"):
         store = _store(cfg)
