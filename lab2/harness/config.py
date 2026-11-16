@@ -100,7 +100,7 @@ class HarnessConfig:
     token_count_mode: str = "auto"         # auto | server | heuristic
     chars_per_token: float = 2.6           # initial heuristic before calibration by usage
     search_provider: str = "ddgs"          # ddgs | fixture
-    search_backend: str = "bing,yahoo,duckduckgo"  # ddgs backends tried in order
+    search_backend: str = "bing,duckduckgo,yandex"  # ddgs backends tried first, then public search APIs
     fixture_base_url: str = "http://127.0.0.1:8765"
     serp_path: Path = field(default_factory=lambda: LAB2_ROOT / "fixtures" / "web" / "serp.json")
     crash_at: str = ""                     # test hook, e.g. "tool:12" -> os._exit before the 12th tool call
@@ -136,7 +136,7 @@ def load_config(env_file: str | os.PathLike | None = None, root: Path | None = N
         token_count_mode=os.getenv("TOKEN_COUNT_MODE", "auto").lower(),
         chars_per_token=float(os.getenv("CHARS_PER_TOKEN", "2.6")),
         search_provider=os.getenv("WEB_SEARCH_PROVIDER", "ddgs").lower(),
-        search_backend=os.getenv("WEB_SEARCH_BACKEND", "bing,yahoo,duckduckgo"),
+        search_backend=os.getenv("WEB_SEARCH_BACKEND", "bing,duckduckgo,yandex"),
         fixture_base_url=os.getenv("FIXTURE_BASE_URL", "http://127.0.0.1:8765"),
         crash_at=os.getenv("HARNESS_CRASH_AT", ""),
         limits=Limits.from_env(),

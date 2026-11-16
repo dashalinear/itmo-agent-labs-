@@ -151,3 +151,66 @@ def test_token_budget_reserve_commit_and_restart(store, ws):
         b2.reserve("agent", 10, 5)                       # max_model_calls=2 reached
     assert e.value.resource == "model_calls"
     s2.close()
+
+
+async def test_multi_engine_search_falls_back_and_skips_dead_engines(store, artifacts, web):
+    from harness.web import MultiProvider, SearchProvider
+
+    class Dead(SearchProvider):
+        name = "dead"
+        calls = 0
+
+        async def search(self, query, max_results):
+            Dead.calls += 1
+            raise TimeoutError("engine unreachable")
+
+    class Api(SearchProvider):
+        name = "api"
+
+        async def search(self, query, max_results):
+            return [{"url": "https://www.bing.com/aclick?ld=ad", "title": "ad", "snippet": ""},
+                    {"url": "https://example.org/a", "title": "A", "snippet": "a"},
+                    {"url": "https://example.org/a?utm_source=x", "title": "A dup", "snippet": "a"},
+                    {"url": "https://example.org/b", "title": "B", "snippet": "b"}]
+
+    mp = MultiProvider([Dead(), Api()])
+    limits = Limits()
+    budget = Budget(store, "T", limits)
+    rt = ResearchTools(store, "T", budget, limits, HttpFetcher(budget, limits), mp, artifacts)
+    for q in ("q one", "q two", "q three"):
+        r = j(await rt.web_search(q, 8))
+        assert r["ok"] and [x["url"] for x in r["data"]["results"]] == ["https://example.org/a", "https://example.org/b"]
+    assert Dead.calls == 2                                 # circuit breaker: skipped after two failures
+    assert r["data"]["engines"]["skipped"] == ["dead"] and r["data"]["engines"]["ok"] == {"api": 2}
+    assert store.usage("T")["search_calls"] == 3           # one web_search = one search call
+    assert any(e["kind"] == "search_engines" for e in store.events("T"))
+
+    class AllDead(SearchProvider):
+        name = "all"
+
+        async def search(self, query, max_results):
+            raise ConnectionError("no network")
+    rt2 = ResearchTools(store, "T", budget, limits, HttpFetcher(budget, limits), MultiProvider([AllDead()]), artifacts)
+    r = j(await rt2.web_search("q four", 8))
+    assert r["error"]["type"] == "search_failed" and "all search engines failed" in r["error"]["message"]
+
+
+async def test_fetch_interrupted_by_tool_timeout_is_not_left_running(store, artifacts, web):
+    import asyncio
+    base, _ = web
+    rt, budget = mk(store, artifacts, base, http_timeout_s=30.0)
+    with pytest.raises(asyncio.TimeoutError):
+        await asyncio.wait_for(rt.web_fetch(f"{base}/slow"), timeout=0.5)
+    row = store.urls("T")[0]
+    assert row["status"] == "error" and "interrupted" in row["error"]
+
+
+async def test_web_fetch_answer_fits_single_limit_and_shows_page_artifact(store, artifacts, web):
+    base, _ = web
+    rt, budget = mk(store, artifacts, base, max_fetch_bytes=3_000_000)
+    for path in ("/large", "/p/checkpoint-3"):
+        raw = await rt.web_fetch(base + path)
+        r = j(raw)
+        assert r["ok"] and len(raw) <= Limits().max_tool_result_chars       # never offloaded as a whole
+        assert r["data"]["artifact_id"].startswith("art_") and r["data"]["artifact_id"] in r["data"]["note"]
+        assert artifacts.text(r["data"]["artifact_id"]).startswith("Источник:")   # id of the PAGE copy

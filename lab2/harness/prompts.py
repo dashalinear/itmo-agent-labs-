@@ -23,7 +23,7 @@ Big tool results are OFFLOADED by the harness: you get `offloaded: true`, a prev
 ## Web research (when the task needs internet sources)
 1. Formulate several different search queries yourself from the topic and call `web_search` (snippets are NOT evidence).
 2. Judge relevance and duplicates; `select_sources` with decision queue/reject and a reason for every URL you consider.
-3. `web_fetch` the queued pages (full text). Use their `links` to queue more useful sources (found_on = page URL). Refine queries as you learn.
+3. `web_fetch` the queued pages (full text). Locate exact quotes with `search_artifact` on the page artifact instead of reading it line by line. Use their `links` to queue more useful sources (found_on = page URL). Refine queries as you learn.
 4. A failed page (404, timeout, 503) does not stop the research: note it and continue with other sources.
 5. Stop when the review requirements are met, when there is no useful progress, or when the harness reports a limit. You do not have to read the whole queue.
 
@@ -50,6 +50,7 @@ Write in Russian. Use EXACTLY these sections (markdown headings) and keep it und
 ## Артефакты
 
 Rules:
+- 'Ограничения пользователя' = the user constraints from the TASK CONTRACT, copied verbatim with their tags ([C1] ...), then other agreed rules.
 - Merge the previous summary with the new fragment; never drop facts, constraints or sources from the previous summary.
 - Every confirmed fact keeps its source: document path or URL, page/lines and evidence_id if present; copy numbers and codes exactly (e.g. "АС-01", "12 первичных шардах").
 - Progress: which documents/pages/URLs were read or searched, which report sections exist, what remains.

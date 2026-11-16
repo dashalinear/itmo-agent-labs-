@@ -253,6 +253,8 @@ class CompactionMiddleware(AgentMiddleware):
         sys_text = SUMMARIZER_PROMPT.format(words=int(L.summary_max_tokens * 0.6))
         limit_in = min(ctx.working_limit, ctx.window) - L.summary_max_tokens
         rendered = [_render_for_summary(m, L.summary_tool_clip_chars) for m in msgs]
+        contract = ("TASK CONTRACT (copy every user constraint VERBATIM with its [tag] into "
+                    "'Ограничения пользователя'):\n" + ctx.contract_block())
         summary, method, chunks, cost_in, cost_out = prev, "llm", 0, 0, 0
         i = 0
         while i < len(rendered):
@@ -260,7 +262,8 @@ class CompactionMiddleware(AgentMiddleware):
                 summary = self._rules_summary(summary, msgs[i:], cap_chars)
                 method = "llm+rules(chunk limit)"
                 break
-            fixed = ctx.counter.text_tokens(sys_text) + ctx.counter.text_tokens(summary) + 200
+            fixed = (ctx.counter.text_tokens(sys_text) + ctx.counter.text_tokens(summary)
+                     + ctx.counter.text_tokens(contract) + 200)
             room = limit_in - fixed
             if room < 400:
                 summary = self._rules_summary(summary, msgs[i:], cap_chars)
@@ -276,7 +279,7 @@ class CompactionMiddleware(AgentMiddleware):
                     break
                 chunk.append(piece)
                 j += 1
-            user = (f"PREVIOUS SUMMARY:\n{summary or '(none)'}\n\nNEW HISTORY FRAGMENT ({j - i} messages):\n"
+            user = (f"{contract}\n\nPREVIOUS SUMMARY:\n{summary or '(none)'}\n\nNEW HISTORY FRAGMENT ({j - i} messages):\n"
                     + "\n\n".join(chunk) + "\n\nWrite the updated summary.")
             est_in = ctx.counter.estimate(sys_text, [HumanMessage(content=user)]).tokens
             if est_in + L.summary_max_tokens > min(ctx.working_limit, ctx.window):

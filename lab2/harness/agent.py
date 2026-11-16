@@ -43,7 +43,7 @@ from .tokens import TokenCounter
 from .tools_docs import DocTools
 from .tools_research import ResearchTools
 from .tools_task import TaskTools
-from .web import DdgsProvider, FixtureProvider, HttpFetcher, SearchProvider
+from .web import FixtureProvider, HttpFetcher, MultiProvider, SearchProvider, default_engines
 from .workspace import HarnessFileTools, HarnessWorkspace
 
 
@@ -60,7 +60,7 @@ def make_provider(cfg: HarnessConfig, name: str | None = None) -> SearchProvider
     name = (name or cfg.search_provider).lower()
     if name == "fixture":
         return FixtureProvider(cfg.serp_path, cfg.fixture_base_url)
-    return DdgsProvider(cfg.search_backend)
+    return MultiProvider(default_engines(cfg.search_backend))
 
 
 @dataclass

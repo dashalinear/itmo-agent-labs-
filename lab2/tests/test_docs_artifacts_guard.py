@@ -170,3 +170,17 @@ def test_stop_partial_is_not_completed(ws, store, artifacts, budget):
     t = store.get_task("T")
     assert t["status"] == "paused" and t["completion"]["partial"] is True
     assert "Частичный результат" in (ws.service / "tasks" / "T" / "report.md").read_text(encoding="utf-8")
+
+
+def test_evidence_tolerates_line_prefixes_and_typography(ws, store, artifacts, budget):
+    tt = TaskTools(ws, Catalog(ws), store, "T", artifacts, budget)
+    # quote copied from numbered read_pages output across two lines, with straight quotes instead of «»
+    from harness.tools_docs import load_doc
+    doc = load_doc(ws.root / HANDBOOK, HANDBOOK)
+    a, b = doc.page_bounds(4)
+    line_no = next(i for i in range(a, b + 1) if "АС-01" in doc.lines[i - 1])
+    text = doc.lines[line_no - 1]
+    start = text.index("эталонный")
+    quote = f'{line_no}: ' + text[start:start + 60].replace("«", '"').replace("»", '"')
+    r = tt.save_evidence("АС-01", "decision", HANDBOOK, quote, page=4)
+    assert r["status"] == "saved" and r["line_start"] == line_no

@@ -32,7 +32,8 @@ from .config import Limits
 
 TRACKING = re.compile(r"^(utm_.*|gclid|fbclid|yclid|mc_cid|mc_eid|ref|ref_src|_hsenc|_hsmi)$", re.I)
 RETRY_STATUS = {429, 500, 502, 503, 504}
-USER_AGENT = "itmo-lab2-research-harness/2.0 (+educational)"
+# descriptive bot UA with a policy URL (Wikimedia and others reject anonymous clients); no personal data
+USER_AGENT = "Mozilla/5.0 (compatible; itmo-lab2-research-harness/2.0; +https://www.mediawiki.org/wiki/User-Agent_policy)"
 
 
 def canonical_url(url: str) -> str:
@@ -213,7 +214,7 @@ class SearchProvider:
 class DdgsProvider(SearchProvider):
     name = "ddgs"
 
-    def __init__(self, backend: str = "bing", timeout: float = 15.0) -> None:
+    def __init__(self, backend: str = "bing", timeout: float = 8.0) -> None:
         self.backend = backend
         self.timeout = timeout
         self.name = f"ddgs:{backend}"
@@ -222,7 +223,7 @@ class DdgsProvider(SearchProvider):
         def _run():
             from ddgs import DDGS
             return DDGS(timeout=int(self.timeout)).text(query, max_results=max_results, backend=self.backend)
-        rows = await asyncio.wait_for(asyncio.to_thread(_run), timeout=self.timeout + 5)
+        rows = await asyncio.wait_for(asyncio.to_thread(_run), timeout=self.timeout + 4)
         return [{"url": r.get("href") or r.get("url"), "title": r.get("title", ""), "snippet": r.get("body", "")}
                 for r in rows if r.get("href") or r.get("url")]
 
@@ -249,3 +250,139 @@ class FixtureProvider(SearchProvider):
         scored.sort()
         return [{"url": e["url"].replace("{BASE}", self.base_url), "title": e["title"], "snippet": e["snippet"]}
                 for _s, _i, e in scored[:max_results]]
+
+
+# ----------------------------------------------------------------- public search APIs (no key needed)
+class _ApiProvider(SearchProvider):
+    def __init__(self, timeout: float = 8.0) -> None:
+        self.timeout = timeout
+
+    async def _get(self, url: str, params: dict) -> httpx.Response:
+        async with httpx.AsyncClient(timeout=self.timeout, headers={"User-Agent": USER_AGENT}, follow_redirects=True) as c:
+            r = await c.get(url, params=params)
+            r.raise_for_status()
+            return r
+
+
+class WikipediaProvider(_ApiProvider):
+    name = "wikipedia"
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        lang = "ru" if re.search(r"[а-яё]", query.lower()) else "en"
+        r = await self._get(f"https://{lang}.wikipedia.org/w/api.php",
+                            {"action": "query", "list": "search", "srsearch": query, "format": "json", "srlimit": max_results})
+        out = []
+        for it in r.json().get("query", {}).get("search", []):
+            title = it["title"]
+            out.append({"url": f"https://{lang}.wikipedia.org/wiki/" + title.replace(" ", "_"), "title": title,
+                        "snippet": re.sub(r"<[^>]+>", "", it.get("snippet", ""))})
+        return out
+
+
+class ArxivProvider(_ApiProvider):
+    name = "arxiv"
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        import xml.etree.ElementTree as ET
+        words = [w for w in re.findall(r"[A-Za-z0-9-]+", query) if len(w) > 2][:6]
+        if not words:
+            return []
+        r = await self._get("http://export.arxiv.org/api/query",
+                            {"search_query": " AND ".join(f"all:{w}" for w in words), "max_results": max_results})
+        ns = {"a": "http://www.w3.org/2005/Atom"}
+        out = []
+        for e in ET.fromstring(r.text).findall("a:entry", ns):
+            url = (e.findtext("a:id", "", ns) or "").replace("http://", "https://")
+            out.append({"url": url, "title": " ".join((e.findtext("a:title", "", ns) or "").split()),
+                        "snippet": " ".join((e.findtext("a:summary", "", ns) or "").split())[:300]})
+        return out
+
+
+class HackerNewsProvider(_ApiProvider):
+    name = "hn_algolia"
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        r = await self._get("https://hn.algolia.com/api/v1/search", {"query": query, "tags": "story", "hitsPerPage": max_results})
+        return [{"url": h["url"], "title": h.get("title", ""), "snippet": f"HN story, {h.get('points', 0)} points"}
+                for h in r.json().get("hits", []) if h.get("url")]
+
+
+class StackOverflowProvider(_ApiProvider):
+    name = "stackoverflow"
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        r = await self._get("https://api.stackexchange.com/2.3/search/advanced",
+                            {"q": query, "site": "stackoverflow", "pagesize": max_results, "order": "desc", "sort": "relevance"})
+        import html as _h
+        return [{"url": it["link"], "title": _h.unescape(it.get("title", "")), "snippet": ", ".join(it.get("tags", []))}
+                for it in r.json().get("items", [])]
+
+
+class GithubProvider(_ApiProvider):
+    name = "github"
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        r = await self._get("https://api.github.com/search/repositories", {"q": query, "per_page": max_results})
+        return [{"url": it["html_url"], "title": it["full_name"], "snippet": (it.get("description") or "")[:300]}
+                for it in r.json().get("items", [])]
+
+
+AD_URL = re.compile(r"bing\.com/(aclick|ck/a)|duckduckgo\.com/y\.js|yandex\.\w+/clck|googleadservices\.com", re.I)
+
+
+class MultiProvider(SearchProvider):
+    """One web_search = one search call in the budget; inside, engines are tried in order.
+
+    General web engines (ddgs backends) come first; the public search APIs (Wikipedia, arXiv,
+    Hacker News, Stack Overflow, GitHub) complement them and keep the research going when the
+    general engines are unreachable (e.g. from a university network). An engine that failed twice
+    is skipped for the rest of the process (circuit breaker). The report of the last call
+    (engines ok / failed / skipped) is returned to the agent and stored with the search.
+    """
+    name = "multi"
+
+    def __init__(self, engines: list[SearchProvider], per_engine_cap: int = 5) -> None:
+        self.engines = engines
+        self.per_engine_cap = per_engine_cap
+        self.failures: dict[str, int] = {}
+        self.last_report: dict = {}
+        self.name = "multi:" + ",".join(e.name for e in engines)
+
+    async def search(self, query: str, max_results: int) -> list[dict]:
+        report = {"ok": {}, "failed": {}, "skipped": []}
+        out, seen = [], set()
+        for eng in self.engines:
+            if len(out) >= max_results:
+                break
+            if self.failures.get(eng.name, 0) >= 2:
+                report["skipped"].append(eng.name)
+                continue
+            try:
+                rows = await eng.search(query, min(self.per_engine_cap, max_results))
+                self.failures[eng.name] = 0
+            except Exception as e:  # noqa: BLE001
+                self.failures[eng.name] = self.failures.get(eng.name, 0) + 1
+                report["failed"][eng.name] = f"{type(e).__name__}: {e}"[:120]
+                continue
+            n = 0
+            for row in rows:
+                if not row.get("url") or not row["url"].startswith(("http://", "https://")) or AD_URL.search(row["url"]):
+                    continue
+                c = canonical_url(row["url"])
+                if c in seen:
+                    continue
+                seen.add(c)
+                out.append({**row, "engine": eng.name})
+                n += 1
+                if len(out) >= max_results:
+                    break
+            report["ok"][eng.name] = n
+        self.last_report = report
+        if not out and report["failed"] and not report["ok"]:
+            raise RuntimeError("all search engines failed: " + "; ".join(f"{k}: {v}" for k, v in report["failed"].items()))
+        return out
+
+
+def default_engines(ddgs_backends: str) -> list[SearchProvider]:
+    engines: list[SearchProvider] = [DdgsProvider(b.strip()) for b in ddgs_backends.split(",") if b.strip()]
+    return engines + [WikipediaProvider(), ArxivProvider(), HackerNewsProvider(), StackOverflowProvider(), GithubProvider()]

@@ -5,6 +5,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1              # everything
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part web    # only web scenarios B, C
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part guard  # only the guardrail dialog G1
+    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part b2     # only the real web research B2
     ... -SkipPush -SkipTests
 
 Scenarios (task ids):
@@ -14,12 +15,13 @@ Scenarios (task ids):
   D1     tiny token budget -> paused with a partial result; user raises the limit; resume keeps the spent counters
   T1     LLM timeout 1 s -> finite retries -> paused
   E1     cancel from another process while the task is running
-  B1     real web research on a topic without URLs (ddgs search, >= 5 fetched pages)
+  B1     first real web attempt (kept as a record): general search engines unreachable from the ITMO network
+  B2     real web research on a topic without URLs: multi-engine search (ddgs + public search APIs), >= 5 pages
   C1     web load test on the fixed search results (>= 50 URLs) with a small HTTP budget
   G1     guardrail dialog: task root escapes, junction, service area, injection page, big outputs, HTTP timeout/retries
 #>
 param(
-    [ValidateSet("all", "web", "guard")][string]$Part = "all",
+    [ValidateSet("all", "web", "guard", "b2")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$EnvFile = ".env"
@@ -152,13 +154,15 @@ try {
         Harness status --task-id E1 | Out-Null
     }
 
-    if ($Part -in @("all", "web")) {
+    if ($Part -in @("all", "web", "b2")) {
         if (-not (Test-Path workspace\catalog.json)) { Run-Py scripts\prepare_workspace.py }
-        Step "12. B1: real web research (topic only, no URLs)"
-        Harness new --spec demo\task_b_web.json --set $fit | Out-Null
-        Harness run --task-id B1 | Out-Null
-        Resume-Until-Done "B1" 2
-        Harness status --task-id B1 | Out-Null
+        Step "12. B2: real web research (topic only, no URLs), multi-engine search"
+        Harness new --spec demo\task_b2_web.json --set $fit | Out-Null
+        Harness run --task-id B2 | Out-Null
+        Resume-Until-Done "B2" 2
+        Harness status --task-id B2 | Out-Null
+    }
+    if ($Part -in @("all", "web")) {
 
         Step "13. C1: web load test on fixed search results (>= 50 URLs), small HTTP budget"
         Harness new --spec demo\task_c_load.json --set $fit | Out-Null

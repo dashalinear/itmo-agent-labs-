@@ -33,10 +33,16 @@ from .workspace import HarnessWorkspace
 
 EVIDENCE_KINDS = ("approach", "limitation", "controversial", "fact", "decision", "other")
 _WS = re.compile(r"\s+")
+# typographic variants are the same character for verbatim checking
+_CHARS = str.maketrans({"\u00ab": '"', "\u00bb": '"', "\u201c": '"', "\u201d": '"', "\u201e": '"', "\u2019": "'",
+                        "\u2018": "'", "\u2014": "-", "\u2013": "-", "\u2011": "-", "\u00a0": " ", "\u2009": " ",
+                        "\u202f": " ", "\u2026": "..."})
+# line-number prefixes and page labels added by read_pages / read_lines / read_artifact are not source text
+_PREFIX = re.compile(r"(?:(?<=\s)|^)\d{1,7}: |\[стр\. \d+ \| строки \d+[–-]\d+\]")
 
 
 def _norm(s: str) -> str:
-    return _WS.sub(" ", s).strip()
+    return _WS.sub(" ", _PREFIX.sub(" ", s).translate(_CHARS)).strip()
 
 
 def locate(lines: list[str], quote: str, first: int = 1, last: int | None = None) -> tuple[int, int] | None:
@@ -45,7 +51,7 @@ def locate(lines: list[str], quote: str, first: int = 1, last: int | None = None
     chars, owner = [], []
     prev_space = True
     for ln in range(first, last + 1):
-        for ch in lines[ln - 1] + "\n":
+        for ch in (lines[ln - 1] + "\n").translate(_CHARS):
             if ch.isspace():
                 if not prev_space:
                     chars.append(" ")

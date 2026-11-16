@@ -107,9 +107,12 @@ class ResearchTools:
                                   r.get("snippet", "")[:500], rank):
                 new += 1
             results.append({"url": r["url"], "url_key": k, "title": r.get("title", "")[:200],
-                            "snippet": r.get("snippet", "")[:300]})
+                            "snippet": r.get("snippet", "")[:300], **({"engine": r["engine"]} if r.get("engine") else {})})
+        engines = getattr(self.provider, "last_report", None) or {}
         self.store.add_search(self.task_id, query, qn, self.provider.name, results, new)
-        return ok(name, query=query, from_cache=False, provider=self.provider.name, new_urls=new,
+        if engines:
+            self.store.event(self.task_id, "search_engines", {"query": query, **engines})
+        return ok(name, query=query, from_cache=False, provider=self.provider.name, engines=engines, new_urls=new,
                   results=self._annotate(results), queue=self.store.url_counts(self.task_id))
 
     def _annotate(self, results: list[dict]) -> list[dict]:
@@ -167,9 +170,14 @@ class ResearchTools:
                 self.budget.add(cache_hits=1)
                 return ok(name, url=url, url_key=k, final_url=row["final_url"], from_cache=True,
                           artifact_id=row["artifact_id"], title=row["title"], chars=len(text),
-                          note="Already fetched and stored; no network request made.", text=text[:4000])
+                          note="Already fetched and stored; no network request made. Find exact quotes with "
+                               "search_artifact(artifact_id, term).", text=text[:3000])
         self.store.set_url(self.task_id, k, status="running")
-        res = await self.fetcher.fetch(url)
+        try:
+            res = await self.fetcher.fetch(url)
+        except BaseException:      # tool timeout / cancel: never leave the URL "running"
+            self.store.set_url(self.task_id, k, status="error", error="interrupted: tool timeout or cancel")
+            raise
         self.store.set_url(self.task_id, k, attempts=(row.get("attempts") or 0) + res.attempts, http_status=res.status,
                            final_url=res.final_url)
         if res.error_type:
@@ -198,10 +206,24 @@ class ResearchTools:
         links = extract_links(raw, res.final_url) if "<a" in raw else []
         self.store.set_url(self.task_id, k, status="done", artifact_id=art["artifact_id"], title=title[:300] or row["title"],
                            content_hash=sha256_bytes(res.body), duplicate_of=dup, error=None)
-        return ok(name, url=url, url_key=k, final_url=res.final_url, status=res.status, redirects=res.redirects,
-                  attempts=res.attempts, title=title, artifact_id=art["artifact_id"], chars=len(text),
-                  truncated_download=res.truncated, duplicate_of=dup, links=links,
-                  note="Cite this page with save_evidence(source=<url>, quote=<exact text>).", text=text[:6000])
+        # The answer must fit the single-result limit, so the model sees the PAGE artifact_id directly
+        # (otherwise the whole answer would be offloaded and the page id hidden inside another artifact).
+        links = [{"url": l["url"][:200], "anchor": l["anchor"][:60]} for l in links[:12]]
+        budget_chars = self.limits.max_tool_result_chars - 300
+        head = text[:2500]
+        while True:
+            body = ok(name, url=url, url_key=k, final_url=res.final_url, status=res.status, redirects=res.redirects,
+                      attempts=res.attempts, title=title[:200], artifact_id=art["artifact_id"], chars=len(text),
+                      truncated_download=res.truncated, duplicate_of=dup, links=links,
+                      note=(f"Page text: first {len(head)} of {len(text)} chars below; the FULL page is artifact_id "
+                            f"{art['artifact_id']}. Find exact quotes with search_artifact(artifact_id, term); cite with "
+                            "save_evidence(source=<url>, quote=<exact text>)."), text=head)
+            if len(body) <= budget_chars or (not links and len(head) < 300):
+                return body
+            if links:
+                links = links[:-3] if len(links) > 3 else []
+            else:
+                head = head[: int(len(head) * 0.7)]
 
     # -- queue_status ---------------------------------------------------------------------
     def queue_status(self, status: str | None = None, limit: int = 15) -> str:
