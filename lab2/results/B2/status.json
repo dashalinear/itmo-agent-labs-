@@ -1,0 +1,580 @@
+{
+  "task": {
+    "task_id": "B2",
+    "kind": "web",
+    "status": "completed",
+    "status_reason": "Обзор готов: 4 поисковых запроса, 7 страниц прочитано, 9 evidence с 7 источников, все 4 раздела (approaches, limitations, comparison, unverified). Ограничения подходов сопоставлены в таблице. Непроверенное явно указано.",
+    "runs": 1,
+    "request": "Разберись в подходах к хранению состояния LLM-агентов. Сам найди источники, изучи их, сопоставь ограничения и подготовь обзор с подтверждениями. Работай в пределах бюджета и явно укажи, что осталось непроверенным.",
+    "plan": [
+      {
+        "title": "Сформулировать и выполнить поисковые запросы (3+)",
+        "status": "doing"
+      },
+      {
+        "title": "Выбрать источники (queue/reject с причинами)",
+        "status": "todo"
+      },
+      {
+        "title": "Прочитать 5+ страниц полностью",
+        "status": "todo"
+      },
+      {
+        "title": "Собрать evidence (6+ цитат)",
+        "status": "todo"
+      },
+      {
+        "title": "Написать разделы: approaches, limitations, comparison, unverified",
+        "status": "todo"
+      },
+      {
+        "title": "complete_task",
+        "status": "todo"
+      }
+    ],
+    "completion": {
+      "completed": true,
+      "note": "Обзор готов: 4 поисковых запроса, 7 страниц прочитано, 9 evidence с 7 источников, все 4 раздела (approaches, limitations, comparison, unverified). Ограничения подходов сопоставлены в таблице. Непроверенное явно указано.",
+      "criteria": {
+        "min_evidence": {
+          "ok": true,
+          "detail": "9/6"
+        },
+        "required_sections": {
+          "ok": true,
+          "detail": "all present"
+        },
+        "min_web_pages_read": {
+          "ok": true,
+          "detail": "7/5"
+        },
+        "min_web_sources_cited": {
+          "ok": true,
+          "detail": "7/4"
+        },
+        "min_search_queries": {
+          "ok": true,
+          "detail": "4/3"
+        }
+      }
+    },
+    "limits": {
+      "max_total_tokens": 1200000,
+      "max_model_calls": 80,
+      "max_tool_calls": 300,
+      "task_deadline_s": 5400,
+      "max_search_calls": 8,
+      "max_http_requests": 40,
+      "max_fetch_bytes": 1000000,
+      "max_redirects": 5,
+      "http_timeout_s": 20,
+      "http_retries": 2,
+      "backoff_base_s": 0.5,
+      "working_context_tokens": 28000,
+      "response_reserve_tokens": 2048,
+      "estimate_margin": 0.1,
+      "compaction_trigger": 0.75,
+      "compaction_target": 0.45,
+      "compaction_min_gain": 0.05,
+      "summary_max_tokens": 1200,
+      "summary_tool_clip_chars": 1200,
+      "max_compaction_chunks": 4,
+      "max_tool_result_chars": 6000,
+      "max_step_result_chars": 12000,
+      "preview_chars": 1200,
+      "max_pages_per_read": 5,
+      "max_lines_per_read": 300,
+      "llm_timeout_s": 180.0,
+      "llm_retries": 2,
+      "tool_timeout_s": 150
+    }
+  },
+  "constraints": [
+    "[W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.",
+    "[W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.",
+    "[W3] Обзор не длиннее 900 слов.",
+    "[W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.",
+    "[W5] Сравнить подходы по их ограничениям."
+  ],
+  "criteria": {
+    "min_search_queries": 3,
+    "min_web_pages_read": 5,
+    "min_web_sources_cited": 4,
+    "min_evidence": 6,
+    "required_sections": [
+      "approaches",
+      "limitations",
+      "comparison",
+      "unverified"
+    ]
+  },
+  "budget": {
+    "tokens": {
+      "spent": 296785,
+      "reserved": 0,
+      "limit": 1200000,
+      "of_which": {
+        "input_tokens": 279413,
+        "output_tokens": 5736,
+        "compaction_input_tokens": 9236,
+        "compaction_output_tokens": 2400,
+        "failed_call_tokens": 0,
+        "interrupted_call_tokens": 0
+      }
+    },
+    "model_calls": {
+      "used": 22,
+      "limit": 80
+    },
+    "compaction_calls": 2,
+    "failed_calls": 0,
+    "tool_calls": {
+      "used": 30,
+      "limit": 300
+    },
+    "search_calls": {
+      "used": 4,
+      "limit": 8
+    },
+    "http_requests": {
+      "used": 10,
+      "limit": 40
+    },
+    "cache_hits": 0,
+    "bytes_downloaded": 303598,
+    "active_seconds": {
+      "used": 206.0,
+      "limit": 5400
+    },
+    "peak_input_tokens": 16761
+  },
+  "queue": {
+    "found": 0,
+    "pending": 2,
+    "running": 0,
+    "done": 7,
+    "error": 1,
+    "skipped": 16,
+    "found_total": 26,
+    "selected_total": 10,
+    "read_total": 7
+  },
+  "documents": [],
+  "summary_version": 2,
+  "compactions": [
+    {
+      "id": 25,
+      "ts": "2026-11-16T09:12:24+00:00",
+      "before_tokens": 19041,
+      "after_tokens": 12550,
+      "removed_messages": 11,
+      "kept_messages": 7,
+      "summary_tokens": 1060,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3545,
+      "cost_output": 1200,
+      "note": ""
+    },
+    {
+      "id": 26,
+      "ts": "2026-11-16T09:12:53+00:00",
+      "before_tokens": 19843,
+      "after_tokens": 11432,
+      "removed_messages": 17,
+      "kept_messages": 6,
+      "summary_tokens": 1167,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5691,
+      "cost_output": 1200,
+      "note": ""
+    }
+  ],
+  "model_calls": [
+    {
+      "id": 262,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:09:59+00:00",
+      "kind": "agent",
+      "estimated_input": 11194,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "actual_input": 7009,
+      "actual_output": 27,
+      "duration_s": 1.3,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 263,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:10:01+00:00",
+      "kind": "agent",
+      "estimated_input": 10298,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "actual_input": 7549,
+      "actual_output": 238,
+      "duration_s": 2.2,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 264,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:10:33+00:00",
+      "kind": "agent",
+      "estimated_input": 12624,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.36)",
+      "actual_input": 10327,
+      "actual_output": 97,
+      "duration_s": 1.61,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 265,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:10:54+00:00",
+      "kind": "agent",
+      "estimated_input": 13837,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.50)",
+      "actual_input": 11887,
+      "actual_output": 1114,
+      "duration_s": 9.25,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 266,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:11:04+00:00",
+      "kind": "agent",
+      "estimated_input": 15683,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "actual_input": 14308,
+      "actual_output": 86,
+      "duration_s": 1.72,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 267,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:11+00:00",
+      "kind": "agent",
+      "estimated_input": 17334,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.56)",
+      "actual_input": 15858,
+      "actual_output": 208,
+      "duration_s": 3.04,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 268,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:15+00:00",
+      "kind": "compaction",
+      "estimated_input": 3571,
+      "reserve": 1200,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.55, margin=10%)",
+      "actual_input": 3545,
+      "actual_output": 1200,
+      "duration_s": 9.17,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 269,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:24+00:00",
+      "kind": "agent",
+      "estimated_input": 12550,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "actual_input": 11336,
+      "actual_output": 239,
+      "duration_s": 2.7,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 270,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:27+00:00",
+      "kind": "agent",
+      "estimated_input": 14211,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "actual_input": 12847,
+      "actual_output": 376,
+      "duration_s": 3.83,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 271,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:31+00:00",
+      "kind": "agent",
+      "estimated_input": 14792,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "actual_input": 13452,
+      "actual_output": 45,
+      "duration_s": 1.31,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 272,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:34+00:00",
+      "kind": "agent",
+      "estimated_input": 16177,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "actual_input": 14634,
+      "actual_output": 216,
+      "duration_s": 2.85,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 273,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:37+00:00",
+      "kind": "agent",
+      "estimated_input": 17818,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "actual_input": 16164,
+      "actual_output": 370,
+      "duration_s": 4.27,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 274,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:42+00:00",
+      "kind": "agent",
+      "estimated_input": 18445,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.53)",
+      "actual_input": 16761,
+      "actual_output": 45,
+      "duration_s": 1.88,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 275,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:44+00:00",
+      "kind": "compaction",
+      "estimated_input": 5175,
+      "reserve": 1200,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.52, margin=10%)",
+      "actual_input": 5691,
+      "actual_output": 1200,
+      "duration_s": 8.73,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 276,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:53+00:00",
+      "kind": "agent",
+      "estimated_input": 11432,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.52)",
+      "actual_input": 10153,
+      "actual_output": 172,
+      "duration_s": 2.03,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 277,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:55+00:00",
+      "kind": "agent",
+      "estimated_input": 11656,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "actual_input": 10442,
+      "actual_output": 45,
+      "duration_s": 1.17,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 278,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:12:57+00:00",
+      "kind": "agent",
+      "estimated_input": 12955,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.56)",
+      "actual_input": 11609,
+      "actual_output": 189,
+      "duration_s": 2.35,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 279,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:00+00:00",
+      "kind": "agent",
+      "estimated_input": 13206,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.57)",
+      "actual_input": 11917,
+      "actual_output": 499,
+      "duration_s": 4.75,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 280,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:05+00:00",
+      "kind": "agent",
+      "estimated_input": 13755,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.57)",
+      "actual_input": 12492,
+      "actual_output": 463,
+      "duration_s": 4.23,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 281,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:09+00:00",
+      "kind": "agent",
+      "estimated_input": 14347,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.57)",
+      "actual_input": 13032,
+      "actual_output": 473,
+      "duration_s": 4.99,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 282,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:14+00:00",
+      "kind": "agent",
+      "estimated_input": 14905,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.56)",
+      "actual_input": 13582,
+      "actual_output": 416,
+      "duration_s": 4.32,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 283,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:18+00:00",
+      "kind": "agent",
+      "estimated_input": 15418,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "actual_input": 14077,
+      "actual_output": 15,
+      "duration_s": 1.26,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 284,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:20+00:00",
+      "kind": "agent",
+      "estimated_input": 16165,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.52)",
+      "actual_input": 14873,
+      "actual_output": 86,
+      "duration_s": 1.94,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 285,
+      "task_id": "B2",
+      "ts": "2026-11-16T09:13:22+00:00",
+      "kind": "agent",
+      "estimated_input": 16554,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.49)",
+      "actual_input": 15104,
+      "actual_output": 317,
+      "duration_s": 3.66,
+      "status": "ok",
+      "note": null
+    }
+  ]
+}

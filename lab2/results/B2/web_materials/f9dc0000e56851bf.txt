@@ -1,0 +1,218 @@
+Источник: https://arxiv.org/abs/2510.27418v1
+Конечный URL: https://arxiv.org/abs/2510.27418v1
+HTTP: 200
+Заголовок: [2510.27418v1] Dynamic Affective Memory Management for Personalized LLM Agents
+Получено: полностью
+
+Skip to main content
+
+ Search
+
+ Submit
+ Donate
+
+Log in 
+
+ Search arXiv
+
+ Press Enter to search · Advanced search
+
+Computer Science > Computation and Language
+
+ arXiv:2510.27418v1 (cs)
+
+ [Submitted on 31 Oct 2025]
+
+Title:Dynamic Affective Memory Management for Personalized LLM Agents
+
+Authors:Junfeng Lu, Yueyan Li 
+View a PDF of the paper titled Dynamic Affective Memory Management for Personalized LLM Agents, by Junfeng Lu and Yueyan Li
+ View PDF
+ HTML (experimental)
+
+ Abstract:Advances in large language models are making personalized AI agents a new research focus. While current agent systems primarily rely on personalized external memory databases to deliver customized experiences, they face challenges such as memory redundancy, memory staleness, and poor memory-context integration, largely due to the lack of effective memory updates during interaction. To tackle these issues, we propose a new memory management system designed for affective scenarios. Our approach employs a Bayesian-inspired memory update algorithm with the concept of memory entropy, enabling the agent to autonomously maintain a dynamically updated memory vector database by minimizing global entropy to provide more personalized services. To better evaluate the system's effectiveness in this context, we propose DABench, a benchmark focusing on emotional expression and emotional change toward objects. Experimental results demonstrate that, our system achieves superior performance in personalization, logical coherence, and accuracy. Ablation studies further validate the effectiveness of the Bayesian-inspired update mechanism in alleviating memory bloat. Our work offers new insights into the design of long-term memory systems.
+
+ Comments:
+ 12 pasges, 8 figures
+
+ Subjects:
+
+ Computation and Language (cs.CL)
+
+ Cite as:
+ arXiv:2510.27418 [cs.CL]
+
+ (or 
+ arXiv:2510.27418v1 [cs.CL] for this version)
+
+ https://doi.org/10.48550/arXiv.2510.27418
+
+ Focus to learn more
+
+ arXiv-issued DOI via DataCite
+
+Submission history From: Junfeng Lu [view email] 
+ [v1]
+ Fri, 31 Oct 2025 12:12:51 UTC (466 KB)
+
+ Full-text links:
+
+Access Paper:
+
+View a PDF of the paper titled Dynamic Affective Memory Management for Personalized LLM Agents, by Junfeng Lu and Yueyan Li
+View PDF
+HTML (experimental)
+TeX Source
+
+view license
+
+Additional Features
+
+Audio Summary
+
+Current browse context:
+
+cs.CL
+
+ < prev
+
+   |   
+ next >
+
+ new
+ | 
+ recent
+ | 2025-10
+
+ Change to browse by:
+
+ cs
+
+References & Citations
+
+SciX
+Google Scholar
+
+Semantic Scholar
+
+ export BibTeX citation
+ Loading...
+
+BibTeX formatted citation
+ ×
+
+ loading...
+
+ Data provided by: 
+
+Bookmark
+
+ Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+ Bibliographic Explorer Toggle
+
+ Bibliographic Explorer (What is the Explorer?)
+
+ Connected Papers Toggle
+
+ Connected Papers (What is Connected Papers?)
+
+ Litmaps Toggle
+
+ Litmaps (What is Litmaps?)
+
+ scite.ai Toggle
+
+ scite Smart Citations (What are Smart Citations?)
+
+ Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+ alphaXiv Toggle
+
+ alphaXiv (What is alphaXiv?)
+
+ Links to Code Toggle
+
+ CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+
+ DagsHub Toggle
+
+ DagsHub (What is DagsHub?)
+
+ GotitPub Toggle
+
+ Gotit.pub (What is GotitPub?)
+
+ Huggingface Toggle
+
+ Hugging Face (What is Huggingface?)
+
+ ScienceCast Toggle
+
+ ScienceCast (What is ScienceCast?)
+
+ Demos
+
+Demos
+
+ Replicate Toggle
+
+ Replicate (What is Replicate?)
+
+ Spaces Toggle
+
+ Hugging Face Spaces (What is Spaces?)
+
+ Spaces Toggle
+
+ TXYZ.AI (What is TXYZ.AI?)
+
+ Related Papers
+
+Recommenders and Search Tools
+
+ Link to Influence Flower
+
+ Influence Flower (What are Influence Flowers?)
+
+ Core recommender toggle
+
+ CORE Recommender (What is CORE?)
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+ About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+
+ Which authors of this paper are endorsers? |
+ Disable MathJax (What is MathJax?)
+
+ We gratefully acknowledge support from our major funders,
+ member institutions, ,
+ and all contributors.
+
+ About ·
+ Help ·
+ Contact ·
+ Subscribe ·
+ Copyright ·
+ Privacy ·
+ Accessibility ·
+ Operational Status (opens in new tab)

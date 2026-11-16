@@ -1,0 +1,252 @@
+Источник: https://arxiv.org/abs/2608.03836v3
+Конечный URL: https://arxiv.org/abs/2608.03836v3
+HTTP: 200
+Заголовок: [2608.03836v3] Resume Means Resume: A Machine-Checked Conformance Contract for Checkpoint, Interrupt, and Resume Semantics in Workflow Persistence Layers
+Получено: полностью
+
+Skip to main content
+
+ Search
+
+ Submit
+ Donate
+
+Log in 
+
+ Search arXiv
+
+ Press Enter to search · Advanced search
+
+Computer Science > Machine Learning
+
+ arXiv:2608.03836v3 (cs)
+
+ [Submitted on 4 Aug 2026 (v1), last revised 8 Aug 2026 (this version, v3)]
+
+Title:Resume Means Resume: A Machine-Checked Conformance Contract for Checkpoint, Interrupt, and Resume Semantics in Workflow Persistence Layers
+
+Authors:Sajjad Khan 
+View a PDF of the paper titled Resume Means Resume: A Machine-Checked Conformance Contract for Checkpoint, Interrupt, and Resume Semantics in Workflow Persistence Layers, by Sajjad Khan
+ View PDF
+ HTML (experimental)
+
+ Abstract:A framework that persists execution state so a run can be interrupted, survive a crash, and continue must decide what a resume means for effects that already happened. Five widely deployed agent workflow frameworks answer differently, none exposes a machine-checkable contract, and measured behavior violates even the fragments they state. The RESUME CONTRACT states six properties over the persistence API (prefix continuation, effect exactly-once, fork determinism, checkpoint validity, consume-once, recovery determinism), plus fork-intent and liveness obligations. A TLA+ model checks a reference semantics exhaustively, unchanged at scaled bounds (7.4 million states), and the reference conjunction is additionally TLAPS-proved unbounded (196 obligations); a 39-cell fault matrix and two companion modules yield the separating models independence requires. A deterministic, LLM-free harness measures them at pinned releases. LangGraph 1.2.9 durably records a second resume value and never consults it, persists schema-invalid state silently, and re-executes durably recorded work after a real SIGKILL: exactly-once across interrupts, at-least-once across crashes, on one API. CrewAI 1.15.2 re-executes completed effect-bearing methods against its written claim; pydantic-graph 1.x cannot resume after a mid-node crash; no two probed frameworks share a conformance profile. Consume-once holds sequentially and fails under concurrent delivery: k processes resuming one parked interrupt fire the gated effect k times, saturation 1.0 in 36 of 40 cells, and the failure crosses hosts. REMIT, a reference sequencer whose Verus-verified recovery core is line-identical to the shipped executable, repairs the fork and validity cells. The cross-process cell is repaired at the read path: an opt-in gate claims consumption in the shared store, serving one racer and refusing the rest before any node executes.
+
+ Comments:
+ 25 pages, 10 tables, 1 figure. Supplementary material included as an ancillary file. v3: rejoins a paragraph split across a table float and harmonizes a label glyph in the supplement; no change to results, claims, or numbers
+
+ Subjects:
+
+ Machine Learning (cs.LG); Distributed, Parallel, and Cluster Computing (cs.DC); Logic in Computer Science (cs.LO); Software Engineering (cs.SE)
+
+ ACM classes:
+ D.2.4; D.2.5; F.3.1; C.2.4
+
+ Cite as:
+ arXiv:2608.03836 [cs.LG]
+
+ (or 
+ arXiv:2608.03836v3 [cs.LG] for this version)
+
+ https://doi.org/10.48550/arXiv.2608.03836
+
+ Focus to learn more
+
+ arXiv-issued DOI via DataCite
+
+Submission history From: Sajjad Khan [view email] 
+ [v1]
+ Tue, 4 Aug 2026 15:45:31 UTC (70 KB)
+
+ [v2]
+ Thu, 6 Aug 2026 15:41:56 UTC (70 KB)
+
+ [v3]
+ Sat, 8 Aug 2026 12:41:44 UTC (69 KB)
+
+ Full-text links:
+
+Access Paper:
+
+View a PDF of the paper titled Resume Means Resume: A Machine-Checked Conformance Contract for Checkpoint, Interrupt, and Resume Semantics in Workflow Persistence Layers, by Sajjad Khan
+View PDF
+HTML (experimental)
+TeX Source
+
+ view license
+
+ Ancillary-file links:
+
+Ancillary files (details):
+
+supplement.tex
+
+Additional Features
+
+Audio Summary
+
+Current browse context:
+
+cs.LG
+
+ < prev
+
+   |   
+ next >
+
+ new
+ | 
+ recent
+ | 2026-08
+
+ Change to browse by:
+
+ cs
+
+ cs.DC
+
+ cs.LO
+
+ cs.SE
+
+References & Citations
+
+SciX
+Google Scholar
+
+Semantic Scholar
+
+ export BibTeX citation
+ Loading...
+
+BibTeX formatted citation
+ ×
+
+ loading...
+
+ Data provided by: 
+
+Bookmark
+
+ Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+ Bibliographic Explorer Toggle
+
+ Bibliographic Explorer (What is the Explorer?)
+
+ Connected Papers Toggle
+
+ Connected Papers (What is Connected Papers?)
+
+ Litmaps Toggle
+
+ Litmaps (What is Litmaps?)
+
+ scite.ai Toggle
+
+ scite Smart Citations (What are Smart Citations?)
+
+ Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+ alphaXiv Toggle
+
+ alphaXiv (What is alphaXiv?)
+
+ Links to Code Toggle
+
+ CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+
+ DagsHub Toggle
+
+ DagsHub (What is DagsHub?)
+
+ GotitPub Toggle
+
+ Gotit.pub (What is GotitPub?)
+
+ Huggingface Toggle
+
+ Hugging Face (What is Huggingface?)
+
+ ScienceCast Toggle
+
+ ScienceCast (What is ScienceCast?)
+
+ Demos
+
+Demos
+
+ Replicate Toggle
+
+ Replicate (What is Replicate?)
+
+ Spaces Toggle
+
+ Hugging Face Spaces (What is Spaces?)
+
+ Spaces Toggle
+
+ TXYZ.AI (What is TXYZ.AI?)
+
+ Related Papers
+
+Recommenders and Search Tools
+
+ Link to Influence Flower
+
+ Influence Flower (What are Influence Flowers?)
+
+ Core recommender toggle
+
+ CORE Recommender (What is CORE?)
+
+ IArxiv recommender toggle
+
+ IArxiv Recommender
+ (What is IArxiv?)
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+ About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+
+ Which authors of this paper are endorsers? |
+ Disable MathJax (What is MathJax?)
+
+ We gratefully acknowledge support from our major funders,
+ member institutions, ,
+ and all contributors.
+
+ About ·
+ Help ·
+ Contact ·
+ Subscribe ·
+ Copyright ·
+ Privacy ·
+ Accessibility ·
+ Operational Status (opens in new tab)
+
+Major funding support from
+
+ (opens in new tab)
+
+ (opens in new tab)
+
+ (opens in new tab)
