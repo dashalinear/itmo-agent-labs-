@@ -151,7 +151,7 @@
       "runs": 0,
       "model_calls": 0,
       "tool_calls": 0,
-      "tokens": 690043,
+      "tokens": 982865,
       "compactions": 0,
       "peak_input": 0,
       "evidence": 0,
@@ -177,15 +177,97 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M2",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 17,
+      "model_calls": 55,
+      "tool_calls": 44,
+      "tokens": 1392548,
+      "compactions": 4,
+      "peak_input": 16698,
+      "evidence": 4,
+      "searches": {
+        "fulltext:L1": 1,
+        "grep:L1": 2,
+        "vector:L1": 1,
+        "fulltext:L2": 2,
+        "grep:L2": 9,
+        "vector:L2": 1
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M2-deep1",
+      "kind": "deep",
+      "status": "paused",
+      "reason": "agent ended the turn without complete_task",
+      "parent": "M2",
+      "runs": 1,
+      "model_calls": 30,
+      "tool_calls": 44,
+      "tokens": 388140,
+      "compactions": 2,
+      "peak_input": 16961,
+      "evidence": 9,
+      "searches": {
+        "fulltext:L1": 1,
+        "grep:L2": 4
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M2-exhaustive1",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Найдено подтверждений: 40 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; dat",
+      "parent": "M2",
+      "runs": 1,
+      "model_calls": 24,
+      "tool_calls": 57,
+      "tokens": 300524,
+      "compactions": 3,
+      "peak_input": 17313,
+      "evidence": 40,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "EXP2",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Найдено подтверждений: 37 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; dat",
+      "parent": "CLI",
+      "runs": 2,
+      "model_calls": 24,
+      "tool_calls": 54,
+      "tokens": 292822,
+      "compactions": 3,
+      "peak_input": 17209,
+      "evidence": 37,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 1,
-    "grep:L1": 5,
-    "vector:L1": 1,
-    "fulltext:L2": 1,
-    "grep:L2": 161,
-    "vector:L2": 1
+    "fulltext:L1": 3,
+    "grep:L1": 7,
+    "vector:L1": 2,
+    "fulltext:L2": 3,
+    "grep:L2": 174,
+    "vector:L2": 2
   },
   "exhaustive": [
     {
@@ -201,6 +283,36 @@
       "found_codes": 36,
       "missing_codes": [],
       "found_without_keyword": 10
+    },
+    {
+      "task_id": "M2-exhaustive1",
+      "status": "completed",
+      "runs": 1,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 40,
+      "expected_codes": 36,
+      "found_codes": 36,
+      "missing_codes": [],
+      "found_without_keyword": 10
+    },
+    {
+      "task_id": "EXP2",
+      "status": "completed",
+      "runs": 2,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 37,
+      "expected_codes": 36,
+      "found_codes": 35,
+      "missing_codes": [
+        "L-ST-30"
+      ],
+      "found_without_keyword": 9
     }
   ]
 }
