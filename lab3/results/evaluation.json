@@ -259,14 +259,57 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M3",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 8,
+      "model_calls": 29,
+      "tool_calls": 22,
+      "tokens": 732765,
+      "compactions": 1,
+      "peak_input": 16202,
+      "evidence": 1,
+      "searches": {
+        "grep:L2": 2
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M3-deep1",
+      "kind": "deep",
+      "status": "paused",
+      "reason": "no progress: search_grep returned the same result 6 times",
+      "parent": "M3",
+      "runs": 1,
+      "model_calls": 30,
+      "tool_calls": 67,
+      "tokens": 392357,
+      "compactions": 3,
+      "peak_input": 17383,
+      "evidence": 0,
+      "searches": {
+        "fulltext:L1": 1,
+        "vector:L1": 1,
+        "grep:L2": 17,
+        "grep:L1": 2
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 3,
-    "grep:L1": 7,
-    "vector:L1": 2,
+    "fulltext:L1": 4,
+    "grep:L1": 9,
+    "vector:L1": 3,
     "fulltext:L2": 3,
-    "grep:L2": 174,
+    "grep:L2": 193,
     "vector:L2": 2
   },
   "exhaustive": [
