@@ -12,7 +12,8 @@ from . import LAB1_ROOT, LAB2_ROOT, LAB3_ROOT
 DEFAULT_LIMITS = {
     "ingest": {"max_total_tokens": 8_000_000, "max_model_calls": 450, "max_tool_calls": 2000, "task_deadline_s": 10800,
                "working_context_tokens": 28000, "compaction_trigger": 0.75, "compaction_target": 0.45},
-    "main": {"max_total_tokens": 4_000_000, "max_model_calls": 200, "max_tool_calls": 800, "task_deadline_s": 10800,
+    "main": {"max_total_tokens": 4_000_000, "max_model_calls": 300, "max_tool_calls": 1200, "task_deadline_s": 10800,
+             "max_model_calls_per_run": 30,
              "working_context_tokens": 28000, "compaction_trigger": 0.75, "compaction_target": 0.45},
 }
 

@@ -306,3 +306,17 @@ async def test_ingestion_agent_organizes_and_indexes_then_rerun_without_duplicat
             assert idx.count("L2") == n1 and idx.count("L1") == 3
     finally:
         idx.drop()
+
+
+def test_submit_result_without_findings_is_composed_from_evidence(env):
+    from navsearch.subagents import SubmitTools
+    from navsearch.tools_corpus import CorpusTools
+    ct = CorpusTools(env)
+    hit = ct.search_grep("РС-7", "L2")["hits"][0]
+    ct.cite_fragment(hit["fragment_id"], hit["text"][:60], "РС-7")
+    full = {"complete": True, "fragments_read": 1, "fragments_total": 1, "documents": []}
+    st = SubmitTools(env.store, env.task_id, "exhaustive", coverage_fn=lambda: full)
+    res = st.submit_result()                                   # the model called submit_result({})
+    assert res["status"] == "completed"
+    t = env.store.get_task(env.task_id)
+    assert "Найдено подтверждений: 1" in t["completion"]["findings"]

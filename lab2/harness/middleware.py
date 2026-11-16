@@ -61,6 +61,30 @@ class ToolRuntimeMiddleware(AgentMiddleware):
     def __init__(self, ctx: HarnessContext) -> None:
         super().__init__()
         self.ctx = ctx
+        self._seen: dict[str, tuple[str, int]] = {}
+
+    def _repeat_guard(self, request: ToolCallRequest, res):
+        """No-progress detector: the same call (tool + arguments) returning the SAME result again inside one run.
+        Status tools that return a changed state (corpus_status, ls after moves...) are not affected."""
+        L = self.ctx.limits
+        if not isinstance(res, ToolMessage) or not (L.repeat_call_warn or L.repeat_call_stop):
+            return res
+        key = request.tool_call["name"] + json.dumps(request.tool_call["args"], ensure_ascii=False, sort_keys=True)
+        digest = str(hash(_text(res.content)))
+        prev, n = self._seen.get(key, ("", 0))
+        n = n + 1 if prev == digest else 1
+        self._seen[key] = (digest, n)
+        if L.repeat_call_stop and n >= L.repeat_call_stop:
+            self.ctx.emit("guardrail", guard="no_progress", tool=request.tool_call["name"], repeats=n)
+            self.ctx.request_stop("paused", f"no progress: {request.tool_call['name']} returned the same result {n} times")
+            return _tool_error(request, "no_progress", f"The same call returned the same result {n} times; the run is stopped")
+        if L.repeat_call_warn and n >= L.repeat_call_warn:
+            self.ctx.emit("guardrail", guard="repeated_call", tool=request.tool_call["name"], repeats=n)
+            return _tool_error(request, "repeated_call",
+                               f"This exact call already returned the same result {n - 1} times in this turn. Do not repeat it: "
+                               "use the earlier result, change the approach, or answer with what you have "
+                               "(say explicitly what the corpus does not confirm).")
+        return res
 
     def _pre(self, request: ToolCallRequest) -> ToolMessage | None:
         ctx = self.ctx
@@ -85,7 +109,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         try:
             res = await asyncio.wait_for(handler(request), timeout=self.ctx.limits.tool_timeout_s)
             self.ctx.crash_check("after")
-            return res
+            return self._repeat_guard(request, res)
         except asyncio.TimeoutError:
             self.ctx.emit("guardrail", guard="tool_timeout", tool=request.tool_call["name"],
                           timeout_s=self.ctx.limits.tool_timeout_s)
@@ -99,7 +123,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         if blocked:
             return blocked
         try:
-            return handler(request)
+            return self._repeat_guard(request, handler(request))
         except Exception as e:  # noqa: BLE001
             return _tool_error(request, "tool_exception", f"{type(e).__name__}: {e}"[:800])
 
@@ -451,6 +475,11 @@ class ModelGuardMiddleware(AgentMiddleware):
         ctx, L = self.ctx, self.ctx.limits
         if ctx.stop:
             return self._stop(ctx.stop["status"], ctx.stop["reason"])
+        self._run_calls = getattr(self, "_run_calls", 0) + 1
+        if L.max_model_calls_per_run and self._run_calls > L.max_model_calls_per_run:
+            ctx.emit("guardrail", guard="model_calls_per_run", limit=L.max_model_calls_per_run)
+            return AIMessage(content=f"[harness] Лимит {L.max_model_calls_per_run} вызовов модели на один ход исчерпан. "
+                                     "Отвечаю тем, что уже найдено; продолжить можно следующей репликой.")
         ctrl = ctx.store.get_control(ctx.task_id)
         if ctrl:
             status = "cancelled" if ctrl["action"] == "cancel" else "paused"

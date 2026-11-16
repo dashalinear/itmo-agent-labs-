@@ -184,3 +184,15 @@ def test_evidence_tolerates_line_prefixes_and_typography(ws, store, artifacts, b
     quote = f'{line_no}: ' + text[start:start + 60].replace("«", '"').replace("»", '"')
     r = tt.save_evidence("АС-01", "decision", HANDBOOK, quote, page=4)
     assert r["status"] == "saved" and r["line_start"] == line_no
+
+
+def test_quote_with_inner_number_colon_is_not_mangled(ws, store, artifacts, budget):
+    """'Шаг 2: ...' inside a quote is source text, only a leading 'N: ' line number is stripped."""
+    (ws.root / "data" / "notes").mkdir(parents=True, exist_ok=True)
+    (ws.root / "data" / "notes" / "rb.md").write_text("# RB\n\nШаг 2: восстановить снимок на узле es-new-01 (код X-1).\n",
+                                                     encoding="utf-8")
+    tt = TaskTools(ws, Catalog(ws), store, "T", artifacts, budget)
+    r = tt.save_evidence("шаг 2", "fact", "data/notes/rb.md", "Шаг 2: восстановить снимок на узле es-new-01 (код X-1).")
+    assert r["line_start"] == 3
+    r2 = tt.save_evidence("с номером строки", "fact", "data/notes/rb.md", "3: Шаг 2: восстановить снимок на узле es-new-01")
+    assert r2["line_start"] == 3

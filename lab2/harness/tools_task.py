@@ -38,7 +38,7 @@ _CHARS = str.maketrans({"\u00ab": '"', "\u00bb": '"', "\u201c": '"', "\u201d": '
                         "\u2018": "'", "\u2014": "-", "\u2013": "-", "\u2011": "-", "\u00a0": " ", "\u2009": " ",
                         "\u202f": " ", "\u2026": "..."})
 # line-number prefixes and page labels added by read_pages / read_lines / read_artifact are not source text
-_PREFIX = re.compile(r"(?:(?<=\s)|^)\d{1,7}: |\[стр\. \d+ \| строки \d+[–-]\d+\]")
+_PREFIX = re.compile(r"(?m)^[ \t]*\d{1,7}: |\[стр\. \d+ \| строки \d+[–-]\d+\]")
 
 
 def _norm(s: str) -> str:

@@ -194,3 +194,37 @@ async def test_llm_timeout_retries_then_pause(cfg):
         assert t["status"] == "paused" and "LLM unavailable after 3 attempts" in t["status_reason"]
         u = r.store.usage("A")
         assert u["failed_calls"] == 3 and u["failed_call_tokens"] > 0 and u["model_calls"] == 0
+
+
+async def test_repeated_identical_calls_are_stopped(cfg):
+    same = [tc("search_text", {"query": "нет такого текста XYZ", "path": "data/search"})]
+    model = PolicyModel(plan=[same] * 10 + ["done"])
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        ev = [e["data"] for e in r.store.events("A", "guardrail")]
+        assert any(e["guard"] == "repeated_call" for e in ev) and any(e["guard"] == "no_progress" for e in ev)
+        t = r.store.get_task("A")
+        assert t["status"] == "paused" and "no progress" in t["status_reason"]
+        assert model.calls <= 7                                   # stopped instead of burning the budget
+
+
+async def test_status_tools_with_changing_results_are_not_blocked(cfg):
+    plan = [[tc("read_pages", {"path": HANDBOOK, "start_page": 2, "end_page": 2})], [tc("task_progress", {})],
+            [tc("read_pages", {"path": HANDBOOK, "start_page": 3, "end_page": 3})], [tc("task_progress", {})],
+            [tc("read_pages", {"path": HANDBOOK, "start_page": 4, "end_page": 4})], [tc("task_progress", {})], "ok"]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        assert not [e for e in r.store.events("A", "guardrail") if e["data"]["guard"] in ("repeated_call", "no_progress")]
+
+
+async def test_model_calls_per_run_cap_ends_the_turn_not_the_task(cfg):
+    model = PolicyModel(plan=reading_plan(range(2, 200, 1)))
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec(), overrides={"max_model_calls_per_run": "5"})
+        res = await r.run("A", user_text="читай")
+        assert "Лимит 5 вызовов модели на один ход" in res["answer"]
+        assert r.store.usage("A")["model_calls"] == 5
+        res2 = await r.run("A", user_text="продолжай")             # the next turn works again
+        assert r.store.usage("A")["model_calls"] == 10

@@ -5,6 +5,8 @@ Run INSIDE the ITMO network, Docker Desktop running:
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1                  # everything
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part dialog     # only the main dialog M1
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part exhaustive # only partial+resume EXP1
+    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part rerun -MainTask M2 -ExpTask EXP2
+                                                        # dialog + exhaustive again with new task ids, corpus kept
     ... -SkipPush -SkipTests
 
 Steps (task ids):
@@ -16,10 +18,12 @@ Steps (task ids):
   EXP1  exhaustive sub-agent from the CLI with a tiny budget (partial), then resume with a larger one
 #>
 param(
-    [ValidateSet("all", "dialog", "exhaustive")][string]$Part = "all",
+    [ValidateSet("all", "dialog", "exhaustive", "rerun")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
-    [string]$EnvFile = ".env"
+    [string]$EnvFile = ".env",
+    [string]$MainTask = "M1",
+    [string]$ExpTask = "EXP1"
 )
 
 $ErrorActionPreference = "Stop"
@@ -117,17 +121,17 @@ if ($Part -eq "all") {
     Nav probe | Out-Null
 }
 
-if ($Part -in @("all", "dialog")) {
-    Step "11. M1: main agent dialog with non-blocking deep and exhaustive sub-agents"
-    Nav chat --task-id M1 --script demo\dialog_main_ru.txt | Out-Null
+if ($Part -in @("all", "dialog", "rerun")) {
+    Step "11. $($MainTask): main agent dialog with non-blocking deep and exhaustive sub-agents"
+    Nav chat --task-id $MainTask --script demo\dialog_main_ru.txt | Out-Null
 }
 
-if ($Part -in @("all", "exhaustive")) {
-    Step "12. EXP1: exhaustive from the CLI with a tiny budget (partial), then resume"
-    Nav subagent --kind exhaustive --scope storage --task-id EXP1 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
-    Nav coverage --task-id EXP1 | Out-Null
-    Nav resume --task-id EXP1 --set max_model_calls=120 | Out-Null
-    Nav coverage --task-id EXP1 | Out-Null
+if ($Part -in @("all", "exhaustive", "rerun")) {
+    Step "12. $($ExpTask): exhaustive from the CLI with a tiny budget (partial), then resume"
+    Nav subagent --kind exhaustive --scope storage --task-id $ExpTask --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
+    Nav coverage --task-id $ExpTask | Out-Null
+    Nav resume --task-id $ExpTask --set max_model_calls=120 | Out-Null
+    Nav coverage --task-id $ExpTask | Out-Null
 }
 
 Step "13. Export and technical results"

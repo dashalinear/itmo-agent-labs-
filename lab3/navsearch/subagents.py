@@ -193,7 +193,7 @@ class SubagentManager:
 
 # ------------------------------------------------------------------ result submission inside sub-agents
 class SubmitArgs(BaseModel):
-    findings: str = Field(description="Your conclusions with references to evidence_id")
+    findings: str = Field("", description="Your conclusions with references to evidence_id (empty: the harness lists the evidence)")
     open_questions: list[str] = Field(default_factory=list, description="What remained unclear or unconfirmed")
 
 
@@ -203,8 +203,14 @@ class SubmitTools:
         self.coverage_fn = coverage_fn
         self.render_fn = render_fn
 
-    def submit_result(self, findings: str, open_questions: list[str] | None = None) -> dict:
+    def submit_result(self, findings: str = "", open_questions: list[str] | None = None) -> dict:
         ev = self.store.evidence(self.task_id)
+        if not (findings or "").strip():
+            by_doc: dict[str, int] = {}
+            for e in ev:
+                by_doc[e["source"]] = by_doc.get(e["source"], 0) + 1
+            findings = (f"Найдено подтверждений: {len(ev)} в {len(by_doc)} документах: "
+                        + "; ".join(f"{p} — {n}" for p, n in sorted(by_doc.items())) + " (итог собран harness по evidence)")
         if self.kind == "exhaustive":
             cov = self.coverage_fn()
             if not cov["complete"]:

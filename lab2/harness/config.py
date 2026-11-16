@@ -51,6 +51,9 @@ class Limits:
     # --- time / retries
     llm_timeout_s: float = 180.0
     llm_retries: int = 2
+    max_model_calls_per_run: int = 0     # 0 = off; dialog agents: cap per user turn
+    repeat_call_warn: int = 3            # same tool + same args N times in one run -> error observation
+    repeat_call_stop: int = 6            # ... M times -> the run stops with 'no progress'
     tool_timeout_s: float = 60.0
 
     @classmethod
