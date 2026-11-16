@@ -7,6 +7,7 @@ Run INSIDE the ITMO network, Docker Desktop running:
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part exhaustive # only partial+resume EXP1
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part rerun -MainTask M2 -ExpTask EXP2
                                                         # dialog + exhaustive again with new task ids, corpus kept
+    powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part delegation -MainTask M3 -SkipTests
     ... -SkipPush -SkipTests
 
 Steps (task ids):
@@ -18,7 +19,7 @@ Steps (task ids):
   EXP1  exhaustive sub-agent from the CLI with a tiny budget (partial), then resume with a larger one
 #>
 param(
-    [ValidateSet("all", "dialog", "exhaustive", "rerun")][string]$Part = "all",
+    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$EnvFile = ".env",
@@ -124,6 +125,13 @@ if ($Part -eq "all") {
 if ($Part -in @("all", "dialog", "rerun")) {
     Step "11. $($MainTask): main agent dialog with non-blocking deep and exhaustive sub-agents"
     Nav chat --task-id $MainTask --script demo\dialog_main_ru.txt | Out-Null
+}
+
+if ($Part -in @("all", "delegation")) {
+    $dt = "M3"
+    if ($Part -eq "delegation") { $dt = $MainTask }
+    Step "11b. $($dt): non-blocking delegation dialog (main answers while sub-agents work)"
+    Nav chat --task-id $dt --script demo\dialog_delegation_ru.txt | Out-Null
 }
 
 if ($Part -in @("all", "exhaustive", "rerun")) {

@@ -64,8 +64,23 @@ class TaskRunner:
     async def __aenter__(self) -> "TaskRunner":
         self.cfg.state_dir.mkdir(parents=True, exist_ok=True)
         self.store = TaskStore(self.cfg.state_dir / "state.db")
-        self.checkpointer = await self._stack.enter_async_context(
-            AsyncSqliteSaver.from_conn_string(str(self.cfg.state_dir / "checkpoints.db")))
+        # Windows: right after the previous process closed the database, antivirus/indexer may still hold the
+        # file for a moment ("disk I/O error"); open and set up the checkpointer with a few retries.
+        import sqlite3
+        for attempt in range(6):
+            stack = contextlib.AsyncExitStack()
+            try:
+                cp = await stack.enter_async_context(
+                    AsyncSqliteSaver.from_conn_string(str(self.cfg.state_dir / "checkpoints.db")))
+                await cp.setup()
+                break
+            except sqlite3.OperationalError:
+                await stack.aclose()
+                if attempt == 5:
+                    raise
+                await asyncio.sleep(1.5 * (attempt + 1))
+        self._stack.push_async_callback(stack.aclose)
+        self.checkpointer = cp
         if self.use_mcp:
             mcp = MCPConnection(self.cfg.base)
             self.mcp_tools = await mcp.__aenter__()

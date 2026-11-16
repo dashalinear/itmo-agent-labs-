@@ -233,6 +233,7 @@ async def test_non_blocking_deep_subagent_and_chained_budget(cfg):
         res3 = await r.run("M-T", user_text="Покажи результат исследования", label="chat", agent_factory=f)
         sub = r.store.get_task(child)
         assert sub["status"] == "completed" and sub["spec"]["parent_task_id"] == "M-T"
+        assert sub["limits"]["max_model_calls_per_run"] == 0          # the dialog per-turn cap is not inherited
         assert "PostgreSQL 16" in res3["answer"]
         assert len(r.store.evidence(child)) == 2 and all(e["fragment_id"] for e in r.store.evidence(child))
         assert r.store.usage("M-T")["input_tokens"] >= r.store.usage(child)["input_tokens"] > 0   # charged to the parent

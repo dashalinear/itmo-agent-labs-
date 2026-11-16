@@ -32,9 +32,12 @@ from harness.budget import Budget, BudgetExhausted
 from harness.config import Limits
 from harness.store import TaskStore
 
+MAX_RESULT_WAIT_S = 20
+
 DEFAULT_SUB_LIMITS = {
-    "deep": {"max_total_tokens": 450_000, "max_model_calls": 40, "max_tool_calls": 160},
-    "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300},
+    # sub-agents work in one run until they submit: no per-turn cap (that cap is for the dialog of the main agent)
+    "deep": {"max_total_tokens": 450_000, "max_model_calls": 40, "max_tool_calls": 160, "max_model_calls_per_run": 0},
+    "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0},
 }
 
 
@@ -105,7 +108,7 @@ class TaskIdArg(BaseModel):
 
 class ResultArgs(BaseModel):
     task_id: str
-    wait_seconds: int = Field(0, description="Wait up to N seconds (0..240) if the sub-task is still running")
+    wait_seconds: int = Field(0, description="Wait up to N seconds (0..20) if the sub-task is still running")
 
 
 class SubagentManager:
@@ -162,7 +165,8 @@ class SubagentManager:
             return err("subagent_result", e.type, e.message)
         t = self.tasks.get(task_id)
         if t and not t.done() and wait_seconds > 0:
-            await asyncio.wait({t}, timeout=min(int(wait_seconds), 240))
+            # short wait only (below the tool timeout): the main agent must keep answering the user
+            await asyncio.wait({t}, timeout=min(int(wait_seconds), MAX_RESULT_WAIT_S))
         if t and not t.done():
             return ok("subagent_result", task_id=task_id, status="running",
                       note="Still running; answer the user and ask again later.", progress=self.status(task_id))
