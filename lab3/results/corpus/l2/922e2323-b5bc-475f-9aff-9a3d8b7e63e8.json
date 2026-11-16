@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+ "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+ "fragments": [
+  {
+   "fragment_id": "e0c0553a-9fee-5bd0-9d76-58692eaf5f5b",
+   "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+   "path": "data/agents/prompt_injection.md",
+   "folder": "agents",
+   "doc_title": "Инъекции в документах",
+   "section_id": "s01",
+   "section_title": "Инъекции в документах",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "6397ccc2-319b-5524-97c3-a867395c096d"
+  },
+  {
+   "fragment_id": "6397ccc2-319b-5524-97c3-a867395c096d",
+   "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+   "path": "data/agents/prompt_injection.md",
+   "folder": "agents",
+   "doc_title": "Инъекции в документах",
+   "section_id": "s02",
+   "section_title": "Правило",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+   "ordinal": 2,
+   "prev_id": "e0c0553a-9fee-5bd0-9d76-58692eaf5f5b",
+   "next_id": "db5822a0-379a-5150-9ac9-8bc4276fe574"
+  },
+  {
+   "fragment_id": "db5822a0-379a-5150-9ac9-8bc4276fe574",
+   "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+   "path": "data/agents/prompt_injection.md",
+   "folder": "agents",
+   "doc_title": "Инъекции в документах",
+   "section_id": "s03",
+   "section_title": "Пример",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+   "ordinal": 3,
+   "prev_id": "6397ccc2-319b-5524-97c3-a867395c096d",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:48+00:00"
+}

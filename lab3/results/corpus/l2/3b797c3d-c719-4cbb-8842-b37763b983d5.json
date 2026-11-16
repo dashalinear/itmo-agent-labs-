@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+ "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+ "fragments": [
+  {
+   "fragment_id": "b3f6697b-a252-5e83-b991-cd91e50bd3fb",
+   "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+   "path": "data/agents/subagents.md",
+   "folder": "agents",
+   "doc_title": "Субагенты и делегирование",
+   "section_id": "s01",
+   "section_title": "Субагенты",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "6ab6bf2d-ceb3-536b-a767-fa269a9f0c09"
+  },
+  {
+   "fragment_id": "6ab6bf2d-ceb3-536b-a767-fa269a9f0c09",
+   "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+   "path": "data/agents/subagents.md",
+   "folder": "agents",
+   "doc_title": "Субагенты и делегирование",
+   "section_id": "s02",
+   "section_title": "Результат",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+   "ordinal": 2,
+   "prev_id": "b3f6697b-a252-5e83-b991-cd91e50bd3fb",
+   "next_id": "8cc26099-687c-59a9-8c2c-73008d61f302"
+  },
+  {
+   "fragment_id": "8cc26099-687c-59a9-8c2c-73008d61f302",
+   "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+   "path": "data/agents/subagents.md",
+   "folder": "agents",
+   "doc_title": "Субагенты и делегирование",
+   "section_id": "s03",
+   "section_title": "Бюджет",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+   "ordinal": 3,
+   "prev_id": "6ab6bf2d-ceb3-536b-a767-fa269a9f0c09",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:48+00:00"
+}

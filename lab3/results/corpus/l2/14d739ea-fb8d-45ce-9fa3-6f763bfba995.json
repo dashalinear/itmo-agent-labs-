@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "14d739ea-fb8d-45ce-9fa3-6f763bfba995",
+ "content_hash": "sha256:c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+ "fragments": [
+  {
+   "fragment_id": "1aa684fd-77ed-5c50-86f7-29d3d73bb461",
+   "document_id": "14d739ea-fb8d-45ce-9fa3-6f763bfba995",
+   "path": "data/meetings/meeting_2026-10-09_weekly.md",
+   "folder": "meetings",
+   "doc_title": "Еженедельная встреча DocSearch, 2026-10-09",
+   "section_id": "s01",
+   "section_title": "Решения",
+   "start_line": 1,
+   "end_line": 8,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "01404806-efe2-596e-95ef-3eaf44719c83"
+  },
+  {
+   "fragment_id": "01404806-efe2-596e-95ef-3eaf44719c83",
+   "document_id": "14d739ea-fb8d-45ce-9fa3-6f763bfba995",
+   "path": "data/meetings/meeting_2026-10-09_weekly.md",
+   "folder": "meetings",
+   "doc_title": "Еженедельная встреча DocSearch, 2026-10-09",
+   "section_id": "s02",
+   "section_title": "Риски и заметки",
+   "start_line": 10,
+   "end_line": 15,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+   "ordinal": 2,
+   "prev_id": "1aa684fd-77ed-5c50-86f7-29d3d73bb461",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

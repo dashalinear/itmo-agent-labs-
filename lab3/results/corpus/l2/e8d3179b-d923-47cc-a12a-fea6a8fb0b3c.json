@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+ "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+ "fragments": [
+  {
+   "fragment_id": "8acd784f-d81d-51e8-b432-4cfa9bb0d94e",
+   "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+   "path": "data/agents/react_pattern.md",
+   "folder": "agents",
+   "doc_title": "Паттерн ReAct",
+   "section_id": "s01",
+   "section_title": "Паттерн ReAct",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "1c99d617-e943-59f1-b933-32033a5c12b0"
+  },
+  {
+   "fragment_id": "1c99d617-e943-59f1-b933-32033a5c12b0",
+   "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+   "path": "data/agents/react_pattern.md",
+   "folder": "agents",
+   "doc_title": "Паттерн ReAct",
+   "section_id": "s02",
+   "section_title": "Цикл",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+   "ordinal": 2,
+   "prev_id": "8acd784f-d81d-51e8-b432-4cfa9bb0d94e",
+   "next_id": "62172614-1318-50f1-b067-9b3a651470d4"
+  },
+  {
+   "fragment_id": "62172614-1318-50f1-b067-9b3a651470d4",
+   "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+   "path": "data/agents/react_pattern.md",
+   "folder": "agents",
+   "doc_title": "Паттерн ReAct",
+   "section_id": "s03",
+   "section_title": "Граф в LangGraph",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+   "ordinal": 3,
+   "prev_id": "1c99d617-e943-59f1-b933-32033a5c12b0",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:48+00:00"
+}

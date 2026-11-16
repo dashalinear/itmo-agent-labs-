@@ -1,0 +1,206 @@
+{
+  "corpus": {
+    "documents_L0": 56,
+    "with_L1": 55,
+    "fragments_L2": 323,
+    "folders": [
+      {
+        "folder": "_unsorted",
+        "documents": 1,
+        "fragments": 0
+      },
+      {
+        "folder": "agents",
+        "documents": 10,
+        "fragments": 31
+      },
+      {
+        "folder": "courses",
+        "documents": 5,
+        "fragments": 155
+      },
+      {
+        "folder": "howto",
+        "documents": 2,
+        "fragments": 4
+      },
+      {
+        "folder": "meetings",
+        "documents": 6,
+        "fragments": 12
+      },
+      {
+        "folder": "ops",
+        "documents": 6,
+        "fragments": 19
+      },
+      {
+        "folder": "projects",
+        "documents": 6,
+        "fragments": 21
+      },
+      {
+        "folder": "search",
+        "documents": 10,
+        "fragments": 34
+      },
+      {
+        "folder": "storage",
+        "documents": 10,
+        "fragments": 47
+      }
+    ],
+    "es": {
+      "L1": 55,
+      "L2": 323
+    },
+    "validation": {
+      "ok": true,
+      "documents": 56,
+      "with_l1": 55,
+      "fragments_checked": 323,
+      "problems_total": 0
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "ING1",
+      "kind": "ingest",
+      "status": "completed",
+      "reason": "Все файлы из input перенесены в data по темам (9 папок, 53 документа). L1 написан для 52 д",
+      "parent": null,
+      "runs": 4,
+      "model_calls": 242,
+      "tool_calls": 995,
+      "tokens": 3970097,
+      "compactions": 54,
+      "peak_input": 17673,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 89,
+      "l2_indexed": 66,
+      "crashes": 0
+    },
+    {
+      "task_id": "ING2",
+      "kind": "ingest",
+      "status": "completed",
+      "reason": "3 файла из input/new_files разложены по темам (agents, search, ops), для каждого записаны ",
+      "parent": null,
+      "runs": 1,
+      "model_calls": 9,
+      "tool_calls": 21,
+      "tokens": 100325,
+      "compactions": 0,
+      "peak_input": 13710,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 3,
+      "l2_indexed": 3,
+      "crashes": 0
+    },
+    {
+      "task_id": "ING3",
+      "kind": "ingest",
+      "status": "completed",
+      "reason": "Папка input пуста — новых файлов нет. Корпус уже актуален: 56 документов, 55 с L1 (пустой ",
+      "parent": null,
+      "runs": 1,
+      "model_calls": 5,
+      "tool_calls": 6,
+      "tokens": 39894,
+      "compactions": 0,
+      "peak_input": 8467,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M1",
+      "kind": "main",
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 200)",
+      "parent": null,
+      "runs": 17,
+      "model_calls": 200,
+      "tool_calls": 191,
+      "tokens": 2664404,
+      "compactions": 9,
+      "peak_input": 16989,
+      "evidence": 5,
+      "searches": {
+        "fulltext:L1": 1,
+        "grep:L1": 5,
+        "vector:L1": 1,
+        "fulltext:L2": 1,
+        "grep:L2": 161,
+        "vector:L2": 1
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "CLI",
+      "kind": "main",
+      "status": "parent of CLI sub-agents",
+      "reason": "",
+      "parent": null,
+      "runs": 0,
+      "model_calls": 0,
+      "tool_calls": 0,
+      "tokens": 690043,
+      "compactions": 0,
+      "peak_input": 0,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "EXP1",
+      "kind": "exhaustive",
+      "status": "paused",
+      "reason": "budget exhausted before the call (tokens: needed 13242, remaining 9957 of 700000)",
+      "parent": "CLI",
+      "runs": 2,
+      "model_calls": 62,
+      "tool_calls": 94,
+      "tokens": 690043,
+      "compactions": 5,
+      "peak_input": 16885,
+      "evidence": 38,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    }
+  ],
+  "search_combinations": {
+    "fulltext:L1": 1,
+    "grep:L1": 5,
+    "vector:L1": 1,
+    "fulltext:L2": 1,
+    "grep:L2": 161,
+    "vector:L2": 1
+  },
+  "exhaustive": [
+    {
+      "task_id": "EXP1",
+      "status": "paused",
+      "runs": 2,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 38,
+      "expected_codes": 36,
+      "found_codes": 36,
+      "missing_codes": [],
+      "found_without_keyword": 10
+    }
+  ]
+}

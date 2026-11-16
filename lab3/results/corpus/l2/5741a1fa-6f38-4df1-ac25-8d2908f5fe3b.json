@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+ "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+ "fragments": [
+  {
+   "fragment_id": "479ac790-74bb-5523-82cb-c863750d8fa0",
+   "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+   "path": "data/projects/docsearch_requirements.md",
+   "folder": "projects",
+   "doc_title": "Требования к DocSearch",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "21522d9d-2b50-54c4-ad75-23fc0e1353f7"
+  },
+  {
+   "fragment_id": "21522d9d-2b50-54c4-ad75-23fc0e1353f7",
+   "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+   "path": "data/projects/docsearch_requirements.md",
+   "folder": "projects",
+   "doc_title": "Требования к DocSearch",
+   "section_id": "s02",
+   "section_title": "Ответы",
+   "start_line": 5,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+   "ordinal": 2,
+   "prev_id": "479ac790-74bb-5523-82cb-c863750d8fa0",
+   "next_id": "2ef289ef-ef1a-5212-8649-1bc4d3d3d016"
+  },
+  {
+   "fragment_id": "2ef289ef-ef1a-5212-8649-1bc4d3d3d016",
+   "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+   "path": "data/projects/docsearch_requirements.md",
+   "folder": "projects",
+   "doc_title": "Требования к DocSearch",
+   "section_id": "s03",
+   "section_title": "Полный обход",
+   "start_line": 11,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+   "ordinal": 3,
+   "prev_id": "21522d9d-2b50-54c4-ad75-23fc0e1353f7",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:04:34+00:00"
+}

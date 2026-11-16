@@ -1,0 +1,43 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "e625cae6-6c4f-4673-87db-8839f34f778a",
+ "path": "data/storage/st_checkpoint_postgres.md",
+ "folder": "storage",
+ "title": "Чекпоинты в PostgreSQL",
+ "description": "Как хранить чекпоинты агентов в PostgreSQL: схема таблиц, пул соединений, миграции.",
+ "summary": "Документ о PostgreSQL как общем хранилище чекпоинтов для нескольких рабочих процессов. Схема: таблица checkpoints с ключом (thread_id, checkpoint_id) и checkpoint_writes для ожидающих записей; JSONB-значения лучше держать меньше 1 МБ [L-ST-05]. Пул соединений ограничен 20 на процесс; при исчерпании шаги ждут соединения и могут упереться в таймаут [L-ST-06]. Миграции применяются до запуска новых процессов; откат после записи новых чекпоинтов невозможен без их потери [L-ST-07].",
+ "content_hash": "sha256:1608c190abb07c975a005e97d5c4ff29ce9a24d7d228e558604fa4d04ae1c6ec",
+ "lines": 41,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Когда выбирают PostgreSQL",
+   "start_line": 1,
+   "end_line": 11,
+   "summary": "PostgreSQL выбирают при нескольких рабочих процессах, пишущих в общее хранилище; запись атомарна."
+  },
+  {
+   "section_id": "s02",
+   "title": "Схема таблиц",
+   "start_line": 13,
+   "end_line": 21,
+   "summary": "checkpoints (thread_id, checkpoint_id) и checkpoint_writes; JSONB < 1 МБ [L-ST-05]."
+  },
+  {
+   "section_id": "s03",
+   "title": "Пул соединений",
+   "start_line": 23,
+   "end_line": 31,
+   "summary": "20 соединений на процесс; исчерпание пула ведёт к таймаутам [L-ST-06]."
+  },
+  {
+   "section_id": "s04",
+   "title": "Миграции",
+   "start_line": 33,
+   "end_line": 41,
+   "summary": "Миграции до запуска процессов; откат невозможен без потери чекпоинтов [L-ST-07]."
+  }
+ ],
+ "written_at": "2026-11-16T21:08:45+00:00",
+ "written_by": "agent (write_l1)"
+}

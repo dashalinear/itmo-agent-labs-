@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+ "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+ "fragments": [
+  {
+   "fragment_id": "d209c81b-641f-5eee-a60e-863498dfaacc",
+   "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+   "path": "data/agents/agent_memory_compression.md",
+   "folder": "agents",
+   "doc_title": "Сжатие памяти агента (NEWDOC-2026-A)",
+   "section_id": "s01",
+   "section_title": "Введение: субагент и его контекст",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "284f17b7-756d-5319-9cd4-5906423eff17"
+  },
+  {
+   "fragment_id": "284f17b7-756d-5319-9cd4-5906423eff17",
+   "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+   "path": "data/agents/agent_memory_compression.md",
+   "folder": "agents",
+   "doc_title": "Сжатие памяти агента (NEWDOC-2026-A)",
+   "section_id": "s02",
+   "section_title": "Назначение",
+   "start_line": 5,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "ordinal": 2,
+   "prev_id": "d209c81b-641f-5eee-a60e-863498dfaacc",
+   "next_id": "affa604f-527e-5613-a07f-24ca1ffaa895"
+  },
+  {
+   "fragment_id": "affa604f-527e-5613-a07f-24ca1ffaa895",
+   "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+   "path": "data/agents/agent_memory_compression.md",
+   "folder": "agents",
+   "doc_title": "Сжатие памяти агента (NEWDOC-2026-A)",
+   "section_id": "s03",
+   "section_title": "Правило",
+   "start_line": 11,
+   "end_line": 15,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "ordinal": 3,
+   "prev_id": "284f17b7-756d-5319-9cd4-5906423eff17",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:13:50+00:00"
+}

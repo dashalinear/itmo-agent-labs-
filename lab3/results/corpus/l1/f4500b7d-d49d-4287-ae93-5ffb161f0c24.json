@@ -1,0 +1,43 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "f4500b7d-d49d-4287-ae93-5ffb161f0c24",
+ "path": "data/search/vector_knn.md",
+ "folder": "search",
+ "title": "Векторный поиск kNN в Elasticsearch",
+ "description": "Поле dense_vector, параметры HNSW и модель эмбеддингов для векторного поиска.",
+ "summary": "Векторы хранятся в поле dense_vector размерности 384 с косинусной мерой близости. Для индекса фрагментов задано m = 16 и ef_construction = 100; при запросе num_candidates = 50. Эмбеддинги строит многоязычная модель paraphrase-multilingual-MiniLM-L12-v2 локально. Фильтры по папке и типу документа сужают область поиска до ранжирования.",
+ "content_hash": "sha256:8a2bd9e7b0ea10131ac24de76b47ac198984a736665f48db25acb59a5ae6ea5d",
+ "lines": 27,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "summary": "Заголовок и общая фраза про полнотекстовый поиск."
+  },
+  {
+   "section_id": "s02",
+   "title": "Поле dense_vector",
+   "start_line": 5,
+   "end_line": 11,
+   "summary": "Векторы в поле dense_vector размерности 384 с косинусной мерой близости."
+  },
+  {
+   "section_id": "s03",
+   "title": "Параметры HNSW",
+   "start_line": 13,
+   "end_line": 19,
+   "summary": "m = 16, ef_construction = 100; при запросе num_candidates = 50."
+  },
+  {
+   "section_id": "s04",
+   "title": "Модель",
+   "start_line": 21,
+   "end_line": 27,
+   "summary": "Эмбеддинги строит многоязычная модель paraphrase-multilingual-MiniLM-L12-v2 локально."
+  }
+ ],
+ "written_at": "2026-11-16T21:10:23+00:00",
+ "written_by": "agent (write_l1)"
+}

@@ -1,0 +1,43 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "f6a0394f-8de8-4a15-8bbb-9e6d969bfe0f",
+ "path": "data/courses/ir_lecture_inverted_index.md",
+ "folder": "courses",
+ "title": "Лекция 3. Инвертированный индекс и ранжирование BM25",
+ "description": "Лекция курса «Информационный поиск» об инвертированном индексе, сжатии posting lists и формуле BM25.",
+ "summary": "Лекция 3 курса «Информационный поиск» (осень 2026, доц. Смирнова). Инвертированный индекс сопоставляет терму posting list с docID, частотой и позициями; построение: токенизация, нормализация, стоп-слова, стемминг/лемматизация. Сжатие: gap encoding + VByte или PForDelta. BM25 учитывает tf, idf и длину документа; параметры по умолчанию k1=1.2, b=0.75; b=0 отключает нормализацию по длине. ДЗ: посчитать BM25 для трёх документов и сравнить с TF-IDF, срок 20 октября.",
+ "content_hash": "sha256:5a860bc47749b655dcbefa0ef706e29c7f113e4f33fa658a14281ec92153a5d9",
+ "lines": 24,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Инвертированный индекс",
+   "start_line": 1,
+   "end_line": 11,
+   "summary": "Структура индекса, posting lists, этапы построения, роль стемминга для русского языка."
+  },
+  {
+   "section_id": "s02",
+   "title": "Сжатие списков",
+   "start_line": 13,
+   "end_line": 15,
+   "summary": "Gap encoding, VByte, PForDelta."
+  },
+  {
+   "section_id": "s03",
+   "title": "BM25",
+   "start_line": 17,
+   "end_line": 20,
+   "summary": "Формула BM25, параметры k1=1.2, b=0.75, влияние b на нормализацию длины."
+  },
+  {
+   "section_id": "s04",
+   "title": "Домашнее задание",
+   "start_line": 22,
+   "end_line": 24,
+   "summary": "Посчитать BM25 для трёх документов и сравнить с TF-IDF; срок 20 октября."
+  }
+ ],
+ "written_at": "2026-11-16T21:01:29+00:00",
+ "written_by": "agent (write_l1)"
+}

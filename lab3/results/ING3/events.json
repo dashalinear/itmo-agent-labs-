@@ -1,0 +1,246 @@
+[
+  {
+    "id": 1031,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:04+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 1032,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:05+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest"
+    }
+  },
+  {
+    "id": 1033,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11452,
+      "reserve": 2048,
+      "total": 13500,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 1034,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11452,
+      "reserve": 2048,
+      "total": 13500,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 1035,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11452,
+      "actual_input": 7045,
+      "actual_output": 53,
+      "duration_s": 0.85,
+      "calibrated_cpt": 3.095
+    }
+  },
+  {
+    "id": 1036,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10425,
+      "reserve": 2048,
+      "total": 12473,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 1037,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10425,
+      "reserve": 2048,
+      "total": 12473,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)"
+    }
+  },
+  {
+    "id": 1038,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10425,
+      "actual_input": 7639,
+      "actual_output": 41,
+      "duration_s": 0.71,
+      "calibrated_cpt": 3.388
+    }
+  },
+  {
+    "id": 1039,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10031,
+      "reserve": 2048,
+      "total": 12079,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.39)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 1040,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10031,
+      "reserve": 2048,
+      "total": 12079,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.39)"
+    }
+  },
+  {
+    "id": 1041,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10031,
+      "actual_input": 8150,
+      "actual_output": 15,
+      "duration_s": 0.56,
+      "calibrated_cpt": 3.541
+    }
+  },
+  {
+    "id": 1042,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9703,
+      "reserve": 2048,
+      "total": 11751,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 1043,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9703,
+      "reserve": 2048,
+      "total": 11751,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 1044,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9703,
+      "actual_input": 8239,
+      "actual_output": 102,
+      "duration_s": 1.36,
+      "calibrated_cpt": 3.631
+    }
+  },
+  {
+    "id": 1045,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:11+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Папка input пуста — новых файлов нет. Корпус уже актуален: 56 документов, 55 с L1 (пустой файл data/_unsorted/empty_todo.txt не индексируется), 323 фрагмента L2, validate_corpus ok=true, проблем 0. Повторная обработка не требовалась."
+    }
+  },
+  {
+    "id": 1046,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9694,
+      "reserve": 2048,
+      "total": 11742,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 1047,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9694,
+      "reserve": 2048,
+      "total": 11742,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 1048,
+    "task_id": "ING3",
+    "ts": "2026-11-16T21:14:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9694,
+      "actual_input": 8467,
+      "actual_output": 143,
+      "duration_s": 1.72,
+      "calibrated_cpt": 3.678
+    }
+  }
+]

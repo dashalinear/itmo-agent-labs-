@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+ "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+ "fragments": [
+  {
+   "fragment_id": "f0737353-a4ba-5846-a1f7-e8f8b1bbbacc",
+   "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+   "path": "data/howto/howto_git_branches.txt",
+   "folder": "howto",
+   "doc_title": "Инструкция по работе с ветками git в учебных проектах",
+   "section_id": "s01",
+   "section_title": "Правила веток и PR",
+   "start_line": 1,
+   "end_line": 8,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "bc24cfa1-8e9f-5fc3-9a68-4b703f9f3a21"
+  },
+  {
+   "fragment_id": "bc24cfa1-8e9f-5fc3-9a68-4b703f9f3a21",
+   "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+   "path": "data/howto/howto_git_branches.txt",
+   "folder": "howto",
+   "doc_title": "Инструкция по работе с ветками git в учебных проектах",
+   "section_id": "s02",
+   "section_title": "Секреты",
+   "start_line": 10,
+   "end_line": 10,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+   "ordinal": 2,
+   "prev_id": "f0737353-a4ba-5846-a1f7-e8f8b1bbbacc",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

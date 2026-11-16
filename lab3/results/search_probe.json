@@ -1,0 +1,168 @@
+{
+  "rows": [
+    {
+      "id": "Q1",
+      "kind": "L1 fulltext",
+      "input": "событийная модель журнал состояния",
+      "expected": [
+        "st_event_sourcing.md"
+      ],
+      "top_paths": [
+        "st_event_sourcing.md",
+        "mlops_lecture_monitoring.md",
+        "st_snapshot_policy.md",
+        "vector_knn.md",
+        "ir_course_lectures.md"
+      ],
+      "found": true,
+      "total": 19,
+      "first_hit": {
+        "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
+        "path": "data/storage/st_event_sourcing.md",
+        "title": "Событийная модель журнала состояния",
+        "score": 37.164,
+        "match": "Вместо снимков хранится <em>журнал</em> событий; <em>состояние</em> восстанавливается проигрыванием. … Event sourcing для <em>состояния</em> агентов: <em>журнал</em> событий, проигрывание, версии событий. … Идея: <em>Журнал</em> событий вместо снимков; восстановление проигрыванием. … Проигрывание <em>журнала</em>: Порядковый номер и идемпотентный ключ; линейный рост времени восстановления [L-ST-11].",
+        "next": "get_l1('d4611c67-c357-4667-9cbc-adaa03fa6450')"
+      }
+    },
+    {
+      "id": "Q2",
+      "kind": "L1 grep",
+      "input": "ERR_LOCK_TIMEOUT",
+      "expected": [
+        "st_checkpoint_sqlite.md"
+      ],
+      "top_paths": [
+        "incident_031.md",
+        "incident_031.md",
+        "analyzers_ru.md",
+        "analyzers_ru.md",
+        "st_checkpoint_sqlite.md"
+      ],
+      "found": true,
+      "total": 7,
+      "first_hit": {
+        "document_id": "79d31160-a5c6-4f3e-bbfa-39daa43da191",
+        "path": "data/ops/incident_031.md",
+        "field": "summary",
+        "section_id": null,
+        "offset": 97,
+        "match": "ERR_LOCK_TIMEOUT",
+        "context": "-031 от 12.10.2026: агент DocSearch 22 минуты не записывал чекпоинты с ошибками ERR_LOCK_TIMEOUT. Причина — база SQLite на сетевом диске, блокировки не освобождались. Восстановление выполнено по r",
+        "next": "get_l1('79d31160-a5c6-4f3e-bbfa-39daa43da191')"
+      }
+    },
+    {
+      "id": "Q3",
+      "kind": "L1 vector",
+      "input": "как защищают сохранённые данные агента от утечек",
+      "expected": [
+        "st_encryption_state.md"
+      ],
+      "top_paths": [
+        "st_encryption_state.md",
+        "monitoring.md",
+        "st_memory_longterm.md",
+        "st_checkpoint_postgres.md",
+        "guardrails.md"
+      ],
+      "found": true,
+      "total": 5,
+      "first_hit": {
+        "document_id": "3bf69284-f264-4f26-bcd4-a4b8e5f13cf0",
+        "path": "data/storage/st_encryption_state.md",
+        "title": "Шифрование и защита сохранённого состояния",
+        "similarity": 0.857,
+        "summary": "Состояние агента может содержать персональные данные и фрагменты документов, поэтому хранилище шифруется ключом из менеджера секретов; ключ нельзя хранить рядом с базой [L-ST-27]. Доступ есть только у сервисной роли агента [L-ST-28], токены и пароли не записываются ни в состояние, ни в трассы [L-ST-",
+        "next": "get_l1('3bf69284-f264-4f26-bcd4-a4b8e5f13cf0')"
+      }
+    },
+    {
+      "id": "Q4",
+      "kind": "L2 fulltext",
+      "input": "PostgreSQL 16 решение РС-7",
+      "expected": [
+        "meeting_m12.md"
+      ],
+      "top_paths": [
+        "meeting_m12.md",
+        "call_transcript_2026-11-05.txt",
+        "docsearch_architecture.md",
+        "meeting_m13.md",
+        "meeting_2026-10-09_weekly.md"
+      ],
+      "found": true,
+      "total": 63,
+      "first_hit": {
+        "fragment_id": "a0ce2e93-dfe6-5ae6-a73b-566f8b981702",
+        "document_id": "9af1414d-b416-4d6f-9dc6-d11dd3396bed",
+        "path": "data/meetings/meeting_m12.md",
+        "section": "Решения",
+        "lines": [
+          13,
+          21
+        ],
+        "score": 22.856,
+        "match": "## <em>Решения</em>\n\n<em>Решение</em> <em>РС</em>-<em>7</em>: бэкенд хранения чекпоинтов DocSearch — <em>PostgreSQL</em> <em>16</em>; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026. … <em>Решение</em> <em>РС</em>-8: индекс фрагментов хранит эмбеддинги размерности 384.\n\nУчения по восстановлению проверяют, что резервные копии действительно читаются.",
+        "next": "read_fragment('a0ce2e93-dfe6-5ae6-a73b-566f8b981702')"
+      }
+    },
+    {
+      "id": "Q5",
+      "kind": "L2 grep",
+      "input": "INC-2026-03\\d",
+      "expected": [
+        "incident_031.md",
+        "incident_034.md",
+        "call_transcript_2026-11-05.txt"
+      ],
+      "top_paths": [
+        "call_transcript_2026-11-05.txt",
+        "incident_031.md",
+        "incident_034.md"
+      ],
+      "found": true,
+      "total": 3,
+      "first_hit": {
+        "document_id": "cef37733-7c48-42f0-b8a0-a13b40dd1413",
+        "path": "data/meetings/call_transcript_2026-11-05.txt",
+        "line": 3,
+        "page": null,
+        "fragment_id": "f95e7ee8-df01-5bc1-9bd3-675ae0691ac6",
+        "match": "INC-2026-034",
+        "text": "Олег: после INC-2026-034 мы добавили проверку очистки кэша, повторов не было."
+      }
+    },
+    {
+      "id": "Q6",
+      "kind": "L2 vector",
+      "input": "с какой периодичностью копируют журнал событий на запасной диск",
+      "expected": [
+        "st_snapshot_policy.md"
+      ],
+      "top_paths": [
+        "st_event_sourcing.md",
+        "st_snapshot_policy.md",
+        "st_event_sourcing.md",
+        "meeting_m13.md",
+        "st_snapshot_policy.md"
+      ],
+      "found": true,
+      "total": 5,
+      "first_hit": {
+        "fragment_id": "e605d668-bca8-58a8-97c7-70ce8164c35b",
+        "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
+        "path": "data/storage/st_event_sourcing.md",
+        "section": "Идея",
+        "lines": [
+          1,
+          9
+        ],
+        "similarity": 0.823,
+        "text": "# Событийная модель журнала состояния\n\nМетрики хранилища включают задержку записи, размер базы и долю неудачных транзакций.\n\n## Идея\n\nВместо снимков состояния хранится журнал событий, а текущее состояние восстанавливается проигрыванием журнала.\n\nОбъём хранилища растёт вместе с историей, поэтому стар",
+        "next": "read_fragment('e605d668-bca8-58a8-97c7-70ce8164c35b')"
+      }
+    }
+  ],
+  "all_found": true
+}

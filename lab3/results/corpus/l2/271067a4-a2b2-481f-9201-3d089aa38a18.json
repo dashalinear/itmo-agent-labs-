@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+ "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+ "fragments": [
+  {
+   "fragment_id": "b07120ea-f7af-5a61-aaea-69daf5b2e126",
+   "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+   "path": "data/meetings/meeting_m13.md",
+   "folder": "meetings",
+   "doc_title": "Протокол совещания M-13",
+   "section_id": "s01",
+   "section_title": "Решения",
+   "start_line": 1,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "cb4dc19d-5751-54c2-86dc-814f20b6aa67"
+  },
+  {
+   "fragment_id": "cb4dc19d-5751-54c2-86dc-814f20b6aa67",
+   "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+   "path": "data/meetings/meeting_m13.md",
+   "folder": "meetings",
+   "doc_title": "Протокол совещания M-13",
+   "section_id": "s02",
+   "section_title": "Действия",
+   "start_line": 11,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+   "ordinal": 2,
+   "prev_id": "b07120ea-f7af-5a61-aaea-69daf5b2e126",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

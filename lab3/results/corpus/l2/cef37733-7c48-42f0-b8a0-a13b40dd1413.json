@@ -1,0 +1,25 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "cef37733-7c48-42f0-b8a0-a13b40dd1413",
+ "content_hash": "sha256:57c23fc04338e50198db9f4330ab3b5b8decf50710120823052f94ebfa7fd6d1",
+ "fragments": [
+  {
+   "fragment_id": "f95e7ee8-df01-5bc1-9bd3-675ae0691ac6",
+   "document_id": "cef37733-7c48-42f0-b8a0-a13b40dd1413",
+   "path": "data/meetings/call_transcript_2026-11-05.txt",
+   "folder": "meetings",
+   "doc_title": "Расшифровка созвона дежурных 05.11.2026",
+   "section_id": "s01",
+   "section_title": "Ход обсуждения",
+   "start_line": 1,
+   "end_line": 8,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:57c23fc04338e50198db9f4330ab3b5b8decf50710120823052f94ebfa7fd6d1",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

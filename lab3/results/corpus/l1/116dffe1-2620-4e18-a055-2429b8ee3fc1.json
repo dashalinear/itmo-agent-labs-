@@ -1,0 +1,43 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "116dffe1-2620-4e18-a055-2429b8ee3fc1",
+ "path": "data/agents/agents_seminar_react.txt",
+ "folder": "agents",
+ "title": "Семинар по агентным системам: паттерн ReAct",
+ "description": "Конспект семинара о паттерне ReAct в LangGraph: граф model/tools, состояние, лимиты и задание.",
+ "summary": "Конспект семинара по агентным системам. ReAct чередует рассуждение (reasoning) и действие (acting): модель решает, нужен ли вызов инструмента, получает наблюдение и продолжает. В LangGraph агент собирается фабрикой create_agent; граф из узла модели и узла инструментов, переход по tool calls. История — список messages в состоянии графа, reducer add_messages, checkpointer по thread_id. Важно ограничивать recursion_limit. Задание: агент с двумя инструментами и трасса model -> tools -> model.",
+ "content_hash": "sha256:592276719548e0c073c097d338d8ea1ffa1e312cb14e53a14378c624703dec6e",
+ "lines": 18,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Паттерн ReAct",
+   "start_line": 1,
+   "end_line": 4,
+   "summary": "Определение ReAct: чередование рассуждения и действия."
+  },
+  {
+   "section_id": "s02",
+   "title": "Граф в LangGraph",
+   "start_line": 6,
+   "end_line": 9,
+   "summary": "create_agent, узлы model и tools, завершение без tool calls."
+  },
+  {
+   "section_id": "s03",
+   "title": "Состояние и лимиты",
+   "start_line": 11,
+   "end_line": 15,
+   "summary": "messages, add_messages, checkpointer по thread_id, recursion_limit."
+  },
+  {
+   "section_id": "s04",
+   "title": "Задание",
+   "start_line": 17,
+   "end_line": 18,
+   "summary": "Задание к следующему семинару: агент с двумя инструментами и трасса."
+  }
+ ],
+ "written_at": "2026-11-16T20:58:09+00:00",
+ "written_by": "agent (write_l1)"
+}

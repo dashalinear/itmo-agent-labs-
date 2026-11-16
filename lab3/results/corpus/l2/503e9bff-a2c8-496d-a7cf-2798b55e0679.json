@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+ "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+ "fragments": [
+  {
+   "fragment_id": "3f545e20-47c2-5abe-bf3a-4acf9a4e6471",
+   "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+   "path": "data/search/analyzers_ru.md",
+   "folder": "search",
+   "doc_title": "Анализаторы для русского языка",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "f940ba7c-b952-572f-9e50-b21b79aad442"
+  },
+  {
+   "fragment_id": "f940ba7c-b952-572f-9e50-b21b79aad442",
+   "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+   "path": "data/search/analyzers_ru.md",
+   "folder": "search",
+   "doc_title": "Анализаторы для русского языка",
+   "section_id": "s02",
+   "section_title": "Морфология",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+   "ordinal": 2,
+   "prev_id": "3f545e20-47c2-5abe-bf3a-4acf9a4e6471",
+   "next_id": "55fcc55c-bbf2-5010-beaa-30491ff80e15"
+  },
+  {
+   "fragment_id": "55fcc55c-bbf2-5010-beaa-30491ff80e15",
+   "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+   "path": "data/search/analyzers_ru.md",
+   "folder": "search",
+   "doc_title": "Анализаторы для русского языка",
+   "section_id": "s03",
+   "section_title": "Коды",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+   "ordinal": 3,
+   "prev_id": "f940ba7c-b952-572f-9e50-b21b79aad442",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:10:28+00:00"
+}

@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+ "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+ "fragments": [
+  {
+   "fragment_id": "560a733f-85e6-5642-8a0a-255764229ea2",
+   "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+   "path": "data/search/sharding.md",
+   "folder": "search",
+   "doc_title": "Шардирование индекса фрагментов",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "3c1330c8-0f99-5cfe-8c8a-06ab5a3493df"
+  },
+  {
+   "fragment_id": "3c1330c8-0f99-5cfe-8c8a-06ab5a3493df",
+   "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+   "path": "data/search/sharding.md",
+   "folder": "search",
+   "doc_title": "Шардирование индекса фрагментов",
+   "section_id": "s02",
+   "section_title": "Число шардов",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+   "ordinal": 2,
+   "prev_id": "560a733f-85e6-5642-8a0a-255764229ea2",
+   "next_id": "9db2ca7d-0f39-5751-99b2-5954f83c34a9"
+  },
+  {
+   "fragment_id": "9db2ca7d-0f39-5751-99b2-5954f83c34a9",
+   "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+   "path": "data/search/sharding.md",
+   "folder": "search",
+   "doc_title": "Шардирование индекса фрагментов",
+   "section_id": "s03",
+   "section_title": "Рост",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+   "ordinal": 3,
+   "prev_id": "3c1330c8-0f99-5cfe-8c8a-06ab5a3493df",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:10:28+00:00"
+}

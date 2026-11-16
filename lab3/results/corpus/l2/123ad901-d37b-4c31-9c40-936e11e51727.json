@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+ "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+ "fragments": [
+  {
+   "fragment_id": "6e03bf80-c221-5190-9b4f-4a392fc3569f",
+   "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+   "path": "data/projects/docsearch_roadmap.md",
+   "folder": "projects",
+   "doc_title": "План работ DocSearch",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "039703fc-aea0-5b61-b592-176560f4a98c"
+  },
+  {
+   "fragment_id": "039703fc-aea0-5b61-b592-176560f4a98c",
+   "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+   "path": "data/projects/docsearch_roadmap.md",
+   "folder": "projects",
+   "doc_title": "План работ DocSearch",
+   "section_id": "s02",
+   "section_title": "Ноябрь",
+   "start_line": 5,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+   "ordinal": 2,
+   "prev_id": "6e03bf80-c221-5190-9b4f-4a392fc3569f",
+   "next_id": "1f0ab116-59a6-5a4d-adc2-35d2b116f2bc"
+  },
+  {
+   "fragment_id": "1f0ab116-59a6-5a4d-adc2-35d2b116f2bc",
+   "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+   "path": "data/projects/docsearch_roadmap.md",
+   "folder": "projects",
+   "doc_title": "План работ DocSearch",
+   "section_id": "s03",
+   "section_title": "Декабрь",
+   "start_line": 11,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+   "ordinal": 3,
+   "prev_id": "039703fc-aea0-5b61-b592-176560f4a98c",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:04:34+00:00"
+}

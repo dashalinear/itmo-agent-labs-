@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "615ebf29-aa2c-4be7-80f5-3431b1eea8d1",
+ "content_hash": "sha256:bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+ "fragments": [
+  {
+   "fragment_id": "ed94bd2a-876a-526e-b383-b966e56a50a6",
+   "document_id": "615ebf29-aa2c-4be7-80f5-3431b1eea8d1",
+   "path": "data/howto/howto_elasticsearch_docker.md",
+   "folder": "howto",
+   "doc_title": "Инструкция: как поднять Elasticsearch в Docker для учебного стенда",
+   "section_id": "s01",
+   "section_title": "Запуск в Docker",
+   "start_line": 1,
+   "end_line": 10,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "d5c736f1-db9e-5a07-9a61-1ee666ed492e"
+  },
+  {
+   "fragment_id": "d5c736f1-db9e-5a07-9a61-1ee666ed492e",
+   "document_id": "615ebf29-aa2c-4be7-80f5-3431b1eea8d1",
+   "path": "data/howto/howto_elasticsearch_docker.md",
+   "folder": "howto",
+   "doc_title": "Инструкция: как поднять Elasticsearch в Docker для учебного стенда",
+   "section_id": "s02",
+   "section_title": "Типичные проблемы",
+   "start_line": 12,
+   "end_line": 14,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+   "ordinal": 2,
+   "prev_id": "ed94bd2a-876a-526e-b383-b966e56a50a6",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

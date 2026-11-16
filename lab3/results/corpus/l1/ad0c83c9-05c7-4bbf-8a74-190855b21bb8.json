@@ -1,0 +1,29 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+ "path": "data/howto/howto_git_branches.txt",
+ "folder": "howto",
+ "title": "Инструкция по работе с ветками git в учебных проектах",
+ "description": "Краткая инструкция по git-веткам: защищённый main, feature-ветки, rebase, pull request и запрет коммита секретов.",
+ "summary": "Инструкция по работе с ветками git в учебных проектах: main защищён от прямых push; для каждой задачи — ветка feature/<номер-задачи>-<кратко>; небольшие коммиты с сообщением в повелительном наклонении; перед pull request — rebase на свежий main и прогон тестов; PR ревьюит минимум один участник; после слияния ветка удаляется. Секреты (токены, пароли) не коммитятся: используются .env и .gitignore.",
+ "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+ "lines": 10,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Правила веток и PR",
+   "start_line": 1,
+   "end_line": 8,
+   "summary": "Защищённый main, feature-ветки, коммиты, rebase, ревью PR, удаление ветки."
+  },
+  {
+   "section_id": "s02",
+   "title": "Секреты",
+   "start_line": 10,
+   "end_line": 10,
+   "summary": "Токены и пароли не коммитятся: .env и .gitignore."
+  }
+ ],
+ "written_at": "2026-11-16T21:01:57+00:00",
+ "written_by": "agent (write_l1)"
+}

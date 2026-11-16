@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+ "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+ "fragments": [
+  {
+   "fragment_id": "e5b74111-8c45-552e-8de7-3dbf70cf62eb",
+   "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+   "path": "data/courses/vector_search_lecture.md",
+   "folder": "courses",
+   "doc_title": "Лекция 7. Векторный поиск и HNSW",
+   "section_id": "s01",
+   "section_title": "Векторный поиск и ANN",
+   "start_line": 1,
+   "end_line": 7,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "e2de6020-ec65-529a-94d3-c1d28fbefbe8"
+  },
+  {
+   "fragment_id": "e2de6020-ec65-529a-94d3-c1d28fbefbe8",
+   "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+   "path": "data/courses/vector_search_lecture.md",
+   "folder": "courses",
+   "doc_title": "Лекция 7. Векторный поиск и HNSW",
+   "section_id": "s02",
+   "section_title": "HNSW",
+   "start_line": 9,
+   "end_line": 12,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+   "ordinal": 2,
+   "prev_id": "e5b74111-8c45-552e-8de7-3dbf70cf62eb",
+   "next_id": "a641a657-acf6-5dd4-b535-5d5cc054d055"
+  },
+  {
+   "fragment_id": "a641a657-acf6-5dd4-b535-5d5cc054d055",
+   "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+   "path": "data/courses/vector_search_lecture.md",
+   "folder": "courses",
+   "doc_title": "Лекция 7. Векторный поиск и HNSW",
+   "section_id": "s03",
+   "section_title": "Elasticsearch и гибридный поиск",
+   "start_line": 14,
+   "end_line": 15,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+   "ordinal": 3,
+   "prev_id": "e2de6020-ec65-529a-94d3-c1d28fbefbe8",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:43+00:00"
+}

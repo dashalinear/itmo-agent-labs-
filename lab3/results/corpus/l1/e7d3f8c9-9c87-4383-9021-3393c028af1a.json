@@ -1,0 +1,29 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+ "path": "data/projects/docsearch_risks.md",
+ "folder": "projects",
+ "title": "Риски проекта DocSearch",
+ "description": "Риски проекта DocSearch: потеря состояния при сбое хранилища, меры в runbook RB-09.",
+ "summary": "Риски проекта DocSearch. Главный риск — потеря состояния при сбое хранилища; меры описаны в runbook RB-09. Проект объединяет загрузчик документов, индекс Elasticsearch и агента-ассистента. Требования фиксируются в документе архитектуры и пересматриваются на совещаниях.",
+ "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+ "lines": 11,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "summary": "Проект DocSearch объединяет загрузчик, индекс Elasticsearch и агента-ассистента."
+  },
+  {
+   "section_id": "s02",
+   "title": "Риски",
+   "start_line": 5,
+   "end_line": 11,
+   "summary": "Главный риск — потеря состояния при сбое хранилища; меры описаны в runbook RB-09."
+  }
+ ],
+ "written_at": "2026-11-16T21:03:48+00:00",
+ "written_by": "agent (write_l1)"
+}

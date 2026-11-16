@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+ "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+ "fragments": [
+  {
+   "fragment_id": "4486a338-eb00-552c-afd0-52d25b2fb80a",
+   "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+   "path": "data/ops/runbook_rb09.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-09: восстановление хранилища чекпоинтов",
+   "section_id": "s01",
+   "section_title": "Шаги",
+   "start_line": 1,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "ddaa3c7d-ce8f-55a3-8f1a-1b70d0fcffab"
+  },
+  {
+   "fragment_id": "ddaa3c7d-ce8f-55a3-8f1a-1b70d0fcffab",
+   "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+   "path": "data/ops/runbook_rb09.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-09: восстановление хранилища чекпоинтов",
+   "section_id": "s01",
+   "section_title": "Шаги",
+   "start_line": 11,
+   "end_line": 17,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+   "ordinal": 2,
+   "prev_id": "4486a338-eb00-552c-afd0-52d25b2fb80a",
+   "next_id": "9ccfdbce-e1e4-50c0-ba70-0cc4ad3106a6"
+  },
+  {
+   "fragment_id": "9ccfdbce-e1e4-50c0-ba70-0cc4ad3106a6",
+   "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+   "path": "data/ops/runbook_rb09.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-09: восстановление хранилища чекпоинтов",
+   "section_id": "s02",
+   "section_title": "Критерий успеха",
+   "start_line": 19,
+   "end_line": 25,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+   "ordinal": 3,
+   "prev_id": "ddaa3c7d-ce8f-55a3-8f1a-1b70d0fcffab",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:03:16+00:00"
+}

@@ -1,0 +1,36 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+ "path": "data/agents/react_pattern.md",
+ "folder": "agents",
+ "title": "Паттерн ReAct",
+ "description": "Заметка о паттерне ReAct: чередование рассуждения и действия, цикл model -> tools -> model.",
+ "summary": "Заметка о паттерне ReAct. ReAct чередует рассуждение (reasoning) и действие (acting): модель решает, нужен ли вызов инструмента, получает наблюдение и продолжает. В LangGraph агент собирается фабрикой create_agent; граф из узла модели и узла инструментов, переход по tool calls. Важно ограничивать recursion_limit.",
+ "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+ "lines": 19,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Паттерн ReAct",
+   "start_line": 1,
+   "end_line": 4,
+   "summary": "Определение ReAct: чередование рассуждения и действия."
+  },
+  {
+   "section_id": "s02",
+   "title": "Цикл",
+   "start_line": 5,
+   "end_line": 12,
+   "summary": "Модель решает о вызове инструмента, получает наблюдение, продолжает."
+  },
+  {
+   "section_id": "s03",
+   "title": "Граф в LangGraph",
+   "start_line": 13,
+   "end_line": 19,
+   "summary": "create_agent, узлы model и tools, переход по tool calls, recursion_limit."
+  }
+ ],
+ "written_at": "2026-11-16T20:58:42+00:00",
+ "written_by": "agent (write_l1)"
+}

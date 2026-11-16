@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+ "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+ "fragments": [
+  {
+   "fragment_id": "c5009d76-804b-5366-9cf7-b7fa399cadbe",
+   "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+   "path": "data/agents/agent_evaluation.md",
+   "folder": "agents",
+   "doc_title": "Оценка агентов",
+   "section_id": "s01",
+   "section_title": "Оценка агентов",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "f7891d46-fbf4-58af-a4f7-0be0e3126dc3"
+  },
+  {
+   "fragment_id": "f7891d46-fbf4-58af-a4f7-0be0e3126dc3",
+   "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+   "path": "data/agents/agent_evaluation.md",
+   "folder": "agents",
+   "doc_title": "Оценка агентов",
+   "section_id": "s02",
+   "section_title": "Трассы",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+   "ordinal": 2,
+   "prev_id": "c5009d76-804b-5366-9cf7-b7fa399cadbe",
+   "next_id": "fc74b7e8-71cd-5a32-8059-4d327170edc9"
+  },
+  {
+   "fragment_id": "fc74b7e8-71cd-5a32-8059-4d327170edc9",
+   "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+   "path": "data/agents/agent_evaluation.md",
+   "folder": "agents",
+   "doc_title": "Оценка агентов",
+   "section_id": "s03",
+   "section_title": "Счётчики",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+   "ordinal": 3,
+   "prev_id": "f7891d46-fbf4-58af-a4f7-0be0e3126dc3",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:47+00:00"
+}

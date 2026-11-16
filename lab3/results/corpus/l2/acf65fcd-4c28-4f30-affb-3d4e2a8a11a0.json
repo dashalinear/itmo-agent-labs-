@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+ "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+ "fragments": [
+  {
+   "fragment_id": "e7b37dac-269f-5e2b-9a5b-da241fc8410a",
+   "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+   "path": "data/ops/oncall_policy.md",
+   "folder": "ops",
+   "doc_title": "Политика дежурств",
+   "section_id": "s01",
+   "section_title": "Смены",
+   "start_line": 1,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "bea9f671-244c-580e-bc1d-7263393d5fda"
+  },
+  {
+   "fragment_id": "bea9f671-244c-580e-bc1d-7263393d5fda",
+   "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+   "path": "data/ops/oncall_policy.md",
+   "folder": "ops",
+   "doc_title": "Политика дежурств",
+   "section_id": "s01",
+   "section_title": "Смены",
+   "start_line": 11,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+   "ordinal": 2,
+   "prev_id": "e7b37dac-269f-5e2b-9a5b-da241fc8410a",
+   "next_id": "4d77adaf-02d4-5ba0-b427-cda05192cd03"
+  },
+  {
+   "fragment_id": "4d77adaf-02d4-5ba0-b427-cda05192cd03",
+   "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+   "path": "data/ops/oncall_policy.md",
+   "folder": "ops",
+   "doc_title": "Политика дежурств",
+   "section_id": "s02",
+   "section_title": "Эскалация",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+   "ordinal": 3,
+   "prev_id": "bea9f671-244c-580e-bc1d-7263393d5fda",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:03:16+00:00"
+}

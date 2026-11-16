@@ -1,0 +1,36 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+ "path": "data/courses/vector_search_lecture.md",
+ "folder": "courses",
+ "title": "Лекция 7. Векторный поиск и HNSW",
+ "description": "Лекция курса «Информационный поиск» о векторном поиске, ANN, графе HNSW и гибридном поиске в Elasticsearch.",
+ "summary": "Лекция 7 курса «Информационный поиск». Векторный поиск сравнивает эмбеддинги по косинусной близости; точный перебор дорог, поэтому используют ANN. HNSW — многоуровневый граф: поиск сверху вниз; параметры M, ef_construction, ef_search (num_candidates). В Elasticsearch векторное поле — dense_vector, запрос — knn; гибридный поиск объединяет BM25 и kNN, например через RRF.",
+ "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+ "lines": 15,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Векторный поиск и ANN",
+   "start_line": 1,
+   "end_line": 7,
+   "summary": "Семантический поиск по эмбеддингам, косинусная близость, приближённый поиск ближайших соседей."
+  },
+  {
+   "section_id": "s02",
+   "title": "HNSW",
+   "start_line": 9,
+   "end_line": 12,
+   "summary": "Многоуровневый граф HNSW и параметры M, ef_construction, ef_search."
+  },
+  {
+   "section_id": "s03",
+   "title": "Elasticsearch и гибридный поиск",
+   "start_line": 14,
+   "end_line": 15,
+   "summary": "dense_vector и knn в ES, гибридный поиск BM25+kNN через RRF."
+  }
+ ],
+ "written_at": "2026-11-16T21:01:29+00:00",
+ "written_by": "agent (write_l1)"
+}

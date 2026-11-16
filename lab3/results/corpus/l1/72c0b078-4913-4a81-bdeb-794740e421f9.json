@@ -1,0 +1,36 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "72c0b078-4913-4a81-bdeb-794740e421f9",
+ "path": "data/storage/st_redis_state.md",
+ "folder": "storage",
+ "title": "Состояние агента в Redis",
+ "description": "Заметка об использовании Redis как кэша состояния агента: персистентность AOF/RDB и политика памяти.",
+ "summary": "Redis используется как быстрый кэш состояния между шагами агента. Без AOF или RDB-снимков состояние теряется при перезапуске; appendfsync everysec допускает потерю последней секунды [L-ST-08]. Весь набор данных должен помещаться в оперативную память узла [L-ST-09]; при превышении maxmemory для чекпоинтов используют политику noeviction [L-ST-10].",
+ "content_hash": "sha256:7afb0ce7b7d6f0a62e968e9b53daa0c258a8b57727c256de494b6366e0a54aa7",
+ "lines": 31,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Задача",
+   "start_line": 1,
+   "end_line": 12,
+   "summary": "Redis как кэш состояния между шагами; метрики задержки, размера, неудачных транзакций."
+  },
+  {
+   "section_id": "s02",
+   "title": "Персистентность",
+   "start_line": 13,
+   "end_line": 22,
+   "summary": "AOF/RDB; appendfsync everysec может потерять последнюю секунду [L-ST-08]."
+  },
+  {
+   "section_id": "s03",
+   "title": "Память",
+   "start_line": 23,
+   "end_line": 31,
+   "summary": "Данные должны помещаться в RAM [L-ST-09]; noeviction для чекпоинтов [L-ST-10]."
+  }
+ ],
+ "written_at": "2026-11-16T21:12:38+00:00",
+ "written_by": "agent (write_l1)"
+}

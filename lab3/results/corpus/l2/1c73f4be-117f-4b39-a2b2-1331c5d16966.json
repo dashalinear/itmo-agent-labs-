@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+ "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+ "fragments": [
+  {
+   "fragment_id": "98a28881-82ef-5330-8f5f-a3bced1db196",
+   "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+   "path": "data/search/query_suggest.md",
+   "folder": "search",
+   "doc_title": "Подсказки и исправление опечаток",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "c3d93ed2-70d6-59dc-be79-9517d7bb641c"
+  },
+  {
+   "fragment_id": "c3d93ed2-70d6-59dc-be79-9517d7bb641c",
+   "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+   "path": "data/search/query_suggest.md",
+   "folder": "search",
+   "doc_title": "Подсказки и исправление опечаток",
+   "section_id": "s02",
+   "section_title": "Подсказки",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+   "ordinal": 2,
+   "prev_id": "98a28881-82ef-5330-8f5f-a3bced1db196",
+   "next_id": "01fec929-bf6e-56cd-b7f4-ebb5b0adde22"
+  },
+  {
+   "fragment_id": "01fec929-bf6e-56cd-b7f4-ebb5b0adde22",
+   "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+   "path": "data/search/query_suggest.md",
+   "folder": "search",
+   "doc_title": "Подсказки и исправление опечаток",
+   "section_id": "s03",
+   "section_title": "Опечатки",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+   "ordinal": 3,
+   "prev_id": "c3d93ed2-70d6-59dc-be79-9517d7bb641c",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:10:28+00:00"
+}

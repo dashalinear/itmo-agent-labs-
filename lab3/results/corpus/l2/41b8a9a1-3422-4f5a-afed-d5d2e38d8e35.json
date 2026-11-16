@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+ "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+ "fragments": [
+  {
+   "fragment_id": "339cdbb6-f678-56d1-b0d8-938be955c6fa",
+   "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+   "path": "data/courses/es_seminar_analyzers_shards.md",
+   "folder": "courses",
+   "doc_title": "Конспект семинара: анализаторы и шарды в Elasticsearch",
+   "section_id": "s01",
+   "section_title": "Анализаторы",
+   "start_line": 1,
+   "end_line": 5,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "50f40861-f6f2-5b0e-999c-346582e00400"
+  },
+  {
+   "fragment_id": "50f40861-f6f2-5b0e-999c-346582e00400",
+   "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+   "path": "data/courses/es_seminar_analyzers_shards.md",
+   "folder": "courses",
+   "doc_title": "Конспект семинара: анализаторы и шарды в Elasticsearch",
+   "section_id": "s02",
+   "section_title": "Шарды и реплики",
+   "start_line": 7,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+   "ordinal": 2,
+   "prev_id": "339cdbb6-f678-56d1-b0d8-938be955c6fa",
+   "next_id": "84c8040d-0f15-5ccf-ba19-765d88d9929e"
+  },
+  {
+   "fragment_id": "84c8040d-0f15-5ccf-ba19-765d88d9929e",
+   "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+   "path": "data/courses/es_seminar_analyzers_shards.md",
+   "folder": "courses",
+   "doc_title": "Конспект семинара: анализаторы и шарды в Elasticsearch",
+   "section_id": "s03",
+   "section_title": "Поиск и подсветка",
+   "start_line": 11,
+   "end_line": 12,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+   "ordinal": 3,
+   "prev_id": "50f40861-f6f2-5b0e-999c-346582e00400",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:43+00:00"
+}

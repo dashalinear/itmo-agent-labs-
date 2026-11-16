@@ -1,0 +1,25 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "7568c151-632b-4646-837d-5aa77f24495d",
+ "content_hash": "sha256:9fac47cf757077cffa37703dd11257536904867a8996eab24d68b97204d795b7",
+ "fragments": [
+  {
+   "fragment_id": "535b87ea-e376-5bdc-be36-6e54e73aa680",
+   "document_id": "7568c151-632b-4646-837d-5aa77f24495d",
+   "path": "data/meetings/meeting_2026-11-10_retro.md",
+   "folder": "meetings",
+   "doc_title": "Ретроспектива DocSearch — 10 ноября 2026",
+   "section_id": "s01",
+   "section_title": "Итоги и действия",
+   "start_line": 1,
+   "end_line": 10,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:9fac47cf757077cffa37703dd11257536904867a8996eab24d68b97204d795b7",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

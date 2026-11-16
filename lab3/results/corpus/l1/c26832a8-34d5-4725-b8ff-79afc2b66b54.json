@@ -1,0 +1,29 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+ "path": "data/meetings/meeting_2026-10-02_kickoff.md",
+ "folder": "meetings",
+ "title": "Kickoff проекта DocSearch — 2 октября 2026",
+ "description": "Протокол kickoff проекта DocSearch: цель, хранилище Elasticsearch, MVP к 1 декабря, ответственный за инфраструктуру.",
+ "summary": "Kickoff проекта DocSearch (2 октября 2026): поиск по внутренней документации кафедры с ответами со ссылками на источник. Хранилище — Elasticsearch, на первом этапе лексический поиск. MVP к 1 декабря: загрузка Markdown, поиск, выдача фрагмента и пути к файлу. Еженедельные встречи по четвергам; ответственный за инфраструктуру — Дима. Открытые вопросы: нужен ли семантический поиск на embeddings в MVP и какие права доступа учитывать.",
+ "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+ "lines": 12,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Цель и договорённости",
+   "start_line": 1,
+   "end_line": 9,
+   "summary": "Цель проекта, Elasticsearch, MVP к 1 декабря, встречи по четвергам, Дима за инфраструктуру."
+  },
+  {
+   "section_id": "s02",
+   "title": "Открытые вопросы",
+   "start_line": 11,
+   "end_line": 12,
+   "summary": "Семантический поиск в MVP и права доступа к документам."
+  }
+ ],
+ "written_at": "2026-11-16T21:01:57+00:00",
+ "written_by": "agent (write_l1)"
+}

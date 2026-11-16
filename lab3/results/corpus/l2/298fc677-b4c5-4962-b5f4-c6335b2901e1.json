@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+ "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+ "fragments": [
+  {
+   "fragment_id": "9efd092c-5e30-5073-a5e5-d696c468f758",
+   "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+   "path": "data/ops/monitoring.md",
+   "folder": "ops",
+   "doc_title": "Мониторинг платформы агентов",
+   "section_id": "s01",
+   "section_title": "Метрики",
+   "start_line": 1,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "0eeb865c-5b1d-56c0-9cc0-27c350054dbd"
+  },
+  {
+   "fragment_id": "0eeb865c-5b1d-56c0-9cc0-27c350054dbd",
+   "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+   "path": "data/ops/monitoring.md",
+   "folder": "ops",
+   "doc_title": "Мониторинг платформы агентов",
+   "section_id": "s01",
+   "section_title": "Метрики",
+   "start_line": 11,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+   "ordinal": 2,
+   "prev_id": "9efd092c-5e30-5073-a5e5-d696c468f758",
+   "next_id": "5a451ada-35f6-551b-b667-1d5155d7c4cb"
+  },
+  {
+   "fragment_id": "5a451ada-35f6-551b-b667-1d5155d7c4cb",
+   "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+   "path": "data/ops/monitoring.md",
+   "folder": "ops",
+   "doc_title": "Мониторинг платформы агентов",
+   "section_id": "s02",
+   "section_title": "Алерты",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+   "ordinal": 3,
+   "prev_id": "0eeb865c-5b1d-56c0-9cc0-27c350054dbd",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:03:16+00:00"
+}

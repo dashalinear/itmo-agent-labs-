@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+ "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+ "fragments": [
+  {
+   "fragment_id": "235d326e-12ec-5037-8a90-722bd609b3fc",
+   "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+   "path": "data/agents/compaction_hooks.md",
+   "folder": "agents",
+   "doc_title": "Компактификация через хуки",
+   "section_id": "s01",
+   "section_title": "Компактификация через хуки",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "db06c736-84e8-5093-b2d8-94159bcea246"
+  },
+  {
+   "fragment_id": "db06c736-84e8-5093-b2d8-94159bcea246",
+   "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+   "path": "data/agents/compaction_hooks.md",
+   "folder": "agents",
+   "doc_title": "Компактификация через хуки",
+   "section_id": "s02",
+   "section_title": "Точка подключения",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+   "ordinal": 2,
+   "prev_id": "235d326e-12ec-5037-8a90-722bd609b3fc",
+   "next_id": "39570e46-3cb2-5e87-b6ce-736df42ad56d"
+  },
+  {
+   "fragment_id": "39570e46-3cb2-5e87-b6ce-736df42ad56d",
+   "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+   "path": "data/agents/compaction_hooks.md",
+   "folder": "agents",
+   "doc_title": "Компактификация через хуки",
+   "section_id": "s03",
+   "section_title": "Что сохраняется",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+   "ordinal": 3,
+   "prev_id": "db06c736-84e8-5093-b2d8-94159bcea246",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:50+00:00"
+}

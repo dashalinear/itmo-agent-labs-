@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+ "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+ "fragments": [
+  {
+   "fragment_id": "58973829-e734-5eba-8cd5-c855ed4cad52",
+   "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+   "path": "data/search/query_cache.md",
+   "folder": "search",
+   "doc_title": "Кэш поисковых запросов",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "da919f14-a42b-5669-bc52-0bd863b349b6"
+  },
+  {
+   "fragment_id": "da919f14-a42b-5669-bc52-0bd863b349b6",
+   "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+   "path": "data/search/query_cache.md",
+   "folder": "search",
+   "doc_title": "Кэш поисковых запросов",
+   "section_id": "s02",
+   "section_title": "Назначение",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+   "ordinal": 2,
+   "prev_id": "58973829-e734-5eba-8cd5-c855ed4cad52",
+   "next_id": "ecbf3d19-129a-58a2-abbb-adf116173d1a"
+  },
+  {
+   "fragment_id": "ecbf3d19-129a-58a2-abbb-adf116173d1a",
+   "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+   "path": "data/search/query_cache.md",
+   "folder": "search",
+   "doc_title": "Кэш поисковых запросов",
+   "section_id": "s03",
+   "section_title": "Инвалидация",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+   "ordinal": 3,
+   "prev_id": "da919f14-a42b-5669-bc52-0bd863b349b6",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:10:28+00:00"
+}

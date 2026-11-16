@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+ "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+ "fragments": [
+  {
+   "fragment_id": "711d60d6-f190-5af5-8967-5365d4f3c17c",
+   "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+   "path": "data/agents/tool_design.md",
+   "folder": "agents",
+   "doc_title": "Проектирование инструментов агента",
+   "section_id": "s01",
+   "section_title": "Проектирование инструментов",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "80b1b0de-055f-538e-b893-41801a77f8c5"
+  },
+  {
+   "fragment_id": "80b1b0de-055f-538e-b893-41801a77f8c5",
+   "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+   "path": "data/agents/tool_design.md",
+   "folder": "agents",
+   "doc_title": "Проектирование инструментов агента",
+   "section_id": "s02",
+   "section_title": "Описание",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+   "ordinal": 2,
+   "prev_id": "711d60d6-f190-5af5-8967-5365d4f3c17c",
+   "next_id": "7fe1ebe3-fbb3-5ddd-8d7b-7b17097f72ad"
+  },
+  {
+   "fragment_id": "7fe1ebe3-fbb3-5ddd-8d7b-7b17097f72ad",
+   "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+   "path": "data/agents/tool_design.md",
+   "folder": "agents",
+   "doc_title": "Проектирование инструментов агента",
+   "section_id": "s03",
+   "section_title": "Ошибки",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+   "ordinal": 3,
+   "prev_id": "80b1b0de-055f-538e-b893-41801a77f8c5",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:48+00:00"
+}

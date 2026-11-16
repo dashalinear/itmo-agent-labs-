@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+ "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+ "fragments": [
+  {
+   "fragment_id": "fd33f181-363d-5190-ac84-0d7c144465a9",
+   "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+   "path": "data/projects/docsearch_risks.md",
+   "folder": "projects",
+   "doc_title": "Риски проекта DocSearch",
+   "section_id": "s01",
+   "section_title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "e58a4548-5592-50d5-9af6-54e21a1c6138"
+  },
+  {
+   "fragment_id": "e58a4548-5592-50d5-9af6-54e21a1c6138",
+   "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+   "path": "data/projects/docsearch_risks.md",
+   "folder": "projects",
+   "doc_title": "Риски проекта DocSearch",
+   "section_id": "s02",
+   "section_title": "Риски",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+   "ordinal": 2,
+   "prev_id": "fd33f181-363d-5190-ac84-0d7c144465a9",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:04:34+00:00"
+}

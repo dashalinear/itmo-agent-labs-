@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+ "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+ "fragments": [
+  {
+   "fragment_id": "761c9fa0-aaee-5a77-9ae4-3c7013caa733",
+   "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+   "path": "data/meetings/meeting_2026-10-02_kickoff.md",
+   "folder": "meetings",
+   "doc_title": "Kickoff проекта DocSearch — 2 октября 2026",
+   "section_id": "s01",
+   "section_title": "Цель и договорённости",
+   "start_line": 1,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "cfd6806d-bede-5cba-b902-4389fd66449d"
+  },
+  {
+   "fragment_id": "cfd6806d-bede-5cba-b902-4389fd66449d",
+   "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+   "path": "data/meetings/meeting_2026-10-02_kickoff.md",
+   "folder": "meetings",
+   "doc_title": "Kickoff проекта DocSearch — 2 октября 2026",
+   "section_id": "s02",
+   "section_title": "Открытые вопросы",
+   "start_line": 11,
+   "end_line": 12,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+   "ordinal": 2,
+   "prev_id": "761c9fa0-aaee-5a77-9ae4-3c7013caa733",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:02:26+00:00"
+}

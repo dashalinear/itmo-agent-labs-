@@ -1,0 +1,3399 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-16T21:13:50+00:00",
+  "documents": [
+    {
+      "document_id": "7ca9884c-2bca-47ea-b685-20dae1df6072",
+      "original_path": "input/inbox_lab1/empty_todo.txt",
+      "current_path": "data/_unsorted/empty_todo.txt",
+      "title": "empty_todo",
+      "category": "_unsorted",
+      "description": "",
+      "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "line_count": 0,
+      "is_empty": true,
+      "note": "Empty file: kept in catalog, nothing to index.",
+      "indexing_status": "not_indexed",
+      "index_error": null,
+      "excerpts": [],
+      "indexed_at": null,
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/empty_todo.txt",
+          "to": "data/_unsorted/empty_todo.txt",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+      "original_path": "input/agents/agent_evaluation.md",
+      "current_path": "data/agents/agent_evaluation.md",
+      "title": "Оценка агентов",
+      "category": "agents",
+      "description": "Краткая заметка о том, как оценивать запуски агентов: трассы и технические счётчики.",
+      "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+      "size_bytes": 1066,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "c5009d76-804b-5366-9cf7-b7fa399cadbe",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Оценка агентов"
+        },
+        {
+          "excerpt_id": "f7891d46-fbf4-58af-a4f7-0be0e3126dc3",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Трассы"
+        },
+        {
+          "excerpt_id": "fc74b7e8-71cd-5a32-8059-4d327170edc9",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Счётчики"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/agent_evaluation.md",
+          "to": "data/agents/agent_evaluation.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+      "original_path": "input/new_files/agent_memory_compression.md",
+      "current_path": "data/agents/agent_memory_compression.md",
+      "title": "Сжатие памяти агента (NEWDOC-2026-A)",
+      "category": "agents",
+      "description": "Документ о еженедельной компактификации долговременной памяти субагента.",
+      "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+      "size_bytes": 879,
+      "line_count": 15,
+      "is_empty": false,
+      "note": "Тема: работа агентов (память, бюджеты) -> data/agents.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "d209c81b-641f-5eee-a60e-863498dfaacc",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение: субагент и его контекст"
+        },
+        {
+          "excerpt_id": "284f17b7-756d-5319-9cd4-5906423eff17",
+          "start_line": 5,
+          "end_line": 9,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "affa604f-527e-5613-a07f-24ca1ffaa895",
+          "start_line": 11,
+          "end_line": 15,
+          "summary": "Правило"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:13:50+00:00",
+      "registered_at": "2026-11-16T21:13:30+00:00",
+      "moves": [
+        {
+          "from": "input/new_files/agent_memory_compression.md",
+          "to": "data/agents/agent_memory_compression.md",
+          "at": "2026-11-16T21:13:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "116dffe1-2620-4e18-a055-2429b8ee3fc1",
+      "original_path": "input/inbox_lab1/agents_seminar_react.txt",
+      "current_path": "data/agents/agents_seminar_react.txt",
+      "title": "Семинар по агентным системам: паттерн ReAct",
+      "category": "agents",
+      "description": "Конспект семинара о паттерне ReAct в LangGraph: граф model/tools, состояние, лимиты и задание.",
+      "content_hash": "sha256:592276719548e0c073c097d338d8ea1ffa1e312cb14e53a14378c624703dec6e",
+      "size_bytes": 1405,
+      "line_count": 18,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "277b8a21-9aae-516c-8560-b8b1007ec5dd",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Паттерн ReAct"
+        },
+        {
+          "excerpt_id": "b3fc3381-ac01-53e3-8bc8-f1bb663eec69",
+          "start_line": 6,
+          "end_line": 9,
+          "summary": "Граф в LangGraph"
+        },
+        {
+          "excerpt_id": "8a8f1d2a-843a-5767-b3b0-fadb66578f6d",
+          "start_line": 11,
+          "end_line": 15,
+          "summary": "Состояние и лимиты"
+        },
+        {
+          "excerpt_id": "17160d3d-cdbf-5972-92ec-68c8eb30ef95",
+          "start_line": 17,
+          "end_line": 18,
+          "summary": "Задание"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/agents_seminar_react.txt",
+          "to": "data/agents/agents_seminar_react.txt",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+      "original_path": "input/agents/compaction_hooks.md",
+      "current_path": "data/agents/compaction_hooks.md",
+      "title": "Компактификация через хуки",
+      "category": "agents",
+      "description": "Заметка о компактификации истории агента через хук before_model и содержимом summary.",
+      "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+      "size_bytes": 1146,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "235d326e-12ec-5037-8a90-722bd609b3fc",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Компактификация через хуки"
+        },
+        {
+          "excerpt_id": "db06c736-84e8-5093-b2d8-94159bcea246",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Точка подключения"
+        },
+        {
+          "excerpt_id": "39570e46-3cb2-5e87-b6ce-736df42ad56d",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Что сохраняется"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:50+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/compaction_hooks.md",
+          "to": "data/agents/compaction_hooks.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+      "original_path": "input/agents/guardrails.md",
+      "current_path": "data/agents/guardrails.md",
+      "title": "Guardrails агента",
+      "category": "agents",
+      "description": "Заметка о защитных ограничениях агента: проверка путей, данные vs инструкции, учёт бюджета.",
+      "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+      "size_bytes": 1045,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "1ef20839-8dd5-5f65-8334-5141de095442",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Guardrails агента"
+        },
+        {
+          "excerpt_id": "6ed6ec54-ab2c-5907-b816-fa69e9640b53",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Рабочая директория"
+        },
+        {
+          "excerpt_id": "87e4c3df-a6c8-51f4-bc12-876ec498b8dc",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Бюджет"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:50+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/guardrails.md",
+          "to": "data/agents/guardrails.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+      "original_path": "input/agents/planning.md",
+      "current_path": "data/agents/planning.md",
+      "title": "Планирование в длительных задачах",
+      "category": "agents",
+      "description": "Заметка о хранении плана шагов со статусами и проверке критериев завершения кодом.",
+      "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+      "size_bytes": 1040,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "3a30d508-1f6a-55ee-be88-e5a20b3c5483",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Планирование в длительных задачах"
+        },
+        {
+          "excerpt_id": "2c17313e-f488-516e-bb82-7a93109df717",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "План"
+        },
+        {
+          "excerpt_id": "4d75308c-dbd4-5a6a-a153-85e379766dc9",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Остановка"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/planning.md",
+          "to": "data/agents/planning.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+      "original_path": "input/agents/prompt_injection.md",
+      "current_path": "data/agents/prompt_injection.md",
+      "title": "Инъекции в документах",
+      "category": "agents",
+      "description": "Заметка о правиле: текст документов и веб-страниц не меняет лимиты и права агента.",
+      "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+      "size_bytes": 1061,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e0c0553a-9fee-5bd0-9d76-58692eaf5f5b",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Инъекции в документах"
+        },
+        {
+          "excerpt_id": "6397ccc2-319b-5524-97c3-a867395c096d",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Правило"
+        },
+        {
+          "excerpt_id": "db5822a0-379a-5150-9ac9-8bc4276fe574",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Пример"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/prompt_injection.md",
+          "to": "data/agents/prompt_injection.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+      "original_path": "input/agents/react_pattern.md",
+      "current_path": "data/agents/react_pattern.md",
+      "title": "Паттерн ReAct",
+      "category": "agents",
+      "description": "Заметка о паттерне ReAct: чередование рассуждения и действия, цикл model -> tools -> model.",
+      "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+      "size_bytes": 1054,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "8acd784f-d81d-51e8-b432-4cfa9bb0d94e",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Паттерн ReAct"
+        },
+        {
+          "excerpt_id": "1c99d617-e943-59f1-b933-32033a5c12b0",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Цикл"
+        },
+        {
+          "excerpt_id": "62172614-1318-50f1-b067-9b3a651470d4",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Граф в LangGraph"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/react_pattern.md",
+          "to": "data/agents/react_pattern.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+      "original_path": "input/agents/subagents.md",
+      "current_path": "data/agents/subagents.md",
+      "title": "Субагенты и делегирование",
+      "category": "agents",
+      "description": "Заметка о субагентах: собственный контекст, результат, трасса и бюджет.",
+      "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+      "size_bytes": 1167,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "b3f6697b-a252-5e83-b991-cd91e50bd3fb",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Субагенты"
+        },
+        {
+          "excerpt_id": "6ab6bf2d-ceb3-536b-a767-fa269a9f0c09",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Результат"
+        },
+        {
+          "excerpt_id": "8cc26099-687c-59a9-8c2c-73008d61f302",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Бюджет"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/subagents.md",
+          "to": "data/agents/subagents.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+      "original_path": "input/agents/tool_design.md",
+      "current_path": "data/agents/tool_design.md",
+      "title": "Проектирование инструментов агента",
+      "category": "agents",
+      "description": "Заметка о проектировании инструментов для агентов: описания, параметры, ошибки.",
+      "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+      "size_bytes": 1067,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "711d60d6-f190-5af5-8967-5365d4f3c17c",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Проектирование инструментов"
+        },
+        {
+          "excerpt_id": "80b1b0de-055f-538e-b893-41801a77f8c5",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Описание"
+        },
+        {
+          "excerpt_id": "7fe1ebe3-fbb3-5ddd-8d7b-7b17097f72ad",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Ошибки"
+        }
+      ],
+      "indexed_at": "2026-11-16T20:58:48+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/agents/tool_design.md",
+          "to": "data/agents/tool_design.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+      "original_path": "input/inbox_lab1/courses/notes.md",
+      "current_path": "data/courses/es_seminar_analyzers_shards.md",
+      "title": "Конспект семинара: анализаторы и шарды в Elasticsearch",
+      "category": "courses",
+      "description": "Краткий конспект семинара по Elasticsearch: анализаторы, keyword-поля, шарды и реплики, multi_match и подсветка.",
+      "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+      "size_bytes": 1130,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "339cdbb6-f678-56d1-b0d8-938be955c6fa",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Анализаторы"
+        },
+        {
+          "excerpt_id": "50f40861-f6f2-5b0e-999c-346582e00400",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Шарды и реплики"
+        },
+        {
+          "excerpt_id": "84c8040d-0f15-5ccf-ba19-765d88d9929e",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Поиск и подсветка"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:43+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/courses/notes.md",
+          "to": "data/courses/es_seminar_analyzers_shards.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e8a026bb-3ea1-4ed7-8f09-b3a4c9513ff4",
+      "original_path": "input/lectures/ir_course_lectures.md",
+      "current_path": "data/courses/ir_course_lectures.md",
+      "title": "Конспект курса «Информационный поиск» (12 лекций)",
+      "category": "courses",
+      "description": "Конспект двенадцати лекций курса по информационному поиску: от булевой модели и BM25 до векторного, гибридного поиска и RAG.",
+      "content_hash": "sha256:841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
+      "size_bytes": 166111,
+      "line_count": 1289,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "077cd901-6762-5793-bc64-e6b8bca70ff3",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Заголовок конспекта"
+        },
+        {
+          "excerpt_id": "8b8ed381-5546-59ce-9aaa-7bbf025dd7ad",
+          "start_line": 7,
+          "end_line": 13,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "4fcc8218-a344-5164-bf5b-299c9c605837",
+          "start_line": 15,
+          "end_line": 23,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "3e09b401-5a8b-5225-9a4d-0c8b21cb2250",
+          "start_line": 25,
+          "end_line": 31,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "95e9f42a-fda6-507c-84dd-4d6622c5e426",
+          "start_line": 33,
+          "end_line": 41,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "f9c8cfb2-89a3-5c68-aef0-58b80d0c3624",
+          "start_line": 43,
+          "end_line": 51,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "60f087ec-d92e-5e9f-87c3-a7a15602359a",
+          "start_line": 53,
+          "end_line": 59,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "abbe879e-b60f-51d8-8f92-f950bdf4a546",
+          "start_line": 61,
+          "end_line": 69,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "abe81c72-0f17-5c99-bc6a-03742abaf5d0",
+          "start_line": 71,
+          "end_line": 79,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "9f82977c-945d-5895-9211-f9dcbee794b8",
+          "start_line": 81,
+          "end_line": 87,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "3faf72e8-54d8-5bd8-bf4d-e038f3355b80",
+          "start_line": 89,
+          "end_line": 97,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "4e295281-e05c-5576-b56a-0ce3922dca01",
+          "start_line": 99,
+          "end_line": 107,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "24bf9a5e-8b7a-5f35-85a7-ba954f7e6d8a",
+          "start_line": 109,
+          "end_line": 115,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "6c10897a-34fd-535a-a2a8-e947b1c8d118",
+          "start_line": 117,
+          "end_line": 119,
+          "summary": "Лекция 1. Введение в информационный поиск"
+        },
+        {
+          "excerpt_id": "1cd670e6-a447-5b7b-a5d8-5c69b203f3b1",
+          "start_line": 121,
+          "end_line": 127,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "d8c2415a-29c8-5b7f-8471-9e75b1635440",
+          "start_line": 129,
+          "end_line": 137,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "740c63f0-cb0a-5607-b075-df02442563e6",
+          "start_line": 139,
+          "end_line": 145,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "37510893-bc38-5068-8e5d-077ce5362d5c",
+          "start_line": 147,
+          "end_line": 155,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "a4901cdd-ec7f-5224-95a8-6c649b6a5995",
+          "start_line": 157,
+          "end_line": 165,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "0be604ab-c97e-5022-a968-01c7f7284dee",
+          "start_line": 167,
+          "end_line": 173,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "e16b969a-0b2a-5ef3-babc-c380bc17aa91",
+          "start_line": 175,
+          "end_line": 183,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "b67cf8a4-45fd-560e-8117-3ff51bafd1b9",
+          "start_line": 185,
+          "end_line": 193,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "678a4fc7-8a2e-555f-8da0-09985ef0b03b",
+          "start_line": 195,
+          "end_line": 199,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "6f5dc39b-0f7d-5ef0-ac9b-398a302a7f84",
+          "start_line": 201,
+          "end_line": 209,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "5f9a21a5-569a-5976-bdf6-810b13e82051",
+          "start_line": 211,
+          "end_line": 219,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "7c4a6f9c-0d1a-58dc-b2c7-5da450633952",
+          "start_line": 221,
+          "end_line": 225,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "3670cc35-d6b0-5a0d-a4cd-e5ef0626f6fb",
+          "start_line": 227,
+          "end_line": 233,
+          "summary": "Лекция 2. Булева модель и инвертированный индекс"
+        },
+        {
+          "excerpt_id": "73c5e1be-2c48-5c43-a5eb-e60c83fce12f",
+          "start_line": 235,
+          "end_line": 241,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "b2fb29e8-0ebb-5c95-8a38-564cdea06e9a",
+          "start_line": 243,
+          "end_line": 251,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "419ca92f-7fd9-5217-962e-03a5884ecff4",
+          "start_line": 253,
+          "end_line": 259,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "c6ce08cf-5bab-591b-90f7-11d622481cbf",
+          "start_line": 261,
+          "end_line": 269,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "2ad36bb6-ce0d-5b3a-975f-c7a2db6b6be1",
+          "start_line": 271,
+          "end_line": 279,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "b38f5bcd-d427-5c67-b33a-aa0a04d35aa9",
+          "start_line": 281,
+          "end_line": 287,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "d2c45bbb-86c1-5e1a-857e-db466e7f77b0",
+          "start_line": 289,
+          "end_line": 297,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "c5962243-6577-512f-bef6-05dfe0d97e51",
+          "start_line": 299,
+          "end_line": 307,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "91836a80-5fee-5c79-839a-02a20e414d4a",
+          "start_line": 309,
+          "end_line": 315,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "91ef784a-930a-5d8d-9e70-e4a99f0d22a6",
+          "start_line": 317,
+          "end_line": 325,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "ba7ff6d7-d799-5b99-b46b-bdb008b13363",
+          "start_line": 327,
+          "end_line": 335,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "d1577515-42c0-53f0-9edc-9f58c44fa05f",
+          "start_line": 337,
+          "end_line": 343,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "c5177789-a398-592c-acce-8d98d2ae4bd1",
+          "start_line": 345,
+          "end_line": 347,
+          "summary": "Лекция 3. Векторная модель и TF-IDF"
+        },
+        {
+          "excerpt_id": "3db54062-2289-5f94-9e3c-fe844498ea0d",
+          "start_line": 349,
+          "end_line": 357,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "3a08044b-1e85-556c-8877-11f3a3de7a59",
+          "start_line": 359,
+          "end_line": 367,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "fa759537-ff2a-5165-8a3d-313ad4c7bc25",
+          "start_line": 369,
+          "end_line": 377,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "43f9fcfd-8a09-5bac-abac-1ba17bdee1e8",
+          "start_line": 379,
+          "end_line": 385,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "ddd0286f-0113-58dd-8939-78fdc4f036ad",
+          "start_line": 387,
+          "end_line": 395,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "24cf6d07-ac37-5d2d-b77a-3de5cc8e7480",
+          "start_line": 397,
+          "end_line": 405,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "d7f892c5-6553-5394-9ff2-2e75f6850da7",
+          "start_line": 407,
+          "end_line": 413,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "53ef603b-be40-5438-a5d6-5421de7788ad",
+          "start_line": 415,
+          "end_line": 423,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "814f16fb-b766-514a-ac32-ce54bddc2021",
+          "start_line": 425,
+          "end_line": 433,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "25725c8b-f501-5a10-a29d-9a9f6a182c4b",
+          "start_line": 435,
+          "end_line": 441,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "dff64a09-d22e-5c07-a194-ec1e38674637",
+          "start_line": 443,
+          "end_line": 451,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "9c4bace6-25f2-572e-b00b-d094dd8c4787",
+          "start_line": 453,
+          "end_line": 461,
+          "summary": "Лекция 4. Вероятностная модель и BM25"
+        },
+        {
+          "excerpt_id": "0fb6aa04-f412-5a26-8fad-4f48c5e9f55e",
+          "start_line": 463,
+          "end_line": 471,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "777cb266-7825-5ade-babe-6286199f3e3e",
+          "start_line": 473,
+          "end_line": 481,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "f7fd3d0a-d7a7-562a-a28a-4d5dd6d80660",
+          "start_line": 483,
+          "end_line": 491,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "1e5d7a66-b4db-523a-9520-7b3f9fd0a38e",
+          "start_line": 493,
+          "end_line": 499,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "b134cd11-fd4b-5819-aab4-ea07bd872ee8",
+          "start_line": 501,
+          "end_line": 509,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "d55b04a0-2c0a-50d1-89ed-4c1b997ba655",
+          "start_line": 511,
+          "end_line": 519,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "c2fa2f9f-5614-583f-9f87-72e8cd954560",
+          "start_line": 521,
+          "end_line": 527,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "da514f94-921a-58be-8562-08253e0cd928",
+          "start_line": 529,
+          "end_line": 537,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "d947c49f-a3e7-5080-b33c-d38175b87b5a",
+          "start_line": 539,
+          "end_line": 547,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "f52dbc01-6b61-5377-80bd-0a375cc94cdf",
+          "start_line": 549,
+          "end_line": 555,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "502f31f8-0775-552b-929b-278c0ede1ccf",
+          "start_line": 557,
+          "end_line": 565,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "4d2fea43-c2cd-5e2c-88bc-65add97b9f37",
+          "start_line": 567,
+          "end_line": 575,
+          "summary": "Лекция 5. Оценка качества"
+        },
+        {
+          "excerpt_id": "a34cabf5-a9e1-5fae-855c-7bcac3e26dc3",
+          "start_line": 577,
+          "end_line": 585,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "4b73c2b9-f838-5f0a-93c4-48c8949fd3d4",
+          "start_line": 587,
+          "end_line": 595,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "385af836-755a-51db-a13a-01cd696a8307",
+          "start_line": 597,
+          "end_line": 605,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "0ffc2934-e13a-5ec1-8fab-7b21860f0f22",
+          "start_line": 607,
+          "end_line": 613,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "0355c1f7-24a5-5d79-893d-7f28a8ac9818",
+          "start_line": 615,
+          "end_line": 623,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "19c593a4-9f46-55c7-ab6c-3bc4ddd1f029",
+          "start_line": 625,
+          "end_line": 633,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "b4182295-dac4-5f38-a87f-fff854de67cc",
+          "start_line": 635,
+          "end_line": 641,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "cf25f85a-af28-5da7-ba29-525c59631eb0",
+          "start_line": 643,
+          "end_line": 651,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "08c0e766-58df-5a02-b1e2-a598ad20e2a8",
+          "start_line": 653,
+          "end_line": 661,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "387868ff-4d97-5bf8-97bf-4ceaee4e205f",
+          "start_line": 663,
+          "end_line": 669,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "28da1e58-4413-5c79-810b-a15eea060f95",
+          "start_line": 671,
+          "end_line": 679,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "09d2fbd4-3e80-5e79-ac40-ea497d85e465",
+          "start_line": 681,
+          "end_line": 687,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "7f343a25-776f-58ff-8607-2057d6930ce6",
+          "start_line": 689,
+          "end_line": 691,
+          "summary": "Лекция 6. Обработка текста"
+        },
+        {
+          "excerpt_id": "cfe150f0-5a46-5403-b420-6f9a291a0cef",
+          "start_line": 693,
+          "end_line": 701,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "cf95e178-ec27-5b40-8af5-9b221731747e",
+          "start_line": 703,
+          "end_line": 711,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "99e7a57a-8fe8-5f0a-b96c-f7d240b0b637",
+          "start_line": 713,
+          "end_line": 721,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "da31f762-8754-53d2-981d-8abcca5aabed",
+          "start_line": 723,
+          "end_line": 729,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "2cf52edc-0df2-5dd4-8133-794faa0d7d1a",
+          "start_line": 731,
+          "end_line": 739,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "055e7f41-c97d-5729-a47c-0e9860448c83",
+          "start_line": 741,
+          "end_line": 749,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "179f8a41-e91b-5488-a15b-e1ca4155f04a",
+          "start_line": 751,
+          "end_line": 757,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "bbfedbc2-a067-553e-b0a9-4292529cfa43",
+          "start_line": 759,
+          "end_line": 767,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "ee4696e0-f317-5341-8a7a-e793e7356aca",
+          "start_line": 769,
+          "end_line": 777,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "c497421b-726e-5045-b85b-c70dc583e7e1",
+          "start_line": 779,
+          "end_line": 785,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "94903186-2773-5423-8e74-490f2791d787",
+          "start_line": 787,
+          "end_line": 795,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "6f74c2d1-f11e-51e1-9b36-720e29ef608d",
+          "start_line": 797,
+          "end_line": 805,
+          "summary": "Лекция 7. Сжатие индекса"
+        },
+        {
+          "excerpt_id": "8c2ca230-9946-5655-a5f0-1265e7909d17",
+          "start_line": 807,
+          "end_line": 815,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "a845eb9d-d122-552f-b0a9-97d28dc04a9c",
+          "start_line": 817,
+          "end_line": 825,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "82da2acc-3df6-5222-997e-c342c936f040",
+          "start_line": 827,
+          "end_line": 835,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "0e290d28-532a-5309-89e9-8f2e224082fc",
+          "start_line": 837,
+          "end_line": 843,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "18eef571-943e-5c60-9f97-006714d7bad2",
+          "start_line": 845,
+          "end_line": 853,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "55be4c66-4005-5067-9702-4d45919a4df7",
+          "start_line": 855,
+          "end_line": 863,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "348b67d3-7985-58de-94d6-a5892c7b142f",
+          "start_line": 865,
+          "end_line": 871,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "a72c7836-d3d4-5552-b692-f5da97203be7",
+          "start_line": 873,
+          "end_line": 881,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "321fb471-5080-5c6f-974b-f706a526c55e",
+          "start_line": 883,
+          "end_line": 891,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "cf504b6f-61cd-5589-b306-dda3f9ce4075",
+          "start_line": 893,
+          "end_line": 899,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "5c52261d-05ec-5b46-9406-23fe8ac570b3",
+          "start_line": 901,
+          "end_line": 909,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "231faa70-75d7-578c-a5ed-5f9bf4c41756",
+          "start_line": 911,
+          "end_line": 919,
+          "summary": "Лекция 8. Векторный поиск"
+        },
+        {
+          "excerpt_id": "cfe18b8c-3cbe-5710-bcd5-68cb1f29b53d",
+          "start_line": 921,
+          "end_line": 929,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "42cad28b-7490-5da7-b3e3-1b9c923d1b3a",
+          "start_line": 931,
+          "end_line": 939,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "1c45a0df-1d71-53ad-a9db-59a456d4a7d9",
+          "start_line": 941,
+          "end_line": 949,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "91ed372a-c1a8-5d2f-ab8e-ac874c849fb2",
+          "start_line": 951,
+          "end_line": 957,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "bede2bd8-4b05-5cc8-a460-eebadc8a3d87",
+          "start_line": 959,
+          "end_line": 967,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "0dc0d87e-b3ac-58c9-b28b-c6153449a22d",
+          "start_line": 969,
+          "end_line": 977,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "254720f4-6094-5e16-9132-a3dbc6de36ca",
+          "start_line": 979,
+          "end_line": 985,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "dbfb1d45-17b7-5511-a0ee-bc4dade3f2a1",
+          "start_line": 987,
+          "end_line": 995,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "67ec7f66-591c-5575-a216-10a5b7f77c1b",
+          "start_line": 997,
+          "end_line": 1005,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "e99c46f9-175d-523c-a276-c9d6981b6fc1",
+          "start_line": 1007,
+          "end_line": 1013,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "317b3dce-7a9c-5824-b5ae-8f7f0c2bedaf",
+          "start_line": 1015,
+          "end_line": 1023,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "a9a18308-6083-570a-8d01-9ed444d1fed0",
+          "start_line": 1025,
+          "end_line": 1033,
+          "summary": "Лекция 9. Гибридный поиск"
+        },
+        {
+          "excerpt_id": "7bf5ed91-a12e-5935-835e-8e803676ae95",
+          "start_line": 1035,
+          "end_line": 1041,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "26df38bd-b901-5382-b7ac-5d106308c758",
+          "start_line": 1043,
+          "end_line": 1051,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "0fda6ea5-c2fe-55ab-93b7-eebdb3dc013b",
+          "start_line": 1053,
+          "end_line": 1059,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "07f8c80f-4d06-5a37-b93e-2832c06fc360",
+          "start_line": 1061,
+          "end_line": 1069,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "29f3e012-7036-5d83-bd33-96f42464a6ae",
+          "start_line": 1071,
+          "end_line": 1079,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "9bcf41c5-23e3-588a-8712-dd571b98a5cf",
+          "start_line": 1081,
+          "end_line": 1087,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "21898eab-cc9c-5705-bcaa-c737a582c268",
+          "start_line": 1089,
+          "end_line": 1097,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "5ff64c89-864d-5c4f-b088-1a0975d0a960",
+          "start_line": 1099,
+          "end_line": 1107,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "f9e7a04a-0afe-5b35-931c-19ad12b2179e",
+          "start_line": 1109,
+          "end_line": 1115,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "7710a781-a63c-530e-96d4-0549b7079098",
+          "start_line": 1117,
+          "end_line": 1125,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "16d061b2-a5e7-5205-94aa-66e0f23884e3",
+          "start_line": 1127,
+          "end_line": 1135,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "f8013b1d-ae40-53af-b8a1-805743225257",
+          "start_line": 1137,
+          "end_line": 1143,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "51e42660-9786-5730-beb8-1f0ef812c3d8",
+          "start_line": 1145,
+          "end_line": 1147,
+          "summary": "Лекция 10. Обратная связь по релевантности"
+        },
+        {
+          "excerpt_id": "d1f1238e-1664-5342-9946-06a89653c22d",
+          "start_line": 1149,
+          "end_line": 1157,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "c5715457-5c83-54f1-a1da-3714d60666d4",
+          "start_line": 1159,
+          "end_line": 1167,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "381e4444-b2b2-59cb-a7d5-4f74d2309099",
+          "start_line": 1169,
+          "end_line": 1177,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "23abe30e-846a-5b1c-a4db-734f552b3d89",
+          "start_line": 1179,
+          "end_line": 1185,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "385475c6-3489-5294-b933-668f5fa0b032",
+          "start_line": 1187,
+          "end_line": 1195,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "6a8dede4-5649-5588-8338-01382261e2c5",
+          "start_line": 1197,
+          "end_line": 1205,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "54aa851c-9bf0-56d6-821f-fb7483346fdf",
+          "start_line": 1207,
+          "end_line": 1213,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "6b62aae3-0c55-50a5-8c56-638557c52a80",
+          "start_line": 1215,
+          "end_line": 1223,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "775fe81f-d577-5a0b-a0de-3539b6fc94c1",
+          "start_line": 1225,
+          "end_line": 1233,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "00c813d8-d9a9-554f-8162-56705279ec76",
+          "start_line": 1235,
+          "end_line": 1241,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "234ba622-735a-5d55-a52c-2f47febb23ff",
+          "start_line": 1243,
+          "end_line": 1251,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "2cc64f96-3659-56e2-9e09-3d7af78819b3",
+          "start_line": 1253,
+          "end_line": 1261,
+          "summary": "Лекция 11. Веб-поиск"
+        },
+        {
+          "excerpt_id": "bf06390b-6eb0-5df1-8b89-0414b80d1e4a",
+          "start_line": 1263,
+          "end_line": 1271,
+          "summary": "Лекция 12. Поиск и LLM"
+        },
+        {
+          "excerpt_id": "bac66ac0-4c0f-55bd-84ef-8492f86ff56d",
+          "start_line": 1273,
+          "end_line": 1281,
+          "summary": "Лекция 12. Поиск и LLM"
+        },
+        {
+          "excerpt_id": "409ee7aa-fcd8-5ce7-b73a-2be4029824b3",
+          "start_line": 1283,
+          "end_line": 1289,
+          "summary": "Лекция 12. Поиск и LLM"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:11:55+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/lectures/ir_course_lectures.md",
+          "to": "data/courses/ir_course_lectures.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "f6a0394f-8de8-4a15-8bbb-9e6d969bfe0f",
+      "original_path": "input/inbox_lab1/ir_lecture_inverted_index.md",
+      "current_path": "data/courses/ir_lecture_inverted_index.md",
+      "title": "Лекция 3. Инвертированный индекс и ранжирование BM25",
+      "category": "courses",
+      "description": "Лекция курса «Информационный поиск» об инвертированном индексе, сжатии posting lists и формуле BM25.",
+      "content_hash": "sha256:5a860bc47749b655dcbefa0ef706e29c7f113e4f33fa658a14281ec92153a5d9",
+      "size_bytes": 1871,
+      "line_count": 24,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "0a9c7d14-0f10-53a7-9d09-a3586ef93c58",
+          "start_line": 1,
+          "end_line": 8,
+          "summary": "Инвертированный индекс"
+        },
+        {
+          "excerpt_id": "dd1301d9-28b4-56e4-8384-58417ea9e001",
+          "start_line": 10,
+          "end_line": 11,
+          "summary": "Инвертированный индекс"
+        },
+        {
+          "excerpt_id": "5eeb02e8-8acc-53b6-948f-48406f08f96a",
+          "start_line": 13,
+          "end_line": 15,
+          "summary": "Сжатие списков"
+        },
+        {
+          "excerpt_id": "b597a0f2-acf5-5435-a843-144b12dda6ed",
+          "start_line": 17,
+          "end_line": 20,
+          "summary": "BM25"
+        },
+        {
+          "excerpt_id": "eb5194c1-e8e4-5423-ab46-c4991d68a678",
+          "start_line": 22,
+          "end_line": 24,
+          "summary": "Домашнее задание"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:43+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/ir_lecture_inverted_index.md",
+          "to": "data/courses/ir_lecture_inverted_index.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e286b698-4918-4759-b6cd-83de7c069239",
+      "original_path": "input/inbox_lab1/mlops_lecture_monitoring.md",
+      "current_path": "data/courses/mlops_lecture_monitoring.md",
+      "title": "MLOps, занятие 5: мониторинг моделей в продакшене",
+      "category": "courses",
+      "description": "Занятие MLOps о мониторинге моделей: технические метрики, дрейф данных (PSI), алерты и практика с Evidently.",
+      "content_hash": "sha256:aad616662bd3301518f86a88b673ae59c39fd04972590ce5a43da15a1c1bb92a",
+      "size_bytes": 1267,
+      "line_count": 17,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "ef97e386-3acb-5181-b2d4-6199e34c38fc",
+          "start_line": 1,
+          "end_line": 7,
+          "summary": "Что мониторим"
+        },
+        {
+          "excerpt_id": "c5091e03-7d5e-5124-a87a-2407e015b939",
+          "start_line": 9,
+          "end_line": 14,
+          "summary": "PSI и алерты"
+        },
+        {
+          "excerpt_id": "968b85ad-6d56-5de2-a11a-6b44a9961610",
+          "start_line": 16,
+          "end_line": 17,
+          "summary": "Практика"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:43+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/mlops_lecture_monitoring.md",
+          "to": "data/courses/mlops_lecture_monitoring.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+      "original_path": "input/inbox_lab1/vector_search_lecture.md",
+      "current_path": "data/courses/vector_search_lecture.md",
+      "title": "Лекция 7. Векторный поиск и HNSW",
+      "category": "courses",
+      "description": "Лекция курса «Информационный поиск» о векторном поиске, ANN, графе HNSW и гибридном поиске в Elasticsearch.",
+      "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+      "size_bytes": 1072,
+      "line_count": 15,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e5b74111-8c45-552e-8de7-3dbf70cf62eb",
+          "start_line": 1,
+          "end_line": 7,
+          "summary": "Векторный поиск и ANN"
+        },
+        {
+          "excerpt_id": "e2de6020-ec65-529a-94d3-c1d28fbefbe8",
+          "start_line": 9,
+          "end_line": 12,
+          "summary": "HNSW"
+        },
+        {
+          "excerpt_id": "a641a657-acf6-5dd4-b535-5d5cc054d055",
+          "start_line": 14,
+          "end_line": 15,
+          "summary": "Elasticsearch и гибридный поиск"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:43+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/vector_search_lecture.md",
+          "to": "data/courses/vector_search_lecture.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "615ebf29-aa2c-4be7-80f5-3431b1eea8d1",
+      "original_path": "input/inbox_lab1/howto_elasticsearch_docker.md",
+      "current_path": "data/howto/howto_elasticsearch_docker.md",
+      "title": "Инструкция: как поднять Elasticsearch в Docker для учебного стенда",
+      "category": "howto",
+      "description": "Пошаговая инструкция по запуску Elasticsearch в Docker (single-node) с ограничением памяти JVM и типовыми проблемами.",
+      "content_hash": "sha256:bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+      "size_bytes": 1088,
+      "line_count": 14,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "ed94bd2a-876a-526e-b383-b966e56a50a6",
+          "start_line": 1,
+          "end_line": 10,
+          "summary": "Запуск в Docker"
+        },
+        {
+          "excerpt_id": "d5c736f1-db9e-5a07-9a61-1ee666ed492e",
+          "start_line": 12,
+          "end_line": 14,
+          "summary": "Типичные проблемы"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/howto_elasticsearch_docker.md",
+          "to": "data/howto/howto_elasticsearch_docker.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+      "original_path": "input/inbox_lab1/howto_git_branches.txt",
+      "current_path": "data/howto/howto_git_branches.txt",
+      "title": "Инструкция по работе с ветками git в учебных проектах",
+      "category": "howto",
+      "description": "Краткая инструкция по git-веткам: защищённый main, feature-ветки, rebase, pull request и запрет коммита секретов.",
+      "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+      "size_bytes": 809,
+      "line_count": 10,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "f0737353-a4ba-5846-a1f7-e8f8b1bbbacc",
+          "start_line": 1,
+          "end_line": 8,
+          "summary": "Правила веток и PR"
+        },
+        {
+          "excerpt_id": "bc24cfa1-8e9f-5fc3-9a68-4b703f9f3a21",
+          "start_line": 10,
+          "end_line": 10,
+          "summary": "Секреты"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/howto_git_branches.txt",
+          "to": "data/howto/howto_git_branches.txt",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "cef37733-7c48-42f0-b8a0-a13b40dd1413",
+      "original_path": "input/ops/call_transcript_2026-11-05.txt",
+      "current_path": "data/meetings/call_transcript_2026-11-05.txt",
+      "title": "Расшифровка созвона дежурных 05.11.2026",
+      "category": "meetings",
+      "description": "Расшифровка созвона дежурных: плановая очистка архива, проверка после INC-2026-034, переход на PostgreSQL (РС-7) и обновление runbook RB-09.",
+      "content_hash": "sha256:57c23fc04338e50198db9f4330ab3b5b8decf50710120823052f94ebfa7fd6d1",
+      "size_bytes": 865,
+      "line_count": 8,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "f95e7ee8-df01-5bc1-9bd3-675ae0691ac6",
+          "start_line": 1,
+          "end_line": 8,
+          "summary": "Ход обсуждения"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/call_transcript_2026-11-05.txt",
+          "to": "data/meetings/call_transcript_2026-11-05.txt",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+      "original_path": "input/inbox_lab1/meeting_2026-10-02_kickoff.md",
+      "current_path": "data/meetings/meeting_2026-10-02_kickoff.md",
+      "title": "Kickoff проекта DocSearch — 2 октября 2026",
+      "category": "meetings",
+      "description": "Протокол kickoff проекта DocSearch: цель, хранилище Elasticsearch, MVP к 1 декабря, ответственный за инфраструктуру.",
+      "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+      "size_bytes": 829,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "761c9fa0-aaee-5a77-9ae4-3c7013caa733",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Цель и договорённости"
+        },
+        {
+          "excerpt_id": "cfd6806d-bede-5cba-b902-4389fd66449d",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Открытые вопросы"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/meeting_2026-10-02_kickoff.md",
+          "to": "data/meetings/meeting_2026-10-02_kickoff.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "14d739ea-fb8d-45ce-9fa3-6f763bfba995",
+      "original_path": "input/inbox_lab1/meetings/notes.md",
+      "current_path": "data/meetings/meeting_2026-10-09_weekly.md",
+      "title": "Еженедельная встреча DocSearch, 2026-10-09",
+      "category": "meetings",
+      "description": "Протокол еженедельной встречи DocSearch: индексация по разделам, загрузчик Markdown к 16 октября, 30 запросов для оценки качества.",
+      "content_hash": "sha256:c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+      "size_bytes": 937,
+      "line_count": 15,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "1aa684fd-77ed-5c50-86f7-29d3d73bb461",
+          "start_line": 1,
+          "end_line": 8,
+          "summary": "Решения"
+        },
+        {
+          "excerpt_id": "01404806-efe2-596e-95ef-3eaf44719c83",
+          "start_line": 10,
+          "end_line": 15,
+          "summary": "Риски и заметки"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:56:32+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/meetings/notes.md",
+          "to": "data/meetings/meeting_2026-10-09_weekly.md",
+          "at": "2026-11-16T20:56:32+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "7568c151-632b-4646-837d-5aa77f24495d",
+      "original_path": "input/inbox_lab1/meeting_2026-11-10_retro.md",
+      "current_path": "data/meetings/meeting_2026-11-10_retro.md",
+      "title": "Ретроспектива DocSearch — 10 ноября 2026",
+      "category": "meetings",
+      "description": "Ретроспектива DocSearch: готовый загрузчик Markdown и поиск, проблемы с анализатором и дублями, планы на тесты и мониторинг.",
+      "content_hash": "sha256:9fac47cf757077cffa37703dd11257536904867a8996eab24d68b97204d795b7",
+      "size_bytes": 767,
+      "line_count": 10,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "535b87ea-e376-5bdc-be36-6e54e73aa680",
+          "start_line": 1,
+          "end_line": 10,
+          "summary": "Итоги и действия"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/meeting_2026-11-10_retro.md",
+          "to": "data/meetings/meeting_2026-11-10_retro.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "9af1414d-b416-4d6f-9dc6-d11dd3396bed",
+      "original_path": "input/ops/meeting_m12.md",
+      "current_path": "data/meetings/meeting_m12.md",
+      "title": "Протокол совещания M-12 (архитектура DocSearch)",
+      "category": "meetings",
+      "description": "Протокол совещания M-12: решение РС-7 (PostgreSQL 16 для чекпоинтов, срок 20.11.2026) и РС-8 (эмбеддинги 384), открытый вопрос о томе для бэкапов.",
+      "content_hash": "sha256:77e58d6ca052974d35c7cdbf7b3c5fd382eefde37912bd117c1da0630c704646",
+      "size_bytes": 1715,
+      "line_count": 29,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "095a5abb-f855-53e7-87b3-3aadabd862c8",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Участники и принципы"
+        },
+        {
+          "excerpt_id": "fd6075f9-08db-58d9-990a-c85e948385f7",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Участники и принципы"
+        },
+        {
+          "excerpt_id": "a0ce2e93-dfe6-5ae6-a73b-566f8b981702",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Решения"
+        },
+        {
+          "excerpt_id": "1598719b-934f-5d80-888f-0b0a03f9e5bc",
+          "start_line": 23,
+          "end_line": 29,
+          "summary": "Открытые вопросы"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/meeting_m12.md",
+          "to": "data/meetings/meeting_m12.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+      "original_path": "input/ops/meeting_m13.md",
+      "current_path": "data/meetings/meeting_m13.md",
+      "title": "Протокол совещания M-13",
+      "category": "meetings",
+      "description": "Протокол совещания M-13: решение РС-9 (бэкапы на томе backup-02, 2 ТБ) и подготовка runbook RB-09 Мариной Беловой к 25.11.2026.",
+      "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+      "size_bytes": 976,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "b07120ea-f7af-5a61-aaea-69daf5b2e126",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Решения"
+        },
+        {
+          "excerpt_id": "cb4dc19d-5751-54c2-86dc-814f20b6aa67",
+          "start_line": 11,
+          "end_line": 19,
+          "summary": "Действия"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:02:26+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/meeting_m13.md",
+          "to": "data/meetings/meeting_m13.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "79d31160-a5c6-4f3e-bbfa-39daa43da191",
+      "original_path": "input/ops/incident_031.md",
+      "current_path": "data/ops/incident_031.md",
+      "title": "Разбор инцидента INC-2026-031",
+      "category": "ops",
+      "description": "Разбор инцидента 12.10.2026: агент DocSearch не мог писать чекпоинты из-за блокировок SQLite на сетевом диске.",
+      "content_hash": "sha256:08f3b3a82f44c97d000deb5212f485972ac0881f6370769af42fe556c957429d",
+      "size_bytes": 1419,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "5cc17150-ad60-5082-a52a-ac6549fa29f9",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Симптом"
+        },
+        {
+          "excerpt_id": "b6f1aa21-0e87-5601-b204-7e3114c9b668",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Симптом"
+        },
+        {
+          "excerpt_id": "128b24f0-a1b7-5732-a959-36308ffe204f",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Причина"
+        },
+        {
+          "excerpt_id": "8f6c5c4e-7fd2-5f90-8dbd-f057cf68b9e7",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Действия"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:03:16+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/incident_031.md",
+          "to": "data/ops/incident_031.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "ca5f6d5c-acab-4613-98a6-92b4e4e44330",
+      "original_path": "input/ops/incident_034.md",
+      "current_path": "data/ops/incident_034.md",
+      "title": "Разбор инцидента INC-2026-034",
+      "category": "ops",
+      "description": "Разбор инцидента 03.11.2026: задержка поиска p95 1,8 с из-за неочищенного кэша запросов после переиндексации.",
+      "content_hash": "sha256:394012deb9d16978e2caaf623233d92e4f41e297d91f7503f45a7780f3f7b55c",
+      "size_bytes": 1399,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "7450e221-344b-52ec-9a16-02fd5cc2cadb",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Симптом"
+        },
+        {
+          "excerpt_id": "fbdbb28a-18be-517d-b8ae-bf178735a738",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Симптом"
+        },
+        {
+          "excerpt_id": "d80bf5c0-8f00-5770-a266-b97abc3217f5",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Причина"
+        },
+        {
+          "excerpt_id": "24c7c8a0-06a7-57f8-bc53-690f07a5a597",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Действия"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:03:16+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/incident_034.md",
+          "to": "data/ops/incident_034.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+      "original_path": "input/ops/monitoring.md",
+      "current_path": "data/ops/monitoring.md",
+      "title": "Мониторинг платформы агентов",
+      "category": "ops",
+      "description": "Метрики и алерты платформы агентов: p95 задержки, доля ошибок tools, расход токенов.",
+      "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+      "size_bytes": 1066,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "9efd092c-5e30-5073-a5e5-d696c468f758",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Метрики"
+        },
+        {
+          "excerpt_id": "0eeb865c-5b1d-56c0-9cc0-27c350054dbd",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Метрики"
+        },
+        {
+          "excerpt_id": "5a451ada-35f6-551b-b667-1d5155d7c4cb",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Алерты"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:03:16+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/monitoring.md",
+          "to": "data/ops/monitoring.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+      "original_path": "input/ops/oncall_policy.md",
+      "current_path": "data/ops/oncall_policy.md",
+      "title": "Политика дежурств",
+      "category": "ops",
+      "description": "Политика on-call: недельные смены, передача в понедельник 10:00, эскалация при 30 минутах.",
+      "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+      "size_bytes": 1026,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e7b37dac-269f-5e2b-9a5b-da241fc8410a",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Смены"
+        },
+        {
+          "excerpt_id": "bea9f671-244c-580e-bc1d-7263393d5fda",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Смены"
+        },
+        {
+          "excerpt_id": "4d77adaf-02d4-5ba0-b427-cda05192cd03",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Эскалация"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:03:16+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/oncall_policy.md",
+          "to": "data/ops/oncall_policy.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+      "original_path": "input/ops/runbook_rb09.md",
+      "current_path": "data/ops/runbook_rb09.md",
+      "title": "Runbook RB-09: восстановление хранилища чекпоинтов",
+      "category": "ops",
+      "description": "Runbook RB-09: 4 шага восстановления хранилища чекпоинтов с переключением на реплику за 15 минут.",
+      "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+      "size_bytes": 1319,
+      "line_count": 25,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "4486a338-eb00-552c-afd0-52d25b2fb80a",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Шаги"
+        },
+        {
+          "excerpt_id": "ddaa3c7d-ce8f-55a3-8f1a-1b70d0fcffab",
+          "start_line": 11,
+          "end_line": 17,
+          "summary": "Шаги"
+        },
+        {
+          "excerpt_id": "9ccfdbce-e1e4-50c0-ba70-0cc4ad3106a6",
+          "start_line": 19,
+          "end_line": 25,
+          "summary": "Критерий успеха"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:03:16+00:00",
+      "registered_at": "2026-11-16T20:57:00+00:00",
+      "moves": [
+        {
+          "from": "input/ops/runbook_rb09.md",
+          "to": "data/ops/runbook_rb09.md",
+          "at": "2026-11-16T20:57:00+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+      "original_path": "input/new_files/runbook_rb11.md",
+      "current_path": "data/ops/runbook_rb11.md",
+      "title": "Runbook RB-11: перенос индекса на новый узел (NEWDOC-2026-B)",
+      "category": "ops",
+      "description": "Runbook по переносу индекса: снимок и восстановление на узле es-new-01.",
+      "content_hash": "sha256:c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+      "size_bytes": 523,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "Тема: операционные процедуры (runbook) -> data/ops.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "bb74c6b6-6cce-5918-b984-8751f9d948e6",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение: фиксация инцидента"
+        },
+        {
+          "excerpt_id": "82282847-1336-5ea7-812d-90ea5cc0fde5",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Шаги"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:13:50+00:00",
+      "registered_at": "2026-11-16T21:13:30+00:00",
+      "moves": [
+        {
+          "from": "input/new_files/runbook_rb11.md",
+          "to": "data/ops/runbook_rb11.md",
+          "at": "2026-11-16T21:13:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "fd9485e7-df93-44b0-bc1f-b71d77ef235a",
+      "original_path": "input/projects/docsearch_architecture.md",
+      "current_path": "data/projects/docsearch_architecture.md",
+      "title": "Архитектура DocSearch",
+      "category": "projects",
+      "description": "Архитектурный документ проекта DocSearch: компоненты, хранение состояния, резервные копии.",
+      "content_hash": "sha256:db3a53f2381c9f03c5429d062a9ecba4d97c990999108b4f36dd4640a6e1e242",
+      "size_bytes": 1568,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "ac24a4eb-3d89-50ee-aeef-cef4c2e1ca1e",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "81de25d0-223a-53d1-8a98-7af0d054b153",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Компоненты"
+        },
+        {
+          "excerpt_id": "af6eaa33-4993-566b-8bac-a84f18624e97",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Хранение состояния"
+        },
+        {
+          "excerpt_id": "4fac5b34-0917-5c81-ba2d-23f59e128eb1",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Резервные копии"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/projects/docsearch_architecture.md",
+          "to": "data/projects/docsearch_architecture.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+      "original_path": "input/projects/docsearch_requirements.md",
+      "current_path": "data/projects/docsearch_requirements.md",
+      "title": "Требования к DocSearch",
+      "category": "projects",
+      "description": "Требования к проекту DocSearch: ответы со ссылками на фрагменты, полный обход без top-k.",
+      "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+      "size_bytes": 1024,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "479ac790-74bb-5523-82cb-c863750d8fa0",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "21522d9d-2b50-54c4-ad75-23fc0e1353f7",
+          "start_line": 5,
+          "end_line": 9,
+          "summary": "Ответы"
+        },
+        {
+          "excerpt_id": "2ef289ef-ef1a-5212-8649-1bc4d3d3d016",
+          "start_line": 11,
+          "end_line": 19,
+          "summary": "Полный обход"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/projects/docsearch_requirements.md",
+          "to": "data/projects/docsearch_requirements.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+      "original_path": "input/projects/docsearch_risks.md",
+      "current_path": "data/projects/docsearch_risks.md",
+      "title": "Риски проекта DocSearch",
+      "category": "projects",
+      "description": "Риски проекта DocSearch: потеря состояния при сбое хранилища, меры в runbook RB-09.",
+      "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+      "size_bytes": 662,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "fd33f181-363d-5190-ac84-0d7c144465a9",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "e58a4548-5592-50d5-9af6-54e21a1c6138",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Риски"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/projects/docsearch_risks.md",
+          "to": "data/projects/docsearch_risks.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+      "original_path": "input/projects/docsearch_roadmap.md",
+      "current_path": "data/projects/docsearch_roadmap.md",
+      "title": "План работ DocSearch",
+      "category": "projects",
+      "description": "План работ проекта DocSearch: переход на PostgreSQL, неблокирующие субагенты, автоматическая индексация.",
+      "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+      "size_bytes": 923,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "6e03bf80-c221-5190-9b4f-4a392fc3569f",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "039703fc-aea0-5b61-b592-176560f4a98c",
+          "start_line": 5,
+          "end_line": 9,
+          "summary": "Ноябрь"
+        },
+        {
+          "excerpt_id": "1f0ab116-59a6-5a4d-adc2-35d2b116f2bc",
+          "start_line": 11,
+          "end_line": 19,
+          "summary": "Декабрь"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/projects/docsearch_roadmap.md",
+          "to": "data/projects/docsearch_roadmap.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "a9098fb3-3990-4331-b397-bbaac61e12ea",
+      "original_path": "input/inbox_lab1/project_docsearch.md",
+      "current_path": "data/projects/project_docsearch.md",
+      "title": "Проект DocSearch: описание и архитектура",
+      "category": "projects",
+      "description": "Описание учебного проекта DocSearch: поисковая система по документации кафедры, компоненты, требования, статус.",
+      "content_hash": "sha256:e7641b83789ea41212a54bf97167df1684512b0cbf21edf01fddd30385cc7ba4",
+      "size_bytes": 1236,
+      "line_count": 18,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "ac3cdf0b-da72-5148-9084-13b8a0db19c6",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "ddc4b2e4-c2c8-588a-97a4-6a30fee1bf24",
+          "start_line": 6,
+          "end_line": 10,
+          "summary": "Компоненты"
+        },
+        {
+          "excerpt_id": "44dd16fc-8b07-5a02-b287-a6439ccca127",
+          "start_line": 12,
+          "end_line": 15,
+          "summary": "Требования"
+        },
+        {
+          "excerpt_id": "7fe309e4-7ea8-5e20-99fc-c4d29aec9ab8",
+          "start_line": 17,
+          "end_line": 18,
+          "summary": "Статус"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/project_docsearch.md",
+          "to": "data/projects/project_docsearch.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "ac326f26-ef6e-4acb-b867-2ffd4874cabd",
+      "original_path": "input/inbox_lab1/project_recsys.md",
+      "current_path": "data/projects/project_recsys.md",
+      "title": "Проект: рекомендательная система элективных курсов",
+      "category": "projects",
+      "description": "Проект рекомендательной системы элективных курсов для магистрантов: данные, подходы, метрики, сроки.",
+      "content_hash": "sha256:2aeff3cef0b2183606111afd4cd5afdec3632490cc7fb32ed3b045a88833e351",
+      "size_bytes": 1050,
+      "line_count": 17,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "3f919a9e-e8e4-550b-978d-fa1bd1f1f659",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "95f7f539-bd66-52e5-bf10-368948958b54",
+          "start_line": 6,
+          "end_line": 7,
+          "summary": "Данные"
+        },
+        {
+          "excerpt_id": "3dfb4a97-f8c6-59b1-95fa-6289288546f7",
+          "start_line": 9,
+          "end_line": 12,
+          "summary": "Подходы"
+        },
+        {
+          "excerpt_id": "c934b39f-9c04-52a7-a228-51951ffce6a4",
+          "start_line": 14,
+          "end_line": 15,
+          "summary": "Метрики и ограничения"
+        },
+        {
+          "excerpt_id": "677be1e9-8168-56f9-8c90-ab424802d466",
+          "start_line": 17,
+          "end_line": 17,
+          "summary": "Срок"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:04:34+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/project_recsys.md",
+          "to": "data/projects/project_recsys.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+      "original_path": "input/search/analyzers_ru.md",
+      "current_path": "data/search/analyzers_ru.md",
+      "title": "Анализаторы для русского языка",
+      "category": "search",
+      "description": "Заметка о русскоязычном анализаторе и обработке кодов в поисковом индексе.",
+      "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+      "size_bytes": 1168,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "3f545e20-47c2-5abe-bf3a-4acf9a4e6471",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "f940ba7c-b952-572f-9e50-b21b79aad442",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Морфология"
+        },
+        {
+          "excerpt_id": "55fcc55c-bbf2-5010-beaa-30491ff80e15",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Коды"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:28+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/analyzers_ru.md",
+          "to": "data/search/analyzers_ru.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e6bf2d7e-312a-4d40-b788-94e2dfd1cda1",
+      "original_path": "input/search/bm25_ranking.md",
+      "current_path": "data/search/bm25_ranking.md",
+      "title": "Ранжирование BM25 в учебном индексе",
+      "category": "search",
+      "description": "Параметры и веса полей BM25 в учебном индексе DocSearch.",
+      "content_hash": "sha256:367fd7c8da165154a60d5ad677f2764c7c748e67ad2ab1dc66b1e7092c66c301",
+      "size_bytes": 1585,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "57e5fa75-0fe3-5c19-9f03-fa549aa8626f",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "c0791383-568a-54b3-8a5d-f98533f6c4d4",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Формула"
+        },
+        {
+          "excerpt_id": "d452f575-d149-59e9-bc77-448b0bfb122b",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Параметры"
+        },
+        {
+          "excerpt_id": "971c053d-0113-590a-b558-992fed92a597",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Поля"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/bm25_ranking.md",
+          "to": "data/search/bm25_ranking.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "0a5de126-f468-4542-addc-5ab896a056ca",
+      "original_path": "input/search/hybrid_search.md",
+      "current_path": "data/search/hybrid_search.md",
+      "title": "Гибридный поиск: правила объединения",
+      "category": "search",
+      "description": "Правила объединения BM25 и векторной ветвей, деградация и переранжирование.",
+      "content_hash": "sha256:861c51a99d8456916c6b81f516ae2c64c271ef3035cad1832505757f6cbef7f4",
+      "size_bytes": 1727,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "342377f2-7f36-582a-9479-1c71855b6ec9",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "447ff4ee-6ddc-553a-8a8a-c68113d19030",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Объединение ветвей"
+        },
+        {
+          "excerpt_id": "676c50c3-1dfb-5b35-8777-5912829f3afe",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Деградация"
+        },
+        {
+          "excerpt_id": "ab2d5dd0-e55c-5d89-b85e-6eb9b2945e37",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Переранжирование"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/hybrid_search.md",
+          "to": "data/search/hybrid_search.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+      "original_path": "input/search/query_cache.md",
+      "current_path": "data/search/query_cache.md",
+      "title": "Кэш поисковых запросов",
+      "category": "search",
+      "description": "Назначение и правила инвалидации кэша поисковых запросов.",
+      "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+      "size_bytes": 1019,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "58973829-e734-5eba-8cd5-c855ed4cad52",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "da919f14-a42b-5669-bc52-0bd863b349b6",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "ecbf3d19-129a-58a2-abbb-adf116173d1a",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Инвалидация"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/query_cache.md",
+          "to": "data/search/query_cache.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+      "original_path": "input/new_files/query_rewriting.md",
+      "current_path": "data/search/query_rewriting.md",
+      "title": "Переформулирование запросов агентом (NEWDOC-2026-C)",
+      "category": "search",
+      "description": "Идея переписывания запроса пользователя в 2–3 варианта с объединением результатов и кэшем.",
+      "content_hash": "sha256:8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+      "size_bytes": 596,
+      "line_count": 9,
+      "is_empty": false,
+      "note": "Тема: поиск/поисковые запросы -> data/search.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "0260c69b-27de-5482-8c52-a5798bee7b41",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение: подсветка совпадений"
+        },
+        {
+          "excerpt_id": "bd2fdf38-40e7-53c0-936d-4730559a55ec",
+          "start_line": 5,
+          "end_line": 9,
+          "summary": "Идея"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:13:50+00:00",
+      "registered_at": "2026-11-16T21:13:30+00:00",
+      "moves": [
+        {
+          "from": "input/new_files/query_rewriting.md",
+          "to": "data/search/query_rewriting.md",
+          "at": "2026-11-16T21:13:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+      "original_path": "input/search/query_suggest.md",
+      "current_path": "data/search/query_suggest.md",
+      "title": "Подсказки и исправление опечаток",
+      "category": "search",
+      "description": "Правила подсказок по префиксному дереву и исправления опечаток.",
+      "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+      "size_bytes": 1108,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "98a28881-82ef-5330-8f5f-a3bced1db196",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "c3d93ed2-70d6-59dc-be79-9517d7bb641c",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Подсказки"
+        },
+        {
+          "excerpt_id": "01fec929-bf6e-56cd-b7f4-ebb5b0adde22",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Опечатки"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/query_suggest.md",
+          "to": "data/search/query_suggest.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "20c69615-ef93-4544-9b93-89b6985227c9",
+      "original_path": "input/search/search_quality.md",
+      "current_path": "data/search/search_quality.md",
+      "title": "Оценка качества поиска",
+      "category": "search",
+      "description": "Метрики, разметка и правила выкатки изменений качества поиска.",
+      "content_hash": "sha256:684650c10da3076126a7d06157bae1f125c0edcc5c13af0f22e0dc2fea4a496f",
+      "size_bytes": 1612,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "23f5b927-7207-5838-baca-0e5954d75139",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "dd949aeb-71f4-599e-ab7d-6e38ecb5044d",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Метрики"
+        },
+        {
+          "excerpt_id": "960bc5eb-3706-5030-90c9-ffbab0afd9bc",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Разметка"
+        },
+        {
+          "excerpt_id": "4512abad-104e-51d9-8408-c3d62c4ff889",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Решение по выкатке"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:31+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/search_quality.md",
+          "to": "data/search/search_quality.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "f2ce4707-f509-4e32-a6ad-84400e9dd552",
+      "original_path": "input/inbox_lab1/search_quality_thoughts.md",
+      "current_path": "data/search/search_quality_thoughts.md",
+      "title": "Заметка про поиск: как оценивать качество",
+      "category": "search",
+      "description": "Мысли после лекции по информационному поиску и обсуждения на проекте.",
+      "content_hash": "sha256:95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
+      "size_bytes": 972,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "b150b583-225a-575e-9321-ec5fd6d95602",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "ff42a426-8151-5319-a246-a99ee973067e",
+          "start_line": 5,
+          "end_line": 7,
+          "summary": "Метрики"
+        },
+        {
+          "excerpt_id": "4c9d53aa-c623-5825-84c0-098ff3b9c2bd",
+          "start_line": 9,
+          "end_line": 10,
+          "summary": "Идея для DocSearch"
+        },
+        {
+          "excerpt_id": "db8f6cef-dd08-5f86-8ea4-44ca0fd7cce5",
+          "start_line": 12,
+          "end_line": 13,
+          "summary": "Вопрос к преподавателю"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:30+00:00",
+      "moves": [
+        {
+          "from": "input/inbox_lab1/search_quality_thoughts.md",
+          "to": "data/search/search_quality_thoughts.md",
+          "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+      "original_path": "input/search/sharding.md",
+      "current_path": "data/search/sharding.md",
+      "title": "Шардирование индекса фрагментов",
+      "category": "search",
+      "description": "Число шардов и правила роста индекса фрагментов учебного стенда.",
+      "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+      "size_bytes": 1197,
+      "line_count": 19,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "560a733f-85e6-5642-8a0a-255764229ea2",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "3c1330c8-0f99-5cfe-8c8a-06ab5a3493df",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Число шардов"
+        },
+        {
+          "excerpt_id": "9db2ca7d-0f39-5751-99b2-5954f83c34a9",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Рост"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:29+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/sharding.md",
+          "to": "data/search/sharding.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "f4500b7d-d49d-4287-ae93-5ffb161f0c24",
+      "original_path": "input/search/vector_knn.md",
+      "current_path": "data/search/vector_knn.md",
+      "title": "Векторный поиск kNN в Elasticsearch",
+      "category": "search",
+      "description": "Поле dense_vector, параметры HNSW и модель эмбеддингов для векторного поиска.",
+      "content_hash": "sha256:8a2bd9e7b0ea10131ac24de76b47ac198984a736665f48db25acb59a5ae6ea5d",
+      "size_bytes": 1557,
+      "line_count": 27,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "0525c9eb-9d11-5cf9-9dda-b1169428f6ce",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение"
+        },
+        {
+          "excerpt_id": "40a0b9cd-961f-5503-92dd-06134aa872e6",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "Поле dense_vector"
+        },
+        {
+          "excerpt_id": "94b82d79-dbb7-513f-ae88-33f267b18d7d",
+          "start_line": 13,
+          "end_line": 19,
+          "summary": "Параметры HNSW"
+        },
+        {
+          "excerpt_id": "b4421a6a-a8ed-5f34-89a2-cf29af85b10e",
+          "start_line": 21,
+          "end_line": 27,
+          "summary": "Модель"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:10:31+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/search/vector_knn.md",
+          "to": "data/search/vector_knn.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "e625cae6-6c4f-4673-87db-8839f34f778a",
+      "original_path": "input/storage/st_checkpoint_postgres.md",
+      "current_path": "data/storage/st_checkpoint_postgres.md",
+      "title": "Чекпоинты в PostgreSQL",
+      "category": "storage",
+      "description": "Как хранить чекпоинты агентов в PostgreSQL: схема таблиц, пул соединений, миграции.",
+      "content_hash": "sha256:1608c190abb07c975a005e97d5c4ff29ce9a24d7d228e558604fa4d04ae1c6ec",
+      "size_bytes": 3008,
+      "line_count": 41,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "f357c648-616d-5ba2-8a2c-68b76bb8ac01",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Когда выбирают PostgreSQL"
+        },
+        {
+          "excerpt_id": "4d5acea0-da69-5afe-a695-e0ebc5d873db",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Когда выбирают PostgreSQL"
+        },
+        {
+          "excerpt_id": "11b79fd6-a645-51b4-96a1-c5f246253d5d",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Схема таблиц"
+        },
+        {
+          "excerpt_id": "6225b442-1f05-58f6-aa83-4f682be3559f",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Пул соединений"
+        },
+        {
+          "excerpt_id": "ed0f165c-9e68-559a-b05e-5d40afaf1d0a",
+          "start_line": 33,
+          "end_line": 41,
+          "summary": "Миграции"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:07:47+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_checkpoint_postgres.md",
+          "to": "data/storage/st_checkpoint_postgres.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "63576563-7a76-4186-a023-d168b5d7873b",
+      "original_path": "input/storage/st_checkpoint_sqlite.md",
+      "current_path": "data/storage/st_checkpoint_sqlite.md",
+      "title": "Чекпоинты в SQLite",
+      "category": "storage",
+      "description": "Заметка о локальном хранении чекпоинтов состояния агента в SQLite: WAL, блокировки, резервные копии.",
+      "content_hash": "sha256:f36f76f456e6aa4d863e598bf3e9609a24317a1e7c69b36115926a49b8d29f5d",
+      "size_bytes": 3306,
+      "line_count": 43,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "2fa6174e-01ab-511e-94b9-519931824d3e",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "665b046f-6e32-5841-8a58-a29f5aead7f0",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "d1af8d09-2a42-55af-b3ef-6ec0e76d4764",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Режим журнала WAL"
+        },
+        {
+          "excerpt_id": "7245ffda-7741-58a4-8ba0-520c881b3903",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Ошибка ERR_LOCK_TIMEOUT при записи"
+        },
+        {
+          "excerpt_id": "8639e04e-c0f3-56af-978f-ed8275a28170",
+          "start_line": 33,
+          "end_line": 33,
+          "summary": "Ошибка ERR_LOCK_TIMEOUT при записи"
+        },
+        {
+          "excerpt_id": "5871bd63-e50a-5b10-a295-7a49f9652074",
+          "start_line": 35,
+          "end_line": 43,
+          "summary": "Резервное копирование"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_checkpoint_sqlite.md",
+          "to": "data/storage/st_checkpoint_sqlite.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "3bf69284-f264-4f26-bcd4-a4b8e5f13cf0",
+      "original_path": "input/storage/st_encryption_state.md",
+      "current_path": "data/storage/st_encryption_state.md",
+      "title": "Шифрование и защита сохранённого состояния",
+      "category": "storage",
+      "description": "Правила защиты хранилища состояния агента: шифрование на диске, доступ, журналы и секреты.",
+      "content_hash": "sha256:6ad213eb70aa43185ae731f6797216351f8b87f318fdebfa1e0135d97aa2a27f",
+      "size_bytes": 2264,
+      "line_count": 33,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "41d07f0d-c46a-5c76-aa5f-22d889ccd644",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Что защищаем"
+        },
+        {
+          "excerpt_id": "3a94a829-bd46-5c84-979c-e8ed936fc97f",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Что защищаем"
+        },
+        {
+          "excerpt_id": "f4aa4b3e-5591-5021-a9d8-019b1eaa6a86",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Шифрование на диске"
+        },
+        {
+          "excerpt_id": "6f53f38e-f7d5-57d3-b43f-cd2a9eb6ca64",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Доступ и журналы"
+        },
+        {
+          "excerpt_id": "56c9da4b-e928-591b-b0d6-f23faa368741",
+          "start_line": 33,
+          "end_line": 33,
+          "summary": "Доступ и журналы"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_encryption_state.md",
+          "to": "data/storage/st_encryption_state.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
+      "original_path": "input/storage/st_event_sourcing.md",
+      "current_path": "data/storage/st_event_sourcing.md",
+      "title": "Событийная модель журнала состояния",
+      "category": "storage",
+      "description": "Event sourcing для состояния агентов: журнал событий, проигрывание, версии событий.",
+      "content_hash": "sha256:f325b434bda63bf747c0b6d58b5daccc66b42adb91265d8963270e7cd4909465",
+      "size_bytes": 2295,
+      "line_count": 31,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e605d668-bca8-58a8-97c7-70ce8164c35b",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Идея"
+        },
+        {
+          "excerpt_id": "3c373d24-8d4b-5bbb-a026-a1e7dee54599",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Идея"
+        },
+        {
+          "excerpt_id": "98898177-8535-5f92-9970-ab57ebacc367",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Проигрывание журнала"
+        },
+        {
+          "excerpt_id": "da281a19-b186-5bf0-810b-498e45b043d0",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Версии событий"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:07:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_event_sourcing.md",
+          "to": "data/storage/st_event_sourcing.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "a2eb3b8d-4b50-4f96-ac59-2efd432e77cf",
+      "original_path": "input/storage/st_memory_longterm.md",
+      "current_path": "data/storage/st_memory_longterm.md",
+      "title": "Долговременная память агента",
+      "category": "storage",
+      "description": "Заметка о долговременной памяти агента: пространства имён, устаревание фактов, источники записей.",
+      "content_hash": "sha256:b797ea1668630e4f3402b798feb5e955f653a013680bee3af6f356e68431c819",
+      "size_bytes": 2395,
+      "line_count": 33,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "6197c555-f5bb-57c0-ae4a-b44296a58f75",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Кратковременная и долговременная память"
+        },
+        {
+          "excerpt_id": "1a4251e7-c282-5331-ace8-a59c58b750fa",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Кратковременная и долговременная память"
+        },
+        {
+          "excerpt_id": "6caea44f-4afe-5d01-a849-c977196d3c2e",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Пространства имён"
+        },
+        {
+          "excerpt_id": "a6a2a1f2-2802-5606-8f43-6b6f6cc5bae8",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Устаревание фактов"
+        },
+        {
+          "excerpt_id": "a102b944-65e8-59d3-a4f3-79c458839500",
+          "start_line": 33,
+          "end_line": 33,
+          "summary": "Устаревание фактов"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_memory_longterm.md",
+          "to": "data/storage/st_memory_longterm.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "72c0b078-4913-4a81-bdeb-794740e421f9",
+      "original_path": "input/storage/st_redis_state.md",
+      "current_path": "data/storage/st_redis_state.md",
+      "title": "Состояние агента в Redis",
+      "category": "storage",
+      "description": "Заметка об использовании Redis как кэша состояния агента: персистентность AOF/RDB и политика памяти.",
+      "content_hash": "sha256:7afb0ce7b7d6f0a62e968e9b53daa0c258a8b57727c256de494b6366e0a54aa7",
+      "size_bytes": 2126,
+      "line_count": 31,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "95c85e6c-d413-51f0-871f-1501376c150d",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Задача"
+        },
+        {
+          "excerpt_id": "c0e7dc8d-0d25-560c-ad81-2cbd9eb2beb5",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Задача"
+        },
+        {
+          "excerpt_id": "cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Персистентность"
+        },
+        {
+          "excerpt_id": "856ded03-45ee-5db6-82cd-c5abf5597616",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Память"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_redis_state.md",
+          "to": "data/storage/st_redis_state.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "92e89981-2af9-4410-bef8-998a60b843dc",
+      "original_path": "input/storage/st_retention_policy.txt",
+      "current_path": "data/storage/st_retention_policy.txt",
+      "title": "Регламент хранения данных состояния агентов",
+      "category": "storage",
+      "description": "Сроки хранения чекпоинтов, трасс и артефактов; порядок удаления.",
+      "content_hash": "sha256:47c59ca7ae50b589fa9e01643e126df97d9b10da311380f5b50038a18524b60a",
+      "size_bytes": 2029,
+      "line_count": 18,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "d5ecf6db-0f3a-52a8-99d0-b1e3b90b959f",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Общие положения"
+        },
+        {
+          "excerpt_id": "c86705d6-a553-5146-8526-5d36658498ed",
+          "start_line": 6,
+          "end_line": 7,
+          "summary": "Чекпоинты"
+        },
+        {
+          "excerpt_id": "3ad2854c-ce6a-52cb-a829-f7797f3b1bce",
+          "start_line": 9,
+          "end_line": 11,
+          "summary": "Трассы"
+        },
+        {
+          "excerpt_id": "2ac0e174-fa05-572c-808e-e416a94b0132",
+          "start_line": 13,
+          "end_line": 14,
+          "summary": "Артефакты"
+        },
+        {
+          "excerpt_id": "9bf596ea-1c45-5603-9966-059e42f920e6",
+          "start_line": 16,
+          "end_line": 18,
+          "summary": "Удаление"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:08:03+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_retention_policy.txt",
+          "to": "data/storage/st_retention_policy.txt",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "2958d309-1cc8-443e-b7ee-53f93c31140a",
+      "original_path": "input/storage/st_schema_migrations.md",
+      "current_path": "data/storage/st_schema_migrations.md",
+      "title": "Миграции схемы состояния",
+      "category": "storage",
+      "description": "Правила миграций схемы чекпоинтов: версия схемы, совместимые изменения, порядок выкатки.",
+      "content_hash": "sha256:174f6267c5bde74ae682133b46b82bae682439a305e2e3ab3beff1257b296b9c",
+      "size_bytes": 2258,
+      "line_count": 33,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "35eafb58-15c9-5cd3-967e-fc1bee02bac5",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Версия схемы"
+        },
+        {
+          "excerpt_id": "2251958c-977c-5090-96b3-8a34b97f16ad",
+          "start_line": 11,
+          "end_line": 11,
+          "summary": "Версия схемы"
+        },
+        {
+          "excerpt_id": "0308c5c8-9dcb-540e-89db-26a00d3bfe08",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Совместимые изменения"
+        },
+        {
+          "excerpt_id": "a3288aa9-35f7-5fbf-a0a4-751af9be3144",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Порядок выкатки"
+        },
+        {
+          "excerpt_id": "23016558-8065-5827-86b3-b09774174126",
+          "start_line": 33,
+          "end_line": 33,
+          "summary": "Порядок выкатки"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:54+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_schema_migrations.md",
+          "to": "data/storage/st_schema_migrations.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "eff7f142-fe09-4431-a8de-7a274d96e280",
+      "original_path": "input/storage/st_snapshot_policy.md",
+      "current_path": "data/storage/st_snapshot_policy.md",
+      "title": "Политика снимков и резервных копий состояния",
+      "category": "storage",
+      "description": "Политика создания, хранения и проверки восстановления снимков (чекпоинтов) состояния: график, лимиты хранения и метрики.",
+      "content_hash": "sha256:758a4014863ab642d049bd25eedff75d6e44d063b5bcad21b1cee4a3bfa4de37",
+      "size_bytes": 2351,
+      "line_count": 31,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "7a58ee2f-c7b1-5682-bc6f-3f477e102890",
+          "start_line": 1,
+          "end_line": 3,
+          "summary": "Введение: чекпоинты"
+        },
+        {
+          "excerpt_id": "a5f5b19c-a7b2-5808-b619-aa1f442fea03",
+          "start_line": 5,
+          "end_line": 11,
+          "summary": "График снимков"
+        },
+        {
+          "excerpt_id": "ce14cd97-57dc-59dc-a3c6-cfb675a3797d",
+          "start_line": 13,
+          "end_line": 21,
+          "summary": "Хранение копий"
+        },
+        {
+          "excerpt_id": "8ce4810f-c43d-5616-8f52-f0661e9043e7",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Проверка восстановления"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:12:06+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_snapshot_policy.md",
+          "to": "data/storage/st_snapshot_policy.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "16d4daa9-314f-410a-adde-e71eb59ea17e",
+      "original_path": "input/storage/st_vector_memory.md",
+      "current_path": "data/storage/st_vector_memory.md",
+      "title": "Векторная память и её пределы",
+      "category": "storage",
+      "description": "Векторная память агентов: эмбеддинги, пределы точности, размер индекса HNSW.",
+      "content_hash": "sha256:5f43134db76c15a5030bece071d3de894c9aecc50a7d7941ed12fb25a5fc53b5",
+      "size_bytes": 2126,
+      "line_count": 31,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "301c3603-03a7-5c38-843a-c5780c9ef275",
+          "start_line": 1,
+          "end_line": 9,
+          "summary": "Как устроена"
+        },
+        {
+          "excerpt_id": "36dfaf8e-20d9-591b-b24f-a97157c21e2b",
+          "start_line": 11,
+          "end_line": 19,
+          "summary": "Пределы точности"
+        },
+        {
+          "excerpt_id": "480af5ac-d861-544d-8f45-fbc1b683ada0",
+          "start_line": 21,
+          "end_line": 29,
+          "summary": "Размер индекса"
+        },
+        {
+          "excerpt_id": "5d73b93c-4e11-5416-90f9-777e3e173efb",
+          "start_line": 31,
+          "end_line": 31,
+          "summary": "Размер индекса"
+        }
+      ],
+      "indexed_at": "2026-11-16T21:07:30+00:00",
+      "registered_at": "2026-11-16T20:56:55+00:00",
+      "moves": [
+        {
+          "from": "input/storage/st_vector_memory.md",
+          "to": "data/storage/st_vector_memory.md",
+          "at": "2026-11-16T20:56:55+00:00"
+        }
+      ]
+    }
+  ]
+}

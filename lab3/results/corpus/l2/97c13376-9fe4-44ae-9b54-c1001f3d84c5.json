@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+ "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+ "fragments": [
+  {
+   "fragment_id": "1ef20839-8dd5-5f65-8334-5141de095442",
+   "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+   "path": "data/agents/guardrails.md",
+   "folder": "agents",
+   "doc_title": "Guardrails агента",
+   "section_id": "s01",
+   "section_title": "Guardrails агента",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "6ed6ec54-ab2c-5907-b816-fa69e9640b53"
+  },
+  {
+   "fragment_id": "6ed6ec54-ab2c-5907-b816-fa69e9640b53",
+   "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+   "path": "data/agents/guardrails.md",
+   "folder": "agents",
+   "doc_title": "Guardrails агента",
+   "section_id": "s02",
+   "section_title": "Рабочая директория",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+   "ordinal": 2,
+   "prev_id": "1ef20839-8dd5-5f65-8334-5141de095442",
+   "next_id": "87e4c3df-a6c8-51f4-bc12-876ec498b8dc"
+  },
+  {
+   "fragment_id": "87e4c3df-a6c8-51f4-bc12-876ec498b8dc",
+   "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+   "path": "data/agents/guardrails.md",
+   "folder": "agents",
+   "doc_title": "Guardrails агента",
+   "section_id": "s03",
+   "section_title": "Бюджет",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+   "ordinal": 3,
+   "prev_id": "6ed6ec54-ab2c-5907-b816-fa69e9640b53",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:50+00:00"
+}

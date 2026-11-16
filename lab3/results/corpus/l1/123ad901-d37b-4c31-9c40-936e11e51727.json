@@ -1,0 +1,36 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+ "path": "data/projects/docsearch_roadmap.md",
+ "folder": "projects",
+ "title": "План работ DocSearch",
+ "description": "План работ проекта DocSearch: переход на PostgreSQL, неблокирующие субагенты, автоматическая индексация.",
+ "summary": "План работ проекта DocSearch. Ноябрь: переход на PostgreSQL, неблокирующие субагенты, индексация новых файлов из CLI. Декабрь: автоматическая индексация по расписанию. Каждое архитектурное решение имеет номер и ссылку на протокол. Прототип проверяется на корпусе учебных материалов курса.",
+ "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+ "lines": 19,
+ "sections": [
+  {
+   "section_id": "s01",
+   "title": "Введение",
+   "start_line": 1,
+   "end_line": 3,
+   "summary": "Прототип проверяется на корпусе учебных материалов курса."
+  },
+  {
+   "section_id": "s02",
+   "title": "Ноябрь",
+   "start_line": 5,
+   "end_line": 9,
+   "summary": "Переход на PostgreSQL, неблокирующие субагенты, индексация новых файлов из CLI."
+  },
+  {
+   "section_id": "s03",
+   "title": "Декабрь",
+   "start_line": 11,
+   "end_line": 19,
+   "summary": "Автоматическая индексация по расписанию."
+  }
+ ],
+ "written_at": "2026-11-16T21:03:48+00:00",
+ "written_by": "agent (write_l1)"
+}

@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+ "content_hash": "sha256:c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+ "fragments": [
+  {
+   "fragment_id": "bb74c6b6-6cce-5918-b984-8751f9d948e6",
+   "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+   "path": "data/ops/runbook_rb11.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-11: перенос индекса на новый узел (NEWDOC-2026-B)",
+   "section_id": "s01",
+   "section_title": "Введение: фиксация инцидента",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "82282847-1336-5ea7-812d-90ea5cc0fde5"
+  },
+  {
+   "fragment_id": "82282847-1336-5ea7-812d-90ea5cc0fde5",
+   "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+   "path": "data/ops/runbook_rb11.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-11: перенос индекса на новый узел (NEWDOC-2026-B)",
+   "section_id": "s02",
+   "section_title": "Шаги",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+   "ordinal": 2,
+   "prev_id": "bb74c6b6-6cce-5918-b984-8751f9d948e6",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:13:50+00:00"
+}

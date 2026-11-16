@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+ "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+ "fragments": [
+  {
+   "fragment_id": "3a30d508-1f6a-55ee-be88-e5a20b3c5483",
+   "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+   "path": "data/agents/planning.md",
+   "folder": "agents",
+   "doc_title": "Планирование в длительных задачах",
+   "section_id": "s01",
+   "section_title": "Планирование в длительных задачах",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "2c17313e-f488-516e-bb82-7a93109df717"
+  },
+  {
+   "fragment_id": "2c17313e-f488-516e-bb82-7a93109df717",
+   "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+   "path": "data/agents/planning.md",
+   "folder": "agents",
+   "doc_title": "Планирование в длительных задачах",
+   "section_id": "s02",
+   "section_title": "План",
+   "start_line": 5,
+   "end_line": 11,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+   "ordinal": 2,
+   "prev_id": "3a30d508-1f6a-55ee-be88-e5a20b3c5483",
+   "next_id": "4d75308c-dbd4-5a6a-a153-85e379766dc9"
+  },
+  {
+   "fragment_id": "4d75308c-dbd4-5a6a-a153-85e379766dc9",
+   "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+   "path": "data/agents/planning.md",
+   "folder": "agents",
+   "doc_title": "Планирование в длительных задачах",
+   "section_id": "s03",
+   "section_title": "Остановка",
+   "start_line": 13,
+   "end_line": 19,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+   "ordinal": 3,
+   "prev_id": "2c17313e-f488-516e-bb82-7a93109df717",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T20:58:48+00:00"
+}

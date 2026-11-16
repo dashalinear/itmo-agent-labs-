@@ -1,0 +1,42 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+ "content_hash": "sha256:8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+ "fragments": [
+  {
+   "fragment_id": "0260c69b-27de-5482-8c52-a5798bee7b41",
+   "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+   "path": "data/search/query_rewriting.md",
+   "folder": "search",
+   "doc_title": "Переформулирование запросов агентом (NEWDOC-2026-C)",
+   "section_id": "s01",
+   "section_title": "Введение: подсветка совпадений",
+   "start_line": 1,
+   "end_line": 3,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "bd2fdf38-40e7-53c0-936d-4730559a55ec"
+  },
+  {
+   "fragment_id": "bd2fdf38-40e7-53c0-936d-4730559a55ec",
+   "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+   "path": "data/search/query_rewriting.md",
+   "folder": "search",
+   "doc_title": "Переформулирование запросов агентом (NEWDOC-2026-C)",
+   "section_id": "s02",
+   "section_title": "Идея",
+   "start_line": 5,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+   "ordinal": 2,
+   "prev_id": "0260c69b-27de-5482-8c52-a5798bee7b41",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-16T21:13:50+00:00"
+}

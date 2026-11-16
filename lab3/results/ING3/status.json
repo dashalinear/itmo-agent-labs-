@@ -1,0 +1,197 @@
+{
+  "task": {
+    "task_id": "ING3",
+    "kind": "ingest",
+    "status": "completed",
+    "status_reason": "Папка input пуста — новых файлов нет. Корпус уже актуален: 56 документов, 55 с L1 (пустой файл data/_unsorted/empty_todo.txt не индексируется), 323 фрагмента L2, validate_corpus ok=true, проблем 0. Повторная обработка не требовалась.",
+    "runs": 1,
+    "request": "Организуй все файлы из папки input в data по темам (по содержимому, тематические подпапки входа сохраняй, если они подходят) и добавь документы в корпус: каталог L0, структура и summary L1, тексты L2 в Elasticsearch. Неизменённые документы, уже имеющие актуальные L1/L2, не обрабатывай повторно. В конце проверь корпус validate_corpus и заверши задачу.",
+    "plan": [],
+    "completion": {
+      "completed": true,
+      "note": "Папка input пуста — новых файлов нет. Корпус уже актуален: 56 документов, 55 с L1 (пустой файл data/_unsorted/empty_todo.txt не индексируется), 323 фрагмента L2, validate_corpus ok=true, проблем 0. Повторная обработка не требовалась.",
+      "criteria": {
+        "input_folder_organized": {
+          "ok": true,
+          "detail": "0 files left"
+        },
+        "l1_l2_complete": {
+          "ok": true,
+          "detail": "need L1: 0, need L2: 0"
+        },
+        "validation": {
+          "ok": true,
+          "detail": "323 fragments checked, 0 problems"
+        }
+      }
+    },
+    "limits": {
+      "max_total_tokens": 8000000,
+      "max_model_calls": 450,
+      "max_tool_calls": 2000,
+      "task_deadline_s": 10800,
+      "max_search_calls": 12,
+      "max_http_requests": 80,
+      "max_fetch_bytes": 1000000,
+      "max_redirects": 5,
+      "http_timeout_s": 10.0,
+      "http_retries": 2,
+      "backoff_base_s": 0.5,
+      "working_context_tokens": 28000,
+      "response_reserve_tokens": 2048,
+      "estimate_margin": 0.1,
+      "compaction_trigger": 0.75,
+      "compaction_target": 0.45,
+      "compaction_min_gain": 0.05,
+      "summary_max_tokens": 1200,
+      "summary_tool_clip_chars": 1200,
+      "max_compaction_chunks": 4,
+      "max_tool_result_chars": 6000,
+      "max_step_result_chars": 12000,
+      "preview_chars": 1200,
+      "max_pages_per_read": 5,
+      "max_lines_per_read": 300,
+      "llm_timeout_s": 180.0,
+      "llm_retries": 2,
+      "tool_timeout_s": 60.0
+    }
+  },
+  "constraints": [],
+  "criteria": {},
+  "budget": {
+    "tokens": {
+      "spent": 39894,
+      "reserved": 0,
+      "limit": 8000000,
+      "of_which": {
+        "input_tokens": 39540,
+        "output_tokens": 354,
+        "compaction_input_tokens": 0,
+        "compaction_output_tokens": 0,
+        "failed_call_tokens": 0,
+        "interrupted_call_tokens": 0
+      }
+    },
+    "model_calls": {
+      "used": 5,
+      "limit": 450
+    },
+    "compaction_calls": 0,
+    "failed_calls": 0,
+    "tool_calls": {
+      "used": 6,
+      "limit": 2000
+    },
+    "search_calls": {
+      "used": 0,
+      "limit": 12
+    },
+    "http_requests": {
+      "used": 0,
+      "limit": 80
+    },
+    "cache_hits": 0,
+    "bytes_downloaded": 0,
+    "active_seconds": {
+      "used": 7.8,
+      "limit": 10800
+    },
+    "peak_input_tokens": 8467
+  },
+  "queue": {
+    "found": 0,
+    "pending": 0,
+    "running": 0,
+    "done": 0,
+    "error": 0,
+    "skipped": 0,
+    "found_total": 0,
+    "selected_total": 0,
+    "read_total": 0
+  },
+  "documents": [],
+  "summary_version": 0,
+  "compactions": [],
+  "model_calls": [
+    {
+      "id": 310,
+      "task_id": "ING3",
+      "ts": "2026-11-16T21:14:05+00:00",
+      "kind": "agent",
+      "estimated_input": 11452,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "actual_input": 7045,
+      "actual_output": 53,
+      "duration_s": 0.85,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 311,
+      "task_id": "ING3",
+      "ts": "2026-11-16T21:14:06+00:00",
+      "kind": "agent",
+      "estimated_input": 10425,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.09)",
+      "actual_input": 7639,
+      "actual_output": 41,
+      "duration_s": 0.71,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 312,
+      "task_id": "ING3",
+      "ts": "2026-11-16T21:14:07+00:00",
+      "kind": "agent",
+      "estimated_input": 10031,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.39)",
+      "actual_input": 8150,
+      "actual_output": 15,
+      "duration_s": 0.56,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 313,
+      "task_id": "ING3",
+      "ts": "2026-11-16T21:14:09+00:00",
+      "kind": "agent",
+      "estimated_input": 9703,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "actual_input": 8239,
+      "actual_output": 102,
+      "duration_s": 1.36,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 314,
+      "task_id": "ING3",
+      "ts": "2026-11-16T21:14:11+00:00",
+      "kind": "agent",
+      "estimated_input": 9694,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "actual_input": 8467,
+      "actual_output": 143,
+      "duration_s": 1.72,
+      "status": "ok",
+      "note": null
+    }
+  ]
+}
