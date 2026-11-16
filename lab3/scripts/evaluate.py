@@ -59,11 +59,16 @@ def main() -> None:
     tasks = store.list_tasks()
     rows = []
     for t in tasks:
+        if t["kind"] == "probe":            # deterministic search probe, not an agent task
+            continue
         task = store.get_task(t["task_id"])
         b = Budget(store, t["task_id"], Limits.from_dict(task["limits"])).snapshot()
         ev = store.evidence(t["task_id"])
         searches = Counter(f"{e['data']['kind']}:{e['data']['level']}" for e in store.events(t["task_id"], "corpus_search"))
-        rows.append({"task_id": t["task_id"], "kind": t["kind"], "status": t["status"], "reason": (t["status_reason"] or "")[:90],
+        status = t["status"]
+        if status == "queued" and t["runs"] == 0 and t["task_id"] == "CLI":
+            status = "parent of CLI sub-agents"
+        rows.append({"task_id": t["task_id"], "kind": t["kind"], "status": status, "reason": (t["status_reason"] or "")[:90],
                      "parent": task["spec"].get("parent_task_id"), "runs": t["runs"], "model_calls": b["model_calls"]["used"],
                      "tool_calls": b["tool_calls"]["used"], "tokens": b["tokens"]["spent"], "compactions": b["compaction_calls"],
                      "peak_input": b["peak_input_tokens"], "evidence": len(ev), "searches": dict(searches),
