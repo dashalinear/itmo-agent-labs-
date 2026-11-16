@@ -116,7 +116,17 @@ class TaskRunner:
 
     # ------------------------------------------------------------------ run / resume / chat turn
     async def run(self, task_id: str, user_text: str | None = None, overrides: dict | None = None,
-                  label: str = "run") -> dict:
+                  label: str = "run", agent_factory=None, verbose: bool | None = None) -> dict:
+        """agent_factory(...) -> bundle with .agent .ctx .ws .docs .task_tools .tools (default: lab 2 agent)."""
+        saved_verbose = self.verbose
+        if verbose is not None:
+            self.verbose = verbose
+        try:
+            return await self._run(task_id, user_text, overrides, label, agent_factory or build_harness_agent)
+        finally:
+            self.verbose = saved_verbose
+
+    async def _run(self, task_id: str, user_text: str | None, overrides: dict | None, label: str, agent_factory) -> dict:
         store = self.store
         task = store.get_task(task_id)
         if not task:
@@ -147,7 +157,7 @@ class TaskRunner:
                 if self.verbose:
                     print(f"  ⚙ harness:{kind} {_short(shown, 220)}", flush=True)
 
-        bundle = build_harness_agent(self.cfg, store, task_id, model, summarizer, self.mcp_tools, self.checkpointer,
+        bundle = agent_factory(self.cfg, store, task_id, model, summarizer, self.mcp_tools, self.checkpointer,
                                      window, wsrc, provider=self.provider, http_transport=self.http_transport,
                                      on_event=on_event)
         ctx = bundle.ctx

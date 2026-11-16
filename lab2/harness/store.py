@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS ranges (
 CREATE TABLE IF NOT EXISTS evidence (
   evidence_id TEXT PRIMARY KEY, task_id TEXT, claim TEXT, kind TEXT, source_type TEXT, source TEXT,
   document_id TEXT, content_hash TEXT, page_start INTEGER, page_end INTEGER, line_start INTEGER,
-  line_end INTEGER, quote TEXT, created_at TEXT);
+  line_end INTEGER, quote TEXT, created_at TEXT, fragment_id TEXT);
 CREATE TABLE IF NOT EXISTS searches (
   id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, query TEXT, query_norm TEXT, provider TEXT,
   results TEXT, new_urls INTEGER, ts TEXT);
@@ -115,6 +115,9 @@ class TaskStore:
         self.db.execute("PRAGMA synchronous=NORMAL")
         self.db.executescript(SCHEMA)
         self.db.execute("INSERT OR IGNORE INTO meta VALUES ('schema_version', ?)", (str(SCHEMA_VERSION),))
+        cols = {r[1] for r in self.db.execute("PRAGMA table_info(evidence)")}
+        if "fragment_id" not in cols:                       # migration of a lab 2 database
+            self.db.execute("ALTER TABLE evidence ADD COLUMN fragment_id TEXT")
 
     def close(self) -> None:
         with self._lock:
@@ -281,7 +284,7 @@ class TaskStore:
     # -- evidence -------------------------------------------------------------
     def add_evidence(self, rec: dict) -> bool:
         cols = ("evidence_id", "task_id", "claim", "kind", "source_type", "source", "document_id", "content_hash",
-                "page_start", "page_end", "line_start", "line_end", "quote", "created_at")
+                "page_start", "page_end", "line_start", "line_end", "quote", "created_at", "fragment_id")
         cur = self._exec(f"INSERT OR IGNORE INTO evidence ({', '.join(cols)}) VALUES ({', '.join('?' * len(cols))})",
                          [rec.get(c) if c != "created_at" else now_iso() for c in cols])
         return cur.rowcount == 1

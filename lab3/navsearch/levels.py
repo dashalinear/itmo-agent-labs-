@@ -1,0 +1,311 @@
+"""L0 / L1 / L2 storage on disk (inside the task root, harness service area) + deterministic validation.
+
+  .harness/corpus/l1/<document_id>.json   L1: title, description, summary, sections (line ranges + summaries)
+  .harness/corpus/l2/<document_id>.json   L2 registry: ALL fragments of the document (ids, section, lines, pages, hash)
+  .harness/corpus/l0.json                 L0: catalog of the whole corpus (folders -> documents -> L1/L2 pointers)
+
+The agent decides the structure and writes the summaries (write_l1); the code below only validates and
+derives: fragment boundaries, stable fragment_id, positions, parent/child links. Text of a fragment is
+never stored separately from the source: it is always cut from the current file by line range, and the
+validation re-reads the file to check every fragment.
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import threading
+import uuid
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+
+from organizer.catalog import Catalog
+from organizer.results import ToolError
+from organizer.textutil import file_hash, read_text
+
+from harness.tools_docs import load_doc
+from harness.workspace import HarnessWorkspace
+
+FRAGMENT_NS = uuid.UUID("6f6c6c33-2b8e-4f5e-9d4f-6c616233a001")
+MAX_FRAGMENT_LINES = 10
+MAX_FRAGMENT_CHARS = 800
+SCHEMA = "l0l1l2/1"
+_lock = threading.RLock()
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def fragment_key(document_id: str, content_hash: str, start: int, end: int) -> str:
+    return str(uuid.uuid5(FRAGMENT_NS, f"{document_id}|{content_hash}|{start}|{end}"))
+
+
+def _atomic_json(path: Path, obj) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
+    os.replace(tmp, path)
+
+
+@dataclass
+class Section:
+    section_id: str
+    title: str
+    start_line: int
+    end_line: int
+    summary: str
+
+
+class Levels:
+    def __init__(self, ws: HarnessWorkspace, catalog: Catalog) -> None:
+        self.ws = ws
+        self.catalog = catalog
+        self.dir = ws.service_path("corpus")
+        (self.dir / "l1").mkdir(parents=True, exist_ok=True)
+        (self.dir / "l2").mkdir(parents=True, exist_ok=True)
+
+    # ------------------------------------------------------------------ documents
+    def doc_entry(self, document_id: str) -> dict:
+        d = self.catalog.get(document_id)
+        if not d:
+            raise ToolError("unknown_document", f"document_id {document_id} is not in the catalog")
+        return d
+
+    def source(self, document_id: str) -> tuple[dict, Path, list[str]]:
+        d = self.doc_entry(document_id)
+        p = self.ws.resolve(d["current_path"], must_exist=True)
+        return d, p, read_text(p).splitlines()
+
+    @staticmethod
+    def folder_of(path: str) -> str:
+        parts = path.split("/")
+        return parts[1] if len(parts) >= 3 and parts[0] == "data" else "(root)"
+
+    # ------------------------------------------------------------------ L1
+    def l1_path(self, document_id: str) -> Path:
+        if not re.fullmatch(r"[0-9a-f-]{36}", document_id or ""):
+            raise ToolError("invalid_argument", f"not a document_id: {document_id!r}")
+        return self.dir / "l1" / f"{document_id}.json"
+
+    def get_l1(self, document_id: str) -> dict | None:
+        p = self.l1_path(document_id)
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+    @staticmethod
+    def check_sections(sections: list[dict], lines: list[str]) -> list[str]:
+        """Ordered, non-overlapping, inside the file, every non-blank line covered."""
+        problems = []
+        n = len(lines)
+        prev_end = 0
+        for i, s in enumerate(sections):
+            a, b = s.get("start_line"), s.get("end_line")
+            if not isinstance(a, int) or not isinstance(b, int) or a < 1 or b < a or b > n:
+                problems.append(f"section #{i + 1} '{s.get('title')}': bad range {a}-{b} (file has {n} lines)")
+                continue
+            if a <= prev_end:
+                problems.append(f"section #{i + 1} '{s.get('title')}' overlaps the previous one ({a} <= {prev_end})")
+            gap = [k for k in range(prev_end + 1, a) if lines[k - 1].strip()]
+            if gap:
+                problems.append(f"non-blank lines {gap[0]}-{gap[-1]} before section #{i + 1} are not covered")
+            if not (s.get("title") or "").strip():
+                problems.append(f"section #{i + 1} has no title")
+            prev_end = max(prev_end, b)
+        tail = [k for k in range(prev_end + 1, n + 1) if lines[k - 1].strip()]
+        if tail:
+            problems.append(f"non-blank lines {tail[0]}-{tail[-1]} after the last section are not covered")
+        return problems
+
+    def write_l1(self, document_id: str, title: str, description: str, summary: str, sections: list[dict]) -> dict:
+        d, p, lines = self.source(document_id)
+        if not d["current_path"].startswith("data/"):
+            raise ToolError("not_organized", f"{d['current_path']} is not in data/: move it first")
+        if not lines:
+            raise ToolError("empty_document", "Empty document: nothing to describe; it stays without L1/L2")
+        if not title.strip() or not summary.strip():
+            raise ToolError("invalid_argument", "title and summary are required")
+        if len(summary) > 2000 or len(description) > 400:
+            raise ToolError("too_long", "summary <= 2000 chars, description <= 400 chars")
+        if not sections or len(sections) > 60:
+            raise ToolError("invalid_argument", "give 1..60 sections that cover the document by line ranges")
+        secs = [s if isinstance(s, dict) else s.model_dump() for s in sections]
+        problems = self.check_sections(secs, lines)
+        if problems:
+            raise ToolError("invalid_structure", "L1 structure does not match the file; fix the line ranges", problems=problems[:10])
+        chash = file_hash(p)
+        out_secs = []
+        for i, s in enumerate(secs, 1):
+            if len(s.get("summary") or "") > 500:
+                raise ToolError("too_long", f"section #{i} summary > 500 chars")
+            out_secs.append({"section_id": f"s{i:02d}", "title": s["title"].strip()[:200], "start_line": s["start_line"],
+                             "end_line": s["end_line"], "summary": (s.get("summary") or "").strip()})
+        rec = {"schema": SCHEMA, "document_id": document_id, "path": d["current_path"], "folder": self.folder_of(d["current_path"]),
+               "title": title.strip()[:200], "description": description.strip(), "summary": summary.strip(),
+               "content_hash": chash, "lines": len(lines), "sections": out_secs, "written_at": now_iso(),
+               "written_by": "agent (write_l1)"}
+        old = self.get_l1(document_id)
+        same = bool(old) and {k: old.get(k) for k in ("title", "description", "summary", "sections", "content_hash")} == \
+            {k: rec[k] for k in ("title", "description", "summary", "sections", "content_hash")}
+        if not same:
+            _atomic_json(self.l1_path(document_id), rec)
+        self.catalog.update(document_id, title=rec["title"], description=rec["description"])
+        return {"record": rec, "unchanged": same}
+
+    # ------------------------------------------------------------------ L2 (deterministic fragmentation)
+    def build_fragments(self, document_id: str) -> list[dict]:
+        l1 = self.get_l1(document_id)
+        if not l1:
+            raise ToolError("no_l1", "Write the L1 structure first (write_l1)")
+        d, p, lines = self.source(document_id)
+        chash = file_hash(p)
+        if chash != l1["content_hash"]:
+            raise ToolError("stale_l1", "The file changed after write_l1: rewrite L1 for the new version")
+        doc = load_doc(p, d["current_path"])
+        frags = []
+        for sec in l1["sections"]:
+            a = sec["start_line"]
+            while a <= sec["end_line"]:
+                while a <= sec["end_line"] and not lines[a - 1].strip():
+                    a += 1
+                if a > sec["end_line"]:
+                    break
+                b, chars, last_blank = a, 0, None
+                while b <= sec["end_line"]:
+                    chars += len(lines[b - 1]) + 1
+                    if not lines[b - 1].strip():
+                        last_blank = b
+                    if (b - a + 1 >= MAX_FRAGMENT_LINES or chars >= MAX_FRAGMENT_CHARS) and b < sec["end_line"]:
+                        if last_blank and last_blank > a:
+                            b = last_blank - 1
+                        break
+                    b += 1
+                b = min(b, sec["end_line"])
+                while b > a and not lines[b - 1].strip():
+                    b -= 1
+                fid = fragment_key(document_id, chash, a, b)
+                frags.append({"fragment_id": fid, "document_id": document_id, "path": d["current_path"],
+                              "folder": l1["folder"], "doc_title": l1["title"], "section_id": sec["section_id"],
+                              "section_title": sec["title"], "start_line": a, "end_line": b,
+                              "page_start": doc.page_of_line(a) if doc.paged else None,
+                              "page_end": doc.page_of_line(b) if doc.paged else None,
+                              "content_hash": chash, "text": "\n".join(lines[a - 1: b])})
+                a = b + 1
+                while a <= sec["end_line"] and not lines[a - 1].strip():
+                    a += 1
+        for i, f in enumerate(frags):
+            f["ordinal"] = i + 1
+            f["prev_id"] = frags[i - 1]["fragment_id"] if i else None
+            f["next_id"] = frags[i + 1]["fragment_id"] if i + 1 < len(frags) else None
+        return frags
+
+    def l2_path(self, document_id: str) -> Path:
+        return self.dir / "l2" / f"{document_id}.json"
+
+    def save_l2(self, document_id: str, frags: list[dict]) -> None:
+        _atomic_json(self.l2_path(document_id), {"schema": SCHEMA, "document_id": document_id,
+                                                 "content_hash": frags[0]["content_hash"] if frags else None,
+                                                 "fragments": [{k: v for k, v in f.items() if k != "text"} for f in frags],
+                                                 "indexed_at": now_iso()})
+
+    def get_l2(self, document_id: str) -> dict | None:
+        p = self.l2_path(document_id)
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+    def fragment(self, fragment_id: str) -> dict:
+        for f in self.all_fragments():
+            if f["fragment_id"] == fragment_id:
+                return self.with_text(f)
+        raise ToolError("unknown_fragment", f"fragment_id {fragment_id} not found")
+
+    def with_text(self, f: dict) -> dict:
+        _d, _p, lines = self.source(f["document_id"])
+        return {**f, "text": "\n".join(lines[f["start_line"] - 1: f["end_line"]])}
+
+    def all_fragments(self, document_ids: list[str] | None = None) -> list[dict]:
+        out = []
+        for doc in self.l0()["documents"]:
+            if document_ids is not None and doc["document_id"] not in document_ids:
+                continue
+            l2 = self.get_l2(doc["document_id"])
+            if l2:
+                out.extend(l2["fragments"])
+        return out
+
+    # ------------------------------------------------------------------ L0
+    def rebuild_l0(self) -> dict:
+        with _lock:
+            cat = self.catalog.load()
+            docs = []
+            for d in sorted(cat["documents"], key=lambda x: x["current_path"]):
+                if not d["current_path"].startswith("data/"):
+                    continue
+                l1 = self.get_l1(d["document_id"])
+                l2 = self.get_l2(d["document_id"])
+                docs.append({"document_id": d["document_id"], "path": d["current_path"], "folder": self.folder_of(d["current_path"]),
+                             "title": (l1 or {}).get("title") or d["title"], "description": (l1 or {}).get("description") or d.get("description", ""),
+                             "content_hash": d["content_hash"], "is_empty": d.get("is_empty", False),
+                             "l1": bool(l1), "sections": len((l1 or {}).get("sections", [])),
+                             "l2_fragments": len((l2 or {}).get("fragments", [])),
+                             "l2_current": bool(l2) and l2.get("content_hash") == d["content_hash"]})
+            folders: dict[str, dict] = {}
+            for x in docs:
+                f = folders.setdefault(x["folder"], {"folder": x["folder"], "documents": 0, "fragments": 0})
+                f["documents"] += 1
+                f["fragments"] += x["l2_fragments"]
+            l0 = {"schema": SCHEMA, "corpus_id": "itmo-lab3", "generated_at": now_iso(),
+                  "totals": {"documents": len(docs), "with_l1": sum(1 for x in docs if x["l1"]),
+                             "fragments": sum(x["l2_fragments"] for x in docs)},
+                  "folders": sorted(folders.values(), key=lambda f: f["folder"]), "documents": docs}
+            _atomic_json(self.dir / "l0.json", l0)
+            return l0
+
+    def l0(self) -> dict:
+        p = self.dir / "l0.json"
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else self.rebuild_l0()
+
+    # ------------------------------------------------------------------ deterministic validation
+    def validate(self, es_counts: dict[str, int] | None = None) -> dict:
+        problems, checked = [], 0
+        l0 = self.rebuild_l0()
+        for doc in l0["documents"]:
+            did = doc["document_id"]
+            if doc["is_empty"]:
+                continue
+            l1 = self.get_l1(did)
+            if not l1:
+                problems.append(f"{doc['path']}: no L1")
+                continue
+            _d, p, lines = self.source(did)
+            if l1["content_hash"] != file_hash(p):
+                problems.append(f"{doc['path']}: L1 written for another version")
+            problems += [f"{doc['path']}: {x}" for x in self.check_sections(l1["sections"], lines)]
+            l2 = self.get_l2(did)
+            if not l2:
+                problems.append(f"{doc['path']}: no L2")
+                continue
+            secs = {s["section_id"]: s for s in l1["sections"]}
+            frs = l2["fragments"]
+            for i, f in enumerate(frs):
+                checked += 1
+                if f["fragment_id"] != fragment_key(did, f["content_hash"], f["start_line"], f["end_line"]):
+                    problems.append(f"{doc['path']}: fragment {f['fragment_id']} id does not match its key")
+                s = secs.get(f["section_id"])
+                if not s or not (s["start_line"] <= f["start_line"] <= f["end_line"] <= s["end_line"]):
+                    problems.append(f"{doc['path']}: fragment {f['fragment_id']} outside its section")
+                if f["end_line"] > len(lines) or not "\n".join(lines[f["start_line"] - 1: f["end_line"]]).strip():
+                    problems.append(f"{doc['path']}: fragment {f['fragment_id']} has no text at lines {f['start_line']}-{f['end_line']}")
+                if (f["prev_id"] != (frs[i - 1]["fragment_id"] if i else None)
+                        or f["next_id"] != (frs[i + 1]["fragment_id"] if i + 1 < len(frs) else None)):
+                    problems.append(f"{doc['path']}: broken prev/next chain at {f['fragment_id']}")
+                if i and f["start_line"] <= frs[i - 1]["end_line"]:
+                    problems.append(f"{doc['path']}: fragments overlap at line {f['start_line']}")
+            if es_counts is not None and es_counts.get(did, 0) != len(frs):
+                problems.append(f"{doc['path']}: Elasticsearch has {es_counts.get(did, 0)} fragments, registry {len(frs)}")
+        if es_counts is not None:
+            known = {d["document_id"] for d in l0["documents"]}
+            for did, n in es_counts.items():
+                if did not in known:
+                    problems.append(f"Elasticsearch has {n} fragments of unknown document {did}")
+        return {"ok": not problems, "documents": l0["totals"]["documents"], "with_l1": l0["totals"]["with_l1"],
+                "fragments_checked": checked, "problems": problems[:50], "problems_total": len(problems)}

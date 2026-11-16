@@ -1,0 +1,2 @@
+-r ../lab2/requirements.txt
+fastembed==0.9.1

@@ -1,0 +1,171 @@
+# Лабораторная 3. Гибридный навигационный поиск L0/L1/L2
+
+Организатор из лабы 1 и harness из лабы 2 развиты в систему из четырёх агентов:
+- **агент-загрузчик** организует корпус и строит уровни L0/L1/L2 в Elasticsearch;
+- **основной агент** отвечает на вопросы;
+- **deep search** — субагент для многораундового исследования;
+- **exhaustive search** — субагент, который полностью обходит конечную область без top-k.
+
+Все четыре — библиотечный ReAct-агент `langchain.agents.create_agent` (LangGraph) с middleware harness из лабы 2. Структура уровней, загрузка и навигация реализованы самостоятельно: OpenViking и аналоги не используются. Elasticsearch хранит тексты, метаданные и векторы.
+
+## 1. Архитектура и связь с лабами 1–2
+
+```
+ CLI navsearch.cli ──► TaskRunner (лаба 2: бюджет, хуки компактификации, окно, checkpoints SQLite, resume, pause/cancel)
+                         │
+   ingest ──► агент-загрузчик = организатор лабы 1 (ls/read/move/каталог/skills/MCP) + чтение диапазонов (лаба 2)
+              + doc_outline, write_l1, index_document, corpus_status, validate_corpus
+   chat   ──► основной агент: L0/L1/L2, full-text/grep/vector на L1 и L2, cite_fragment,
+              start_subagent / subagent_status / subagent_result (неблокирующие)
+                         ├─► deep search (свой промпт, контекст, tools; ChainedBudget к родителю)
+                         └─► exhaustive search (свой набор без top-k; реестр покрытия)
+ хранилища: <root>/.harness/state.db (задачи, расход, evidence, реестр покрытия) · checkpoints.db (графы)
+            <root>/.harness/corpus/{l0.json, l1/*.json, l2/*.json} · Elasticsearch itmo_lab3_l1 / itmo_lab3_l2
+```
+
+| Из лабы 1 | Из лабы 2 |
+|---|---|
+| файловые tools, `move`, каталог со стабильными `document_id`, skills, MCP-сервер ES (у загрузчика), системный промпт организатора (основа промпта загрузчика), `CatalogSyncMiddleware` | `TaskRunner` (запуск, resume, pause/cancel, heartbeat), хуки `Compaction` / `Context` / `ModelGuard` / `ToolRuntime` / `OutputGuard`, бюджет, окно модели, артефакты, `DocTools` (страницы, диапазоны), checkpoints, трассы |
+
+Изменения в предыдущих лабах (обратно совместимые, их тесты проходят):
+- **лаба 2:** `TaskRunner.run(agent_factory=…, verbose=…)`; в evidence добавлено поле `fragment_id` с миграцией старой базы;
+- **лаба 1:** исправлена гонка удаления пустой папки при параллельных `move`, добавлен регрессионный тест.
+
+## 2. Установка и запуск
+
+```powershell
+cd lab3
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt          # requirements.lock.txt — точные версии
+copy .env.example .env                                           # LLM_API_KEY; ES_PREFIX=itmo_lab3
+python -m navsearch.cli prepare --reset                           # task root workspace\input + индексы ES
+```
+
+Elasticsearch 9.5.5 поднимается из `../lab1/docker-compose.yml`. Модель embeddings скачивается при первом вызове в `.cache/fastembed` (около 240 МБ).
+
+| Команда | Что делает |
+|---|---|
+| `python -m navsearch.cli ingest --folder input --task-id ING1` | **агент-загрузчик** по папке `input` (53 файла) |
+| `python -m navsearch.cli add-new-files` | действие пользователя: 3 новых файла в `input/new_files` |
+| **`python -m navsearch.cli ingest --folder input/new_files --task-id ING2`** | **вызов загрузчика из CLI с папкой новых файлов** (папка обязана быть внутри task root) |
+| `python -m navsearch.cli chat --task-id M1 [--script demo/dialog_main_ru.txt]` | диалог с основным агентом |
+| `python -m navsearch.cli subagent --kind exhaustive --scope storage --task-id EXP1 --request-file demo/request_exhaustive_ru.txt [--set max_model_calls=6]` | субагент напрямую из CLI (блокирующий) |
+| `python -m navsearch.cli resume --task-id <id> [--set k=v]` | продолжение любой задачи в новом процессе |
+| `python -m navsearch.cli status/pause/cancel/limits/report --task-id <id>` | управление задачей (из другого окна) |
+| `python -m navsearch.cli coverage --task-id <exhaustive>` | реестр покрытия exhaustive |
+| `python -m navsearch.cli validate` / `probe` / `export` / `list` | проверка корпуса / 6 видов поиска без LLM / выгрузка L0–L2 / задачи |
+
+Всё одной командой (в сети ИТМО): `powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1`.
+
+## 3. Корпус и тестовые данные
+
+`corpus/` создаёт `scripts/generate_corpus.py` (детерминированно). `corpus/manifest.json` фиксирует для каждого файла путь, sha256, байты и строки. После загрузки `document_id`, путь, заголовок и hash документа фиксируются в `results/corpus/l0.json` и `catalog.json`.
+
+| Папка входа | Документов | Особенности |
+|---|---|---|
+| `storage` | 10 | конечная область exhaustive: **36 упоминаний ограничений** `[L-ST-01]…[L-ST-36]`, из них **10 сформулированы без слова «Ограничение»**; `st_retention_policy.txt` **без заголовков** |
+| `search`, `agents` | 8 + 8 | точные коды (`SRCH-412`, `ERR_LOCK_TIMEOUT`), перефразы |
+| `ops` | 8 | протоколы M-12/M-13, инциденты `INC-2026-031/034`, runbook RB-09; `call_transcript_2026-11-05.txt` **без заголовков** |
+| `projects` | 4 | многошаговые связи: архитектура → решение РС-7 → протокол M-12 |
+| `inbox_lab1` | 14 | исходный корпус организатора лабы 1 (одноимённые `notes.md`, пустой файл) |
+| `lectures` | 1 | 90-страничный конспект из лабы 2 (большой документ, выборочное чтение) |
+| `new_batch` | 3 | для проверки индексации новых файлов из CLI (коды `NEWDOC-2026-A/B/C`) |
+
+Итого 53 документа во входе и 3 новых. Фрагментов L2 около 300, без конспекта около 160. Точное число зависит от разделов, которые выбрал агент, и приводится в результатах.
+
+Контрольные запросы с ожидаемыми источниками (`manifest.control`):
+- Q1–Q6 — по одному на каждое из шести сочетаний «вид поиска × уровень»;
+- MH1 — многошаговый: «какой бэкенд выбран и кто отвечает» → архитектура + M-12;
+- MH2 — многошаговый: INC-2026-031 → RB-09, «15 минут»;
+- NB — новые документы.
+
+## 4. Уровни L0/L1/L2
+
+| Уровень | Где | Содержимое | Навигация |
+|---|---|---|---|
+| **L0** — весь корпус | `.harness/corpus/l0.json` | папки и все документы: `document_id`, путь, заголовок, описание, hash, наличие L1, число фрагментов L2 | `corpus_overview(cursor)` (постранично по 25), `list_documents(folder, cursor)` → `get_l1` |
+| **L1** — документ | `.harness/corpus/l1/<id>.json` + ES `itmo_lab3_l1` | название, описание, **summary, написанные агентом**; разделы с `section_id`, диапазонами строк и summary; hash версии | `get_l1(document_id)` → разделы с числом фрагментов и первым `fragment_id` → `read_section` |
+| **L2** — исходные тексты | `.harness/corpus/l2/<id>.json` + ES `itmo_lab3_l2` | **все** фрагменты: `fragment_id`, `document_id`, `section_id`, строки, страницы, `prev_id` / `next_id`, hash; текст всегда вырезается из файла по диапазону | `read_section` (постранично), `read_fragment`, `neighbor_fragment`, `open_source(document_id, строки)`, возврат `get_l1` |
+
+- **Кто что решает.** Агент выбирает папку (организатор лабы 1), пишет название, описание и summary и задаёт разделы диапазонами строк; документ без заголовков он размечает сам. Код (`write_l1`) только проверяет, что разделы упорядочены, не пересекаются, лежат внутри файла и покрывают каждую непустую строку.
+- **Фрагменты L2** нарезаются детерминированно внутри разделов агента: не больше 10 строк или 800 символов, граница — по пустой строке. Идентификатор `fragment_id = uuid5(document_id | content_hash | start | end)` устойчив, поэтому повторная индексация неизменённого документа ничего не создаёт.
+- **`validate_corpus`** (детерминированно) сверяет L1 с версией файла, покрытие разделов, `fragment_id` с ключом, принадлежность фрагмента разделу, непустой текст на этих строках, цепочку prev/next, отсутствие пересечений и число фрагментов в ES против реестра.
+
+**Elasticsearch:** два индекса, `dynamic: strict`, анализатор `russian` с подполем `standard`, keyword-поля для фильтров.
+
+| Индекс | Поля | Embedding |
+|---|---|---|
+| `itmo_lab3_l1` | `title`, `description`, `summary`, `structure` (заголовки и summary разделов), `folder`, `path`, `content_hash` | `embedding` (`dense_vector` 384, cosine) от title + description + summary + structure |
+| `itmo_lab3_l2` | `text`, `section_title`, `doc_title`, строки, страницы, `ordinal`, `prev_id`/`next_id`, `folder`, `path` | `embedding` от «заголовок раздела + текст» |
+
+**Embeddings:** `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` через `fastembed` 0.9.1 (ONNX Runtime, CPU, без torch). 384 измерения, векторы нормированы, локально. Перефраз «с какой периодичностью копируют журнал событий на запасной диск» ↔ «снимок журнала событий сохраняют на резервный том каждые четыре часа» — первое место по всему корпусу (косинус 0,68). Слабое место модели: короткий разговорный вопрос «как часто делают бэкап лога событий» находит этот абзац только на 22-м месте, поэтому для перефразов агенту полезно переформулировать запрос или сочетать вектор с grep/full-text.
+
+## 5. Поисковые tools и наборы агентов
+
+| Вид | L1 | L2 |
+|---|---|---|
+| Полнотекстовый `search_fulltext(query, level, folder?, document_id?, size, cursor)` | BM25 по title, description, summary, structure | BM25 по `text` и `section_title`; подсветка |
+| grep `search_grep(pattern, level, regex?, …, cursor)` | буквально или regex по полям записей L1: документ, поле, `section_id`, смещение | буквально или regex по строкам исходного файла: документ, **точная строка**, страница, `fragment_id`; порядок корпуса, без ранжирования, курсор до последнего совпадения |
+| Векторный `search_vector(query, level, …, k≤10)` | kNN по embedding L1 | kNN по embedding фрагментов |
+
+Каждый результат содержит идентификаторы и подсказку перехода к следующему уровню (`next`). Результаты, превышающие лимит вывода, выгружаются в артефакты harness (`read_artifact` / `search_artifact`).
+
+| Агент | Tools |
+|---|---|
+| загрузчик | файловые tools лабы 1, каталог, skills, MCP ES лабы 1, `doc_info/read_pages/read_lines/search_text`, `doc_outline`, `write_l1`, `index_document`, `corpus_status`, `validate_corpus`, `update_plan/task_progress/complete_task/stop_partial`, артефакты |
+| основной | навигация L0/L1/L2, три вида поиска на L1/L2, `cite_fragment`, `start_subagent`, `subagent_status`, `subagent_result`, артефакты |
+| deep | та же навигация и поиск, `cite_fragment`, `update_plan`, `submit_result`, `stop_partial` |
+| **exhaustive** | `area_define`, `area_next`, `area_grep`, `area_fulltext`, `record_mention`, `area_coverage`, `get_l1`, `corpus_overview`, `list_documents`, `submit_result`, `stop_partial`. **Нет** векторного, ранжированного поиска и top-k |
+
+Skills: `build_corpus_levels` (загрузка), `navigate_corpus` (ответы), `exhaustive_scan` (полный обход), плюс skills лаб 1–2.
+
+## 6. Делегирование субагентам
+
+**Контракт.** Основной агент передаёт естественно-языковой `request` — это обязательное содержание. Технические метаданные передаются отдельно: `scope_folder` задаёт агент, `parent_task_id`, `corpus_id` и бюджет `DEFAULT_SUB_LIMITS` ставит код. Субагент — отдельная задача в `state.db` (`spec.parent_task_id`) со своими `thread_id`, checkpoints, системным промптом, контекстом и tools.
+
+Выход `subagent_result`:
+- `status`, `findings`, `open_questions`;
+- `evidence` — список `{evidence_id, document_id, fragment_id, path, lines, quote, claim}`;
+- `usage` — токены, вызовы модели и tools, компактификации;
+- для exhaustive дополнительно `coverage` — прочитано / всего по документам и непрочитанные диапазоны.
+
+**Режим — неблокирующий.** `start_subagent` создаёт подзадачу и запускает её как `asyncio`-задачу в процессе CLI, сразу возвращая `task_id`. Пока субагент работает, основной агент отвечает на следующие реплики (диалог ждёт ввод через `asyncio.to_thread`, цикл событий не блокируется), смотрит `subagent_status` и забирает `subagent_result` (с ожиданием до 240 с). Подзадачу можно продолжить и в новом процессе: `resume --task-id M1-exhaustive1`. DeepAgents не используется: реализация своя, на `create_agent` и TaskRunner лабы 2.
+
+**Бюджет.** `ChainedBudget` проверяет перед каждым вызовом LLM субагента и его собственный лимит, и остаток родителя. Расход записывается в обе задачи, поэтому траты субагентов входят в общий лимит задачи.
+
+**Deep search.** Разбивает задачу на подвопросы (`update_plan`), делает несколько раундов поиска на L1/L2 и переходы между уровнями, цитирует (`cite_fragment`), возвращает открытые вопросы. `submit_result` требует не меньше 2 поисковых вызовов и 2 evidence.
+
+**Exhaustive search, без top-k.**
+- `area_define` фиксирует по L0 конечную область: все документы и все их фрагменты.
+- `area_next(cursor)` выдаёт фрагменты в порядке корпуса (путь, порядковый номер) с полным текстом.
+- Порция засчитывается прочитанной только при запросе следующей по `next_cursor`. Порция, выданная перед остановкой по бюджету или сбоем, после resume выдаётся снова, поэтому ни одна часть не теряется.
+- `area_grep` (строки) и `area_fulltext` (ES-запрос как фильтр, сортировка по пути, `search_after`, без score) читаются постранично до `done=true`.
+- `submit_result` проходит, только если прочитаны **все** фрагменты области. Summary L1 не может быть основанием пропустить L2.
+- При бюджете — `stop_partial`: в реестре (`state.db`, `unit=fragment`) остаются число и список обработанных и оставшихся документов и диапазонов, `resume` продолжает с `resume_cursor`.
+
+## 7. Guardrails и объём
+
+Для всех четырёх агентов действует harness лабы 2:
+- task root и закрытая зона `.harness/`; папка `ingest --folder` проверяется на принадлежность root;
+- окно модели (измерено: 262 144) и рабочий лимит 28 000 токенов с компактификацией через `before_model`;
+- выгрузка больших выводов в артефакты, бюджет токенов, вызовов и tools, дедлайн, таймауты, pause/cancel и checkpoints;
+- общий лимит задачи учитывает расход субагентов (`ChainedBudget`).
+
+## 8. Тесты
+
+`python -m pytest -q` — 17 тестов. Нужны ES на localhost:9200 и модель embeddings; вместо LLM работают детерминированные политики.
+
+| Файл | Что проверяет |
+|---|---|
+| `test_levels_search.py` | L0: 53 документа, ≥ 200 фрагментов, страницы курсора; фрагменты = строки файла, устойчивые id, `validate`; отказ `write_l1` на пересечении и непокрытых строках; навигация L0 → L1 → L2 → соседний фрагмент → исходник; **шесть сочетаний поиска** на Q1–Q6 с точной строкой у grep; постраничный grep до последнего совпадения (больше одной страницы); проверка цитаты `cite_fragment` |
+| `test_agents.py` | exhaustive: полный обход и **все 36 кодов, включая 10 без ключевого слова**; partial по бюджету и resume с той же границы без потерь и дублей; детерминированная повторная выдача порции по курсору; **неблокирующий deep** (`task_id` до окончания работы, основной агент отвечает между делом, результат с evidence, расход в родителе); агент-загрузчик (move → L1 → L2 → validate → complete) и повторный запуск без дублей |
+
+## 9. Результаты прогона с `qwen3.8-27b`
+
+Заполняется после `run_all_demos.ps1` в сети ИТМО: `results/evaluation.md`, `results/search_probe.json`, `results/validation.json`, `results/corpus/` (L0/L1/L2 + каталог + дерево `data`), `results/<task>/` (статус, evidence, отчёт, история, `coverage.json`), `traces/`.
+
+## 10. Ограничения
+
+- Обновление и удаление документов и версионирование не входят в работу. При изменённом hash `index_document` перестраивает L2 документа и удаляет устаревшие фрагменты, но отдельного сценария замены нет.
+- Неблокирующие субагенты живут в процессе CLI: при выходе из `chat` CLI ждёт их завершения. После аварийного выхода подзадача продолжается командой `resume`.
+- grep L2 читает исходные файлы из L0 при каждом вызове. Для корпуса из десятков документов это быстро; для миллионов фрагментов понадобился бы grep по ES-полям.

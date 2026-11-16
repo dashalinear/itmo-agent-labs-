@@ -227,3 +227,18 @@ def test_junction_escape_blocked_windows(fs, ws, tmp_path):
     assert entry["type"] == "symlink" and entry["path"] is None
     assert call(fs, "grep", pattern="secret", path="input", recursive=True)["data"]["total_matches"] == 0
     assert (outside / "secret.txt").exists()
+
+
+def test_parallel_moves_from_one_folder_all_catalogued(fs, ws, catalog):
+    """Parallel tool calls move several files out of one input subfolder: every move is catalogued."""
+    from concurrent.futures import ThreadPoolExecutor
+    sub = ws.input / "batch"
+    sub.mkdir()
+    for i in range(6):
+        (sub / f"doc{i}.md").write_text(f"# Документ {i}\nтекст {i}\n", encoding="utf-8")
+    with ThreadPoolExecutor(6) as pool:
+        res = list(pool.map(lambda i: fs.move(f"input/batch/doc{i}.md", "data/batch/"), range(6)))
+    assert all(r["verified"] for r in res)
+    paths = {d["current_path"] for d in catalog.load()["documents"]}
+    assert {f"data/batch/doc{i}.md" for i in range(6)} <= paths
+    assert not sub.exists()

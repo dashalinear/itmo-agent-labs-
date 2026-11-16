@@ -1,0 +1,657 @@
+{
+  "generator": "scripts/generate_corpus.py",
+  "seed": 31,
+  "files": [
+    {
+      "path": "input/agents/agent_evaluation.md",
+      "sha256": "93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+      "bytes": 1066,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/compaction_hooks.md",
+      "sha256": "d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+      "bytes": 1146,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/guardrails.md",
+      "sha256": "870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+      "bytes": 1045,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/planning.md",
+      "sha256": "1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+      "bytes": 1040,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/prompt_injection.md",
+      "sha256": "7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+      "bytes": 1061,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/react_pattern.md",
+      "sha256": "43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+      "bytes": 1054,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/subagents.md",
+      "sha256": "44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+      "bytes": 1167,
+      "lines": 19
+    },
+    {
+      "path": "input/agents/tool_design.md",
+      "sha256": "7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+      "bytes": 1067,
+      "lines": 19
+    },
+    {
+      "path": "input/inbox_lab1/agents_seminar_react.txt",
+      "sha256": "592276719548e0c073c097d338d8ea1ffa1e312cb14e53a14378c624703dec6e",
+      "bytes": 1405,
+      "lines": 18
+    },
+    {
+      "path": "input/inbox_lab1/courses/notes.md",
+      "sha256": "9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+      "bytes": 1130,
+      "lines": 12
+    },
+    {
+      "path": "input/inbox_lab1/empty_todo.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "lines": 0
+    },
+    {
+      "path": "input/inbox_lab1/howto_elasticsearch_docker.md",
+      "sha256": "bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+      "bytes": 1088,
+      "lines": 14
+    },
+    {
+      "path": "input/inbox_lab1/howto_git_branches.txt",
+      "sha256": "7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+      "bytes": 809,
+      "lines": 10
+    },
+    {
+      "path": "input/inbox_lab1/ir_lecture_inverted_index.md",
+      "sha256": "5a860bc47749b655dcbefa0ef706e29c7f113e4f33fa658a14281ec92153a5d9",
+      "bytes": 1871,
+      "lines": 24
+    },
+    {
+      "path": "input/inbox_lab1/meeting_2026-10-02_kickoff.md",
+      "sha256": "850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+      "bytes": 829,
+      "lines": 12
+    },
+    {
+      "path": "input/inbox_lab1/meeting_2026-11-10_retro.md",
+      "sha256": "9fac47cf757077cffa37703dd11257536904867a8996eab24d68b97204d795b7",
+      "bytes": 767,
+      "lines": 10
+    },
+    {
+      "path": "input/inbox_lab1/meetings/notes.md",
+      "sha256": "c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+      "bytes": 937,
+      "lines": 15
+    },
+    {
+      "path": "input/inbox_lab1/mlops_lecture_monitoring.md",
+      "sha256": "aad616662bd3301518f86a88b673ae59c39fd04972590ce5a43da15a1c1bb92a",
+      "bytes": 1267,
+      "lines": 17
+    },
+    {
+      "path": "input/inbox_lab1/project_docsearch.md",
+      "sha256": "e7641b83789ea41212a54bf97167df1684512b0cbf21edf01fddd30385cc7ba4",
+      "bytes": 1236,
+      "lines": 18
+    },
+    {
+      "path": "input/inbox_lab1/project_recsys.md",
+      "sha256": "2aeff3cef0b2183606111afd4cd5afdec3632490cc7fb32ed3b045a88833e351",
+      "bytes": 1050,
+      "lines": 17
+    },
+    {
+      "path": "input/inbox_lab1/search_quality_thoughts.md",
+      "sha256": "95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
+      "bytes": 972,
+      "lines": 13
+    },
+    {
+      "path": "input/inbox_lab1/vector_search_lecture.md",
+      "sha256": "529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+      "bytes": 1072,
+      "lines": 15
+    },
+    {
+      "path": "input/lectures/ir_course_lectures.md",
+      "sha256": "841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
+      "bytes": 166111,
+      "lines": 1289
+    },
+    {
+      "path": "input/ops/call_transcript_2026-11-05.txt",
+      "sha256": "57c23fc04338e50198db9f4330ab3b5b8decf50710120823052f94ebfa7fd6d1",
+      "bytes": 865,
+      "lines": 8
+    },
+    {
+      "path": "input/ops/incident_031.md",
+      "sha256": "08f3b3a82f44c97d000deb5212f485972ac0881f6370769af42fe556c957429d",
+      "bytes": 1419,
+      "lines": 27
+    },
+    {
+      "path": "input/ops/incident_034.md",
+      "sha256": "394012deb9d16978e2caaf623233d92e4f41e297d91f7503f45a7780f3f7b55c",
+      "bytes": 1399,
+      "lines": 27
+    },
+    {
+      "path": "input/ops/meeting_m12.md",
+      "sha256": "77e58d6ca052974d35c7cdbf7b3c5fd382eefde37912bd117c1da0630c704646",
+      "bytes": 1715,
+      "lines": 29
+    },
+    {
+      "path": "input/ops/meeting_m13.md",
+      "sha256": "ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+      "bytes": 976,
+      "lines": 19
+    },
+    {
+      "path": "input/ops/monitoring.md",
+      "sha256": "7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+      "bytes": 1066,
+      "lines": 19
+    },
+    {
+      "path": "input/ops/oncall_policy.md",
+      "sha256": "66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+      "bytes": 1026,
+      "lines": 19
+    },
+    {
+      "path": "input/ops/runbook_rb09.md",
+      "sha256": "dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+      "bytes": 1319,
+      "lines": 25
+    },
+    {
+      "path": "input/projects/docsearch_architecture.md",
+      "sha256": "db3a53f2381c9f03c5429d062a9ecba4d97c990999108b4f36dd4640a6e1e242",
+      "bytes": 1568,
+      "lines": 27
+    },
+    {
+      "path": "input/projects/docsearch_requirements.md",
+      "sha256": "f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+      "bytes": 1024,
+      "lines": 19
+    },
+    {
+      "path": "input/projects/docsearch_risks.md",
+      "sha256": "128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+      "bytes": 662,
+      "lines": 11
+    },
+    {
+      "path": "input/projects/docsearch_roadmap.md",
+      "sha256": "c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+      "bytes": 923,
+      "lines": 19
+    },
+    {
+      "path": "input/search/analyzers_ru.md",
+      "sha256": "d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+      "bytes": 1168,
+      "lines": 19
+    },
+    {
+      "path": "input/search/bm25_ranking.md",
+      "sha256": "367fd7c8da165154a60d5ad677f2764c7c748e67ad2ab1dc66b1e7092c66c301",
+      "bytes": 1585,
+      "lines": 27
+    },
+    {
+      "path": "input/search/hybrid_search.md",
+      "sha256": "861c51a99d8456916c6b81f516ae2c64c271ef3035cad1832505757f6cbef7f4",
+      "bytes": 1727,
+      "lines": 27
+    },
+    {
+      "path": "input/search/query_cache.md",
+      "sha256": "91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+      "bytes": 1019,
+      "lines": 19
+    },
+    {
+      "path": "input/search/query_suggest.md",
+      "sha256": "54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+      "bytes": 1108,
+      "lines": 19
+    },
+    {
+      "path": "input/search/search_quality.md",
+      "sha256": "684650c10da3076126a7d06157bae1f125c0edcc5c13af0f22e0dc2fea4a496f",
+      "bytes": 1612,
+      "lines": 27
+    },
+    {
+      "path": "input/search/sharding.md",
+      "sha256": "6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+      "bytes": 1197,
+      "lines": 19
+    },
+    {
+      "path": "input/search/vector_knn.md",
+      "sha256": "8a2bd9e7b0ea10131ac24de76b47ac198984a736665f48db25acb59a5ae6ea5d",
+      "bytes": 1557,
+      "lines": 27
+    },
+    {
+      "path": "input/storage/st_checkpoint_postgres.md",
+      "sha256": "1608c190abb07c975a005e97d5c4ff29ce9a24d7d228e558604fa4d04ae1c6ec",
+      "bytes": 3008,
+      "lines": 41
+    },
+    {
+      "path": "input/storage/st_checkpoint_sqlite.md",
+      "sha256": "f36f76f456e6aa4d863e598bf3e9609a24317a1e7c69b36115926a49b8d29f5d",
+      "bytes": 3306,
+      "lines": 43
+    },
+    {
+      "path": "input/storage/st_encryption_state.md",
+      "sha256": "6ad213eb70aa43185ae731f6797216351f8b87f318fdebfa1e0135d97aa2a27f",
+      "bytes": 2264,
+      "lines": 33
+    },
+    {
+      "path": "input/storage/st_event_sourcing.md",
+      "sha256": "f325b434bda63bf747c0b6d58b5daccc66b42adb91265d8963270e7cd4909465",
+      "bytes": 2295,
+      "lines": 31
+    },
+    {
+      "path": "input/storage/st_memory_longterm.md",
+      "sha256": "b797ea1668630e4f3402b798feb5e955f653a013680bee3af6f356e68431c819",
+      "bytes": 2395,
+      "lines": 33
+    },
+    {
+      "path": "input/storage/st_redis_state.md",
+      "sha256": "7afb0ce7b7d6f0a62e968e9b53daa0c258a8b57727c256de494b6366e0a54aa7",
+      "bytes": 2126,
+      "lines": 31
+    },
+    {
+      "path": "input/storage/st_retention_policy.txt",
+      "sha256": "47c59ca7ae50b589fa9e01643e126df97d9b10da311380f5b50038a18524b60a",
+      "bytes": 2029,
+      "lines": 18
+    },
+    {
+      "path": "input/storage/st_schema_migrations.md",
+      "sha256": "174f6267c5bde74ae682133b46b82bae682439a305e2e3ab3beff1257b296b9c",
+      "bytes": 2258,
+      "lines": 33
+    },
+    {
+      "path": "input/storage/st_snapshot_policy.md",
+      "sha256": "758a4014863ab642d049bd25eedff75d6e44d063b5bcad21b1cee4a3bfa4de37",
+      "bytes": 2351,
+      "lines": 31
+    },
+    {
+      "path": "input/storage/st_vector_memory.md",
+      "sha256": "5f43134db76c15a5030bece071d3de894c9aecc50a7d7941ed12fb25a5fc53b5",
+      "bytes": 2126,
+      "lines": 31
+    },
+    {
+      "path": "new_batch/agent_memory_compression.md",
+      "sha256": "6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+      "bytes": 879,
+      "lines": 15
+    },
+    {
+      "path": "new_batch/query_rewriting.md",
+      "sha256": "8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+      "bytes": 596,
+      "lines": 9
+    },
+    {
+      "path": "new_batch/runbook_rb11.md",
+      "sha256": "c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+      "bytes": 523,
+      "lines": 11
+    }
+  ],
+  "documents_total": 53,
+  "new_batch": [
+    "new_batch/agent_memory_compression.md",
+    "new_batch/query_rewriting.md",
+    "new_batch/runbook_rb11.md"
+  ],
+  "exhaustive_area": {
+    "topic": "storage",
+    "documents": [
+      "st_checkpoint_postgres.md",
+      "st_checkpoint_sqlite.md",
+      "st_encryption_state.md",
+      "st_event_sourcing.md",
+      "st_memory_longterm.md",
+      "st_redis_state.md",
+      "st_retention_policy.txt",
+      "st_schema_migrations.md",
+      "st_snapshot_policy.md",
+      "st_vector_memory.md"
+    ],
+    "mentions": [
+      {
+        "code": "L-ST-05",
+        "file": "st_checkpoint_postgres.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-06",
+        "file": "st_checkpoint_postgres.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-07",
+        "file": "st_checkpoint_postgres.md",
+        "line": 37,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-01",
+        "file": "st_checkpoint_sqlite.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-02",
+        "file": "st_checkpoint_sqlite.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-03",
+        "file": "st_checkpoint_sqlite.md",
+        "line": 29,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-04",
+        "file": "st_checkpoint_sqlite.md",
+        "line": 39,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-27",
+        "file": "st_encryption_state.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-28",
+        "file": "st_encryption_state.md",
+        "line": 25,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-29",
+        "file": "st_encryption_state.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-30",
+        "file": "st_encryption_state.md",
+        "line": 29,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-11",
+        "file": "st_event_sourcing.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-12",
+        "file": "st_event_sourcing.md",
+        "line": 25,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-13",
+        "file": "st_event_sourcing.md",
+        "line": 27,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-14",
+        "file": "st_memory_longterm.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-15",
+        "file": "st_memory_longterm.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-16",
+        "file": "st_memory_longterm.md",
+        "line": 29,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-08",
+        "file": "st_redis_state.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-09",
+        "file": "st_redis_state.md",
+        "line": 25,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-10",
+        "file": "st_redis_state.md",
+        "line": 27,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-31",
+        "file": "st_retention_policy.txt",
+        "line": 7,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-32",
+        "file": "st_retention_policy.txt",
+        "line": 10,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-33",
+        "file": "st_retention_policy.txt",
+        "line": 11,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-34",
+        "file": "st_retention_policy.txt",
+        "line": 14,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-35",
+        "file": "st_retention_policy.txt",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-36",
+        "file": "st_retention_policy.txt",
+        "line": 18,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-23",
+        "file": "st_schema_migrations.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-24",
+        "file": "st_schema_migrations.md",
+        "line": 25,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-25",
+        "file": "st_schema_migrations.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-26",
+        "file": "st_schema_migrations.md",
+        "line": 29,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-20",
+        "file": "st_snapshot_policy.md",
+        "line": 15,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-21",
+        "file": "st_snapshot_policy.md",
+        "line": 17,
+        "has_word": false
+      },
+      {
+        "code": "L-ST-22",
+        "file": "st_snapshot_policy.md",
+        "line": 27,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-17",
+        "file": "st_vector_memory.md",
+        "line": 15,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-18",
+        "file": "st_vector_memory.md",
+        "line": 17,
+        "has_word": true
+      },
+      {
+        "code": "L-ST-19",
+        "file": "st_vector_memory.md",
+        "line": 27,
+        "has_word": true
+      }
+    ],
+    "mentions_total": 36,
+    "without_word_ogranichenie": 10
+  },
+  "control": [
+    {
+      "id": "Q1",
+      "kind": "L1 fulltext",
+      "query": "событийная модель журнал состояния",
+      "expect_file": "st_event_sourcing.md"
+    },
+    {
+      "id": "Q2",
+      "kind": "L1 grep",
+      "pattern": "ERR_LOCK_TIMEOUT",
+      "expect_file": "st_checkpoint_sqlite.md",
+      "note": "section title 'Ошибка ERR_LOCK_TIMEOUT при записи' is part of the L1 structure"
+    },
+    {
+      "id": "Q3",
+      "kind": "L1 vector",
+      "query": "как защищают сохранённые данные агента от утечек",
+      "expect_file": "st_encryption_state.md"
+    },
+    {
+      "id": "Q4",
+      "kind": "L2 fulltext",
+      "query": "PostgreSQL 16 решение РС-7",
+      "expect_file": "meeting_m12.md"
+    },
+    {
+      "id": "Q5",
+      "kind": "L2 grep",
+      "pattern": "INC-2026-03\\d",
+      "regex": true,
+      "expect_files": [
+        "incident_031.md",
+        "incident_034.md",
+        "call_transcript_2026-11-05.txt"
+      ]
+    },
+    {
+      "id": "Q6",
+      "kind": "L2 vector",
+      "query": "с какой периодичностью копируют журнал событий на запасной диск",
+      "expect_file": "st_snapshot_policy.md",
+      "note": "paraphrase: text says 'Снимок журнала событий сохраняют на резервный том каждые четыре часа'"
+    },
+    {
+      "id": "MH1",
+      "kind": "multi-hop",
+      "question": "Какой бэкенд чекпоинтов выбран для DocSearch и кто за него отвечает?",
+      "expect_files": [
+        "docsearch_architecture.md",
+        "meeting_m12.md"
+      ],
+      "answer": "PostgreSQL 16, Ирина Ковалёва (решение РС-7)"
+    },
+    {
+      "id": "MH2",
+      "kind": "multi-hop",
+      "question": "Сколько времени допускается на переключение на реплику при восстановлении после INC-2026-031?",
+      "expect_files": [
+        "incident_031.md",
+        "runbook_rb09.md"
+      ],
+      "answer": "15 минут (шаг 3 RB-09)"
+    },
+    {
+      "id": "NB",
+      "kind": "new batch",
+      "codes": [
+        "NEWDOC-2026-A",
+        "NEWDOC-2026-B",
+        "NEWDOC-2026-C"
+      ]
+    }
+  ]
+}

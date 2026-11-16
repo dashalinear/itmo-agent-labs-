@@ -283,8 +283,8 @@ class FileTools:
         verified = (not src.exists()) and dst.is_file() and hash_before == hash_after
         if not verified:
             raise ToolError("verification_failed", "Move could not be verified; check both paths")
-        self._prune_empty_input_dirs(src.parent)
         entry = self.catalog.record_move(old_rel, dst)
+        self._prune_empty_input_dirs(src.parent)
         duplicates = [{"document_id": d["document_id"], "current_path": d["current_path"]}
                       for d in self.catalog.same_content(entry["content_hash"], exclude_id=entry["document_id"])]
         res = {"old_path": old_rel, "new_path": entry["current_path"],
@@ -300,8 +300,14 @@ class FileTools:
         return res
 
     def _prune_empty_input_dirs(self, d: Path) -> None:
-        while self.ws.is_under(d, self.ws.input) and d.is_dir() and not any(d.iterdir()):
-            d.rmdir()
+        # parallel moves may empty and remove the same folder concurrently: tolerate the race
+        while self.ws.is_under(d, self.ws.input):
+            try:
+                if not d.is_dir() or any(d.iterdir()):
+                    return
+                d.rmdir()
+            except OSError:
+                return
             d = d.parent
 
     # LangChain wrappers ----------------------------------------------------
