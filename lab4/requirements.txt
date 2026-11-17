@@ -1,0 +1,2 @@
+-r ../lab3/requirements.txt
+temporalio==1.36.1

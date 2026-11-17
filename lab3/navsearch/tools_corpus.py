@@ -274,9 +274,15 @@ class CorpusTools:
         off = dec_cursor(cursor, {"o": 0})["o"]
         docs = l0["documents"][off: off + L0_PAGE]
         nxt = off + L0_PAGE
-        return {"corpus_id": l0["corpus_id"], "totals": l0["totals"], "folders": l0["folders"],
-                "documents_page": [{k: d[k] for k in ("document_id", "path", "folder", "title", "l1", "l2_fragments")} for d in docs],
-                "page": [off + 1, off + len(docs)], "next_cursor": enc_cursor({"o": nxt}) if nxt < len(l0["documents"]) else None}
+        res = {"corpus_id": l0["corpus_id"], "totals": l0["totals"], "folders": l0["folders"],
+               "documents_page": [{k: d[k] for k in ("document_id", "path", "folder", "title", "l1", "l2_fragments")}
+                                  | ({"service": d["service"]} if d.get("service") else {}) for d in docs],
+               "page": [off + 1, off + len(docs)], "next_cursor": enc_cursor({"o": nxt}) if nxt < len(l0["documents"]) else None}
+        if l0.get("reports"):
+            r = l0["reports"]
+            res["reports"] = {"latest": r.get("latest"), "count": len(r.get("history", [])),
+                              "note": "generated topic reports (service documents): open with get_l1(latest.document_id)"}
+        return res
 
     def list_documents(self, folder: str, cursor: str | None = None) -> dict:
         docs = [d for d in self.env.levels.l0()["documents"] if d["folder"] == folder]

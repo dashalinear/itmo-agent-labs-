@@ -17,6 +17,18 @@ from .results import ToolError
 CATALOG_NAME = "catalog.json"
 
 
+def _plain(p: Path) -> Path:
+    """Drop the Windows extended-length prefix. Path.resolve() on Windows can return '\\\\?\\D:\\...' for a path
+    whose parent directory is being created concurrently (parallel moves into a new folder); without this the
+    containment check would wrongly report the path as outside the workspace."""
+    s = str(p)
+    if s.startswith("\\\\?\\UNC\\"):
+        return Path("\\\\" + s[8:])
+    if s.startswith("\\\\?\\"):
+        return Path(s[4:])
+    return p
+
+
 class Workspace:
     def __init__(self, root: Path) -> None:
         root.mkdir(parents=True, exist_ok=True)
@@ -43,7 +55,7 @@ class Workspace:
             candidate = self.root / candidate
         # strict=False: allow non-existing targets, but resolve every existing
         # component including symlinks.
-        resolved = candidate.resolve(strict=False)
+        resolved = _plain(candidate.resolve(strict=False))
         if not self.contains(resolved):
             raise ToolError(
                 "outside_workspace",
@@ -67,7 +79,7 @@ class Workspace:
 
     def contains(self, resolved: Path) -> bool:
         try:
-            resolved.relative_to(self.root)
+            _plain(resolved).relative_to(self.root)
             return True
         except ValueError:
             return False
@@ -75,7 +87,7 @@ class Workspace:
     def rel(self, p: Path) -> str:
         """Workspace-relative POSIX path ("." for the root)."""
         try:
-            r = p.resolve(strict=False).relative_to(self.root).as_posix()
+            r = _plain(p.resolve(strict=False)).relative_to(self.root).as_posix()
         except ValueError:  # link pointing outside: report its lexical location
             r = Path(os.path.normpath(p)).relative_to(self.root).as_posix()
         return r or "."

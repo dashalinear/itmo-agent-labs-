@@ -242,3 +242,23 @@ def test_parallel_moves_from_one_folder_all_catalogued(fs, ws, catalog):
     paths = {d["current_path"] for d in catalog.load()["documents"]}
     assert {f"data/batch/doc{i}.md" for i in range(6)} <= paths
     assert not sub.exists()
+
+
+# ---------------------------------------------------------------- parallel moves into a new folder (Windows)
+def test_extended_length_prefix_is_not_treated_as_outside(ws):
+    from pathlib import Path
+    from organizer.pathguard import _plain
+    inside = ws.root / "data" / "topic" / "a.md"
+    prefix = "\\" * 2 + "?" + "\\"                    # the Windows extended-length prefix
+    assert _plain(Path(prefix + str(inside))) == inside
+    assert ws.contains(Path(prefix + str(inside)))
+
+
+def test_parallel_moves_into_a_new_folder_all_succeed(fs, ws):
+    from concurrent.futures import ThreadPoolExecutor
+    for i in range(8):
+        (ws.input / f"p{i}.md").write_text(f"# Файл {i}\nтекст {i}\n", encoding="utf-8")
+    with ThreadPoolExecutor(8) as ex:
+        res = list(ex.map(lambda i: call(fs, "move", source=f"input/p{i}.md", destination=f"data/newtopic/p{i}.md"), range(8)))
+    assert all(r["ok"] for r in res), [r.get("error") for r in res if not r["ok"]]
+    assert sorted(p.name for p in (ws.data / "newtopic").iterdir()) == [f"p{i}.md" for i in range(8)]

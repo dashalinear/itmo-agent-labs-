@@ -1,0 +1,7 @@
+.env
+.venv/
+workspace/
+.cache/
+__pycache__/
+.pytest_cache/
+traces/processes/*.err.log
