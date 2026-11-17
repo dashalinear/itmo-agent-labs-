@@ -1,0 +1,111 @@
+{
+ "examined": {
+  "17726e86-239d-4df1-ba18-ea8fc736e709": {
+   "path": "data/meetings/meeting_m05.md"
+  },
+  "5f7faa4a-3f52-4033-9251-263a4740361f": {
+   "path": "data/ops/incident_101.md"
+  },
+  "055181ba-a8db-4aa8-95d3-dd0c1e015549": {
+   "path": "data/ops/inference_energy.md"
+  },
+  "526093ff-586a-4f04-a0f6-2558c1c186b0": {
+   "path": "data/ops/monitoring.md"
+  },
+  "10c4d818-a46d-4855-9e3e-dbc9e6d041f4": {
+   "path": "data/ops/oncall.md"
+  },
+  "5b92a5cc-0c13-4f40-97ef-52442f7af415": {
+   "path": "data/search/vector_search.md"
+  },
+  "a401ef12-7eb0-4a47-976c-b1d6bead53b9": {
+   "path": "data/search/bm25_basics.md"
+  },
+  "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5": {
+   "path": "data/search/hybrid_ranking.md"
+  },
+  "baddb9db-da7e-4fae-a651-6ccd567e2068": {
+   "path": "data/search/query_cache.md"
+  },
+  "bd2ea05b-e77b-44a3-805f-c4e50aa2e667": {
+   "path": "data/storage/checkpoint_postgres.md"
+  },
+  "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0": {
+   "path": "data/storage/checkpoint_sqlite.md"
+  },
+  "268f316b-2be7-4d5e-8c39-03d2006f109d": {
+   "path": "data/storage/redis_cache.md"
+  },
+  "6f16eb41-0d6c-4073-826d-cb1e6a3da741": {
+   "path": "data/storage/snapshot_policy.md"
+  }
+ },
+ "unreadable": {},
+ "topics": {
+  "T1": {
+   "topic_id": "T1",
+   "title": "Поиск по корпусу: BM25, векторный поиск и гибридное ранжирование",
+   "description": "Корпус описывает поиск по документам: полнотекстовый BM25 (параметры b, k1), векторный поиск по embeddings dim=384 с kNN по косинусной близости и HNSW-индексом, их объединение через RRF (константа 60) и кэш запросов поиска (SRCH-CACHE-2, введён по итогам M-05).",
+   "document_ids": [
+    "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+    "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+    "baddb9db-da7e-4fae-a651-6ccd567e2068",
+    "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5"
+   ],
+   "evidence_ids": [
+    "ev_0eaa9d7522af",
+    "ev_5bf9b2b09d91",
+    "ev_73a74efeaece",
+    "ev_d6aadf65953a"
+   ]
+  },
+  "T2": {
+   "topic_id": "T2",
+   "title": "Хранение состояния агента: чекпоинты, кэш и снимки",
+   "description": "Документы описывают хранение состояния агента: локальные чекпоинты в SQLite (ST-CHK-01, checkpoints.db), общий бэкенд чекпоинтов на PostgreSQL 16 (решение РС-12, срок 01.12.2026), Redis как кэш промежуточного состояния между шагами и политику снимков хранилища (каждые 6 часов, 8 последних).",
+   "document_ids": [
+    "268f316b-2be7-4d5e-8c39-03d2006f109d",
+    "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+    "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+    "bd2ea05b-e77b-44a3-805f-c4e50aa2e667"
+   ],
+   "evidence_ids": [
+    "ev_2e79d7e9c83d",
+    "ev_56bc6f101aa9",
+    "ev_c6f3ffec03c2",
+    "ev_d1da66ae4193"
+   ]
+  },
+  "T3": {
+   "topic_id": "T3",
+   "title": "Эксплуатация платформы: инциденты, мониторинг, дежурства и энергия",
+   "description": "Операционные документы: разбор инцидента INC-2026-101 (40 минут без чекпоинтов из-за SQLite на сетевом диске), мониторинг (p95 задержки, ошибки tools, токены, очередь), политика дежурств (недельная смена, ответ 15 мин) и энергопотребление инференса LLM (0,9 Вт·ч на запрос, сервер 4 GPU ~2,4 кВт).",
+   "document_ids": [
+    "055181ba-a8db-4aa8-95d3-dd0c1e015549",
+    "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+    "526093ff-586a-4f04-a0f6-2558c1c186b0",
+    "5f7faa4a-3f52-4033-9251-263a4740361f"
+   ],
+   "evidence_ids": [
+    "ev_4d82428529f2",
+    "ev_69f247412d08",
+    "ev_98190fe6cc2b",
+    "ev_ae7079929237"
+   ]
+  },
+  "T4": {
+   "topic_id": "T4",
+   "title": "Решения совещания M-05",
+   "description": "Протокол совещания M-05 (участники: Мария Белова, Олег Смирнов, Анна Ершова) зафиксировал решения РС-12 (переход на PostgreSQL 16 для общих чекпоинтов) и РС-13 (grep для поиска по кодам, векторный поиск для перефразов).",
+   "document_ids": [
+    "17726e86-239d-4df1-ba18-ea8fc736e709"
+   ],
+   "evidence_ids": [
+    "ev_328fb43422b3"
+   ]
+  }
+ },
+ "merges": [],
+ "next_id": 5,
+ "summary": "Корпус из 13 документов описывает поисковую платформу агента: полнотекстовый BM25, векторный поиск (embeddings dim=384, kNN/HNSW) и гибридное ранжирование RRF, хранение состояния (чекпоинты SQLite/PostgreSQL, Redis-кэш, снимки каждые 6 часов), эксплуатацию (инцидент INC-2026-101, мониторинг, дежурства, энергопотребление инференса) и протокол совещания M-05 с решениями РС-12/РС-13. Выделено 4 темы, каждая подтверждена точными цитатами из L2."
+}

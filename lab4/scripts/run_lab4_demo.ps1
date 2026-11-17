@@ -17,8 +17,14 @@ Scenarios (all automatic, the script only plays the user: it drops files into wo
      (partial report); stage_batch always fails (bounded retries, file not lost), then the watcher restart
      picks the batch up again
   6  traces (Temporal histories + harness), results, L0 view, opening the latest report from L0
+
+-Part extra (on the corpus of a full run, no reset):
+  E1  worker killed DURING the topic-analysis agent of a scheduled run; the retry resumes the same harness task
+  E2  overlap: the schedule is triggered while that run is unfinished -> skipped by the SKIP policy
+  E3  a file is added while no watcher runs; the watcher started afterwards picks it up (rescan)
 #>
 param(
+    [ValidateSet("all", "extra")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$Every = "8m",
@@ -33,6 +39,7 @@ $lab = Split-Path -Parent $PSScriptRoot
 Set-Location $lab
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $env:PYTHONIOENCODING = "utf-8"
+$env:PYTHONUNBUFFERED = "1"                 # worker/watcher logs are written line by line (processes are stopped hard)
 $py = Join-Path $lab "..\lab3\.venv\Scripts\python.exe"
 $envFile = if (Test-Path (Join-Path $lab ".env")) { Join-Path $lab ".env" } else { Join-Path $lab "..\lab3\.env" }
 $env:LAB4_HEARTBEAT_TIMEOUT = "30s"           # a killed worker is detected 30 s after its last heartbeat
@@ -112,6 +119,65 @@ if (-not $SkipTests) {
     Step "2. Tests (deterministic stand-ins for the LLM; Temporal workflows on the real service)"
     & $py -m pytest -q | Out-Host
     if ($LASTEXITCODE -ne 0) { throw "tests failed" }
+}
+
+if ($Part -eq "extra") {
+    Step "E0. Extra scenarios on the corpus of the main run (no reset)"
+    Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+        Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    TF schedule delete | Out-Null
+    TF-Must fault --clear
+    TF-Must status
+
+    Step "E1. Worker #3 will be killed DURING the topic-analysis agent of a scheduled run"
+    $env:HARNESS_CRASH_AT = "after_tool:6"
+    $w3 = Start-Bg "worker3" $workerArgs
+    Remove-Item Env:HARNESS_CRASH_AT
+    Start-Sleep -Seconds 20                                # worker loads the embedding model
+    $after = (Get-Date).ToUniversalTime().AddSeconds(-5).ToString("yyyy-MM-ddTHH:mm:ssZ")
+    TF-Must schedule create --every 30m                   # first run immediately
+    Write-Host "waiting for worker #3 to die inside the topic agent (simulated crash after the 6th tool)..."
+    $w3.WaitForExit(1800000) | Out-Null
+    Write-Host "worker #3 exit code: $($w3.ExitCode)"
+
+    Step "E2. Overlap: trigger the schedule while its run is unfinished -> skipped (policy SKIP)"
+    TF-Must schedule trigger
+    Start-Sleep -Seconds 3
+    & $py -m topicflow.cli schedule describe | Out-File -Encoding utf8 (Join-Path $results "schedule_overlap.json")
+    Get-Content (Join-Path $results "schedule_overlap.json")
+    $w4 = Start-Bg "worker4" $workerArgs
+    TF-Must wait --schedule-runs 1 --after $after --timeout 3600
+    & $py -m topicflow.cli schedule describe | Out-File -Encoding utf8 (Join-Path $results "schedule_after_overlap.json")
+    Get-Content (Join-Path $results "schedule_after_overlap.json")
+    TF-Must schedule delete
+
+    Step "E3. Rescan after the detector restart: a file added while no watcher runs"
+    TF-Must drop --set late
+    Start-Sleep -Seconds 5
+    $watch3 = Start-Bg "watcher3" "-m topicflow.cli watch"
+    Start-Sleep -Seconds 10
+    TF-Must wait --batches --timeout 1800
+    TF-Must status
+
+    Step "E4. Traces and results"
+    Stop-Bg
+    TF-Must trace
+    TF-Must export
+    & $py -m topicflow.cli l0 | Out-File -Encoding utf8 (Join-Path $results "l0_view.json")
+    & $py -m topicflow.cli open-report --latest | Out-File -Encoding utf8 (Join-Path $results "open_report_latest.txt")
+    & $py -m topicflow.cli open-report --latest-complete | Out-File -Encoding utf8 (Join-Path $results "open_report_latest_complete.txt")
+    & $py -m topicflow.cli status | Out-File -Encoding utf8 (Join-Path $results "status.txt")
+    Get-Content (Join-Path $results "status.txt")
+    if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
+    Step "E5. Commit and push"
+    git add traces results corpus
+    git commit -m "Lab 4: extra scenarios with qwen3.8-27b (worker crash in the topic agent, overlap SKIP, rescan)"
+    if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
+    git push
+    if ($LASTEXITCODE -ne 0) { throw "git push failed" }
+    Write-Host "`nDone."
+    exit 0
 }
 
 Step "3. Fresh workspace, indices, no schedule, no faults"

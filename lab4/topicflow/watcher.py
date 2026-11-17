@@ -87,10 +87,16 @@ class Watcher:
                      "not started again")
         except RPCError as e:
             self.log(f"[watcher] {reason}: workflow {wid} not started ({e.status.name}: {e.message[:120]})")
+        except Exception as e:  # noqa: BLE001 - connection problems: the batch stays 'detected', recover() retries it
+            self.log(f"[watcher] {reason}: workflow {wid} not started ({type(e).__name__}: {e})")
         return wid
 
-    async def recover(self) -> None:
-        for b in self.reg.batches(BATCH_OPEN + ("incomplete", "failed")):
+    async def recover(self, unstarted_only: bool = False) -> None:
+        """On start: restart every batch whose workflow is neither running nor completed (failed/incomplete ones get
+        one new run per watcher start, so retries stay bounded). Periodically (unstarted_only): only batches that were
+        registered but whose workflow could not be started (e.g. Temporal was unavailable at that moment)."""
+        statuses = ("detected",) if unstarted_only else BATCH_OPEN + ("incomplete", "failed")
+        for b in self.reg.batches(statuses):
             wid = f"ingest-{b['batch_id']}"
             try:
                 desc = await self.client.get_workflow_handle(wid).describe()
@@ -111,11 +117,18 @@ class Watcher:
             self.log(f"[watcher] new batch {bid}: {[f['input_path'] for f in ready]}")
         return await self.start_batch(bid, f"{len(ready)} new file(s)")
 
-    async def run(self, once: bool = False) -> None:
+    async def run(self, once: bool = False, recover_every: int = 15) -> None:
         await self.recover()
         self.log(f"[watcher] watching {self.input} every {self.st.watch_interval_s}s (stable after {self.st.stable_s}s)")
+        n = 0
         while True:
-            await self.tick()
+            try:
+                await self.tick()
+                n += 1
+                if n % recover_every == 0:
+                    await self.recover(unstarted_only=True)
+            except Exception as e:  # noqa: BLE001 - Temporal unreachable etc.: the batch stays registered, retried later
+                self.log(f"[watcher] {type(e).__name__}: {e}")
             if once and not self.seen:
                 return
             await asyncio.sleep(self.st.watch_interval_s)

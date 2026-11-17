@@ -1,6 +1,7 @@
 """Temporal workflows of lab 4 (deterministic coordination only; activities are referenced by name).
 
-IngestNewFiles(batch)   stage_batch -> run_ingest_agent -> verify_batch -> record_batch
+IngestNewFiles(batch)   record_batch -> stage_batch -> run_ingest_agent -> verify_batch
+                        (record_batch again with status 'failed' if staging exhausts its retries)
 TopicReport(params)     freeze_corpus -> run_topic_agent -> publish_report
 
 Retry policy: every activity has a start-to-close timeout and a FINITE number of attempts; agent activities also

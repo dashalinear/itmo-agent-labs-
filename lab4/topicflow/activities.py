@@ -170,8 +170,14 @@ def _stage_batch(env: Env, batch_id: str) -> dict:
         sub = rel_in.split("/", 1)[1]
         src = ws.root / rel_in
         dst = ws.root / folder / sub
-        if f["status"] in ("staged", "duplicate", "indexed"):
-            (staged if f["status"] != "duplicate" else dups).append(rel_in)
+        if f["status"] == "duplicate":
+            dups.append(rel_in)
+            continue
+        if f["status"] in ("staged", "indexed", "failed") and f["content_hash"]:
+            # taken by an earlier attempt / earlier run of this batch: it is in the batch folder or already moved into
+            # data/ by the agent. It stays part of the batch, so a restarted batch runs the agent again (resumed task)
+            # and verify_batch checks it, instead of the file being treated as missing.
+            staged.append(rel_in)
             continue
         if not src.exists():
             if dst.exists():                                  # moved by an attempt that crashed before recording it
@@ -183,8 +189,9 @@ def _stage_batch(env: Env, batch_id: str) -> dict:
             continue
         h = file_hash(src)
         same = [d for d in cat.same_content(h) if d["current_path"].startswith("data/")]
-        if same or h in seen:
-            existing = same[0]["current_path"] if same else seen[h]
+        other = reg.taken_elsewhere(h, batch_id)          # same content staged by another batch, not indexed yet
+        if same or h in seen or other:
+            existing = same[0]["current_path"] if same else (seen.get(h) or other["staged_path"])
             rej = ws.root / "rejected" / batch_id / sub
             rej.parent.mkdir(parents=True, exist_ok=True)
             os.replace(src, rej)

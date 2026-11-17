@@ -115,6 +115,12 @@ class Registry:
         sets = ", ".join(f"{k}=?" for k in fields) + ", updated_at=?"
         self._x(f"UPDATE files SET {sets} WHERE input_path=? AND batch_id=?", (*fields.values(), now_iso(), input_path, batch_id))
 
+    def taken_elsewhere(self, content_hash: str, batch_id: str) -> dict | None:
+        """A file with this content already taken by ANOTHER batch (staged, indexed or awaiting a retry)."""
+        rows = self._all("SELECT * FROM files WHERE content_hash=? AND batch_id<>? AND status IN ('staged','indexed','failed') "
+                         "ORDER BY updated_at LIMIT 1", (content_hash, batch_id))
+        return rows[0] if rows else None
+
     def files(self) -> list[dict]:
         return self._all("SELECT * FROM files ORDER BY updated_at, input_path")
 

@@ -1,0 +1,24 @@
+{
+ "examined": {
+  "10c4d818-a46d-4855-9e3e-dbc9e6d041f4": {
+   "path": "data/ops/oncall.md"
+  },
+  "17726e86-239d-4df1-ba18-ea8fc736e709": {
+   "path": "data/meetings/meeting_m05.md"
+  },
+  "055181ba-a8db-4aa8-95d3-dd0c1e015549": {
+   "path": "data/ops/inference_energy.md"
+  },
+  "526093ff-586a-4f04-a0f6-2558c1c186b0": {
+   "path": "data/ops/monitoring.md"
+  },
+  "5f7faa4a-3f52-4033-9251-263a4740361f": {
+   "path": "data/ops/incident_101.md"
+  }
+ },
+ "unreadable": {},
+ "topics": {},
+ "merges": [],
+ "next_id": 1,
+ "summary": ""
+}

@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from organizer.catalog import Catalog
+from organizer.catalog import _lock as catalog_lock
 from organizer.textutil import file_hash
 
 from harness.workspace import HarnessWorkspace
@@ -43,12 +44,12 @@ def now_iso() -> str:
 
 def slug(run_key: str) -> str:
     """Readable, filesystem-safe and stable: 'lab4-topics-run-2026-11-17T10:30:00Z' -> '20261117T103000Z'."""
-    m = re.search(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})", run_key)
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{3}))?", run_key)
     tail = re.sub(r"[^A-Za-z0-9]+", "-", run_key).strip("-")
     if m:
-        y, mo, d, h, mi, s = m.groups()
+        y, mo, d, h, mi, s, ms = m.groups()
         prefix = "manual-" if "manual" in run_key else ""
-        return f"{prefix}{y}{mo}{d}T{h}{mi}{s}Z"
+        return f"{prefix}{y}{mo}{d}T{h}{mi}{s}{ms or ''}Z"
     return tail[-40:]
 
 
@@ -85,8 +86,21 @@ def freeze_corpus(ws: HarnessWorkspace, run_key: str, workflow_id: str, run_id: 
             skipped.append({"document_id": x["document_id"], "path": x["path"], "reason": "нет L1: документ ещё не проиндексирован"})
         else:
             docs.append({k: x[k] for k in ("document_id", "path", "folder", "title", "description", "content_hash", "l2_fragments")})
+    # documents that appeared after the previous report are marked, so the agent decides explicitly whether they form
+    # a new topic or extend an existing one (and the report can say where every new document went)
+    hist = load_registry(ws)["history"]
+    prev = max(hist, key=lambda h: h["frozen_at"]) if hist else None
+    if prev:
+        try:
+            before = {x["document_id"] for x in json.loads((run_dir(ws, prev["run_key"]) / "manifest.json")
+                                                           .read_text(encoding="utf-8"))["documents"]}
+        except OSError:
+            before = None
+        for x in docs:
+            x["new_since_previous_report"] = before is not None and x["document_id"] not in before
     m = {"run_key": run_key, "workflow_id": workflow_id, "run_id": run_id, "frozen_at": now_iso(),
          "l0_generated_at": l0["generated_at"], "l0_documents": len(l0["documents"]),
+         "previous_report": prev["run_key"] if prev else None,
          "documents": docs, "skipped": skipped, "excluded_service": service}
     _atomic_json(p, m)
     return {"run_key": run_key, "documents": len(docs), "skipped": len(skipped), "excluded_service": len(service),
@@ -168,12 +182,21 @@ def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, ev
     if prev:
         L += [f"- новые документы с прошлого отчёта: {len(new_docs)}"
               + (": " + ", ".join(f"`{x['path']}`" for x in new_docs) if new_docs else ""), ""]
+        if new_docs:
+            L += ["### Новые документы и их темы", "", "| документ | темы | как учтён |", "|---|---|---|"]
+            for x in new_docs:
+                ts = [(k, t) for k, t in st["topics"].items() if x["document_id"] in t["document_ids"]]
+                how = "; ".join("новая тема" if all(i not in prev_docs for i in t["document_ids"]) else "расширяет тему"
+                                for _k, t in ts) or "не отнесён ни к одной теме"
+                L.append(f"| `{x['path']}` | {', '.join(f'{k}. {t['title']}' for k, t in ts) or '—'} | {how} |")
+            L.append("")
     L += ["## Темы", ""]
     if not st["topics"]:
         L += ["_Темы не выделены._", ""]
     for k, t in sorted(st["topics"].items(), key=lambda kv: int(kv[0][1:]) if kv[0][1:].isdigit() else 0):
-        new_mark = " (новая тема: все документы появились после прошлого отчёта)" if prev and t["document_ids"] and all(
-            i not in prev_docs for i in t["document_ids"]) else ""
+        fresh = [i for i in t["document_ids"] if prev and i not in prev_docs]
+        new_mark = (" (новая тема: все документы появились после прошлого отчёта)" if fresh and len(fresh) == len(t["document_ids"])
+                    else (f" (расширена новыми документами: {len(fresh)})" if fresh else ""))
         L += [f"### {k}. {t['title']}{new_mark}", "", t["description"], "", "Документы:", ""]
         for i in t["document_ids"]:
             x = by_id.get(i, {"path": "?", "title": "?"})
@@ -236,10 +259,11 @@ def publish(ws: HarnessWorkspace, corpus: CorpusTools, run_key: str, meta: dict,
     entry = cat.register_existing(rel)          # by path: the same document_id on every retry
     h = file_hash(p)
     if entry.get("content_hash") != h:          # re-rendered after a state change: same document, new version
-        data = cat.load()
-        e = Catalog._find(data, document_id=entry["document_id"])
-        e.update(content_hash=h, size_bytes=p.stat().st_size, line_count=len(text.splitlines()), is_empty=False)
-        cat.save(data)
+        with catalog_lock:                      # the same lock the lab 1 catalog uses (ingestion runs in this process)
+            data = cat.load()
+            e = Catalog._find(data, document_id=entry["document_id"])
+            e.update(content_hash=h, size_bytes=p.stat().st_size, line_count=len(text.splitlines()), is_empty=False)
+            cat.save(data)
     out = corpus.doc_outline(rel)
     title = text.splitlines()[0].lstrip("# ").strip()
     secs = out["suggested_sections"] or [{"title": "Отчёт", "start_line": 1, "end_line": out["lines"]}]
@@ -255,7 +279,8 @@ def publish(ws: HarnessWorkspace, corpus: CorpusTools, run_key: str, meta: dict,
             "frozen_at": info["frozen_at"], "task_id": (task or {}).get("task_id")}
     hist = [h for h in reg["history"] if h["run_key"] != run_key] + [item]
     hist.sort(key=lambda h: h["frozen_at"])
-    reg = {"history": hist, "latest": hist[-1]}
+    complete = [h for h in hist if h["status"] == "complete"]
+    reg = {"history": hist, "latest": hist[-1], "latest_complete": complete[-1] if complete else None}
     _atomic_json(_registry_path(ws), reg)
     Levels(ws, cat).rebuild_l0()
     return {**item, "rewritten": existed and not same, "already_published": same, "reasons": info["reasons"],

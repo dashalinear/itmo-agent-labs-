@@ -1,5 +1,5 @@
 """Lab 4 tests. Elasticsearch on localhost:9200 is required; the Temporal tests additionally need the Temporal
-service on localhost:7233 (skipped otherwise). The LLM is replaced by deterministic policies (conftest.py)."""
+service on localhost:7233 (skipped otherwise). The LLM is replaced by deterministic policies (tests/fake_llm.py)."""
 import asyncio
 import json
 import time
@@ -36,6 +36,59 @@ def test_watcher_ignores_partial_files_and_waits_for_stability(lab4env):
     assert lab4env.registry.add_batch(bid, ready) and not lab4env.registry.add_batch(bid, ready)
     assert w.scan(now=3 * st.stable_s + 1) == []                   # registered: not detected twice
     assert batch_id_for(ready) == bid                              # stable batch id for the same event
+
+
+class StubTemporal:
+    """Minimal stand-in for temporalio.client.Client used by the watcher (start + describe)."""
+
+    def __init__(self):
+        self.down = False
+        self.started = []
+
+    async def start_workflow(self, name, arg, id, **kw):
+        if self.down:
+            raise ConnectionError("Temporal is unavailable")
+        self.started.append(id)
+        return type("H", (), {"result_run_id": f"run-{len(self.started)}"})()
+
+    def get_workflow_handle(self, wid):
+        from temporalio.client import WorkflowExecutionStatus
+        from temporalio.service import RPCError, RPCStatusCode
+        started = wid in self.started
+
+        class H:
+            async def describe(self):
+                if not started:
+                    raise RPCError("workflow not found", RPCStatusCode.NOT_FOUND, b"")
+                return type("D", (), {"status": WorkflowExecutionStatus.RUNNING})()
+        return H()
+
+
+async def test_watcher_survives_temporal_outage_and_rescans_after_restart(lab4env):
+    from dataclasses import replace
+    from topicflow.config import settings
+    st = replace(settings(), stable_s=0.0, watch_interval_s=0.0)
+    inp = lab4env.ws.root / "input"
+    client = StubTemporal()
+    w = Watcher(client=client, cfg=lab4env.cfg, st=st, registry=lab4env.registry, log=lambda *a: None)
+    (inp / "a.md").write_text("файл a", encoding="utf-8")
+    client.down = True                                            # Temporal unavailable at detection time
+    w.scan()
+    await w.tick()                                                # registered, not started, watcher still alive
+    b1 = lab4env.registry.batches()[0]
+    assert b1["status"] == "detected" and client.started == []
+    client.down = False
+    await w.recover(unstarted_only=True)                          # periodic retry of never-started batches
+    assert client.started == [f"ingest-{b1['batch_id']}"] and lab4env.registry.batch(b1["batch_id"])["status"] == "started"
+    # the watcher is stopped; meanwhile the user adds a file; a NEW watcher process picks it up on its first scan
+    (inp / "b.md").write_text("файл b", encoding="utf-8")
+    w2 = Watcher(client=client, cfg=lab4env.cfg, st=st, registry=lab4env.registry, log=lambda *a: None)
+    await w2.recover()                                            # b1 is running: not started again
+    w2.scan()
+    await w2.tick()
+    assert len(client.started) == 2 and client.started[0] == f"ingest-{b1['batch_id']}"
+    b2 = [b for b in lab4env.registry.batches() if b["batch_id"] != b1["batch_id"]][0]
+    assert [f["input_path"] for f in b2["files"]] == ["input/b.md"]   # a.md is not detected twice
 
 
 # ------------------------------------------------------------------------------------------ ingestion
@@ -77,7 +130,45 @@ async def test_ingestion_batch_is_idempotent_and_duplicates_are_not_indexed(lab4
     assert sum(1 for d in cat["documents"] if d["current_path"].endswith("oncall.md")) == 1
 
 
+async def test_restarted_incomplete_batch_runs_the_agent_again_instead_of_claiming_success(lab4env):
+    """The agent moved a file into data/ but did not index it; the batch is restarted later (new workflow run)."""
+    from harness.workspace import HarnessFileTools
+    from organizer.catalog import Catalog
+    env = lab4env
+    files = put(env, "initial", {"redis_cache.md"})
+    bid = batch_id_for(files)
+    env.registry.add_batch(bid, files)
+    st = await A.stage_batch({"batch_id": bid})
+    HarnessFileTools(env.ws, Catalog(env.ws), 10 ** 6).move(f"{st['folder']}/redis_cache.md", "data/state/redis_cache.md")
+    v1 = await A.verify_batch({"batch_id": bid})                  # moved, but no L1/L2: incomplete, file 'failed'
+    assert v1["status"] == "incomplete" and env.registry.batch_files(bid)[0]["status"] == "failed"
+    st2 = await A.stage_batch({"batch_id": bid})                  # the restarted run: the file is still part of the batch
+    assert st2["staged"] == 1 and st2["missing"] == []
+    agent = await A.run_ingest_agent({"batch_id": bid, "folder": st2["folder"]})
+    v2 = await A.verify_batch({"batch_id": bid, "agent": agent})
+    assert agent["status"] == "completed" and v2["status"] == "completed" and v2["documents"][0]["l2_fragments"] > 0
+
+
+async def test_same_content_in_two_batches_staged_before_indexing_is_one_document(lab4env):
+    env = lab4env
+    f1 = put(env, "initial", {"vector_search.md"})
+    b1 = batch_id_for(f1)
+    env.registry.add_batch(b1, f1)
+    await A.stage_batch({"batch_id": b1})                         # batch 1 taken, not indexed yet
+    f2 = put(env, "initial", {"vector_search.md"}, rename=lambda n: "vector_again.md")
+    b2 = batch_id_for(f2)
+    env.registry.add_batch(b2, f2)
+    s2 = await A.stage_batch({"batch_id": b2})
+    assert s2["staged"] == 0 and s2["duplicates"] == ["input/vector_again.md"]
+    assert (env.ws.root / "rejected" / b2 / "vector_again.md").exists()
+
+
 # ------------------------------------------------------------------------------------------ topic reports
+def l0_latest_complete(env):
+    l0 = json.loads((env.ws.service_path("corpus") / "l0.json").read_text(encoding="utf-8"))
+    return (l0["reports"].get("latest_complete") or {}).get("run_key")
+
+
 async def _report(env, run_key, overrides=None, fault=False):
     base = {"run_key": run_key, "workflow_id": run_key, "run_id": "r-" + uuid.uuid4().hex[:6]}
     frozen = await A.freeze_corpus(base)
@@ -109,6 +200,9 @@ async def test_two_reports_on_l0_and_the_second_covers_the_new_topic(lab4env):
     assert not any(d["path"].startswith("data/_reports/") for d in m2["documents"])
     text2 = (env.ws.root / r2["path"]).read_text(encoding="utf-8")
     assert "data/energy/inference_energy.md" in text2 and "новая тема" in text2 and r2["report_count"] == 2
+    assert "### Новые документы и их темы" in text2
+    assert [d["path"] for d in m2["documents"] if d["new_since_previous_report"]] == ["data/energy/inference_energy.md"]
+    assert l0_latest_complete(env) == k2
     assert (env.ws.root / r1["path"]).exists() and r2["path"] != r1["path"]
     l0 = json.loads((env.ws.service_path("corpus") / "l0.json").read_text(encoding="utf-8"))
     assert [h["run_key"] for h in l0["reports"]["history"]] == [k1, k2] and l0["reports"]["latest"]["run_key"] == k2

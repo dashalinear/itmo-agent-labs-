@@ -46,6 +46,8 @@ Procedure (work in parts, the harness compacts your history; never try to hold t
    If a document cannot be read, call mark_unreadable(document_id, reason).
 3. Group documents into 3-8 topics by meaning (not by folder name alone). A document may belong to 2 topics.
    Merge topics that describe the same subject (topic_merge) instead of keeping near-duplicates.
+   Documents with new_since_previous_report=true appeared after the previous report: for each of them decide
+   explicitly whether it starts a NEW topic or only extends an existing one, and reflect that in the description.
 4. For each topic read L2 of at least one of its documents (read_section with section_id from examine_document,
    or read_fragment with first_fragment_id) and call cite_fragment with an EXACT short quote that supports the
    topic description. L1 summaries are navigation, never evidence.
@@ -164,6 +166,7 @@ class TopicTools:
         return {"run_key": self.manifest["run_key"], "frozen_at": self.manifest["frozen_at"], "documents_total": len(docs),
                 "documents": [{"document_id": d["document_id"], "path": d["path"], "title": d["title"],
                                "description": d["description"],
+                               "new_since_previous_report": d.get("new_since_previous_report", False),
                                "status": "examined" if d["document_id"] in st["examined"] else
                                          ("unreadable" if d["document_id"] in st["unreadable"] else "todo")} for d in page],
                 "page": [off + 1, off + len(page)],
@@ -179,9 +182,11 @@ class TopicTools:
                 l1["note_path"] = f"moved after the freeze: frozen path {d['path']}"
             st["examined"].setdefault(document_id, {"path": d["path"]})
             self._save(st)
-        if again:
-            l1 = {k: l1[k] for k in ("document_id", "path", "title", "description")}
-            l1["note_repeat"] = "already examined in this run; use read_section / cite_fragment or move on"
+        if again:   # compact: no summaries, but section ids / first fragments (needed again after compaction)
+            l1 = {**{k: l1[k] for k in ("document_id", "path", "title", "description")},
+                  "sections": [{"section_id": x["section_id"], "title": x["title"], "first_fragment_id": x["first_fragment_id"]}
+                               for x in l1["sections"]],
+                  "note_repeat": "already examined in this run (compact view); use read_section / cite_fragment or move on"}
         return l1
 
     def mark_unreadable(self, document_id: str, reason: str) -> dict:

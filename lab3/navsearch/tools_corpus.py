@@ -280,7 +280,8 @@ class CorpusTools:
                "page": [off + 1, off + len(docs)], "next_cursor": enc_cursor({"o": nxt}) if nxt < len(l0["documents"]) else None}
         if l0.get("reports"):
             r = l0["reports"]
-            res["reports"] = {"latest": r.get("latest"), "count": len(r.get("history", [])),
+            res["reports"] = {"latest": r.get("latest"), "latest_complete": r.get("latest_complete"),
+                              "count": len(r.get("history", [])),
                               "note": "generated topic reports (service documents): open with get_l1(latest.document_id)"}
         return res
 
