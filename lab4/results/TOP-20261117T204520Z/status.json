@@ -1,0 +1,413 @@
+{
+  "task": {
+    "task_id": "TOP-20261117T204520Z",
+    "kind": "topics",
+    "status": "completed",
+    "status_reason": "4 topics, 10/10 documents examined",
+    "runs": 1,
+    "request": "Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.",
+    "plan": [
+      {
+        "title": "L1: examine all 10 documents",
+        "status": "doing"
+      },
+      {
+        "title": "Group into 3-8 topics",
+        "status": "todo"
+      },
+      {
+        "title": "L2: read sections and cite evidence per topic",
+        "status": "todo"
+      },
+      {
+        "title": "topic_upsert for each topic",
+        "status": "todo"
+      },
+      {
+        "title": "topics_status: fix gaps",
+        "status": "todo"
+      },
+      {
+        "title": "submit_report",
+        "status": "todo"
+      }
+    ],
+    "completion": {
+      "completed": true,
+      "findings": "4 topics over 10 documents",
+      "coverage": {
+        "documents_total": 10,
+        "examined": 10,
+        "unreadable": 0,
+        "not_examined": [],
+        "unassigned": [],
+        "topics": 4,
+        "topics_without_evidence": [],
+        "evidence": 10,
+        "complete": true
+      }
+    },
+    "limits": {
+      "max_total_tokens": 3000000,
+      "max_model_calls": 160,
+      "max_tool_calls": 900,
+      "task_deadline_s": 5400,
+      "max_search_calls": 12,
+      "max_http_requests": 80,
+      "max_fetch_bytes": 1000000,
+      "max_redirects": 5,
+      "http_timeout_s": 10.0,
+      "http_retries": 2,
+      "backoff_base_s": 0.5,
+      "working_context_tokens": 28000,
+      "response_reserve_tokens": 2048,
+      "estimate_margin": 0.1,
+      "compaction_trigger": 0.75,
+      "compaction_target": 0.45,
+      "compaction_min_gain": 0.05,
+      "summary_max_tokens": 1200,
+      "summary_tool_clip_chars": 1200,
+      "max_compaction_chunks": 4,
+      "max_tool_result_chars": 6000,
+      "max_step_result_chars": 12000,
+      "preview_chars": 1200,
+      "max_pages_per_read": 5,
+      "max_lines_per_read": 300,
+      "llm_timeout_s": 180.0,
+      "llm_retries": 2,
+      "max_model_calls_per_run": 160,
+      "repeat_call_warn": 3,
+      "repeat_call_stop": 6,
+      "tool_timeout_s": 60.0
+    }
+  },
+  "constraints": [],
+  "criteria": {},
+  "budget": {
+    "tokens": {
+      "spent": 179904,
+      "reserved": 0,
+      "limit": 3000000,
+      "of_which": {
+        "input_tokens": 167214,
+        "output_tokens": 5100,
+        "compaction_input_tokens": 6390,
+        "compaction_output_tokens": 1200,
+        "failed_call_tokens": 0,
+        "interrupted_call_tokens": 0
+      }
+    },
+    "model_calls": {
+      "used": 15,
+      "limit": 160
+    },
+    "compaction_calls": 1,
+    "failed_calls": 0,
+    "tool_calls": {
+      "used": 39,
+      "limit": 900
+    },
+    "search_calls": {
+      "used": 0,
+      "limit": 12
+    },
+    "http_requests": {
+      "used": 0,
+      "limit": 80
+    },
+    "cache_hits": 0,
+    "bytes_downloaded": 0,
+    "active_seconds": {
+      "used": 64.5,
+      "limit": 5400
+    },
+    "peak_input_tokens": 17078
+  },
+  "queue": {
+    "found": 0,
+    "pending": 0,
+    "running": 0,
+    "done": 0,
+    "error": 0,
+    "skipped": 0,
+    "found_total": 0,
+    "selected_total": 0,
+    "read_total": 0
+  },
+  "documents": [],
+  "summary_version": 1,
+  "compactions": [
+    {
+      "id": 4,
+      "ts": "2026-11-17T20:46:07+00:00",
+      "before_tokens": 19854,
+      "after_tokens": 12661,
+      "removed_messages": 18,
+      "kept_messages": 27,
+      "summary_tokens": 1370,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6390,
+      "cost_output": 1200,
+      "note": ""
+    }
+  ],
+  "model_calls": [
+    {
+      "id": 17,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:21+00:00",
+      "kind": "agent",
+      "estimated_input": 5229,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "actual_input": 3494,
+      "actual_output": 15,
+      "duration_s": 0.81,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 18,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:22+00:00",
+      "kind": "agent",
+      "estimated_input": 5438,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "actual_input": 4429,
+      "actual_output": 34,
+      "duration_s": 0.67,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 19,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:23+00:00",
+      "kind": "agent",
+      "estimated_input": 5550,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "actual_input": 4779,
+      "actual_output": 133,
+      "duration_s": 1.38,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 20,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:24+00:00",
+      "kind": "agent",
+      "estimated_input": 5775,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.16)",
+      "actual_input": 5055,
+      "actual_output": 300,
+      "duration_s": 2.41,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 21,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:27+00:00",
+      "kind": "agent",
+      "estimated_input": 8670,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.20)",
+      "actual_input": 8329,
+      "actual_output": 296,
+      "duration_s": 2.7,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 22,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:30+00:00",
+      "kind": "agent",
+      "estimated_input": 12049,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.12)",
+      "actual_input": 11556,
+      "actual_output": 243,
+      "duration_s": 2.89,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 23,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:32+00:00",
+      "kind": "agent",
+      "estimated_input": 13294,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.04)",
+      "actual_input": 12631,
+      "actual_output": 231,
+      "duration_s": 2.8,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 24,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:35+00:00",
+      "kind": "agent",
+      "estimated_input": 14581,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "actual_input": 13730,
+      "actual_output": 317,
+      "duration_s": 3.51,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 25,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:39+00:00",
+      "kind": "agent",
+      "estimated_input": 16110,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.92)",
+      "actual_input": 15158,
+      "actual_output": 513,
+      "duration_s": 5.18,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 26,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:44+00:00",
+      "kind": "agent",
+      "estimated_input": 17277,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "actual_input": 16115,
+      "actual_output": 518,
+      "duration_s": 5.25,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 27,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:49+00:00",
+      "kind": "agent",
+      "estimated_input": 18436,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "actual_input": 17078,
+      "actual_output": 695,
+      "duration_s": 7.25,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 28,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:45:57+00:00",
+      "kind": "compaction",
+      "estimated_input": 7109,
+      "reserve": 1200,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.78, margin=10%)",
+      "actual_input": 6390,
+      "actual_output": 1200,
+      "duration_s": 9.92,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 29,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:46:07+00:00",
+      "kind": "agent",
+      "estimated_input": 12661,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "actual_input": 11544,
+      "actual_output": 1371,
+      "duration_s": 10.83,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 30,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:46:18+00:00",
+      "kind": "agent",
+      "estimated_input": 15063,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "actual_input": 14157,
+      "actual_output": 30,
+      "duration_s": 1.89,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 31,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:46:20+00:00",
+      "kind": "agent",
+      "estimated_input": 15714,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.71)",
+      "actual_input": 14447,
+      "actual_output": 205,
+      "duration_s": 3.17,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 32,
+      "task_id": "TOP-20261117T204520Z",
+      "ts": "2026-11-17T20:46:23+00:00",
+      "kind": "agent",
+      "estimated_input": 16219,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.68)",
+      "actual_input": 14712,
+      "actual_output": 199,
+      "duration_s": 3.01,
+      "status": "ok",
+      "note": null
+    }
+  ]
+}

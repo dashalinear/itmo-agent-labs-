@@ -1,0 +1,955 @@
+[
+  {
+    "id": 1,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:29+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 2,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:29+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "ingest-4d4e776d7c",
+      "workflow_run_id": "01a1eb3f-27b8-7aff-bf3f-459bd0405a73",
+      "activity_id": "3",
+      "activity_type": "run_ingest_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 3,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:30+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest-a1"
+    }
+  },
+  {
+    "id": 4,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11472,
+      "reserve": 2048,
+      "total": 13520,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 5,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11472,
+      "reserve": 2048,
+      "total": 13520,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 6,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11472,
+      "actual_input": 7082,
+      "actual_output": 67,
+      "duration_s": 1.47,
+      "calibrated_cpt": 3.09
+    }
+  },
+  {
+    "id": 7,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10872,
+      "reserve": 2048,
+      "total": 12920,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 8,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10872,
+      "reserve": 2048,
+      "total": 12920,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)"
+    }
+  },
+  {
+    "id": 9,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10872,
+      "actual_input": 8186,
+      "actual_output": 429,
+      "duration_s": 3.31,
+      "calibrated_cpt": 3.342
+    }
+  },
+  {
+    "id": 10,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:42:35+00:00",
+    "kind": "simulated_crash",
+    "data": {
+      "at": "after_tool:10",
+      "phase": "after"
+    }
+  },
+  {
+    "id": 11,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:07+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "ingest-4d4e776d7c",
+      "workflow_run_id": "01a1eb3f-27b8-7aff-bf3f-459bd0405a73",
+      "activity_id": "3",
+      "activity_type": "run_ingest_agent",
+      "attempt": 2,
+      "resumed": true,
+      "status_before": "running",
+      "runs_before": 1
+    }
+  },
+  {
+    "id": 12,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:08+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest-a2"
+    }
+  },
+  {
+    "id": 13,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16761,
+      "reserve": 2048,
+      "total": 18809,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 14,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16761,
+      "reserve": 2048,
+      "total": 18809,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 15,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16761,
+      "actual_input": 11467,
+      "actual_output": 25,
+      "duration_s": 1.22,
+      "calibrated_cpt": 2.933
+    }
+  },
+  {
+    "id": 16,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14970,
+      "reserve": 2048,
+      "total": 17018,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.93)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 17,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14970,
+      "reserve": 2048,
+      "total": 17018,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.93)"
+    }
+  },
+  {
+    "id": 18,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14970,
+      "actual_input": 11545,
+      "actual_output": 594,
+      "duration_s": 4.81,
+      "calibrated_cpt": 3.132
+    }
+  },
+  {
+    "id": 19,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16054,
+      "reserve": 2048,
+      "total": 18102,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.13)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 20,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16054,
+      "reserve": 2048,
+      "total": 18102,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.13)"
+    }
+  },
+  {
+    "id": 21,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16054,
+      "actual_input": 14002,
+      "actual_output": 1624,
+      "duration_s": 12.72,
+      "calibrated_cpt": 3.169
+    }
+  },
+  {
+    "id": 22,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19358,
+      "reserve": 2048,
+      "total": 21406,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)",
+      "messages": 39
+    }
+  },
+  {
+    "id": 23,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:36+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19358,
+      "after_tokens": 13910,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 27,
+      "kept_messages": 12,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6866,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nОрганизовать файлы из `input/_batches/4d4e776d7c` в `data` по темам, добавить документы в корпус (L0, L1, L2 в Elasticsearch), провалидировать корпус и завершить задачу.\n\n## Ограничения пользователя\n- [C1] Организуй все файлы из папки input/_batches/4d4e776d7c в data по темам (по содержимому, тематические подпапки входа сохраняй, если они подходят)\n- [C2] Добавь документы в корпус: каталог L0, структура и summary L1, тексты L2 в Elasticsearch\n- [C3] Неизменённые документы, уже имеющие актуальные L1/L2, не обрабатывай повторно\n- [C4] В конце проверь корпус validate_corpus и заверши задачу\n\n## Решения и договорённости\n- Загружен скилл `build_corpus_levels` для определения процедуры инжеста.\n- Файлы распределены по тематическим подпапкам `data/`:\n  - `data/search/`: bm25_basics.md, vector_search.md, hybrid_ranking.md\n  - `data/storage/`: checkpoint_sqlite.md, checkpoint_postgres.md, redis_cache.md\n  - `data/ops/`: monitoring.md, oncall.md, incident_101.md\n  - `data/meetings/`: meeting_m05.md\n- Все 10 файлов успешно перемещены, получены `document_id` и `content_hash`.\n\n## Подтверждённые факты (с источниками)\n- **bm25_basics.md** (`data/search/bm25_basics.md`, id: `a401ef12-7eb0-4a47-976c-b1d6bead53b9`): BM25, k1=1.2, b=0.75, snowball.\n- **vector_search.md** (`data/search/vector_search.md`, id: `5b92a5cc-0c13-4f40-97ef-52442f7af415`): embeddings dim=384, HNSW m=16, ef_construction=100.\n- **hybrid_ranking.md** (`data/search/hybrid_ranking.md`, id: `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5`): RRF constant=60.\n- **checkpoint_sqlite.md** (`data/storage/checkpoint_sqlite.md`, id: `63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0`): код ST-CHK-01, max checkpoint 2 МБ, запрет SMB.\n- **checkpoint_postgres.md** (`data/storage/checkpoint_postgres.md`, id: `bd2ea05b-e77b-44a3-805f-c4e50aa2e667`): решение РС-12, PostgreSQL 16, ответственный Мария Белова, срок 01.12.2026, пул 40 conn.\n- **redis_cache.md** (`data/storage/redis_cache.md`, id: `268f316b-2be7-4d5e-8c39-03d2006f109d`): TTL 24h, max value 512 КБ, ключи `agent:{task_id}:step:{n}`.\n- **monitoring.md** (`data/ops/monitoring.md`, id: `526093ff-586a-4f04-a0f6-2558c1c186b0`): алерт p95 > 1.5s (5 мин), очередь > 10 мин, дашборд 1 мин, хранение 14 дней.\n- **oncall.md** (`data/ops/oncall.md`, id: `10c4d818-a46d-4855-9e3e-dbc9e6d041f4`): смена неделя, ответ 15 мин, эскалация 30 мин, руководитель Олег Смирнов, формат INC-2026-NNN.\n- **incident_101.md** (`data/ops/incident_101.md`, id: `5f7faa4a-3f52-4033-9251-263a4740361f`): INC-2026-101, 14.11.2026, причина — SQLite на SMB, решение — перенос на локальный диск.\n- **meeting_m05.md** (`data/meetings/meeting_m05.md`, id: `17726e86-239d-4df1-ba18-ea8fc736e709`): участники Мария Белова, Олег Смирнов, Анна Ершова; решения РС-12, РС-13 (grep для кодов, векторный для перефразов"
+    }
+  },
+  {
+    "id": 24,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13910,
+      "reserve": 2048,
+      "total": 15958,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)"
+    }
+  },
+  {
+    "id": 25,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13910,
+      "actual_input": 12417,
+      "actual_output": 2048,
+      "duration_s": 15.51,
+      "calibrated_cpt": 3.185
+    }
+  },
+  {
+    "id": 26,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16480,
+      "reserve": 2048,
+      "total": 18528,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 27,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16480,
+      "reserve": 2048,
+      "total": 18528,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)"
+    }
+  },
+  {
+    "id": 28,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16480,
+      "actual_input": 15110,
+      "actual_output": 459,
+      "duration_s": 4.32,
+      "calibrated_cpt": 3.164
+    }
+  },
+  {
+    "id": 29,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:43:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20079,
+      "reserve": 2048,
+      "total": 22127,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.16)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 30,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:04+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 20079,
+      "after_tokens": 13983,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 18,
+      "kept_messages": 12,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 7043,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nОрганизовать файлы из `input/_batches/4d4e776d7c` в `data` по темам, добавить документы в корпус (L0, L1, L2 в Elasticsearch), провалидировать корпус и завершить задачу.\n\n## Ограничения пользователя\n- [C1] Организуй все файлы из папки input/_batches/4d4e776d7c в data по темам (по содержимому, тематические подпапки входа сохраняй, если они подходят)\n- [C2] Добавь документы в корпус: каталог L0, структура и summary L1, тексты L2 в Elasticsearch\n- [C3] Неизменённые документы, уже имеющие актуальные L1/L2, не обрабатывай повторно\n- [C4] В конце проверь корпус validate_corpus и заверши задачу\n\n## Решения и договорённости\n- Загружен скилл `build_corpus_levels` для определения процедуры инжеста.\n- Файлы распределены по тематическим подпапкам `data/`:\n  - `data/search/`: bm25_basics.md, vector_search.md, hybrid_ranking.md\n  - `data/storage/`: checkpoint_sqlite.md, checkpoint_postgres.md, redis_cache.md\n  - `data/ops/`: monitoring.md, oncall.md, incident_101.md\n  - `data/meetings/`: meeting_m05.md\n- Все 10 файлов успешно перемещены, получены `document_id` и `content_hash`.\n- Каталог L0 обновлён для всех 10 документов (title, description, note). Статус индексации: `not_indexed`.\n- Начато построение L1. Первые попытки вызова `write_l1` завершились ошибками валидации структуры (несоответствие диапазонов строк) или отсутствием обязательных полей (`summary`, `sections`). Требуется корректное формирование структуры L1 с точными диапазонами строк.\n\n## Подтверждённые факты (с источниками)\n- **bm25_basics.md** (`data/search/bm25_basics.md`, id: `a401ef12-7eb0-4a47-976c-b1d6bead53b9`): BM25, k1=1.2, b=0.75, snowball.\n- **vector_search.md** (`data/search/vector_search.md`, id: `5b92a5cc-0c13-4f40-97ef-52442f7af415`): embeddings dim=384, HNSW m=16, ef_construction=100.\n- **hybrid_ranking.md** (`data/search/hybrid_ranking.md`, id: `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5`): RRF constant=60.\n- **checkpoint_sqlite.md** (`data/storage/checkpoint_sqlite.md`, id: `63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0`): код ST-CHK-01, max checkpoint 2 МБ, запрет SMB.\n- **checkpoint_postgres.md** (`data/storage/checkpoint_postgres.md`, id: `bd2ea05b-e77b-44a3-805f-c4e50aa2e667`): решение РС-12, PostgreSQL 16, ответственный Мария Белова, срок 01.12.2026, пул 40 conn.\n- **redis_cache.md** (`data/storage/redis_cache.md`, id: `268f316b-2be7-4d5e-8c39-03d2006f109d`): TTL 24h, max value 512 КБ, ключи `agent:{task_id}:step:{n}`.\n- **monitoring.md** (`data/ops/monitoring.md`, id: `526093ff-586a-4f04-a0f6-2558c1c186b0`): алерт p95 > 1.5s (5 мин), очередь > 10 мин, дашборд 1 мин, хранение 14 дней.\n- **oncall.md** (`data/ops/oncall.md`, id: `10c4d818-a46d-4855-9e3e-dbc9e6d041f4`): смена неделя, ответ 15 мин, эскалация 30 мин, руководитель Олег Смирнов, формат INC-2026-NNN.\n- **incident_101.md** (`data/ops/incident_101.md`, id: `5f7faa4a-3f52-4033-9251-263a4740361f`): INC-2026-101, 14.11.2026, причина — SQLite на SMB, решение — перенос на локальный"
+    }
+  },
+  {
+    "id": 31,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13983,
+      "reserve": 2048,
+      "total": 16031,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.16)"
+    }
+  },
+  {
+    "id": 32,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13983,
+      "actual_input": 12153,
+      "actual_output": 2048,
+      "duration_s": 15.34,
+      "calibrated_cpt": 3.214
+    }
+  },
+  {
+    "id": 33,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:23+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+      "path": "data/search/bm25_basics.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 34,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+      "path": "data/storage/checkpoint_postgres.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 35,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+      "path": "data/storage/checkpoint_sqlite.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 36,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+      "path": "data/search/vector_search.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 37,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+      "path": "data/search/hybrid_ranking.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 38,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16563,
+      "reserve": 2048,
+      "total": 18611,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.21)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 39,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:25+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16563,
+      "reserve": 2048,
+      "total": 18611,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.21)"
+    }
+  },
+  {
+    "id": 40,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16563,
+      "actual_input": 15221,
+      "actual_output": 2025,
+      "duration_s": 15.73,
+      "calibrated_cpt": 3.19
+    }
+  },
+  {
+    "id": 41,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+      "path": "data/storage/redis_cache.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 42,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+      "path": "data/ops/oncall.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 43,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+      "path": "data/meetings/meeting_m05.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 44,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+      "path": "data/ops/monitoring.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 45,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+      "path": "data/ops/incident_101.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 46,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19378,
+      "reserve": 2048,
+      "total": 21426,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 47,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:50+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19378,
+      "after_tokens": 13075,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 17,
+      "kept_messages": 7,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 7133,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nОрганизовать файлы из `input/_batches/4d4e776d7c` в `data` по темам, добавить документы в корпус (L0, L1, L2 в Elasticsearch), провалидировать корпус и завершить задачу.\n\n## Ограничения пользователя\n- [C1] Организуй все файлы из папки input/_batches/4d4e776d7c в data по темам (по содержимому, тематические подпапки входа сохраняй, если они подходят)\n- [C2] Добавь документы в корпус: каталог L0, структура и summary L1, тексты L2 в Elasticsearch\n- [C3] Неизменённые документы, уже имеющие актуальные L1/L2, не обрабатывай повторно\n- [C4] В конце проверь корпус validate_corpus и заверши задачу\n\n## Решения и договорённости\n- Загружен скилл `build_corpus_levels` для определения процедуры инжеста.\n- Файлы распределены по тематическим подпапкам `data/`:\n  - `data/search/`: bm25_basics.md, vector_search.md, hybrid_ranking.md\n  - `data/storage/`: checkpoint_sqlite.md, checkpoint_postgres.md, redis_cache.md\n  - `data/ops/`: monitoring.md, oncall.md, incident_101.md\n  - `data/meetings/`: meeting_m05.md\n- Все 10 файлов успешно перемещены, получены `document_id` и `content_hash`.\n- Каталог L0 обновлён для всех 10 документов (title, description, note). Статус индексации: `not_indexed`.\n- Проведено чтение всех 10 файлов с нумерацией строк для точного определения диапазонов секций.\n- Успешно записаны L1 (структура и summary) для 5 документов:\n  1. `bm25_basics.md` (id: `a401ef12-7eb0-4a47-976c-b1d6bead53b9`)\n  2. `vector_search.md` (id: `5b92a5cc-0c13-4f40-97ef-52442f7af415`)\n  3. `hybrid_ranking.md` (id: `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5`)\n  4. `checkpoint_sqlite.md` (id: `63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0`)\n  5. `checkpoint_postgres.md` (id: `bd2ea05b-e77b-44a3-805f-c4e50aa2e667`)\n- Для оставшихся 5 документов (`redis_cache.md`, `monitoring.md`, `oncall.md`, `incident_101.md`, `meeting_m05.md`) L1 не записаны.\n\n## Подтверждённые факты (с источниками)\n- **bm25_basics.md** (`data/search/bm25_basics.md`, id: `a401ef12-7eb0-4a47-976c-b1d6bead53b9`): BM25, k1=1.2, b=0.75, snowball. Секции: Принцип [1-5], Настройки стенда [7-9], Ограничения [11-13].\n- **vector_search.md** (`data/search/vector_search.md`, id: `5b92a5cc-0c13-4f40-97ef-52442f7af415`): embeddings dim=384, HNSW m=16, ef_construction=100. Секции: Модель [1-5], Индекс HNSW [7-9], Ограничения [11-13].\n- **hybrid_ranking.md** (`data/search/hybrid_ranking.md`, id: `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5`): RRF constant=60. Секции: Идея [1-5], Когда помогает [7-8], Ограничения [10-12].\n- **checkpoint_sqlite.md** (`data/storage/checkpoint_sqlite.md`, id: `63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0`): код ST-CHK-01, max checkpoint 2 МБ, запрет SMB. Секции: Назначение [1-6], Ограничения [8-11], Восстановление [13-15].\n- **checkpoint_postgres.md** (`data/storage/checkpoint_postgres.md`, id: `bd2ea05b-e77b-44a3-805f-c4e50aa2e667`): решение РС-12, PostgreSQL 16, ответственный Мария Белова, срок"
+    }
+  },
+  {
+    "id": 48,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13075,
+      "reserve": 2048,
+      "total": 15123,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)"
+    }
+  },
+  {
+    "id": 49,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13075,
+      "actual_input": 11383,
+      "actual_output": 601,
+      "duration_s": 4.92,
+      "calibrated_cpt": 3.241
+    }
+  },
+  {
+    "id": 50,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 51,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 52,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 53,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 54,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 55,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 56,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:55+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 57,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:57+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 58,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:57+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 59,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:57+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 60,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14330,
+      "reserve": 2048,
+      "total": 16378,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.24)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 61,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14330,
+      "reserve": 2048,
+      "total": 16378,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.24)"
+    }
+  },
+  {
+    "id": 62,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14330,
+      "actual_input": 13226,
+      "actual_output": 39,
+      "duration_s": 1.46,
+      "calibrated_cpt": 3.211
+    }
+  },
+  {
+    "id": 63,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14602,
+      "reserve": 2048,
+      "total": 16650,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.21)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 64,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:44:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14602,
+      "reserve": 2048,
+      "total": 16650,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.21)"
+    }
+  },
+  {
+    "id": 65,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:45:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14602,
+      "actual_input": 13338,
+      "actual_output": 144,
+      "duration_s": 2.01,
+      "calibrated_cpt": 3.192
+    }
+  },
+  {
+    "id": 66,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:45:01+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Все 10 файлов из input/_batches/4d4e776d7c разложены по темам (search, storage, ops, meetings), каталог L0 заполнен, L1 (структура + summary) записаны для всех 10, L2 (30 фрагментов) проиндексированы в Elasticsearch. validate_corpus: ok, 0 проблем."
+    }
+  },
+  {
+    "id": 67,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:45:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14974,
+      "reserve": 2048,
+      "total": 17022,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 68,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:45:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14974,
+      "reserve": 2048,
+      "total": 17022,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)"
+    }
+  },
+  {
+    "id": 69,
+    "task_id": "ING-4d4e776d7c",
+    "ts": "2026-11-17T20:45:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14974,
+      "actual_input": 13617,
+      "actual_output": 341,
+      "duration_s": 3.74,
+      "calibrated_cpt": 3.179
+    }
+  }
+]

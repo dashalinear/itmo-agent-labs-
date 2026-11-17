@@ -1,0 +1,77 @@
+﻿L0 reports.latest -> document_id ac7c4b78-c672-4847-858f-58a379f30718 (partial)
+L1: Обзор тем корпуса — 2026-11-17 | Служебный тематический отчёт по корпусу (partial), run lab4-topics-manual-2026-11-17T20:51:11Z
+    sections: Запуск, Почему отчёт частичный, Состав и покрытие корпуса, Темы, Непроверенные документы и ошибки, Зафиксированный список документов
+L2/source: data/_reports/topics_manual-20261117T205111Z.md
+--------------------------------------------------------------------------------
+# Обзор тем корпуса — 2026-11-17
+
+**Статус: ЧАСТИЧНЫЙ** — результат неполный, причины ниже
+
+## Запуск
+
+| поле | значение |
+|---|---|
+| run key (Workflow ID) | `lab4-topics-manual-2026-11-17T20:51:11Z` |
+| Temporal run ID | `01a1eb47-2688-72d9-95c2-6549164afc5c` |
+| источник запуска | manual (topics-now) |
+| список корпуса зафиксирован | 2026-11-17T20:51:11+00:00 (L0 от 2026-11-17T20:51:11+00:00) |
+| задача harness | `TOP-manual-20261117T205111Z` — paused |
+| вызовы модели / tools / токены | 4 / 8 / 18800 |
+| предыдущий отчёт | `data/_reports/topics_manual-20261117T204946Z.md` |
+
+## Почему отчёт частичный
+
+- задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4)
+- не просмотрено документов: 8
+- документов вне тем: 5
+
+## Состав и покрытие корпуса
+
+- документов в L0 на момент фиксации: 16
+- в анализе (зафиксированный список): **13**
+- просмотрено L1: **5 из 13**; не удалось прочитать: 0
+- тем: **0**; подтверждений из L2: 0
+- исключены служебные отчёты: 3; пропущены: 0
+
+- новые документы с прошлого отчёта: 0
+
+## Темы
+
+_Темы не выделены._
+
+## Непроверенные документы и ошибки
+
+- `data/search/bm25_basics.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/search/hybrid_ranking.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/search/query_cache.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/search/vector_search.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/storage/checkpoint_postgres.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/storage/checkpoint_sqlite.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/storage/redis_cache.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/storage/snapshot_policy.md` — не просмотрен: задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4); не просмотрено документов: 8; документов вне тем: 5
+- `data/meetings/meeting_m05.md` — просмотрен, но не отнесён ни к одной теме
+- `data/ops/incident_101.md` — просмотрен, но не отнесён ни к одной теме
+- `data/ops/inference_energy.md` — просмотрен, но не отнесён ни к одной теме
+- `data/ops/monitoring.md` — просмотрен, но не отнесён ни к одной теме
+- `data/ops/oncall.md` — просмотрен, но не отнесён ни к одной теме
+
+## Зафиксированный список документов
+
+| document_id | путь | просмотрен |
+|---|---|---|
+| `17726e86-239d-4df1-ba18-ea8fc736e709` | `data/meetings/meeting_m05.md` | да |
+| `5f7faa4a-3f52-4033-9251-263a4740361f` | `data/ops/incident_101.md` | да |
+| `055181ba-a8db-4aa8-95d3-dd0c1e015549` | `data/ops/inference_energy.md` | да |
+| `526093ff-586a-4f04-a0f6-2558c1c186b0` | `data/ops/monitoring.md` | да |
+| `10c4d818-a46d-4855-9e3e-dbc9e6d041f4` | `data/ops/oncall.md` | да |
+| `a401ef12-7eb0-4a47-976c-b1d6bead53b9` | `data/search/bm25_basics.md` | нет |
+| `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5` | `data/search/hybrid_ranking.md` | нет |
+| `baddb9db-da7e-4fae-a651-6ccd567e2068` | `data/search/query_cache.md` | нет |
+| `5b92a5cc-0c13-4f40-97ef-52442f7af415` | `data/search/vector_search.md` | нет |
+| `bd2ea05b-e77b-44a3-805f-c4e50aa2e667` | `data/storage/checkpoint_postgres.md` | нет |
+| `63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0` | `data/storage/checkpoint_sqlite.md` | нет |
+| `268f316b-2be7-4d5e-8c39-03d2006f109d` | `data/storage/redis_cache.md` | нет |
+| `6f16eb41-0d6c-4073-826d-cb1e6a3da741` | `data/storage/snapshot_policy.md` | нет |
+
+Служебные отчёты (`data/_reports`) в анализ не входят. Документы, добавленные после фиксации списка, войдут в следующий отчёт.
+

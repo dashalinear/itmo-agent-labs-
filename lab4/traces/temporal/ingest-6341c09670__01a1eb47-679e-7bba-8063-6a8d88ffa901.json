@@ -1,0 +1,510 @@
+{
+  "events": [
+    {
+      "eventId": "1",
+      "eventTime": "2026-11-17T20:51:27.774770844Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+      "taskId": "1052181",
+      "workflowExecutionStartedEventAttributes": {
+        "workflowType": {
+          "name": "IngestNewFiles"
+        },
+        "taskQueue": {
+          "name": "lab4-ingest",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJiYXRjaF9pZCI6IjYzNDFjMDk2NzAiLCJoZWFydGJlYXRfcyI6MzB9"
+            }
+          ]
+        },
+        "workflowExecutionTimeout": "21600s",
+        "workflowRunTimeout": "21600s",
+        "workflowTaskTimeout": "10s",
+        "originalExecutionRunId": "01a1eb47-679e-7bba-8063-6a8d88ffa901",
+        "identity": "32412@WIN-8F9L6GL4C47",
+        "firstExecutionRunId": "01a1eb47-679e-7bba-8063-6a8d88ffa901",
+        "attempt": 1,
+        "workflowExecutionExpirationTime": "2026-11-18T02:51:27.774Z",
+        "firstWorkflowTaskBackoff": "0s",
+        "workflowId": "ingest-6341c09670",
+        "priority": {}
+      }
+    },
+    {
+      "eventId": "2",
+      "eventTime": "2026-11-17T20:51:27.774983044Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1052182",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "lab4-ingest",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "startToCloseTimeout": "10s",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "3",
+      "eventTime": "2026-11-17T20:51:27.801851645Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1052188",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "2",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "318431f4-a482-42ad-9ce2-bba2c5247457",
+        "historySizeBytes": "344",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "4",
+      "eventTime": "2026-11-17T20:51:27.876335946Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1052192",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "2",
+        "startedEventId": "3",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        },
+        "sdkMetadata": {
+          "coreUsedFlags": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "sdkName": "temporal-python",
+          "sdkVersion": "1.36.1"
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "5",
+      "eventTime": "2026-11-17T20:51:27.876461246Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "1052193",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "1",
+        "activityType": {
+          "name": "record_batch"
+        },
+        "taskQueue": {
+          "name": "lab4-ingest",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJiYXRjaF9pZCI6IjYzNDFjMDk2NzAiLCJydW5faWQiOiIwMWExZWI0Ny02NzllLTdiYmEtODA2My02YThkODhmZmE5MDEiLCJzdGF0dXMiOiJzdGFydGVkIiwid29ya2Zsb3dfaWQiOiJpbmdlc3QtNjM0MWMwOTY3MCJ9"
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": "21600s",
+        "scheduleToStartTimeout": "21600s",
+        "startToCloseTimeout": "30s",
+        "heartbeatTimeout": "0s",
+        "workflowTaskCompletedEventId": "4",
+        "retryPolicy": {
+          "initialInterval": "1s",
+          "backoffCoefficient": 2.0,
+          "maximumInterval": "20s",
+          "maximumAttempts": 5,
+          "nonRetryableErrorTypes": [
+            "UnknownBatch"
+          ]
+        },
+        "useWorkflowBuildId": true,
+        "priority": {}
+      }
+    },
+    {
+      "eventId": "6",
+      "eventTime": "2026-11-17T20:51:27.892763746Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "1052200",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "5",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "4f882d75-7eb4-422b-ad67-68e89f961629",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "7",
+      "eventTime": "2026-11-17T20:51:27.964494047Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+      "taskId": "1052201",
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "YmluYXJ5L251bGw="
+              }
+            }
+          ]
+        },
+        "scheduledEventId": "5",
+        "startedEventId": "6",
+        "identity": "37288@WIN-8F9L6GL4C47"
+      }
+    },
+    {
+      "eventId": "8",
+      "eventTime": "2026-11-17T20:51:27.964531547Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1052202",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "37288@WIN-8F9L6GL4C47-d7441b01d7564c41b75578272ffb1664",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "lab4-ingest"
+        },
+        "startToCloseTimeout": "10s",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "9",
+      "eventTime": "2026-11-17T20:51:27.980615347Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1052206",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "8",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "f98cd659-7ff8-4698-a868-879bbd27000e",
+        "historySizeBytes": "1195",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "10",
+      "eventTime": "2026-11-17T20:51:28.040411448Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1052210",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "8",
+        "startedEventId": "9",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "11",
+      "eventTime": "2026-11-17T20:51:28.040518048Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "1052211",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "2",
+        "activityType": {
+          "name": "stage_batch"
+        },
+        "taskQueue": {
+          "name": "lab4-ingest",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJiYXRjaF9pZCI6IjYzNDFjMDk2NzAifQ=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": "21600s",
+        "scheduleToStartTimeout": "21600s",
+        "startToCloseTimeout": "120s",
+        "heartbeatTimeout": "0s",
+        "workflowTaskCompletedEventId": "10",
+        "retryPolicy": {
+          "initialInterval": "1s",
+          "backoffCoefficient": 2.0,
+          "maximumInterval": "20s",
+          "maximumAttempts": 5,
+          "nonRetryableErrorTypes": [
+            "UnknownBatch"
+          ]
+        },
+        "useWorkflowBuildId": true,
+        "priority": {}
+      }
+    },
+    {
+      "eventId": "12",
+      "eventTime": "2026-11-17T20:51:43.232252080Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "1052237",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "11",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "34b9a700-1dc8-4f5d-9dc6-e243eb8a166d",
+        "attempt": 5,
+        "lastFailure": {
+          "message": "injected fault in stage_batch at 'before' (attempt 4, fired 4 time(s))",
+          "stackTrace": "  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 398, in _handle_start_activity_task\n    result = await self._execute_activity(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<6 lines>...\n    )\n    ^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 739, in _execute_activity\n    return await impl.execute_activity(input)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 948, in execute_activity\n    return await input.fn(*input.args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 209, in stage_batch\n    return await asyncio.to_thread(_stage_batch, Env.get(), req[\"batch_id\"])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\threads.py\", line 25, in to_thread\n    return await loop.run_in_executor(None, func_call)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 164, in _stage_batch\n    env.faults.check(\"stage_batch\", \"before\", _attempt())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\faults.py\", line 59, in check\n    raise InjectedFault(f\"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))\")\n",
+          "applicationFailureInfo": {
+            "type": "InjectedFault"
+          }
+        },
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "13",
+      "eventTime": "2026-11-17T20:51:43.260291880Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_FAILED",
+      "taskId": "1052238",
+      "activityTaskFailedEventAttributes": {
+        "failure": {
+          "message": "injected fault in stage_batch at 'before' (attempt 5, fired 5 time(s))",
+          "stackTrace": "  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 398, in _handle_start_activity_task\n    result = await self._execute_activity(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<6 lines>...\n    )\n    ^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 739, in _execute_activity\n    return await impl.execute_activity(input)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 948, in execute_activity\n    return await input.fn(*input.args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 209, in stage_batch\n    return await asyncio.to_thread(_stage_batch, Env.get(), req[\"batch_id\"])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\threads.py\", line 25, in to_thread\n    return await loop.run_in_executor(None, func_call)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 164, in _stage_batch\n    env.faults.check(\"stage_batch\", \"before\", _attempt())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\faults.py\", line 59, in check\n    raise InjectedFault(f\"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))\")\n",
+          "applicationFailureInfo": {
+            "type": "InjectedFault"
+          }
+        },
+        "scheduledEventId": "11",
+        "startedEventId": "12",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
+      }
+    },
+    {
+      "eventId": "14",
+      "eventTime": "2026-11-17T20:51:43.260378080Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1052239",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "37288@WIN-8F9L6GL4C47-d7441b01d7564c41b75578272ffb1664",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "lab4-ingest"
+        },
+        "startToCloseTimeout": "10s",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "15",
+      "eventTime": "2026-11-17T20:51:43.278726480Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1052243",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "14",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "cdd1e2a5-f5d8-45c1-9340-76385040f760",
+        "historySizeBytes": "5923",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "16",
+      "eventTime": "2026-11-17T20:51:43.344167778Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1052247",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "14",
+        "startedEventId": "15",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "17",
+      "eventTime": "2026-11-17T20:51:43.344295978Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "1052248",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "3",
+        "activityType": {
+          "name": "record_batch"
+        },
+        "taskQueue": {
+          "name": "lab4-ingest",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJiYXRjaF9pZCI6IjYzNDFjMDk2NzAiLCJydW5faWQiOiIwMWExZWI0Ny02NzllLTdiYmEtODA2My02YThkODhmZmE5MDEiLCJzdGF0dXMiOiJmYWlsZWQiLCJ3b3JrZmxvd19pZCI6ImluZ2VzdC02MzQxYzA5NjcwIn0="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": "21600s",
+        "scheduleToStartTimeout": "21600s",
+        "startToCloseTimeout": "30s",
+        "heartbeatTimeout": "0s",
+        "workflowTaskCompletedEventId": "16",
+        "retryPolicy": {
+          "initialInterval": "1s",
+          "backoffCoefficient": 2.0,
+          "maximumInterval": "20s",
+          "maximumAttempts": 5,
+          "nonRetryableErrorTypes": [
+            "UnknownBatch"
+          ]
+        },
+        "useWorkflowBuildId": true,
+        "priority": {}
+      }
+    },
+    {
+      "eventId": "18",
+      "eventTime": "2026-11-17T20:51:43.361484778Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "1052254",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "17",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "b619ffee-3314-4d3f-89c3-371ffa71c023",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "19",
+      "eventTime": "2026-11-17T20:51:43.420597977Z",
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+      "taskId": "1052255",
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "YmluYXJ5L251bGw="
+              }
+            }
+          ]
+        },
+        "scheduledEventId": "17",
+        "startedEventId": "18",
+        "identity": "37288@WIN-8F9L6GL4C47"
+      }
+    },
+    {
+      "eventId": "20",
+      "eventTime": "2026-11-17T20:51:43.420639277Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1052256",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "37288@WIN-8F9L6GL4C47-d7441b01d7564c41b75578272ffb1664",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "lab4-ingest"
+        },
+        "startToCloseTimeout": "10s",
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "21",
+      "eventTime": "2026-11-17T20:51:43.436682777Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1052260",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "20",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "requestId": "a7586c22-3fde-4d9b-a6b0-451c1c80f903",
+        "historySizeBytes": "6742",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        }
+      }
+    },
+    {
+      "eventId": "22",
+      "eventTime": "2026-11-17T20:51:43.500118875Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1052264",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "20",
+        "startedEventId": "21",
+        "identity": "37288@WIN-8F9L6GL4C47",
+        "workerVersion": {
+          "buildId": "57f3f449541ee12ae4670724601bfc60"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "23",
+      "eventTime": "2026-11-17T20:51:43.500323775Z",
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_FAILED",
+      "taskId": "1052265",
+      "workflowExecutionFailedEventAttributes": {
+        "failure": {
+          "message": "batch 6341c09670: staging failed after retries: ApplicationError: InjectedFault: injected fault in stage_batch at 'before' (attempt 5, fired 5 time(s))",
+          "stackTrace": "  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_workflow_instance.py\", line 2906, in _run_top_level_workflow_function\n    await coro\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_workflow_instance.py\", line 1220, in run_workflow\n    result = await self._inbound.execute_workflow(input)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_workflow_instance.py\", line 3317, in execute_workflow\n    return await input.run_fn(*args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\workflows.py\", line 51, in run\n    raise ApplicationError(f\"batch {batch_id}: staging failed after retries: {_cause(e)}\",\n                           type=\"StageFailed\", non_retryable=True) from e\n",
+          "cause": {
+            "message": "Activity task failed",
+            "cause": {
+              "message": "injected fault in stage_batch at 'before' (attempt 5, fired 5 time(s))",
+              "stackTrace": "  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 398, in _handle_start_activity_task\n    result = await self._execute_activity(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<6 lines>...\n    )\n    ^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 739, in _execute_activity\n    return await impl.execute_activity(input)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab3\\.venv\\Lib\\site-packages\\temporalio\\worker\\_activity.py\", line 948, in execute_activity\n    return await input.fn(*input.args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 209, in stage_batch\n    return await asyncio.to_thread(_stage_batch, Env.get(), req[\"batch_id\"])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\threads.py\", line 25, in to_thread\n    return await loop.run_in_executor(None, func_call)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"C:\\Users\\DASHA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\concurrent\\futures\\thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\activities.py\", line 164, in _stage_batch\n    env.faults.check(\"stage_batch\", \"before\", _attempt())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n  File \"D:\\\u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438\\AI in production & MLOps\\itmo-agent-labs\\lab4\\topicflow\\faults.py\", line 59, in check\n    raise InjectedFault(f\"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))\")\n",
+              "applicationFailureInfo": {
+                "type": "InjectedFault"
+              }
+            },
+            "activityFailureInfo": {
+              "scheduledEventId": "11",
+              "startedEventId": "12",
+              "identity": "37288@WIN-8F9L6GL4C47",
+              "activityType": {
+                "name": "stage_batch"
+              },
+              "activityId": "2",
+              "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
+            }
+          },
+          "applicationFailureInfo": {
+            "type": "StageFailed",
+            "nonRetryable": true
+          }
+        },
+        "retryState": "RETRY_STATE_RETRY_POLICY_NOT_SET",
+        "workflowTaskCompletedEventId": "22"
+      }
+    }
+  ]
+}

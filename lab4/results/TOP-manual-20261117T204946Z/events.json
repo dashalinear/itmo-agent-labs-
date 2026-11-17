@@ -1,0 +1,777 @@
+[
+  {
+    "id": 242,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 243,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:47+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "lab4-topics-manual-2026-11-17T20:49:46Z",
+      "workflow_run_id": "01a1eb45-dd8c-7017-b610-64d54801bc28",
+      "activity_id": "2",
+      "activity_type": "run_topic_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 244,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "topics-a1"
+    }
+  },
+  {
+    "id": 245,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5232,
+      "reserve": 2048,
+      "total": 7280,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 246,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5232,
+      "reserve": 2048,
+      "total": 7280,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 247,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5232,
+      "actual_input": 3496,
+      "actual_output": 15,
+      "duration_s": 0.45,
+      "calibrated_cpt": 2.971
+    }
+  },
+  {
+    "id": 248,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5434,
+      "reserve": 2048,
+      "total": 7482,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 249,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5434,
+      "reserve": 2048,
+      "total": 7482,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)"
+    }
+  },
+  {
+    "id": 250,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5434,
+      "actual_input": 4429,
+      "actual_output": 34,
+      "duration_s": 0.62,
+      "calibrated_cpt": 3.102
+    }
+  },
+  {
+    "id": 251,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5826,
+      "reserve": 2048,
+      "total": 7874,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 252,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5826,
+      "reserve": 2048,
+      "total": 7874,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 253,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5826,
+      "actual_input": 5063,
+      "actual_output": 94,
+      "duration_s": 1.15,
+      "calibrated_cpt": 3.15
+    }
+  },
+  {
+    "id": 254,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5975,
+      "reserve": 2048,
+      "total": 8023,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 255,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5975,
+      "reserve": 2048,
+      "total": 8023,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)"
+    }
+  },
+  {
+    "id": 256,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5975,
+      "actual_input": 5261,
+      "actual_output": 299,
+      "duration_s": 2.51,
+      "calibrated_cpt": 3.179
+    }
+  },
+  {
+    "id": 257,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 8925,
+      "reserve": 2048,
+      "total": 10973,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 258,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 8925,
+      "reserve": 2048,
+      "total": 10973,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)"
+    }
+  },
+  {
+    "id": 259,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 8925,
+      "actual_input": 8535,
+      "actual_output": 288,
+      "duration_s": 2.67,
+      "calibrated_cpt": 3.104
+    }
+  },
+  {
+    "id": 260,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12227,
+      "reserve": 2048,
+      "total": 14275,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 261,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12227,
+      "reserve": 2048,
+      "total": 14275,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 262,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12227,
+      "actual_input": 11740,
+      "actual_output": 180,
+      "duration_s": 2.42,
+      "calibrated_cpt": 3.025
+    }
+  },
+  {
+    "id": 263,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14522,
+      "reserve": 2048,
+      "total": 16570,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 264,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:49:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14522,
+      "reserve": 2048,
+      "total": 16570,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)"
+    }
+  },
+  {
+    "id": 265,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14522,
+      "actual_input": 13663,
+      "actual_output": 314,
+      "duration_s": 3.62,
+      "calibrated_cpt": 2.971
+    }
+  },
+  {
+    "id": 266,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16280,
+      "reserve": 2048,
+      "total": 18328,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 267,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16280,
+      "reserve": 2048,
+      "total": 18328,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)"
+    }
+  },
+  {
+    "id": 268,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16280,
+      "actual_input": 15411,
+      "actual_output": 285,
+      "duration_s": 3.58,
+      "calibrated_cpt": 2.91
+    }
+  },
+  {
+    "id": 269,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18044,
+      "reserve": 2048,
+      "total": 20092,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 35
+    }
+  },
+  {
+    "id": 270,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18044,
+      "reserve": 2048,
+      "total": 20092,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 271,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18044,
+      "actual_input": 17001,
+      "actual_output": 173,
+      "duration_s": 2.97,
+      "calibrated_cpt": 2.854
+    }
+  },
+  {
+    "id": 272,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19277,
+      "reserve": 2048,
+      "total": 21325,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 39
+    }
+  },
+  {
+    "id": 273,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:17+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19277,
+      "after_tokens": 12060,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 18,
+      "kept_messages": 21,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6547,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы всего зафиксированного корпуса (13 документов), объединить близкие темы и подтвердить каждую цитатами из L2; затем выполнить `submit_report`.\n\n## Ограничения пользователя\n*   Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n*   План работы: 1) L1: осмотр всех 13 документов; 2) Группировка по темам; 3) Сбор доказательств L2 по каждой теме; 4) `topics_status` + `submit_report`.\n*   Статус плана: шаг 1 (L1) находится в статусе `doing`, остальные — `todo`.\n\n## Подтверждённые факты (с источниками)\n*   **Корпус:** 13 документов, заморожены на `2026-11-17T20:49:47+00:00` (run_key: `lab4-topics-manual-2026-11-17T20:49:46Z`).\n*   **Чекпоинты и хранилище:**\n    *   Решение **РС-12**: переход на PostgreSQL 16 для общих чекпоинтов, ответственный Мария Белова, срок 01.12.2026. Источник: `data/meetings/meeting_m05.md` (L1), `data/storage/checkpoint_postgres.md` (L1).\n    *   Ограничения PostgreSQL: пул соединений 40 на узел, архивация чекпоинтов старше 30 дней. Источник: `data/storage/checkpoint_postgres.md` (L1).\n    *   Инцидент **INC-2026-101** (14.11.2026): 40 минут без записи чекпоинтов из-за сетевых дисков. Вывод: запрет сетевых дисков (дополнение **ST-CHK-01**), использование PostgreSQL для нескольких процессов. Источник: `data/ops/incident_101.md` (L1).\n    *   SQLite используется для локальных чекпоинтов агента. Источник: `data/storage/checkpoint_sqlite.md` (L1).\n*   **Поиск:**\n    *   Решение **РС-13**: grep для точных кодов, векторный поиск для перефразировок. Источник: `data/meetings/meeting_m05.md` (L1).\n    *   **BM25**: параметры k1=1.2, b=0.75, стемминг snowball. Не находит перефразы. Источник: `data/search/bm25_basics.md` (L1).\n    *   **Векторный поиск**: embeddings dim=384, индекс HNSW (m=16, ef_construction=100). Плохо различает близкие коды. Источник: `data/search/vector_search.md` (L1).\n    *   **Гибридное ранжирование**: метод RRF, константа 60. Учитывает только позиции. Источник: `data/search/hybrid_ranking.md` (L1).\n    *   **Кэш запросов**: решение **SRCH-CACHE-2** (по итогам вопроса M-05). TTL 10 минут, лимит 10 000 запросов, очистка после переиндексации. Источник: `data/search/query_cache.md` (L1).\n*   **Операции (Ops):**\n    *   **Энергопотребление**: 0,9 Вт·ч на запрос (модель 27 млрд параметров), сервер ~2,4 кВт. Отчет **EN-2026-11**, ответственный Илья Гордеев. Источник: `data/ops/inference_energy.md` (L1).\n    *   **Мониторинг**: алерт при p95 > 1.5 сек (5 мин), очередь > 10 мин. Дашборд обновляется раз в минуту, хранение 14 дней. Источник: `data/ops/monitoring.md` (L1).\n    *   **Дежурства**: недельные смены, эскалация Олегу Смирнову через 30 мин. Формат инцидентов **INC-2026-NNN**. Источник: `data/ops/oncall.md` (L1).\n\n## Прогресс\n*   Получен полный список 13 документов через `frozen_documents` (2 страницы).\n*   Выполнен L1-осмотр (`examine_document`) для 10 документов:\n    1.  `data/meetings/meeting_m05.md`\n    2.  `data/ops/incident_101.md`\n    3.  `data/ops/inference_energy.md`\n    4.  `data/ops/monitoring.md`\n    5.  `data/ops/oncall.md`\n    6.  `data/search/bm25_basics.md`\n    7.  `data/search/hybrid_ranking.md`\n    8.  `data/search/query_cache.md`"
+    }
+  },
+  {
+    "id": 274,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12060,
+      "reserve": 2048,
+      "total": 14108,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 275,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12060,
+      "actual_input": 10951,
+      "actual_output": 763,
+      "duration_s": 6.31,
+      "calibrated_cpt": 2.842
+    }
+  },
+  {
+    "id": 276,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13476,
+      "reserve": 2048,
+      "total": 15524,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 277,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13476,
+      "reserve": 2048,
+      "total": 15524,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 278,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13476,
+      "actual_input": 12459,
+      "actual_output": 715,
+      "duration_s": 6.28,
+      "calibrated_cpt": 2.808
+    }
+  },
+  {
+    "id": 279,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14955,
+      "reserve": 2048,
+      "total": 17003,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 33
+    }
+  },
+  {
+    "id": 280,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14955,
+      "reserve": 2048,
+      "total": 17003,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 281,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14955,
+      "actual_input": 13893,
+      "actual_output": 494,
+      "duration_s": 4.9,
+      "calibrated_cpt": 2.767
+    }
+  },
+  {
+    "id": 282,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16031,
+      "reserve": 2048,
+      "total": 18079,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 283,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16031,
+      "reserve": 2048,
+      "total": 18079,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 284,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16031,
+      "actual_input": 14824,
+      "actual_output": 1447,
+      "duration_s": 11.96,
+      "calibrated_cpt": 2.731
+    }
+  },
+  {
+    "id": 285,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18735,
+      "reserve": 2048,
+      "total": 20783,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 286,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18735,
+      "reserve": 2048,
+      "total": 20783,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 287,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18735,
+      "actual_input": 17707,
+      "actual_output": 15,
+      "duration_s": 2.5,
+      "calibrated_cpt": 2.674
+    }
+  },
+  {
+    "id": 288,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19470,
+      "reserve": 2048,
+      "total": 21518,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 289,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:58+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19470,
+      "after_tokens": 10195,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 32,
+      "kept_messages": 12,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 9738,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы всего зафиксированного корпуса (13 документов), объединить близкие темы и подтвердить каждую цитатами из L2; затем выполнить `submit_report`.\n\n## Ограничения пользователя\n*   Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n*   План работы: 1) L1: осмотр всех 13 документов; 2) Группировка по темам; 3) Сбор доказательств L2 по каждой теме; 4) `topics_status` + `submit_report`.\n*   Статус плана: шаг 1 (L1) завершён, шаг 3 (сбор доказательств L2) в процессе, шаги 2 и 4 — `todo`.\n\n## Подтверждённые факты (с источниками)\n*   **Корпус:** 13 документов, заморожены на `2026-11-17T20:49:47+00:00` (run_key: `lab4-topics-manual-2026-11-17T20:49:46Z`).\n*   **Хранилище и чекпоинты:**\n    *   Решение **РС-12**: общий бэкенд чекпоинтов — PostgreSQL 16, ответственный Мария Белова, срок 01.12.2026. Источник: `data/storage/checkpoint_postgres.md` (L2, lines 8-9, evidence_id: `ev_d91278ee264a`).\n    *   Ограничения SQLite: один писатель, запрет размещения на сетевом диске (SMB), размер чекпоинта ≤ 2 МБ. Источник: `data/storage/checkpoint_sqlite.md` (L2, lines 9-10, evidence_id: `ev_a0f7ec135e03`).\n    *   Политика снимков: каждые 6 часов, хранится 8 последних. Источник: `data/storage/snapshot_policy.md` (L2, lines 4-5, evidence_id: `ev_f39c87adf613`).\n    *   Redis: кэш промежуточного состояния (TTL 24 ч, max 512 КБ). Источник: `data/storage/redis_cache.md` (L2, line 4, evidence_id: `ev_d3aa328d3e14`).\n    *   Инцидент **INC-2026-101**: запрет сетевых дисков (дополнение **ST-CHK-01**), использование PostgreSQL для нескольких процессов. Источник: `data/ops/incident_101.md` (L2, lines 12-13, evidence_id: `ev_059da20f326e`).\n*   **Поиск:**\n    *   Решение **РС-13**: grep для кодов, векторный поиск для перефразировок (ответственная Анна Ершова). Источник: `data/meetings/meeting_m05.md` (L2, lines 7-8).\n    *   **BM25**: ранжирование по частоте/редкости, параметры k1, b. Источник: `data/search/bm25_basics.md` (L2, lines 4-5, evidence_id: `ev_c23050b3bf65`).\n    *   **Векторный поиск**: embeddings dim=384, kNN по косинусной близости. Источник: `data/search/vector_search.md` (L2, lines 4-5, evidence_id: `ev_2594c8be0df7`).\n    *   **Гибридное ранжирование**: метод RRF, константа 60. Источник: `data/search/hybrid_ranking.md` (L2, lines 4-5, evidence_id: `ev_b6cbb4c56883`).\n    *   **Кэш запросов**: решение **SRCH-CACHE-2** (по итогам вопроса M-05). Источник: `data/search/query_cache.md` (L2, line 4, evidence_id: `ev_319efd8a9a9a`).\n*   **Операции (Ops):**\n    *   **Мониторинг**: метрики p95, ошибки tools, токены, очередь. Источник: `data/ops/monitoring.md` (L2, line 4, evidence_id: `ev_0373d68a3766`).\n    *   **Энергопотребление**: 0,9 Вт·ч на запрос (модель 27 млрд), сервер ~2,4 кВт. Источник: `data/ops/inference_energy.md` (L2, lines 4-5).\n    *   **Дежурства**: недельные смены, ответ на алерт за 15 минут. Источник: `data/ops/oncall.md` (L2, lines 4-5).\n\n## Прогресс\n*   Выполнен L1-осмотр всех 13 документов.\n*   Прочитаны L2-фрагменты для ключевых тем: храни"
+    }
+  },
+  {
+    "id": 290,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:50:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10195,
+      "reserve": 2048,
+      "total": 12243,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)"
+    }
+  },
+  {
+    "id": 291,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:51:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10195,
+      "actual_input": 8815,
+      "actual_output": 173,
+      "duration_s": 2.08,
+      "calibrated_cpt": 2.719
+    }
+  },
+  {
+    "id": 292,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:51:00+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "4 topics, 13/13 documents examined"
+    }
+  },
+  {
+    "id": 293,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:51:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10315,
+      "reserve": 2048,
+      "total": 12363,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 294,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:51:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10315,
+      "reserve": 2048,
+      "total": 12363,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 295,
+    "task_id": "TOP-manual-20261117T204946Z",
+    "ts": "2026-11-17T20:51:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10315,
+      "actual_input": 9048,
+      "actual_output": 236,
+      "duration_s": 2.71,
+      "calibrated_cpt": 2.748
+    }
+  }
+]

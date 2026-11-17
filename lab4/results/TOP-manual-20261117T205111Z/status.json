@@ -1,0 +1,208 @@
+{
+  "task": {
+    "task_id": "TOP-manual-20261117T205111Z",
+    "kind": "topics",
+    "status": "paused",
+    "status_reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 4)",
+    "runs": 1,
+    "request": "Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.",
+    "plan": [
+      {
+        "title": "L1: examine all 13 documents",
+        "status": "doing"
+      },
+      {
+        "title": "Group into 3-8 topics",
+        "status": "todo"
+      },
+      {
+        "title": "L2: read sections and cite evidence per topic",
+        "status": "todo"
+      },
+      {
+        "title": "topic_upsert for each topic",
+        "status": "todo"
+      },
+      {
+        "title": "topics_status: fix gaps",
+        "status": "todo"
+      },
+      {
+        "title": "submit_report",
+        "status": "todo"
+      }
+    ],
+    "completion": {},
+    "limits": {
+      "max_total_tokens": 3000000,
+      "max_model_calls": 4,
+      "max_tool_calls": 900,
+      "task_deadline_s": 5400,
+      "max_search_calls": 12,
+      "max_http_requests": 80,
+      "max_fetch_bytes": 1000000,
+      "max_redirects": 5,
+      "http_timeout_s": 10.0,
+      "http_retries": 2,
+      "backoff_base_s": 0.5,
+      "working_context_tokens": 28000,
+      "response_reserve_tokens": 2048,
+      "estimate_margin": 0.1,
+      "compaction_trigger": 0.75,
+      "compaction_target": 0.45,
+      "compaction_min_gain": 0.05,
+      "summary_max_tokens": 1200,
+      "summary_tool_clip_chars": 1200,
+      "max_compaction_chunks": 4,
+      "max_tool_result_chars": 6000,
+      "max_step_result_chars": 12000,
+      "preview_chars": 1200,
+      "max_pages_per_read": 5,
+      "max_lines_per_read": 300,
+      "llm_timeout_s": 180.0,
+      "llm_retries": 2,
+      "max_model_calls_per_run": 160,
+      "repeat_call_warn": 3,
+      "repeat_call_stop": 6,
+      "tool_timeout_s": 60.0
+    }
+  },
+  "constraints": [],
+  "criteria": {},
+  "budget": {
+    "tokens": {
+      "spent": 18800,
+      "reserved": 0,
+      "limit": 3000000,
+      "of_which": {
+        "input_tokens": 18319,
+        "output_tokens": 481,
+        "compaction_input_tokens": 0,
+        "compaction_output_tokens": 0,
+        "failed_call_tokens": 0,
+        "interrupted_call_tokens": 0
+      }
+    },
+    "model_calls": {
+      "used": 4,
+      "limit": 4
+    },
+    "compaction_calls": 0,
+    "failed_calls": 0,
+    "tool_calls": {
+      "used": 8,
+      "limit": 900
+    },
+    "search_calls": {
+      "used": 0,
+      "limit": 12
+    },
+    "http_requests": {
+      "used": 0,
+      "limit": 80
+    },
+    "cache_hits": 0,
+    "bytes_downloaded": 0,
+    "active_seconds": {
+      "used": 5.2,
+      "limit": 5400
+    },
+    "peak_input_tokens": 5337
+  },
+  "queue": {
+    "found": 0,
+    "pending": 0,
+    "running": 0,
+    "done": 0,
+    "error": 0,
+    "skipped": 0,
+    "found_total": 0,
+    "selected_total": 0,
+    "read_total": 0
+  },
+  "documents": [],
+  "summary_version": 0,
+  "compactions": [],
+  "model_calls": [
+    {
+      "id": 87,
+      "task_id": "TOP-manual-20261117T205111Z",
+      "ts": "2026-11-17T20:51:12+00:00",
+      "kind": "agent",
+      "estimated_input": 5231,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "actual_input": 3494,
+      "actual_output": 15,
+      "duration_s": 0.43,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 88,
+      "task_id": "TOP-manual-20261117T205111Z",
+      "ts": "2026-11-17T20:51:12+00:00",
+      "kind": "agent",
+      "estimated_input": 5432,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "actual_input": 4427,
+      "actual_output": 34,
+      "duration_s": 0.59,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 89,
+      "task_id": "TOP-manual-20261117T205111Z",
+      "ts": "2026-11-17T20:51:13+00:00",
+      "kind": "agent",
+      "estimated_input": 5824,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "actual_input": 5061,
+      "actual_output": 133,
+      "duration_s": 1.5,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 90,
+      "task_id": "TOP-manual-20261117T205111Z",
+      "ts": "2026-11-17T20:51:14+00:00",
+      "kind": "agent",
+      "estimated_input": 6065,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.15)",
+      "actual_input": 5337,
+      "actual_output": 299,
+      "duration_s": 2.48,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 91,
+      "task_id": "TOP-manual-20261117T205111Z",
+      "ts": "2026-11-17T20:51:17+00:00",
+      "kind": "agent",
+      "estimated_input": 9011,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.18)",
+      "actual_input": null,
+      "actual_output": null,
+      "duration_s": null,
+      "status": "blocked",
+      "note": "budget: model_calls: needed 1, remaining 0 of 4"
+    }
+  ]
+}

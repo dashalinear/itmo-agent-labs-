@@ -1,0 +1,272 @@
+[
+  {
+    "id": 298,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:11+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 299,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:11+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+      "workflow_run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+      "activity_id": "2",
+      "activity_type": "run_topic_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 300,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:11+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "topics-a1"
+    }
+  },
+  {
+    "id": 301,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5231,
+      "reserve": 2048,
+      "total": 7279,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 302,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5231,
+      "reserve": 2048,
+      "total": 7279,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 303,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5231,
+      "actual_input": 3494,
+      "actual_output": 15,
+      "duration_s": 0.43,
+      "calibrated_cpt": 2.972
+    }
+  },
+  {
+    "id": 304,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5432,
+      "reserve": 2048,
+      "total": 7480,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 305,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5432,
+      "reserve": 2048,
+      "total": 7480,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)"
+    }
+  },
+  {
+    "id": 306,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5432,
+      "actual_input": 4427,
+      "actual_output": 34,
+      "duration_s": 0.59,
+      "calibrated_cpt": 3.102
+    }
+  },
+  {
+    "id": 307,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5824,
+      "reserve": 2048,
+      "total": 7872,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 308,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5824,
+      "reserve": 2048,
+      "total": 7872,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 309,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5824,
+      "actual_input": 5061,
+      "actual_output": 133,
+      "duration_s": 1.5,
+      "calibrated_cpt": 3.151
+    }
+  },
+  {
+    "id": 310,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6065,
+      "reserve": 2048,
+      "total": 8113,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 311,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6065,
+      "reserve": 2048,
+      "total": 8113,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)"
+    }
+  },
+  {
+    "id": 312,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6065,
+      "actual_input": 5337,
+      "actual_output": 299,
+      "duration_s": 2.48,
+      "calibrated_cpt": 3.181
+    }
+  },
+  {
+    "id": 313,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9011,
+      "reserve": 2048,
+      "total": 11059,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 314,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9011,
+      "reserve": 2048,
+      "total": 11059,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)"
+    }
+  },
+  {
+    "id": 315,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "token_budget",
+      "resource": "model_calls",
+      "needed": 1,
+      "remaining": 0,
+      "limit": 4
+    }
+  },
+  {
+    "id": 316,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 4)"
+    }
+  },
+  {
+    "id": 317,
+    "task_id": "TOP-manual-20261117T205111Z",
+    "ts": "2026-11-17T20:51:17+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 4)"
+    }
+  }
+]

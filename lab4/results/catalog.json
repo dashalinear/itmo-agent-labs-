@@ -1,0 +1,1048 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-17T20:51:17+00:00",
+  "documents": [
+    {
+      "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+      "original_path": "data/_reports/topics_20261117T204520Z.md",
+      "current_path": "data/_reports/topics_20261117T204520Z.md",
+      "title": "Обзор тем корпуса — 2026-11-17",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-17T20:45:20Z",
+      "content_hash": "sha256:4fa127bf12b8fe6b9ee7615be46adf97ed95e7fb0c9f7a0d4e389f099d2dcf04",
+      "size_bytes": 10609,
+      "line_count": 110,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "5feb950d-38fe-5477-b259-846d319d0c34",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "33bd8609-193e-57f1-a1e3-34d6c3f1b108",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "ab63673a-abc2-56f6-b906-1163bc70ad84",
+          "start_line": 17,
+          "end_line": 23,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "93dce175-6bd9-5125-9b75-a642ee5db95f",
+          "start_line": 25,
+          "end_line": 31,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "38b74165-6d47-54bd-a0a2-4e2ed371fe3c",
+          "start_line": 33,
+          "end_line": 37,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "445b4bd1-3a22-5bfa-a6e5-ee85deaf01cb",
+          "start_line": 39,
+          "end_line": 43,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "a9d2fcd7-559d-5753-ae60-ed5fadb105cf",
+          "start_line": 45,
+          "end_line": 53,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "5dcaaff7-1dcc-5bd0-8eb3-99ada895c3c0",
+          "start_line": 55,
+          "end_line": 57,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "fa57a72b-3bdc-5041-b8b1-59cb4453565d",
+          "start_line": 59,
+          "end_line": 67,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "e8657795-3ca9-51ca-8760-5fdbddb29868",
+          "start_line": 69,
+          "end_line": 75,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "7049bc4a-baf8-59b2-8c06-495b0db64e0c",
+          "start_line": 77,
+          "end_line": 85,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "686bf791-a16a-588c-b19c-9b6b527cb5e7",
+          "start_line": 87,
+          "end_line": 89,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "862df4bc-bdab-578b-9315-809ee4f4ec09",
+          "start_line": 91,
+          "end_line": 93,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "b35994a2-76eb-5863-ae99-940b08455c57",
+          "start_line": 95,
+          "end_line": 95,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "8f47c5f4-c7b8-5bc9-87dc-3242c7c0a768",
+          "start_line": 97,
+          "end_line": 106,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "e5c67f58-42f9-5027-b26e-4da3b41668aa",
+          "start_line": 107,
+          "end_line": 110,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:46:27+00:00",
+      "registered_at": "2026-11-17T20:46:26+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+      "original_path": "data/_reports/topics_20261117T204800Z.md",
+      "current_path": "data/_reports/topics_20261117T204800Z.md",
+      "title": "Обзор тем корпуса — 2026-11-17",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-17T20:48:00Z",
+      "content_hash": "sha256:5f5924a3714fb9f1e2a56b1f733ea25d63db18f20f5c216db676dfdd1592ed63",
+      "size_bytes": 12030,
+      "line_count": 121,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "cd5c2b63-bed3-57fe-af22-911ae4f55449",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "ef2d06ca-2055-50d7-b23f-791a0d72821e",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "60cf251c-92c6-5f70-b7cb-b1fb4983f650",
+          "start_line": 17,
+          "end_line": 25,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "cee737ae-7baf-588e-9ddd-611da58f7ec8",
+          "start_line": 27,
+          "end_line": 33,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "70367261-a261-51a6-922d-043a19b37458",
+          "start_line": 35,
+          "end_line": 40,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "3333181d-41ca-57c1-9728-5e09424875b9",
+          "start_line": 42,
+          "end_line": 45,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "187b1b82-e46c-50d8-b1b7-afb5e817677b",
+          "start_line": 47,
+          "end_line": 51,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "1a9a7bed-ef29-5589-ae87-59a3c99ad207",
+          "start_line": 53,
+          "end_line": 58,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "3392ec20-ccf7-5427-860e-4f3aee448107",
+          "start_line": 60,
+          "end_line": 63,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "95c2286e-79bc-5223-83f7-7f2c7571bcda",
+          "start_line": 65,
+          "end_line": 69,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "ef1bc5e8-eedc-5996-b1fd-aceec9a523a0",
+          "start_line": 71,
+          "end_line": 76,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "879c0995-2859-5796-b471-afa4e51ecc28",
+          "start_line": 78,
+          "end_line": 81,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "2a4ba158-4fef-5ed6-b4b3-9c7cefd2c078",
+          "start_line": 83,
+          "end_line": 91,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "cf41469b-136c-5b4a-bba2-45785abf5128",
+          "start_line": 93,
+          "end_line": 93,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "2da615d5-2d40-5082-afdb-01bbee565072",
+          "start_line": 95,
+          "end_line": 97,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "67108af2-9f95-58c9-bf73-26eb0d60f47a",
+          "start_line": 99,
+          "end_line": 101,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "877dc08b-20c0-5410-9a88-46ace9067a94",
+          "start_line": 103,
+          "end_line": 103,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "78a7a2e8-5660-5fd5-a67a-13816a922d38",
+          "start_line": 105,
+          "end_line": 114,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "2649bd61-aac1-514e-8b89-057850475dd1",
+          "start_line": 115,
+          "end_line": 121,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:49:36+00:00",
+      "registered_at": "2026-11-17T20:49:35+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+      "original_path": "data/_reports/topics_manual-20261117T204946Z.md",
+      "current_path": "data/_reports/topics_manual-20261117T204946Z.md",
+      "title": "Обзор тем корпуса — 2026-11-17",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-manual-2026-11-17T20:49:46Z",
+      "content_hash": "sha256:0cc3cb5ffa2b7420494d44ab4d1969b7137e6a2073bf0395a681b4676a4e20bf",
+      "size_bytes": 12482,
+      "line_count": 121,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "83d9cc8a-c6f4-52fe-9535-7465d701cbec",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "9196b932-86b0-50a1-9cb5-53332ce38cf1",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "2063f1f7-ce49-5c95-83c2-3650edef5e94",
+          "start_line": 17,
+          "end_line": 25,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "6e7e65a9-6f51-5008-9362-4232b9319f27",
+          "start_line": 27,
+          "end_line": 35,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "402454ee-f3dd-5339-9b1c-b02b3d996851",
+          "start_line": 37,
+          "end_line": 43,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "9b76c53b-b08c-5d5e-bafe-b709ebe3e7c0",
+          "start_line": 45,
+          "end_line": 52,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "1b950d8e-40b4-5411-9ad8-72002a07f38c",
+          "start_line": 54,
+          "end_line": 57,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "eb406944-45d5-5963-91b0-f1f5922ceb88",
+          "start_line": 59,
+          "end_line": 67,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "0e814202-e261-5154-ac81-e0cbd5f49930",
+          "start_line": 69,
+          "end_line": 75,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "e6814646-2d13-5dcd-ae93-bdb4362ad40e",
+          "start_line": 77,
+          "end_line": 79,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "a3edd76f-8f58-5db4-b015-7b0c6671433f",
+          "start_line": 81,
+          "end_line": 87,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "afdeeb79-eea3-5fae-a70d-dd8a152a2b31",
+          "start_line": 89,
+          "end_line": 92,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "6f31bbbc-1f3f-5fd9-91b5-b8784c67a35a",
+          "start_line": 93,
+          "end_line": 93,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "b4adfd06-47b8-5355-9513-0586a48dbacc",
+          "start_line": 95,
+          "end_line": 97,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "00d7a2fd-2800-5599-b8fa-791e9d7e910d",
+          "start_line": 99,
+          "end_line": 101,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "cb295a63-217f-5447-b599-69b10ea1fbdc",
+          "start_line": 103,
+          "end_line": 103,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "96b57f67-afd8-5646-aecd-c944112ec393",
+          "start_line": 105,
+          "end_line": 114,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "992b33d2-e44f-59eb-8410-ee9b556ec64e",
+          "start_line": 115,
+          "end_line": 121,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:51:05+00:00",
+      "registered_at": "2026-11-17T20:51:04+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+      "original_path": "data/_reports/topics_manual-20261117T205111Z.md",
+      "current_path": "data/_reports/topics_manual-20261117T205111Z.md",
+      "title": "Обзор тем корпуса — 2026-11-17",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (partial), run lab4-topics-manual-2026-11-17T20:51:11Z",
+      "content_hash": "sha256:e8b3ca9330588d2579e3ec619f949d105d123b52c3ee023b55eb523f91bba20e",
+      "size_bytes": 6213,
+      "line_count": 71,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "3b182cd1-d86a-59aa-bf01-794d28405831",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "e5a68831-ffcd-55f0-99de-42bc918cdad8",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "63898877-b628-5b99-bf00-d26fee3320d1",
+          "start_line": 17,
+          "end_line": 21,
+          "summary": "Почему отчёт частичный"
+        },
+        {
+          "excerpt_id": "34232ff9-e3ec-5753-b388-6992b17748f5",
+          "start_line": 23,
+          "end_line": 31,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "73dfb838-104c-562d-b98f-2c50b08e136f",
+          "start_line": 33,
+          "end_line": 35,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "5c3ff6c1-8cbb-561f-aef7-792ae6995933",
+          "start_line": 37,
+          "end_line": 37,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "7252985b-c9a6-5331-8292-4063c7139213",
+          "start_line": 39,
+          "end_line": 42,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "56e4a35e-4bb6-54c2-94ae-ec0ceee8d627",
+          "start_line": 43,
+          "end_line": 46,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "42a46e96-9cec-5f5b-914e-bdc1f0743838",
+          "start_line": 47,
+          "end_line": 51,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "60b426ec-1d0e-59e6-8f6a-6c420433535e",
+          "start_line": 53,
+          "end_line": 53,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "9390f9af-fb1c-5719-b748-df53643c7510",
+          "start_line": 55,
+          "end_line": 64,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "f9dfa842-5476-534e-b100-ef8617fe944d",
+          "start_line": 65,
+          "end_line": 71,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:51:17+00:00",
+      "registered_at": "2026-11-17T20:51:17+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+      "original_path": "input/_batches/4d4e776d7c/meeting_m05.md",
+      "current_path": "data/meetings/meeting_m05.md",
+      "title": "Протокол совещания M-05",
+      "category": "meetings",
+      "description": "Протокол совещания M-05: участники, решения РС-12 и РС-13, открытые вопросы.",
+      "content_hash": "sha256:382e08200d978261acc3fe18ad0ccf406925ba663e66514faa877fa9664c48b3",
+      "size_bytes": 690,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "Тема: совещания — протокол M-05.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "581a80ea-ff4f-51ff-9e65-f8a7ffea7257",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Участники"
+        },
+        {
+          "excerpt_id": "5979c9f1-0e91-55e0-aaa6-7938bb8fd807",
+          "start_line": 6,
+          "end_line": 8,
+          "summary": "Решения"
+        },
+        {
+          "excerpt_id": "80f6112e-a2d3-5487-b73d-5d365c845ee4",
+          "start_line": 10,
+          "end_line": 11,
+          "summary": "Открытые вопросы"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/meeting_m05.md",
+          "to": "data/meetings/meeting_m05.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+      "original_path": "input/_batches/4d4e776d7c/incident_101.md",
+      "current_path": "data/ops/incident_101.md",
+      "title": "Разбор инцидента INC-2026-101",
+      "category": "ops",
+      "description": "Разбор инцидента INC-2026-101: что произошло, действия, выводы.",
+      "content_hash": "sha256:9865669e6313915fea71b22aececa5dd1c1cfc36804ccd92057aa1bc771ac4be",
+      "size_bytes": 804,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "Тема: эксплуатация — разбор инцидента.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "61da4993-a215-500e-b635-ec814c89bd38",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Что произошло"
+        },
+        {
+          "excerpt_id": "0b95ae36-14e4-5610-b574-be44466aac68",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Действия"
+        },
+        {
+          "excerpt_id": "2d9887ba-ee74-5b34-8322-309cd0778d44",
+          "start_line": 11,
+          "end_line": 13,
+          "summary": "Выводы"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:57+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/incident_101.md",
+          "to": "data/ops/incident_101.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "055181ba-a8db-4aa8-95d3-dd0c1e015549",
+      "original_path": "input/_batches/578a8801b8/inference_energy.md",
+      "current_path": "data/ops/inference_energy.md",
+      "title": "Энергопотребление инференса LLM",
+      "category": "ops",
+      "description": "Справка об энергопотреблении инференса LLM: измерения, меры экономии и учёт в отчёте EN-2026-11.",
+      "content_hash": "sha256:fea75bdc827163d5e644414cbe78dc624fbc5991e116a43fc804d9b73ae56cb5",
+      "size_bytes": 801,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Отнесено к ops: эксплуатационная справка об энергопотреблении GPU-стенда и учёте.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "7dc424b5-a893-5de6-84cb-70a20f248bad",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Измерения"
+        },
+        {
+          "excerpt_id": "35624e68-e895-5553-8963-61287b8335ed",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Меры экономии"
+        },
+        {
+          "excerpt_id": "2ca4d474-10fd-5588-b4bb-a9526ad9d565",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Учёт"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:47:01+00:00",
+      "registered_at": "2026-11-17T20:46:47+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/578a8801b8/inference_energy.md",
+          "to": "data/ops/inference_energy.md",
+          "at": "2026-11-17T20:46:47+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+      "original_path": "input/_batches/4d4e776d7c/monitoring.md",
+      "current_path": "data/ops/monitoring.md",
+      "title": "Мониторинг платформы агентов",
+      "category": "ops",
+      "description": "Справка о мониторинге платформы: метрики, алерты, дашборды.",
+      "content_hash": "sha256:e79f45d97bf7a31699b549580babfcfa572b8f5755e1b31eccb517083a808d05",
+      "size_bytes": 637,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "Тема: эксплуатация — мониторинг.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "b05d9461-82c0-5ec7-bd7d-f7df653fcfaa",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Метрики"
+        },
+        {
+          "excerpt_id": "e997f658-1626-5142-88e0-5c7d2f6ef631",
+          "start_line": 6,
+          "end_line": 8,
+          "summary": "Алерты"
+        },
+        {
+          "excerpt_id": "c21de0ba-0804-5d94-8ccb-c428e496e564",
+          "start_line": 10,
+          "end_line": 11,
+          "summary": "Дашборды"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/monitoring.md",
+          "to": "data/ops/monitoring.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+      "original_path": "input/_batches/4d4e776d7c/oncall.md",
+      "current_path": "data/ops/oncall.md",
+      "title": "Политика дежурств",
+      "category": "ops",
+      "description": "Справка о политике дежурств: смены, эскалация, журнал инцидентов.",
+      "content_hash": "sha256:50e7e542a80d2e3e55a0a44c651104245c999fe21f47de71976d98d47a6cade2",
+      "size_bytes": 640,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Тема: эксплуатация — on-call политика.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "fd0e8493-5dce-503f-b8f4-a516b7e7d8ba",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Смены"
+        },
+        {
+          "excerpt_id": "545a854d-ee97-5e47-b585-1bfcdc2a7cd3",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Эскалация"
+        },
+        {
+          "excerpt_id": "eda88d65-abdc-5de7-8647-1607e5463f33",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Журнал"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/oncall.md",
+          "to": "data/ops/oncall.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+      "original_path": "input/_batches/4d4e776d7c/bm25_basics.md",
+      "current_path": "data/search/bm25_basics.md",
+      "title": "Полнотекстовый поиск BM25",
+      "category": "search",
+      "description": "Краткая справка о полнотекстовом поиске BM25: принцип, настройки стенда и ограничения.",
+      "content_hash": "sha256:015d1fc9900d4cb0464224e034244c86662ef7106bdf92caab0d3177a767869b",
+      "size_bytes": 875,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "Тема: поиск — документ о полнотекстовом поиске BM25.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "76eb41be-dbe6-5663-bf46-3b71d420cecc",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Принцип"
+        },
+        {
+          "excerpt_id": "583c0d18-af99-5822-81f6-3ef4e0c89de8",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Настройки стенда"
+        },
+        {
+          "excerpt_id": "fd571693-f32e-5aa9-aa7e-00c02bab8653",
+          "start_line": 11,
+          "end_line": 13,
+          "summary": "Ограничения"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/bm25_basics.md",
+          "to": "data/search/bm25_basics.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+      "original_path": "input/_batches/4d4e776d7c/hybrid_ranking.md",
+      "current_path": "data/search/hybrid_ranking.md",
+      "title": "Гибридное ранжирование",
+      "category": "search",
+      "description": "Справка о гибридном ранжировании BM25 + векторный поиск через RRF.",
+      "content_hash": "sha256:f71106e4a32f6df7f0378b97e293a7ead4fdb9ccc70ad6e0212952df637fe31e",
+      "size_bytes": 696,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Тема: поиск — гибридное ранжирование.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "61f872a1-1ede-58a7-a2d9-ec0d736d63a8",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Идея"
+        },
+        {
+          "excerpt_id": "392db93a-2a8c-55a9-ad3d-6ed4bf94a6c4",
+          "start_line": 7,
+          "end_line": 8,
+          "summary": "Когда помогает"
+        },
+        {
+          "excerpt_id": "2a1e7cc8-506f-5d87-8a9e-39396ef30cb7",
+          "start_line": 10,
+          "end_line": 12,
+          "summary": "Ограничения"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/hybrid_ranking.md",
+          "to": "data/search/hybrid_ranking.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "baddb9db-da7e-4fae-a651-6ccd567e2068",
+      "original_path": "input/_batches/578a8801b8/query_cache.md",
+      "current_path": "data/search/query_cache.md",
+      "title": "Кэш запросов поиска",
+      "category": "search",
+      "description": "Решение SRCH-CACHE-2 о кэше запросов поиска: параметры (10 минут, 10 000 запросов) и риски.",
+      "content_hash": "sha256:a817c995c83b81b4c6df3234469016a930e0ca38008dfff8cb24eaee6000f623",
+      "size_bytes": 568,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "Отнесено к search: относится к подсистеме поиска (вопрос M-05, решение SRCH-CACHE-2).",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "3310f38a-b3e2-5adf-8ab1-683b59250854",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Решение"
+        },
+        {
+          "excerpt_id": "4ea94df9-1702-5111-93c8-249a437ae71d",
+          "start_line": 6,
+          "end_line": 8,
+          "summary": "Параметры"
+        },
+        {
+          "excerpt_id": "c02ca6e4-9f9a-5187-8f04-4897d75f63da",
+          "start_line": 10,
+          "end_line": 11,
+          "summary": "Риски"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:47:01+00:00",
+      "registered_at": "2026-11-17T20:46:47+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/578a8801b8/query_cache.md",
+          "to": "data/search/query_cache.md",
+          "at": "2026-11-17T20:46:47+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+      "original_path": "input/_batches/4d4e776d7c/vector_search.md",
+      "current_path": "data/search/vector_search.md",
+      "title": "Векторный поиск по embeddings",
+      "category": "search",
+      "description": "Справка о векторном поиске: модель embeddings, индекс HNSW и ограничения.",
+      "content_hash": "sha256:b7916c1ada0030c34e31c70c7095f9f0cb090aef1d28c4a2fb702f2dc12fd2e2",
+      "size_bytes": 710,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "Тема: поиск — документ о векторном поиске.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "8c46b6b9-2fec-51fc-8590-6a2cc06b2c73",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Модель"
+        },
+        {
+          "excerpt_id": "e9b1dba3-ac85-5f1e-b758-69376f7d2fc9",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Индекс HNSW"
+        },
+        {
+          "excerpt_id": "1348a93a-a163-5b6f-8641-162bf85bfee8",
+          "start_line": 11,
+          "end_line": 13,
+          "summary": "Ограничения"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/vector_search.md",
+          "to": "data/search/vector_search.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+      "original_path": "input/_batches/4d4e776d7c/checkpoint_postgres.md",
+      "current_path": "data/storage/checkpoint_postgres.md",
+      "title": "Чекпоинты в PostgreSQL",
+      "category": "storage",
+      "description": "Справка о чекпоинтах в PostgreSQL: когда выбирают, решение РС-12, ограничения.",
+      "content_hash": "sha256:fbe2046f730409a1f2bc728db850227197ef08b8f8846f1bd05cde57298cd88a",
+      "size_bytes": 855,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "Тема: хранилище — чекпоинты в PostgreSQL.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "5700b3bc-5966-5c38-b5a2-1bdfcea601eb",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Когда выбирают"
+        },
+        {
+          "excerpt_id": "16a5d354-ac51-5d86-966f-00d599486d0d",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Решение"
+        },
+        {
+          "excerpt_id": "54ed3ab7-65e9-5a17-90ac-f8ec839697a9",
+          "start_line": 11,
+          "end_line": 13,
+          "summary": "Ограничения"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:57+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/checkpoint_postgres.md",
+          "to": "data/storage/checkpoint_postgres.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+      "original_path": "input/_batches/4d4e776d7c/checkpoint_sqlite.md",
+      "current_path": "data/storage/checkpoint_sqlite.md",
+      "title": "Чекпоинты агента в SQLite",
+      "category": "storage",
+      "description": "Справка о локальных чекпоинтах агента в SQLite: назначение, ограничения, восстановление.",
+      "content_hash": "sha256:bb24d5d26ab9e6ae45eed5bf9d65dc83440d7876e6a9c7fbb33c0e215d5c083d",
+      "size_bytes": 1176,
+      "line_count": 15,
+      "is_empty": false,
+      "note": "Тема: хранилище — чекпоинты в SQLite.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "b88e785a-f7da-5076-8232-833ec80937f4",
+          "start_line": 1,
+          "end_line": 6,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "4930ecf5-950e-5cf8-b390-10213366255d",
+          "start_line": 8,
+          "end_line": 11,
+          "summary": "Ограничения"
+        },
+        {
+          "excerpt_id": "6887dec1-0079-55fc-aadb-158350d05f87",
+          "start_line": 13,
+          "end_line": 15,
+          "summary": "Восстановление"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:57+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/checkpoint_sqlite.md",
+          "to": "data/storage/checkpoint_sqlite.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+      "original_path": "input/_batches/4d4e776d7c/redis_cache.md",
+      "current_path": "data/storage/redis_cache.md",
+      "title": "Redis как кэш состояния между шагами",
+      "category": "storage",
+      "description": "Справка о Redis как кэше промежуточного состояния агента: назначение, ограничения, практика ключей.",
+      "content_hash": "sha256:bbea12b7e612f23529b5c315ae1291b2c4f18a3627ab822a7aebf4f182968d0a",
+      "size_bytes": 831,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Тема: хранилище — кэш состояния в Redis.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "289068cd-101c-5b85-972b-3990cf6418d2",
+          "start_line": 1,
+          "end_line": 4,
+          "summary": "Назначение"
+        },
+        {
+          "excerpt_id": "7d4dd628-e884-54c5-a426-60ad45df4348",
+          "start_line": 6,
+          "end_line": 9,
+          "summary": "Ограничения"
+        },
+        {
+          "excerpt_id": "25d26a13-f4e7-5c13-9a00-86e843b3f0d9",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Практика"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:44:55+00:00",
+      "registered_at": "2026-11-17T20:43:14+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/4d4e776d7c/redis_cache.md",
+          "to": "data/storage/redis_cache.md",
+          "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+      "original_path": "input/_batches/578a8801b8/snapshot_policy.md",
+      "current_path": "data/storage/snapshot_policy.md",
+      "title": "Политика снимков состояния",
+      "category": "storage",
+      "description": "Политика снимков хранилища чекпоинтов: каждые 6 часов, 8 последних, проверка контрольных сумм.",
+      "content_hash": "sha256:f5668dd1a3713e8e8afb7681cb1defcbaf31236f06988c5e18b3116b8e2d927e",
+      "size_bytes": 598,
+      "line_count": 11,
+      "is_empty": false,
+      "note": "Отнесено к storage: снимки общего хранилища чекпоинтов, рядом с документами о чекпоинтах.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "29905377-4e64-590b-92fa-55ddf0e9129d",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Частота"
+        },
+        {
+          "excerpt_id": "ac0e6b96-6082-52f0-9b3c-e522212ff63c",
+          "start_line": 7,
+          "end_line": 8,
+          "summary": "Проверка"
+        },
+        {
+          "excerpt_id": "1f24bc97-3720-50bd-8ef4-8901ffa04c7f",
+          "start_line": 10,
+          "end_line": 11,
+          "summary": "Ограничения"
+        }
+      ],
+      "indexed_at": "2026-11-17T20:47:01+00:00",
+      "registered_at": "2026-11-17T20:46:47+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/578a8801b8/snapshot_policy.md",
+          "to": "data/storage/snapshot_policy.md",
+          "at": "2026-11-17T20:46:47+00:00"
+        }
+      ]
+    }
+  ]
+}

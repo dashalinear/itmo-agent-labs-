@@ -1,0 +1,334 @@
+{
+ "schema": "l0l1l2/1",
+ "corpus_id": "itmo-lab3",
+ "generated_at": "2026-11-17T20:52:26+00:00",
+ "totals": {
+  "documents": 17,
+  "with_l1": 17,
+  "fragments": 104,
+  "service_documents": 4
+ },
+ "folders": [
+  {
+   "folder": "_reports",
+   "documents": 4,
+   "fragments": 65
+  },
+  {
+   "folder": "meetings",
+   "documents": 1,
+   "fragments": 3
+  },
+  {
+   "folder": "ops",
+   "documents": 4,
+   "fragments": 12
+  },
+  {
+   "folder": "search",
+   "documents": 4,
+   "fragments": 12
+  },
+  {
+   "folder": "storage",
+   "documents": 4,
+   "fragments": 12
+  }
+ ],
+ "documents": [
+  {
+   "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+   "path": "data/_reports/topics_20261117T204520Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-17",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-17T20:45:20Z",
+   "content_hash": "sha256:4fa127bf12b8fe6b9ee7615be46adf97ed95e7fb0c9f7a0d4e389f099d2dcf04",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 16,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+   "path": "data/_reports/topics_20261117T204800Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-17",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-17T20:48:00Z",
+   "content_hash": "sha256:5f5924a3714fb9f1e2a56b1f733ea25d63db18f20f5c216db676dfdd1592ed63",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 19,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+   "path": "data/_reports/topics_manual-20261117T204946Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-17",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-manual-2026-11-17T20:49:46Z",
+   "content_hash": "sha256:0cc3cb5ffa2b7420494d44ab4d1969b7137e6a2073bf0395a681b4676a4e20bf",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 18,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+   "path": "data/_reports/topics_manual-20261117T205111Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-17",
+   "description": "Служебный тематический отчёт по корпусу (partial), run lab4-topics-manual-2026-11-17T20:51:11Z",
+   "content_hash": "sha256:e8b3ca9330588d2579e3ec619f949d105d123b52c3ee023b55eb523f91bba20e",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 12,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+   "path": "data/meetings/meeting_m05.md",
+   "folder": "meetings",
+   "title": "Протокол совещания M-05",
+   "description": "Протокол совещания M-05: участники, решения РС-12 и РС-13, открытые вопросы.",
+   "content_hash": "sha256:382e08200d978261acc3fe18ad0ccf406925ba663e66514faa877fa9664c48b3",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+   "path": "data/ops/incident_101.md",
+   "folder": "ops",
+   "title": "Разбор инцидента INC-2026-101",
+   "description": "Разбор инцидента INC-2026-101: что произошло, действия, выводы.",
+   "content_hash": "sha256:9865669e6313915fea71b22aececa5dd1c1cfc36804ccd92057aa1bc771ac4be",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "055181ba-a8db-4aa8-95d3-dd0c1e015549",
+   "path": "data/ops/inference_energy.md",
+   "folder": "ops",
+   "title": "Энергопотребление инференса LLM",
+   "description": "Справка об энергопотреблении инференса LLM: измерения, меры экономии и учёт.",
+   "content_hash": "sha256:fea75bdc827163d5e644414cbe78dc624fbc5991e116a43fc804d9b73ae56cb5",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+   "path": "data/ops/monitoring.md",
+   "folder": "ops",
+   "title": "Мониторинг платформы агентов",
+   "description": "Справка о мониторинге платформы: метрики, алерты, дашборды.",
+   "content_hash": "sha256:e79f45d97bf7a31699b549580babfcfa572b8f5755e1b31eccb517083a808d05",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+   "path": "data/ops/oncall.md",
+   "folder": "ops",
+   "title": "Политика дежурств",
+   "description": "Справка о политике дежурств: смены, эскалация, журнал инцидентов.",
+   "content_hash": "sha256:50e7e542a80d2e3e55a0a44c651104245c999fe21f47de71976d98d47a6cade2",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+   "path": "data/search/bm25_basics.md",
+   "folder": "search",
+   "title": "Полнотекстовый поиск BM25",
+   "description": "Краткая справка о полнотекстовом поиске BM25: принцип, настройки стенда и ограничения.",
+   "content_hash": "sha256:015d1fc9900d4cb0464224e034244c86662ef7106bdf92caab0d3177a767869b",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+   "path": "data/search/hybrid_ranking.md",
+   "folder": "search",
+   "title": "Гибридное ранжирование",
+   "description": "Справка о гибридном ранжировании BM25 + векторный поиск через RRF.",
+   "content_hash": "sha256:f71106e4a32f6df7f0378b97e293a7ead4fdb9ccc70ad6e0212952df637fe31e",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "baddb9db-da7e-4fae-a651-6ccd567e2068",
+   "path": "data/search/query_cache.md",
+   "folder": "search",
+   "title": "Кэш запросов поиска",
+   "description": "Решение SRCH-CACHE-2 о кэше запросов поиска: параметры и риски.",
+   "content_hash": "sha256:a817c995c83b81b4c6df3234469016a930e0ca38008dfff8cb24eaee6000f623",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+   "path": "data/search/vector_search.md",
+   "folder": "search",
+   "title": "Векторный поиск по embeddings",
+   "description": "Справка о векторном поиске: модель embeddings, индекс HNSW и ограничения.",
+   "content_hash": "sha256:b7916c1ada0030c34e31c70c7095f9f0cb090aef1d28c4a2fb702f2dc12fd2e2",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+   "path": "data/storage/checkpoint_postgres.md",
+   "folder": "storage",
+   "title": "Чекпоинты в PostgreSQL",
+   "description": "Справка о чекпоинтах в PostgreSQL: когда выбирают, решение РС-12, ограничения.",
+   "content_hash": "sha256:fbe2046f730409a1f2bc728db850227197ef08b8f8846f1bd05cde57298cd88a",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+   "path": "data/storage/checkpoint_sqlite.md",
+   "folder": "storage",
+   "title": "Чекпоинты агента в SQLite",
+   "description": "Справка о локальных чекпоинтах агента в SQLite: назначение, ограничения, восстановление.",
+   "content_hash": "sha256:bb24d5d26ab9e6ae45eed5bf9d65dc83440d7876e6a9c7fbb33c0e215d5c083d",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+   "path": "data/storage/redis_cache.md",
+   "folder": "storage",
+   "title": "Redis как кэш состояния между шагами",
+   "description": "Справка о Redis как кэше промежуточного состояния агента: назначение, ограничения, практика ключей.",
+   "content_hash": "sha256:bbea12b7e612f23529b5c315ae1291b2c4f18a3627ab822a7aebf4f182968d0a",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+   "path": "data/storage/snapshot_policy.md",
+   "folder": "storage",
+   "title": "Политика снимков состояния",
+   "description": "Политика снимков хранилища чекпоинтов: частота, проверка контрольных сумм и ограничения восстановления.",
+   "content_hash": "sha256:f5668dd1a3713e8e8afb7681cb1defcbaf31236f06988c5e18b3116b8e2d927e",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  }
+ ],
+ "reports": {
+  "history": [
+   {
+    "run_key": "lab4-topics-run-2026-11-17T20:45:20Z",
+    "workflow_id": "lab4-topics-run-2026-11-17T20:45:20Z",
+    "run_id": "01a1eb41-ceae-7b36-b526-11d7d8b12c0b",
+    "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+    "path": "data/_reports/topics_20261117T204520Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 10,
+    "documents_examined": 10,
+    "frozen_at": "2026-11-17T20:45:21+00:00",
+    "task_id": "TOP-20261117T204520Z"
+   },
+   {
+    "run_key": "lab4-topics-run-2026-11-17T20:48:00Z",
+    "workflow_id": "lab4-topics-run-2026-11-17T20:48:00Z",
+    "run_id": "01a1eb44-3c62-7bb7-b73f-f80cafc476ed",
+    "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+    "path": "data/_reports/topics_20261117T204800Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-17T20:48:00+00:00",
+    "task_id": "TOP-20261117T204800Z"
+   },
+   {
+    "run_key": "lab4-topics-manual-2026-11-17T20:49:46Z",
+    "workflow_id": "lab4-topics-manual-2026-11-17T20:49:46Z",
+    "run_id": "01a1eb45-dd8c-7017-b610-64d54801bc28",
+    "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+    "path": "data/_reports/topics_manual-20261117T204946Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-17T20:49:47+00:00",
+    "task_id": "TOP-manual-20261117T204946Z"
+   },
+   {
+    "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+    "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+    "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+    "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+    "path": "data/_reports/topics_manual-20261117T205111Z.md",
+    "status": "partial",
+    "topics": 0,
+    "documents_frozen": 13,
+    "documents_examined": 5,
+    "frozen_at": "2026-11-17T20:51:11+00:00",
+    "task_id": "TOP-manual-20261117T205111Z"
+   }
+  ],
+  "latest": {
+   "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+   "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+   "path": "data/_reports/topics_manual-20261117T205111Z.md",
+   "status": "partial",
+   "topics": 0,
+   "documents_frozen": 13,
+   "documents_examined": 5,
+   "frozen_at": "2026-11-17T20:51:11+00:00",
+   "task_id": "TOP-manual-20261117T205111Z"
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "history": [
+  {
+   "run_key": "lab4-topics-run-2026-11-17T20:45:20Z",
+   "workflow_id": "lab4-topics-run-2026-11-17T20:45:20Z",
+   "run_id": "01a1eb41-ceae-7b36-b526-11d7d8b12c0b",
+   "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+   "path": "data/_reports/topics_20261117T204520Z.md",
+   "status": "complete",
+   "topics": 4,
+   "documents_frozen": 10,
+   "documents_examined": 10,
+   "frozen_at": "2026-11-17T20:45:21+00:00",
+   "task_id": "TOP-20261117T204520Z"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-17T20:48:00Z",
+   "workflow_id": "lab4-topics-run-2026-11-17T20:48:00Z",
+   "run_id": "01a1eb44-3c62-7bb7-b73f-f80cafc476ed",
+   "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+   "path": "data/_reports/topics_20261117T204800Z.md",
+   "status": "complete",
+   "topics": 4,
+   "documents_frozen": 13,
+   "documents_examined": 13,
+   "frozen_at": "2026-11-17T20:48:00+00:00",
+   "task_id": "TOP-20261117T204800Z"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-17T20:49:46Z",
+   "workflow_id": "lab4-topics-manual-2026-11-17T20:49:46Z",
+   "run_id": "01a1eb45-dd8c-7017-b610-64d54801bc28",
+   "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+   "path": "data/_reports/topics_manual-20261117T204946Z.md",
+   "status": "complete",
+   "topics": 4,
+   "documents_frozen": 13,
+   "documents_examined": 13,
+   "frozen_at": "2026-11-17T20:49:47+00:00",
+   "task_id": "TOP-manual-20261117T204946Z"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+   "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+   "path": "data/_reports/topics_manual-20261117T205111Z.md",
+   "status": "partial",
+   "topics": 0,
+   "documents_frozen": 13,
+   "documents_examined": 5,
+   "frozen_at": "2026-11-17T20:51:11+00:00",
+   "task_id": "TOP-manual-20261117T205111Z"
+  }
+ ],
+ "latest": {
+  "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+  "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+  "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+  "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+  "path": "data/_reports/topics_manual-20261117T205111Z.md",
+  "status": "partial",
+  "topics": 0,
+  "documents_frozen": 13,
+  "documents_examined": 5,
+  "frozen_at": "2026-11-17T20:51:11+00:00",
+  "task_id": "TOP-manual-20261117T205111Z"
+ }
+}

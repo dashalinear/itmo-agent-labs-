@@ -1,0 +1,667 @@
+{
+ "batches": [
+  {
+   "batch_id": "4d4e776d7c",
+   "workflow_id": "ingest-4d4e776d7c",
+   "run_id": "01a1eb3f-27b8-7aff-bf3f-459bd0405a73",
+   "task_id": "ING-4d4e776d7c",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/bm25_basics.md",
+     "size": 875,
+     "mtime_ns": 1794948142528643100
+    },
+    {
+     "input_path": "input/checkpoint_postgres.md",
+     "size": 855,
+     "mtime_ns": 1794948142530643300
+    },
+    {
+     "input_path": "input/checkpoint_sqlite.md",
+     "size": 1176,
+     "mtime_ns": 1794948142532642600
+    },
+    {
+     "input_path": "input/hybrid_ranking.md",
+     "size": 696,
+     "mtime_ns": 1794948142534642900
+    },
+    {
+     "input_path": "input/incident_101.md",
+     "size": 804,
+     "mtime_ns": 1794948142536642900
+    },
+    {
+     "input_path": "input/meeting_m05.md",
+     "size": 690,
+     "mtime_ns": 1794948142537643900
+    },
+    {
+     "input_path": "input/monitoring.md",
+     "size": 637,
+     "mtime_ns": 1794948142539641700
+    },
+    {
+     "input_path": "input/oncall.md",
+     "size": 640,
+     "mtime_ns": 1794948142540644100
+    },
+    {
+     "input_path": "input/redis_cache.md",
+     "size": 831,
+     "mtime_ns": 1794948142542645500
+    },
+    {
+     "input_path": "input/vector_search.md",
+     "size": 710,
+     "mtime_ns": 1794948142543642800
+    }
+   ],
+   "result": {
+    "batch_id": "4d4e776d7c",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/bm25_basics.md",
+      "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+      "current_path": "data/search/bm25_basics.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/checkpoint_postgres.md",
+      "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+      "current_path": "data/storage/checkpoint_postgres.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/checkpoint_sqlite.md",
+      "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+      "current_path": "data/storage/checkpoint_sqlite.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/hybrid_ranking.md",
+      "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+      "current_path": "data/search/hybrid_ranking.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/incident_101.md",
+      "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+      "current_path": "data/ops/incident_101.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/meeting_m05.md",
+      "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+      "current_path": "data/meetings/meeting_m05.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/monitoring.md",
+      "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+      "current_path": "data/ops/monitoring.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/oncall.md",
+      "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+      "current_path": "data/ops/oncall.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/redis_cache.md",
+      "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+      "current_path": "data/storage/redis_cache.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/vector_search.md",
+      "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+      "current_path": "data/search/vector_search.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 10,
+    "agent": {
+     "attempt": 2,
+     "reason": "Все 10 файлов из input/_batches/4d4e776d7c разложены по темам (search, storage, ops, meetings), каталог L0 заполнен, L1 (структура + summary) записаны для всех 10, L2 (30 фрагментов) проиндексированы в Elasticsearch. validate_corpus: ok, 0 проблем.",
+     "resumed": true,
+     "run_result": "completed",
+     "runs": 2,
+     "status": "completed",
+     "task_id": "ING-4d4e776d7c",
+     "usage": {
+      "compactions": 3,
+      "model_calls": 13,
+      "tokens": 193833,
+      "tool_calls": 80
+     }
+    }
+   },
+   "created_at": "2026-11-17T20:42:27+00:00",
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "batch_id": "5c534583b2",
+   "workflow_id": "ingest-5c534583b2",
+   "run_id": "01a1eb41-b371-741c-8fb6-c8d77fcdc7ed",
+   "task_id": null,
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/oncall_copy.md",
+     "size": 640,
+     "mtime_ns": 1794948308576675400
+    }
+   ],
+   "result": {
+    "batch_id": "5c534583b2",
+    "status": "completed",
+    "documents": [],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [
+     "input/oncall_copy.md"
+    ],
+    "l0_documents": 10,
+    "agent": null
+   },
+   "created_at": "2026-11-17T20:45:13+00:00",
+   "updated_at": "2026-11-17T20:45:14+00:00"
+  },
+  {
+   "batch_id": "578a8801b8",
+   "workflow_id": "ingest-578a8801b8",
+   "run_id": "01a1eb42-fd50-794f-a9c0-553f1e4e11a4",
+   "task_id": "ING-578a8801b8",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/inference_energy.md",
+     "size": 801,
+     "mtime_ns": 1794948393377537000
+    },
+    {
+     "input_path": "input/query_cache.md",
+     "size": 568,
+     "mtime_ns": 1794948393100896700
+    },
+    {
+     "input_path": "input/snapshot_policy.md",
+     "size": 598,
+     "mtime_ns": 1794948393102896700
+    }
+   ],
+   "result": {
+    "batch_id": "578a8801b8",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/inference_energy.md",
+      "document_id": "055181ba-a8db-4aa8-95d3-dd0c1e015549",
+      "current_path": "data/ops/inference_energy.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/query_cache.md",
+      "document_id": "baddb9db-da7e-4fae-a651-6ccd567e2068",
+      "current_path": "data/search/query_cache.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     },
+     {
+      "input_path": "input/snapshot_policy.md",
+      "document_id": "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+      "current_path": "data/storage/snapshot_policy.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 14,
+    "agent": {
+     "attempt": 1,
+     "reason": "Организованы 3 файла из input/_batches/578a8801b8: inference_energy.md -> data/ops, query_cache.md -> data/search, snapshot_policy.md -> data/storage. Для всех записаны L1 (title, description, summary, секции) и проиндексирован L2 в Elasticsearch (по 3 фрагмента, всего 9). validate_corpus: ok, 14 до",
+     "resumed": false,
+     "run_result": "completed",
+     "runs": 1,
+     "status": "completed",
+     "task_id": "ING-578a8801b8",
+     "usage": {
+      "compactions": 0,
+      "model_calls": 12,
+      "tokens": 146418,
+      "tool_calls": 27
+     }
+    }
+   },
+   "created_at": "2026-11-17T20:46:38+00:00",
+   "updated_at": "2026-11-17T20:47:14+00:00"
+  },
+  {
+   "batch_id": "6341c09670",
+   "workflow_id": "ingest-6341c09670",
+   "run_id": "01a1eb48-4b63-7e17-938f-d8d582116708",
+   "task_id": null,
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/bm25_basics_copy.md",
+     "size": 875,
+     "mtime_ns": 1794948682947672400
+    }
+   ],
+   "result": {
+    "batch_id": "6341c09670",
+    "status": "completed",
+    "documents": [],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [
+     "input/bm25_basics_copy.md"
+    ],
+    "l0_documents": 17,
+    "agent": null
+   },
+   "created_at": "2026-11-17T20:51:27+00:00",
+   "updated_at": "2026-11-17T20:52:26+00:00"
+  }
+ ],
+ "files": [
+  {
+   "input_path": "input/bm25_basics.md",
+   "size": 875,
+   "mtime_ns": 1794948142528643100,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:015d1fc9900d4cb0464224e034244c86662ef7106bdf92caab0d3177a767869b",
+   "staged_path": "input/_batches/4d4e776d7c/bm25_basics.md",
+   "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+   "current_path": "data/search/bm25_basics.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/checkpoint_postgres.md",
+   "size": 855,
+   "mtime_ns": 1794948142530643300,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:fbe2046f730409a1f2bc728db850227197ef08b8f8846f1bd05cde57298cd88a",
+   "staged_path": "input/_batches/4d4e776d7c/checkpoint_postgres.md",
+   "document_id": "bd2ea05b-e77b-44a3-805f-c4e50aa2e667",
+   "current_path": "data/storage/checkpoint_postgres.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/checkpoint_sqlite.md",
+   "size": 1176,
+   "mtime_ns": 1794948142532642600,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:bb24d5d26ab9e6ae45eed5bf9d65dc83440d7876e6a9c7fbb33c0e215d5c083d",
+   "staged_path": "input/_batches/4d4e776d7c/checkpoint_sqlite.md",
+   "document_id": "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+   "current_path": "data/storage/checkpoint_sqlite.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/hybrid_ranking.md",
+   "size": 696,
+   "mtime_ns": 1794948142534642900,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:f71106e4a32f6df7f0378b97e293a7ead4fdb9ccc70ad6e0212952df637fe31e",
+   "staged_path": "input/_batches/4d4e776d7c/hybrid_ranking.md",
+   "document_id": "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5",
+   "current_path": "data/search/hybrid_ranking.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/incident_101.md",
+   "size": 804,
+   "mtime_ns": 1794948142536642900,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:9865669e6313915fea71b22aececa5dd1c1cfc36804ccd92057aa1bc771ac4be",
+   "staged_path": "input/_batches/4d4e776d7c/incident_101.md",
+   "document_id": "5f7faa4a-3f52-4033-9251-263a4740361f",
+   "current_path": "data/ops/incident_101.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/meeting_m05.md",
+   "size": 690,
+   "mtime_ns": 1794948142537643900,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:382e08200d978261acc3fe18ad0ccf406925ba663e66514faa877fa9664c48b3",
+   "staged_path": "input/_batches/4d4e776d7c/meeting_m05.md",
+   "document_id": "17726e86-239d-4df1-ba18-ea8fc736e709",
+   "current_path": "data/meetings/meeting_m05.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/monitoring.md",
+   "size": 637,
+   "mtime_ns": 1794948142539641700,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:e79f45d97bf7a31699b549580babfcfa572b8f5755e1b31eccb517083a808d05",
+   "staged_path": "input/_batches/4d4e776d7c/monitoring.md",
+   "document_id": "526093ff-586a-4f04-a0f6-2558c1c186b0",
+   "current_path": "data/ops/monitoring.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/oncall.md",
+   "size": 640,
+   "mtime_ns": 1794948142540644100,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:50e7e542a80d2e3e55a0a44c651104245c999fe21f47de71976d98d47a6cade2",
+   "staged_path": "input/_batches/4d4e776d7c/oncall.md",
+   "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+   "current_path": "data/ops/oncall.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/redis_cache.md",
+   "size": 831,
+   "mtime_ns": 1794948142542645500,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:bbea12b7e612f23529b5c315ae1291b2c4f18a3627ab822a7aebf4f182968d0a",
+   "staged_path": "input/_batches/4d4e776d7c/redis_cache.md",
+   "document_id": "268f316b-2be7-4d5e-8c39-03d2006f109d",
+   "current_path": "data/storage/redis_cache.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/vector_search.md",
+   "size": 710,
+   "mtime_ns": 1794948142543642800,
+   "batch_id": "4d4e776d7c",
+   "status": "indexed",
+   "content_hash": "sha256:b7916c1ada0030c34e31c70c7095f9f0cb090aef1d28c4a2fb702f2dc12fd2e2",
+   "staged_path": "input/_batches/4d4e776d7c/vector_search.md",
+   "document_id": "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+   "current_path": "data/search/vector_search.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:45:05+00:00"
+  },
+  {
+   "input_path": "input/oncall_copy.md",
+   "size": 640,
+   "mtime_ns": 1794948308576675400,
+   "batch_id": "5c534583b2",
+   "status": "duplicate",
+   "content_hash": "sha256:50e7e542a80d2e3e55a0a44c651104245c999fe21f47de71976d98d47a6cade2",
+   "staged_path": "rejected/5c534583b2/oncall_copy.md",
+   "document_id": "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+   "current_path": "data/ops/oncall.md",
+   "note": "same content as data/ops/oncall.md: not indexed again, source kept in rejected/5c534583b2/oncall_copy.md",
+   "updated_at": "2026-11-17T20:45:14+00:00"
+  },
+  {
+   "input_path": "input/inference_energy.md",
+   "size": 801,
+   "mtime_ns": 1794948393377537000,
+   "batch_id": "578a8801b8",
+   "status": "indexed",
+   "content_hash": "sha256:fea75bdc827163d5e644414cbe78dc624fbc5991e116a43fc804d9b73ae56cb5",
+   "staged_path": "input/_batches/578a8801b8/inference_energy.md",
+   "document_id": "055181ba-a8db-4aa8-95d3-dd0c1e015549",
+   "current_path": "data/ops/inference_energy.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:47:14+00:00"
+  },
+  {
+   "input_path": "input/query_cache.md",
+   "size": 568,
+   "mtime_ns": 1794948393100896700,
+   "batch_id": "578a8801b8",
+   "status": "indexed",
+   "content_hash": "sha256:a817c995c83b81b4c6df3234469016a930e0ca38008dfff8cb24eaee6000f623",
+   "staged_path": "input/_batches/578a8801b8/query_cache.md",
+   "document_id": "baddb9db-da7e-4fae-a651-6ccd567e2068",
+   "current_path": "data/search/query_cache.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:47:14+00:00"
+  },
+  {
+   "input_path": "input/snapshot_policy.md",
+   "size": 598,
+   "mtime_ns": 1794948393102896700,
+   "batch_id": "578a8801b8",
+   "status": "indexed",
+   "content_hash": "sha256:f5668dd1a3713e8e8afb7681cb1defcbaf31236f06988c5e18b3116b8e2d927e",
+   "staged_path": "input/_batches/578a8801b8/snapshot_policy.md",
+   "document_id": "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+   "current_path": "data/storage/snapshot_policy.md",
+   "note": null,
+   "updated_at": "2026-11-17T20:47:14+00:00"
+  },
+  {
+   "input_path": "input/bm25_basics_copy.md",
+   "size": 875,
+   "mtime_ns": 1794948682947672400,
+   "batch_id": "6341c09670",
+   "status": "duplicate",
+   "content_hash": "sha256:015d1fc9900d4cb0464224e034244c86662ef7106bdf92caab0d3177a767869b",
+   "staged_path": "rejected/6341c09670/bm25_basics_copy.md",
+   "document_id": "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+   "current_path": "data/search/bm25_basics.md",
+   "note": "same content as data/search/bm25_basics.md: not indexed again, source kept in rejected/6341c09670/bm25_basics_copy.md",
+   "updated_at": "2026-11-17T20:52:26+00:00"
+  }
+ ],
+ "reports": [
+  {
+   "run_key": "lab4-topics-run-2026-11-17T20:45:20Z",
+   "workflow_id": "lab4-topics-run-2026-11-17T20:45:20Z",
+   "run_id": "01a1eb41-ceae-7b36-b526-11d7d8b12c0b",
+   "task_id": "TOP-20261117T204520Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261117T204520Z.md",
+   "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+   "frozen": 10,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-17T20:45:20Z",
+    "workflow_id": "lab4-topics-run-2026-11-17T20:45:20Z",
+    "run_id": "01a1eb41-ceae-7b36-b526-11d7d8b12c0b",
+    "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
+    "path": "data/_reports/topics_20261117T204520Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 10,
+    "documents_examined": 10,
+    "frozen_at": "2026-11-17T20:45:21+00:00",
+    "task_id": "TOP-20261117T204520Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [],
+    "report_count": 1
+   },
+   "created_at": "2026-11-17T20:45:21+00:00",
+   "updated_at": "2026-11-17T20:46:27+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-17T20:48:00Z",
+   "workflow_id": "lab4-topics-run-2026-11-17T20:48:00Z",
+   "run_id": "01a1eb44-3c62-7bb7-b73f-f80cafc476ed",
+   "task_id": "TOP-20261117T204800Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261117T204800Z.md",
+   "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+   "frozen": 13,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-17T20:48:00Z",
+    "workflow_id": "lab4-topics-run-2026-11-17T20:48:00Z",
+    "run_id": "01a1eb44-3c62-7bb7-b73f-f80cafc476ed",
+    "document_id": "08057d39-1bc3-469c-ba30-1b40da108fc1",
+    "path": "data/_reports/topics_20261117T204800Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-17T20:48:00+00:00",
+    "task_id": "TOP-20261117T204800Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [
+     "data/ops/inference_energy.md",
+     "data/search/query_cache.md",
+     "data/storage/snapshot_policy.md"
+    ],
+    "report_count": 2
+   },
+   "created_at": "2026-11-17T20:48:00+00:00",
+   "updated_at": "2026-11-17T20:49:37+00:00"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-17T20:49:46Z",
+   "workflow_id": "lab4-topics-manual-2026-11-17T20:49:46Z",
+   "run_id": "01a1eb45-dd8c-7017-b610-64d54801bc28",
+   "task_id": "TOP-manual-20261117T204946Z",
+   "status": "complete",
+   "path": "data/_reports/topics_manual-20261117T204946Z.md",
+   "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+   "frozen": 13,
+   "result": {
+    "run_key": "lab4-topics-manual-2026-11-17T20:49:46Z",
+    "workflow_id": "lab4-topics-manual-2026-11-17T20:49:46Z",
+    "run_id": "01a1eb45-dd8c-7017-b610-64d54801bc28",
+    "document_id": "d22e29da-44be-453c-bd97-6327bd2aeec4",
+    "path": "data/_reports/topics_manual-20261117T204946Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-17T20:49:47+00:00",
+    "task_id": "TOP-manual-20261117T204946Z",
+    "rewritten": false,
+    "already_published": true,
+    "reasons": [],
+    "new_documents": [],
+    "report_count": 3
+   },
+   "created_at": "2026-11-17T20:49:47+00:00",
+   "updated_at": "2026-11-17T20:51:05+00:00"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+   "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+   "task_id": "TOP-manual-20261117T205111Z",
+   "status": "partial",
+   "path": "data/_reports/topics_manual-20261117T205111Z.md",
+   "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+   "frozen": 13,
+   "result": {
+    "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
+    "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
+    "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
+    "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
+    "path": "data/_reports/topics_manual-20261117T205111Z.md",
+    "status": "partial",
+    "topics": 0,
+    "documents_frozen": 13,
+    "documents_examined": 5,
+    "frozen_at": "2026-11-17T20:51:11+00:00",
+    "task_id": "TOP-manual-20261117T205111Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [
+     "задача агента TOP-manual-20261117T205111Z не завершена: paused — budget exhausted before the call (model_calls: needed 1, remaining 0 of 4)",
+     "не просмотрено документов: 8",
+     "документов вне тем: 5"
+    ],
+    "new_documents": [],
+    "report_count": 4
+   },
+   "created_at": "2026-11-17T20:51:11+00:00",
+   "updated_at": "2026-11-17T20:51:17+00:00"
+  }
+ ]
+}
