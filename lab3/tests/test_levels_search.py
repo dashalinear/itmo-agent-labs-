@@ -96,7 +96,36 @@ def test_grep_pages_reach_every_hit(env):
         if not cur:
             break
     expected = sum(1 for m in MAN["exhaustive_area"]["mentions"] if m["has_word"])
-    assert total == seen == expected > 20                           # more than one page of 20
+    assert total == seen == expected > 20                           # more than one page
+
+
+def test_grep_page_fits_single_result_limit_and_invented_cursor_is_rejected(env):
+    import base64
+    ct = CorpusTools(env)
+    r = ct.search_grep("Ограничение", "L2", folder="storage")
+    envelope = json.dumps({"ok": True, "tool": "search_grep", "data": r}, ensure_ascii=False)
+    assert len(envelope) < 6000 and r["next_cursor"]                # not offloaded: next_cursor visible to the model
+    unpadded = r["next_cursor"].rstrip("=")
+    assert ct.search_grep("Ограничение", "L2", folder="storage", cursor=unpadded)["page"] ==         ct.search_grep("Ограничение", "L2", folder="storage", cursor=r["next_cursor"])["page"]
+    invented = base64.urlsafe_b64encode(b'{"offset":16}').decode()  # what the model made up in run M3
+    with pytest.raises(ToolError) as e:
+        ct.search_grep("Ограничение", "L2", folder="storage", cursor=invented)
+    assert e.value.type == "invalid_cursor"
+
+
+def test_deep_coaching_marks_repeated_reads_and_asks_to_cite(env):
+    ct = CorpusTools(env, coach=True)
+    d = doc_by_name(env, "runbook_rb09.md")
+    secs = ct.get_l1(d["document_id"])["sections"]
+    first = ct.read_section(d["document_id"], secs[0]["section_id"])
+    assert "note_repeat" not in first
+    again = ct.read_section(d["document_id"], secs[0]["section_id"])
+    assert "note_repeat" in again
+    for _ in range(4):
+        r = ct.read_fragment(secs[0]["first_fragment_id"])
+    if not env.store.evidence(env.task_id):
+        assert "harness_hint" in r
+    assert "note_repeat" not in CorpusTools(env).read_section(d["document_id"], secs[0]["section_id"])   # main: no coaching
 
 
 def test_cite_fragment_verifies_quote(env):

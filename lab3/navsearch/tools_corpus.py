@@ -31,6 +31,8 @@ from .levels import Levels
 
 L0_PAGE = 25
 GREP_PAGE = 20
+GREP_PAGE_CHARS = 4200      # one grep page stays below the harness single-result limit (next_cursor stays visible)
+READS_BEFORE_HINT = 5       # deep coaching: this many L2 reads without any evidence -> hint to cite
 SECTION_PAGE_CHARS = 4200
 
 
@@ -42,9 +44,13 @@ def dec_cursor(c: str | None, default):
     if not c:
         return default
     try:
-        return json.loads(base64.urlsafe_b64decode(c.encode()).decode())
+        obj = json.loads(base64.urlsafe_b64decode(c.encode() + b"=" * (-len(c) % 4)).decode())
     except Exception:  # noqa: BLE001
-        raise ToolError("invalid_cursor", "cursor is not valid; use the next_cursor value exactly as returned")
+        obj = None
+    if not isinstance(obj, dict) or set(obj) != set(default) or not all(isinstance(v, int) and v >= 0 for v in obj.values()):
+        raise ToolError("invalid_cursor", "cursor is not valid: never build a cursor yourself, pass the next_cursor value "
+                                          "exactly as returned by the previous page of the SAME call")
+    return obj
 
 
 def numbered(text: str, start: int) -> str:
@@ -171,7 +177,9 @@ class CiteArgs(BaseModel):
 
 # ======================================================================= tools
 class CorpusTools:
-    def __init__(self, env: CorpusEnv) -> None:
+    def __init__(self, env: CorpusEnv, coach: bool = False) -> None:
+        self.coach = coach                  # deep sub-agent: notes on repeated reads, hint to cite
+        self._reads: dict[str, int] = {}
         self.env = env
 
     # ------------------------------------------------------------- ingestion
@@ -283,6 +291,21 @@ class CorpusTools:
                 "next": "get_l1(document_id) to read the structure and summary"}
 
     # ------------------------------------------------------------- L1
+    def _track(self, key: str, res: dict) -> dict:
+        """Read bookkeeping that survives compaction: repeated reads and reads without evidence are pointed out."""
+        if not self.coach:
+            return res
+        n = self._reads.get(key, 0) + 1
+        self._reads[key] = n
+        if n > 1:
+            res["note_repeat"] = (f"You already read exactly this {n - 1} time(s) in this task. Do not read it again: "
+                                  "cite what you need from it with cite_fragment, or move to another document.")
+        reads = sum(self._reads.values())
+        if reads >= READS_BEFORE_HINT and not self.env.store.evidence(self.env.task_id):
+            res["harness_hint"] = (f"{reads} L2 reads and 0 evidence so far. Now call cite_fragment for every relevant "
+                                   "line you have read (exact quote), then continue or finish with submit_result.")
+        return res
+
     def get_l1(self, document_id: str) -> dict:
         e = self.env
         l1 = e.levels.get_l1(document_id)
@@ -318,12 +341,16 @@ class CorpusTools:
                         "text": numbered(f["text"], f["start_line"])})
             size += len(f["text"])
             i += 1
-        return {"level": "L2", "document_id": document_id, "path": l2["fragments"][0]["path"], "section_id": section_id,
-                "section_title": frs[0]["section_title"], "fragments_in_section": len(frs), "fragments": out,
-                "next_cursor": enc_cursor({"o": i}) if i < len(frs) else None,
-                "back": f"get_l1('{document_id}')"}
+        return self._track(f"s|{document_id}|{section_id}|{off}", {
+            "level": "L2", "document_id": document_id, "path": l2["fragments"][0]["path"], "section_id": section_id,
+            "section_title": frs[0]["section_title"], "fragments_in_section": len(frs), "fragments": out,
+            "next_cursor": enc_cursor({"o": i}) if i < len(frs) else None,
+            "back": f"get_l1('{document_id}')"})
 
     def read_fragment(self, fragment_id: str) -> dict:
+        return self._track(f"f|{fragment_id}", self._fragment(fragment_id))
+
+    def _fragment(self, fragment_id: str) -> dict:
         f = self.env.levels.fragment(fragment_id)
         return {"level": "L2", "fragment_id": fragment_id, "document_id": f["document_id"], "path": f["path"],
                 "section_id": f["section_id"], "section_title": f["section_title"], "lines": [f["start_line"], f["end_line"]],
@@ -388,9 +415,15 @@ class CorpusTools:
             raise ToolError("invalid_regex", str(err))
         hits = self._grep_all(rx, level, self.env.docs_in_scope(folder, document_id))
         off = dec_cursor(cursor, {"o": 0})["o"]
-        page = hits[off: off + GREP_PAGE]
+        page, size = [], 0
+        for h in hits[off: off + GREP_PAGE]:
+            s = len(json.dumps(h, ensure_ascii=False)) + 2
+            if page and size + s > GREP_PAGE_CHARS:
+                break
+            page.append(h)
+            size += s
         self.env.log_search("grep", level, pattern, len(hits))
-        nxt = off + GREP_PAGE
+        nxt = off + len(page)
         return {"search": "grep", "level": level, "pattern": pattern, "regex": regex, "total": len(hits),
                 "hits": page, "page": [off + 1, off + len(page)],
                 "next_cursor": enc_cursor({"o": nxt}) if nxt < len(hits) else None,
@@ -421,7 +454,7 @@ class CorpusTools:
                         hits.append({"document_id": d["document_id"], "path": d["path"], "line": i,
                                      "page": f["page_start"] if f and f["page_start"] else None,
                                      "fragment_id": f["fragment_id"] if f else None, "match": m.group(0),
-                                     "text": line[:300]})
+                                     "text": line[:220]})
         return hits
 
     # ------------------------------------------------------------- search: vector (Elasticsearch kNN)

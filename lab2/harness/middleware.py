@@ -156,6 +156,10 @@ class OutputGuardMiddleware(AgentMiddleware):
                 s = json.dumps(v, ensure_ascii=False, default=str)
                 meta[k] = v if len(s) <= 300 else s[:300] + "…"
             return env["data"]["text"][:n], {"ok": env.get("ok"), "data_fields": meta}
+        if isinstance(env, dict) and isinstance(env.get("data"), dict):
+            # small fields (next_cursor, total, page, ...) stay visible: paging works without the artifact
+            meta = {k: v for k, v in env["data"].items() if len(json.dumps(v, ensure_ascii=False, default=str)) <= 300}
+            return text[:n], {"ok": env.get("ok"), "data_fields": meta}
         if isinstance(env, dict):
             return text[:n], {"ok": env.get("ok")}
         return text[:n], {}

@@ -104,7 +104,7 @@ class Lab3:
                                cfg.base.llm_base_url, cfg.base.llm_api_key, cfg.base.llm_model)
         artifacts = ArtifactStore(ws, store, task_id, max_chars=max(limits.max_tool_result_chars - 800, 1000))
         env = CorpusEnv(ws, catalog, Levels(ws, catalog), self.index, self.embedder, store, task_id)
-        corpus = CorpusTools(env)
+        corpus = CorpusTools(env, coach=task["kind"] == "deep")
         docs = DocTools(ws, catalog, store, task_id, limits)
         return task, limits, ws, catalog, budget, counter, artifacts, env, corpus, docs
 

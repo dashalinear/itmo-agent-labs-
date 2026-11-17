@@ -36,7 +36,7 @@ MAX_RESULT_WAIT_S = 20
 
 DEFAULT_SUB_LIMITS = {
     # sub-agents work in one run until they submit: no per-turn cap (that cap is for the dialog of the main agent)
-    "deep": {"max_total_tokens": 450_000, "max_model_calls": 40, "max_tool_calls": 160, "max_model_calls_per_run": 0},
+    "deep": {"max_total_tokens": 800_000, "max_model_calls": 40, "max_tool_calls": 160, "max_model_calls_per_run": 0},
     "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0},
 }
 
