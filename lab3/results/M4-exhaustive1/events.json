@@ -1,0 +1,932 @@
+[
+  {
+    "id": 3016,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:54+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 3018,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:55+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "exhaustive"
+    }
+  },
+  {
+    "id": 3021,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 3490,
+      "reserve": 2048,
+      "total": 5538,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 3022,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 3490,
+      "reserve": 2048,
+      "total": 5538,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 3023,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 3490,
+      "actual_input": 2382,
+      "actual_output": 27,
+      "duration_s": 1.92,
+      "calibrated_cpt": 2.94
+    }
+  },
+  {
+    "id": 3024,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "area_defined",
+    "data": {
+      "folder": "storage",
+      "documents": 10,
+      "fragments": 47
+    }
+  },
+  {
+    "id": 3025,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 3721,
+      "reserve": 2048,
+      "total": 5769,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.94)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 3026,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 3721,
+      "reserve": 2048,
+      "total": 5769,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.94)"
+    }
+  },
+  {
+    "id": 3030,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 3721,
+      "actual_input": 3107,
+      "actual_output": 15,
+      "duration_s": 0.55,
+      "calibrated_cpt": 3.035
+    }
+  },
+  {
+    "id": 3031,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5471,
+      "reserve": 2048,
+      "total": 7519,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.03)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 3032,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:26:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5471,
+      "reserve": 2048,
+      "total": 7519,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.03)"
+    }
+  },
+  {
+    "id": 3057,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5471,
+      "actual_input": 4993,
+      "actual_output": 669,
+      "duration_s": 12.22,
+      "calibrated_cpt": 3.021
+    }
+  },
+  {
+    "id": 3058,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6718,
+      "reserve": 2048,
+      "total": 8766,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 3059,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6718,
+      "reserve": 2048,
+      "total": 8766,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)"
+    }
+  },
+  {
+    "id": 3062,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6718,
+      "actual_input": 6418,
+      "actual_output": 44,
+      "duration_s": 1.12,
+      "calibrated_cpt": 2.949
+    }
+  },
+  {
+    "id": 3064,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 8702,
+      "reserve": 2048,
+      "total": 10750,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 3065,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 8702,
+      "reserve": 2048,
+      "total": 10750,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)"
+    }
+  },
+  {
+    "id": 3078,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 8702,
+      "actual_input": 8295,
+      "actual_output": 925,
+      "duration_s": 9.76,
+      "calibrated_cpt": 2.882
+    }
+  },
+  {
+    "id": 3079,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10675,
+      "reserve": 2048,
+      "total": 12723,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 3080,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10675,
+      "reserve": 2048,
+      "total": 12723,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 3081,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10675,
+      "actual_input": 10272,
+      "actual_output": 46,
+      "duration_s": 1.59,
+      "calibrated_cpt": 2.804
+    }
+  },
+  {
+    "id": 3082,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12982,
+      "reserve": 2048,
+      "total": 15030,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 3083,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12982,
+      "reserve": 2048,
+      "total": 15030,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 3093,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12982,
+      "actual_input": 12214,
+      "actual_output": 772,
+      "duration_s": 9.49,
+      "calibrated_cpt": 2.753
+    }
+  },
+  {
+    "id": 3098,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14819,
+      "reserve": 2048,
+      "total": 16867,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 3099,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14819,
+      "reserve": 2048,
+      "total": 16867,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 3100,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14819,
+      "actual_input": 13875,
+      "actual_output": 47,
+      "duration_s": 3.0,
+      "calibrated_cpt": 2.706
+    }
+  },
+  {
+    "id": 3101,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16873,
+      "reserve": 2048,
+      "total": 18921,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 3102,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16873,
+      "reserve": 2048,
+      "total": 18921,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)"
+    }
+  },
+  {
+    "id": 3124,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16873,
+      "actual_input": 15624,
+      "actual_output": 1033,
+      "duration_s": 16.2,
+      "calibrated_cpt": 2.672
+    }
+  },
+  {
+    "id": 3125,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:27:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19212,
+      "reserve": 2048,
+      "total": 21260,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)",
+      "messages": 41
+    }
+  },
+  {
+    "id": 3135,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:02+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19212,
+      "after_tokens": 12213,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 20,
+      "kept_messages": 21,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5074,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nВыполнить полный обход папки `storage` (10 документов, 47 фрагментов) и зафиксировать все упоминания ограничений (лимиты, TTL, квоты, ограничения по размеру/количеству/времени) с указанием document_id, пути, fragment_id, строк и точной цитаты.\n\n## Ограничения пользователя\nПолный обход папки storage: просмотри ВСЕ документы папки (без top-k, без пропуска) и перечисли ВСЕ упоминания ограничений (лимиты, ограничения, ограничения по размеру/количеству/времени, TTL, квоты, лимиты на запросы и т.п.). Для каждого упоминания: document_id, путь, fragment_id, номера строк и точная цитата. Сгруппируй по документам.\n\n## Решения и договорённости\n- Используется инструмент `area_next` для последовательного чтения фрагментов батчами.\n- Каждое найденное упоминание фиксируется через `record_mention` с указанием цитаты и примечания.\n- Покрытие отслеживается через `coverage` в ответах инструментов.\n\n## Подтверждённые факты (с источниками)\n1. **st_checkpoint_postgres.md** (e625cae6-6c4f-4673-87db-8839f34f778a):\n   - Размер значения JSONB < 1 МБ (строка 17, fragment_id: 11b79fd6-a645-51b4-96a1-c5f246253d5d, evidence_id: ev_944a0bc1567a).\n   - Пул соединений: 20 на рабочий процесс (строка 25, fragment_id: 6225b442-1f05-58f6-aa83-4f682be3559f, evidence_id: ev_e8746d6f48e7).\n   - Исчерпание пула ведёт к таймауту (строка 27, fragment_id: 6225b442-1f05-58f6-aa83-4f682be3559f, evidence_id: ev_4c4b4ebb6d49).\n   - Откат миграции невозможен без потери чекпоинтов (строка 37, fragment_id: ed0f165c-9e68-559a-b05e-5d40afaf1d0a, evidence_id: ev_b07b10b47bab).\n2. **st_checkpoint_sqlite.md** (63576563-7a76-4186-a023-d168b5d7873b):\n   - Один писатель одновременно (строка 17, fragment_id: d1af8d09-2a42-55af-b3ef-6ec0e76d4764, evidence_id: ev_d0215c6a954f).\n   - Таймаут блокировки: 5 секунд (строка 25, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_7d9ee048b73c).\n   - Таймаут блокировки не может быть бесконечным (строка 27, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_c7c8f9289032).\n   - Сетевые диски не поддерживаются (строка 29, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_15e37c3089ec).\n   - Размер базы ≤ 2 ГБ (строка 39, fragment_id: 5871bd63-e50a-5b10-a295-7a49f9652074, evidence_id: ev_5310842a13aa).\n3. **st_encryption_state.md** (3bf69284-f264-4f26-bcd4-a4b8e5f13cf0):\n   - Ключ шифрования нельзя хранить рядом с базой (строка 17, fragment_id: f4aa4b3e-5591-5021-a9d8-019b1eaa6a86, evidence_id: ev_9f618a6058f3).\n   - Доступ только у сервисной роли агента (строка 25, fragment_id: 6f53f38e-f7d5-57d3-b43f-cd2a9"
+    }
+  },
+  {
+    "id": 3136,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12213,
+      "reserve": 2048,
+      "total": 14261,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)"
+    }
+  },
+  {
+    "id": 3137,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12213,
+      "actual_input": 11168,
+      "actual_output": 47,
+      "duration_s": 1.67,
+      "calibrated_cpt": 2.653
+    }
+  },
+  {
+    "id": 3138,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14125,
+      "reserve": 2048,
+      "total": 16173,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 3139,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14125,
+      "reserve": 2048,
+      "total": 16173,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 3140,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14125,
+      "actual_input": 12910,
+      "actual_output": 920,
+      "duration_s": 7.69,
+      "calibrated_cpt": 2.636
+    }
+  },
+  {
+    "id": 3141,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16133,
+      "reserve": 2048,
+      "total": 18181,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 3142,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16133,
+      "reserve": 2048,
+      "total": 18181,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)"
+    }
+  },
+  {
+    "id": 3143,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16133,
+      "actual_input": 14877,
+      "actual_output": 46,
+      "duration_s": 2.11,
+      "calibrated_cpt": 2.607
+    }
+  },
+  {
+    "id": 3144,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18288,
+      "reserve": 2048,
+      "total": 20336,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.61)",
+      "messages": 33
+    }
+  },
+  {
+    "id": 3145,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18288,
+      "reserve": 2048,
+      "total": 20336,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.61)"
+    }
+  },
+  {
+    "id": 3146,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18288,
+      "actual_input": 16658,
+      "actual_output": 779,
+      "duration_s": 7.29,
+      "calibrated_cpt": 2.592
+    }
+  },
+  {
+    "id": 3147,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20067,
+      "reserve": 2048,
+      "total": 22115,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.59)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 3148,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:30+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 20067,
+      "after_tokens": 10256,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 22,
+      "kept_messages": 18,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6748,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nВыполнить полный обход папки `storage` (10 документов, 47 фрагментов) и зафиксировать все упоминания ограничений (лимиты, TTL, квоты, ограничения по размеру/количеству/времени) с указанием document_id, пути, fragment_id, строк и точной цитаты.\n\n## Ограничения пользователя\nПолный обход папки storage: просмотри ВСЕ документы папки (без top-k, без пропуска) и перечисли ВСЕ упоминания ограничений (лимиты, ограничения, ограничения по размеру/количеству/времени, TTL, квоты, лимиты на запросы и т.п.). Для каждого упоминания: document_id, путь, fragment_id, номера строк и точная цитата. Сгруппируй по документам.\n\n## Решения и договорённости\n- Используется инструмент `area_next` для последовательного чтения фрагментов батчами.\n- Каждое найденное упоминание фиксируется через `record_mention` с указанием цитаты и примечания.\n- Покрытие отслеживается через `coverage` в ответах инструментов.\n\n## Подтверждённые факты (с источниками)\n1. **st_checkpoint_postgres.md** (e625cae6-6c4f-4673-87db-8839f34f778a):\n   - Размер значения JSONB < 1 МБ (строка 17, fragment_id: 11b79fd6-a645-51b4-96a1-c5f246253d5d, evidence_id: ev_944a0bc1567a).\n   - Пул соединений: 20 на рабочий процесс (строка 25, fragment_id: 6225b442-1f05-58f6-aa83-4f682be3559f, evidence_id: ev_e8746d6f48e7).\n   - Исчерпание пула ведёт к таймауту (строка 27, fragment_id: 6225b442-1f05-58f6-aa83-4f682be3559f, evidence_id: ev_4c4b4ebb6d49).\n   - Откат миграции невозможен без потери чекпоинтов (строка 37, fragment_id: ed0f165c-9e68-559a-b05e-5d40afaf1d0a, evidence_id: ev_b07b10b47bab).\n2. **st_checkpoint_sqlite.md** (63576563-7a76-4186-a023-d168b5d7873b):\n   - Один писатель одновременно (строка 17, fragment_id: d1af8d09-2a42-55af-b3ef-6ec0e76d4764, evidence_id: ev_d0215c6a954f).\n   - Таймаут блокировки: 5 секунд (строка 25, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_7d9ee048b73c).\n   - Таймаут блокировки не может быть бесконечным (строка 27, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_c7c8f9289032).\n   - Сетевые диски не поддерживаются (строка 29, fragment_id: 7245ffda-7741-58a4-8ba0-520c881b3903, evidence_id: ev_15e37c3089ec).\n   - Размер базы ≤ 2 ГБ (строка 39, fragment_id: 5871bd63-e50a-5b10-a295-7a49f9652074, evidence_id: ev_5310842a13aa).\n3. **st_encryption_state.md** (3bf69284-f264-4f26-bcd4-a4b8e5f13cf0):\n   - Ключ шифрования нельзя хранить рядом с базой (строка 17, fragment_id: f4aa4b3e-5591-5021-a9d8-019b1eaa6a86, evidence_id: ev_9f618a6058f3).\n   - Доступ только у сервисной роли агента (строка 25, fragment_id: 6f53f38e-f7d5-57d3-b43f-cd2a9"
+    }
+  },
+  {
+    "id": 3149,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10256,
+      "reserve": 2048,
+      "total": 12304,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.59)"
+    }
+  },
+  {
+    "id": 3150,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10256,
+      "actual_input": 8997,
+      "actual_output": 45,
+      "duration_s": 1.33,
+      "calibrated_cpt": 2.617
+    }
+  },
+  {
+    "id": 3151,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10338,
+      "reserve": 2048,
+      "total": 12386,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.62)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 3152,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10338,
+      "reserve": 2048,
+      "total": 12386,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.62)"
+    }
+  },
+  {
+    "id": 3153,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10338,
+      "actual_input": 9126,
+      "actual_output": 15,
+      "duration_s": 1.23,
+      "calibrated_cpt": 2.634
+    }
+  },
+  {
+    "id": 3154,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11204,
+      "reserve": 2048,
+      "total": 13252,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.63)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 3155,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11204,
+      "reserve": 2048,
+      "total": 13252,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.63)"
+    }
+  },
+  {
+    "id": 3156,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11204,
+      "actual_input": 10031,
+      "actual_output": 2048,
+      "duration_s": 15.92,
+      "calibrated_cpt": 2.635
+    }
+  },
+  {
+    "id": 3157,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:49+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Найдено подтверждений: 39 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; data/storage/st_checkpoint_sqlite.md — 5; data/storage/st_encryption_state.md — 3; data/storage/st_event_sourcing"
+    }
+  },
+  {
+    "id": 3158,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11302,
+      "reserve": 2048,
+      "total": 13350,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 3159,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:28:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11302,
+      "reserve": 2048,
+      "total": 13350,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)"
+    }
+  },
+  {
+    "id": 3160,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11302,
+      "actual_input": 10093,
+      "actual_output": 2048,
+      "duration_s": 16.52,
+      "calibrated_cpt": 2.638
+    }
+  },
+  {
+    "id": 3161,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:05+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Найдено подтверждений: 39 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; data/storage/st_checkpoint_sqlite.md — 5; data/storage/st_encryption_state.md — 3; data/storage/st_event_sourcing"
+    }
+  },
+  {
+    "id": 3162,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11393,
+      "reserve": 2048,
+      "total": 13441,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 3163,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11393,
+      "reserve": 2048,
+      "total": 13441,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)"
+    }
+  },
+  {
+    "id": 3164,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11393,
+      "actual_input": 10154,
+      "actual_output": 2048,
+      "duration_s": 16.68,
+      "calibrated_cpt": 2.643
+    }
+  },
+  {
+    "id": 3165,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:22+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Найдено подтверждений: 39 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; data/storage/st_checkpoint_sqlite.md — 5; data/storage/st_encryption_state.md — 3; data/storage/st_event_sourcing"
+    }
+  },
+  {
+    "id": 3166,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:22+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "submit_result",
+      "repeats": 3
+    }
+  },
+  {
+    "id": 3167,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11569,
+      "reserve": 2048,
+      "total": 13617,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 3168,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:22+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11569,
+      "reserve": 2048,
+      "total": 13617,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)"
+    }
+  },
+  {
+    "id": 3169,
+    "task_id": "M4-exhaustive1",
+    "ts": "2026-11-17T00:29:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11569,
+      "actual_input": 10259,
+      "actual_output": 2048,
+      "duration_s": 16.4,
+      "calibrated_cpt": 2.651
+    }
+  }
+]

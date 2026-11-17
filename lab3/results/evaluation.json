@@ -302,14 +302,73 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M4",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 8,
+      "model_calls": 18,
+      "tool_calls": 10,
+      "tokens": 929292,
+      "compactions": 0,
+      "peak_input": 8886,
+      "evidence": 1,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M4-deep1",
+      "kind": "deep",
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 40)",
+      "parent": "M4",
+      "runs": 1,
+      "model_calls": 40,
+      "tool_calls": 81,
+      "tokens": 529461,
+      "compactions": 3,
+      "peak_input": 16761,
+      "evidence": 17,
+      "searches": {
+        "fulltext:L1": 2,
+        "vector:L1": 1,
+        "grep:L1": 1,
+        "grep:L2": 25
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M4-exhaustive1",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Найдено подтверждений: 39 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; dat",
+      "parent": "M4",
+      "runs": 1,
+      "model_calls": 19,
+      "tool_calls": 51,
+      "tokens": 219297,
+      "compactions": 2,
+      "peak_input": 16658,
+      "evidence": 39,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 4,
-    "grep:L1": 9,
-    "vector:L1": 3,
+    "fulltext:L1": 6,
+    "grep:L1": 10,
+    "vector:L1": 4,
     "fulltext:L2": 3,
-    "grep:L2": 193,
+    "grep:L2": 218,
     "vector:L2": 2
   },
   "exhaustive": [
@@ -350,6 +409,22 @@
       "documents_done": 10,
       "documents_total": 10,
       "mentions_recorded": 37,
+      "expected_codes": 36,
+      "found_codes": 35,
+      "missing_codes": [
+        "L-ST-30"
+      ],
+      "found_without_keyword": 9
+    },
+    {
+      "task_id": "M4-exhaustive1",
+      "status": "completed",
+      "runs": 1,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 39,
       "expected_codes": 36,
       "found_codes": 35,
       "missing_codes": [
