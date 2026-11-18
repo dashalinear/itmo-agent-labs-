@@ -1,18 +1,18 @@
 {
  "schema": "l0l1l2/1",
  "corpus_id": "itmo-lab3",
- "generated_at": "2026-11-17T20:52:26+00:00",
+ "generated_at": "2026-11-18T12:01:45+00:00",
  "totals": {
-  "documents": 17,
-  "with_l1": 17,
-  "fragments": 104,
-  "service_documents": 4
+  "documents": 19,
+  "with_l1": 19,
+  "fragments": 125,
+  "service_documents": 5
  },
  "folders": [
   {
    "folder": "_reports",
-   "documents": 4,
-   "fragments": 65
+   "documents": 5,
+   "fragments": 83
   },
   {
    "folder": "meetings",
@@ -21,8 +21,8 @@
   },
   {
    "folder": "ops",
-   "documents": 4,
-   "fragments": 12
+   "documents": 5,
+   "fragments": 15
   },
   {
    "folder": "search",
@@ -61,6 +61,20 @@
    "l1": true,
    "sections": 6,
    "l2_fragments": 19,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+   "path": "data/_reports/topics_20261118T115936Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-18",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-18T11:59:36Z",
+   "content_hash": "sha256:4b1d9a5adaca6bb51a53162aa4bb01d38c1deec32f973fa9a0d645070214ccbb",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 18,
    "l2_current": true,
    "service": "topic_report"
   },
@@ -125,6 +139,19 @@
    "title": "Энергопотребление инференса LLM",
    "description": "Справка об энергопотреблении инференса LLM: измерения, меры экономии и учёт.",
    "content_hash": "sha256:fea75bdc827163d5e644414cbe78dc624fbc5991e116a43fc804d9b73ae56cb5",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "7afdfeaf-00a1-4bd7-95ce-fce51749e326",
+   "path": "data/ops/latency_budget.md",
+   "folder": "ops",
+   "title": "Бюджет задержки ответа агента",
+   "description": "Операционное требование к времени ответа агента: цель 8 секунд для 95 % запросов, распределение бюджета и контроль.",
+   "content_hash": "sha256:da6a4f0e3b51542815135b34213075bbd2bd7bc44d32a8a022168e3bf5fa4798",
    "is_empty": false,
    "l1": true,
    "sections": 3,
@@ -315,20 +342,46 @@
     "documents_examined": 5,
     "frozen_at": "2026-11-17T20:51:11+00:00",
     "task_id": "TOP-manual-20261117T205111Z"
+   },
+   {
+    "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+    "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+    "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+    "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+    "path": "data/_reports/topics_20261118T115936Z.md",
+    "status": "complete",
+    "topics": 3,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-18T11:59:49+00:00",
+    "task_id": "TOP-20261118T115936Z"
    }
   ],
   "latest": {
-   "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
-   "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
-   "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
-   "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
-   "path": "data/_reports/topics_manual-20261117T205111Z.md",
-   "status": "partial",
-   "topics": 0,
+   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+   "path": "data/_reports/topics_20261118T115936Z.md",
+   "status": "complete",
+   "topics": 3,
    "documents_frozen": 13,
-   "documents_examined": 5,
-   "frozen_at": "2026-11-17T20:51:11+00:00",
-   "task_id": "TOP-manual-20261117T205111Z"
+   "documents_examined": 13,
+   "frozen_at": "2026-11-18T11:59:49+00:00",
+   "task_id": "TOP-20261118T115936Z"
+  },
+  "latest_complete": {
+   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+   "path": "data/_reports/topics_20261118T115936Z.md",
+   "status": "complete",
+   "topics": 3,
+   "documents_frozen": 13,
+   "documents_examined": 13,
+   "frozen_at": "2026-11-18T11:59:49+00:00",
+   "task_id": "TOP-20261118T115936Z"
   }
  }
 }

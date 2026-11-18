@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-17T20:51:17+00:00",
+  "updated_at": "2026-11-18T12:01:39+00:00",
   "documents": [
     {
       "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
@@ -250,6 +250,134 @@
       ],
       "indexed_at": "2026-11-17T20:49:36+00:00",
       "registered_at": "2026-11-17T20:49:35+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+      "original_path": "data/_reports/topics_20261118T115936Z.md",
+      "current_path": "data/_reports/topics_20261118T115936Z.md",
+      "title": "Обзор тем корпуса — 2026-11-18",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-18T11:59:36Z",
+      "content_hash": "sha256:4b1d9a5adaca6bb51a53162aa4bb01d38c1deec32f973fa9a0d645070214ccbb",
+      "size_bytes": 12913,
+      "line_count": 113,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "a465354b-ea4d-5067-bf2f-dc38a8b26e42",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "f9093483-2827-5e72-90a3-fb6bdfc06431",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "3d316ca9-6b18-5749-b8b0-766025f398a7",
+          "start_line": 17,
+          "end_line": 25,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "20519438-109c-58fb-af75-a8f16b007636",
+          "start_line": 27,
+          "end_line": 33,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "817b084b-a897-5355-b80e-dcbce5342bf3",
+          "start_line": 35,
+          "end_line": 41,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "dc941b6f-4a9f-5d58-80af-dfc91b699770",
+          "start_line": 43,
+          "end_line": 46,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "1f4f1d66-5ef9-5c8b-b6cf-cceb828bcc5c",
+          "start_line": 47,
+          "end_line": 49,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "96abe100-e8f4-5f88-814d-fa2308843e76",
+          "start_line": 51,
+          "end_line": 53,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "aee5b8b2-e74f-50b8-97f5-67a84fb446cb",
+          "start_line": 55,
+          "end_line": 62,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "fe0b34eb-58a5-5e44-a042-329cee3cdaf4",
+          "start_line": 64,
+          "end_line": 67,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "f66b30da-86e6-5fce-8511-e90843ff1d47",
+          "start_line": 68,
+          "end_line": 71,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "2506507b-6366-57b0-a4d8-8f08de0f20a9",
+          "start_line": 73,
+          "end_line": 81,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "619ca7db-572a-5ee8-87ba-ff45e799c09b",
+          "start_line": 83,
+          "end_line": 85,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "294ceb9a-14cd-5375-90e3-5555c816ef39",
+          "start_line": 87,
+          "end_line": 89,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "d96ea7bd-633c-5066-8e27-0d49ff05875d",
+          "start_line": 91,
+          "end_line": 93,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "90c319be-8cea-5327-a7e0-2e202a8614d5",
+          "start_line": 95,
+          "end_line": 95,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "337a3ab8-542d-527a-92df-66c6bb7b29d6",
+          "start_line": 97,
+          "end_line": 106,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "04fcee77-7c84-537a-b4ee-089e2e174498",
+          "start_line": 107,
+          "end_line": 113,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-18T12:01:11+00:00",
+      "registered_at": "2026-11-18T12:01:07+00:00",
       "moves": []
     },
     {
@@ -601,6 +729,50 @@
           "from": "input/_batches/578a8801b8/inference_energy.md",
           "to": "data/ops/inference_energy.md",
           "at": "2026-11-17T20:46:47+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "7afdfeaf-00a1-4bd7-95ce-fce51749e326",
+      "original_path": "input/_batches/6b93f9adf0/latency_budget.md",
+      "current_path": "data/ops/latency_budget.md",
+      "title": "Бюджет задержки ответа агента",
+      "category": "ops",
+      "description": "Операционное требование LAT-2026-07: ответ агента в 8 секунд для 95 % запросов, распределение бюджета (поиск 1,5 с, модель 5 с) и алерт при превышении дольше 10 минут.",
+      "content_hash": "sha256:da6a4f0e3b51542815135b34213075bbd2bd7bc44d32a8a022168e3bf5fa4798",
+      "size_bytes": 690,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Отнесено в ops: это операционное SLO-требование с контролем и алертами, а не учебный материал.",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "ec67f2a4-d120-5971-b666-ad0428e989eb",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Цель"
+        },
+        {
+          "excerpt_id": "8ea222be-52a8-5146-a410-0638ddb67efa",
+          "start_line": 7,
+          "end_line": 9,
+          "summary": "Распределение бюджета"
+        },
+        {
+          "excerpt_id": "1c243225-3114-5410-8cce-132358a8b584",
+          "start_line": 11,
+          "end_line": 12,
+          "summary": "Контроль"
+        }
+      ],
+      "indexed_at": "2026-11-18T12:01:37+00:00",
+      "registered_at": "2026-11-18T12:01:31+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/6b93f9adf0/latency_budget.md",
+          "to": "data/ops/latency_budget.md",
+          "at": "2026-11-18T12:01:31+00:00"
         }
       ]
     },

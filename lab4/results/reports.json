@@ -51,19 +51,45 @@
    "documents_examined": 5,
    "frozen_at": "2026-11-17T20:51:11+00:00",
    "task_id": "TOP-manual-20261117T205111Z"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+   "path": "data/_reports/topics_20261118T115936Z.md",
+   "status": "complete",
+   "topics": 3,
+   "documents_frozen": 13,
+   "documents_examined": 13,
+   "frozen_at": "2026-11-18T11:59:49+00:00",
+   "task_id": "TOP-20261118T115936Z"
   }
  ],
  "latest": {
-  "run_key": "lab4-topics-manual-2026-11-17T20:51:11Z",
-  "workflow_id": "lab4-topics-manual-2026-11-17T20:51:11Z",
-  "run_id": "01a1eb47-2688-72d9-95c2-6549164afc5c",
-  "document_id": "ac7c4b78-c672-4847-858f-58a379f30718",
-  "path": "data/_reports/topics_manual-20261117T205111Z.md",
-  "status": "partial",
-  "topics": 0,
+  "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+  "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+  "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+  "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+  "path": "data/_reports/topics_20261118T115936Z.md",
+  "status": "complete",
+  "topics": 3,
   "documents_frozen": 13,
-  "documents_examined": 5,
-  "frozen_at": "2026-11-17T20:51:11+00:00",
-  "task_id": "TOP-manual-20261117T205111Z"
+  "documents_examined": 13,
+  "frozen_at": "2026-11-18T11:59:49+00:00",
+  "task_id": "TOP-20261118T115936Z"
+ },
+ "latest_complete": {
+  "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+  "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+  "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+  "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+  "path": "data/_reports/topics_20261118T115936Z.md",
+  "status": "complete",
+  "topics": 3,
+  "documents_frozen": 13,
+  "documents_examined": 13,
+  "frozen_at": "2026-11-18T11:59:49+00:00",
+  "task_id": "TOP-20261118T115936Z"
  }
 }

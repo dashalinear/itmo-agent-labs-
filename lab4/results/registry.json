@@ -335,6 +335,58 @@
    },
    "created_at": "2026-11-17T20:51:27+00:00",
    "updated_at": "2026-11-17T20:52:26+00:00"
+  },
+  {
+   "batch_id": "6b93f9adf0",
+   "workflow_id": "ingest-6b93f9adf0",
+   "run_id": "01a1ee88-7d1a-734f-b414-da9cbd1e13d0",
+   "task_id": "ING-6b93f9adf0",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/latency_budget.md",
+     "size": 690,
+     "mtime_ns": 1795003274753889600
+    }
+   ],
+   "result": {
+    "batch_id": "6b93f9adf0",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/latency_budget.md",
+      "document_id": "7afdfeaf-00a1-4bd7-95ce-fce51749e326",
+      "current_path": "data/ops/latency_budget.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 19,
+    "agent": {
+     "attempt": 1,
+     "reason": "Организован 1 файл из input/_batches/6b93f9adf0: latency_budget.md -> data/ops/ (SLO-требование LAT-2026-07). Написан L1 (3 секции), проиндексирован L2 (3 фрагмента в ES), каталог обновлён. validate_corpus: ok, 19 документов, 125 фрагментов, проблем нет.",
+     "resumed": false,
+     "run_result": "completed",
+     "runs": 1,
+     "status": "completed",
+     "task_id": "ING-6b93f9adf0",
+     "usage": {
+      "compactions": 0,
+      "model_calls": 11,
+      "tokens": 99430,
+      "tool_calls": 11
+     }
+    }
+   },
+   "created_at": "2026-11-18T12:01:24+00:00",
+   "updated_at": "2026-11-18T12:01:45+00:00"
   }
  ],
  "files": [
@@ -532,6 +584,19 @@
    "current_path": "data/search/bm25_basics.md",
    "note": "same content as data/search/bm25_basics.md: not indexed again, source kept in rejected/6341c09670/bm25_basics_copy.md",
    "updated_at": "2026-11-17T20:52:26+00:00"
+  },
+  {
+   "input_path": "input/latency_budget.md",
+   "size": 690,
+   "mtime_ns": 1795003274753889600,
+   "batch_id": "6b93f9adf0",
+   "status": "indexed",
+   "content_hash": "sha256:da6a4f0e3b51542815135b34213075bbd2bd7bc44d32a8a022168e3bf5fa4798",
+   "staged_path": "input/_batches/6b93f9adf0/latency_budget.md",
+   "document_id": "7afdfeaf-00a1-4bd7-95ce-fce51749e326",
+   "current_path": "data/ops/latency_budget.md",
+   "note": null,
+   "updated_at": "2026-11-18T12:01:45+00:00"
   }
  ],
  "reports": [
@@ -662,6 +727,36 @@
    },
    "created_at": "2026-11-17T20:51:11+00:00",
    "updated_at": "2026-11-17T20:51:17+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+   "task_id": "TOP-20261118T115936Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261118T115936Z.md",
+   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+   "frozen": 13,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
+    "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
+    "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
+    "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
+    "path": "data/_reports/topics_20261118T115936Z.md",
+    "status": "complete",
+    "topics": 3,
+    "documents_frozen": 13,
+    "documents_examined": 13,
+    "frozen_at": "2026-11-18T11:59:49+00:00",
+    "task_id": "TOP-20261118T115936Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [],
+    "report_count": 5
+   },
+   "created_at": "2026-11-18T11:59:49+00:00",
+   "updated_at": "2026-11-18T12:01:11+00:00"
   }
  ]
 }

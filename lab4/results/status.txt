@@ -3,6 +3,7 @@
   5c534583b2  completed  wf=ingest-5c534583b2 run=01a1eb41-b371-741c-8fb6-c8d77fcdc7ed task=None files=1 docs=0 dups=1
   578a8801b8  completed  wf=ingest-578a8801b8 run=01a1eb42-fd50-794f-a9c0-553f1e4e11a4 task=ING-578a8801b8 files=3 docs=3 dups=0
   6341c09670  completed  wf=ingest-6341c09670 run=01a1eb48-4b63-7e17-938f-d8d582116708 task=None files=1 docs=0 dups=1
+  6b93f9adf0  completed  wf=ingest-6b93f9adf0 run=01a1ee88-7d1a-734f-b414-da9cbd1e13d0 task=ING-6b93f9adf0 files=1 docs=1 dups=0
 == files
   input/bm25_basics.md                 indexed   batch=4d4e776d7c -> data/search/bm25_basics.md a401ef12-7eb0-4a47-976c-b1d6bead53b9 
   input/checkpoint_postgres.md         indexed   batch=4d4e776d7c -> data/storage/checkpoint_postgres.md bd2ea05b-e77b-44a3-805f-c4e50aa2e667 
@@ -19,8 +20,10 @@
   input/query_cache.md                 indexed   batch=578a8801b8 -> data/search/query_cache.md baddb9db-da7e-4fae-a651-6ccd567e2068 
   input/snapshot_policy.md             indexed   batch=578a8801b8 -> data/storage/snapshot_policy.md 6f16eb41-0d6c-4073-826d-cb1e6a3da741 
   input/bm25_basics_copy.md            duplicate batch=6341c09670 -> data/search/bm25_basics.md a401ef12-7eb0-4a47-976c-b1d6bead53b9 (same content as data/search/bm25_basics.md: not indexed again, source kept in rejected
+  input/latency_budget.md              indexed   batch=6b93f9adf0 -> data/ops/latency_budget.md 7afdfeaf-00a1-4bd7-95ce-fce51749e326 
 == reports (TopicReport)
   lab4-topics-run-2026-11-17T20:45:20Z             complete  task=TOP-20261117T204520Z frozen=10 -> data/_reports/topics_20261117T204520Z.md
   lab4-topics-run-2026-11-17T20:48:00Z             complete  task=TOP-20261117T204800Z frozen=13 -> data/_reports/topics_20261117T204800Z.md
   lab4-topics-manual-2026-11-17T20:49:46Z          complete  task=TOP-manual-20261117T204946Z frozen=13 -> data/_reports/topics_manual-20261117T204946Z.md
   lab4-topics-manual-2026-11-17T20:51:11Z          partial   task=TOP-manual-20261117T205111Z frozen=13 -> data/_reports/topics_manual-20261117T205111Z.md
+  lab4-topics-run-2026-11-18T11:59:36Z             complete  task=TOP-20261118T115936Z frozen=13 -> data/_reports/topics_20261118T115936Z.md
