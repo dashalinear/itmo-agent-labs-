@@ -1,14 +1,19 @@
-# Tool-contract errors through REAL tool calls (the model is asked to call the tool and show its result).
+# Tool-contract errors through REAL tool calls (every turn explicitly asks to call the tool and show
+# its result, so the error comes from the tool, not from the model refusing).
 # run_all_demos.ps1 creates workspace/input/outside_link as a directory junction pointing OUTSIDE the
-# workspace before this dialog and removes it afterwards.
-Вызови инструмент head для data/howto/howto_git_branches.txt с n=0 и покажи, что он вернул.
-Вызови инструмент tail для data/howto/howto_git_branches.txt с n=-2 и покажи результат.
+# workspace (a file secret.txt lives there) before this dialog and removes only the junction afterwards.
+# Files are referenced by content, not by a fixed folder, because the folder names were chosen by the
+# model in the main dialog; the first turn resolves the paths through the catalog.
+Через catalog_view найди пути инструкции по веткам git, протокола kickoff-встречи и протокола ретроспективы. Просто перечисли пути.
+Вызови инструмент head для инструкции по веткам git с n=0 и покажи, что он вернул.
+Вызови инструмент tail для инструкции по веткам git с n=-2 и покажи результат.
 Вызови read с путём ../../secret.txt и покажи, что вернул инструмент.
 Вызови read с абсолютным путём C:\Windows\win.ini и покажи результат инструмента.
 Вызови ls для input и затем ls для input/outside_link и покажи оба результата.
 Вызови read для input/outside_link/secret.txt и покажи результат.
-Вызови move: перенеси data/howto/howto_git_branches.txt в ../outside.txt и покажи результат.
-Вызови move: перенеси data/meetings/meeting_2026-10-02_kickoff.md в data/meetings/meeting_2026-11-10_retro.md и покажи результат, ничего не переименовывая.
+Вызови grep рекурсивно по папке input с шаблоном outside-the-workspace и покажи результат.
+Вызови move: перенеси инструкцию по веткам git в ../outside.txt и покажи результат.
+Вызови move: источник — протокол kickoff-встречи, назначение — ТОЧНЫЙ путь существующего протокола ретроспективы. Ничего не переименовывай и не выбирай другое имя, просто покажи результат инструмента.
 Вызови web_fetch для http://127.0.0.1:9/ и покажи результат.
 /check
 /exit

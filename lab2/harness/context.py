@@ -143,21 +143,39 @@ class HarnessContext:
         return len(fresh)
 
     # -- test hook: simulated crash -------------------------------------------------
-    def crash_check(self, phase: str = "before") -> None:
-        """HARNESS_CRASH_AT=tool:N       -> os._exit before the N-th tool call of this process
-                         after_tool:N -> os._exit right AFTER the N-th tool finished (effect done,
-                                         checkpoint of the tools step not yet written: the real failure window)"""
+    def crash_check(self, phase: str = "before", tool: str | None = None) -> None:
+        """HARNESS_CRASH_AT=tool:N              -> os._exit before the N-th tool call of this process
+                         after_tool:N        -> os._exit right AFTER the N-th tool finished (effect done,
+                                                checkpoint of the tools step not yet written: the real failure window)
+                         after_tool:<name>:N -> the same, counting only calls of tool <name> (e.g. web_fetch,
+                                                save_evidence): the crash point does not depend on the model's order
+                         after_download:N    -> inside web_fetch, right after the N-th HTTP download finished and
+                                                BEFORE the page is stored (URL stays 'running', HTTP already counted)"""
         if not self.crash_at or ":" not in self.crash_at:
             return
-        kind, n = self.crash_at.split(":", 1)
-        if (kind == "tool" and phase == "before") or (kind == "after_tool" and phase == "after"):
-            if phase == "before":
-                self._tool_calls_this_process += 1
-                count = self._tool_calls_this_process
-            else:
-                self._tools_done_this_process += 1
-                count = self._tools_done_this_process
-            if count >= int(n):
-                self.emit("simulated_crash", at=self.crash_at, phase=phase)
-                sys.stdout.flush()
-                os._exit(137)
+        parts = self.crash_at.split(":")
+        kind = parts[0]
+        name = parts[1] if len(parts) == 3 else None
+        try:
+            n = int(parts[-1])
+        except ValueError:
+            return
+        if kind == "tool" and phase == "before":
+            self._tool_calls_this_process += 1
+            count = self._tool_calls_this_process
+        elif kind == "after_tool" and phase == "after" and (name is None or name == tool):
+            self._tools_done_this_process += 1
+            count = self._tools_done_this_process
+        elif kind == "after_download" and phase == "download":
+            self._tools_done_this_process += 1
+            count = self._tools_done_this_process
+        else:
+            return
+        if count >= n:
+            self.emit("simulated_crash", at=self.crash_at, phase=phase, tool=tool, count=count,
+                      usage_at_crash={k: v for k, v in self.store.usage(self.task_id).items()
+                                      if k in ("http_requests", "cache_hits", "tool_calls", "model_calls")},
+                      evidence_at_crash=len(self.store.evidence(self.task_id)),
+                      urls_running=[u["url"] for u in self.store.urls(self.task_id, "running")])
+            sys.stdout.flush()
+            os._exit(137)

@@ -24,6 +24,18 @@ def excerpt_key(document_id: str, content_hash: str, start_line: int, end_line: 
     return str(uuid.uuid5(EXCERPT_NAMESPACE, f"{document_id}|{content_hash}|{start_line}|{end_line}"))
 
 
+def category_from_path(path: str | None) -> Optional[str]:
+    """Category = first folder under data/ (data/<category>/<file>); None for other paths.
+
+    Same rule as organizer.catalog.Catalog.category_of, duplicated here so that the
+    MCP server does not depend on the agent package.
+    """
+    parts = str(path or "").replace("\\", "/").strip("/").split("/")
+    if len(parts) >= 3 and parts[0] == "data" and parts[1]:
+        return parts[1]
+    return None
+
+
 class Excerpt(BaseModel):
     excerpt_id: Optional[str] = Field(None, description="Stable key; recomputed by the server if omitted or inconsistent")
     document_id: str

@@ -13,7 +13,7 @@ from typing import Any, Iterable
 from elasticsearch import Elasticsearch, NotFoundError
 from elasticsearch.helpers import scan
 
-from .schema import INDEX_MAPPING, Excerpt, excerpt_key
+from .schema import INDEX_MAPPING, Excerpt, category_from_path, excerpt_key
 
 
 def _now() -> str:
@@ -73,17 +73,29 @@ class ExcerptStore:
                 "documents": {d: {"excerpt_ids": ids, "count": self.count(d)} for d, ids in per_doc.items()}}
 
     def update_path(self, document_id: str, new_path: str, category: str | None = None) -> dict:
+        """Point all excerpts of a document to ``new_path``.
+
+        The category always follows the folder: for ``data/<cat>/...`` it is set to
+        ``<cat>`` even when the caller omitted ``category`` (otherwise the index kept
+        the category of the old folder after a move) or passed a different one.
+        For paths outside data/ the explicit ``category`` (if any) is used.
+        """
         self.ensure_index()
+        derived = category_from_path(new_path)
+        effective = derived if derived is not None else category
         script = "ctx._source.current_path = params.p;"
         params: dict[str, Any] = {"p": new_path}
-        if category is not None:
+        if effective is not None:
             script += " ctx._source.category = params.c;"
-            params["c"] = category
+            params["c"] = effective
         r = self.es.update_by_query(index=self.index, refresh=True, conflicts="proceed",
                                     query={"term": {"document_id": document_id}},
                                     script={"source": script, "params": params, "lang": "painless"})
-        return {"document_id": document_id, "new_path": new_path, "updated": r.get("updated", 0),
-                "total": r.get("total", 0)}
+        out = {"document_id": document_id, "new_path": new_path, "category": effective,
+               "updated": r.get("updated", 0), "total": r.get("total", 0)}
+        if category is not None and derived is not None and category != derived:
+            out["category_note"] = f"category '{category}' ignored: path {new_path} defines category '{derived}'"
+        return out
 
     def delete_document(self, document_id: str) -> dict:
         self.ensure_index()

@@ -1,0 +1,459 @@
+{
+ "corpus_id": "itmo-lab3",
+ "frozen_at": "2026-11-17T00:29:55+00:00",
+ "totals": {
+  "documents": 56,
+  "with_l1": 55,
+  "fragments": 323
+ },
+ "documents": [
+  {
+   "document_id": "7ca9884c-2bca-47ea-b685-20dae1df6072",
+   "path": "data/_unsorted/empty_todo.txt",
+   "title": "empty_todo",
+   "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "l1": false,
+   "l2_fragments": 0
+  },
+  {
+   "document_id": "41819d86-5354-4116-8c42-d225c3988c65",
+   "path": "data/agents/agent_evaluation.md",
+   "title": "Оценка агентов",
+   "content_hash": "sha256:93b21f8f1b24b9f56f44426d01fed000929ad1e3679a0d650a0fd5436fcf3938",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+   "path": "data/agents/agent_memory_compression.md",
+   "title": "Сжатие памяти агента (NEWDOC-2026-A)",
+   "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "116dffe1-2620-4e18-a055-2429b8ee3fc1",
+   "path": "data/agents/agents_seminar_react.txt",
+   "title": "Семинар по агентным системам: паттерн ReAct",
+   "content_hash": "sha256:592276719548e0c073c097d338d8ea1ffa1e312cb14e53a14378c624703dec6e",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "d5c599dd-b421-4950-bdef-e82b221d052e",
+   "path": "data/agents/compaction_hooks.md",
+   "title": "Компактификация через хуки",
+   "content_hash": "sha256:d2565d18fb06755313b32a72cf9e206584f6025a6226544a1011b9d04a693c59",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "97c13376-9fe4-44ae-9b54-c1001f3d84c5",
+   "path": "data/agents/guardrails.md",
+   "title": "Guardrails агента",
+   "content_hash": "sha256:870c9debe9ec699c9f3ea191724d6044281abc7aab54496ba1fc3e2c585e2f7f",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "635e4ac7-7c3c-469a-8c5f-2017ded0c4de",
+   "path": "data/agents/planning.md",
+   "title": "Планирование в длительных задачах",
+   "content_hash": "sha256:1e043e48bb01b40eaca341c9b4960eb928d8f81fc2b31b1196dadbb638be75f6",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "922e2323-b5bc-475f-9aff-9a3d8b7e63e8",
+   "path": "data/agents/prompt_injection.md",
+   "title": "Инъекции в документах",
+   "content_hash": "sha256:7af3a2d9594322fefafe92d1632316107c76544dfcf9f996202fc6a85faa8d69",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "e8d3179b-d923-47cc-a12a-fea6a8fb0b3c",
+   "path": "data/agents/react_pattern.md",
+   "title": "Паттерн ReAct",
+   "content_hash": "sha256:43344cf04e0cebe1dc4f0e0cf7909b3cc3df215dc9c820fde9562f5f58ffc2bf",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "3b797c3d-c719-4cbb-8842-b37763b983d5",
+   "path": "data/agents/subagents.md",
+   "title": "Субагенты и делегирование",
+   "content_hash": "sha256:44ca383597b68d5e3d826606803fdfbe21589d93e8033ffa44b1ba15fd620d0a",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "a9e6ecf2-388b-4b65-a4d2-7fdc292743e4",
+   "path": "data/agents/tool_design.md",
+   "title": "Проектирование инструментов агента",
+   "content_hash": "sha256:7284dd67c04c88a6a94c17ac190b429bf6b62d7ac8fc509836d51a1c421c53fd",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "41b8a9a1-3422-4f5a-afed-d5d2e38d8e35",
+   "path": "data/courses/es_seminar_analyzers_shards.md",
+   "title": "Конспект семинара: анализаторы и шарды в Elasticsearch",
+   "content_hash": "sha256:9dbb597b11a1222521881c23e68842ff04f3d873c6d78baec59a316dd8686d0c",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "e8a026bb-3ea1-4ed7-8f09-b3a4c9513ff4",
+   "path": "data/courses/ir_course_lectures.md",
+   "title": "Конспект курса «Информационный поиск» (12 лекций)",
+   "content_hash": "sha256:841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
+   "l1": true,
+   "l2_fragments": 141
+  },
+  {
+   "document_id": "f6a0394f-8de8-4a15-8bbb-9e6d969bfe0f",
+   "path": "data/courses/ir_lecture_inverted_index.md",
+   "title": "Лекция 3. Инвертированный индекс и ранжирование BM25",
+   "content_hash": "sha256:5a860bc47749b655dcbefa0ef706e29c7f113e4f33fa658a14281ec92153a5d9",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "e286b698-4918-4759-b6cd-83de7c069239",
+   "path": "data/courses/mlops_lecture_monitoring.md",
+   "title": "MLOps, занятие 5: мониторинг моделей в продакшене",
+   "content_hash": "sha256:aad616662bd3301518f86a88b673ae59c39fd04972590ce5a43da15a1c1bb92a",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "ed359305-730d-4403-ae81-b276524d500a",
+   "path": "data/courses/vector_search_lecture.md",
+   "title": "Лекция 7. Векторный поиск и HNSW",
+   "content_hash": "sha256:529a707a83ab22a3a27158f15025d0ec11a6d9898371cfbb1505eea94c79126c",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "615ebf29-aa2c-4be7-80f5-3431b1eea8d1",
+   "path": "data/howto/howto_elasticsearch_docker.md",
+   "title": "Инструкция: как поднять Elasticsearch в Docker для учебного стенда",
+   "content_hash": "sha256:bb2e7de74465fddb3bb5c4271732dd2419c898da160c3ab78f0403972e796c6c",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "ad0c83c9-05c7-4bbf-8a74-190855b21bb8",
+   "path": "data/howto/howto_git_branches.txt",
+   "title": "Инструкция по работе с ветками git в учебных проектах",
+   "content_hash": "sha256:7e1de7ae0a64d5fd0f2ac27c4cde8ce9810a798346b5f804eb8ac7c376362628",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "cef37733-7c48-42f0-b8a0-a13b40dd1413",
+   "path": "data/meetings/call_transcript_2026-11-05.txt",
+   "title": "Расшифровка созвона дежурных 05.11.2026",
+   "content_hash": "sha256:57c23fc04338e50198db9f4330ab3b5b8decf50710120823052f94ebfa7fd6d1",
+   "l1": true,
+   "l2_fragments": 1
+  },
+  {
+   "document_id": "c26832a8-34d5-4725-b8ff-79afc2b66b54",
+   "path": "data/meetings/meeting_2026-10-02_kickoff.md",
+   "title": "Kickoff проекта DocSearch — 2 октября 2026",
+   "content_hash": "sha256:850138898276983b6adad9dca2965e9e8887a5f14232724c22a70a1bc26ef804",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "14d739ea-fb8d-45ce-9fa3-6f763bfba995",
+   "path": "data/meetings/meeting_2026-10-09_weekly.md",
+   "title": "Еженедельная встреча DocSearch, 2026-10-09",
+   "content_hash": "sha256:c775f0afe775bab104292ffeb0afcfb4eacf7611a5eb44c229c846418cafff7c",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "7568c151-632b-4646-837d-5aa77f24495d",
+   "path": "data/meetings/meeting_2026-11-10_retro.md",
+   "title": "Ретроспектива DocSearch — 10 ноября 2026",
+   "content_hash": "sha256:9fac47cf757077cffa37703dd11257536904867a8996eab24d68b97204d795b7",
+   "l1": true,
+   "l2_fragments": 1
+  },
+  {
+   "document_id": "9af1414d-b416-4d6f-9dc6-d11dd3396bed",
+   "path": "data/meetings/meeting_m12.md",
+   "title": "Протокол совещания M-12 (архитектура DocSearch)",
+   "content_hash": "sha256:77e58d6ca052974d35c7cdbf7b3c5fd382eefde37912bd117c1da0630c704646",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+   "path": "data/meetings/meeting_m13.md",
+   "title": "Протокол совещания M-13",
+   "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "79d31160-a5c6-4f3e-bbfa-39daa43da191",
+   "path": "data/ops/incident_031.md",
+   "title": "Разбор инцидента INC-2026-031",
+   "content_hash": "sha256:08f3b3a82f44c97d000deb5212f485972ac0881f6370769af42fe556c957429d",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "ca5f6d5c-acab-4613-98a6-92b4e4e44330",
+   "path": "data/ops/incident_034.md",
+   "title": "Разбор инцидента INC-2026-034",
+   "content_hash": "sha256:394012deb9d16978e2caaf623233d92e4f41e297d91f7503f45a7780f3f7b55c",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "298fc677-b4c5-4962-b5f4-c6335b2901e1",
+   "path": "data/ops/monitoring.md",
+   "title": "Мониторинг платформы агентов",
+   "content_hash": "sha256:7ae7696f04e85b2606221673555ad7d194736caccabf51a5759f57abf0fd0909",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "acf65fcd-4c28-4f30-affb-3d4e2a8a11a0",
+   "path": "data/ops/oncall_policy.md",
+   "title": "Политика дежурств",
+   "content_hash": "sha256:66406f6ae7520c00c659fc350ec87894dea3d94aad507ae7aeaa18291d3bb0dd",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "eaf28c57-0b44-4668-8338-4a7ec3bbe7cd",
+   "path": "data/ops/runbook_rb09.md",
+   "title": "Runbook RB-09: восстановление хранилища чекпоинтов",
+   "content_hash": "sha256:dc3dbb4c9377959fee409a823990eac4f8c1b577f94fa62823b8ff25a408070d",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+   "path": "data/ops/runbook_rb11.md",
+   "title": "Runbook RB-11: перенос индекса на новый узел (NEWDOC-2026-B)",
+   "content_hash": "sha256:c13b9f1f84465fff8d3385ef8d4c97f3ba92d1ea6db876b9616eaa66d3f65d3e",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "fd9485e7-df93-44b0-bc1f-b71d77ef235a",
+   "path": "data/projects/docsearch_architecture.md",
+   "title": "Архитектура DocSearch",
+   "content_hash": "sha256:db3a53f2381c9f03c5429d062a9ecba4d97c990999108b4f36dd4640a6e1e242",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "5741a1fa-6f38-4df1-ac25-8d2908f5fe3b",
+   "path": "data/projects/docsearch_requirements.md",
+   "title": "Требования к DocSearch",
+   "content_hash": "sha256:f321b36dbb4daa6a60fd5b0887fb35657bb4b5a2826fd8e4d5955c7327726f47",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "e7d3f8c9-9c87-4383-9021-3393c028af1a",
+   "path": "data/projects/docsearch_risks.md",
+   "title": "Риски проекта DocSearch",
+   "content_hash": "sha256:128f652ed2b287cce770080b03eec86fdcb24ecdca5eca067385a8524b95974c",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "123ad901-d37b-4c31-9c40-936e11e51727",
+   "path": "data/projects/docsearch_roadmap.md",
+   "title": "План работ DocSearch",
+   "content_hash": "sha256:c2d9ad305d157318c0f2abc5967b9be28e91c891bb2ec09061027372a32e743d",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "a9098fb3-3990-4331-b397-bbaac61e12ea",
+   "path": "data/projects/project_docsearch.md",
+   "title": "Проект DocSearch: описание и архитектура",
+   "content_hash": "sha256:e7641b83789ea41212a54bf97167df1684512b0cbf21edf01fddd30385cc7ba4",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "ac326f26-ef6e-4acb-b867-2ffd4874cabd",
+   "path": "data/projects/project_recsys.md",
+   "title": "Проект: рекомендательная система элективных курсов",
+   "content_hash": "sha256:2aeff3cef0b2183606111afd4cd5afdec3632490cc7fb32ed3b045a88833e351",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "503e9bff-a2c8-496d-a7cf-2798b55e0679",
+   "path": "data/search/analyzers_ru.md",
+   "title": "Анализаторы для русского языка",
+   "content_hash": "sha256:d9df87f5d41a0138778623610a6657212d60ae1373b07b4c62069a874f924824",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "e6bf2d7e-312a-4d40-b788-94e2dfd1cda1",
+   "path": "data/search/bm25_ranking.md",
+   "title": "Ранжирование BM25 в учебном индексе",
+   "content_hash": "sha256:367fd7c8da165154a60d5ad677f2764c7c748e67ad2ab1dc66b1e7092c66c301",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "0a5de126-f468-4542-addc-5ab896a056ca",
+   "path": "data/search/hybrid_search.md",
+   "title": "Гибридный поиск: правила объединения",
+   "content_hash": "sha256:861c51a99d8456916c6b81f516ae2c64c271ef3035cad1832505757f6cbef7f4",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "23c720b1-6884-4b02-8042-be3fd85234e9",
+   "path": "data/search/query_cache.md",
+   "title": "Кэш поисковых запросов",
+   "content_hash": "sha256:91b106308da9b8f2e54e078a4a95de8ac0f9f3d14a65caa30928cb3c9912efa8",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+   "path": "data/search/query_rewriting.md",
+   "title": "Переформулирование запросов агентом (NEWDOC-2026-C)",
+   "content_hash": "sha256:8105f153b55b6a0feb099046bd5f40838a09fa4ca73ed95ddd9c2ea637ba67d7",
+   "l1": true,
+   "l2_fragments": 2
+  },
+  {
+   "document_id": "1c73f4be-117f-4b39-a2b2-1331c5d16966",
+   "path": "data/search/query_suggest.md",
+   "title": "Подсказки и исправление опечаток",
+   "content_hash": "sha256:54ba2cac8a20d7615aeeef98f832ee86df8c5aadb76801c9e42ad7d298cd14a6",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "20c69615-ef93-4544-9b93-89b6985227c9",
+   "path": "data/search/search_quality.md",
+   "title": "Оценка качества поиска",
+   "content_hash": "sha256:684650c10da3076126a7d06157bae1f125c0edcc5c13af0f22e0dc2fea4a496f",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "f2ce4707-f509-4e32-a6ad-84400e9dd552",
+   "path": "data/search/search_quality_thoughts.md",
+   "title": "Заметка про поиск: как оценивать качество",
+   "content_hash": "sha256:95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",
+   "path": "data/search/sharding.md",
+   "title": "Шардирование индекса фрагментов",
+   "content_hash": "sha256:6f84936340e54f286a4f5d91daffdcb1394b289ed0639030aa5303ce5e4b31da",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "f4500b7d-d49d-4287-ae93-5ffb161f0c24",
+   "path": "data/search/vector_knn.md",
+   "title": "Векторный поиск kNN в Elasticsearch",
+   "content_hash": "sha256:8a2bd9e7b0ea10131ac24de76b47ac198984a736665f48db25acb59a5ae6ea5d",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "e625cae6-6c4f-4673-87db-8839f34f778a",
+   "path": "data/storage/st_checkpoint_postgres.md",
+   "title": "Чекпоинты в PostgreSQL",
+   "content_hash": "sha256:1608c190abb07c975a005e97d5c4ff29ce9a24d7d228e558604fa4d04ae1c6ec",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "63576563-7a76-4186-a023-d168b5d7873b",
+   "path": "data/storage/st_checkpoint_sqlite.md",
+   "title": "Чекпоинты в SQLite",
+   "content_hash": "sha256:f36f76f456e6aa4d863e598bf3e9609a24317a1e7c69b36115926a49b8d29f5d",
+   "l1": true,
+   "l2_fragments": 6
+  },
+  {
+   "document_id": "3bf69284-f264-4f26-bcd4-a4b8e5f13cf0",
+   "path": "data/storage/st_encryption_state.md",
+   "title": "Шифрование и защита сохранённого состояния",
+   "content_hash": "sha256:6ad213eb70aa43185ae731f6797216351f8b87f318fdebfa1e0135d97aa2a27f",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
+   "path": "data/storage/st_event_sourcing.md",
+   "title": "Событийная модель журнала состояния",
+   "content_hash": "sha256:f325b434bda63bf747c0b6d58b5daccc66b42adb91265d8963270e7cd4909465",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "a2eb3b8d-4b50-4f96-ac59-2efd432e77cf",
+   "path": "data/storage/st_memory_longterm.md",
+   "title": "Долговременная память агента",
+   "content_hash": "sha256:b797ea1668630e4f3402b798feb5e955f653a013680bee3af6f356e68431c819",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "72c0b078-4913-4a81-bdeb-794740e421f9",
+   "path": "data/storage/st_redis_state.md",
+   "title": "Состояние агента в Redis",
+   "content_hash": "sha256:7afb0ce7b7d6f0a62e968e9b53daa0c258a8b57727c256de494b6366e0a54aa7",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "92e89981-2af9-4410-bef8-998a60b843dc",
+   "path": "data/storage/st_retention_policy.txt",
+   "title": "Регламент хранения данных состояния агентов",
+   "content_hash": "sha256:47c59ca7ae50b589fa9e01643e126df97d9b10da311380f5b50038a18524b60a",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "2958d309-1cc8-443e-b7ee-53f93c31140a",
+   "path": "data/storage/st_schema_migrations.md",
+   "title": "Миграции схемы состояния",
+   "content_hash": "sha256:174f6267c5bde74ae682133b46b82bae682439a305e2e3ab3beff1257b296b9c",
+   "l1": true,
+   "l2_fragments": 5
+  },
+  {
+   "document_id": "eff7f142-fe09-4431-a8de-7a274d96e280",
+   "path": "data/storage/st_snapshot_policy.md",
+   "title": "Политика снимков и резервных копий состояния",
+   "content_hash": "sha256:758a4014863ab642d049bd25eedff75d6e44d063b5bcad21b1cee4a3bfa4de37",
+   "l1": true,
+   "l2_fragments": 4
+  },
+  {
+   "document_id": "16d4daa9-314f-410a-adde-e71eb59ea17e",
+   "path": "data/storage/st_vector_memory.md",
+   "title": "Векторная память и её пределы",
+   "content_hash": "sha256:5f43134db76c15a5030bece071d3de894c9aecc50a7d7941ed12fb25a5fc53b5",
+   "l1": true,
+   "l2_fragments": 4
+  }
+ ]
+}

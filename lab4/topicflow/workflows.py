@@ -21,7 +21,7 @@ FAST = RetryPolicy(initial_interval=timedelta(seconds=1), backoff_coefficient=2.
                    maximum_attempts=5, non_retryable_error_types=["UnknownBatch"])
 AGENT = RetryPolicy(initial_interval=timedelta(seconds=5), backoff_coefficient=2.0, maximum_interval=timedelta(minutes=1),
                     maximum_attempts=3)
-AGENT_TIMEOUT = timedelta(hours=2)
+AGENT_TIMEOUT = timedelta(hours=1)        # 3 attempts + backoff fit into the 4 h workflow execution timeout
 
 
 def _cause(e: BaseException) -> str:

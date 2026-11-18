@@ -129,7 +129,50 @@ async def test_cancel_stops_new_steps_and_keeps_partial_result(cfg):
         assert model.calls < len(model.plan)
         assert not res["history_problems"]
         assert "отменена" in (cfg.root / ".harness" / "tasks" / "A" / "report.md").read_text(encoding="utf-8")
+        # the reservation of the call abandoned by the cancel is released (not left "in flight")
+        assert r.store.reserved_tokens("A") == 0 and not r.store.inflight("A")
         assert (await r.run("A"))["status"] == "cancelled"             # cancelled is terminal
+
+
+async def test_cancel_during_model_call_releases_reservation(cfg):
+    model = PolicyModel(plan=reading_plan(range(2, 300, 2)), delay=3.0)     # every call waits 3 s
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec())
+
+        async def cancel_during_call():
+            await asyncio.sleep(1.5)                                   # inside the first model call
+            assert r.store.reserved_tokens("A") > 0
+            r.store.request_control("A", "cancel", "test")
+        asyncio.create_task(cancel_during_call())
+        res = await r.run("A")
+        assert res["status"] == "cancelled"
+        u, b = r.store.usage("A"), r.store
+        assert b.reserved_tokens("A") == 0 and u["interrupted_call_tokens"] > 0 and u["model_calls"] == 0
+        assert any(c["status"] == "cancelled" for c in r.store.model_calls("A"))
+        assert any(e["kind"] == "model_call_cancelled" for e in r.store.events("A"))
+
+
+async def test_task_deadline_pauses_with_partial_result(cfg):
+    quote = "эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах"
+    plan = [[tc("save_evidence", {"claim": "АС-01", "kind": "decision", "source": HANDBOOK, "page": 4, "quote": quote})],
+            [tc("write_report_section", {"section_id": "summary", "title": "Итог", "body": "АС-01, стр. 4"})]]
+    plan += reading_plan(range(2, 200, 2))
+    model = PolicyModel(plan=plan, delay=0.3)
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec(), overrides={"task_deadline_s": "2.5"})
+        res = await r.run("A")
+        t = r.store.get_task("A")
+        assert res["status"] == "paused" and "deadline" in t["status_reason"]
+        assert any(e["data"]["guard"] == "deadline" for e in r.store.events("A", "guardrail"))
+        assert len(r.store.evidence("A")) == 1 and model.calls < len(plan)
+        report = (cfg.root / ".harness" / "tasks" / "A" / "report.md").read_text(encoding="utf-8")
+        assert "Частичный результат" in report and "Итог" in report
+        assert r.store.usage("A")["active_seconds"] >= 2.5
+    # the deadline is cumulative active time: a new run without a raised limit stops at once
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r2:
+        calls = r2.store.usage("A")["model_calls"]
+        res2 = await r2.run("A", label="resume")
+        assert res2["status"] == "paused" and r2.store.usage("A")["model_calls"] == calls
 
 
 async def test_pause_request_is_graceful(cfg):

@@ -1,6 +1,9 @@
 """Subprocess helper for test_resume: runs task R with a PolicyModel and HARNESS_CRASH_AT.
 
-    python tests/crash_task.py <task_root> <results_dir> <traces_dir> <fixture_base_url> <crash_at> [create]
+    python tests/crash_task.py <task_root> <results_dir> <traces_dir> <fixture_base_url> <crash_at> [create] [resume] [web]
+
+create: create task R first; resume: label the run "resume" even with a crash point;
+web: the web plan (two parallel fetches, then two parallel evidence) for the crash-window test.
 """
 import asyncio
 import sys
@@ -35,17 +38,44 @@ def plan(base: str) -> list:
     ]
 
 
+def web_plan(base: str) -> list:
+    u1, u2 = f"{base}/p/checkpoint-1", f"{base}/p/idempotency-1"
+    q1 = "Чекпоинт содержит значения каналов состояния, версию и список ожидающих записей узлов."
+    q2 = WEB_QUOTE
+    return [
+        [tc("web_search", {"query": "чекпоинты идемпотентность"})],
+        [tc("web_fetch", {"url": u1}), tc("web_fetch", {"url": u2})],
+        [tc("save_evidence", {"claim": "чекпоинт", "kind": "fact", "source": u1, "quote": q1}),
+         tc("save_evidence", {"claim": "идемпотентность", "kind": "fact", "source": u2, "quote": q2})],
+        [tc("write_report_section", {"section_id": "summary", "title": "Итог", "body": "две страницы"})],
+        [tc("complete_task", {"note": "готово"})],
+        "Готово.",
+    ]
+
+
+def _first_p(slug: str) -> str:
+    import re
+    html = (HERE.parent / "fixtures" / "web" / "pages" / f"{slug}.html").read_text(encoding="utf-8")
+    return re.findall(r"<p>(.*?)</p>", html)[0]
+
+
+WEB_QUOTE = _first_p("idempotency-1")
+
+
 async def main() -> int:
     root, results, traces, base, crash_at = sys.argv[1:6]
+    flags = set(sys.argv[6:])
     cfg = replace(load_config(root=Path(root)), results_dir=Path(results), traces_dir=Path(traces), context_window=32768,
                   token_count_mode="heuristic", crash_at=crash_at)
     provider = FixtureProvider(HERE.parent / "fixtures" / "web" / "serp.json", base)
-    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan(base)), summarizer=SummaryModel(),
+    steps = web_plan(base) if "web" in flags else plan(base)
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=steps), summarizer=SummaryModel(),
                           provider=provider) as r:
-        if len(sys.argv) > 6 and sys.argv[6] == "create":
+        if "create" in flags:
             r.create({"task_id": "R", "kind": "mixed", "request": "тест перезапуска", "scope": ["data/search"],
-                      "constraints": ["[C1] x"], "criteria": {"min_evidence": 1, "required_sections": ["summary"]}})
-        res = await r.run("R", label="run" if crash_at else "resume")
+                      "constraints": ["[C1] x"],
+                      "criteria": {"min_evidence": 2 if "web" in flags else 1, "required_sections": ["summary"]}})
+        res = await r.run("R", label="resume" if ("resume" in flags or not crash_at) else "run")
         print("STATUS", res["status"])
     return 0
 

@@ -1,0 +1,6 @@
+$ python -m topicflow.cli replay --batch 4d4e776d7c   (повтор события обнаружения для уже обработанного батча)
+[watcher] replayed detection event for batch 4d4e776d7c: duplicate event rejected by Temporal - workflow ingest-4d4e776d7c already completed, not started again
+
+$ temporal workflow list --query "WorkflowId='ingest-4d4e776d7c'"   (в Temporal одно выполнение)
+   Status       WorkflowId           Type        StartTime  
+  Completed  ingest-4d4e776d7c  IngestNewFiles  17 hours ago

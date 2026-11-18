@@ -131,7 +131,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 | Activity | start-to-close | попыток | heartbeat | не повторяется |
 |---|---|---|---|---|
 | `record_batch`, `stage_batch`, `verify_batch`, `freeze_corpus`, `publish_report` | 30 с – 5 мин | 5 (1 с, ×2, до 20 с) | — | `UnknownBatch` |
-| `run_ingest_agent`, `run_topic_agent` | 2 ч | 3 (5 с, ×2, до 1 мин) | 90 с (в демо 30 с) | — |
+| `run_ingest_agent`, `run_topic_agent` | 1 ч | 3 (5 с, ×2, до 1 мин) | 90 с (в демо 30 с) | — |
 
 - **Агентная activity.** Каждые 10 с она шлёт heartbeat с расходом задачи. Если Worker убит, Temporal по heartbeat timeout отдаёт попытку живому Worker. Новая попытка открывает ту же задачу harness (`ING-…` / `TOP-…`) и продолжает её с последнего checkpoint и с накопленным бюджетом. В событиях задачи остаётся `temporal_attempt` с номером попытки и `resumed=true`.
 - **Исчерпание бюджета** и собственный `stop_partial` агента — окончательный результат: повтор не добавит бюджета. Отчёт публикуется как ЧАСТИЧНЫЙ. Прочие остановки (сервер LLM недоступен, сбой) поднимают повторяемую ошибку, ограниченную 3 попытками.
@@ -147,21 +147,35 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 - `arrivals/` — 2 файла, добавляются во время работы;
 - `new_topic/inference_energy.md` — новая тема (энергопотребление инференса) для второго периода.
 
-Индекс воспроизводится тем же путём: `prepare --reset`, затем файлы в `input`, всё остальное делают Temporal и агенты.
+Воспроизведение индекса и всех сценариев (из `lab4`, `$py = ..\lab3\.venv\Scripts\python.exe`):
+
+```powershell
+$py -m topicflow.cli prepare --reset          # пустой workspace и индексы itmo_lab4_l1 / itmo_lab4_l2
+$py -m topicflow.cli worker                   # окно 1
+$py -m topicflow.cli watch                    # окно 2
+$py -m topicflow.cli drop --set initial       # окно 3: 10 файлов -> автоматическая загрузка
+$py -m topicflow.cli wait --batches
+$py -m topicflow.cli schedule create --every 8m
+$py -m topicflow.cli drop --set arrivals; $py -m topicflow.cli drop --set new_topic
+```
+
+Всё это и сценарии сбоев целиком выполняет `scripts\run_lab4_demo.ps1`.
 
 ## 7. Тесты
 
-`..\lab3\.venv\Scripts\python.exe -m pytest -q` — 7 тестов. Нужен Elasticsearch, последний тест — ещё и Temporal на `localhost:7233` (иначе пропускается). Вместо LLM — детерминированные политики `tests/fake_llm.py`. Они работают по 5 документов за шаг, как требует лимит вывода шага, и продолжают работу после падения worker. Сводку они писать не умеют, поэтому для них поднят рабочий лимит контекста (`limit_overrides`); сама компактификация проверена в лабе 2.
+`..\lab3\.venv\Scripts\python.exe -m pytest -q` — 9 тестов. Нужен Elasticsearch, последний тест — ещё и Temporal на `localhost:7233` (иначе пропускается). Вместо LLM — детерминированные политики `tests/fake_llm.py`. Они работают по 5 документов за шаг, как требует лимит вывода шага, и продолжают работу после падения worker. Сводку они писать не умеют, поэтому для них поднят рабочий лимит контекста (`limit_overrides`); сама компактификация проверена в лабе 2.
 
 | Тест | Что проверяет |
 |---|---|
 | `test_watcher_ignores_partial_files_and_waits_for_stability` | `.part` не берётся, ожидание стабильности, повторное событие не регистрирует батч второй раз |
+| `test_restarted_incomplete_batch_runs_the_agent_again_instead_of_claiming_success` | агент перенёс файл в `data`, но не проиндексировал; перезапущенный батч снова вызывает агента и доводит L1/L2, а не объявляет успех |
+| `test_same_content_in_two_batches_staged_before_indexing_is_one_document` | одинаковый контент в двух батчах до индексации → второй в `rejected/`, один документ |
 | `test_watcher_survives_temporal_outage_and_rescans_after_restart` | Temporal недоступен в момент обнаружения → батч зарегистрирован и запускается позже; новый процесс watcher подбирает файл, добавленный, пока он был выключен, без повторного старта уже запущенного батча |
 | `test_ingestion_batch_is_idempotent_and_duplicates_are_not_indexed` | батч → `data` + L1/L2/ES; повтор каждого шага ничего не дублирует; тот же контент под другим именем → `rejected/`, без второго документа |
 | `test_two_reports_on_l0_and_the_second_covers_the_new_topic` | два отчёта на L0, `latest` и история; повтор публикации — тот же документ; второй отчёт видит новый документ и тему, отчёты в анализ не входят |
 | `test_budget_exhaustion_gives_a_partial_report_and_retry_does_not_duplicate` | бюджет → ЧАСТИЧНЫЙ отчёт с причинами; сбой после записи файла → повтор без дубля |
 | `test_agent_task_is_resumed_not_restarted` | повтор агентной activity продолжает ту же задачу harness, счётчики не сбрасываются |
-| `test_workflows_on_real_temporal_service` | оба workflow на настоящем Temporal; `publish_report` повторён Temporal (attempt 2), отчёт один |
+| `test_workflows_on_real_temporal_service` | оба workflow на настоящем Temporal; повтор события, пока workflow ещё в RUNNING, возвращает то же выполнение (`USE_EXISTING`, в Temporal одно выполнение); `publish_report` повторён Temporal (attempt 2), отчёт один |
 
 ## 8. Результаты прогона
 
@@ -172,15 +186,17 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 - трассы агентов harness — `traces/ING-*`, `traces/TOP-*`;
 - отчёты — `results/reports/`; L0 с блоком отчётов — `results/l0.json`, `results/reports.json`;
 - реестр — `results/registry.json`, `results/status.txt`; задачи harness — `results/<task_id>/`.
+- проверка поиска по автоматически загруженным файлам (grep, full-text и vector в Elasticsearch) — `results/search_check.txt`;
+- зафиксированные списки корпуса и карты тем по каждому запуску — `results/runs/<run>/`.
 
 | Сценарий | Workflow ID / run ID | Activity attempts | Задача harness | Результат |
 |---|---|---|---|---|
 | Автоматическая загрузка 10 файлов + падение worker | `ingest-4d4e776d7c` / `01a1eb3f-27b8-7aff-bf3f-459bd0405a73` | `run_ingest_agent`: **2** (первая — `Heartbeat timeout`) | `ING-4d4e776d7c`: 2 запуска, 13 вызовов модели, 80 tools, 3 компактификации | Worker #1 убит после 10-го tool (`HARNESS_CRASH_AT`, код 137). Через heartbeat timeout (30 с; попытка 2 стартовала через 38 с после первой) Temporal отдал её живому worker, и она **продолжила** ту же задачу: `temporal_attempt` attempt 2, `resumed=true`, `runs_before=1`. 10/10 файлов в `data`, L1, L2 и ES, `verify_batch` — completed |
-| Повтор события | тот же `ingest-4d4e776d7c` | — | — | `replay` отклонён Temporal: workflow с этим id уже завершён, второго выполнения в истории нет |
+| Повтор события | тот же `ingest-4d4e776d7c` | — | — | `replay` отклонён Temporal: workflow с этим id уже завершён, второго выполнения нет. Вывод повтора и `temporal workflow list` по этому id — `results/replay_event.txt`. Повтор, пока workflow выполняется, возвращает то же выполнение (`USE_EXISTING`), это проверено тестом на настоящем Temporal |
 | Тот же контент под другим именем | `ingest-5c534583b2` / `01a1eb41-b371-741c-8fb6-c8d77fcdc7ed` | `stage_batch`: 1 | — | `oncall_copy.md` → `rejected/`, статус `duplicate` → `data/ops/oncall.md`; второго документа нет |
-| Schedule, запуск 1 | `lab4-topics-run-2026-11-17T20:45:20Z` / `01a1eb41-ceae-7b36-b526-11d7d8b12c0b` | все по 1 | `TOP-20261117T204520Z`: 15 вызовов, 39 tools | **ПОЛНЫЙ**, 10/10 документов, 4 темы, 10 цитат L2 |
+| Schedule, запуск 1 (немедленный запуск при создании Schedule, `trigger_immediately`; в истории есть `TemporalScheduledById=lab4-topics`) | `lab4-topics-run-2026-11-17T20:45:20Z` / `01a1eb41-ceae-7b36-b526-11d7d8b12c0b` | все по 1 | `TOP-20261117T204520Z`: 15 вызовов, 39 tools | **ПОЛНЫЙ**, 10/10 документов, 4 темы, 10 цитат L2 |
 | Рост корпуса: 2 файла + новая тема | `ingest-578a8801b8` / `01a1eb42-fd50-794f-a9c0-553f1e4e11a4` | все по 1 | `ING-578a8801b8`: 12 вызовов, 27 tools | 3/3 файла проиндексированы автоматически, пока Schedule стоял на паузе |
-| Schedule, запуск 2 | `lab4-topics-run-2026-11-17T20:48:00Z` / `01a1eb44-3c62-7bb7-b73f-f80cafc476ed` | все по 1 | `TOP-20261117T204800Z`: 22 вызова, 58 tools, 2 компактификации | **ПОЛНЫЙ**, 13/13 документов, 4 темы, 13 цитат. В отчёте названы 3 новых документа; отчёт 1 сохранён и в анализ не вошёл (исключён 1 служебный документ) |
+| Schedule, запуск 2 (очередной тик интервала 20:48:00) | `lab4-topics-run-2026-11-17T20:48:00Z` / `01a1eb44-3c62-7bb7-b73f-f80cafc476ed` | все по 1 | `TOP-20261117T204800Z`: 22 вызова, 58 tools, 2 компактификации | **ПОЛНЫЙ**, 13/13 документов, 4 темы, 13 цитат. В отчёте названы 3 новых документа; отчёт 1 сохранён и в анализ не вошёл (исключён 1 служебный документ) |
 | Сбой `publish_report` после записи файла | `lab4-topics-manual-2026-11-17T20:49:46Z` / `01a1eb45-dd8c-7017-b610-64d54801bc28` | `publish_report`: **2** (первая — `injected fault … after_write`) | `TOP-manual-20261117T204946Z` | Повтор дописал тот же файл и тот же документ; в истории L0 одна запись за этот запуск |
 | Исчерпание бюджета | `lab4-topics-manual-2026-11-17T20:51:11Z` / `01a1eb47-2688-72d9-95c2-6549164afc5c` | все по 1 (бюджет окончателен, без повтора) | `TOP-manual-20261117T205111Z`: лимит 4 вызова | **ЧАСТИЧНЫЙ**: просмотрено 5 из 13, причины перечислены в отчёте |
 | Сбой `stage_batch` при каждой попытке | `ingest-6341c09670` / `01a1eb47-679e-7bba-8063-6a8d88ffa901` | `stage_batch`: **5**, затем workflow FAILED | — | Повторов ровно 5, файл остался в `input`. После `fault --clear` и перезапуска watcher тот же Workflow ID запущен заново: run `01a1eb48-4b63-7e17-938f-d8d582116708` — completed, это дубль `bm25_basics.md` → `rejected/` |
@@ -214,8 +230,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 Они вынесены в отдельную часть сценария, которая работает поверх корпуса основного прогона:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts
-un_lab4_demo.ps1 -Part extra -SkipTests
+powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part extra -SkipTests
 ```
 
 - **E1.** Worker убит после 6-го tool агента тем во время запуска по расписанию. Попытка 2 на новом worker продолжает ту же задачу `TOP-…`.
@@ -228,7 +243,7 @@ un_lab4_demo.ps1 -Part extra -SkipTests
 |---|---|---|
 | E2. Перекрытие запусков | `lab4-topics-run-2026-11-18T11:59:36Z` / `01a1ee86-d5d8-763c-8487-cb9a69444dde` | Пока этот запуск шёл, Schedule пропустил два запуска. Сразу после `schedule trigger`: `num_actions=1`, `skipped_overlap=1`, запуск в `running` (`results/schedule_overlap.json`). После завершения — `skipped_overlap=2`: очередной тик в 12:00:00 тоже пропущен (`results/schedule_after_overlap.json`). Сам запуск — **ПОЛНЫЙ** отчёт, 13/13 документов, 3 темы (`TOP-20261118T115936Z`: 15 вызовов модели, 47 tools, 2 компактификации) |
 | E3. Пересканирование после перезапуска детектора | `ingest-6b93f9adf0` / `01a1ee88-7d1a-734f-b414-da9cbd1e13d0` | `latency_budget.md` положен в `input`, когда watcher не работал. Watcher, запущенный после этого, при первом сканировании нашёл файл (`traces/processes/watcher3.log`) и запустил workflow. Файл проиндексирован: `data/ops/latency_budget.md`, все activities с первой попытки |
-| E1. Падение worker во время агента тем | — | **В этом прогоне не показан.** Worker #3 упал сразу при старте, до того как взял задачу: Elasticsearch после `docker compose up` уже открыл порт, но ещё не отвечал (`ConnectionError` в `worker3.err.log`). Запуск выполнил worker #4 с первой попытки. Скрипт тогда этого не заметил |
+| E1. Падение worker во время агента тем | — | **В этом прогоне не показан.** Worker #3 упал сразу при старте, до того как взял задачу: Elasticsearch после `docker compose up` уже открыл порт, но ещё не отвечал (`ConnectionError`, выдержка из лога — `results/worker3_startup_error.txt`). Запуск выполнил worker #4 с первой попытки. Скрипт тогда этого не заметил |
 
 После этого:
 - скрипт ждёт готовности Elasticsearch по `_cluster/health`;
@@ -238,8 +253,7 @@ un_lab4_demo.ps1 -Part extra -SkipTests
 Сценарий E1 вынесен в отдельную часть `-Part topic-crash` (ручной запуск `topics-now`; в репетиции попытка 2 продолжила ту же задачу `TOP-…`):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts
-un_lab4_demo.ps1 -Part topic-crash -SkipTests
+powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part topic-crash -SkipTests
 ```
 
 **Прогон `-Part topic-crash` 18.11.2026** (qwen3.8-27b):

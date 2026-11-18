@@ -87,6 +87,8 @@ def render_report(store: TaskStore, task_id: str, budget: dict) -> str:
         out += ["## Непроверенное", ""] + [f"- {x}" for x in comp["unverified"]] + [""]
     if comp.get("criteria"):
         out += ["## Критерии завершения", ""]
-        out += [f"- {'✔' if v['ok'] else '✘'} {k}: {v['detail']}" for k, v in comp["criteria"].items()] + [""]
+        out += [f"- {'OK' if v['ok'] else 'НЕТ'} {k}: "
+                f"{v['detail'] if isinstance(v['detail'], str) else _cell(json.dumps(v['detail'], ensure_ascii=False), 600)}"
+                for k, v in comp["criteria"].items()] + [""]
     out += ["## Расход", "", "```json", json.dumps(budget, ensure_ascii=False, indent=2), "```", ""]
     return "\n".join(out)

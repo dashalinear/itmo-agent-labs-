@@ -155,7 +155,7 @@ async def schedule_cmd(st, action: str, every: str | None, trigger: bool) -> Non
             Schedule(action=ScheduleActionStartWorkflow("TopicReport", {"source": "schedule",
                                                                        "heartbeat_s": int(st.agent_heartbeat_timeout.total_seconds())},
                                                         id="lab4-topics-run", task_queue=st.topics_queue,
-                                                        execution_timeout=timedelta(hours=3)),
+                                                        execution_timeout=timedelta(hours=4)),
                      spec=ScheduleSpec(intervals=[ScheduleIntervalSpec(every=interval)]),
                      policy=SchedulePolicy(overlap=ScheduleOverlapPolicy.SKIP, catchup_window=timedelta(minutes=1)),
                      state=ScheduleState(note="lab 4: periodic whole-corpus topic report")),
@@ -193,7 +193,7 @@ async def topics_now(st, overrides: dict) -> str:
     wid = "lab4-topics-manual-" + now.strftime("%Y-%m-%dT%H:%M:%S.") + f"{now.microsecond // 1000:03d}Z"   # unique per start
     h = await client.start_workflow("TopicReport", {"source": "manual (topics-now)", "overrides": overrides,
                                                     "heartbeat_s": int(st.agent_heartbeat_timeout.total_seconds())},
-                                    id=wid, task_queue=st.topics_queue, execution_timeout=timedelta(hours=3))
+                                    id=wid, task_queue=st.topics_queue, execution_timeout=timedelta(hours=4))
     print(f"started {wid} run {h.result_run_id}")
     return wid
 

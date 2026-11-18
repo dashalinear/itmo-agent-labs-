@@ -7,6 +7,9 @@
 * write_report_section - upsert by section_id; unchanged body -> "unchanged".
 * complete_task    - the harness checks the completion criteria of the task contract;
                      unmet criteria -> error with the missing items (status stays running).
+                     Besides counts/sections it checks user constraints that code can verify:
+                     verbatim_quotes (section must contain the exact evidence quotes + pages),
+                     research rounds after reading, links followed from pages, domain diversity.
 * stop_partial     - honest partial result: status paused, reason and unverified items kept.
 """
 from __future__ import annotations
@@ -16,6 +19,7 @@ import os
 import re
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
 
 from langchain_core.tools import BaseTool, StructuredTool
 from pydantic import BaseModel, Field
@@ -231,7 +235,54 @@ class TaskTools:
         if "min_search_queries" in crit:
             n = len(self.store.searches(self.task_id))
             checks["min_search_queries"] = (n >= crit["min_search_queries"], f"{n}/{crit['min_search_queries']}")
+        if "min_queries_after_reading" in crit:
+            # refinement round: fresh queries issued after at least one page had been read
+            n = sum(1 for e in self.store.events(self.task_id, "search_round") if (e["data"] or {}).get("pages_read_before"))
+            checks["min_queries_after_reading"] = (n >= crit["min_queries_after_reading"],
+                                                   f"{n}/{crit['min_queries_after_reading']} queries after reading pages")
+        done = self.store.urls(self.task_id, "done")
+        if "min_page_links_read" in crit:
+            followed = {(e["data"] or {}).get("url_key") for e in self.store.events(self.task_id, "link_followed")}
+            n = sum(1 for u in done if (u["discovered_by"] or "").startswith("page:") or u["url_key"] in followed)
+            checks["min_page_links_read"] = (n >= crit["min_page_links_read"],
+                                             f"{n}/{crit['min_page_links_read']} read pages reached through links of fetched pages")
+        if "max_domain_share" in crit:
+            hosts: dict[str, int] = {}
+            for u in done:
+                h = urlparse(u["final_url"] or u["url"]).hostname or "?"
+                hosts[h] = hosts.get(h, 0) + 1
+            top = max(hosts.items(), key=lambda kv: kv[1]) if hosts else ("-", 0)
+            share = top[1] / len(done) if done else 0.0
+            checks["max_domain_share"] = (bool(done) and share <= crit["max_domain_share"] + 1e-9,
+                                          f"{top[0]}: {top[1]}/{len(done)} read pages (max share {crit['max_domain_share']})")
+        if "verbatim_quotes" in crit:
+            checks["verbatim_quotes"] = self._verbatim_check(crit["verbatim_quotes"], ev)
         return {k: {"ok": v[0], "detail": v[1]} for k, v in checks.items()}
+
+    def _verbatim_check(self, rule: dict, ev: list[dict]) -> tuple[bool, str | dict]:
+        """User constraint 'quote X verbatim with the page' checked by code: for every code (e.g. АС-01) the section
+        must contain the FULL text of a verified evidence quote that mentions the code (whitespace/typography
+        normalized, the same rule as save_evidence) and its page as 'стр. N'. A paraphrase fails."""
+        sec = next((s for s in self.store.sections(self.task_id) if s["section_id"] == rule.get("section")), None)
+        if sec is None:
+            return False, f"section '{rule.get('section')}' is missing"
+        body = _norm(sec["body"])
+        problems = {}
+        for code in rule.get("codes", []):
+            cands = [e for e in ev if code in e["quote"]]
+            if not cands:
+                problems[code] = "no evidence whose quote contains this code: save_evidence with the exact source text first"
+                continue
+            if any(_norm(e["quote"]) in body and (not e.get("page_start") or
+                                                  re.search(rf"стр\.?\s*{e['page_start']}\b", body)) for e in cands):
+                continue
+            e = cands[0]
+            problems[code] = {"error": "not quoted verbatim (paraphrase or shortened) or the page is missing",
+                              "paste_exactly": e["quote"], "evidence_id": e["evidence_id"],
+                              "page": f"стр. {e['page_start']}" if e.get("page_start") else None}
+        if problems:
+            return False, {"section": rule.get("section"), "problems": problems}
+        return True, f"{len(rule.get('codes', []))} quotes verbatim with pages in section '{rule.get('section')}'"
 
     def progress(self) -> dict:
         docs = []
@@ -286,7 +337,8 @@ class TaskTools:
                "Progress of the task from the harness state: pages read per document, evidence, queue, sections, "
                "completion criteria and remaining budget."),
             mk("complete_task", self.complete_task, CompleteArgs,
-               "Finish the task. The harness verifies the completion criteria; if they are not met you get the list."),
+               "Finish the task. The harness verifies the completion criteria; if they are not met you get the list "
+               "(for verbatim_quotes: put each 'paste_exactly' text unchanged into that section with its page)."),
             mk("stop_partial", self.stop_partial, PartialArgs,
                "Stop with an honest partial result (no useful progress, sources unavailable): saves the reason and "
                "unverified items; the task is NOT marked completed."),

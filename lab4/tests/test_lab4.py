@@ -263,9 +263,18 @@ async def test_workflows_on_real_temporal_service(lab4env):
     files = put(env, "initial", {"checkpoint_postgres.md", "vector_search.md"})
     bid = batch_id_for(files)
     env.registry.add_batch(bid, files)
+    # duplicate detection event WHILE the workflow is running (no worker yet): the same execution is returned
+    from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
+    iwid = f"test-ingest-{bid}-{q}"
+    starts = [await client.start_workflow("IngestNewFiles", {"batch_id": bid}, id=iwid, task_queue=q,
+                                          id_conflict_policy=WorkflowIDConflictPolicy.USE_EXISTING,
+                                          id_reuse_policy=WorkflowIDReusePolicy.ALLOW_DUPLICATE_FAILED_ONLY,
+                                          execution_timeout=timedelta(minutes=5)) for _ in range(2)]
+    assert starts[0].result_run_id == starts[1].result_run_id
     async with Worker(client, task_queue=q, workflows=[IngestNewFiles, TopicReport], activities=A.INGEST_ACTIVITIES + A.TOPIC_ACTIVITIES):
-        res = await client.execute_workflow("IngestNewFiles", {"batch_id": bid}, id=f"test-ingest-{bid}-{q}", task_queue=q,
-                                            execution_timeout=timedelta(minutes=5))
+        res = await client.get_workflow_handle(iwid).result()
+        runs = [w async for w in client.list_workflows(f"WorkflowId='{iwid}'")]
+        assert len(runs) == 1                                         # one execution for two detection events
         assert res["verify"]["status"] == "completed" and len(res["verify"]["documents"]) == 2
         assert env.registry.batch(bid)["status"] == "completed"
         env.faults.set("publish_report", "after_write", 1)            # first publish attempt fails after writing

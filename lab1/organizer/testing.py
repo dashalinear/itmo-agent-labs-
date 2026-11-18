@@ -46,3 +46,34 @@ class ScriptedChatModel(BaseChatModel):
 
 def call(name: str, args: dict, cid: str = "c") -> dict:
     return {"name": name, "args": args, "id": cid, "type": "tool_call"}
+
+
+LOOP_HINTS = ("снова и снова", "пока он не появится", "again and again")
+
+
+class DryRunChatModel(BaseChatModel):
+    """Stand-in model for `python -m organizer.cli --dry-run-model` (plumbing checks of the demo
+    scripts without the ITMO LLM). Per user turn it calls `ls input` once and then answers with a
+    fixed text; for a turn that asks to re-check input "again and again" it keeps calling `ls`
+    forever, so the execution limit has to stop it. It is NOT an LLM and organizes nothing."""
+
+    calls: int = 0
+
+    @property
+    def _llm_type(self) -> str:
+        return "dry-run"
+
+    def bind_tools(self, tools, **kwargs):
+        return self
+
+    def _generate(self, messages: list[BaseMessage], stop=None,
+                  run_manager: CallbackManagerForLLMRun | None = None, **kwargs) -> ChatResult:
+        self.calls += 1
+        last_human = max((i for i, m in enumerate(messages) if m.type == "human"), default=-1)
+        text = str(messages[last_human].content).lower() if last_human >= 0 else ""
+        tool_steps = sum(1 for m in messages[last_human + 1:] if m.type == "ai")
+        if any(h in text for h in LOOP_HINTS) or tool_steps == 0:
+            msg = AIMessage(content="", tool_calls=[call("ls", {"path": "input"}, f"dry_{self.calls}")])
+        else:
+            msg = AIMessage(content=f"[dry run] ответ-заглушка на: {text[:80]}")
+        return ChatResult(generations=[ChatGeneration(message=msg)])

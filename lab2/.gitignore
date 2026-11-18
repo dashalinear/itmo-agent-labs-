@@ -5,3 +5,4 @@ outside_notes.txt
 __pycache__/
 .pytest_cache/
 .cache/
+outside_area/

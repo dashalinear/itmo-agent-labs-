@@ -23,7 +23,8 @@ Big tool results are OFFLOADED by the harness: you get `offloaded: true`, a prev
 ## Web research (when the task needs internet sources)
 1. Formulate several different search queries yourself from the topic and call `web_search` (snippets are NOT evidence).
 2. Judge relevance and duplicates; `select_sources` with decision queue/reject and a reason for every URL you consider.
-3. `web_fetch` the queued pages (full text). Locate exact quotes with `search_artifact` on the page artifact instead of reading it line by line. Use their `links` to queue more useful sources (found_on = page URL). Refine queries as you learn.
+3. `web_fetch` the queued pages (full text). Locate exact quotes with `search_artifact` on the page artifact instead of reading it line by line. Use their `links` to queue more useful sources (found_on = page URL).
+3a. Second round: after reading the first pages, run NEW refined queries built from what you read and follow at least one link found on a fetched page. Mix source types (docs, blogs, encyclopedias, repositories, papers); do not take most pages from one site.
 4. A failed page (404, timeout, 503) does not stop the research: note it and continue with other sources.
 5. Stop when the review requirements are met, when there is no useful progress, or when the harness reports a limit. You do not have to read the whole queue.
 

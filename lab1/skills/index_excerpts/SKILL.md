@@ -25,7 +25,7 @@ description: Store useful excerpts of organized documents in Elasticsearch throu
 - `ok=false` (es_unavailable, mcp_unavailable, excerpt_validation_failed): report the failure, do NOT say it was indexed. The catalog marks the document `error`. For validation failures rebuild with build_excerpts.
 
 ## 5. Keep paths consistent after moves
-- When `move` returns `action_required`, or `catalog_view(status="pending_sync")` lists documents: call `update_document_path(document_id, new_path=<catalog current_path>)` for each. On success the catalog switches back to `indexed`; on failure it stays `pending_sync` - tell the user and retry later.
+- When `move` returns `action_required`, or `catalog_view(status="pending_sync")` lists documents: call `update_document_path(document_id, new_path=<catalog current_path>)` for each (the server sets `category` from the `data/<category>/` folder of the new path). On success - path and category in the index equal the catalog - the catalog switches back to `indexed`; otherwise it stays `pending_sync` - tell the user and retry later.
 
 ## 6. Search and verify
 - `search_excerpts(query, size=5..10, category=?, path_prefix=?)`. Formulate a lexical query with key terms (Russian morphology is handled by the index analyzer).

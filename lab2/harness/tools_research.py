@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Literal
+from typing import Callable, Literal
 
 from langchain_core.tools import BaseTool, StructuredTool
 from pydantic import BaseModel, Field
@@ -73,6 +73,15 @@ class ResearchTools:
         self.fetcher = fetcher
         self.provider = provider
         self.artifacts = artifacts
+        # optional hooks set by the harness agent (build_harness_agent): trace events and the crash test hook
+        self.emit: Callable[..., None] | None = None
+        self.crash_hook: Callable[[str], None] | None = None
+
+    def _emit(self, kind: str, **data) -> None:
+        if self.emit:
+            self.emit(kind, **data)
+        else:
+            self.store.event(self.task_id, kind, data)
 
     # -- web_search ------------------------------------------------------------
     async def web_search(self, query: str, max_results: int = 8) -> str:
@@ -90,8 +99,11 @@ class ResearchTools:
         try:
             self.budget.take("search")
         except BudgetExhausted as e:
+            self._emit("guardrail", guard="search_budget", query=query, **e.as_dict(),
+                       queue=self.store.url_counts(self.task_id))
             return err(name, "search_budget_exhausted", str(e), **e.as_dict(),
                        hint="Stop searching; read the queued sources or finish with what you have.")
+        pages_read_before = self.store.url_counts(self.task_id)["done"]
         try:
             rows = await self.provider.search(query, max_results)
         except Exception as e:  # noqa: BLE001
@@ -112,6 +124,9 @@ class ResearchTools:
         self.store.add_search(self.task_id, query, qn, self.provider.name, results, new)
         if engines:
             self.store.event(self.task_id, "search_engines", {"query": query, **engines})
+        # research rounds: a query issued after pages were read is a refinement round (criterion min_queries_after_reading)
+        self.store.event(self.task_id, "search_round", {"query": query, "pages_read_before": pages_read_before,
+                                                        "new_urls": new, "round": 2 if pages_read_before else 1})
         return ok(name, query=query, from_cache=False, provider=self.provider.name, engines=engines, new_urls=new,
                   results=self._annotate(results), queue=self.store.url_counts(self.task_id))
 
@@ -147,6 +162,9 @@ class ResearchTools:
                 continue
             status = "pending" if decision == "queue" else "skipped"
             self.store.set_url(self.task_id, k, status=status, reason=reason[:500])
+            if it.get("found_on") and decision == "queue":
+                # a link followed from a fetched page (also when the same URL was found by a search earlier)
+                self.store.event(self.task_id, "link_followed", {"url": url, "url_key": k, "found_on": it["found_on"]})
             done.append({"url": url, "url_key": k, "status": status})
         return ok(name, decisions=done, queue=self.store.url_counts(self.task_id))
 
@@ -168,6 +186,9 @@ class ResearchTools:
                 text = None
             if text is not None:
                 self.budget.add(cache_hits=1)
+                self._emit("fetch_cache_hit", url=url, url_key=k, artifact_id=row["artifact_id"],
+                           http_requests=self.store.usage(self.task_id).get("http_requests", 0),
+                           url_http_attempts=row.get("attempts") or 0)
                 return ok(name, url=url, url_key=k, final_url=row["final_url"], from_cache=True,
                           artifact_id=row["artifact_id"], title=row["title"], chars=len(text),
                           note="Already fetched and stored; no network request made. Find exact quotes with "
@@ -178,12 +199,19 @@ class ResearchTools:
         except BaseException:      # tool timeout / cancel: never leave the URL "running"
             self.store.set_url(self.task_id, k, status="error", error="interrupted: tool timeout or cancel")
             raise
+        if self.crash_hook and not res.error_type:
+            self.crash_hook("download")       # test hook: HTTP done and counted, page not yet stored
         self.store.set_url(self.task_id, k, attempts=(row.get("attempts") or 0) + res.attempts, http_status=res.status,
                            final_url=res.final_url)
         if res.error_type:
             status = "pending" if res.error_type == "http_budget_exhausted" else "error"
             self.store.set_url(self.task_id, k, status=status, error=f"{res.error_type}: {res.error}"[:500])
             self.store.event(self.task_id, "fetch_error", {"url": url, "type": res.error_type, "log": res.log})
+            if status == "pending":
+                pend = self.store.urls(self.task_id, "pending")
+                self._emit("guardrail", guard="http_budget", url=url, http_requests=self.budget.store.usage(
+                    self.task_id).get("http_requests", 0), limit=self.limits.max_http_requests,
+                    pending_saved=len(pend), pending_urls=[u["url"] for u in pend][:20])
             extra = {"hint": "HTTP budget exhausted: the URL stays pending in the queue."} if status == "pending" else {}
             return err(name, res.error_type, res.error or "", url=url, url_key=k, final_url=res.final_url,
                        redirects=res.redirects, attempts=res.attempts, http_log=res.log, **extra)

@@ -196,3 +196,82 @@ def test_quote_with_inner_number_colon_is_not_mangled(ws, store, artifacts, budg
     assert r["line_start"] == 3
     r2 = tt.save_evidence("с номером строки", "fact", "data/notes/rb.md", "3: Шаг 2: восстановить снимок на узле es-new-01")
     assert r2["line_start"] == 3
+
+
+def test_write_and_move_by_absolute_path_are_blocked(ws, root, tmp_path):
+    """Guard matrix: absolute path for write and for move (source and destination), allowed ops keep working."""
+    fs = HarnessFileTools(ws, Catalog(ws), max_chars=10_000)
+    outside = tmp_path / "abs_outside"
+    outside.mkdir()
+    with pytest.raises(ToolError) as e:
+        fs.write(str(outside / "stolen.txt"), "x")
+    assert e.value.type == "outside_workspace" and not (outside / "stolen.txt").exists()
+    with pytest.raises(ToolError) as e:
+        fs.move(HANDBOOK, str(outside / "moved.md"))
+    assert e.value.type == "outside_workspace" and (root / HANDBOOK).exists() and not (outside / "moved.md").exists()
+    with pytest.raises(ToolError) as e:
+        fs.move(str(tmp_path / "outside_notes.txt"), "data/notes/in.txt")
+    assert e.value.type == "outside_workspace" and (tmp_path / "outside_notes.txt").exists()
+    # an absolute path INSIDE the root is allowed
+    assert fs.write(str(root / "data" / "notes" / "abs_ok.md"), "ok")["created"] is True
+    assert fs.move("data/notes/abs_ok.md", str(root / "data" / "notes" / "abs_ok_moved.md"))
+    assert (root / "data" / "notes" / "abs_ok_moved.md").exists()
+
+
+def test_move_through_junction_is_blocked_both_ways(ws, root, tmp_path):
+    outside = tmp_path / "junction_target"
+    outside.mkdir()
+    (outside / "secret.txt").write_text("secret", encoding="utf-8")
+    link = root / "data" / "link_out"
+    if not make_junction(link, outside):
+        pytest.skip("cannot create a junction/symlink here")
+    fs = HarnessFileTools(ws, Catalog(ws), max_chars=10_000)
+    with pytest.raises(ToolError) as e:                       # destination resolves outside through the junction
+        fs.move("data/search/search_incident_reports.md", "data/link_out/moved.md")
+    assert e.value.type == "outside_workspace"
+    assert (root / "data" / "search" / "search_incident_reports.md").exists() and not (outside / "moved.md").exists()
+    with pytest.raises(ToolError) as e:                       # source resolves outside through the junction
+        fs.move("data/link_out/secret.txt", "data/secret_copy.txt")
+    assert e.value.type == "outside_workspace"
+    assert (outside / "secret.txt").exists() and not (root / "data" / "secret_copy.txt").exists()
+    with pytest.raises(ToolError) as e:                       # the link itself is never moved
+        fs.move("data/link_out", "data/link_moved")
+    assert e.value.type in ("symlink_not_allowed", "outside_workspace", "is_directory")
+
+
+def test_verbatim_quotes_criterion_rejects_paraphrase(ws, store, artifacts, budget):
+    """[C5] 'decisions verbatim with page' is checked by code in complete_task, not only claimed by the model."""
+    store.update_task("T", spec={"root": str(ws.root), "scope": ["data/search"], "criteria": {
+        "min_evidence": 1, "required_sections": ["decisions"],
+        "verbatim_quotes": {"section": "decisions", "codes": ["АС-01"]}}})
+    tt = TaskTools(ws, Catalog(ws), store, "T", artifacts, budget)
+    quote = ("Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных "
+             "шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.")
+    ev = tt.save_evidence("АС-01", "decision", HANDBOOK, quote, page=4)
+    tt.write_report_section("decisions", "Решения", "**АС-01** (стр. 4): «Кластер „Северный“ хранит индекс в 12 шардах "
+                                                    "с одной репликой.»")
+    with pytest.raises(ToolError) as e:
+        tt.complete_task("решения дословно")
+    prob = e.value.extra["missing"]["verbatim_quotes"]["problems"]["АС-01"]
+    assert prob["evidence_id"] == ev["evidence_id"] and prob["page"] == "стр. 4"
+    assert "12 первичных шардах" in prob["paste_exactly"] and store.get_task("T")["status"] != "completed"
+    # verbatim but without the page -> still rejected
+    tt.write_report_section("decisions", "Решения", f"**АС-01**: «{quote}»")
+    with pytest.raises(ToolError):
+        tt.complete_task("x")
+    # exact quote (typographic quotes may differ) + page -> accepted
+    tt.write_report_section("decisions", "Решения", f"**АС-01** (справочник, стр. 4):\n\n> «{quote.replace('«', '\"').replace('»', '\"')}» [{ev['evidence_id']}]")
+    res = tt.complete_task("решения дословно")
+    assert res["status"] == "completed" and res["criteria"]["verbatim_quotes"]["ok"]
+
+
+def test_offloaded_json_is_stored_line_by_line():
+    """A one-line tool envelope is stored so that read_artifact reaches every part by line ranges."""
+    from harness.middleware import line_friendly
+    env = json.dumps({"ok": True, "tool": "read_pages", "data": {"pages": [2, 6], "text": "a\nb\nКОНТРОЛЬ"}}, ensure_ascii=False)
+    out = line_friendly(env)
+    assert out.splitlines()[-1] == "КОНТРОЛЬ" and json.loads(out.splitlines()[0])["data"]["pages"] == [2, 6]
+    hits = json.dumps({"ok": True, "tool": "search_text", "data": {"hits": [{"page": i, "snippet": f"s{i}"} for i in range(50)]}})
+    lf = line_friendly(hits)
+    assert len(lf.splitlines()) > 50 and json.loads(lf) == json.loads(hits)
+    assert line_friendly("plain text") == "plain text"

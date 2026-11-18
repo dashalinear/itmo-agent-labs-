@@ -77,6 +77,33 @@ def test_mcp_upsert_idempotent_search_and_path_update(settings, fs, ws, catalog,
     assert r3["deleted_stale"] == 1
 
 
+def test_update_path_without_category_follows_folder(settings, fs, ws, catalog, clean_index):
+    """Regression (audit finding 1): update_document_path called WITHOUT category after a move
+    used to leave the old category in ES (catalog: projects, index: courses)."""
+    d = json.loads(run_tool("move", fs.move, "input/search_quality_thoughts.md", "data/courses/"))["data"]
+    recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 3}])["excerpts"]
+    assert recs[0]["category"] == "courses"
+    moved = json.loads(run_tool("move", fs.move, "data/courses/search_quality_thoughts.md", "data/projects/"))["data"]
+
+    async def scenario(t):
+        await t["upsert_excerpts"].ainvoke({"excerpts": recs})
+        upd = _text(await t["update_document_path"].ainvoke(
+            {"document_id": d["document_id"], "new_path": moved["new_path"]}))          # no category
+        after = _text(await t["get_document_excerpts"].ainvoke({"document_id": d["document_id"]}))
+        wrong = _text(await t["update_document_path"].ainvoke(
+            {"document_id": d["document_id"], "new_path": moved["new_path"], "category": "courses"}))
+        after2 = _text(await t["get_document_excerpts"].ainvoke({"document_id": d["document_id"]}))
+        return upd, after, wrong, after2
+
+    upd, after, wrong, after2 = asyncio.run(_with_tools(settings, scenario))
+    assert upd["ok"] and upd["category"] == "projects"
+    assert {(e["current_path"], e["category"]) for e in after["excerpts"]} == {
+        ("data/projects/search_quality_thoughts.md", "projects")}
+    assert wrong["category"] == "projects" and "category_note" in wrong          # folder wins over a wrong argument
+    assert {e["category"] for e in after2["excerpts"]} == {"projects"}
+    assert catalog.get(d["document_id"])["category"] == "projects"
+
+
 def test_mcp_reports_unavailable_elasticsearch(settings, clean_index):
     bad = replace(settings, es_url="http://127.0.0.1:9", es_timeout_s=1.0)
 
@@ -155,3 +182,6 @@ def test_end_to_end_scripted_agent_with_real_mcp(settings, clean_index):
     search = [m for m in msgs if getattr(m, "name", None) == "search_excerpts"][-1]
     hits = _text(search.content)["hits"]
     assert hits[0]["current_path"] == "data/search/ir_lecture_inverted_index.md"
+    # the scripted sync call passes no category: the index must still follow the new folder
+    assert hits[0]["category"] == "search"
+    assert {e["category"] for e in st.get_document(hits[0]["document_id"])["excerpts"]} == {"search"}

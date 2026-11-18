@@ -508,8 +508,25 @@ class CorpusTools:
                 "fragment_id": fragment_id, "path": f["path"], "lines": [a, b]}
 
     # ------------------------------------------------------------- tool sets
+    BUDGET_WARN_CALLS = 6
+
+    def _budget_hint(self, res):
+        """Deep sub-agent: when only a few model calls are left, every tool result says so - finish with submit_result."""
+        if not self.coach or not isinstance(res, dict):
+            return res
+        t = self.env.store.get_task(self.env.task_id)
+        limit = int((t or {}).get("limits", {}).get("max_model_calls") or 0)
+        used = int(self.env.store.usage(self.env.task_id).get("model_calls", 0))
+        if limit and limit - used <= self.BUDGET_WARN_CALLS:
+            res["harness_budget"] = (f"Only {max(limit - used, 0)} of {limit} model calls left. Stop searching: call "
+                                     "submit_result(findings, open_questions) NOW with the evidence you have and list "
+                                     "unconfirmed points as open questions.")
+        return res
+
     def _mk(self, name, fn, schema, desc) -> BaseTool:
-        return StructuredTool.from_function(func=lambda **kw: run_tool(name, fn, **kw), name=name, args_schema=schema,
+        def call(**kw):
+            return self._budget_hint(fn(**kw))
+        return StructuredTool.from_function(func=lambda **kw: run_tool(name, call, **kw), name=name, args_schema=schema,
                                             description=desc)
 
     def ingest_tools(self) -> list[BaseTool]:

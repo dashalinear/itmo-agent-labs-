@@ -118,6 +118,8 @@ async def test_http_budget_stops_and_keeps_queue(store, artifacts, web):
     assert res[2]["error"]["type"] == "http_budget_exhausted"
     assert store.usage("T")["http_requests"] == 2
     assert store.url_counts("T")["pending"] >= 2          # unprocessed URLs stay in the durable queue
+    g = [e["data"] for e in store.events("T", "guardrail") if e["data"]["guard"] == "http_budget"]
+    assert g and g[0]["pending_saved"] >= 2 and g[0]["http_requests"] == 2   # visible in the trace with the saved queue
 
 
 async def test_search_budget_exhausted(store, artifacts, web):
@@ -214,3 +216,28 @@ async def test_web_fetch_answer_fits_single_limit_and_shows_page_artifact(store,
         assert r["ok"] and len(raw) <= Limits().max_tool_result_chars       # never offloaded as a whole
         assert r["data"]["artifact_id"].startswith("art_") and r["data"]["artifact_id"] in r["data"]["note"]
         assert artifacts.text(r["data"]["artifact_id"]).startswith("Источник:")   # id of the PAGE copy
+
+
+async def test_research_round_criteria(store, artifacts, budget, web, ws):
+    """Second research round is checked by code: queries after reading, a link followed from a page, domain share."""
+    from harness.tools_task import TaskTools
+    from organizer.catalog import Catalog
+    base, _ = web
+    rt, _b = mk(store, artifacts, base, max_search_calls=10)
+    store.update_task("T", spec={"root": str(ws.root), "scope": [], "criteria": {
+        "min_queries_after_reading": 1, "min_page_links_read": 1, "max_domain_share": 1.0}})
+    tt = TaskTools(ws, Catalog(ws), store, "T", artifacts, rt.budget)
+    await rt.web_search("чекпоинты графа", 5)
+    first = j(await rt.web_fetch(f"{base}/p/checkpoint-1"))
+    crit = tt.criteria()
+    assert not crit["min_queries_after_reading"]["ok"] and not crit["min_page_links_read"]["ok"]
+    await rt.web_search("идемпотентность ключ повтор", 5)                 # round 2: after a page was read
+    link = first["data"]["links"][0]["url"]
+    j(rt.select_sources([{"url": link, "decision": "queue", "reason": "ссылка со страницы",
+                          "found_on": f"{base}/p/checkpoint-1"}]))
+    assert j(await rt.web_fetch(link))["ok"]
+    crit = tt.criteria()
+    assert crit["min_queries_after_reading"]["ok"] and crit["min_page_links_read"]["ok"]
+    assert crit["max_domain_share"]["ok"]                                  # threshold 1.0: one host allowed
+    store.update_task("T", spec={"root": str(ws.root), "scope": [], "criteria": {"max_domain_share": 0.6}})
+    assert not tt.criteria()["max_domain_share"]["ok"]                     # all pages from 127.0.0.1

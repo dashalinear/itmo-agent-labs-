@@ -4,8 +4,9 @@ All counters live in the state database, so a new process continues from the
 spent values (resume never resets them). LLM calls reserve
 ``estimated_input + response_reserve`` BEFORE the call; the reservation is then
 replaced by the real usage (input+output). Failed calls are charged their input
-estimate; a reservation left "inflight" by a killed process is charged on the
-next start ("interrupted_call_tokens").
+estimate; a call interrupted by a cancel releases its reservation at once and is
+charged its input estimate ("interrupted_call_tokens"); a reservation left
+"inflight" by a killed process is charged the same way on the next start.
 """
 from __future__ import annotations
 
@@ -74,6 +75,25 @@ class Budget:
         with self._lock:
             self.store.add_usage(self.task_id, failed_call_tokens=input_est, failed_calls=1)
             self.store.finish_reservation(res_id, "failed")
+
+    def interrupt(self, res_id: int, input_est: int) -> None:
+        """A call interrupted in THIS process (cancel, tool timeout): the reservation is released and the input
+        estimate is charged as interrupted_call_tokens (the server may have processed the prompt already)."""
+        with self._lock:
+            self.store.add_usage(self.task_id, interrupted_call_tokens=input_est)
+            self.store.finish_reservation(res_id, "interrupted")
+
+    def settle_own_inflight(self, reason: str = "run ended") -> list[dict]:
+        """Safety net at the end of a cancelled/failed run: reservations of THIS process that are still in flight
+        are released and charged like interrupted calls, so 'reserved' never stays occupied after the run."""
+        import os
+        left = [r for r in self.store.inflight(self.task_id) if r.get("pid") == os.getpid()]
+        for r in left:
+            self.store.add_usage(self.task_id, interrupted_call_tokens=r["input_est"])
+            self.store.finish_reservation(r["id"], "interrupted")
+            self.store.event(self.task_id, "budget_reservation_released", {"reservation": r["id"], "charged": r["input_est"],
+                                                                            "reason": reason})
+        return left
 
     def recover_inflight(self) -> list[dict]:
         """Charge reservations of a previous process that died during an LLM call."""

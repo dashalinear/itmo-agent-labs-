@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -29,14 +30,22 @@ from harness.workspace import HarnessWorkspace  # noqa: E402
 ROOT = LAB2 / "workspace"
 
 
+def _root() -> Path:
+    """TASK_ROOT (same variable as the harness config) or lab2/workspace."""
+    r = Path(os.getenv("TASK_ROOT") or ROOT)
+    return r if r.is_absolute() else LAB2 / r
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reset", action="store_true")
     args = ap.parse_args()
-    if args.reset and ROOT.exists():
-        assert ROOT.name == "workspace" and ROOT.parent == LAB2, ROOT
-        shutil.rmtree(ROOT)
-    ws = HarnessWorkspace(ROOT)
+    root = _root()
+    if args.reset and root.exists():
+        # only a task root created by this script (lab2/workspace or a root with its catalog) is ever deleted
+        assert root == ROOT or (root / "catalog.json").exists(), root
+        shutil.rmtree(root)
+    ws = HarnessWorkspace(root)
     cat = Catalog(ws)
     manifest = json.loads((LAB2 / "corpus" / "manifest.json").read_text(encoding="utf-8"))
     dst_dir = ws.data / "search"
@@ -55,7 +64,7 @@ def main() -> None:
         print(f"{entry['current_path']}: {d['pages']} pages, document_id={entry['document_id']}")
     (LAB2 / "outside_notes.txt").write_text("OUTSIDE-THE-TASK-ROOT marker: this file must never be read by the agent.\n",
                                             encoding="utf-8")
-    print(f"task root: {ROOT}")
+    print(f"task root: {root}")
 
 
 if __name__ == "__main__":

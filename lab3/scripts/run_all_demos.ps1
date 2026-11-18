@@ -19,7 +19,7 @@ Steps (task ids):
   EXP1  exhaustive sub-agent from the CLI with a tiny budget (partial), then resume with a larger one
 #>
 param(
-    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation")][string]$Part = "all",
+    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation", "final")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$EnvFile = ".env",
@@ -140,6 +140,44 @@ if ($Part -in @("all", "exhaustive", "rerun")) {
     Nav coverage --task-id $ExpTask | Out-Null
     Nav resume --task-id $ExpTask --set max_model_calls=120 | Out-Null
     Nav coverage --task-id $ExpTask | Out-Null
+}
+
+if ($Part -eq "final") {
+    Step "F1. ING4: new files, crash in the MIDDLE of ingestion (after the 8th tool), resume in a NEW process"
+    Run-Py -m navsearch.cli add-new-files --batch new_batch2 --to input/new_files2
+    $env:HARNESS_CRASH_AT = "after_tool:8"
+    $code = Nav ingest --folder input/new_files2 --task-id ING4
+    Remove-Item Env:HARNESS_CRASH_AT
+    Write-Host "ingest exit code: $code (137 = killed right after a tool, before the next checkpoint)"
+    if ($code -ne 137) { throw "ING4 did not stop at the crash point (exit code $code)" }
+    Nav status --task-id ING4 | Out-Null
+    Resume-Until-Done "ING4" 3
+    Nav status --task-id ING4 | Out-Null
+    Nav validate | Out-Null
+
+    Step "F2. ING5: the same files of the first new batch once more -> no new documents, ES counts unchanged"
+    $countCmd = "import navsearch; from navsearch.index import CorpusIndex; i=CorpusIndex(); i.refresh(); print('L1', i.count('L1'), 'L2', i.count('L2'))"
+    $before = (& $py -c $countCmd | Out-String).Trim()
+    Run-Py -m navsearch.cli add-new-files --batch new_batch --to input/new_files_repeat
+    Nav ingest --folder input/new_files_repeat --task-id ING5 | Out-Null
+    $after = (& $py -c $countCmd | Out-String).Trim()
+    "Elasticsearch before ING5: $before`r`nElasticsearch after ING5:  $after" | Out-File -Encoding utf8 results\ING5_no_duplicates.txt
+    Get-Content results\ING5_no_duplicates.txt
+    if ($before -ne $after) { Write-Host "WARNING: counts changed" -ForegroundColor Yellow }
+
+    Step "F3. Six search combinations without LLM (control queries)"
+    Nav probe | Out-Null
+
+    Step "F4. M5: main agent dialog in plain language (deep first, then the six searches, exhaustive)"
+    Nav chat --task-id M5 --script demo\dialog_final_ru.txt | Out-Null
+
+    Step "F5. EXP3: exhaustive with a tiny budget (partial) - the remainder is saved - then resume"
+    Nav subagent --kind exhaustive --scope storage --task-id EXP3 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
+    New-Item -ItemType Directory -Force results\EXP3 | Out-Null
+    & $py -m navsearch.cli coverage --task-id EXP3 | Out-File -Encoding utf8 results\EXP3\coverage_partial.json
+    Get-Content results\EXP3\coverage_partial.json | Select-Object -First 12
+    Nav resume --task-id EXP3 --set max_model_calls=120 | Out-Null
+    & $py -m navsearch.cli coverage --task-id EXP3 | Out-File -Encoding utf8 results\EXP3\coverage_final.json
 }
 
 Step "13. Export and technical results"

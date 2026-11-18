@@ -93,6 +93,94 @@ def test_catalog_sync_validates_and_records(fs, ws, catalog):
     assert catalog.get(d["document_id"])["indexing_status"] == "indexed"
 
 
+def test_catalog_sync_checks_category_after_path_update(fs, ws, catalog):
+    """Regression (audit finding 1): a successful update_document_path must not mark the document
+    `indexed` when the index category differs from the catalog category."""
+    d = mv(fs, "input/search_quality_thoughts.md", "data/courses/")
+    recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 3}])["excerpts"]
+    mw = CatalogSyncMiddleware(ws, catalog)
+
+    async def ok_handler(req):
+        return ok_msg(req, {"ok": True, "created": 1})
+    asyncio.run(mw.awrap_tool_call(Req("upsert_excerpts", {"excerpts": recs}), ok_handler))
+    mv(fs, "data/courses/search_quality_thoughts.md", "data/projects/")
+    new_path = "data/projects/search_quality_thoughts.md"
+
+    async def stale_category(req):   # e.g. an old server that kept the previous category
+        return ok_msg(req, {"ok": True, "updated": 1, "new_path": new_path, "category": "courses"})
+    asyncio.run(mw.awrap_tool_call(Req("update_document_path", {"document_id": d["document_id"],
+                                                                "new_path": new_path}), stale_category))
+    doc = catalog.get(d["document_id"])
+    assert doc["indexing_status"] == "pending_sync" and "category" in doc["index_error"]
+
+    async def fixed(req):
+        return ok_msg(req, {"ok": True, "updated": 1, "new_path": new_path, "category": "projects"})
+    asyncio.run(mw.awrap_tool_call(Req("update_document_path", {"document_id": d["document_id"],
+                                                                "new_path": new_path}), fixed))
+    assert catalog.get(d["document_id"])["indexing_status"] == "indexed"
+
+
+def test_store_update_path_derives_category_offline():
+    """Regression (audit finding 1), no Elasticsearch needed: the update script sent by the MCP
+    server sets category from data/<cat>/ even when the caller omits it."""
+    from mcp_es.schema import category_from_path
+    from mcp_es.store import ExcerptStore
+
+    class FakeES:
+        class indices:  # noqa: N801
+            @staticmethod
+            def exists(index):
+                return True
+
+        def update_by_query(self, **kw):
+            self.kw = kw
+            return {"updated": 2, "total": 2}
+
+    st = ExcerptStore.__new__(ExcerptStore)
+    st.index, st.es = "itmo_lab1_fake", FakeES()
+    r = st.update_path("doc", "data/projects/search_quality_thoughts.md")
+    assert r["category"] == "projects" and st.es.kw["script"]["params"]["c"] == "projects"
+    assert "ctx._source.category" in st.es.kw["script"]["source"]
+    r = st.update_path("doc", "data/projects/x.md", category="courses")
+    assert r["category"] == "projects" and "category_note" in r
+    r = st.update_path("doc", "elsewhere/x.md", category="misc")      # outside data/: explicit value kept
+    assert r["category"] == "misc"
+    assert category_from_path("data/courses/a/b.md") == "courses" and category_from_path("input/a.md") is None
+
+
+def test_catalog_sync_rejects_excerpt_with_wrong_category(fs, ws, catalog):
+    d = mv(fs, "input/project_docsearch.md", "data/projects/")
+    recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 4}])["excerpts"]
+    called = []
+
+    async def handler(req):
+        called.append(req)
+        return ok_msg(req, {"ok": True})
+    res = asyncio.run(CatalogSyncMiddleware(ws, catalog).awrap_tool_call(
+        Req("upsert_excerpts", {"excerpts": [dict(recs[0], category="courses")]}), handler))
+    assert res.status == "error" and "category" in res.content and not called
+
+
+def test_verify_flags_category_drift(fs, ws, catalog):
+    """scripts/verify.py: an `indexed` document whose excerpts carry another category is an error."""
+    import importlib
+    import sys
+    sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+    verify = importlib.import_module("verify")
+    d = mv(fs, "input/search_quality_thoughts.md", "data/projects/")
+    recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 3}])["excerpts"]
+    catalog.set_index_state(d["document_id"], "indexed", excerpts=[{"start_line": 1, "end_line": 3}])
+    doc = catalog.get(d["document_id"])
+    good, problems = verify.check_document_excerpts(doc, recs, ws.root)
+    assert good and not problems
+    stale = [dict(recs[0], category="courses")]
+    bad, problems = verify.check_document_excerpts(doc, stale, ws.root)
+    assert not bad and "category courses" in problems[0] and "NOT recorded" in problems[0]
+    catalog.set_index_state(d["document_id"], "pending_sync")
+    tolerated, _ = verify.check_document_excerpts(catalog.get(d["document_id"]), stale, ws.root)
+    assert tolerated   # drift is acceptable only while pending_sync is recorded
+
+
 def test_catalog_sync_upsert_failure_marks_error(fs, ws, catalog):
     d = mv(fs, "input/project_recsys.md", "data/projects/")
     recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 2}])["excerpts"]

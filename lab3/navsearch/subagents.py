@@ -36,7 +36,7 @@ MAX_RESULT_WAIT_S = 20
 
 DEFAULT_SUB_LIMITS = {
     # sub-agents work in one run until they submit: no per-turn cap (that cap is for the dialog of the main agent)
-    "deep": {"max_total_tokens": 800_000, "max_model_calls": 40, "max_tool_calls": 160, "max_model_calls_per_run": 0},
+    "deep": {"max_total_tokens": 1_200_000, "max_model_calls": 60, "max_tool_calls": 240, "max_model_calls_per_run": 0},
     "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0},
 }
 
@@ -77,17 +77,39 @@ class ChainedBudget(Budget):
             self.store.finish_reservation(self._links.pop(res_id), "failed")
 
 
+def compose_partial(store: TaskStore, task: dict) -> dict | None:
+    """A sub-agent stopped by its budget (or a failure) before submit_result: the harness builds an explicit PARTIAL
+    result from what is saved - findings from the cited evidence, open questions from the unfinished plan steps -
+    so the main agent never receives an empty result. It is never presented as complete."""
+    ev = store.evidence(task["task_id"])
+    if task["status"] not in ("paused", "failed", "cancelled") or not ev:
+        return None
+    by_doc: dict[str, list[dict]] = {}
+    for e in ev:
+        by_doc.setdefault(e["source"], []).append(e)
+    findings = "ЧАСТИЧНЫЙ результат (собран harness: субагент остановлен до submit_result). Подтверждено цитатами:\n" + "\n".join(
+        f"- {path}: " + "; ".join(f"{e['claim']} [{e['evidence_id']}]" for e in items[:6]) for path, items in sorted(by_doc.items()))
+    plan = task.get("plan") or []
+    open_q = [f"не завершено: {st.get('title') or st.get('step') or st}" for st in plan
+              if isinstance(st, dict) and st.get("status") not in ("done", "completed")]
+    open_q.append(f"остановлен: {task['status_reason'] or task['status']} - итоговый синтез не выполнен, выводы выше только по цитатам")
+    return {"completed": False, "partial": True, "auto_composed": True, "findings": findings, "open_questions": open_q}
+
+
 def build_result(store: TaskStore, task_id: str, coverage: dict | None = None) -> dict:
     t = store.get_task(task_id)
     if not t:
         raise ToolError("unknown_task", f"no sub-task {task_id}")
     comp = t.get("completion") or {}
+    if not comp.get("findings") and (auto := compose_partial(store, t)):
+        comp = auto
     ev = [{"evidence_id": e["evidence_id"], "document_id": e["document_id"], "fragment_id": e.get("fragment_id"),
            "path": e["source"], "lines": [e["line_start"], e["line_end"]], "quote": e["quote"], "claim": e["claim"]}
           for e in store.evidence(task_id)]
     b = Budget(store, task_id, Limits.from_dict(t["limits"])).snapshot()
     out = {"task_id": task_id, "kind": t["kind"], "parent_task_id": t["spec"].get("parent_task_id"),
            "request": t["request"], "status": t["status"], "reason": t["status_reason"],
+           "result": "complete" if t["status"] == "completed" else ("partial" if comp.get("findings") else "none"),
            "findings": comp.get("findings") or comp.get("reason"), "open_questions": comp.get("open_questions", []),
            "evidence": ev, "usage": {"tokens": b["tokens"]["spent"], "model_calls": b["model_calls"]["used"],
                                      "tool_calls": b["tool_calls"]["used"], "compactions": b["compaction_calls"]}}

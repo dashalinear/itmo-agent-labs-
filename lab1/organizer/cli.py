@@ -3,6 +3,10 @@
     python -m organizer.cli                      # interactive dialog
     python -m organizer.cli --script demo/dialog_ru.txt   # replay user turns
 
+In a script, '@wait_for_files input/a.md input/b.md' pauses the session until
+those files are added to input/ by another process (second terminal, Explorer,
+scripts/run_all_demos.ps1); the CLI itself copies nothing.
+
 History: one LangGraph thread per CLI session (InMemorySaver checkpointer).
 Each turn passes ONLY the new HumanMessage; the graph's add_messages reducer
 appends AI/tool messages with their tool_call_id, so nothing is lost or
@@ -13,9 +17,12 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 import shutil
 import sys
+import time
 import uuid
+from dataclasses import replace
 from datetime import datetime
 from pathlib import Path
 
@@ -30,6 +37,8 @@ from .mcp_client import MCPConnection, unavailable_tools
 from .tracing import Tracer
 
 EXIT_WORDS = {"/exit", "/quit", "exit", "quit", "выход"}
+MODEL_LIMIT_MARK = "Model call limits exceeded"   # text of ModelCallLimitMiddleware's final AIMessage
+WAIT_DIRECTIVE = "@wait_for_files"
 HELP = """Команды: /history — статистика истории, /check — проверка пар tool_call/tool_result,
 /catalog — сводка каталога, /graph — mermaid-схема графа, /exit — выход.
 Любой другой текст отправляется агенту."""
@@ -73,7 +82,7 @@ class Session:
                   "metadata": {"session_id": self.thread_id}}
         self.tracer.user_turn(run_id, text)
         before = len(await self.messages())
-        transitions, error, step = ["__start__"], None, 0
+        transitions, error, step, stopped_by = ["__start__"], None, 0, None
         try:
             async with asyncio.timeout(self.settings.turn_timeout_s):
                 async for chunk in self.bundle.agent.astream(
@@ -87,8 +96,10 @@ class Session:
                             self._echo(node, new_msgs)
         except GraphRecursionError:
             error = f"execution limit: recursion_limit={self.settings.recursion_limit} reached"
+            stopped_by = "recursion_limit"
         except TimeoutError:
             error = f"turn timeout {self.settings.turn_timeout_s}s"
+            stopped_by = "turn_timeout"
         except Exception as e:  # noqa: BLE001 - LLM/network errors must not kill the CLI
             error = f"{type(e).__name__}: {e}"[:500]
         if error:
@@ -105,13 +116,18 @@ class Session:
                 break
         if error:
             answer = (answer + "\n\n" if answer else "") + f"[Ход остановлен: {error}]"
+        elif any(isinstance(m, AIMessage) and str(m.content).startswith(MODEL_LIMIT_MARK) for m in produced):
+            # ModelCallLimitMiddleware(exit_behavior="end") ended the turn with its own AIMessage
+            stopped_by = "model_call_limit"
+            answer += (f"\n\n[Ход остановлен лимитом выполнения: model_calls_per_turn="
+                       f"{self.settings.model_calls_per_turn} (ModelCallLimitMiddleware)]")
         usage = {"input_tokens": 0, "output_tokens": 0}
         for m in produced:
             u = getattr(m, "usage_metadata", None) or {}
             usage["input_tokens"] += u.get("input_tokens", 0)
             usage["output_tokens"] += u.get("output_tokens", 0)
         problems = validate_history(msgs)
-        self.tracer.turn_end(run_id, answer, transitions, problems, error, usage)
+        self.tracer.turn_end(run_id, answer, transitions, problems, error, usage, stopped_by=stopped_by)
         return answer
 
     def _echo(self, node: str, msgs) -> None:
@@ -120,7 +136,7 @@ class Session:
                 for tc in m.tool_calls:
                     print(f"  ↳ [{node}] {tc['name']}({_short(tc['args'])})", flush=True)
             elif isinstance(m, ToolMessage):
-                ok = "✗" if m.status == "error" or '"ok": false' in str(m.content)[:40] else "✓"
+                ok = "ERR" if m.status == "error" or '"ok": false' in str(m.content)[:40] else "ok"
                 print(f"    {ok} {m.name}", flush=True)
 
     async def command(self, cmd: str) -> bool:
@@ -135,7 +151,7 @@ class Session:
             print(json.dumps(history_summary(msgs), ensure_ascii=False, indent=2))
         elif c == "/check":
             problems = validate_history(msgs)
-            print("История корректна ✓" if not problems else "\n".join(problems))
+            print("История корректна: OK" if not problems else "\n".join(problems))
         elif c == "/catalog":
             cat = self.bundle.catalog.load()
             for d in cat["documents"]:
@@ -147,8 +163,68 @@ class Session:
         return True
 
 
+def _input_files(settings: Settings) -> dict[str, int]:
+    root = settings.workspace
+    return {p.relative_to(root).as_posix(): p.stat().st_size
+            for p in (root / "input").rglob("*") if p.is_file()}
+
+
+async def wait_for_files(settings: Settings, tracer: Tracer, names: list[str], timeout_s: float = 600.0,
+                         marker: Path | None = None, poll_s: float = 0.5) -> list[str]:
+    """Script pause: wait until files appear in input/ — added by SOMEONE ELSE (a second terminal,
+    Explorer, or the demo PowerShell script). This process copies nothing; it only checks that the
+    files exist and their size is stable, then logs what appeared. The agent itself still discovers
+    them with a fresh ``ls`` on the next user turn.
+
+    ``names``: workspace-relative paths (``input/x.md``) or bare file names; empty = any new file.
+    ``marker``: optional file written while waiting, so an external script knows when to add files.
+    """
+    targets = [n.replace("\\", "/").lstrip("/") for n in names]
+    targets = [t if t.startswith("input/") else f"input/{t}" for t in targets]
+    if any(".." in t.split("/") for t in targets):
+        raise ValueError(f"{WAIT_DIRECTIVE}: paths must stay inside workspace/input: {targets}")
+    before = _input_files(settings)
+    tracer.event("harness_wait", waiting_for=targets or "any new file in input/", timeout_s=timeout_s,
+                 marker=str(marker) if marker else None, pid=os.getpid())
+    print(f"  [пауза сценария] жду, пока пользователь добавит файлы в input извне "
+          f"({', '.join(targets) or 'любой новый файл'}); этот процесс ничего не копирует", flush=True)
+    if marker:
+        marker.parent.mkdir(parents=True, exist_ok=True)
+        marker.write_text(json.dumps({"waiting_for": targets, "pid": os.getpid(),
+                                      "workspace_input": str(settings.workspace / "input")}), encoding="utf-8")
+    t0, last, timed_out = time.monotonic(), None, False
+    try:
+        while True:
+            now = _input_files(settings)
+            if targets:
+                ready = all(t in now for t in targets)
+                snapshot = {t: now.get(t) for t in targets}
+            else:
+                ready = bool(set(now) - set(before))
+                snapshot = {k: v for k, v in now.items() if k not in before}
+            if ready and snapshot == last:      # present and size unchanged for one poll interval
+                break
+            last = snapshot if ready else None
+            if time.monotonic() - t0 > timeout_s:
+                timed_out = True
+                break
+            await asyncio.sleep(poll_s)
+    finally:
+        if marker:
+            marker.unlink(missing_ok=True)
+    appeared = sorted(set(_input_files(settings)) - set(before))
+    tracer.user_action("external_files_added", files=appeared, waited_s=round(time.monotonic() - t0, 1),
+                       timed_out=timed_out, added_by="another process (this CLI only waited, copied nothing)")
+    if timed_out:
+        print(f"  [пауза сценария] таймаут {timeout_s}s: файлы так и не появились", flush=True)
+    else:
+        print("  [пауза сценария] в input появились:", appeared, flush=True)
+    return appeared
+
+
 def add_late_files(settings: Settings, tracer: Tracer) -> list[str]:
-    """Simulates the user dropping the two prepared files into input/."""
+    """Legacy shortcut ('@add_late_files'): THIS process copies fixtures/late/* into input/.
+    The demo uses '@wait_for_files' instead, where the files are added from outside the CLI."""
     src = PROJECT_ROOT / "fixtures" / "late"
     copied = []
     for f in sorted(src.glob("*")):
@@ -156,16 +232,23 @@ def add_late_files(settings: Settings, tracer: Tracer) -> list[str]:
         if not dst.exists():
             shutil.copy2(f, dst)
             copied.append(f"input/{f.name}")
-    tracer.user_action("add_late_files", files=copied)
+    tracer.user_action("add_late_files", files=copied, added_by="this CLI process (legacy @add_late_files)")
     return copied
 
 
 async def amain(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="organizer", description="Conversational file organizer (lab 1)")
-    ap.add_argument("--script", type=Path, help="replay user turns from a file (one per line; '@add_late_files' = manual action)")
+    ap.add_argument("--script", type=Path, help="replay user turns from a file (one per line; "
+                    "'@wait_for_files <paths>' = pause until the files are added to input/ from outside)")
     ap.add_argument("--env", type=Path, help="alternative .env file")
     ap.add_argument("--no-mcp", action="store_true", help="start without the Elasticsearch MCP server")
     ap.add_argument("--quiet", action="store_true", help="do not echo tool calls")
+    ap.add_argument("--wait-marker", type=Path, help="file written while '@wait_for_files' waits "
+                    "(lets an external script know when to add the files)")
+    ap.add_argument("--wait-timeout", type=float, default=600.0, help="seconds '@wait_for_files' waits (default 600)")
+    ap.add_argument("--dry-run-model", action="store_true",
+                    help="use a deterministic stand-in model instead of the LLM (checks scripts/plumbing only; "
+                         "NOT valid for demo traces)")
     args = ap.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -174,7 +257,12 @@ async def amain(argv: list[str] | None = None) -> int:
     settings = load_settings(args.env)
     session_id = datetime.now().strftime("session_%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:6]
     tracer = Tracer(settings.traces_dir, session_id)
-    model = build_llm(settings)
+    if args.dry_run_model:
+        from .testing import DryRunChatModel
+        settings = replace(settings, llm_model="dry-run-model (scripted stand-in, NOT an LLM)", llm_base_url="")
+        model = DryRunChatModel()
+    else:
+        model = build_llm(settings)
 
     mcp = MCPConnection(settings)
     if args.no_mcp:
@@ -218,6 +306,10 @@ async def amain(argv: list[str] | None = None) -> int:
                 continue
             if text == "@add_late_files":
                 print("  [ручное действие пользователя] добавлены:", add_late_files(settings, tracer))
+                continue
+            if text.split()[0] == WAIT_DIRECTIVE:
+                await wait_for_files(settings, tracer, text.split()[1:], timeout_s=args.wait_timeout,
+                                     marker=args.wait_marker)
                 continue
             if text.startswith("/") or text.lower() in EXIT_WORDS:
                 if not await sess.command(text):

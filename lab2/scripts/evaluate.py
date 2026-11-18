@@ -9,11 +9,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 
 LAB2 = Path(__file__).resolve().parent.parent
-RES = LAB2 / "results"
+RES = Path(os.getenv("RESULTS_DIR") or LAB2 / "results")
 CONSTRAINT = re.compile(r"\[(?:C|W|G)\d\]")
 
 
@@ -101,7 +102,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--harness", default="A1")
     ap.add_argument("--baseline", default="A_base")
-    ap.add_argument("--tasks", nargs="*", default=["A1", "B1", "B2", "C1", "D1", "E1", "G1", "T1"])
+    ap.add_argument("--tasks", nargs="*", default=["A1", "B1", "B2", "B3", "C1", "C2", "D1", "DL1", "E1", "G1", "G2", "I1", "T1"])
     args = ap.parse_args()
     manifest = json.loads((LAB2 / "corpus" / "manifest.json").read_text(encoding="utf-8"))
     out = {"tasks": {}, "facts": {}, "comparison": {}}
@@ -133,13 +134,13 @@ def main() -> None:
                "| факт | место | ожид. стр. | в evidence | стр. в evidence | в отчёте | в итоговом summary | в summary после первого упоминания |",
                "|---|---|---|---|---|---|---|---|"]
         for r in fc["facts"]:
-            md.append(f"| {r['fact']} | {r['position']} ({r['file']}) | {r['expected_page']} | {'✔' if r['in_evidence'] else '✘'} | "
-                      f"{r['evidence_pages']} | {'✔' if r['in_report'] else '✘'} | {'✔' if r['in_final_summary'] else '✘'} | "
+            md.append(f"| {r['fact']} | {r['position']} ({r['file']}) | {r['expected_page']} | {'да' if r['in_evidence'] else 'нет'} | "
+                      f"{r['evidence_pages']} | {'да' if r['in_report'] else 'нет'} | {'да' if r['in_final_summary'] else 'нет'} | "
                       f"{r['summaries_after_first_mention']} |")
         md += ["", "| ограничение | закреплено в каждом вызове (TASK CONTRACT) | в summary компактификаций |",
                "|---|---|---|"]
         for c in fc["constraints"]:
-            md.append(f"| {c['constraint']} | ✔ | {c['in_compaction_summaries']} |")
+            md.append(f"| {c['constraint']} | да | {c['in_compaction_summaries']} |")
         md.append("")
     if out["comparison"]:
         h, b = out["comparison"]["harness"], out["comparison"]["baseline"]

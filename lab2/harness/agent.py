@@ -101,6 +101,8 @@ def build_harness_agent(cfg: HarnessConfig, store: TaskStore, task_id: str, mode
     ctx = HarnessContext(store=store, task_id=task_id, limits=limits, budget=budget, counter=counter, window=window,
                          window_source=window_source, base_prompt=base_prompt, ws=ws, artifacts=artifacts,
                          summarizer=summarizer, tools=tools, on_event=on_event, crash_at=cfg.crash_at)
+    research.emit = ctx.emit                                     # web guardrails / cache hits appear in the trace
+    research.crash_hook = lambda phase: ctx.crash_check(phase, tool="web_fetch")
     agent = create_agent(
         model=model, tools=tools, system_prompt=base_prompt,
         middleware=[ToolRuntimeMiddleware(ctx), OutputGuardMiddleware(ctx), CatalogSyncMiddleware(ws, catalog),

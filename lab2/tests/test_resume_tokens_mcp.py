@@ -20,11 +20,15 @@ from harness.store import TaskStore
 from harness.tokens import TokenCounter, detect_window
 
 
-def _run_helper(cfg, base, crash_at, create=False):
+def _run_helper(cfg, base, crash_at, create=False, *flags):
     args = [sys.executable, str(LAB2 / "tests" / "crash_task.py"), str(cfg.root), str(cfg.results_dir), str(cfg.traces_dir),
-            base, crash_at] + (["create"] if create else [])
+            base, crash_at] + (["create"] if create else []) + list(flags)
     return subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=180,
                           env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+
+
+def _trace_rows(path):
+    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines()]
 
 
 def test_crash_after_effects_then_resume_in_new_process(cfg, web):
@@ -57,6 +61,61 @@ def test_crash_after_effects_then_resume_in_new_process(cfg, web):
         assert info["resume_kind"] == "continue_interrupted_step"
     finally:
         s.close()
+
+
+def test_crash_windows_download_fetch_evidence_in_four_processes(cfg, web):
+    """Three real crash windows in three processes, then a clean resume (the I1 scenario of run_final_lab2.ps1):
+    after_download (page downloaded, not stored) -> URL re-queued and fetched again (counted);
+    after_tool:web_fetch (page stored, step checkpoint missing) -> re-executed as a cache hit, HTTP unchanged;
+    after_tool:save_evidence (evidence stored) -> re-executed as already_saved; no duplicates in the end."""
+    base, handler = web
+    hits = lambda: {s: sum(1 for h in handler.hits if h.startswith(f"/p/{s}")) for s in ("checkpoint-1", "idempotency-1")}  # noqa: E731
+    h0 = hits()
+    p1 = _run_helper(cfg, base, "after_download:2", True, "web")
+    assert p1.returncode == 137, p1.stdout + p1.stderr
+    s = TaskStore(cfg.root / ".harness" / "state.db")
+    running = s.urls("R", "running")
+    assert len(running) == 1 and s.usage("R")["http_requests"] == 2      # downloaded twice, one page not stored
+    s.close()
+    p2 = _run_helper(cfg, base, "after_tool:web_fetch:1", False, "web", "resume")
+    assert p2.returncode == 137, p2.stdout + p2.stderr
+    p3 = _run_helper(cfg, base, "after_tool:save_evidence:1", False, "web", "resume")
+    assert p3.returncode == 137, p3.stdout + p3.stderr
+    p4 = _run_helper(cfg, base, "", False, "web")
+    assert p4.returncode == 0 and "STATUS completed" in p4.stdout, p4.stdout + p4.stderr
+
+    traces = sorted(cfg.traces_dir.glob("R_*.jsonl"), key=lambda p: _trace_rows(p)[0]["ts"])
+    assert len(traces) == 4
+    t2, t3, t4 = (_trace_rows(t) for t in traces[1:])
+    assert t2[0]["recovered"]["urls_requeued"] == 1 and t2[0]["resume_kind"] == "continue_interrupted_step"
+    assert any(r["event"] == "harness:simulated_crash" for r in t2)
+    hit3 = next(r for r in t3 if r["event"] == "harness:fetch_cache_hit")      # the page stored by process 2
+    got = hits()
+    s = TaskStore(cfg.root / ".harness" / "state.db")
+    try:
+        assert len(s.evidence("R")) == 2 and s.get_task("R")["status"] == "completed"
+        # only downloads that were killed before the page was stored are repeated (3 or 4 depending on which parallel
+        # call finished first); every real request is counted in the HTTP budget, a cache hit never is
+        # a request is counted BEFORE it is sent, so a request killed with the process is counted but may not arrive
+        assert sum(got.values()) - sum(h0.values()) <= s.usage("R")["http_requests"] <= 5
+        cached = next(u for u in s.urls("R") if u["url_key"] == hit3["url_key"])
+        assert cached["attempts"] == hit3["url_http_attempts"]                # the cached page was not downloaded again
+        assert len({a["artifact_id"] for a in s.artifacts("R") if a["kind"] == "web_page"}) == 2
+        assert len({u["canonical"] for u in s.urls("R")}) == len(s.urls("R"))
+    finally:
+        s.close()
+    # the evidence report built from these traces (scripts/idempotency_report.py) sees the same
+    env = {**os.environ, "PYTHONIOENCODING": "utf-8", "TASK_ROOT": str(cfg.root), "RESULTS_DIR": str(cfg.results_dir),
+           "TRACES_DIR": str(cfg.traces_dir), "FIXTURE_BASE_URL": base}
+    rep = subprocess.run([sys.executable, str(LAB2 / "scripts" / "idempotency_report.py"), "--task-id", "R"],
+                         capture_output=True, text=True, encoding="utf-8", timeout=120, env=env)
+    assert rep.returncode == 0, rep.stdout + rep.stderr
+    checks = json.loads((cfg.results_dir / "R" / "idempotency.json").read_text(encoding="utf-8"))["checks"]
+    assert checks["crashes"] == 3 and checks["urls_requeued_after_crash"] >= 1
+    assert checks["cache_hit_in_re_executed_step"] and checks["already_saved_in_re_executed_step"]
+    assert checks["cached_pages_not_downloaded_again"]
+    assert checks["replay_all_already_saved"] and checks["replay_all_cache_hits_no_http"]
+    assert checks["no_duplicate_evidence"] and checks["no_duplicate_queue_entries"]
 
 
 def test_token_counter_calibration_and_server_window():

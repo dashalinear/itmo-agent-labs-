@@ -191,8 +191,12 @@ def test_absolute_path_outside_blocked(fs, ws, tmp_path):
 
 
 def test_symlink_escape_blocked(fs, ws, tmp_path):
+    """Real symlinks (file and directory). Runs on Linux/macOS and on Windows with Developer Mode
+    (or SeCreateSymbolicLinkPrivilege); otherwise skipped - the junction test below covers the
+    Windows reparse-point escape with the same assertions."""
     if not can_symlink(tmp_path):
-        pytest.skip("symlinks not permitted on this OS account (enable Windows Developer Mode)")
+        pytest.skip("symlinks not permitted for this OS account (Windows: enable Developer Mode or run "
+                    "as administrator); the escape is covered by test_junction_escape_blocked_windows")
     secret = tmp_path / "outside_secret.txt"
     secret.write_text("secret", encoding="utf-8")
     os.symlink(secret, ws.input / "link.txt")
@@ -226,7 +230,15 @@ def test_junction_escape_blocked_windows(fs, ws, tmp_path):
     entry = next(e for e in call(fs, "ls", path="input")["data"]["entries"] if e["name"] == "junction")
     assert entry["type"] == "symlink" and entry["path"] is None
     assert call(fs, "grep", pattern="secret", path="input", recursive=True)["data"]["total_matches"] == 0
-    assert (outside / "secret.txt").exists()
+    # the same escape written as an absolute path through the junction, as an absolute path to the
+    # target itself, and combined with ../
+    assert call(fs, "read", path=str(ws.input / "junction" / "secret.txt"))["error"]["type"] == "outside_workspace"
+    assert call(fs, "read", path=str(outside / "secret.txt"))["error"]["type"] == "outside_workspace"
+    assert call(fs, "read", path="input/junction/../junction/secret.txt")["error"]["type"] == "outside_workspace"
+    assert call(fs, "head", path="input/junction/secret.txt", n=1)["error"]["type"] == "outside_workspace"
+    assert call(fs, "tail", path="input/junction/secret.txt", n=1)["error"]["type"] == "outside_workspace"
+    assert call(fs, "grep", pattern="secret", path="input/junction", recursive=True)["error"]["type"] == "outside_workspace"
+    assert (outside / "secret.txt").exists() and not (ws.data / "x").exists()
 
 
 def test_parallel_moves_from_one_folder_all_catalogued(fs, ws, catalog):

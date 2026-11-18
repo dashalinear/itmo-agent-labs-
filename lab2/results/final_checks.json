@@ -1,0 +1,128 @@
+[
+  {
+    "task": "A1",
+    "property": "статус completed только по критериям",
+    "actual": "completed (Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), )",
+    "ok": true
+  },
+  {
+    "task": "A1",
+    "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
+    "actual": "None",
+    "ok": false
+  },
+  {
+    "task": "A1",
+    "property": "отказы complete_task до выполнения критериев (информативно)",
+    "actual": 0,
+    "ok": true
+  },
+  {
+    "task": "A1",
+    "property": "сбой после checkpoint и resume в новом процессе",
+    "actual": "crash=True, resume=True, запусков 2",
+    "ok": true
+  },
+  {
+    "task": "A1",
+    "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
+    "actual": 4,
+    "ok": true
+  },
+  {
+    "task": "A1",
+    "property": "нет вызова сверх рабочего лимита",
+    "actual": "макс. оценка+резерв 20682 / 28000; сверх лимита: 0",
+    "ok": true
+  },
+  {
+    "task": "A1",
+    "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
+    "actual": "'\"line\": 1311': смещение 10104 > выдано 1696, через search_artifact",
+    "ok": true
+  },
+  {
+    "task": "D1",
+    "property": "статус completed только по критериям",
+    "actual": "completed (Обзор завершён: 5 разделов (approaches, limitations, disputed, decisions, summar)",
+    "ok": true
+  },
+  {
+    "task": "D1",
+    "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
+    "actual": "None",
+    "ok": false
+  },
+  {
+    "task": "D1",
+    "property": "отказы complete_task до выполнения критериев (информативно)",
+    "actual": 1,
+    "ok": true
+  },
+  {
+    "task": "D1",
+    "property": "первый запуск: paused по бюджету + частичный отчёт",
+    "actual": "paused",
+    "ok": true
+  },
+  {
+    "task": "D1",
+    "property": "лимит поднят пользователем (limits_changed)",
+    "actual": 1,
+    "ok": true
+  },
+  {
+    "task": "D1",
+    "property": "после resume счётчики не обнулены",
+    "actual": "токены до resume: 114055",
+    "ok": true
+  },
+  {
+    "task": "E1",
+    "property": "статус cancelled (не completed)",
+    "actual": "cancelled",
+    "ok": true
+  },
+  {
+    "task": "E1",
+    "property": "отмена после сохранения 2-3 evidence",
+    "actual": 0,
+    "ok": false
+  },
+  {
+    "task": "E1",
+    "property": "резерв токенов освобождён после отмены",
+    "actual": "reserved=20782, interrupted_call_tokens=0",
+    "ok": false
+  },
+  {
+    "task": "E1",
+    "property": "частичный отчёт сохранён",
+    "actual": true,
+    "ok": true
+  },
+  {
+    "task": "DL1",
+    "property": "есть результаты",
+    "actual": "нет",
+    "ok": false
+  },
+  {
+    "task": "C2",
+    "property": "есть результаты",
+    "actual": "нет",
+    "ok": false
+  },
+  {
+    "task": "I1",
+    "property": "есть results/I1/idempotency.json",
+    "actual": "нет",
+    "ok": false
+  },
+  {
+    "task": "G2",
+    "property": "есть трассы G2",
+    "actual": "нет",
+    "ok": false
+  }
+]

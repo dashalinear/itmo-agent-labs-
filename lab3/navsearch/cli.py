@@ -16,6 +16,8 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
+import re
 import shutil
 import sys
 import uuid
@@ -54,14 +56,14 @@ def prepare(cfg, reset: bool) -> None:
     print(f"task root: {root}\ninput files: {n}\nElasticsearch indices: {idx.l1}, {idx.l2}")
 
 
-def add_new_files(cfg) -> list[str]:
-    dst = cfg.root / "input" / "new_files"
+def add_new_files(cfg, batch: str = "new_batch", to: str = "input/new_files") -> list[str]:
+    dst = cfg.root / to
     dst.mkdir(parents=True, exist_ok=True)
     out = []
-    for f in sorted((CORPUS / "new_batch").glob("*")):
+    for f in sorted((CORPUS / batch).glob("*")):
         if not (dst / f.name).exists():
             shutil.copy2(f, dst / f.name)
-            out.append(f"input/new_files/{f.name}")
+            out.append(f"{to}/{f.name}")
     print("added:", out)
     return out
 
@@ -75,10 +77,54 @@ def ensure_task(runner: TaskRunner, task_id: str, kind: str, request: str, extra
     return runner.create(spec, task_id, overrides)
 
 
+def skip_known_content(cfg, folder: str) -> list[dict]:
+    """Repeated ingestion of unchanged files: a file whose content hash already belongs to a document in data/ is
+    moved to rejected/<folder>/ (kept, not lost) and NOT handed to the agent, so no second document appears."""
+    from organizer.textutil import file_hash
+    ws = HarnessWorkspace(cfg.root)
+    cat = Catalog(ws)
+    out = []
+    root = ws.resolve(folder, must_exist=True)
+    for p in sorted(x for x in root.rglob("*") if x.is_file()):
+        same = [d for d in cat.same_content(file_hash(p)) if d["current_path"].startswith("data/")]
+        if not same:
+            continue
+        dst = ws.root / "rejected" / ws.rel(p)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        os.replace(p, dst)
+        out.append({"file": ws.rel(p), "existing": same[0]["current_path"], "document_id": same[0]["document_id"],
+                    "kept_in": ws.rel(dst)})
+        print(f"  [harness] {ws.rel(p)}: same content as {same[0]['current_path']} -> {ws.rel(dst)} (not indexed again)")
+    return out
+
+
 INGEST_REQUEST = ("Организуй все файлы из папки {folder} в data по темам (по содержимому, тематические подпапки входа "
                   "сохраняй, если они подходят) и добавь документы в корпус: каталог L0, структура и summary L1, "
                   "тексты L2 в Elasticsearch. Неизменённые документы, уже имеющие актуальные L1/L2, не обрабатывай повторно. "
                   "В конце проверь корпус validate_corpus и заверши задачу.")
+
+
+PATH_RX = re.compile(r"data/[\w.\-/]+\.(?:md|txt)")
+
+
+def answer_issue(app: Lab3, answer: str) -> str | None:
+    """Deterministic check of a main-agent answer before the next user turn (see the main prompt):
+    an empty/unreadable answer, or document paths that do not exist in L0, are returned to the agent once."""
+    text = (answer or "").strip()
+    letters = sum(ch.isalnum() for ch in text)
+    if not text or letters < 0.3 * len(text) or letters < 5:
+        return ("Предыдущий ответ пустой или нечитаемый. Ответь на последний вопрос пользователя заново, по-русски, "
+                "опираясь на результаты инструментов; если нужных данных нет, вызови инструменты.")
+    paths = set(PATH_RX.findall(text))
+    if paths:
+        ws = HarnessWorkspace(app.cfg.root)
+        known = {d["path"] for d in Levels(ws, Catalog(ws)).l0()["documents"]}
+        unknown = sorted(p for p in paths if p not in known)
+        if unknown:
+            return ("В ответе названы документы, которых нет в корпусе (L0): " + ", ".join(unknown[:8]) +
+                    ". Проверь состав через list_documents / corpus_overview и исправь ответ: называй только то, "
+                    "что вернули инструменты.")
+    return None
 
 
 async def chat(app: Lab3, task_id: str, script: Path | None) -> None:
@@ -123,7 +169,11 @@ async def chat(app: Lab3, task_id: str, script: Path | None) -> None:
             print(f"  [пользователь ждёт {sec} с; субагенты продолжают работу в фоне]")
             await asyncio.sleep(sec)
             continue
-        await runner.run(task_id, user_text=text, label="chat", agent_factory=factory)
+        res = await runner.run(task_id, user_text=text, label="chat", agent_factory=factory)
+        issue = answer_issue(app, (res or {}).get("answer") or "")
+        if issue and (res or {}).get("status") not in ("cancelled",):
+            print(f"  [harness check] {issue[:160]}")
+            await runner.run(task_id, user_text=f"[проверка harness] {issue}", label="chat-recheck", agent_factory=factory)
     mgr = app.managers.get(task_id)
     pending = [t for t in (mgr.tasks.values() if mgr else []) if not t.done()]
     if pending:
@@ -162,7 +212,7 @@ def probe(app: Lab3, cfg) -> dict:
     (cfg.results_dir).mkdir(parents=True, exist_ok=True)
     (cfg.results_dir / "search_probe.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     for r in rows:
-        print(f"{r['id']} {r['kind']:<12} {'✔' if r['found'] else '✘'} expected {r['expected']} -> {r['top_paths']}")
+        print(f"{r['id']} {r['kind']:<12} {'OK  ' if r['found'] else 'MISS'} expected {r['expected']} -> {r['top_paths']}")
     store.close()
     return out
 
@@ -181,7 +231,13 @@ def export_corpus(cfg) -> None:
         shutil.copy2(ws.catalog_path, dst / "catalog.json")
     tree = sorted(p.relative_to(ws.root).as_posix() for p in ws.data.rglob("*") if p.is_file())
     (dst / "data_tree.txt").write_text("\n".join(tree) + "\n", encoding="utf-8")
-    print(f"L0/L1/L2 + catalog -> {dst}")
+    # frozen demonstration manifest: document_id, path, title, content hash (+ L1/L2 state) of every corpus document
+    l0 = json.loads((src / "l0.json").read_text(encoding="utf-8"))
+    frozen = {"corpus_id": l0["corpus_id"], "frozen_at": l0["generated_at"], "totals": l0["totals"],
+              "documents": [{k: d.get(k) for k in ("document_id", "path", "title", "content_hash", "l1", "l2_fragments")}
+                            for d in l0["documents"]]}
+    (CORPUS / "manifest_frozen.json").write_text(json.dumps(frozen, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"L0/L1/L2 + catalog -> {dst}; frozen manifest -> {CORPUS / 'manifest_frozen.json'}")
 
 
 async def amain(argv=None) -> int:
@@ -199,6 +255,9 @@ async def amain(argv=None) -> int:
             p.add_argument("--set", nargs="*", default=[])
         if name == "prepare":
             p.add_argument("--reset", action="store_true")
+        if name == "add-new-files":
+            p.add_argument("--batch", default="new_batch", help="corpus/<batch> to copy (new_batch, new_batch2)")
+            p.add_argument("--to", default="input/new_files", help="target folder inside the task root")
         if name == "ingest":
             p.add_argument("--folder", required=True, help="folder with new files inside the task root, e.g. input or input/new_files")
             p.add_argument("--task-id")
@@ -223,7 +282,7 @@ async def amain(argv=None) -> int:
         prepare(cfg, args.reset)
         return 0
     if args.cmd == "add-new-files":
-        add_new_files(cfg)
+        add_new_files(cfg, args.batch, args.to)
         return 0
     if args.cmd in ("status", "pause", "cancel", "list", "report", "coverage"):
         store = TaskStore(cfg.state_dir / "state.db")
@@ -282,7 +341,14 @@ async def amain(argv=None) -> int:
             folder = args.folder.strip().strip("/").replace("\\", "/")
             HarnessWorkspace(cfg.root).resolve(folder, must_exist=True)          # must be inside the task root
             tid = args.task_id or f"ING-{folder.replace('/', '_')}-{datetime.now().strftime('%m%d%H%M')}"
-            ensure_task(runner, tid, "ingest", INGEST_REQUEST.format(folder=folder), {"ingest_folder": folder}, _kv(args.set))
+            dups = skip_known_content(cfg, folder) if not runner.store.get_task(tid) else []
+            request = INGEST_REQUEST.format(folder=folder)
+            if dups:
+                request += (" Уже были в корпусе с тем же содержимым и убраны harness из входной папки (не индексируй их): "
+                            + "; ".join(f"{d['file']} = {d['existing']}" for d in dups) + ".")
+            ensure_task(runner, tid, "ingest", request, {"ingest_folder": folder, "skipped_duplicates": dups}, _kv(args.set))
+            if dups:
+                runner.store.event(tid, "duplicates_skipped", {"files": dups})
             res = await runner.run(tid, label="ingest", agent_factory=app.factory("ingest"))
             return 0 if res.get("status") in ("completed", "paused") else 2
         if args.cmd == "resume":

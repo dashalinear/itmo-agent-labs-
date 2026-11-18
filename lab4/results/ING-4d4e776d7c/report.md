@@ -16,9 +16,9 @@ _Разделы обзора ещё не написаны._
 
 ## Критерии завершения
 
-- ✔ input_folder_organized: 0 files left
-- ✔ l1_l2_complete: need L1: 0, need L2: 0
-- ✔ validation: 30 fragments checked, 0 problems
+- OK input_folder_organized: 0 files left
+- OK l1_l2_complete: need L1: 0, need L2: 0
+- OK validation: 30 fragments checked, 0 problems
 
 ## Расход
 

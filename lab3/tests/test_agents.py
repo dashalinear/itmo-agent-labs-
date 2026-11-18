@@ -321,3 +321,72 @@ def test_submit_result_without_findings_is_composed_from_evidence(env):
     assert res["status"] == "completed"
     t = env.store.get_task(env.task_id)
     assert "Найдено подтверждений: 1" in t["completion"]["findings"]
+
+
+def test_deep_stopped_by_budget_returns_an_explicit_partial_result(env):
+    """A deep sub-agent paused by its budget before submit_result: the result is PARTIAL with findings from the
+    cited evidence and open questions from the unfinished plan - never empty, never 'complete'."""
+    from navsearch.subagents import build_result
+    from navsearch.tools_corpus import CorpusTools
+    ct = CorpusTools(env)
+    hit = ct.search_grep("РС-7", "L2")["hits"][0]
+    ct.cite_fragment(hit["fragment_id"], hit["text"][:60], "решение РС-7")
+    env.store.update_task(env.task_id, plan=[{"title": "найти бэкенды", "status": "done"},
+                                             {"title": "сравнить ограничения", "status": "doing"}])
+    env.store.set_status(env.task_id, "paused", "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)")
+    r = build_result(env.store, env.task_id)
+    assert r["result"] == "partial" and r["status"] == "paused"
+    assert "ЧАСТИЧНЫЙ" in r["findings"] and "ev_" in r["findings"] and len(r["evidence"]) == 1
+    assert any("сравнить ограничения" in q for q in r["open_questions"])
+    assert any("budget exhausted" in q for q in r["open_questions"])
+
+
+def test_deep_tools_warn_when_few_model_calls_are_left(env):
+    import json as _json
+    from navsearch.tools_corpus import CorpusTools
+    ct = CorpusTools(env, coach=True)
+    t = env.store.get_task(env.task_id)
+    env.store.update_task(env.task_id, limits={**t["limits"], "max_model_calls": 10})
+    tool = next(x for x in ct.search_tools() if x.name == "search_grep")
+    quiet = _json.loads(tool.invoke({"pattern": "РС-7", "level": "L2"}))["data"]
+    assert "harness_budget" not in quiet
+    env.store.add_usage(env.task_id, model_calls=6)
+    warned = _json.loads(tool.invoke({"pattern": "РС-7", "level": "L2"}))["data"]
+    assert "submit_result" in warned["harness_budget"]
+
+
+def test_answer_check_flags_invented_paths_and_unreadable_answers(cfg, corpus):
+    from dataclasses import replace
+    from navsearch.agents import Lab3
+    from navsearch.cli import answer_issue
+    app = Lab3(replace(cfg, root=corpus["root"]), None, None)
+    assert "нечитаемый" in answer_issue(app, "。\n\n。\n。、")
+    assert "нечитаемый" in answer_issue(app, "")
+    bad = answer_issue(app, "В папке ops: `data/ops/ops_runbook.md`, `data/ops/ops_alerts.md`.")
+    assert bad and "data/ops/ops_runbook.md" in bad
+    from harness.workspace import HarnessWorkspace
+    from navsearch.levels import Levels
+    from organizer.catalog import Catalog
+    ws = HarnessWorkspace(corpus["root"])
+    real = Levels(ws, Catalog(ws)).l0()["documents"][3]["path"]
+    assert answer_issue(app, f"Документ найден: `{real}`, строка 12.") is None
+
+
+def test_repeated_ingestion_of_known_content_is_skipped_before_the_agent(cfg, corpus):
+    from dataclasses import replace
+    from harness.workspace import HarnessWorkspace
+    from navsearch.cli import skip_known_content
+    from navsearch.levels import Levels
+    from organizer.catalog import Catalog
+    ws = HarnessWorkspace(corpus["root"])
+    doc = next(d for d in Levels(ws, Catalog(ws)).l0()["documents"] if not d["is_empty"])
+    rep = ws.root / "input" / "repeat_test"
+    rep.mkdir(parents=True, exist_ok=True)
+    (rep / "same.md").write_bytes((ws.root / doc["path"]).read_bytes())
+    (rep / "fresh.md").write_text("# Совсем новый документ\nуникальный текст 9f3c\n", encoding="utf-8")
+    n_docs = len(Catalog(ws).load()["documents"])
+    out = skip_known_content(replace(cfg, root=corpus["root"]), "input/repeat_test")
+    assert [d["existing"] for d in out] == [doc["path"]]
+    assert not (rep / "same.md").exists() and (ws.root / "rejected" / "input" / "repeat_test" / "same.md").exists()
+    assert (rep / "fresh.md").exists() and len(Catalog(ws).load()["documents"]) == n_docs
+    (rep / "fresh.md").unlink()

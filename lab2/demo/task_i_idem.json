@@ -1,0 +1,36 @@
+{
+  "task_id": "I1",
+  "kind": "web",
+  "search_provider": "fixture",
+  "request": "Разберись в подходах к хранению состояния LLM-агентов (чекпоинты, идемпотентность, durable execution). Сам найди источники на фиксированной поисковой выдаче, изучи их, сохраняй цитаты в evidence сразу после чтения каждой страницы и подготовь короткий обзор с подтверждениями. Явно укажи, что осталось непроверенным.",
+  "constraints": [
+    "[W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.",
+    "[W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.",
+    "[W3] Обзор не длиннее 900 слов.",
+    "[W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.",
+    "[W5] Сравнить подходы по их ограничениям."
+  ],
+  "criteria": {
+    "min_search_queries": 2,
+    "min_web_pages_read": 5,
+    "min_web_sources_cited": 4,
+    "min_evidence": 5,
+    "required_sections": [
+      "approaches",
+      "limitations",
+      "unverified"
+    ]
+  },
+  "limits": {
+    "working_context_tokens": 28000,
+    "response_reserve_tokens": 2048,
+    "compaction_trigger": 0.75,
+    "compaction_target": 0.45,
+    "max_total_tokens": 1000000,
+    "max_model_calls": 50,
+    "max_tool_calls": 300,
+    "task_deadline_s": 5400,
+    "max_search_calls": 6,
+    "max_http_requests": 30
+  }
+}

@@ -74,9 +74,12 @@ def search_excerpts(query: str, size: int = 10, category: Optional[str] = None,
 
 @mcp.tool()
 def update_document_path(document_id: str, new_path: str, category: Optional[str] = None) -> dict:
-    """Set current_path (and optionally category) of ALL excerpts of a document.
+    """Set current_path and category of ALL excerpts of a document.
 
     Call after the source file was moved, so search results point to the new path.
+    For paths data/<category>/... the category is taken from the folder
+    automatically (an omitted or different `category` argument cannot leave the
+    old category in the index); the effective category is returned.
     """
     try:
         return {"ok": True, **store().update_path(document_id, new_path, category)}

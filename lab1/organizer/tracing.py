@@ -74,7 +74,7 @@ class Tracer:
     def user_turn(self, run_id: str, text: str) -> None:
         self._t0[run_id] = time.perf_counter()
         self.event("user_turn", run_id=run_id, text=text)
-        self._md(f"---\n## 👤 User  `run_id={run_id}`\n\n{text}\n")
+        self._md(f"---\n## User  `run_id={run_id}`\n\n{text}\n")
 
     def user_action(self, action: str, **data: Any) -> None:
         self.event("user_action", action=action, **data)
@@ -96,15 +96,17 @@ class Tracer:
         self._md("\n".join(lines) + "\n")
 
     def turn_end(self, run_id: str, answer: str, transitions: list[str], history_problems: list[str],
-                 error: str | None = None, usage: dict | None = None) -> None:
+                 error: str | None = None, usage: dict | None = None, stopped_by: str | None = None) -> None:
         dur = round(time.perf_counter() - self._t0.pop(run_id, time.perf_counter()), 2)
+        extra = {"stopped_by": stopped_by} if stopped_by else {}
         self.event("turn_end", run_id=run_id, answer=answer, transitions=transitions,
-                   history_problems=history_problems, error=error, duration_s=dur, usage=usage)
+                   history_problems=history_problems, error=error, duration_s=dur, usage=usage, **extra)
         self._md(f"**transitions:** `{' -> '.join(transitions)}`  \n"
                  f"**history check:** {'OK' if not history_problems else history_problems}  \n"
                  f"**duration:** {dur}s" + (f"  \n**error:** `{error}`" if error else "") +
+                 (f"  \n**stopped by execution limit:** `{stopped_by}`" if stopped_by else "") +
                  (f"  \n**usage:** `{usage}`" if usage else "") +
-                 f"\n\n### 🤖 Assistant\n\n{answer}\n")
+                 f"\n\n### Assistant\n\n{answer}\n")
 
     def note(self, text: str) -> None:
         self.event("note", text=text)

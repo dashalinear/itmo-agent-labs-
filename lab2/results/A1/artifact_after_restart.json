@@ -1,6 +1,35 @@
 {
   "task_id": "A1",
-  "pid": 26176,
+  "pid": 24988,
+  "note": "new process: artifacts opened from disk after the run",
   "offloaded_outputs": 2,
-  "example": null
+  "artifacts_checked": [
+    {
+      "artifact_id": "art_1ce56fe0605810866f52",
+      "tool": "search_text",
+      "passed_chars": 1696
+    }
+  ],
+  "example": {
+    "artifact_id": "art_1ce56fe0605810866f52",
+    "tool": "search_text",
+    "total_chars": 10261,
+    "chars_given_to_model": 1696,
+    "query": "\"line\": 1311",
+    "kind": "last hit of the offloaded output",
+    "char_offset_in_artifact": 10104,
+    "beyond_given_part": true,
+    "artifact_layout": "one JSON line",
+    "search_artifact_hit": "path\": \"data/search/search_engineering_handbook.md\", \"document_id\": \"61dd80ad-bb83-4e45-9e6c-a8dce2f29ef6\", \"page\": 80, \"line\": 1311, \"snippet\": \"Ограничение: стеммер ошибается на редких терминах и аббревиатурах, поэтому для них хранится поле без стемминга.\"}], \"skipped\": []}}",
+    "artifact_line": 1,
+    "read_artifact_text": "1: {\"ok\": true, \"tool\": \"search_text\", \"data\": {\"query\": \"Ограничение\", \"path\": \"data/search\", \"files_searched\": 3, \"total_hits\": 261, \"returned\": 40, \"has_more\": true, \"hits_per_file\": {\"data/search/search_engineering_handbook.md\": 261}, \"hits\": [{\"path\": \"data/search/search_engineering_handbook.md\", \"document_id\": \"61dd80ad-bb83-4e45-9e6c-a8dce2f29ef6\", \"page\": 2, \"line\": 21, \"snippet\": \"Огранич",
+    "read_artifact_has_query": false,
+    "verified_in_document": {
+      "path": "data/search/search_engineering_handbook.md",
+      "page": 80,
+      "snippet_on_page": true
+    },
+    "found_via": "search_artifact"
+  },
+  "ok": true
 }

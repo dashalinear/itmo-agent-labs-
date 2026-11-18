@@ -17,19 +17,19 @@
 
 | факт | место | ожид. стр. | в evidence | стр. в evidence | в отчёте | в итоговом summary | в summary после первого упоминания |
 |---|---|---|---|---|---|---|---|
-| F1 | beginning (search_engineering_handbook.md) | 4 | ✔ | [4] | ✔ | ✔ | 5/5 |
-| F2 | middle (search_engineering_handbook.md) | 261 | ✔ | [261] | ✔ | ✔ | 5/5 |
-| F3 | end (search_engineering_handbook.md) | 517 | ✔ | [517] | ✔ | ✔ | 5/5 |
-| F4 | middle (ir_course_lectures.md) | 47 | ✔ | [47] | ✔ | ✔ | 5/5 |
-| F5 | beginning (search_incident_reports.md) | 17 | ✔ | [17] | ✔ | ✔ | 5/5 |
+| F1 | beginning (search_engineering_handbook.md) | 4 | да | [4] | да | да | 5/5 |
+| F2 | middle (search_engineering_handbook.md) | 261 | да | [261] | да | да | 5/5 |
+| F3 | end (search_engineering_handbook.md) | 517 | да | [517] | да | да | 5/5 |
+| F4 | middle (ir_course_lectures.md) | 47 | да | [47] | да | да | 5/5 |
+| F5 | beginning (search_incident_reports.md) | 17 | да | [17] | да | да | 5/5 |
 
 | ограничение | закреплено в каждом вызове (TASK CONTRACT) | в summary компактификаций |
 |---|---|---|
-| [C1] | ✔ | 0/5 |
-| [C2] | ✔ | 0/5 |
-| [C3] | ✔ | 0/5 |
-| [C4] | ✔ | 0/5 |
-| [C5] | ✔ | 0/5 |
+| [C1] | да | 0/5 |
+| [C2] | да | 0/5 |
+| [C3] | да | 0/5 |
+| [C4] | да | 0/5 |
+| [C5] | да | 0/5 |
 
 ## Исходный агент (лаба 1) против harness на сценарии A
 

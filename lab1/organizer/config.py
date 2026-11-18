@@ -42,7 +42,7 @@ class Settings:
     traces_dir: Path = field(default_factory=lambda: PROJECT_ROOT / "traces")
 
     # Agent limits
-    recursion_limit: int = 100         # LangGraph super-steps per user turn
+    recursion_limit: int = 110         # LangGraph super-steps per user turn; backstop, > 4 * model_calls_per_turn
     model_calls_per_turn: int = 25     # ModelCallLimitMiddleware run_limit
     tool_timeout_s: float = 30.0       # per tool call
     turn_timeout_s: float = 600.0      # whole user turn
@@ -77,7 +77,7 @@ def load_settings(env_file: str | os.PathLike | None = None) -> Settings:
         workspace=ws,
         skills_dir=Path(os.getenv("SKILLS_DIR", str(PROJECT_ROOT / "skills"))),
         traces_dir=Path(os.getenv("TRACES_DIR", str(PROJECT_ROOT / "traces"))),
-        recursion_limit=_env_int("AGENT_RECURSION_LIMIT", 100),
+        recursion_limit=_env_int("AGENT_RECURSION_LIMIT", 110),
         model_calls_per_turn=_env_int("AGENT_MODEL_CALLS_PER_TURN", 25),
         tool_timeout_s=_env_float("TOOL_TIMEOUT_S", 30.0),
         turn_timeout_s=_env_float("TURN_TIMEOUT_S", 600.0),

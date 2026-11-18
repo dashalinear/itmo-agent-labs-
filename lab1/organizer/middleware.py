@@ -91,6 +91,9 @@ class CatalogSyncMiddleware(AgentMiddleware):
             if ex.get("current_path") != doc["current_path"]:
                 problems.append(f"{tag}: current_path {ex.get('current_path')} != catalog {doc['current_path']}")
                 continue
+            if ex.get("category") != doc.get("category"):
+                problems.append(f"{tag}: category {ex.get('category')} != catalog {doc.get('category')}")
+                continue
             try:
                 path = self.ws.resolve(doc["current_path"], must_exist=True)
                 if ex.get("content_hash") != file_hash(path):
@@ -129,12 +132,21 @@ class CatalogSyncMiddleware(AgentMiddleware):
         elif name == "update_document_path":
             doc = self.catalog.get(args.get("document_id", ""))
             if doc:
-                if ok and doc["current_path"] == args.get("new_path"):
-                    self.catalog.set_index_state(doc["document_id"], "indexed")
-                else:
+                # category the index now holds: reported by the server, else what the server derives
+                # from the path (data/<cat>/...), else the explicit argument
+                index_category = env.get("category") if "category" in env else (
+                    Catalog.category_of(str(args.get("new_path") or "")) or args.get("category"))
+                if not ok:
+                    self.catalog.set_index_state(doc["document_id"], "pending_sync", error=f"path sync failed: {err}")
+                elif doc["current_path"] != args.get("new_path"):
                     self.catalog.set_index_state(doc["document_id"], "pending_sync",
-                                                 error=f"path sync failed: {err}" if err else
-                                                 f"new_path differs from catalog current_path {doc['current_path']}")
+                                                 error=f"new_path differs from catalog current_path {doc['current_path']}")
+                elif index_category != doc.get("category"):
+                    self.catalog.set_index_state(doc["document_id"], "pending_sync",
+                                                 error=f"index category {index_category} differs from catalog "
+                                                       f"category {doc.get('category')}")
+                else:
+                    self.catalog.set_index_state(doc["document_id"], "indexed")
         elif name == "delete_document_excerpts" and ok:
             self.catalog.set_index_state(args.get("document_id", ""), "not_indexed", excerpts=[])
 

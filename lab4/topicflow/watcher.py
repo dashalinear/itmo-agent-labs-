@@ -79,7 +79,7 @@ class Watcher:
                 id=wid, task_queue=self.st.ingest_queue,
                 id_conflict_policy=WorkflowIDConflictPolicy.USE_EXISTING,
                 id_reuse_policy=WorkflowIDReusePolicy.ALLOW_DUPLICATE_FAILED_ONLY,
-                execution_timeout=timedelta(hours=6))
+                execution_timeout=timedelta(hours=4))
             self.reg.update_batch(batch_id, workflow_id=wid, run_id=h.result_run_id, status="started")
             self.log(f"[watcher] {reason}: started workflow {wid} run {h.result_run_id}")
         except WorkflowAlreadyStartedError:   # same id already completed: a duplicate event, nothing new to do

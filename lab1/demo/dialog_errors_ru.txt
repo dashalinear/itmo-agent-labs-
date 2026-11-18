@@ -1,4 +1,5 @@
-# Error scenarios. Run with Elasticsearch STOPPED (docker compose stop), after the main dialog:
+# Error scenarios. Session 4 of the chain in run_all_demos.ps1: Elasticsearch is STOPPED
+# (docker compose stop) while the MCP server itself still runs:
 #   - upsert of a new document fails  -> catalog status "error", nothing claimed as indexed
 #   - move of an INDEXED document succeeds, index path update fails -> catalog status "pending_sync"
 # Then start ES and run demo/dialog_retry_ru.txt: the retry fixes both.

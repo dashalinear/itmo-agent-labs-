@@ -111,14 +111,23 @@ class TaskRunner:
         return new
 
     # ------------------------------------------------------------------ models / window
-    def _models(self, limits: Limits):
+    def _models(self, limits: Limits, task_id: str | None = None):
         if self._model is not None:
             return self._model, self._summarizer
+        scripted = os.getenv("HARNESS_SCRIPTED_MODEL")
+        if scripted:
+            # DRY RUN ONLY (scripts/run_final_lab2.ps1 -DryRun): deterministic scripted models instead of the LLM,
+            # to verify the scenario scripts offline. Never set for recorded traces (session_start shows it).
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("harness_scripted_models", scripted)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            return mod.build(task_id, limits)
         from .llm import build_models
         return build_models(self.cfg, limits)
 
     def window(self, counter_window: int | None = None) -> tuple[int, str]:
-        if self._model is None:
+        if self._model is None and not os.getenv("HARNESS_SCRIPTED_MODEL"):
             w, src = detect_window(self.cfg.base.llm_base_url, self.cfg.base.llm_api_key, self.cfg.base.llm_model,
                                    cache=self.cfg.window_cache)
             if w:
@@ -152,7 +161,7 @@ class TaskRunner:
             self.set_limits(task_id, overrides)
             task = store.get_task(task_id)
         limits = Limits.from_dict(task["limits"])
-        model, summarizer = self._models(limits)
+        model, summarizer = self._models(limits, task_id)
         window, wsrc = self.window()
         if limits.working_context_tokens > window:
             raise RuntimeError(f"working_context_tokens={limits.working_context_tokens} exceeds the real model window {window}")
@@ -163,14 +172,15 @@ class TaskRunner:
         def on_event(kind: str, data: dict) -> None:
             tracer.event(f"harness:{kind}", **data)
             if kind in ("compaction", "tool_output_offloaded", "guardrail", "task_stopped", "model_call_error",
-                        "budget_interrupted_call", "simulated_crash"):
+                        "budget_interrupted_call", "simulated_crash", "model_call_cancelled", "fetch_cache_hit",
+                        "budget_reservation_released"):
                 shown = {k: v for k, v in data.items() if k != "summary"}
                 tracer._md(f"> **harness:{kind}** `{json.dumps(shown, ensure_ascii=False, default=str)[:900]}`\n")
                 if kind == "compaction":
                     tracer._md("<details><summary>summary после компактификации</summary>\n\n"
                                + data.get("summary", "") + "\n\n</details>\n")
                 if self.verbose:
-                    print(f"  ⚙ harness:{kind} {_short(shown, 220)}", flush=True)
+                    print(f"  [harness] {kind} {_short(shown, 220)}", flush=True)
 
         bundle = agent_factory(self.cfg, store, task_id, model, summarizer, self.mcp_tools, self.checkpointer,
                                      window, wsrc, provider=self.provider, http_transport=self.http_transport,
@@ -232,7 +242,9 @@ class TaskRunner:
                              task_root=str(bundle.ws.root), usage_before=usage_before,
                              recovered={"inflight_reservations_charged": [r["input_est"] for r in lost],
                                         "urls_requeued": len(stuck)},
-                             status_before=task["status"])
+                             status_before=task["status"],
+                             **({"dry_run_scripted_model": os.getenv("HARNESS_SCRIPTED_MODEL")}
+                                if self._model is None and os.getenv("HARNESS_SCRIPTED_MODEL") else {}))
         if self.verbose:
             print(f"Задача {task_id} · {label} · {resume_kind} · модель {self.cfg.base.llm_model} · окно {window} ({wsrc}) · "
                   f"рабочий лимит {ctx.working_limit} · резерв ответа {ctx.reserve} · {ctx.counter.method}\n"
@@ -283,6 +295,10 @@ class TaskRunner:
         finally:
             ctx.budget.stop_clock()
 
+        if cancelled or error:
+            # reservations of this process still "in flight" (a call abandoned by the cancel) are released now
+            for r in ctx.budget.settle_own_inflight("cancelled" if cancelled else "run error"):
+                tracer.event("harness:budget_reservation_released", reservation=r["id"], charged=r["input_est"])
         if cancelled:
             ctx.request_stop("cancelled", "cancel requested by the user; the in-flight operation was interrupted")
             store.clear_control(task_id)
@@ -339,10 +355,10 @@ class TaskRunner:
                 for tc in m.tool_calls:
                     print(f"  ↳ [{node}] {tc['name']}({_short(tc['args'])})", flush=True)
                 if not m.tool_calls and str(m.content).startswith("[harness]"):
-                    print(f"  ⚙ {m.content}", flush=True)
+                    print(f"  [harness] {m.content}", flush=True)
             elif isinstance(m, ToolMessage):
                 head = str(m.content)[:160]
-                mark = "✗" if m.status == "error" or '"ok": false' in head else ("⇢" if '"offloaded": true' in head else "✓")
+                mark = "ERR" if m.status == "error" or '"ok": false' in head else ("OFFLOADED" if '"offloaded": true' in head else "ok")
                 print(f"    {mark} {m.name}", flush=True)
 
     # ------------------------------------------------------------------ results for submission

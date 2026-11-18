@@ -48,6 +48,24 @@ def _text(content: Any) -> str:
     return str(content)
 
 
+def line_friendly(text: str) -> str:
+    """Offloaded tool results are stored so that read_artifact (line ranges) reaches every part of them.
+    A tool envelope is one JSON line; a long line could only be searched, not read in ranges. Stored form:
+      * envelope with data.text (read_pages, read, read_lines...): the envelope without the text on line 1,
+        then the text itself with its real line breaks;
+      * other JSON envelopes (search_text, MCP search...): indented JSON, one field / hit item per line;
+      * anything else: unchanged.
+    Nothing is dropped: the full result is in the artifact, only the layout differs."""
+    env = parse(text)
+    if not isinstance(env, dict):
+        return text
+    data = env.get("data")
+    if isinstance(data, dict) and isinstance(data.get("text"), str) and data["text"]:
+        head = {**env, "data": {k: v for k, v in data.items() if k != "text"}}
+        return json.dumps(head, ensure_ascii=False, default=str) + "\n--- data.text ---\n" + data["text"]
+    return json.dumps(env, ensure_ascii=False, indent=1, default=str)
+
+
 def _tool_error(request: ToolCallRequest, type_: str, message: str, **extra) -> ToolMessage:
     body = json.dumps({"ok": False, "tool": request.tool_call["name"], "error": {"type": type_, "message": message, **extra}},
                       ensure_ascii=False)
@@ -95,6 +113,12 @@ class ToolRuntimeMiddleware(AgentMiddleware):
             return _tool_error(request, "task_stopping", f"{action} requested: the tool was not executed")
         try:
             ctx.budget.check_deadline()
+        except BudgetExhausted as e:
+            ctx.emit("guardrail", guard="deadline", tool=request.tool_call["name"], **e.as_dict())
+            # the reason keeps the "budget exhausted" prefix of earlier versions (lab 4 treats it as a final stop)
+            ctx.request_stop("paused", f"budget exhausted: task deadline reached ({e})")
+            return _tool_error(request, "budget_exhausted", f"task deadline reached: {e}", **e.as_dict())
+        try:
             ctx.budget.take("tool")
         except BudgetExhausted as e:
             ctx.emit("guardrail", guard="tool_budget", tool=request.tool_call["name"], **e.as_dict())
@@ -108,7 +132,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
             return blocked
         try:
             res = await asyncio.wait_for(handler(request), timeout=self.ctx.limits.tool_timeout_s)
-            self.ctx.crash_check("after")
+            self.ctx.crash_check("after", tool=request.tool_call["name"])
             return self._repeat_guard(request, res)
         except asyncio.TimeoutError:
             self.ctx.emit("guardrail", guard="tool_timeout", tool=request.tool_call["name"],
@@ -182,7 +206,7 @@ class OutputGuardMiddleware(AgentMiddleware):
             n = max(0, min(L.preview_chars, remaining - 700))
             name = request.tool_call["name"]
             args = json.dumps(request.tool_call["args"], ensure_ascii=False)[:300]
-            art = self.ctx.artifacts.save(text, "tool_output", f"{name}({args})",
+            art = self.ctx.artifacts.save(line_friendly(text), "tool_output", f"{name}({args})",
                                           {"tool": name, "args": request.tool_call["args"], "tool_call_id": request.tool_call["id"]})
             preview, meta = self._preview(text, n)
             body = {"ok": meta.get("ok", True), "tool": name, "offloaded": True, "reason": reason,
@@ -329,6 +353,11 @@ class CompactionMiddleware(AgentMiddleware):
                 ai = await asyncio.wait_for(
                     ctx.summarizer.ainvoke([SystemMessage(content=sys_text), HumanMessage(content=user)]),
                     timeout=L.llm_timeout_s)
+            except asyncio.CancelledError:
+                # cancel while summarizing: release the reservation now (charged as interrupted), then propagate
+                ctx.budget.interrupt(res_id, est_in)
+                ctx.store.update_model_call(call_id, status="cancelled", duration_s=round(time.perf_counter() - t0, 2))
+                raise
             except Exception as e:  # noqa: BLE001
                 ctx.budget.fail(res_id, est_in)
                 ctx.store.update_model_call(call_id, status="error", note=f"{type(e).__name__}: {e}"[:300],
@@ -518,6 +547,14 @@ class ModelGuardMiddleware(AgentMiddleware):
             t0 = time.perf_counter()
             try:
                 resp = await asyncio.wait_for(handler(request), timeout=L.llm_timeout_s)
+            except asyncio.CancelledError:
+                # cancel from the user (runner cancels the graph task): the in-flight call is abandoned; its
+                # reservation is released at once and the input estimate is charged as an interrupted call
+                ctx.budget.interrupt(res_id, est.tokens)
+                ctx.store.update_model_call(call_id, status="cancelled", note="interrupted by cancel",
+                                            duration_s=round(time.perf_counter() - t0, 2))
+                ctx.emit("model_call_cancelled", reservation=res_id, charged_input_estimate=est.tokens)
+                raise
             except RETRYABLE as e:
                 ctx.budget.fail(res_id, est.tokens)
                 last_error = f"{type(e).__name__}: {e}"[:300]

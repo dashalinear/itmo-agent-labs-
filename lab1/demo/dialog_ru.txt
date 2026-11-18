@@ -1,23 +1,43 @@
-# Demonstration dialog (one user turn per line; '#' = comment; '@add_late_files' = manual user action).
-# Run:  python -m organizer.cli --script demo/dialog_ru.txt
-# Covers all verification scenarios of lab 1.
+# Main demonstration dialog (one user turn per line; '#' = comment; '/...' = CLI command).
+# Run by scripts/run_all_demos.ps1 (session 1 of the chain). Manually:
+#   python -m organizer.cli --script demo/dialog_ru.txt
+#   and, when the CLI prints "[пауза сценария]", copy fixtures/late/* into workspace/input from a
+#   SECOND terminal:  python scripts/add_late_files.py   (or with Explorer).
+# '@wait_for_files ...' pauses the session until those files appear in input/; the CLI copies nothing.
+# Turn numbers below (= user turns in the trace) are referenced in README section 10.
+#
+# 1. primary organization input -> data
 Посмотри input: какие документы там есть? Разложи их по темам в data.
 /check
+# 2. browsing
 Что теперь лежит в папке с проектами?
+# 3. move by clarification (data -> data)
 Перенеси заметку про поиск в папку курсов.
+# 4. what is left in input
 Покажи, что осталось в input.
-Выдели полезные выдержки из файлов про поиск и сохрани их с метаданными в Elastic. Возьми минимум три документа.
+# 5. indexing (>= 3 documents) through MCP
+Выдели полезные выдержки из файлов про поиск и сохрани их с метаданными в Elastic. Возьми минимум три документа, включая заметку про оценку качества поиска.
+# 6. search through MCP + open the source file
 Найди в Elastic, что у нас есть про индексы, и покажи исходный файл.
+# 7. re-index an unchanged file (no duplicates)
 Повтори индексацию лекции про инвертированный индекс — файл не менялся.
+# 8. check the excerpt count
 Сколько теперь выдержек у этой лекции в индексе? Дубли появились?
+# 9. move an indexed document + update the index
 Перенеси лекцию про инвертированный индекс в отдельную папку search и обнови индекс.
+# 10. search returns the new path
 Найди в Elastic BM25 и скажи, по какому пути теперь лежит файл.
-@add_late_files
+# pause: run_all_demos.ps1 copies fixtures/late/* into workspace/input from a separate PowerShell process
+@wait_for_files input/meeting_2026-11-10_retro.md input/vector_search_lecture.md
+# 11. files added during the session
 Я добавил файлы, разбери новые.
+# 12. index the new lecture
 Добавь новую лекцию в Elastic.
-Покажи первые 0 строк файла data/projects/project_recsys.md
-Прочитай файл ../../secret.txt
+# 13-15. errors as observations (the guaranteed tool-level demonstration is demo/dialog_guard_ru.txt)
+Вызови инструмент head для описания проекта рекомендательной системы с n=0 и покажи, что он вернул.
+Вызови инструмент read с путём ../../secret.txt и покажи, что он вернул.
 Прочитай файл input/no_such_file.md
+# 16. empty file and same-named files
 Есть ли пустые файлы или файлы с одинаковыми именами? Что с ними сделано?
 /check
 /history
