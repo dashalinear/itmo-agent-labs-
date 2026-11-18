@@ -190,7 +190,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 - **Агент тем** выделил 4 темы и подписал их по-русски: эксплуатация, хранение состояния, поиск, решения совещания M-05. У каждой темы есть цитаты из L2 со строками и `fragment_id`.
 - **Новая тема.** Документ про энергопотребление инференса загрузчик положил в `ops`. Во втором отчёте он учтён: назван среди новых документов и процитирован («0,9 Вт·ч на запрос», «2,4 кВт»). Отдельной темой qwen его не выделила: она расширила тему эксплуатации до «… дежурства и энергия». Поэтому пометка «новая тема» не появилась — она ставится только теме, у которой все документы новые. Это решение модели о группировке, покрытие при этом полное.
 
-**Открытие с L0.** Вывод `open-report --latest` сохранён в `results/open_report_latest.txt`: `reports.latest` → `document_id` → L1 отчёта → текст. Последним по времени оказался частичный отчёт из сценария с бюджетом, он помечен `partial`. В `reports.history` лежат все 4 отчёта.
+**Открытие с L0.** Вывод `open-report --latest` сохранён в `results/open_report_latest.txt`: `reports.latest` → `document_id` → L1 отчёта → текст. На момент основного прогона последним был частичный отчёт из сценария с бюджетом, он помечен `partial`; для такого случая есть `reports.latest_complete` и `open-report --latest-complete`. После дополнительных прогонов в `reports.history` 6 отчётов, последний — полный (см. ниже).
 
 В выгрузку `traces/temporal` не входят запуски тестов (`test-*`): тесты работают в том же namespace, и `trace` их пропускает.
 
@@ -238,10 +238,17 @@ un_lab4_demo.ps1 -Part extra -SkipTests
 Сценарий E1 вынесен в отдельную часть `-Part topic-crash` (ручной запуск `topics-now`; в репетиции попытка 2 продолжила ту же задачу `TOP-…`):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scriptsun_lab4_demo.ps1 -Part topic-crash -SkipTests
+powershell -ExecutionPolicy Bypass -File scripts
+un_lab4_demo.ps1 -Part topic-crash -SkipTests
 ```
 
-_Результат E1 — после прогона в сети ИТМО._
+**Прогон `-Part topic-crash` 18.11.2026** (qwen3.8-27b):
+
+| Сценарий | Workflow ID / run ID | Activity attempts | Задача harness | Результат |
+|---|---|---|---|---|
+| E1. Падение worker во время агента тем | `lab4-topics-manual-2026-11-18T13:20:31.699Z` / `01a1eed0-ebff-7971-aac5-c070e2841a09` | `run_topic_agent`: **2** (первая — `Heartbeat timeout`) | `TOP-manual-20261118T132031699Z`: 2 запуска, 16 вызовов модели, 55 tools, 2 компактификации | Worker #5 убит после 6-го tool агента тем (`simulated_crash after_tool:6`, код 137). Попытка 2 на worker #6 через 36 с **продолжила** ту же задачу: `temporal_attempt` attempt 2, `resumed=true`, `runs_before=1`, `status_before=running`; трасса `a22` — `resume_kind=continue_interrupted_step`. Отчёт **ПОЛНЫЙ**: 14/14 документов, 5 тем, 14 цитат L2 |
+
+В этом отчёте новый документ `latency_budget.md` попал в таблицу «Новые документы и их темы» с пометкой «расширяет тему», а тема T4 помечена «расширена новыми документами: 1». Энергопотребление инференса qwen теперь выделила отдельной темой T5. После этого прогона `reports.latest` и `reports.latest_complete` указывают на этот полный отчёт (`results/open_report_latest.txt`, `results/open_report_latest_complete.txt`).
 
 ## 9. Ограничения
 
