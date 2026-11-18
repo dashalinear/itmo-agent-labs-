@@ -214,14 +214,34 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 Они вынесены в отдельную часть сценария, которая работает поверх корпуса основного прогона:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scriptsun_lab4_demo.ps1 -Part extra -SkipTests
+powershell -ExecutionPolicy Bypass -File scripts
+un_lab4_demo.ps1 -Part extra -SkipTests
 ```
 
 - **E1.** Worker убит после 6-го tool агента тем во время запуска по расписанию. Попытка 2 на новом worker продолжает ту же задачу `TOP-…`.
 - **E2.** Пока этот запуск не завершён, выполняется `schedule trigger`. Политика SKIP пропускает внеочередной запуск: `skipped_overlap` в `results/schedule_overlap.json`.
 - **E3.** Файл `corpus/late/latency_budget.md` кладётся в `input`, когда ни один watcher не работает. Watcher, запущенный после этого, подбирает его при первом сканировании.
 
-_Результаты — после прогона в сети ИТМО._
+**Прогон `-Part extra` 18.11.2026** (qwen3.8-27b, корпус основного прогона):
+
+| Сценарий | Workflow ID / run ID | Результат |
+|---|---|---|
+| E2. Перекрытие запусков | `lab4-topics-run-2026-11-18T11:59:36Z` / `01a1ee86-d5d8-763c-8487-cb9a69444dde` | Пока этот запуск шёл, Schedule пропустил два запуска. Сразу после `schedule trigger`: `num_actions=1`, `skipped_overlap=1`, запуск в `running` (`results/schedule_overlap.json`). После завершения — `skipped_overlap=2`: очередной тик в 12:00:00 тоже пропущен (`results/schedule_after_overlap.json`). Сам запуск — **ПОЛНЫЙ** отчёт, 13/13 документов, 3 темы (`TOP-20261118T115936Z`: 15 вызовов модели, 47 tools, 2 компактификации) |
+| E3. Пересканирование после перезапуска детектора | `ingest-6b93f9adf0` / `01a1ee88-7d1a-734f-b414-da9cbd1e13d0` | `latency_budget.md` положен в `input`, когда watcher не работал. Watcher, запущенный после этого, при первом сканировании нашёл файл (`traces/processes/watcher3.log`) и запустил workflow. Файл проиндексирован: `data/ops/latency_budget.md`, все activities с первой попытки |
+| E1. Падение worker во время агента тем | — | **В этом прогоне не показан.** Worker #3 упал сразу при старте, до того как взял задачу: Elasticsearch после `docker compose up` уже открыл порт, но ещё не отвечал (`ConnectionError` в `worker3.err.log`). Запуск выполнил worker #4 с первой попытки. Скрипт тогда этого не заметил |
+
+После этого:
+- скрипт ждёт готовности Elasticsearch по `_cluster/health`;
+- проверяет, что worker вышел именно в точке сбоя (код 137), иначе останавливается с ошибкой;
+- worker при старте повторяет подключение к Elasticsearch.
+
+Сценарий E1 вынесен в отдельную часть `-Part topic-crash` (ручной запуск `topics-now`; в репетиции попытка 2 продолжила ту же задачу `TOP-…`):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scriptsun_lab4_demo.ps1 -Part topic-crash -SkipTests
+```
+
+_Результат E1 — после прогона в сети ИТМО._
 
 ## 9. Ограничения
 

@@ -24,7 +24,7 @@ Scenarios (all automatic, the script only plays the user: it drops files into wo
   E3  a file is added while no watcher runs; the watcher started afterwards picks it up (rescan)
 #>
 param(
-    [ValidateSet("all", "extra")][string]$Part = "all",
+    [ValidateSet("all", "extra", "topic-crash")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$Every = "8m",
@@ -75,6 +75,21 @@ function Wait-Port($port, $tries) {
     }
     throw "port $port did not open"
 }
+function Wait-Es($tries) {                     # the port opens before Elasticsearch can answer requests
+    for ($i = 0; $i -lt $tries; $i++) {
+        try {
+            $h = Invoke-RestMethod -Uri "http://localhost:9200/_cluster/health" -TimeoutSec 5
+            if ($h.status -in @("green", "yellow")) { Write-Host "Elasticsearch: $($h.status)"; return }
+        } catch { }
+        Start-Sleep -Seconds 3
+    }
+    throw "Elasticsearch did not become healthy"
+}
+function Assert-Crashed($p, $name) {             # the worker must die at the crash point, not for another reason
+    if ($p.ExitCode -ne 137) {
+        throw "$name exited with code $($p.ExitCode) instead of the simulated crash (137): see $(Join-Path $logs "$name.err.log")"
+    }
+}
 function Start-Bg($name, $argline) {
     $p = Start-Process -FilePath $py -ArgumentList $argline -WorkingDirectory $lab -NoNewWindow -PassThru `
         -RedirectStandardOutput (Join-Path $logs "$name.log") -RedirectStandardError (Join-Path $logs "$name.err.log")
@@ -110,7 +125,7 @@ if (-not (docker ps -a --format "{{.Names}}" | Select-String -SimpleMatch "itmo-
     docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v itmo-lab4-temporal:/data $TemporalImage `
         server start-dev --ip 0.0.0.0 --db-filename /data/temporal.db | Out-Host
 } else { docker start itmo-lab4-temporal | Out-Host }
-Wait-Port 9200 60; Wait-Port 7233 60
+Wait-Port 9200 60; Wait-Es 60; Wait-Port 7233 60
 Start-Sleep -Seconds 3
 if ($DryRun) { docker exec itmo-lab4-temporal temporal operator namespace create --namespace $DryNamespace 2>&1 | Out-Null }
 Write-Host "Temporal UI: http://localhost:8233"
@@ -119,6 +134,46 @@ if (-not $SkipTests) {
     Step "2. Tests (deterministic stand-ins for the LLM; Temporal workflows on the real service)"
     & $py -m pytest -q | Out-Host
     if ($LASTEXITCODE -ne 0) { throw "tests failed" }
+}
+
+if ($Part -eq "topic-crash") {
+    Step "T0. Worker killed DURING the topic-analysis agent (corpus of the main run, no reset)"
+    Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+        Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    TF schedule delete | Out-Null
+    TF-Must fault --clear
+    $env:HARNESS_CRASH_AT = "after_tool:6"
+    $w5 = Start-Bg "worker5" $workerArgs
+    Remove-Item Env:HARNESS_CRASH_AT
+    Start-Sleep -Seconds 20                                # worker loads the embedding model
+    if ($w5.HasExited) { Assert-Crashed $w5 "worker5"; throw "worker5 ended before the topic agent started" }
+    $wid = Started-Id ((& $py -m topicflow.cli topics-now) | Out-String)
+    Write-Host "waiting for worker #5 to die inside the topic agent (simulated crash after the 6th tool)..."
+    $w5.WaitForExit(1800000) | Out-Null
+    Write-Host "worker #5 exit code: $($w5.ExitCode)"
+    Assert-Crashed $w5 "worker5"
+    $w6 = Start-Bg "worker6" $workerArgs
+    TF wait --workflow-id $wid --timeout 3600 | Out-Null
+
+    Step "T1. Traces and results"
+    Stop-Bg
+    TF-Must trace
+    TF-Must export
+    & $py -m topicflow.cli l0 | Out-File -Encoding utf8 (Join-Path $results "l0_view.json")
+    & $py -m topicflow.cli open-report --latest | Out-File -Encoding utf8 (Join-Path $results "open_report_latest.txt")
+    & $py -m topicflow.cli open-report --latest-complete | Out-File -Encoding utf8 (Join-Path $results "open_report_latest_complete.txt")
+    & $py -m topicflow.cli status | Out-File -Encoding utf8 (Join-Path $results "status.txt")
+    Get-Content (Join-Path $results "status.txt")
+    if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
+    Step "T2. Commit and push"
+    git add traces results corpus
+    git commit -m "Lab 4: worker crash inside the topic agent with qwen3.8-27b (resumed harness task)"
+    if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
+    git push
+    if ($LASTEXITCODE -ne 0) { throw "git push failed" }
+    Write-Host "`nDone."
+    exit 0
 }
 
 if ($Part -eq "extra") {
@@ -135,11 +190,13 @@ if ($Part -eq "extra") {
     $w3 = Start-Bg "worker3" $workerArgs
     Remove-Item Env:HARNESS_CRASH_AT
     Start-Sleep -Seconds 20                                # worker loads the embedding model
+    if ($w3.HasExited) { Assert-Crashed $w3 "worker3"; throw "worker3 ended before the topic agent started" }
     $after = (Get-Date).ToUniversalTime().AddSeconds(-5).ToString("yyyy-MM-ddTHH:mm:ssZ")
     TF-Must schedule create --every 30m                   # first run immediately
     Write-Host "waiting for worker #3 to die inside the topic agent (simulated crash after the 6th tool)..."
     $w3.WaitForExit(1800000) | Out-Null
     Write-Host "worker #3 exit code: $($w3.ExitCode)"
+    Assert-Crashed $w3 "worker3"
 
     Step "E2. Overlap: trigger the schedule while its run is unfinished -> skipped (policy SKIP)"
     TF-Must schedule trigger
@@ -201,6 +258,7 @@ TF-Must drop --set initial
 Write-Host "waiting for worker #1 to die inside the ingestion agent (simulated crash after the 10th tool)..."
 $w1.WaitForExit(1800000) | Out-Null
 Write-Host "worker #1 exit code: $($w1.ExitCode)"
+Assert-Crashed $w1 "worker1"
 $w2 = Start-Bg "worker2" $workerArgs
 TF-Must wait --batches --timeout 3600
 TF-Must status

@@ -16,6 +16,7 @@ from . import _paths  # noqa: F401  (labs 1-3 on sys.path)
 
 import asyncio
 import os
+import time
 import shutil
 from dataclasses import replace
 from pathlib import Path
@@ -53,7 +54,14 @@ class Env:
         self.cfg = cfg or lab4_config.load()
         self.ws = HarnessWorkspace(self.cfg.root)
         self.index = CorpusIndex()
-        self.index.ensure()
+        for attempt in range(10):          # Elasticsearch may still be starting right after `docker compose up`
+            try:
+                self.index.ensure()
+                break
+            except Exception:  # noqa: BLE001
+                if attempt == 9:
+                    raise
+                time.sleep(3)
         self.embedder = Embedder()
         self.registry = Registry(self.cfg.state_dir / "lab4.db")
         self.faults = Faults(self.ws.service_path("lab4") / "faults.json")
