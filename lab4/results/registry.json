@@ -757,6 +757,38 @@
    },
    "created_at": "2026-11-18T11:59:49+00:00",
    "updated_at": "2026-11-18T12:01:11+00:00"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+   "task_id": "TOP-manual-20261118T132031699Z",
+   "status": "complete",
+   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+   "frozen": 14,
+   "result": {
+    "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+    "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+    "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+    "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+    "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+    "status": "complete",
+    "topics": 5,
+    "documents_frozen": 14,
+    "documents_examined": 14,
+    "frozen_at": "2026-11-18T13:20:32+00:00",
+    "task_id": "TOP-manual-20261118T132031699Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [
+     "data/ops/latency_budget.md"
+    ],
+    "report_count": 6
+   },
+   "created_at": "2026-11-18T13:20:32+00:00",
+   "updated_at": "2026-11-18T13:22:29+00:00"
   }
  ]
 }

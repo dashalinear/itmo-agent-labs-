@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-18T12:01:39+00:00",
+  "updated_at": "2026-11-18T13:22:29+00:00",
   "documents": [
     {
       "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
@@ -598,6 +598,146 @@
       ],
       "indexed_at": "2026-11-17T20:51:17+00:00",
       "registered_at": "2026-11-17T20:51:17+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+      "original_path": "data/_reports/topics_manual-20261118T132031699Z.md",
+      "current_path": "data/_reports/topics_manual-20261118T132031699Z.md",
+      "title": "Обзор тем корпуса — 2026-11-18",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-manual-2026-11-18T13:20:31.699Z",
+      "content_hash": "sha256:789a079c08630b10d6e0dd9140acd0e72bfb6190daf9bcd4d292cdce3ee24c75",
+      "size_bytes": 14617,
+      "line_count": 140,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "f8b3ae59-20fa-547a-8f9f-2c7258fe7324",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "ca58e7cc-f6f0-524c-90ed-0c0549d7a117",
+          "start_line": 7,
+          "end_line": 15,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "f607cf4f-a67c-5694-8db3-8b6b656467d9",
+          "start_line": 17,
+          "end_line": 25,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "def39680-276c-55f2-8f02-36c77b7f0ede",
+          "start_line": 27,
+          "end_line": 31,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "e60e95db-949b-521d-bd16-62f49943a04c",
+          "start_line": 33,
+          "end_line": 39,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "f59a268c-1b8f-59c6-b964-4da55841db78",
+          "start_line": 41,
+          "end_line": 47,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "b3a7c61e-cd6b-5959-930b-60c044a11bf2",
+          "start_line": 49,
+          "end_line": 53,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "33cac31c-677a-5915-b799-f86f7cbf2291",
+          "start_line": 55,
+          "end_line": 60,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "17c3b70f-ee19-5231-b568-d11e3b448ca7",
+          "start_line": 62,
+          "end_line": 65,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "2f9cb229-dd84-59dc-8cb3-55b7d0b55dcc",
+          "start_line": 67,
+          "end_line": 71,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "54f30770-8168-5ddf-9b97-97ce3790faa1",
+          "start_line": 73,
+          "end_line": 78,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "f79450a2-e708-5c7f-8f19-ea249cf991d8",
+          "start_line": 80,
+          "end_line": 83,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "957fb884-d5dc-5e84-8580-9edc331d7cec",
+          "start_line": 85,
+          "end_line": 93,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "c58fc57a-0db9-5a97-bc9d-e12ca5394c27",
+          "start_line": 95,
+          "end_line": 101,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "df9c5b06-bb79-53e9-a1cf-ca6abaaa5e55",
+          "start_line": 103,
+          "end_line": 111,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "b46cb885-7ea9-50e6-a9fa-01ffd0c23c68",
+          "start_line": 113,
+          "end_line": 115,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "7ab6dc69-3cb7-5b6f-92e1-529580c0fbb4",
+          "start_line": 117,
+          "end_line": 119,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "0851f0b2-f81e-5152-90d5-2afe68cb600a",
+          "start_line": 121,
+          "end_line": 121,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "04cb381d-a29e-5b9a-9921-ecc1e8e6ada3",
+          "start_line": 123,
+          "end_line": 132,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "f8a9c5f4-d3e0-5084-a09e-35672ab8dc36",
+          "start_line": 133,
+          "end_line": 140,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-18T13:22:29+00:00",
+      "registered_at": "2026-11-18T13:22:25+00:00",
       "moves": []
     },
     {

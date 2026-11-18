@@ -1,18 +1,18 @@
 {
  "schema": "l0l1l2/1",
  "corpus_id": "itmo-lab3",
- "generated_at": "2026-11-18T12:01:45+00:00",
+ "generated_at": "2026-11-18T13:22:29+00:00",
  "totals": {
-  "documents": 19,
-  "with_l1": 19,
-  "fragments": 125,
-  "service_documents": 5
+  "documents": 20,
+  "with_l1": 20,
+  "fragments": 145,
+  "service_documents": 6
  },
  "folders": [
   {
    "folder": "_reports",
-   "documents": 5,
-   "fragments": 83
+   "documents": 6,
+   "fragments": 103
   },
   {
    "folder": "meetings",
@@ -103,6 +103,20 @@
    "l1": true,
    "sections": 6,
    "l2_fragments": 12,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-18",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "content_hash": "sha256:789a079c08630b10d6e0dd9140acd0e72bfb6190daf9bcd4d292cdce3ee24c75",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 20,
    "l2_current": true,
    "service": "topic_report"
   },
@@ -355,33 +369,46 @@
     "documents_examined": 13,
     "frozen_at": "2026-11-18T11:59:49+00:00",
     "task_id": "TOP-20261118T115936Z"
+   },
+   {
+    "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+    "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+    "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+    "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+    "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+    "status": "complete",
+    "topics": 5,
+    "documents_frozen": 14,
+    "documents_examined": 14,
+    "frozen_at": "2026-11-18T13:20:32+00:00",
+    "task_id": "TOP-manual-20261118T132031699Z"
    }
   ],
   "latest": {
-   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
-   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
-   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
-   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
-   "path": "data/_reports/topics_20261118T115936Z.md",
+   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
    "status": "complete",
-   "topics": 3,
-   "documents_frozen": 13,
-   "documents_examined": 13,
-   "frozen_at": "2026-11-18T11:59:49+00:00",
-   "task_id": "TOP-20261118T115936Z"
+   "topics": 5,
+   "documents_frozen": 14,
+   "documents_examined": 14,
+   "frozen_at": "2026-11-18T13:20:32+00:00",
+   "task_id": "TOP-manual-20261118T132031699Z"
   },
   "latest_complete": {
-   "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
-   "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
-   "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
-   "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
-   "path": "data/_reports/topics_20261118T115936Z.md",
+   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
    "status": "complete",
-   "topics": 3,
-   "documents_frozen": 13,
-   "documents_examined": 13,
-   "frozen_at": "2026-11-18T11:59:49+00:00",
-   "task_id": "TOP-20261118T115936Z"
+   "topics": 5,
+   "documents_frozen": 14,
+   "documents_examined": 14,
+   "frozen_at": "2026-11-18T13:20:32+00:00",
+   "task_id": "TOP-manual-20261118T132031699Z"
   }
  }
 }

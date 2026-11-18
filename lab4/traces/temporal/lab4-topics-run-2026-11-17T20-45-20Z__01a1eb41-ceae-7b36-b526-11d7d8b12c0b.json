@@ -36,8 +36,8 @@
           "indexedFields": {
             "TemporalScheduledStartTime": {
               "metadata": {
-                "type": "RGF0ZXRpbWU=",
-                "encoding": "anNvbi9wbGFpbg=="
+                "encoding": "anNvbi9wbGFpbg==",
+                "type": "RGF0ZXRpbWU="
               },
               "data": "IjIwMjYtMTEtMTdUMjA6NDU6MjBaIg=="
             },

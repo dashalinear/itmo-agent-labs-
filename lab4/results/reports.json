@@ -64,32 +64,45 @@
    "documents_examined": 13,
    "frozen_at": "2026-11-18T11:59:49+00:00",
    "task_id": "TOP-20261118T115936Z"
+  },
+  {
+   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+   "status": "complete",
+   "topics": 5,
+   "documents_frozen": 14,
+   "documents_examined": 14,
+   "frozen_at": "2026-11-18T13:20:32+00:00",
+   "task_id": "TOP-manual-20261118T132031699Z"
   }
  ],
  "latest": {
-  "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
-  "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
-  "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
-  "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
-  "path": "data/_reports/topics_20261118T115936Z.md",
+  "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+  "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+  "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+  "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+  "path": "data/_reports/topics_manual-20261118T132031699Z.md",
   "status": "complete",
-  "topics": 3,
-  "documents_frozen": 13,
-  "documents_examined": 13,
-  "frozen_at": "2026-11-18T11:59:49+00:00",
-  "task_id": "TOP-20261118T115936Z"
+  "topics": 5,
+  "documents_frozen": 14,
+  "documents_examined": 14,
+  "frozen_at": "2026-11-18T13:20:32+00:00",
+  "task_id": "TOP-manual-20261118T132031699Z"
  },
  "latest_complete": {
-  "run_key": "lab4-topics-run-2026-11-18T11:59:36Z",
-  "workflow_id": "lab4-topics-run-2026-11-18T11:59:36Z",
-  "run_id": "01a1ee86-d5d8-763c-8487-cb9a69444dde",
-  "document_id": "6334f402-58fa-49cf-9ba3-6bf71fa6f111",
-  "path": "data/_reports/topics_20261118T115936Z.md",
+  "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+  "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
+  "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
+  "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
+  "path": "data/_reports/topics_manual-20261118T132031699Z.md",
   "status": "complete",
-  "topics": 3,
-  "documents_frozen": 13,
-  "documents_examined": 13,
-  "frozen_at": "2026-11-18T11:59:49+00:00",
-  "task_id": "TOP-20261118T115936Z"
+  "topics": 5,
+  "documents_frozen": 14,
+  "documents_examined": 14,
+  "frozen_at": "2026-11-18T13:20:32+00:00",
+  "task_id": "TOP-manual-20261118T132031699Z"
  }
 }
