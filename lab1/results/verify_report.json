@@ -8,10 +8,10 @@
   },
   "problems": [],
   "topics": {
-    "courses": 4,
+    "courses": 3,
     "howto": 2,
     "meetings": 3,
-    "projects": 2,
+    "projects": 3,
     "search": 2
   },
   "catalog": {
@@ -25,9 +25,9 @@
     "excerpts_per_document": {
       "data/courses/agents_seminar_react.txt": 4,
       "data/courses/es_seminar_analyzers_shards.md": 2,
-      "data/courses/project_recsys.md": 4,
+      "data/howto/howto_elasticsearch_docker.md": 2,
       "data/projects/project_docsearch.md": 2,
-      "data/projects/search_quality_thoughts.md": 1,
+      "data/projects/search_quality_thoughts.md": 2,
       "data/search/ir_lecture_inverted_index.md": 2,
       "data/search/vector_search_lecture.md": 3
     }

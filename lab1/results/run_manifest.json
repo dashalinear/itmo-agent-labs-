@@ -1,0 +1,37 @@
+{
+    "started_at":  "2026-11-19 17:09:15 +03:00",
+    "model":  "qwen3.8-27b",
+    "dry_run":  false,
+    "sessions":  [
+                     {
+                         "label":  "main",
+                         "title":  "organization, browsing, moves, indexing, search, late files, errors",
+                         "dialog":  "demo/dialog_ru.txt",
+                         "trace":  "traces/session_20261119_170923_70e27b.jsonl"
+                     },
+                     {
+                         "label":  "limit",
+                         "title":  "looping request stopped by the execution limit",
+                         "dialog":  "demo/dialog_limit_ru.txt",
+                         "trace":  "traces/session_20261119_171303_5afaf3.jsonl"
+                     },
+                     {
+                         "label":  "guard",
+                         "title":  "tool contract errors, junction outside the workspace",
+                         "dialog":  "demo/dialog_guard_ru.txt",
+                         "trace":  "traces/session_20261119_171335_0afe74.jsonl"
+                     },
+                     {
+                         "label":  "errors",
+                         "title":  "Elasticsearch unavailable: error and pending_sync",
+                         "dialog":  "demo/dialog_errors_ru.txt",
+                         "trace":  "traces/session_20261119_171420_ec42f1.jsonl"
+                     },
+                     {
+                         "label":  "retry",
+                         "title":  "retry after Elasticsearch is back",
+                         "dialog":  "demo/dialog_retry_ru.txt",
+                         "trace":  "traces/session_20261119_171548_621ff0.jsonl"
+                     }
+                 ]
+}

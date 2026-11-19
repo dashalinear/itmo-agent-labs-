@@ -17,14 +17,15 @@
   "catalog": {
     "documents": 14,
     "status": {
-      "not_indexed": 9,
-      "indexed": 5
+      "not_indexed": 8,
+      "indexed": 6
     }
   },
   "es": {
     "excerpts_per_document": {
       "data/courses/es_seminar_analyzers_shards.md": 2,
-      "data/courses/search_quality_thoughts.md": 1,
+      "data/courses/search_quality_thoughts.md": 2,
+      "data/howto/howto_elasticsearch_docker.md": 2,
       "data/projects/project_docsearch.md": 2,
       "data/search/ir_lecture_inverted_index.md": 2,
       "data/search/vector_search_lecture.md": 3
