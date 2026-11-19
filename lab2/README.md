@@ -240,6 +240,8 @@ Task root фиксируется при создании задачи (`spec.roo
 
   Тесты: `test_rank_links_puts_content_links_before_site_navigation` и проверка ссылок в `test_select_fetch_cache_and_links`. Во второй попытке зацикливания уже не было.
 
+Оформление: в сохранённой копии страницы `https://arxiv.org/html/2603.07670v1` (`results/B3/web_materials/a2480951ee99304d.txt`) и в строках трассы B3 с её текстом знак галочки из таблицы на странице заменён словом «да». Ни одна цитата evidence этих строк не содержит. `content_hash` в `queue.json` посчитан по исходным скачанным байтам и к текстовой копии не относится.
+
 **Нагрузочный тест (C1):** `fixtures/web/serp.json` — 56 уникальных страниц и 10 HTTP-случаев, в сумме 66 записей. Страницы отдаёт `scripts/fixture_web.py`.
 
 **HTTP-примеры** (`scripts/http_examples.py` → `results/http_examples.md`, без LLM, теми же `ResearchTools`):

@@ -709,17 +709,17 @@ Multimodal
 LoCoMo
 
 2024
-✓
-✓
+да
+да
 –
 –
-✓
+да
 
 MemBench
 
 2025
 –
-✓
+да
 –
 –
 –
@@ -728,17 +728,17 @@ MemoryAgentBench
 
 2025
 –
-✓
+да
 –
-✓
+да
 –
 
 MemoryArena
 
 2026
-✓
-✓
-✓
+да
+да
+да
 –
 –
 
