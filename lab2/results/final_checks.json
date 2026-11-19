@@ -247,13 +247,13 @@
   {
     "task": "B3",
     "property": "не помечен completed без выполненных критериев",
-    "actual": "paused (no progress: web_fetch returned the same result 6 times)",
+    "actual": "paused (budget exhausted before the call (tokens: needed 13320, rema)",
     "ok": true
   },
   {
     "task": "B3",
     "property": "второй раунд: новые запросы после чтения страниц",
-    "actual": "7 запросов после чтения",
+    "actual": "1 запросов после чтения",
     "ok": true
   },
   {
@@ -265,15 +265,15 @@
   {
     "task": "B3",
     "property": "не больше 60 % прочитанных страниц с одного домена",
-    "actual": "arxiv.org: 9/11 = 82%",
-    "ok": false
+    "actual": "github.com: 3/5 = 60%",
+    "ok": true
   },
   {
     "task": "B3",
     "property": "домены прочитанных страниц (информативно)",
     "actual": {
-      "arxiv.org": 9,
-      "github.com": 2
+      "github.com": 3,
+      "en.wikipedia.org": 2
     },
     "ok": true
   }

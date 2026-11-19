@@ -7,7 +7,7 @@
 | A1 | completed (Обзор собран: 5 секций (approaches, limitations, disputed, d) | 2 | 17443 | 20862 / 28000 / 262144 | 551642 (42289) | 39 | 5 | 104 | 0 | 0 | 0 | 161.5 |
 | B1 | paused (budget exhausted before the call (model_calls: needed 1, rem) | 1 | 17054 | 20927 / 28000 / 262144 | 925108 (47025) | 70 | 9 | 72 | 6 | 18 | 5 | 336.4 |
 | B2 | completed (Обзор готов: 4 поисковых запроса, 7 страниц прочитано, 9 evi) | 1 | 16761 | 20493 / 28000 / 262144 | 296785 (11636) | 22 | 2 | 30 | 4 | 10 | 0 | 206.0 |
-| B3 | paused (no progress: web_fetch returned the same result 6 times) | 3 | 17042 | 20785 / 28000 / 262144 | 845176 (44162) | 64 | 7 | 74 | 10 | 21 | 19 | 392.8 |
+| B3 | paused (budget exhausted before the call (tokens: needed 13320, rema) | 1 | 17246 | 20980 / 28000 / 262144 | 1194238 (53158) | 86 | 9 | 106 | 10 | 9 | 3 | 351.5 |
 | C1 | completed (Обзор готов: 4 раздела (approaches, limitations, comparison,) | 1 | 17435 | 20918 / 28000 / 262144 | 325945 (25255) | 23 | 3 | 62 | 10 | 10 | 0 | 129.9 |
 | C2 | paused (partial: HTTP-бюджет (6/6) исчерпан; harness требует 8 прочи) | 1 | 17166 | 20955 / 28000 / 262144 | 372267 (15467) | 27 | 2 | 35 | 3 | 6 | 0 | 97.4 |
 | D1 | completed (Обзор собран: 5 разделов (approaches, limitations, disputed,) | 2 | 16602 | 20228 / 28000 / 262144 | 277913 (15569) | 19 | 2 | 51 | 0 | 0 | 0 | 97.2 |

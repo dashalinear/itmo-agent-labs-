@@ -1,5 +1,5 @@
 ## Цель
-Исследовать подходы к хранению состояния LLM-агентов, сопоставить их ограничения и подготовить обзор с подтверждениями (цитатами).
+Исследовать подходы к хранению состояния LLM-агентов, найти источники, сопоставить ограничения и подготовить обзор с подтверждениями (evidence).
 
 ## Ограничения пользователя
 - [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.
@@ -12,20 +12,40 @@
 ## Решения и договорённости
 - Использовать навык `research_web` для автономного поиска.
 - Выполнить минимум 3 поисковых запроса в первом раунде.
-- Отбирать источники по релевантности, избегая концентрации на одном домене.
-- После чтения первых страниц выполнить второй раунд поиска и перейти по ссылке, найденной на прочитанной странице.
-- При таймаутах или ошибках HTTP переходить к следующим источникам в очереди.
-- В рамках второго раунда сфокусироваться на практических реализациях (LangGraph, Snowflake) для диверсификации доменов.
-- Продолжить чтение артефактов Snowflake (строки 540-759) для извлечения данных о кэшировании и конфигурации.
-- Запустить новые поисковые запросы для поиска дополнительных источников (Concordia, Fuzzing memory).
-- Избегать повторных вызовов `web_fetch` для одного и того же URL в рамках одного хода; при ошибке `repeated_call` использовать ранее полученные данные или сменить подход.
-- **Критическое ограничение:** Бюджет поисковых запросов исчерпан (10/10 использовано). Дальнейший поиск невозможен. Необходимо завершить задачу на основе уже прочитанных материалов.
-- **Критическое ограничение:** Задача была приостановлена из-за ошибки `no_progress` (повторный вызов `web_fetch` для `https://arxiv.org/abs/2503.11951v3` вернул один и тот же результат 6 раз).
+- После чтения первых страниц выполнить уточняющие запросы и перейти по ссылке с прочитанной страницы.
+- Собирать минимум 6 подтверждений (evidence) с URL.
+- Включить в отчет секции: approaches, limitations, comparison, unverified.
+- Ограничить долю одного домена до 60% прочитанных страниц.
+- Бюджет поисковых запросов исчерпан (10/10 использовано). Дальнейший поиск невозможен.
+- Статус задачи: `complete_task` отклонен из-за несоответствия критериям. Необходимо дочитать 1 страницу (итого 5) и пройти по 1 ссылке, найденной на прочитанной странице.
+- Выбраны для чтения: `https://github.com/vaibhav7087/agent-state-checkpoints` (pending), `https://vinithavn.medium.com/advancing-agentic-memory-an-overview-of-modern-memory-management-architectures-in-llm-agents-8df87b0da58f` (error: already processed).
 
 ## Подтверждённые факты (с источниками)
-1. **arXiv:2505.16067** ("How Memory Management Impacts LLM Agents..."): Страница доступна (HTTP 200). Автор: Zidi Xiong. Версия v2. (Источник: `https://arxiv.org/abs/2505.16067`, artifact_id: `art_f41a57c0e1a6d85e820c`).
-2. **arXiv:2608.03836v3** ("Resume Means Resume..."): Страница доступна (HTTP 200). Описывает семантику checkpoint/interrupt/resume и инструмент REMIT. (Источник: `https://arxiv.org/abs/2608.03836v3`, artifact_id: `art_2c2bba1f59b11d3bbf0c`).
-3. **arXiv:2608.29381v1** ("Safe to Resume? Breaking Execution Continuity..."): Страница доступна (HTTP 200). Тематика: безопасность возобновления выполнения через rollback. (Источник: `https://arxiv.org/abs/2608.29381v1`, artifact_id: `art_74e4cd072b195a702893`).
-4. **arXiv:2507.22925v1** ("Hierarchical Memory for High-Efficiency Long-Term Reasoning..."): Страница доступна (HTTP 200). Авторы: Haoran Sun и др. (Источник: `https://arxiv.org/abs/2507.22925v1`, artifact_id: `art_06bb89f539a917f10113`).
-5. **arXiv:2310.08560v2** ("MemGPT: Towards LLMs as Operating Systems"): Страница доступна (HTTP 200). Авторы: Charles Packer и др. Предлагает виртуальное управление контекстом. (Источник: `https://arxiv.org/abs/2310.08560v2`, artifact_id: `art_382cae43baad14b1ae1e`).
-6. **GitHub: davidmovsisian/langgraph-persistence-guide**: Страница доступна (HTTP 200). Комплексный гайд по Checkpointers и Stores в LangGraph. (Источник: `https://github.com/davidmovsisian/langgraph-persistence-guide`, artifact_id: `art_ba1ea6ef41e04d1ff
+1. **Agent Harness**: "structure surrounding a large language model (LLM) that enables it to operate as an AI agent. It manages tool use, memory, state persistence, execution environments and feedback loops, as opposed to the model's internal reasoning."
+   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 149).
+2. **Stateless Model**: "Because a \"base model\" LLM is a stateless probabilistic function that maps input token sequences to output token sequences, the harness is what makes an agent out of a model..."
+   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 151).
+3. **Harness Components**: "Components commonly grouped under a harness include tool dispatch, memory and state persistence, an isolated sandbox or workspace, context management, and guardrails..."
+   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 159).
+4. **Agent File Format**: "Agent File (.af) is an open standard file format for serializing stateful AI agents. Originally designed for the Letta framework, Agent File provides a portable way to share agents with persistent memory and behavior."
+   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строка 294).
+5. **Agent File Contents**: "Agent Files package all components of a stateful agent: system prompts, editable memory (personality and user information), tool configurations (code and schemas), and LLM se..."
+   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строка 296).
+6. **Portability Goal**: "Agent File addresses the need for a standard that enables: 🔄 Portability: Move agents between systems or deploy them to new environments"
+   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строки 423-425).
+7. **Agent File State Components**: "A .af file contains all the state required to re-create the exact same agent: Model configuration, Message history, System prompt, Memory blocks..."
+   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строки 435-450).
+8. **LangGraph Checkpoint SAP**: "A free, open-source LangGraph's checkpoint saver that uses SAP Agent Memory Service. It enables state persistence backed by SAP Agent Memory Service for durable, long-running workflows and agents."
+   - Источник: https://github.com/S
+## Сжато правилами (без LLM)
+- вызов web_fetch({"url": "https://github.com/letta-ai/agent-file", "force": true})
+  → web_fetch: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "web_fetch", "data": {"url": "https://github.com/letta-ai/agent-file", "url_key": "aecc93f673ce3ad7", "final_url": "htt
+- вызов search_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "query": "state", "max_hits": 30})
+  → search_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "search_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "query": "state", "hits": [{"line": 4, "snippet"
+- вызов read_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 290, "max_lines": 60})
+  → read_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 290, "end_line": 349, "total_lines":
+- вызов read_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 420, "max_lines": 60})
+  → read_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 420, "end_line": 479, "total_lines":
+- вызов save_evidence({"claim":
+…(правила: хвост обрезан)…
+d_artifact: ok art_daa2bb99f1925e6d6296 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_daa2bb99f1925e6d6296", "start_line": 195, "end_line": 264, "total_lines":

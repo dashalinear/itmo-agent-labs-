@@ -41,10 +41,10 @@
 | G2 | move из junction -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | разрешённые write и move внутри root работают | ["ok", "ok"] | OK |
 | G2 | лимит суммарного вывода шага: step total would exceed | 2 | OK |
-| B3 | не помечен completed без выполненных критериев | paused (no progress: web_fetch returned the same result 6 times) | OK |
-| B3 | второй раунд: новые запросы после чтения страниц | 7 запросов после чтения | OK |
+| B3 | не помечен completed без выполненных критериев | paused (budget exhausted before the call (tokens: needed 13320, rema) | OK |
+| B3 | второй раунд: новые запросы после чтения страниц | 1 запросов после чтения | OK |
 | B3 | прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
-| B3 | не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/11 = 82% | НЕТ |
-| B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "github.com": 2} | OK |
+| B3 | не больше 60 % прочитанных страниц с одного домена | github.com: 3/5 = 60% | OK |
+| B3 | домены прочитанных страниц (информативно) | {"github.com": 3, "en.wikipedia.org": 2} | OK |
 
-Итого: 42 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/).
+Итого: 43 OK, 1 НЕТ (scripts/final_checks.py по results/ и traces/).
