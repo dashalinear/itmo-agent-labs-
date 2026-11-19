@@ -233,10 +233,10 @@ def check_b3(out: list) -> None:
     share = top[1] / len(done) if done else 0.0
     out.append(row("B3", "второй раунд: новые запросы после чтения страниц", f"{len(after)} запросов после чтения",
                    len(after) >= crit.get("min_queries_after_reading", 1)))
-    out.append(row("B3", "прочитана страница по ссылке с прочитанной страницы (found_on)",
+    out.append(row("B3", "доп. критерий (сверх задания): прочитана страница по ссылке с прочитанной страницы (found_on)",
                    f"{len(via_links)}; link_followed событий: {len(followed)}",
                    len(via_links) >= crit.get("min_page_links_read", 1)))
-    out.append(row("B3", f"не больше {int(crit.get('max_domain_share', 0.6) * 100)} % прочитанных страниц с одного домена",
+    out.append(row("B3", f"доп. критерий (сверх задания): не больше {int(crit.get('max_domain_share', 0.6) * 100)} % прочитанных страниц с одного домена",
                    f"{top[0]}: {top[1]}/{len(done)} = {share:.0%}", bool(done) and share <= crit.get("max_domain_share", 0.6)))
     out.append(row("B3", "домены прочитанных страниц (информативно)", hosts, True))
 
@@ -288,8 +288,11 @@ def main() -> None:
         a = r["actual"] if isinstance(r["actual"], str) else json.dumps(r["actual"], ensure_ascii=False)
         md.append(f"| {r['task']} | {r['property']} | {a.replace('|', '/')[:220]} | {'OK' if r['ok'] else 'НЕТ'} |")
     n_bad = sum(1 for r in out if not r["ok"])
+    n_extra = sum(1 for r in out if not r["ok"] and r["property"].startswith("доп. критерий"))
     md.append("")
-    md.append(f"Итого: {len(out) - n_bad} OK, {n_bad} НЕТ (scripts/final_checks.py по results/ и traces/).")
+    md.append(f"Итого: {len(out) - n_bad} OK, {n_bad} НЕТ (scripts/final_checks.py по results/ и traces/)"
+              + (f"; из них {n_extra} — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: "
+                 f"{n_bad - n_extra}." if n_extra else "."))
     table = "\n".join(md)
     (RES / "final_checks.md").write_text("# Проверки сценариев (scripts/final_checks.py)\n\n" + table + "\n", encoding="utf-8")
     print(table)
