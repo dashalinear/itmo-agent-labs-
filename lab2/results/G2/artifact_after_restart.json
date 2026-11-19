@@ -1,0 +1,31 @@
+{
+  "task_id": "G2",
+  "pid": 33768,
+  "note": "new process: artifacts opened from disk after the run",
+  "offloaded_outputs": 2,
+  "artifacts_checked": [
+    {
+      "artifact_id": "art_f366de3a97694b27f9ff",
+      "tool": "read_pages",
+      "passed_chars": 1937
+    }
+  ],
+  "example": {
+    "artifact_id": "art_f366de3a97694b27f9ff",
+    "tool": "read_pages",
+    "total_chars": 4861,
+    "chars_given_to_model": 1937,
+    "query": "nDCG@10",
+    "kind": "control fact",
+    "char_offset_in_artifact": 2312,
+    "beyond_given_part": true,
+    "artifact_layout": "lines",
+    "search_artifact_hit": "рпус «Новости-24» (40 тыс. документов), набор 300 запросов; конфигурация: обход с интервалом 4 ч, глубина 4. Результат: nDCG@10 = 0,569 при базовом уровне 0,768, задержка p95 — 62 мс. Вывод: нагрузка на источники осталась в пределах лимита.",
+    "artifact_line": 27,
+    "read_artifact_text": "27: 497: Журнал эксперимента E-031. Корпус «Новости-24» (40 тыс. документов), набор 300 запросов; конфигурация: обход с интервалом 4 ч, глубина 4. Результат: nDCG@10 = 0,569 при базовом уровне 0,768, задержка p95 — 62 мс. Вывод: нагрузка на источники осталась в пределах лимита.",
+    "read_artifact_has_query": true,
+    "verified_in_document": null,
+    "found_via": "read_artifact"
+  },
+  "ok": true
+}

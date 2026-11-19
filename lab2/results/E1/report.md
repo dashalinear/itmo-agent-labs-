@@ -19,42 +19,46 @@
 
 _Разделы обзора ещё не написаны._
 
-## Приложение A. Подтверждения (evidence): 0
+## Приложение A. Подтверждения (evidence): 2
 
+| id | тип | вывод | источник | стр. | строки | цитата |
+|---|---|---|---|---|---|---|
+| ev_aa4b2498d839 | decision | АС-03: при p95 задержки векторной ветви > 450 мс дольше 10 минут ветвь отключается, запросы обслуживаются только BM25 | data/search/search_engineering_handbook.md | 517 | 8561–8561 | Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25. |
+| ev_cb8df7ab8eee | decision | АС-02: итоговая оценка гибридного поиска = 0,7·BM25_norm + 0,3·cosine, веса пересматриваются не чаще раза в квартал | data/search/search_engineering_handbook.md | 261 | 4317–4317 | Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал. |
 
 ## Приложение D. Покрытие локальных документов
 
 | документ | страниц | прочитано стр. | поиск |
 |---|---|---|---|
-| data/search/ir_course_lectures.md | 90 | 1 | да |
-| data/search/search_engineering_handbook.md | 520 | 3 | да |
-| data/search/search_incident_reports.md | 45 | 2 | да |
+| data/search/ir_course_lectures.md | 90 | 3 | да |
+| data/search/search_engineering_handbook.md | 520 | 5 | да |
+| data/search/search_incident_reports.md | 45 | 3 | да |
 
 ## Расход
 
 ```json
 {
   "tokens": {
-    "spent": 70915,
-    "reserved": 20782,
+    "spent": 178846,
+    "reserved": 0,
     "limit": 1500000,
     "of_which": {
-      "input_tokens": 69635,
-      "output_tokens": 1280,
-      "compaction_input_tokens": 0,
-      "compaction_output_tokens": 0,
+      "input_tokens": 149341,
+      "output_tokens": 2272,
+      "compaction_input_tokens": 12550,
+      "compaction_output_tokens": 2400,
       "failed_call_tokens": 0,
-      "interrupted_call_tokens": 0
+      "interrupted_call_tokens": 12283
     }
   },
   "model_calls": {
-    "used": 6,
+    "used": 12,
     "limit": 90
   },
-  "compaction_calls": 0,
+  "compaction_calls": 2,
   "failed_calls": 0,
   "tool_calls": {
-    "used": 20,
+    "used": 33,
     "limit": 300
   },
   "search_calls": {
@@ -68,9 +72,9 @@ _Разделы обзора ещё не написаны._
   "cache_hits": 0,
   "bytes_downloaded": 0,
   "active_seconds": {
-    "used": 17.4,
+    "used": 46.8,
     "limit": 5400
   },
-  "peak_input_tokens": 16733
+  "peak_input_tokens": 16479
 }
 ```

@@ -1,0 +1,718 @@
+[
+  {
+    "id": 496,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:06:59+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 497,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:05+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 498,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11150,
+      "reserve": 2048,
+      "total": 13198,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 499,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11150,
+      "reserve": 2048,
+      "total": 13198,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 500,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11150,
+      "actual_input": 6942,
+      "actual_output": 63,
+      "duration_s": 0.99,
+      "calibrated_cpt": 3.077
+    }
+  },
+  {
+    "id": 501,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9634,
+      "reserve": 2048,
+      "total": 11682,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.08)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 502,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9634,
+      "reserve": 2048,
+      "total": 11682,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.08)"
+    }
+  },
+  {
+    "id": 503,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9634,
+      "actual_input": 7117,
+      "actual_output": 215,
+      "duration_s": 2.09,
+      "calibrated_cpt": 3.356
+    }
+  },
+  {
+    "id": 504,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:08+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 505,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:09+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 506,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11826,
+      "reserve": 2048,
+      "total": 13874,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 507,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11826,
+      "reserve": 2048,
+      "total": 13874,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 508,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11826,
+      "actual_input": 7405,
+      "actual_output": 70,
+      "duration_s": 1.07,
+      "calibrated_cpt": 3.065
+    }
+  },
+  {
+    "id": 509,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10260,
+      "reserve": 2048,
+      "total": 12308,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.06)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 510,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10260,
+      "reserve": 2048,
+      "total": 12308,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.06)"
+    }
+  },
+  {
+    "id": 511,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10260,
+      "actual_input": 7584,
+      "actual_output": 216,
+      "duration_s": 2.15,
+      "calibrated_cpt": 3.339
+    }
+  },
+  {
+    "id": 512,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:12+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 513,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:13+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 514,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12468,
+      "reserve": 2048,
+      "total": 14516,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 515,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12468,
+      "reserve": 2048,
+      "total": 14516,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 516,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12468,
+      "actual_input": 7845,
+      "actual_output": 51,
+      "duration_s": 0.82,
+      "calibrated_cpt": 3.055
+    }
+  },
+  {
+    "id": 517,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10789,
+      "reserve": 2048,
+      "total": 12837,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 518,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10789,
+      "reserve": 2048,
+      "total": 12837,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)"
+    }
+  },
+  {
+    "id": 519,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10789,
+      "actual_input": 7967,
+      "actual_output": 234,
+      "duration_s": 2.39,
+      "calibrated_cpt": 3.326
+    }
+  },
+  {
+    "id": 520,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:16+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 521,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:17+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 522,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13069,
+      "reserve": 2048,
+      "total": 15117,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 523,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13069,
+      "reserve": 2048,
+      "total": 15117,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 524,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13069,
+      "actual_input": 8244,
+      "actual_output": 47,
+      "duration_s": 0.83,
+      "calibrated_cpt": 3.048
+    }
+  },
+  {
+    "id": 525,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11314,
+      "reserve": 2048,
+      "total": 13362,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 526,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11314,
+      "reserve": 2048,
+      "total": 13362,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)"
+    }
+  },
+  {
+    "id": 527,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11314,
+      "actual_input": 8359,
+      "actual_output": 189,
+      "duration_s": 2.15,
+      "calibrated_cpt": 3.315
+    }
+  },
+  {
+    "id": 528,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:20+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 529,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:20+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 530,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13607,
+      "reserve": 2048,
+      "total": 15655,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 531,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13607,
+      "reserve": 2048,
+      "total": 15655,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 532,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13607,
+      "actual_input": 8600,
+      "actual_output": 45,
+      "duration_s": 0.88,
+      "calibrated_cpt": 3.043
+    }
+  },
+  {
+    "id": 533,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11777,
+      "reserve": 2048,
+      "total": 13825,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 534,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11777,
+      "reserve": 2048,
+      "total": 13825,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)"
+    }
+  },
+  {
+    "id": 535,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11777,
+      "actual_input": 8714,
+      "actual_output": 52,
+      "duration_s": 1.03,
+      "calibrated_cpt": 3.304
+    }
+  },
+  {
+    "id": 536,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11054,
+      "reserve": 2048,
+      "total": 13102,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.30)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 537,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11054,
+      "reserve": 2048,
+      "total": 13102,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.30)"
+    }
+  },
+  {
+    "id": 538,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11054,
+      "actual_input": 8952,
+      "actual_output": 401,
+      "duration_s": 3.48,
+      "calibrated_cpt": 3.447
+    }
+  },
+  {
+    "id": 539,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:26+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 540,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:27+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 541,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14553,
+      "reserve": 2048,
+      "total": 16601,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 542,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14553,
+      "reserve": 2048,
+      "total": 16601,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 543,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14553,
+      "actual_input": 9466,
+      "actual_output": 232,
+      "duration_s": 2.21,
+      "calibrated_cpt": 2.998
+    }
+  },
+  {
+    "id": 544,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:29+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "read_pages",
+      "artifact_id": "art_f366de3a97694b27f9ff",
+      "total_chars": 4861,
+      "passed_chars": 1937,
+      "reason": "step total would exceed 12000 chars (already 10055)",
+      "step": "lc_run--01a1f459-2d0d-7319-87c6-171cfc22fb31-0"
+    }
+  },
+  {
+    "id": 545,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:29+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "read_pages",
+      "artifact_id": "art_3e37cd6612d91de2fe69",
+      "total_chars": 4768,
+      "passed_chars": 719,
+      "reason": "step total would exceed 12000 chars (already 11992)",
+      "step": "lc_run--01a1f459-2d0d-7319-87c6-171cfc22fb31-0"
+    }
+  },
+  {
+    "id": 546,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17673,
+      "reserve": 2048,
+      "total": 19721,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.00)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 547,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17673,
+      "reserve": 2048,
+      "total": 19721,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.00)"
+    }
+  },
+  {
+    "id": 548,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17673,
+      "actual_input": 14611,
+      "actual_output": 433,
+      "duration_s": 4.68,
+      "calibrated_cpt": 3.103
+    }
+  },
+  {
+    "id": 549,
+    "task_id": "G2",
+    "ts": "2026-11-19T15:07:34+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  }
+]

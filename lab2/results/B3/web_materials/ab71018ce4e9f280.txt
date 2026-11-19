@@ -1,0 +1,227 @@
+Источник: https://arxiv.org/abs/2503.11951v3
+Конечный URL: https://arxiv.org/abs/2503.11951v3
+HTTP: 200
+Заголовок: [2503.11951v3] SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning
+Получено: полностью
+
+Skip to main content
+
+ Search
+
+ Submit
+ Donate
+
+Log in 
+
+ Search arXiv
+
+ Press Enter to search · Advanced search
+
+Computer Science > Artificial Intelligence
+
+ arXiv:2503.11951v3 (cs)
+
+ [Submitted on 15 Mar 2025 (v1), last revised 9 Jul 2025 (this version, v3)]
+
+Title:SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning
+
+Authors:Edward Y. Chang, Longling Geng 
+View a PDF of the paper titled SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning, by Edward Y. Chang and 1 other authors
+ View PDF
+ HTML (experimental)
+
+ Abstract:This paper introduces SagaLLM, a structured multi-agent architecture designed to address four foundational limitations of current LLM-based planning systems: unreliable self-validation, context loss, lack of transactional safeguards, and insufficient inter-agent coordination. While recent frameworks leverage LLMs for task decomposition and multi-agent communication, they often fail to ensure consistency, rollback, or constraint satisfaction across distributed workflows. SagaLLM bridges this gap by integrating the Saga transactional pattern with persistent memory, automated compensation, and independent validation agents. It leverages LLMs' generative reasoning to automate key tasks traditionally requiring hand-coded coordination logic, including state tracking, dependency analysis, log schema generation, and recovery orchestration. Although SagaLLM relaxes strict ACID guarantees, it ensures workflow-wide consistency and recovery through modular checkpointing and compensable execution. Empirical evaluations across planning domains demonstrate that standalone LLMs frequently violate interdependent constraints or fail to recover from disruptions. In contrast, SagaLLM achieves significant improvements in consistency, validation accuracy, and adaptive coordination under uncertainty, establishing a robust foundation for real-world, scalable LLM-based multi-agent systems.
+
+ Comments:
+ 13 pages, 10 tables, 5 figures
+
+ Subjects:
+
+ Artificial Intelligence (cs.AI)
+
+ ACM classes:
+ I.2.7
+
+ Cite as:
+ arXiv:2503.11951 [cs.AI]
+
+ (or 
+ arXiv:2503.11951v3 [cs.AI] for this version)
+
+ https://doi.org/10.48550/arXiv.2503.11951
+
+ Focus to learn more
+
+ arXiv-issued DOI via DataCite
+
+Submission history From: Edward Chang [view email] 
+ [v1]
+ Sat, 15 Mar 2025 01:43:03 UTC (103 KB)
+
+ [v2]
+ Tue, 18 Mar 2025 05:00:47 UTC (139 KB)
+
+ [v3]
+ Wed, 9 Jul 2025 03:31:59 UTC (121 KB)
+
+ Full-text links:
+
+Access Paper:
+
+View a PDF of the paper titled SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning, by Edward Y. Chang and 1 other authors
+View PDF
+HTML (experimental)
+TeX Source
+
+view license
+
+Additional Features
+
+Audio Summary
+
+Current browse context:
+
+cs.AI
+
+ < prev
+
+   |   
+ next >
+
+ new
+ | 
+ recent
+ | 2025-03
+
+ Change to browse by:
+
+ cs
+
+References & Citations
+
+SciX
+Google Scholar
+
+Semantic Scholar
+
+ export BibTeX citation
+ Loading...
+
+BibTeX formatted citation
+ ×
+
+ loading...
+
+ Data provided by: 
+
+Bookmark
+
+ Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+ Bibliographic Explorer Toggle
+
+ Bibliographic Explorer (What is the Explorer?)
+
+ Connected Papers Toggle
+
+ Connected Papers (What is Connected Papers?)
+
+ Litmaps Toggle
+
+ Litmaps (What is Litmaps?)
+
+ scite.ai Toggle
+
+ scite Smart Citations (What are Smart Citations?)
+
+ Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+ alphaXiv Toggle
+
+ alphaXiv (What is alphaXiv?)
+
+ Links to Code Toggle
+
+ CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+
+ DagsHub Toggle
+
+ DagsHub (What is DagsHub?)
+
+ GotitPub Toggle
+
+ Gotit.pub (What is GotitPub?)
+
+ Huggingface Toggle
+
+ Hugging Face (What is Huggingface?)
+
+ ScienceCast Toggle
+
+ ScienceCast (What is ScienceCast?)
+
+ Demos
+
+Demos
+
+ Replicate Toggle
+
+ Replicate (What is Replicate?)
+
+ Spaces Toggle
+
+ Hugging Face Spaces (What is Spaces?)
+
+ Spaces Toggle
+
+ TXYZ.AI (What is TXYZ.AI?)
+
+ Related Papers
+
+Recommenders and Search Tools
+
+ Link to Influence Flower
+
+ Influence Flower (What are Influence Flowers?)
+
+ Core recommender toggle
+
+ CORE Recommender (What is CORE?)
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+ About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+
+ Which authors of this paper are endorsers? |
+ Disable MathJax (What is MathJax?)
+
+ We gratefully acknowledge support from our major funders,
+ member institutions, ,
+ and all contributors.
+
+ About ·
+ Help ·
+ Contact ·
+ Subscribe ·
+ Copyright ·
+ Privacy ·
+ Accessibility ·
+ Operational Status (opens in new tab)

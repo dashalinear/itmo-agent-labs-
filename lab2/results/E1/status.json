@@ -9,18 +9,18 @@
     "plan": [
       {
         "title": "Инвентаризация документов (doc_info)",
+        "status": "done"
+      },
+      {
+        "title": "Поиск АС-01/02/03 в справочнике",
         "status": "doing"
       },
       {
-        "title": "Поиск: АС-01/02/03 в справочнике",
+        "title": "Поиск решения кафедры о метрике качества в конспекте",
         "status": "todo"
       },
       {
-        "title": "Поиск: решение кафедры о метрике качества в конспекте",
-        "status": "todo"
-      },
-      {
-        "title": "Поиск: разбор INC-2026-017",
+        "title": "Поиск INC-2026-017 в отчётах инцидентов",
         "status": "todo"
       },
       {
@@ -28,19 +28,15 @@
         "status": "todo"
       },
       {
-        "title": "Чтение найденных страниц",
-        "status": "todo"
-      },
-      {
         "title": "save_evidence по каждому документу",
         "status": "todo"
       },
       {
-        "title": "Секции обзора (approaches, limitations, disputed, decisions, summary)",
+        "title": "Собрать разделы обзора",
         "status": "todo"
       },
       {
-        "title": "Проверка критериев и завершение",
+        "title": "Проверка критериев и complete_task",
         "status": "todo"
       }
     ],
@@ -73,6 +69,9 @@
       "max_lines_per_read": 300,
       "llm_timeout_s": 180.0,
       "llm_retries": 2,
+      "max_model_calls_per_run": 0,
+      "repeat_call_warn": 3,
+      "repeat_call_stop": 6,
       "tool_timeout_s": 60.0
     }
   },
@@ -92,30 +91,38 @@
       "disputed",
       "decisions",
       "summary"
-    ]
+    ],
+    "verbatim_quotes": {
+      "section": "decisions",
+      "codes": [
+        "АС-01",
+        "АС-02",
+        "АС-03"
+      ]
+    }
   },
   "budget": {
     "tokens": {
-      "spent": 70915,
-      "reserved": 20782,
+      "spent": 178846,
+      "reserved": 0,
       "limit": 1500000,
       "of_which": {
-        "input_tokens": 69635,
-        "output_tokens": 1280,
-        "compaction_input_tokens": 0,
-        "compaction_output_tokens": 0,
+        "input_tokens": 149341,
+        "output_tokens": 2272,
+        "compaction_input_tokens": 12550,
+        "compaction_output_tokens": 2400,
         "failed_call_tokens": 0,
-        "interrupted_call_tokens": 0
+        "interrupted_call_tokens": 12283
       }
     },
     "model_calls": {
-      "used": 6,
+      "used": 12,
       "limit": 90
     },
-    "compaction_calls": 0,
+    "compaction_calls": 2,
     "failed_calls": 0,
     "tool_calls": {
-      "used": 20,
+      "used": 33,
       "limit": 300
     },
     "search_calls": {
@@ -129,10 +136,10 @@
     "cache_hits": 0,
     "bytes_downloaded": 0,
     "active_seconds": {
-      "used": 17.4,
+      "used": 46.8,
       "limit": 5400
     },
-    "peak_input_tokens": 16733
+    "peak_input_tokens": 16479
   },
   "queue": {
     "found": 0,
@@ -149,154 +156,311 @@
     {
       "task_id": "E1",
       "path": "data/search/ir_course_lectures.md",
-      "document_id": "8d702971-b28d-4c49-a448-c32afce650c2",
+      "document_id": "b5b4e859-bcd5-49c5-87d5-7a989efc8fbd",
       "content_hash": "sha256:841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
       "pages": 90,
       "lines": 1289,
       "chars": 92443,
       "searched": 1,
       "status": "pending",
-      "updated_at": "2026-11-15T22:22:00+00:00"
+      "updated_at": "2026-11-19T15:01:54+00:00"
     },
     {
       "task_id": "E1",
       "path": "data/search/search_engineering_handbook.md",
-      "document_id": "61dd80ad-bb83-4e45-9e6c-a8dce2f29ef6",
+      "document_id": "1a93d60a-763c-4b23-b186-5cfdebd356f3",
       "content_hash": "sha256:7fa2082bb3ac0c85c84bf3f7fd3e41e38ed9eec15ee61c8d6d33d1d196800b4c",
       "pages": 520,
       "lines": 8611,
       "chars": 685785,
       "searched": 1,
       "status": "pending",
-      "updated_at": "2026-11-15T22:21:57+00:00"
+      "updated_at": "2026-11-19T15:01:54+00:00"
     },
     {
       "task_id": "E1",
       "path": "data/search/search_incident_reports.md",
-      "document_id": "ff000dc4-d816-4603-bbb5-52c40e9f73c1",
+      "document_id": "54f26d52-97c4-453a-a3b3-2df31b14cc48",
       "content_hash": "sha256:519137486bb60131646bf252fa5c9f379aa7354eab3310119782c934c50b1531",
       "pages": 45,
       "lines": 627,
       "chars": 24980,
       "searched": 1,
       "status": "pending",
-      "updated_at": "2026-11-15T22:22:01+00:00"
+      "updated_at": "2026-11-19T15:01:54+00:00"
     }
   ],
-  "summary_version": 0,
-  "compactions": [],
+  "summary_version": 2,
+  "compactions": [
+    {
+      "id": 10,
+      "ts": "2026-11-19T15:01:52+00:00",
+      "before_tokens": 19279,
+      "after_tokens": 12565,
+      "removed_messages": 20,
+      "kept_messages": 10,
+      "summary_tokens": 1254,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6521,
+      "cost_output": 1200,
+      "note": ""
+    },
+    {
+      "id": 11,
+      "ts": "2026-11-19T15:02:09+00:00",
+      "before_tokens": 19433,
+      "after_tokens": 12037,
+      "removed_messages": 19,
+      "kept_messages": 4,
+      "summary_tokens": 1273,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6029,
+      "cost_output": 1200,
+      "note": ""
+    }
+  ],
   "model_calls": [
     {
-      "id": 122,
+      "id": 80,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:46+00:00",
+      "ts": "2026-11-19T15:01:26+00:00",
       "kind": "agent",
-      "estimated_input": 11341,
+      "estimated_input": 11659,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
       "method": "heuristic(cpt=2.60)",
-      "actual_input": 7105,
+      "actual_input": 7284,
       "actual_output": 54,
-      "duration_s": 0.89,
+      "duration_s": 0.9,
       "status": "ok",
       "note": null
     },
     {
-      "id": 123,
+      "id": 81,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:47+00:00",
+      "ts": "2026-11-19T15:01:27+00:00",
       "kind": "agent",
-      "estimated_input": 10949,
+      "estimated_input": 11203,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
       "method": "heuristic(cpt=3.07)",
-      "actual_input": 8180,
-      "actual_output": 416,
-      "duration_s": 3.43,
+      "actual_input": 8364,
+      "actual_output": 395,
+      "duration_s": 3.26,
       "status": "ok",
       "note": null
     },
     {
-      "id": 124,
+      "id": 82,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:51+00:00",
+      "ts": "2026-11-19T15:01:30+00:00",
       "kind": "agent",
-      "estimated_input": 11563,
+      "estimated_input": 11733,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
       "method": "heuristic(cpt=3.33)",
-      "actual_input": 9706,
-      "actual_output": 292,
-      "duration_s": 2.61,
+      "actual_input": 9859,
+      "actual_output": 300,
+      "duration_s": 2.71,
       "status": "ok",
       "note": null
     },
     {
-      "id": 125,
+      "id": 83,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:53+00:00",
+      "ts": "2026-11-19T15:01:33+00:00",
       "kind": "agent",
-      "estimated_input": 14123,
+      "estimated_input": 14481,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
-      "method": "heuristic(cpt=3.43)",
-      "actual_input": 13187,
-      "actual_output": 117,
-      "duration_s": 1.77,
+      "method": "heuristic(cpt=3.44)",
+      "actual_input": 13642,
+      "actual_output": 124,
+      "duration_s": 2.0,
       "status": "ok",
       "note": null
     },
     {
-      "id": 126,
+      "id": 84,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:55+00:00",
+      "ts": "2026-11-19T15:01:35+00:00",
       "kind": "agent",
-      "estimated_input": 15684,
+      "estimated_input": 15124,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
       "method": "heuristic(cpt=3.38)",
-      "actual_input": 14724,
-      "actual_output": 165,
-      "duration_s": 2.32,
+      "actual_input": 14062,
+      "actual_output": 115,
+      "duration_s": 2.08,
       "status": "ok",
       "note": null
     },
     {
-      "id": 127,
+      "id": 85,
       "task_id": "E1",
-      "ts": "2026-11-15T22:21:57+00:00",
+      "ts": "2026-11-19T15:01:37+00:00",
       "kind": "agent",
-      "estimated_input": 17795,
+      "estimated_input": 16930,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
-      "method": "heuristic(cpt=3.33)",
-      "actual_input": 16733,
+      "method": "heuristic(cpt=3.34)",
+      "actual_input": 15777,
       "actual_output": 236,
-      "duration_s": 3.09,
+      "duration_s": 2.98,
       "status": "ok",
       "note": null
     },
     {
-      "id": 128,
+      "id": 86,
       "task_id": "E1",
-      "ts": "2026-11-15T22:22:01+00:00",
+      "ts": "2026-11-19T15:01:40+00:00",
       "kind": "agent",
-      "estimated_input": 18734,
+      "estimated_input": 17791,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
-      "method": "heuristic(cpt=3.28)",
+      "method": "heuristic(cpt=3.29)",
+      "actual_input": 16365,
+      "actual_output": 172,
+      "duration_s": 2.63,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 87,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:01:43+00:00",
+      "kind": "compaction",
+      "estimated_input": 6185,
+      "reserve": 1200,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.26, margin=10%)",
+      "actual_input": 6521,
+      "actual_output": 1200,
+      "duration_s": 8.85,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 88,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:01:52+00:00",
+      "kind": "agent",
+      "estimated_input": 12565,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.26)",
+      "actual_input": 10529,
+      "actual_output": 171,
+      "duration_s": 2.06,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 89,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:01:54+00:00",
+      "kind": "agent",
+      "estimated_input": 13626,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "actual_input": 12069,
+      "actual_output": 112,
+      "duration_s": 1.75,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 90,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:01:56+00:00",
+      "kind": "agent",
+      "estimated_input": 15734,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.39)",
+      "actual_input": 14602,
+      "actual_output": 112,
+      "duration_s": 2.07,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 91,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:01:58+00:00",
+      "kind": "agent",
+      "estimated_input": 17633,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.35)",
+      "actual_input": 16479,
+      "actual_output": 120,
+      "duration_s": 2.31,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 92,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:02:01+00:00",
+      "kind": "compaction",
+      "estimated_input": 5787,
+      "reserve": 1200,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.31, margin=10%)",
+      "actual_input": 6029,
+      "actual_output": 1200,
+      "duration_s": 8.38,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 93,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:02:09+00:00",
+      "kind": "agent",
+      "estimated_input": 12037,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.31)",
+      "actual_input": 10309,
+      "actual_output": 361,
+      "duration_s": 3.29,
+      "status": "ok",
+      "note": null
+    },
+    {
+      "id": 94,
+      "task_id": "E1",
+      "ts": "2026-11-19T15:02:12+00:00",
+      "kind": "agent",
+      "estimated_input": 12283,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "window_tokens": 262144,
+      "method": "heuristic(cpt=3.39)",
       "actual_input": null,
       "actual_output": null,
-      "duration_s": null,
-      "status": "planned",
-      "note": null
+      "duration_s": 0.38,
+      "status": "cancelled",
+      "note": "interrupted by cancel"
     }
   ]
 }

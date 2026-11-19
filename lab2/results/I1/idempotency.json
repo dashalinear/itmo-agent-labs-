@@ -1,0 +1,430 @@
+{
+  "task_id": "I1",
+  "checks": {
+    "crashes": 3,
+    "resumes_in_new_process": 3,
+    "urls_requeued_after_crash": 1,
+    "cache_hit_in_re_executed_step": true,
+    "already_saved_in_re_executed_step": true,
+    "cached_pages_not_downloaded_again": true,
+    "no_duplicate_evidence": true,
+    "no_duplicate_queue_entries": true,
+    "replay_all_already_saved": true,
+    "replay_all_cache_hits_no_http": true,
+    "final_status": "completed"
+  },
+  "processes": [
+    {
+      "trace": "I1_run1_20261119_180227.jsonl",
+      "label": "run",
+      "resume_kind": "start",
+      "dry_run": false,
+      "recovered": {
+        "inflight_reservations_charged": [],
+        "urls_requeued": 0
+      },
+      "usage_before": {
+        "http_requests": {
+          "used": 0,
+          "limit": 30
+        },
+        "cache_hits": 0
+      },
+      "crash": {
+        "at": "after_download:2",
+        "phase": "download",
+        "tool": "web_fetch",
+        "count": 2,
+        "usage_at_crash": {
+          "model_calls": 4,
+          "tool_calls": 7,
+          "http_requests": 2,
+          "cache_hits": 0
+        },
+        "evidence_at_crash": 0,
+        "urls_running": [
+          "http://127.0.0.1:8765/p/durable-1"
+        ]
+      },
+      "status_at_end": "process killed (no session_end)"
+    },
+    {
+      "trace": "I1_resume2_20261119_180243.jsonl",
+      "label": "resume",
+      "resume_kind": "continue_interrupted_step",
+      "dry_run": false,
+      "recovered": {
+        "inflight_reservations_charged": [],
+        "urls_requeued": 1
+      },
+      "usage_before": {
+        "http_requests": {
+          "used": 2,
+          "limit": 30
+        },
+        "cache_hits": 0
+      },
+      "crash": {
+        "at": "after_tool:web_fetch:1",
+        "phase": "after",
+        "tool": "web_fetch",
+        "count": 1,
+        "usage_at_crash": {
+          "model_calls": 4,
+          "tool_calls": 8,
+          "http_requests": 3,
+          "cache_hits": 0
+        },
+        "evidence_at_crash": 0,
+        "urls_running": []
+      },
+      "status_at_end": "process killed (no session_end)",
+      "re_executed_step": [
+        {
+          "tool": "web_fetch",
+          "ok": true,
+          "url": "http://127.0.0.1:8765/p/checkpoint-1",
+          "from_cache": false,
+          "artifact_id": "art_bbb135ac159f9cf2ce89"
+        }
+      ]
+    },
+    {
+      "trace": "I1_resume3_20261119_180248.jsonl",
+      "label": "resume",
+      "resume_kind": "continue_interrupted_step",
+      "dry_run": false,
+      "recovered": {
+        "inflight_reservations_charged": [],
+        "urls_requeued": 0
+      },
+      "usage_before": {
+        "http_requests": {
+          "used": 3,
+          "limit": 30
+        },
+        "cache_hits": 0
+      },
+      "crash": {
+        "at": "after_tool:save_evidence:1",
+        "phase": "after",
+        "tool": "save_evidence",
+        "count": 1,
+        "usage_at_crash": {
+          "model_calls": 5,
+          "tool_calls": 13,
+          "http_requests": 3,
+          "cache_hits": 1
+        },
+        "evidence_at_crash": 4,
+        "urls_running": []
+      },
+      "status_at_end": "process killed (no session_end)",
+      "re_executed_step": [
+        {
+          "tool": "web_fetch",
+          "ok": true,
+          "url": "http://127.0.0.1:8765/p/checkpoint-1",
+          "from_cache": false,
+          "artifact_id": "art_bbb135ac159f9cf2ce89"
+        },
+        {
+          "tool": "web_fetch",
+          "ok": true,
+          "url": "http://127.0.0.1:8765/p/durable-1",
+          "from_cache": true,
+          "artifact_id": "art_87eb5cbdc9ed3ea8b1f1"
+        }
+      ],
+      "cache_hits": [
+        {
+          "url": "http://127.0.0.1:8765/p/durable-1",
+          "url_key": "601b1e0e51c1c94f",
+          "http_requests_at_hit": 3,
+          "url_http_attempts_at_hit": 1,
+          "http_requests_at_process_start": {
+            "used": 3,
+            "limit": 30
+          },
+          "http_requests_at_previous_crash": 3,
+          "url_http_attempts_final": 1
+        }
+      ]
+    },
+    {
+      "trace": "I1_resume4_20261119_180303.jsonl",
+      "label": "resume",
+      "resume_kind": "continue_interrupted_step",
+      "dry_run": false,
+      "recovered": {
+        "inflight_reservations_charged": [],
+        "urls_requeued": 0
+      },
+      "usage_before": {
+        "http_requests": {
+          "used": 3,
+          "limit": 30
+        },
+        "cache_hits": 1
+      },
+      "crash": null,
+      "status_at_end": "completed",
+      "re_executed_step": [
+        {
+          "tool": "save_evidence",
+          "ok": true,
+          "evidence_id": "ev_5b73c45c6226",
+          "status": "already_saved"
+        },
+        {
+          "tool": "save_evidence",
+          "ok": true,
+          "evidence_id": "ev_f5841808fbe8",
+          "status": "already_saved"
+        },
+        {
+          "tool": "save_evidence",
+          "ok": true,
+          "evidence_id": "ev_f959c1354980",
+          "status": "already_saved"
+        },
+        {
+          "tool": "save_evidence",
+          "ok": true,
+          "evidence_id": "ev_b900e919b36a",
+          "status": "already_saved"
+        }
+      ],
+      "cache_hits": [
+        {
+          "url": "http://127.0.0.1:8765/p/durable-1",
+          "url_key": "601b1e0e51c1c94f",
+          "http_requests_at_hit": 10,
+          "url_http_attempts_at_hit": 1,
+          "http_requests_at_process_start": {
+            "used": 3,
+            "limit": 30
+          },
+          "http_requests_at_previous_crash": 3,
+          "url_http_attempts_final": 1
+        },
+        {
+          "url": "http://127.0.0.1:8765/p/checkpoint-1",
+          "url_key": "2363f86856c57c3a",
+          "http_requests_at_hit": 10,
+          "url_http_attempts_at_hit": 1,
+          "http_requests_at_process_start": {
+            "used": 3,
+            "limit": 30
+          },
+          "http_requests_at_previous_crash": 3,
+          "url_http_attempts_final": 1
+        },
+        {
+          "url": "http://127.0.0.1:8765/p/idempotency-3",
+          "url_key": "625b1661de2f499d",
+          "http_requests_at_hit": 10,
+          "url_http_attempts_at_hit": 1,
+          "http_requests_at_process_start": {
+            "used": 3,
+            "limit": 30
+          },
+          "http_requests_at_previous_crash": 3,
+          "url_http_attempts_final": 1
+        }
+      ]
+    }
+  ],
+  "final_state": {
+    "evidence_total": 21,
+    "evidence_duplicates": 0,
+    "queue_entries": 18,
+    "queue_duplicates": 0,
+    "pages_done": 9,
+    "page_artifacts": 9,
+    "http_attempts_per_done_url": {
+      "http://127.0.0.1:8765/p/durable-1": 1,
+      "http://127.0.0.1:8765/p/durable-3": 1,
+      "http://127.0.0.1:8765/p/durable-4": 1,
+      "http://127.0.0.1:8765/p/durable-6": 1,
+      "http://127.0.0.1:8765/p/checkpoint-1": 1,
+      "http://127.0.0.1:8765/p/checkpoint-3": 1,
+      "http://127.0.0.1:8765/p/checkpoint-4": 1,
+      "http://127.0.0.1:8765/p/idempotency-1": 1,
+      "http://127.0.0.1:8765/p/idempotency-3": 1
+    },
+    "usage": {
+      "http_requests": 10,
+      "cache_hits": 4,
+      "tool_calls": 61,
+      "model_calls": 32
+    }
+  },
+  "replay_new_process": {
+    "pages_requested_again": 9,
+    "all_cache_hits": true,
+    "http_requests_before": 10,
+    "http_requests_after": 10,
+    "evidence_saved_again": 21,
+    "all_already_saved": true,
+    "evidence_count_before": 21,
+    "evidence_count_after": 21,
+    "artifact_files_before": 9,
+    "artifact_files_after": 9,
+    "fetches": [
+      {
+        "url": "http://127.0.0.1:8765/p/checkpoint-1",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/durable-1",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/checkpoint-3",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/checkpoint-4",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/durable-3",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/durable-4",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/durable-6",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/idempotency-3",
+        "from_cache": true,
+        "ok": true
+      },
+      {
+        "url": "http://127.0.0.1:8765/p/idempotency-1",
+        "from_cache": true,
+        "ok": true
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev_5b73c45c6226",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_b900e919b36a",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_f5841808fbe8",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_f959c1354980",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_70b76524a4f3",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_cf48cd94283d",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_e65eb9e266c9",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_253c83cca077",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_5258305bcfb4",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_84f08d8b5059",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_335a7fd7a3cd",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_0c8477517b44",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_72f655b4c938",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_b89518b0394c",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_bda1467dc36d",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_477a11473ca7",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_9017766f7c70",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_ff83c8827a82",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_e7ea8b996199",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_05d51a134f35",
+        "status": "already_saved",
+        "same_id": true
+      },
+      {
+        "evidence_id": "ev_28a79ccadf32",
+        "status": "already_saved",
+        "same_id": true
+      }
+    ]
+  },
+  "note": "Recovery point = last checkpoint; the interrupted tools step is executed again. Effects are not repeated because of operation keys (evidence_id = hash(task, source, version, quote), page = canonical URL + stored artifact). A page whose download finished but was not stored yet is fetched again after resume (counted in the HTTP budget): exactly-once is not claimed."
+}

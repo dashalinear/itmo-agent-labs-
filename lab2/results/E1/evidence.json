@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "evidence_id": "ev_aa4b2498d839",
+    "task_id": "E1",
+    "claim": "АС-03: при p95 задержки векторной ветви > 450 мс дольше 10 минут ветвь отключается, запросы обслуживаются только BM25",
+    "kind": "decision",
+    "source_type": "local",
+    "source": "data/search/search_engineering_handbook.md",
+    "document_id": "1a93d60a-763c-4b23-b186-5cfdebd356f3",
+    "content_hash": "sha256:7fa2082bb3ac0c85c84bf3f7fd3e41e38ed9eec15ee61c8d6d33d1d196800b4c",
+    "page_start": 517,
+    "page_end": 517,
+    "line_start": 8561,
+    "line_end": 8561,
+    "quote": "Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.",
+    "created_at": "2026-11-19T15:02:12+00:00",
+    "fragment_id": null
+  },
+  {
+    "evidence_id": "ev_cb8df7ab8eee",
+    "task_id": "E1",
+    "claim": "АС-02: итоговая оценка гибридного поиска = 0,7·BM25_norm + 0,3·cosine, веса пересматриваются не чаще раза в квартал",
+    "kind": "decision",
+    "source_type": "local",
+    "source": "data/search/search_engineering_handbook.md",
+    "document_id": "1a93d60a-763c-4b23-b186-5cfdebd356f3",
+    "content_hash": "sha256:7fa2082bb3ac0c85c84bf3f7fd3e41e38ed9eec15ee61c8d6d33d1d196800b4c",
+    "page_start": 261,
+    "page_end": 261,
+    "line_start": 4317,
+    "line_end": 4317,
+    "quote": "Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.",
+    "created_at": "2026-11-19T15:02:12+00:00",
+    "fragment_id": null
+  }
+]

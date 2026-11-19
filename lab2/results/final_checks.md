@@ -3,25 +3,47 @@
 | задача | ожидаемое свойство | фактически | итог |
 |---|---|---|---|
 | A1 | статус completed только по критериям | completed (Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), ) | OK |
-| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | None | НЕТ |
+| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
 | A1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
 | A1 | сбой после checkpoint и resume в новом процессе | crash=True, resume=True, запусков 2 | OK |
 | A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 4 | OK |
-| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20682 / 28000; сверх лимита: 0 | OK |
-| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | '"line": 1311': смещение 10104 > выдано 1696, через search_artifact | OK |
-| D1 | статус completed только по критериям | completed (Обзор завершён: 5 разделов (approaches, limitations, disputed, decisions, summar) | OK |
-| D1 | [C5] решения АС-01..03 дословно (проверка complete_task) | None | НЕТ |
-| D1 | отказы complete_task до выполнения критериев (информативно) | 1 | OK |
+| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20862 / 28000; сверх лимита: 0 | OK |
+| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'Спорное утверждение (из обсуждения команды «Рекомендации»): ': смещение 2138 > выдано 1915, через read_artifact | OK |
+| D1 | статус completed только по критериям | completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary)) | OK |
+| D1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
+| D1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
 | D1 | первый запуск: paused по бюджету + частичный отчёт | paused | OK |
 | D1 | лимит поднят пользователем (limits_changed) | 1 | OK |
-| D1 | после resume счётчики не обнулены | токены до resume: 114055 | OK |
+| D1 | после resume счётчики не обнулены | токены до resume: 111715 | OK |
 | E1 | статус cancelled (не completed) | cancelled | OK |
-| E1 | отмена после сохранения 2-3 evidence | 0 | НЕТ |
-| E1 | резерв токенов освобождён после отмены | reserved=20782, interrupted_call_tokens=0 | НЕТ |
+| E1 | отмена после сохранения 2-3 evidence | 2 | OK |
+| E1 | резерв токенов освобождён после отмены | reserved=0, interrupted_call_tokens=12283 | OK |
 | E1 | частичный отчёт сохранён | true | OK |
-| DL1 | есть результаты | нет | НЕТ |
-| C2 | есть результаты | нет | НЕТ |
-| I1 | есть results/I1/idempotency.json | нет | НЕТ |
-| G2 | есть трассы G2 | нет | НЕТ |
+| DL1 | paused по дедлайну задачи (не completed) | paused (budget exhausted: task deadline reached (task_deadline_s: needed 47.8,) | OK |
+| DL1 | trace: harness:guardrail guard=deadline | 1 | OK |
+| DL1 | частичный результат и evidence сохранены | evidence 0, отчёт: True | OK |
+| C2 | HTTP-лимит достигнут в агентном прогоне | 6/6 | OK |
+| C2 | trace: harness:guardrail guard=http_budget (http_budget_exhausted) | 1 | OK |
+| C2 | необработанные URL сохранены в очереди | pending 8, found 5 | OK |
+| C2 | задача не помечена completed | paused | OK |
+| I1 | сбои процесса и resume в новых процессах | сбоев 3, resume 3 | OK |
+| I1 | URL, оставшиеся running, возвращены в очередь | 1 | OK |
+| I1 | повторный шаг: web_fetch = cache hit | true | OK |
+| I1 | страница, прочитанная из хранилища после сбоя, повторно не скачана (HTTP-попытки URL не выросли) | true | OK |
+| I1 | повторный шаг: save_evidence = already_saved | true | OK |
+| I1 | нет дублей evidence и URL | True, True | OK |
+| I1 | повтор тех же ключей в новом процессе: already_saved / cache hit без HTTP | True, True | OK |
+| I1 | итоговый статус (информативно) | completed | OK |
+| G2 | write по абсолютному пути наружу -> outside_workspace | ["outside_workspace"] | OK |
+| G2 | move по абсолютному пути наружу -> outside_workspace | ["outside_workspace"] | OK |
+| G2 | move в junction (data/link_out -> вне root) -> outside_workspace | ["outside_workspace"] | OK |
+| G2 | move из junction -> outside_workspace | ["outside_workspace"] | OK |
+| G2 | разрешённые write и move внутри root работают | ["ok", "ok"] | OK |
+| G2 | лимит суммарного вывода шага: step total would exceed | 2 | OK |
+| B3 | статус (completed только по критериям) | paused (no progress: web_fetch returned the same result 6 times) | OK |
+| B3 | второй раунд запросов после чтения | null | НЕТ |
+| B3 | прочитана страница по ссылке с прочитанной страницы | null | НЕТ |
+| B3 | не больше 60 % страниц с одного домена | null | НЕТ |
+| B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "github.com": 2} | OK |
 
-Итого: 13 OK, 8 НЕТ (scripts/final_checks.py по results/ и traces/).
+Итого: 40 OK, 3 НЕТ (scripts/final_checks.py по results/ и traces/).

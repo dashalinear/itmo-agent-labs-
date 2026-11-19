@@ -8,8 +8,8 @@
   {
     "task": "A1",
     "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
-    "actual": "None",
-    "ok": false
+    "actual": "ok",
+    "ok": true
   },
   {
     "task": "A1",
@@ -32,31 +32,31 @@
   {
     "task": "A1",
     "property": "нет вызова сверх рабочего лимита",
-    "actual": "макс. оценка+резерв 20682 / 28000; сверх лимита: 0",
+    "actual": "макс. оценка+резерв 20862 / 28000; сверх лимита: 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
-    "actual": "'\"line\": 1311': смещение 10104 > выдано 1696, через search_artifact",
+    "actual": "'Спорное утверждение (из обсуждения команды «Рекомендации»): ': смещение 2138 > выдано 1915, через read_artifact",
     "ok": true
   },
   {
     "task": "D1",
     "property": "статус completed только по критериям",
-    "actual": "completed (Обзор завершён: 5 разделов (approaches, limitations, disputed, decisions, summar)",
+    "actual": "completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary))",
     "ok": true
   },
   {
     "task": "D1",
     "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
-    "actual": "None",
-    "ok": false
+    "actual": "ok",
+    "ok": true
   },
   {
     "task": "D1",
     "property": "отказы complete_task до выполнения критериев (информативно)",
-    "actual": 1,
+    "actual": 0,
     "ok": true
   },
   {
@@ -74,7 +74,7 @@
   {
     "task": "D1",
     "property": "после resume счётчики не обнулены",
-    "actual": "токены до resume: 114055",
+    "actual": "токены до resume: 111715",
     "ok": true
   },
   {
@@ -86,14 +86,14 @@
   {
     "task": "E1",
     "property": "отмена после сохранения 2-3 evidence",
-    "actual": 0,
-    "ok": false
+    "actual": 2,
+    "ok": true
   },
   {
     "task": "E1",
     "property": "резерв токенов освобождён после отмены",
-    "actual": "reserved=20782, interrupted_call_tokens=0",
-    "ok": false
+    "actual": "reserved=0, interrupted_call_tokens=12283",
+    "ok": true
   },
   {
     "task": "E1",
@@ -103,26 +103,172 @@
   },
   {
     "task": "DL1",
-    "property": "есть результаты",
-    "actual": "нет",
-    "ok": false
+    "property": "paused по дедлайну задачи (не completed)",
+    "actual": "paused (budget exhausted: task deadline reached (task_deadline_s: needed 47.8,)",
+    "ok": true
+  },
+  {
+    "task": "DL1",
+    "property": "trace: harness:guardrail guard=deadline",
+    "actual": 1,
+    "ok": true
+  },
+  {
+    "task": "DL1",
+    "property": "частичный результат и evidence сохранены",
+    "actual": "evidence 0, отчёт: True",
+    "ok": true
   },
   {
     "task": "C2",
-    "property": "есть результаты",
-    "actual": "нет",
-    "ok": false
+    "property": "HTTP-лимит достигнут в агентном прогоне",
+    "actual": "6/6",
+    "ok": true
+  },
+  {
+    "task": "C2",
+    "property": "trace: harness:guardrail guard=http_budget (http_budget_exhausted)",
+    "actual": 1,
+    "ok": true
+  },
+  {
+    "task": "C2",
+    "property": "необработанные URL сохранены в очереди",
+    "actual": "pending 8, found 5",
+    "ok": true
+  },
+  {
+    "task": "C2",
+    "property": "задача не помечена completed",
+    "actual": "paused",
+    "ok": true
   },
   {
     "task": "I1",
-    "property": "есть results/I1/idempotency.json",
-    "actual": "нет",
-    "ok": false
+    "property": "сбои процесса и resume в новых процессах",
+    "actual": "сбоев 3, resume 3",
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "URL, оставшиеся running, возвращены в очередь",
+    "actual": 1,
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "повторный шаг: web_fetch = cache hit",
+    "actual": true,
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "страница, прочитанная из хранилища после сбоя, повторно не скачана (HTTP-попытки URL не выросли)",
+    "actual": true,
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "повторный шаг: save_evidence = already_saved",
+    "actual": true,
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "нет дублей evidence и URL",
+    "actual": "True, True",
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "повтор тех же ключей в новом процессе: already_saved / cache hit без HTTP",
+    "actual": "True, True",
+    "ok": true
+  },
+  {
+    "task": "I1",
+    "property": "итоговый статус (информативно)",
+    "actual": "completed",
+    "ok": true
   },
   {
     "task": "G2",
-    "property": "есть трассы G2",
-    "actual": "нет",
+    "property": "write по абсолютному пути наружу -> outside_workspace",
+    "actual": [
+      "outside_workspace"
+    ],
+    "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "move по абсолютному пути наружу -> outside_workspace",
+    "actual": [
+      "outside_workspace"
+    ],
+    "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "move в junction (data/link_out -> вне root) -> outside_workspace",
+    "actual": [
+      "outside_workspace"
+    ],
+    "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "move из junction -> outside_workspace",
+    "actual": [
+      "outside_workspace"
+    ],
+    "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "разрешённые write и move внутри root работают",
+    "actual": [
+      "ok",
+      "ok"
+    ],
+    "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "лимит суммарного вывода шага: step total would exceed",
+    "actual": 2,
+    "ok": true
+  },
+  {
+    "task": "B3",
+    "property": "статус (completed только по критериям)",
+    "actual": "paused (no progress: web_fetch returned the same result 6 times)",
+    "ok": true
+  },
+  {
+    "task": "B3",
+    "property": "второй раунд запросов после чтения",
+    "actual": null,
     "ok": false
+  },
+  {
+    "task": "B3",
+    "property": "прочитана страница по ссылке с прочитанной страницы",
+    "actual": null,
+    "ok": false
+  },
+  {
+    "task": "B3",
+    "property": "не больше 60 % страниц с одного домена",
+    "actual": null,
+    "ok": false
+  },
+  {
+    "task": "B3",
+    "property": "домены прочитанных страниц (информативно)",
+    "actual": {
+      "arxiv.org": 9,
+      "github.com": 2
+    },
+    "ok": true
   }
 ]
