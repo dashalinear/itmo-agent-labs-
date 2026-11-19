@@ -336,7 +336,10 @@ class CorpusTools:
             raise ToolError("no_l2", "Document is not indexed in L2")
         frs = [f for f in l2["fragments"] if f["section_id"] == section_id]
         if not frs:
-            raise ToolError("unknown_section", f"No section {section_id} in this document (see get_l1)")
+            l1 = e.levels.get_l1(document_id) or {"sections": []}
+            raise ToolError("unknown_section", f"No section {section_id} in this document. Use one of the section_id "
+                            "values below (they come from get_l1); do not guess or enumerate s01, s02, ...",
+                            sections=[{"section_id": s["section_id"], "title": s["title"]} for s in l1["sections"]])
         off = dec_cursor(cursor, {"o": 0})["o"]
         out, size, i = [], 0, off
         while i < len(frs):
@@ -510,22 +513,41 @@ class CorpusTools:
     # ------------------------------------------------------------- tool sets
     BUDGET_WARN_CALLS = 6
 
-    def _budget_hint(self, res):
-        """Deep sub-agent: when only a few model calls are left, every tool result says so - finish with submit_result."""
-        if not self.coach or not isinstance(res, dict):
-            return res
+    def _budget_note(self) -> str | None:
+        if not self.coach:
+            return None
         t = self.env.store.get_task(self.env.task_id)
         limit = int((t or {}).get("limits", {}).get("max_model_calls") or 0)
         used = int(self.env.store.usage(self.env.task_id).get("model_calls", 0))
         if limit and limit - used <= self.BUDGET_WARN_CALLS:
-            res["harness_budget"] = (f"Only {max(limit - used, 0)} of {limit} model calls left. Stop searching: call "
-                                     "submit_result(findings, open_questions) NOW with the evidence you have and list "
-                                     "unconfirmed points as open questions.")
+            return (f"Only {max(limit - used, 0)} of {limit} model calls left. Stop searching: call "
+                    "submit_result(findings, open_questions) NOW with the evidence you have and list "
+                    "unconfirmed points as open questions.")
+        return None
+
+    def _budget_hint(self, res):
+        """Deep sub-agent: when only a few model calls are left, every tool result (also an error) says so."""
+        note = self._budget_note() if isinstance(res, dict) else None
+        if note:
+            res["harness_budget"] = note
         return res
 
     def _mk(self, name, fn, schema, desc) -> BaseTool:
         def call(**kw):
-            return self._budget_hint(fn(**kw))
+            try:
+                res = self._budget_hint(fn(**kw))
+                self._errors_in_row = 0
+                return res
+            except ToolError as err:
+                self._errors_in_row = getattr(self, "_errors_in_row", 0) + 1
+                note = self._budget_note()
+                if note:
+                    err.extra["harness_budget"] = note
+                if self.coach and self._errors_in_row >= 4:
+                    err.extra["harness_hint"] = (f"{self._errors_in_row} tool errors in a row: stop this approach. Take "
+                                                 "ids only from earlier results (get_l1 sections, search hits), cite what "
+                                                 "you have read, or finish with submit_result.")
+                raise
         return StructuredTool.from_function(func=lambda **kw: run_tool(name, call, **kw), name=name, args_schema=schema,
                                             description=desc)
 

@@ -98,10 +98,12 @@ class ToolRuntimeMiddleware(AgentMiddleware):
             return _tool_error(request, "no_progress", f"The same call returned the same result {n} times; the run is stopped")
         if L.repeat_call_warn and n >= L.repeat_call_warn:
             self.ctx.emit("guardrail", guard="repeated_call", tool=request.tool_call["name"], repeats=n)
+            hint = (" The page is already stored: use its 'links' from the earlier result, search_artifact on its "
+                    "artifact_id, or fetch another source." if request.tool_call["name"] == "web_fetch" else "")
             return _tool_error(request, "repeated_call",
                                f"This exact call already returned the same result {n - 1} times in this turn. Do not repeat it: "
                                "use the earlier result, change the approach, or answer with what you have "
-                               "(say explicitly what the corpus does not confirm).")
+                               "(say explicitly what the corpus does not confirm)." + hint)
         return res
 
     def _pre(self, request: ToolCallRequest) -> ToolMessage | None:

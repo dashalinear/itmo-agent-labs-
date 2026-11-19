@@ -21,7 +21,8 @@
 | E1 | частичный отчёт сохранён | true | OK |
 | DL1 | paused по дедлайну задачи (не completed) | paused (budget exhausted: task deadline reached (task_deadline_s: needed 47.8,) | OK |
 | DL1 | trace: harness:guardrail guard=deadline | 1 | OK |
-| DL1 | частичный результат и evidence сохранены | evidence 0, отчёт: True | OK |
+| DL1 | частичный отчёт сохранён (evidence: сколько успело сохраниться до дедлайна) | evidence 0, отчёт: True | OK |
+| DL1 | после дедлайна новые действия не выполняются (инструмент на границе) | save_evidence | OK |
 | C2 | HTTP-лимит достигнут в агентном прогоне | 6/6 | OK |
 | C2 | trace: harness:guardrail guard=http_budget (http_budget_exhausted) | 1 | OK |
 | C2 | необработанные URL сохранены в очереди | pending 8, found 5 | OK |
@@ -40,10 +41,10 @@
 | G2 | move из junction -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | разрешённые write и move внутри root работают | ["ok", "ok"] | OK |
 | G2 | лимит суммарного вывода шага: step total would exceed | 2 | OK |
-| B3 | статус (completed только по критериям) | paused (no progress: web_fetch returned the same result 6 times) | OK |
-| B3 | второй раунд запросов после чтения | null | НЕТ |
-| B3 | прочитана страница по ссылке с прочитанной страницы | null | НЕТ |
-| B3 | не больше 60 % страниц с одного домена | null | НЕТ |
+| B3 | не помечен completed без выполненных критериев | paused (no progress: web_fetch returned the same result 6 times) | OK |
+| B3 | второй раунд: новые запросы после чтения страниц | 7 запросов после чтения | OK |
+| B3 | прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
+| B3 | не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/11 = 82% | НЕТ |
 | B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "github.com": 2} | OK |
 
-Итого: 40 OK, 3 НЕТ (scripts/final_checks.py по results/ и traces/).
+Итого: 42 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/).

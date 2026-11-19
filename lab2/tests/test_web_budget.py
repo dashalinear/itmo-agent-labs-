@@ -59,6 +59,7 @@ async def test_select_fetch_cache_and_links(store, artifacts, web):
     http_after_first = store.usage("T")["http_requests"]
     r2 = j(await rt.web_fetch(url + "?utm_source=x"))       # duplicate URL form -> same queue entry, cache hit
     assert r2["data"]["from_cache"] is True
+    assert r2["data"]["links"] == r["data"]["links"]          # the page links are available on a cache hit too
     assert store.usage("T")["http_requests"] == http_after_first and store.usage("T")["cache_hits"] >= 1
     row = store.get_url("T", r["data"]["url_key"])
     assert row["status"] == "done" and row["final_url"] == url
@@ -241,3 +242,18 @@ async def test_research_round_criteria(store, artifacts, budget, web, ws):
     assert crit["max_domain_share"]["ok"]                                  # threshold 1.0: one host allowed
     store.update_task("T", spec={"root": str(ws.root), "scope": [], "criteria": {"max_domain_share": 0.6}})
     assert not tt.criteria()["max_domain_share"]["ok"]                     # all pages from 127.0.0.1
+
+
+def test_rank_links_puts_content_links_before_site_navigation():
+    from harness.web import rank_links
+    base = "https://arxiv.org/abs/2503.11951v3"
+    links = [{"url": u, "anchor": a} for u, a in [
+        ("https://arxiv.org/IgnoreMe", ""), ("https://arxiv.org/", ""), ("https://arxiv.org/search", "Search"),
+        ("https://arxiv.org/login", "Login"), ("https://info.arxiv.org/help", "Help"),
+        ("https://arxiv.org/html/2503.11951v3", "HTML (experimental)"),
+        ("https://github.com/example/sagallm", "Code: github.com/example/sagallm")]]
+    ranked = [l["url"] for l in rank_links(links, base)]
+    assert ranked[0] == "https://github.com/example/sagallm" and "https://arxiv.org/html/2503.11951v3" in ranked
+    assert not {"https://arxiv.org/", "https://arxiv.org/search", "https://arxiv.org/login", "https://arxiv.org/IgnoreMe"} & set(ranked)
+    same = [{"url": f"http://h/p/x-{i}", "anchor": f"x-{i}"} for i in range(5)]   # equal scores keep the page order
+    assert rank_links(same, "http://h/p/a") == same

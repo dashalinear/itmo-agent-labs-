@@ -83,6 +83,8 @@
         {
           "tool": "web_fetch",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-a5d3512176b5cb7a",
+          "restored_from_checkpoint": true,
           "url": "http://127.0.0.1:8765/p/checkpoint-1",
           "from_cache": false,
           "artifact_id": "art_bbb135ac159f9cf2ce89"
@@ -124,6 +126,8 @@
         {
           "tool": "web_fetch",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-a5d3512176b5cb7a",
+          "restored_from_checkpoint": true,
           "url": "http://127.0.0.1:8765/p/checkpoint-1",
           "from_cache": false,
           "artifact_id": "art_bbb135ac159f9cf2ce89"
@@ -131,6 +135,8 @@
         {
           "tool": "web_fetch",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-8f35fcfae641c479",
+          "restored_from_checkpoint": false,
           "url": "http://127.0.0.1:8765/p/durable-1",
           "from_cache": true,
           "artifact_id": "art_87eb5cbdc9ed3ea8b1f1"
@@ -173,24 +179,32 @@
         {
           "tool": "save_evidence",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-a57be8a9ee078407",
+          "restored_from_checkpoint": false,
           "evidence_id": "ev_5b73c45c6226",
           "status": "already_saved"
         },
         {
           "tool": "save_evidence",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-8490496fff842d0d",
+          "restored_from_checkpoint": false,
           "evidence_id": "ev_f5841808fbe8",
           "status": "already_saved"
         },
         {
           "tool": "save_evidence",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-8388c30c2a1cd70f",
+          "restored_from_checkpoint": false,
           "evidence_id": "ev_f959c1354980",
           "status": "already_saved"
         },
         {
           "tool": "save_evidence",
           "ok": true,
+          "tool_call_id": "chatcmpl-tool-bd1b685763725217",
+          "restored_from_checkpoint": false,
           "evidence_id": "ev_b900e919b36a",
           "status": "already_saved"
         }

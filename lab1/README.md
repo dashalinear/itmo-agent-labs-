@@ -109,7 +109,7 @@ python scripts/verify.py          # детерминированные пров�
 python scripts/export_index.py    # results/index_export.jsonl, catalog.json, data_tree.txt, workspace_snapshot/
 ```
 
-**Все трассы и все `results/` одной командой** (только из сети ИТМО, ~15–20 минут; из корня репозитория,
+**Все трассы и все `results/` одной командой** (только из сети ИТМО, около 10 минут: в прогоне 19.11.2026 от сброса workspace до коммита прошло 8 минут, плюс тесты; из корня репозитория,
 скрипт сам переходит в `lab1`):
 
 ```powershell
@@ -343,26 +343,54 @@ graph TD;
 и пустого индекса. Каждая следующая сессия продолжает состояние workspace и индекса предыдущей; других сессий
 в `traces/` нет (трассы прежних прогонов скрипт удаляет после успешного прогона).
 
-| # | Сценарий | Диалог | Что демонстрирует |
-|---|---|---|---|
-| 1 | main | `demo/dialog_ru.txt` | организация input → data, просмотр, перенос по уточнению, индексация ≥ 3 документов, поиск, повтор без дублей, перенос проиндексированного файла и обновление индекса, **пауза**: два поздних файла кладёт в `input` отдельный процесс PowerShell, затем «Я добавил файлы, разбери новые» и индексация новой лекции, ошибки |
-| — | `verify` | | `results/verify_report_main.json` — состояние сразу после main |
-| 2 | limit | `demo/dialog_limit_ru.txt` | **настоящее зацикливание**: пользователь просит проверять `ls input`, пока не появится файл, который никто не добавит; ход останавливает `ModelCallLimitMiddleware` при обычном лимите 25 вызовов (`stopped_by: model_call_limit`), следующий ход той же сессии работает, история корректна |
-| 3 | guard | `demo/dialog_guard_ru.txt` | ошибки через **реальные вызовы tools**: `head n=0`, `tail n=-2` → `invalid_argument`; `../../secret.txt`, `C:\Windows\win.ini`, junction `input/outside_link` наружу (ls/read/grep), `move` в `../` → `outside_workspace`; `move` в занятое имя → `name_conflict` + `suggested_name`; `web_fetch` на закрытый порт → сетевая ошибка |
-| 4 | errors | `demo/dialog_errors_ru.txt` | Elasticsearch остановлен (`docker compose stop`), MCP-сервер работает: upsert семинара ReAct → `es_unavailable`, статус `error`; перенос проиндексированной заметки → файл перенесён, `update_document_path` упал, статус `pending_sync` |
-| 5 | retry | `demo/dialog_retry_ru.txt` | ES снова запущен: синхронизация путей и категорий, индексация семинара; `pending_sync`/`error` исчезают, поиск возвращает новые пути, путь и категория в индексе совпадают с каталогом |
-| — | итог | | `verify` → `results/verify_report.json`, `export_index` → `index_export.jsonl`, `catalog.json`, `data_tree.txt`, `workspace_snapshot/`; `results/RUN_SUMMARY.md` |
+Прогон, лежащий в репозитории: 19.11.2026, начало 17:09:15 (+03:00), модель `qwen3.8-27b`, лимиты
+`model_calls_per_turn=25`, `recursion_limit=110`; длительность сессий по трассам — около 6 минут (без тестов и экспорта).
 
-Конкретные имена файлов трасс, число ходов, вызовы tools и ошибки по каждому ходу, сработавшие лимиты, итоговые
-статусы каталога и число выдержек в индексе не переписываются в README вручную: их по самим трассам генерирует
-`scripts/summarize_run.py` в **`results/RUN_SUMMARY.md`** (там же чек-лист сценариев). `results/run_manifest.json` —
-порядок сессий и их трассы, `results/late_files_added.json` — какой процесс (PID) и когда скопировал поздние файлы.
-Ожидаемое итоговое состояние описано в `fixtures/EXPECTED.md`.
+| # | Сценарий | Диалог | Трасса (`traces/*.jsonl` и `.md`) | Ходов / вызовов модели | Что показывает трасса |
+|---|---|---|---|---|---|
+| 1 | main | `demo/dialog_ru.txt` | `session_20261119_170923_70e27b` | 16 / 52 | организация, просмотр, перенос, индексация, поиск, повтор без дублей, перенос проиндексированного файла, поздние файлы, ошибки (подробно ниже) |
+| — | `verify` | | | | `results/verify_report_main.json`: все 5 проверок пройдены |
+| 2 | limit | `demo/dialog_limit_ru.txt` | `session_20261119_171303_5afaf3` | 2 / 27 | **настоящее зацикливание**: в ходе 1 модель 25 раз подряд вызвала `ls input`, ожидая файл, который никто не добавляет; ход остановил `ModelCallLimitMiddleware` («Model call limits exceeded: run limit (25/25)», `turn_end.stopped_by = model_call_limit`, 20,8 с). Ход 2 той же сессии работает: модель объясняет остановку (25 вызовов `ls`) и делает ещё один `ls`; история корректна |
+| 3 | guard | `demo/dialog_guard_ru.txt` | `session_20261119_171335_0afe74` | 11 / 22 | все ошибки — результаты **реальных вызовов tools**: ход 2 `head n=0` и ход 3 `tail n=-2` → `invalid_argument`; ход 4 `../../secret.txt`, ход 5 `C:\Windows\win.ini`, ход 6 `ls input/outside_link` (junction наружу; в `ls input` он показан как `symlink`, `path: null`), ход 7 `read` через junction, ход 9 `move` в `../outside.txt` → `outside_workspace`; ход 8 `grep -r input` → 0 совпадений, файл за junction в `skipped` с причиной `symlink_outside_workspace`; ход 10 `move` kickoff → путь существующей ретроспективы → `name_conflict`, `suggested_name: meeting_2026-11-10_retro_2.md`; ход 11 `web_fetch http://127.0.0.1:9/` → `network_error` |
+| 4 | errors | `demo/dialog_errors_ru.txt` | `session_20261119_171420_ec42f1` | 4 / 14 | ES остановлен, MCP-сервер работает. Ход 2: upsert 4 выдержек семинара ReAct → `es_unavailable`, в каталоге `error`. Ход 3: заметка `search_quality_thoughts.md` перенесена `data/courses/` → `data/projects/`, `update_document_path` → `es_unavailable`, в каталоге `pending_sync`. Ход 4: модель показывает оба статуса из каталога |
+| 5 | retry | `demo/dialog_retry_ru.txt` | `session_20261119_171548_621ff0` | 4 / 13 | ES запущен. Ход 1: найдены 1 `pending_sync` и 1 `error`. Ход 2: `update_document_path` (без аргумента `category`) → `category: projects`, `updated: 2`; upsert семинара → `created: 4`; после этого в каталоге 7 `indexed`, 7 `not_indexed`, ни одного `pending_sync`/`error`. Ход 3: поиск возвращает новые пути. Ход 4: путь и категория заметки в каталоге и в обеих выдержках ES совпадают (`data/projects/…`, `projects`) |
+| — | итог | | | | `results/verify_report.json`: все 5 проверок пройдены, 14 документов в каталоге, 7 проиндексированы, 17 выдержек; `index_export.jsonl`, `catalog.json`, `data_tree.txt`, `workspace_snapshot/` |
 
-Ходы 13–14 основного диалога (`head` с `n=0`, `read ../../secret.txt`) просят модель вызвать tool. Модель может
-отказаться и сама, без вызова (так было в прошлом прогоне), — это тоже корректное поведение, но не проверка tool.
-Поэтому гарантированная демонстрация этих ошибок именно как результата tool — сессия guard: там каждая реплика
-явно требует вызвать инструмент и показать его ответ. В `RUN_SUMMARY.md` видно, был ли вызов в каждом ходе.
+**Основной диалог по ходам** (`session_20261119_170923_70e27b`; номера = реплики `demo/dialog_ru.txt`):
+
+| Ход | Что сделала модель (по трассе) |
+|---|---|
+| 1 | `load_skill(organize_files)`, `ls` input и подпапок, `read` всех 11 непустых файлов, 12 `move`, 12 `catalog_update`. Темы: `courses` (3), `howto` (2), `meetings` (2), `projects` (3), `_unsorted` (пустой `empty_todo.txt`). Одноимённые `notes.md` стали `data/courses/es_seminar_analyzers_shards.md` и `data/meetings/meeting_2026-10-09_docsearch_weekly.md`. Неоднозначную заметку `search_quality_thoughts.md` модель положила в `projects` и записала обоснование в note. Prompt-injection строку из `meetings/notes.md` модель назвала пользователю и не выполнила. Файлы `_about.md` с описанием папок в этом прогоне модель не создавала |
+| 2 | `ls data/projects` |
+| 3 | `move` заметки `data/projects/` → `data/courses/`, причина записана в note |
+| 4 | `ls input` (пусто) и ещё два `ls` по подпапкам `input/courses`, `input/meetings` из первого просмотра: они уже удалены после переноса, оба вернули `not_found` — модель сообщила, что input пуст |
+| 5 | `load_skill(index_excerpts)`, 5 документов (заметка про качество поиска, лекция про инвертированный индекс, семинар по ES, DocSearch, инструкция по ES в Docker), 5 `build_excerpts`, один `upsert_excerpts` → `created: 10`, проверочный `search_excerpts` |
+| 6 | `search_excerpts` («индекс инвертированный шарды») → 6 выдержек из 4 документов, затем `read` исходной лекции |
+| 7 | `build_excerpts` без диапазонов (`reused_previous_ranges: true`) → `upsert_excerpts` → `created: 0, updated: 2, deleted_stale: 0` |
+| 8 | `get_document_excerpts` → 2 выдержки; `index_stats` → всего 10, дублей нет |
+| 9 | `move` лекции в `data/search/` → `action_required`; `update_document_path` **без** `category` → сервер вернул `category: search`, `updated: 2` (исправленная ошибка); `search_excerpts` уже показывает новый путь и категорию |
+| 10 | `search_excerpts("BM25")` → 3 выдержки, путь лекции `data/search/ir_lecture_inverted_index.md` |
+| пауза | CLI ждёт на `@wait_for_files`; файлы скопировал процесс PowerShell PID 37436, CLI PID 37672 (`results/late_files_added.json`, событие `external_files_added` в трассе) |
+| 11 | новый `ls input` → 2 файла, `read` обоих, `move` → `data/meetings/meeting_2026-11-10_retro.md` и `data/search/vector_search_lecture.md`, `catalog_update`; уже разобранные файлы не тронуты |
+| 12 | `build_excerpts` + `upsert_excerpts` новой лекции → `created: 3`, проверочный поиск |
+| 13 | `head(n=0)` → `invalid_argument` |
+| 14 | `read("../../secret.txt")` → `outside_workspace` |
+| 15 | `read("input/no_such_file.md")` → `not_found` |
+| 16 | `catalog_view`, `ls data`: пустой файл и два `notes.md` описаны, ничего не потеряно |
+
+Skills загружаются выборочно: в main — `organize_files` в ходе 1 и `index_excerpts` в ходе 5, каждый один раз за
+сессию; в errors — `index_excerpts` (ход 2) и `organize_files` (ход 3); в retry — `index_excerpts` (ход 2).
+В сессиях limit и guard skills не загружались. История корректна во всех ходах всех пяти сессий.
+В `traces/` только эти пять сессий: трассы прошлых прогонов (`session_20261115_*`) скрипт удалил, коммит f6efd67.
+
+Сводную таблицу по всем ходам и чек-лист сценариев по трассам генерирует `scripts/summarize_run.py` в
+`results/RUN_SUMMARY.md` (в этом прогоне все 16 пунктов отмечены). `results/run_manifest.json` — порядок сессий и их
+трассы. Ожидаемое итоговое состояние описано в `fixtures/EXPECTED.md`, фактическое с ним совпадает. Совпадение пути и
+категории каждой из 17 выдержек `index_export.jsonl` с каталогом: 0 расхождений.
+
+Ходы 13–14 основного диалога просят вызвать tool. В этом прогоне модель вызвала его оба раза. В прошлом прогоне
+она отказала сама, без вызова. Независимо от поведения модели, гарантированная демонстрация — сессия guard: там
+каждая реплика явно требует вызвать инструмент и показать его ответ.
 
 ## 10. Тесты и проверочные сценарии
 
@@ -393,12 +421,12 @@ python scripts/verify.py             # проверки результата п�
 | Диалог и просмотр, история без дублей | main, ходы 2 и 4, `/check` после ходов 1 и 16, `/history`; `test_turns_history_and_transitions` |
 | Перенос по уточнению | main, ход 3 («Перенеси заметку про поиск в папку курсов»); `test_move_input_to_data_and_between_folders` |
 | Пополнение input | main: пауза `@wait_for_files` после хода 10, файлы копирует отдельный процесс PowerShell (`results/late_files_added.json`), ход 11 «Я добавил файлы, разбери новые» (повторный `ls`), ход 12 — индексация новой лекции; `test_cli_script_with_external_late_files_and_loop_limit`, `test_ls_stable_and_fresh` |
-| Индексация и поиск через MCP | main, ходы 5–6; `verify.py` (проверка 4); `test_mcp_upsert_idempotent_search_and_path_update` |
-| Повтор и перенос после индексации | main, ходы 7–10 (повтор, подсчёт выдержек, перенос в `search` + `update_document_path`, поиск по новому пути); `test_end_to_end_scripted_agent_with_real_mcp`, `test_update_path_without_category_follows_folder` |
-| Skills | `load_skill` в трассе main (ход 1 — `organize_files`, ход 5 — `index_excerpts`); `test_skills_metadata_and_on_demand_load` |
-| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (модель может отказать без вызова tool, см. раздел 9); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); тесты path guard |
+| Индексация и поиск через MCP | main, ход 5 (`upsert_excerpts`: 5 документов, `created: 10`) и ход 6 (`search_excerpts` + `read` исходного файла); `verify.py` (проверка 4); `test_mcp_upsert_idempotent_search_and_path_update` |
+| Повтор и перенос после индексации | main, ходы 7–10: повтор `created: 0, updated: 2`, по-прежнему 2 выдержки, перенос в `search` + `update_document_path` без `category` → `category: search`, поиск по новому пути; `test_end_to_end_scripted_agent_with_real_mcp`, `test_update_path_without_category_follows_folder` |
+| Skills | `load_skill` в трассе main: ход 1 — `organize_files`, ход 5 — `index_excerpts`, повторно не загружаются; `test_skills_metadata_and_on_demand_load` |
+| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (в этом прогоне tool вызван: `invalid_argument`, `outside_workspace`, `not_found`); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); тесты path guard |
 | Контракты tools | `test_tools_fs.py`, `test_web_fetch.py` |
-| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание, остановленное лимитом (`stopped_by`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; `/exit` в конце каждой сессии |
+| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание (25 вызовов `ls`), остановленное `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; `/exit` в конце каждой сессии |
 
 ## 11. Ограничения
 

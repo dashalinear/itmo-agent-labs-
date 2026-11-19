@@ -74,7 +74,9 @@ Procedure:
 5. CITE AS YOU READ: in the step right after a read that contains a relevant line, call `cite_fragment` with the exact
    quote (copy it from the text after the "N: " line number). Do not postpone citing: after compaction earlier reads are
    only a summary, so uncited reads are lost. Keep unconfirmed points as open questions.
-6. Never repeat an identical call (same tool, same arguments): it returns the same result. A search with 0 hits means
+6. Take section_id / fragment_id ONLY from earlier results (get_l1 sections, search hits): never guess or enumerate
+   s01, s02, ... Read the sections that the search hits point to, not every section of every document.
+   Never repeat an identical call (same tool, same arguments): it returns the same result. A search with 0 hits means
    "change the words or the level", not "try again". Do not re-read sections you already read (the harness marks them).
 7. Budget: aim for about 30 model calls. When every sub-question has evidence or nothing new turns up, finish with
    `submit_result(findings, open_questions)`: findings reference evidence_id, open_questions list what is unconfirmed.

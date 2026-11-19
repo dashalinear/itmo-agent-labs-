@@ -139,9 +139,12 @@ def check_dl1(out: list) -> None:
     out.append(row("DL1", "paused по дедлайну задачи (не completed)", f"{t['status']} ({(t['status_reason'] or '')[:70]})",
                    t["status"] == "paused" and "deadline" in (t["status_reason"] or "")))
     out.append(row("DL1", "trace: harness:guardrail guard=deadline", len(g), bool(g)))
-    out.append(row("DL1", "частичный результат и evidence сохранены",
+    out.append(row("DL1", "частичный отчёт сохранён (evidence: сколько успело сохраниться до дедлайна)",
                    f"evidence {len(jload('DL1', 'evidence.json', []) or [])}, отчёт: {'Частичный результат' in rep}",
                    "Частичный результат" in rep))
+    blocked = [e["data"] for e in events("DL1", "guardrail") if (e["data"] or {}).get("guard") == "deadline"]
+    out.append(row("DL1", "после дедлайна новые действия не выполняются (инструмент на границе)",
+                   ", ".join(sorted({b.get("tool") or "model" for b in blocked})) or "-", bool(blocked)))
 
 
 def check_c2(out: list) -> None:
@@ -219,12 +222,22 @@ def check_b3(out: list) -> None:
     for u in done:
         h = re.sub(r"^https?://([^/]+).*$", r"\1", u.get("final_url") or u["url"])
         hosts[h] = hosts.get(h, 0) + 1
-    out.append(row("B3", "статус (completed только по критериям)", f"{st['task']['status']} ({(st['task']['status_reason'] or '')[:60]})",
+    out.append(row("B3", "не помечен completed без выполненных критериев", f"{st['task']['status']} ({(st['task']['status_reason'] or '')[:60]})",
                    st["task"]["status"] in ("completed", "paused")))
-    for key, prop in (("min_queries_after_reading", "второй раунд запросов после чтения"),
-                      ("min_page_links_read", "прочитана страница по ссылке с прочитанной страницы"),
-                      ("max_domain_share", "не больше 60 % страниц с одного домена")):
-        out.append(row("B3", prop, crit_ok(st, key), crit_ok(st, key)))
+    # computed from the recorded state (the same rules as complete_task), also when complete_task was never called
+    crit = st.get("criteria") or {}
+    after = [e["data"]["query"] for e in events("B3", "search_round") if (e["data"] or {}).get("pages_read_before")]
+    followed = {(e["data"] or {}).get("url_key") for e in events("B3", "link_followed")}
+    via_links = [u["url"] for u in done if (u.get("discovered_by") or "").startswith("page:") or u["url_key"] in followed]
+    top = max(hosts.items(), key=lambda kv: kv[1]) if hosts else ("-", 0)
+    share = top[1] / len(done) if done else 0.0
+    out.append(row("B3", "второй раунд: новые запросы после чтения страниц", f"{len(after)} запросов после чтения",
+                   len(after) >= crit.get("min_queries_after_reading", 1)))
+    out.append(row("B3", "прочитана страница по ссылке с прочитанной страницы (found_on)",
+                   f"{len(via_links)}; link_followed событий: {len(followed)}",
+                   len(via_links) >= crit.get("min_page_links_read", 1)))
+    out.append(row("B3", f"не больше {int(crit.get('max_domain_share', 0.6) * 100)} % прочитанных страниц с одного домена",
+                   f"{top[0]}: {top[1]}/{len(done)} = {share:.0%}", bool(done) and share <= crit.get("max_domain_share", 0.6)))
     out.append(row("B3", "домены прочитанных страниц (информативно)", hosts, True))
 
 

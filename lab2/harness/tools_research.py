@@ -30,7 +30,8 @@ from .artifacts import ArtifactStore
 from .budget import Budget, BudgetExhausted
 from .config import Limits
 from .store import TaskStore
-from .web import HttpFetcher, SearchProvider, canonical_url, decode_body, extract_links, is_text_type, url_key
+from .web import (HttpFetcher, SearchProvider, canonical_url, decode_body, extract_links, is_text_type, rank_links,
+                  url_key)
 
 
 def norm_query(q: str) -> str:
@@ -189,10 +190,13 @@ class ResearchTools:
                 self._emit("fetch_cache_hit", url=url, url_key=k, artifact_id=row["artifact_id"],
                            http_requests=self.store.usage(self.task_id).get("http_requests", 0),
                            url_http_attempts=row.get("attempts") or 0)
-                return ok(name, url=url, url_key=k, final_url=row["final_url"], from_cache=True,
-                          artifact_id=row["artifact_id"], title=row["title"], chars=len(text),
-                          note="Already fetched and stored; no network request made. Find exact quotes with "
-                               "search_artifact(artifact_id, term).", text=text[:3000])
+                meta = (self.store.artifact(row["artifact_id"]) or {}).get("meta") or {}
+                return self._answer(
+                    dict(url=url, url_key=k, final_url=row["final_url"], from_cache=True, artifact_id=row["artifact_id"],
+                         title=row["title"], chars=len(text)),
+                    meta.get("links") or [], text[:3000],
+                    "Already fetched and stored; no network request made (fetching it again gives the same). The page "
+                    "links are listed in 'links'. Find exact quotes with search_artifact(artifact_id, term).")
         self.store.set_url(self.task_id, k, status="running")
         try:
             res = await self.fetcher.fetch(url)
@@ -228,24 +232,28 @@ class ResearchTools:
                 dup = other["url"]
         header = (f"Источник: {url}\nКонечный URL: {res.final_url}\nHTTP: {res.status}\nЗаголовок: {title}\n"
                   f"Получено: {('усечено до ' + str(self.limits.max_fetch_bytes) + ' байт') if res.truncated else 'полностью'}\n\n")
+        links = rank_links(extract_links(raw, res.final_url, limit=80), res.final_url, limit=12) if "<a" in raw else []
+        links = [{"url": l["url"][:200], "anchor": l["anchor"][:60]} for l in links]
         art = self.artifacts.save(header + text, "web_page", res.final_url,
                                   {"url": url, "final_url": res.final_url, "status": res.status, "truncated": res.truncated,
-                                   "content_type": res.content_type, "redirects": res.redirects})
-        links = extract_links(raw, res.final_url) if "<a" in raw else []
+                                   "content_type": res.content_type, "redirects": res.redirects, "links": links})
         self.store.set_url(self.task_id, k, status="done", artifact_id=art["artifact_id"], title=title[:300] or row["title"],
                            content_hash=sha256_bytes(res.body), duplicate_of=dup, error=None)
-        # The answer must fit the single-result limit, so the model sees the PAGE artifact_id directly
-        # (otherwise the whole answer would be offloaded and the page id hidden inside another artifact).
-        links = [{"url": l["url"][:200], "anchor": l["anchor"][:60]} for l in links[:12]]
+        return self._answer(
+            dict(url=url, url_key=k, final_url=res.final_url, status=res.status, redirects=res.redirects,
+                 attempts=res.attempts, title=title[:200], artifact_id=art["artifact_id"], chars=len(text),
+                 truncated_download=res.truncated, duplicate_of=dup),
+            links, text[:2500],
+            f"Page text: first {{n}} of {len(text)} chars below; the FULL page is artifact_id {art['artifact_id']}. Find "
+            "exact quotes with search_artifact(artifact_id, term); cite with save_evidence(source=<url>, quote=<exact text>). "
+            "Useful links of the page are in 'links' (queue them with found_on=<this url>).")
+
+    def _answer(self, fields: dict, links: list[dict], head: str, note: str) -> str:
+        """The answer must fit the single-result limit, so the model sees the PAGE artifact_id directly
+        (otherwise the whole answer would be offloaded and the page id hidden inside another artifact)."""
         budget_chars = self.limits.max_tool_result_chars - 300
-        head = text[:2500]
         while True:
-            body = ok(name, url=url, url_key=k, final_url=res.final_url, status=res.status, redirects=res.redirects,
-                      attempts=res.attempts, title=title[:200], artifact_id=art["artifact_id"], chars=len(text),
-                      truncated_download=res.truncated, duplicate_of=dup, links=links,
-                      note=(f"Page text: first {len(head)} of {len(text)} chars below; the FULL page is artifact_id "
-                            f"{art['artifact_id']}. Find exact quotes with search_artifact(artifact_id, term); cite with "
-                            "save_evidence(source=<url>, quote=<exact text>)."), text=head)
+            body = ok("web_fetch", **fields, links=links, note=note.replace("{n}", str(len(head))), text=head)
             if len(body) <= budget_chars or (not links and len(head) < 300):
                 return body
             if links:

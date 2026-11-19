@@ -96,6 +96,44 @@ def extract_links(html: str, base: str, limit: int = 25) -> list[dict]:
     return out
 
 
+_NAV_ANCHOR = re.compile(r"^(search|submit|log ?in|log ?out|sign ?(in|up)|register|help|about|contact|donate|privacy|terms|"
+                         r"cookies?|home|subscribe|rss|feed|skip|menu|news|blog|careers|jobs|login|account|"
+                         r"\u043f\u043e\u0438\u0441\u043a|\u0432\u043e\u0439\u0442\u0438)\b", re.I)
+_NAV_PATH = re.compile(r"/(login|logout|signup|register|search|submit|help|about|privacy|terms|donate|account|"
+                       r"ignoreme|auth|static|assets)(/|$)", re.I)
+_BINARY = re.compile(r"\.(pdf|png|jpe?g|gif|svg|zip|gz|tar|mp4|mp3|ps)$", re.I)
+
+
+def rank_links(links: list[dict], base: str, limit: int = 12) -> list[dict]:
+    """Content links first: site navigation (search, login, help, the site root...), empty anchors and binaries
+    go to the end or are dropped, links to other sites and links with a descriptive anchor go first. Stable
+    for equal scores, so a page whose links are all content links keeps its order."""
+    host = (urlparse(base).hostname or "").lower()
+    scored = []
+    for i, l in enumerate(links):
+        u = urlparse(l["url"])
+        a = (l.get("anchor") or "").strip()
+        path = u.path.strip("/")
+        if not path and not u.query:
+            continue                                       # a site root is never a source
+        score = 0.0
+        if (u.hostname or "").lower() != host:
+            score += 2
+        score += min(len(a), 60) / 20
+        if len(path.split("/")) >= 2:
+            score += 1
+        if not a:
+            score -= 2
+        if _NAV_ANCHOR.match(a) or _NAV_PATH.search(u.path):
+            score -= 5
+        if _BINARY.search(u.path):
+            score -= 1.5
+        if score > -2:
+            scored.append((-score, i, l))
+    scored.sort(key=lambda t: (t[0], t[1]))
+    return [l for _s, _i, l in scored[:limit]]
+
+
 @dataclass
 class FetchResult:
     url: str

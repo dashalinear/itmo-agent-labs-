@@ -134,11 +134,11 @@
 
 ## Критерии завершения
 
-- ✔ min_evidence: 9/6
-- ✔ required_sections: all present
-- ✔ min_web_pages_read: 7/5
-- ✔ min_web_sources_cited: 7/4
-- ✔ min_search_queries: 4/3
+- OK min_evidence: 9/6
+- OK required_sections: all present
+- OK min_web_pages_read: 7/5
+- OK min_web_sources_cited: 7/4
+- OK min_search_queries: 4/3
 
 ## Расход
 

@@ -159,11 +159,11 @@
 
 ## Критерии завершения
 
-- ✔ min_evidence: 16/6
-- ✔ required_sections: all present
-- ✔ min_web_pages_read: 10/5
-- ✔ min_web_sources_cited: 9/4
-- ✔ min_search_queries: 10/3
+- OK min_evidence: 16/6
+- OK required_sections: all present
+- OK min_web_pages_read: 10/5
+- OK min_web_sources_cited: 9/4
+- OK min_search_queries: 10/3
 
 ## Расход
 

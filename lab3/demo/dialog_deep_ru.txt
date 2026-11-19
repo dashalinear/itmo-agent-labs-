@@ -1,0 +1,10 @@
+# Deep research dialog (python -m navsearch.cli chat --task-id M6 --script demo/dialog_deep_ru.txt)
+# The main agent delegates a research task in natural language, keeps answering, checks the status and then
+# builds its answer on the sub-agent's evidence (submit_result with findings and open questions).
+Исследуй глубоко: какие подходы к хранению состояния агентов описаны в корпусе, чем они различаются по ограничениям и какой из них выбран для DocSearch. Нужны подтверждения из текстов и открытые вопросы.
+Пока идёт исследование: в каком документе описана ротация ключей шифрования и через сколько дней отзывают старый ключ?
+Какой сейчас статус исследования?
+@wait-subtasks
+Покажи результат исследования: выводы, подтверждения и открытые вопросы субагента.
+/subtasks
+/exit

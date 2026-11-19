@@ -19,7 +19,8 @@ description: Autonomous internet research on a user topic without a given URL li
 
 ## 4. Round 2: refine from what you read (required)
 - After the first 2-3 pages: write down new terms, names, systems and open questions from them, then run at least one NEW, more specific `web_search` (a repeated query is a cache hit and gives nothing new).
-- Follow at least one useful link from the `links` of a fetched page: `select_sources([{url, decision: "queue", reason, found_on: <page URL>}])`, then `web_fetch` it.
+- Follow at least one useful link from the `links` of a fetched page: `select_sources([{url, decision: "queue", reason, found_on: <page URL>}])`, then `web_fetch` it. `links` are ranked by the harness (links to other sites and descriptive links first, site navigation dropped) and are returned again on a cache hit, so never re-fetch a stored page to get them.
+- Diversity: if more than about half of the read pages come from one domain, the next sources must come from other domains (sites that time out from your network are recorded as errors; choose others).
 - The harness checks this in `complete_task` when the task criteria contain `min_queries_after_reading`, `min_page_links_read`, `max_domain_share`.
 
 ## 5. Review

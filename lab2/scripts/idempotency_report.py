@@ -46,8 +46,10 @@ def _load(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
-def _tool_results(rows: list[dict]) -> list[dict]:
-    """Tool results of the steps re-executed at the start of a resumed process (before its first model call)."""
+def _tool_results(rows: list[dict], seen: set[str]) -> list[dict]:
+    """Tool results of the interrupted step at the start of a resumed process (before its first model call).
+    A result whose tool_call_id was already emitted by an earlier process is a pending write restored from the
+    checkpoint (LangGraph does not execute that call again): it is marked restored_from_checkpoint."""
     out = []
     for r in rows:
         if r["event"] == "harness:model_call_plan":
@@ -62,7 +64,8 @@ def _tool_results(rows: list[dict]) -> list[dict]:
             except ValueError:
                 env = {}
             d = env.get("data") or {}
-            item = {"tool": m.get("name"), "ok": env.get("ok")}
+            item = {"tool": m.get("name"), "ok": env.get("ok"), "tool_call_id": m.get("tool_call_id"),
+                    "restored_from_checkpoint": m.get("tool_call_id") in seen}
             if m.get("name") == "web_fetch":
                 item.update(url=d.get("url"), from_cache=d.get("from_cache", False), artifact_id=d.get("artifact_id"))
             elif m.get("name") == "save_evidence":
@@ -75,7 +78,7 @@ def _tool_results(rows: list[dict]) -> list[dict]:
 
 def processes(cfg, task_id: str) -> list[dict]:
     traces = sorted(cfg.traces_dir.glob(f"{task_id}_*.jsonl"), key=lambda p: _load(p)[0]["ts"])
-    procs = []
+    procs, seen = [], set()
     for t in traces:
         rows = _load(t)
         start = rows[0]
@@ -89,12 +92,14 @@ def processes(cfg, task_id: str) -> list[dict]:
                                                    "urls_running")} if crash else None),
              "status_at_end": end.get("status") if end else "process killed (no session_end)"}
         if start.get("resume_kind") == "continue_interrupted_step":
-            p["re_executed_step"] = _tool_results(rows)
+            p["re_executed_step"] = _tool_results(rows, seen)
         if cache_hits:
             http_before = (start.get("usage_before") or {}).get("http_requests")
             p["cache_hits"] = [{"url": c.get("url"), "url_key": c.get("url_key"), "http_requests_at_hit": c.get("http_requests"),
                                 "url_http_attempts_at_hit": c.get("url_http_attempts"),
                                 "http_requests_at_process_start": http_before} for c in cache_hits]
+        seen |= {m.get("tool_call_id") for r in rows if r["event"] == "graph_step"
+                 for m in r.get("messages", []) if m.get("type") == "ToolMessage"}
         procs.append(p)
     return procs
 
@@ -178,7 +183,7 @@ def main() -> None:
     finally:
         store.close()
     rep = asyncio.run(replay(cfg, args.task_id))
-    re_exec = [x for p in procs for x in p.get("re_executed_step", [])]
+    re_exec = [x for p in procs for x in p.get("re_executed_step", []) if not x["restored_from_checkpoint"]]
     # a page re-read from the store after a crash is not downloaded again: its HTTP attempts at the cache hit equal
     # its attempts at the end of the task (the global counter may still grow because of OTHER pages of the same step)
     final_attempts = {u: n for u, n in inv["http_attempts_per_done_url"].items()}

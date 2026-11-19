@@ -5,6 +5,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
 
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1                 # everything (about 30-40 min)
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipB3         # without the real web run B3
+    powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -Only B3        # re-record only these task ids
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipPush       # record, do not commit
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -DryRun -WorkDir D:\tmp\lab2_dry
         offline check of this script: scripted models (scripts/dryrun_models.py) instead of the LLM, all state,
@@ -32,6 +33,7 @@ param(
     [switch]$SkipPush,
     [switch]$SkipTests,
     [switch]$SkipB3,
+    [string[]]$Only = @(),
     [string]$WorkDir = "",
     [string]$EnvFile = ".env"
 )
@@ -70,6 +72,9 @@ function Resume-Until-Done($id, $max) {
         Harness resume --task-id $id | Out-Null
     }
 }
+# "-Only B3" or "-Only G2,I1" (powershell -File passes a comma list as one string)
+$Only = @($Only | ForEach-Object { $_ -split "," } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+function Want($id) { return ((-not $Only) -or ($Only -contains $id)) }
 function Run-With-Crash($id, $crash, $cmd) {
     $env:HARNESS_CRASH_AT = $crash
     try { $code = Harness $cmd --task-id $id } finally { Remove-Item Env:HARNESS_CRASH_AT -ErrorAction SilentlyContinue }
@@ -147,86 +152,102 @@ try {
     Run-Py scripts\prepare_workspace.py --reset
     $ids = @("A1", "D1", "DL1", "E1", "I1", "C2", "G2")
     if (-not $SkipB3) { $ids += "B3" }
+    $ids = @($ids | Where-Object { Want $_ })
+    Write-Host ("re-recorded task ids: " + ($ids -join ", "))
     foreach ($id in $ids) {
         Get-ChildItem $tracesDir -Filter "$($id)_*" -ErrorAction SilentlyContinue | Remove-Item -Force
         if (Test-Path (Join-Path $resultsDir $id)) { Remove-Item -Recurse -Force (Join-Path $resultsDir $id) }
     }
-    Remove-Item (Join-Path $resultsDir "E1_std*.txt") -ErrorAction SilentlyContinue
+    if (Want "E1") { Remove-Item (Join-Path $resultsDir "E1_std*.txt") -ErrorAction SilentlyContinue }
     New-Item -ItemType Directory -Force $resultsDir | Out-Null
 
-    Step "6. A1: long analysis, crash after a durable checkpoint, resume in a NEW process, [C5] checked by code"
-    Harness new --spec demo\task_a_local.json --set $fit | Out-Null
-    Run-With-Crash "A1" $A1Crash "run"
-    Resume-Until-Done "A1" 3
-    Harness status --task-id A1 | Out-Null
-    Run-Py scripts\artifact_after_restart.py --task-id A1
-
-    Step "7. D1: token budget -> partial; user raises the limit; resume keeps the counters"
-    Harness new --spec demo\task_d_budget.json --set $fit | Out-Null
-    Harness run --task-id D1 | Out-Null
-    Harness limits --task-id D1 --set max_total_tokens=1500000 | Out-Null
-    Harness resume --task-id D1 | Out-Null
-    Resume-Until-Done "D1" 2
-    Harness status --task-id D1 | Out-Null
-
-    Step "8. DL1: task deadline 45 s -> paused with guard=deadline and a partial result"
-    Harness new --spec demo\task_dl_deadline.json --set $fit | Out-Null
-    Harness run --task-id DL1 | Out-Null
-    Harness status --task-id DL1 | Out-Null
-
-    Step "9. E1: cancel from another process after 2-3 evidence are saved"
-    Harness new --spec demo\task_e_cancel.json --set $fit | Out-Null
-    $p = Start-Process -FilePath $py -ArgumentList "-m", "harness.cli", "run", "--task-id", "E1" -PassThru -WindowStyle Hidden `
-        -RedirectStandardOutput (Join-Path $resultsDir "E1_stdout.txt") -RedirectStandardError (Join-Path $resultsDir "E1_stderr.txt")
-    # a second process watches the state DB and sends the cancel right after the 2nd evidence is saved
-    & $py scripts\cancel_when.py --task-id E1 --min-evidence 2 --timeout 900 | Out-Host
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "E1: threshold not reached, cancelling now" -ForegroundColor Yellow
-        Harness cancel --task-id E1 --reason "demo: cancel from another terminal" | Out-Null
+    if (Want "A1") {
+        Step "6. A1: long analysis, crash after a durable checkpoint, resume in a NEW process, [C5] checked by code"
+        Harness new --spec demo\task_a_local.json --set $fit | Out-Null
+        Run-With-Crash "A1" $A1Crash "run"
+        Resume-Until-Done "A1" 3
+        Harness status --task-id A1 | Out-Null
+        Run-Py scripts\artifact_after_restart.py --task-id A1
     }
-    $p.WaitForExit(240000) | Out-Null
-    Harness status --task-id E1 | Out-Null
 
-    Step "10. I1: crash windows on the fixed web corpus, resume in new processes, idempotency evidence"
-    Harness new --spec demo\task_i_idem.json --set $fit | Out-Null
-    Run-With-Crash "I1" "after_download:2" "run"
-    Run-With-Crash "I1" "after_tool:web_fetch:1" "resume"
-    Run-With-Crash "I1" "after_tool:save_evidence:1" "resume"
-    Resume-Until-Done "I1" 3
-    Harness status --task-id I1 | Out-Null
-    Run-Py scripts\idempotency_report.py --task-id I1
+    if (Want "D1") {
+        Step "7. D1: token budget -> partial; user raises the limit; resume keeps the counters"
+        Harness new --spec demo\task_d_budget.json --set $fit | Out-Null
+        Harness run --task-id D1 | Out-Null
+        Harness limits --task-id D1 --set max_total_tokens=1500000 | Out-Null
+        Harness resume --task-id D1 | Out-Null
+        Resume-Until-Done "D1" 2
+        Harness status --task-id D1 | Out-Null
+    }
 
-    Step "11. C2: fixed search results with max_http_requests = 6"
-    Harness new --spec demo\task_c2_http.json --set $fit | Out-Null
-    Harness run --task-id C2 | Out-Null
-    Harness status --task-id C2 | Out-Null
+    if (Want "DL1") {
+        Step "8. DL1: task deadline 45 s -> paused with guard=deadline and a partial result"
+        Harness new --spec demo\task_dl_deadline.json --set $fit | Out-Null
+        Harness run --task-id DL1 | Out-Null
+        Harness status --task-id DL1 | Out-Null
+    }
 
-    Step "12. G2: guard dialog 2 (absolute paths, junction moves, per-step output limit)"
-    New-Item -ItemType Directory -Force $outside | Out-Null
-    Set-Content -Path (Join-Path $outside "secret.txt") -Value "outside-the-task-root secret" -Encoding UTF8
-    foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { Remove-Item (Join-Path $outside $f) -ErrorAction SilentlyContinue }
-    $link = Join-Path $root "data\link_out"
-    if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
-    $outsideFwd = $outside.Replace("\", "/")
-    $env:HARNESS_OUTSIDE_DIR = $outsideFwd
-    $dialog = Join-Path $env:TEMP "itmo_lab2_dialog_guard2.txt"
-    $lines = Get-Content demo\dialog_guard2_ru.txt -Encoding UTF8 | ForEach-Object { $_.Replace("{OUTSIDE}", $outsideFwd) }
-    [System.IO.File]::WriteAllLines($dialog, [string[]]$lines, (New-Object System.Text.UTF8Encoding $false))
-    try {
-        Harness new --spec demo\task_g2_guard.json --set $fit | Out-Null
-        Harness chat --task-id G2 --script $dialog | Out-Null
-        Harness export --task-id G2 | Out-Null
-    } finally { cmd /c rmdir "$link" | Out-Null; Remove-Item $dialog -ErrorAction SilentlyContinue }
-    $bad = @()
-    if (-not (Test-Path (Join-Path $outside "secret.txt"))) { $bad += "secret.txt left the outside folder" }
-    foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { if (Test-Path (Join-Path $outside $f)) { $bad += "$f written outside" } }
-    if (-not (Test-Path (Join-Path $root "data\search\search_incident_reports.md"))) { $bad += "incident report was moved" }
-    if (Test-Path (Join-Path $root "data\secret_copy.txt")) { $bad += "outside file copied into the root" }
-    if ($bad) { throw ("guard failed: " + ($bad -join "; ")) }
-    Write-Host "G2: no forbidden effect on disk (outside folder and documents intact)"
-    Run-Py scripts\artifact_after_restart.py --task-id G2
+    if (Want "E1") {
+        Step "9. E1: cancel from another process after 2-3 evidence are saved"
+        Harness new --spec demo\task_e_cancel.json --set $fit | Out-Null
+        $p = Start-Process -FilePath $py -ArgumentList "-m", "harness.cli", "run", "--task-id", "E1" -PassThru -WindowStyle Hidden `
+            -RedirectStandardOutput (Join-Path $resultsDir "E1_stdout.txt") -RedirectStandardError (Join-Path $resultsDir "E1_stderr.txt")
+        # a second process watches the state DB and sends the cancel right after the 2nd evidence is saved
+        & $py scripts\cancel_when.py --task-id E1 --min-evidence 2 --timeout 900 | Out-Host
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "E1: threshold not reached, cancelling now" -ForegroundColor Yellow
+            Harness cancel --task-id E1 --reason "demo: cancel from another terminal" | Out-Null
+        }
+        $p.WaitForExit(240000) | Out-Null
+        Harness status --task-id E1 | Out-Null
+    }
 
-    if (-not $SkipB3) {
+    if (Want "I1") {
+        Step "10. I1: crash windows on the fixed web corpus, resume in new processes, idempotency evidence"
+        Harness new --spec demo\task_i_idem.json --set $fit | Out-Null
+        Run-With-Crash "I1" "after_download:2" "run"
+        Run-With-Crash "I1" "after_tool:web_fetch:1" "resume"
+        Run-With-Crash "I1" "after_tool:save_evidence:1" "resume"
+        Resume-Until-Done "I1" 3
+        Harness status --task-id I1 | Out-Null
+        Run-Py scripts\idempotency_report.py --task-id I1
+    }
+
+    if (Want "C2") {
+        Step "11. C2: fixed search results with max_http_requests = 6"
+        Harness new --spec demo\task_c2_http.json --set $fit | Out-Null
+        Harness run --task-id C2 | Out-Null
+        Harness status --task-id C2 | Out-Null
+    }
+
+    if (Want "G2") {
+        Step "12. G2: guard dialog 2 (absolute paths, junction moves, per-step output limit)"
+        New-Item -ItemType Directory -Force $outside | Out-Null
+        Set-Content -Path (Join-Path $outside "secret.txt") -Value "outside-the-task-root secret" -Encoding UTF8
+        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { Remove-Item (Join-Path $outside $f) -ErrorAction SilentlyContinue }
+        $link = Join-Path $root "data\link_out"
+        if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
+        $outsideFwd = $outside.Replace("\", "/")
+        $env:HARNESS_OUTSIDE_DIR = $outsideFwd
+        $dialog = Join-Path $env:TEMP "itmo_lab2_dialog_guard2.txt"
+        $lines = Get-Content demo\dialog_guard2_ru.txt -Encoding UTF8 | ForEach-Object { $_.Replace("{OUTSIDE}", $outsideFwd) }
+        [System.IO.File]::WriteAllLines($dialog, [string[]]$lines, (New-Object System.Text.UTF8Encoding $false))
+        try {
+            Harness new --spec demo\task_g2_guard.json --set $fit | Out-Null
+            Harness chat --task-id G2 --script $dialog | Out-Null
+            Harness export --task-id G2 | Out-Null
+        } finally { cmd /c rmdir "$link" | Out-Null; Remove-Item $dialog -ErrorAction SilentlyContinue }
+        $bad = @()
+        if (-not (Test-Path (Join-Path $outside "secret.txt"))) { $bad += "secret.txt left the outside folder" }
+        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { if (Test-Path (Join-Path $outside $f)) { $bad += "$f written outside" } }
+        if (-not (Test-Path (Join-Path $root "data\search\search_incident_reports.md"))) { $bad += "incident report was moved" }
+        if (Test-Path (Join-Path $root "data\secret_copy.txt")) { $bad += "outside file copied into the root" }
+        if ($bad) { throw ("guard failed: " + ($bad -join "; ")) }
+        Write-Host "G2: no forbidden effect on disk (outside folder and documents intact)"
+        Run-Py scripts\artifact_after_restart.py --task-id G2
+    }
+
+    if (-not $SkipB3 -and (Want "B3")) {
         Step "13. B3: real web research with a second round (topic only, no URLs)"
         Harness new --spec demo\task_b3_web.json --set $fit | Out-Null
         Harness run --task-id B3 | Out-Null
@@ -254,7 +275,7 @@ if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
 
 Step "16. Commit and push (only lab2/traces, lab2/results, regenerated README blocks)"
 git add -A -- traces results README.md
-git commit -m "Lab 2: re-recorded A1, D1, DL1, E1, I1, C2, G2$(if (-not $SkipB3) { ', B3' }) with qwen3.8-27b after the audit"
+git commit -m "Lab 2: re-recorded $($ids -join ', ') with qwen3.8-27b after the audit"
 if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
 git push
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }

@@ -390,3 +390,15 @@ def test_repeated_ingestion_of_known_content_is_skipped_before_the_agent(cfg, co
     assert not (rep / "same.md").exists() and (ws.root / "rejected" / "input" / "repeat_test" / "same.md").exists()
     assert (rep / "fresh.md").exists() and len(Catalog(ws).load()["documents"]) == n_docs
     (rep / "fresh.md").unlink()
+
+
+def test_unknown_section_lists_real_sections_and_error_streak_is_pointed_out(env):
+    import json as _json
+    from navsearch.tools_corpus import CorpusTools
+    ct = CorpusTools(env, coach=True)
+    hit = ct.search_grep("РС-7", "L2")["hits"][0]
+    tool = next(x for x in ct.navigation_tools() if x.name == "read_section")
+    errs = [_json.loads(tool.invoke({"document_id": hit["document_id"], "section_id": f"s9{i}"})) for i in range(4)]
+    assert all(not e["ok"] and e["error"]["type"] == "unknown_section" for e in errs)
+    assert errs[0]["error"]["sections"] and errs[0]["error"]["sections"][0]["section_id"].startswith("s")
+    assert "harness_hint" in errs[3]["error"] and "harness_hint" not in errs[0]["error"]

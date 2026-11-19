@@ -115,8 +115,14 @@
   },
   {
     "task": "DL1",
-    "property": "частичный результат и evidence сохранены",
+    "property": "частичный отчёт сохранён (evidence: сколько успело сохраниться до дедлайна)",
     "actual": "evidence 0, отчёт: True",
+    "ok": true
+  },
+  {
+    "task": "DL1",
+    "property": "после дедлайна новые действия не выполняются (инструмент на границе)",
+    "actual": "save_evidence",
     "ok": true
   },
   {
@@ -240,26 +246,26 @@
   },
   {
     "task": "B3",
-    "property": "статус (completed только по критериям)",
+    "property": "не помечен completed без выполненных критериев",
     "actual": "paused (no progress: web_fetch returned the same result 6 times)",
     "ok": true
   },
   {
     "task": "B3",
-    "property": "второй раунд запросов после чтения",
-    "actual": null,
+    "property": "второй раунд: новые запросы после чтения страниц",
+    "actual": "7 запросов после чтения",
+    "ok": true
+  },
+  {
+    "task": "B3",
+    "property": "прочитана страница по ссылке с прочитанной страницы (found_on)",
+    "actual": "0; link_followed событий: 0",
     "ok": false
   },
   {
     "task": "B3",
-    "property": "прочитана страница по ссылке с прочитанной страницы",
-    "actual": null,
-    "ok": false
-  },
-  {
-    "task": "B3",
-    "property": "не больше 60 % страниц с одного домена",
-    "actual": null,
+    "property": "не больше 60 % прочитанных страниц с одного домена",
+    "actual": "arxiv.org: 9/11 = 82%",
     "ok": false
   },
   {

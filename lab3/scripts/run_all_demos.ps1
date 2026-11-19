@@ -19,7 +19,7 @@ Steps (task ids):
   EXP1  exhaustive sub-agent from the CLI with a tiny budget (partial), then resume with a larger one
 #>
 param(
-    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation", "final")][string]$Part = "all",
+    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation", "final", "deep")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$EnvFile = ".env",
@@ -178,6 +178,11 @@ if ($Part -eq "final") {
     Get-Content results\EXP3\coverage_partial.json | Select-Object -First 12
     Nav resume --task-id EXP3 --set max_model_calls=120 | Out-Null
     & $py -m navsearch.cli coverage --task-id EXP3 | Out-File -Encoding utf8 results\EXP3\coverage_final.json
+}
+
+if ($Part -eq "deep") {
+    Step "D1. M6: deep research delegated in natural language; the main agent answers meanwhile, then uses the result"
+    Nav chat --task-id M6 --script demo\dialog_deep_ru.txt | Out-Null
 }
 
 Step "13. Export and technical results"
