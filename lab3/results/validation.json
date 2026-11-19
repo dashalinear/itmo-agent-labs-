@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "documents": 56,
-  "with_l1": 55,
-  "fragments_checked": 323,
+  "documents": 59,
+  "with_l1": 58,
+  "fragments_checked": 332,
   "problems": [],
   "problems_total": 0,
   "es_counts": {
-    "L1": 55,
-    "L2": 323
+    "L1": 58,
+    "L2": 332
   }
 }

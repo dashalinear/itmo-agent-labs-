@@ -1,10 +1,10 @@
 {
  "corpus_id": "itmo-lab3",
- "frozen_at": "2026-11-17T00:29:55+00:00",
+ "frozen_at": "2026-11-19T15:22:13+00:00",
  "totals": {
-  "documents": 56,
-  "with_l1": 55,
-  "fragments": 323
+  "documents": 59,
+  "with_l1": 58,
+  "fragments": 332
  },
  "documents": [
   {
@@ -28,6 +28,14 @@
    "path": "data/agents/agent_memory_compression.md",
    "title": "Сжатие памяти агента (NEWDOC-2026-A)",
    "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
+   "document_id": "c77a305d-cf71-4ff5-8b1d-b752e019de5d",
+   "path": "data/agents/agent_tool_quotas.md",
+   "title": "Квоты на вызовы инструментов агента",
+   "content_hash": "sha256:3da1f2f93378086a659f9b452562229965fbb1389182fd678edfcc3c0f9803c7",
    "l1": true,
    "l2_fragments": 3
   },
@@ -248,6 +256,14 @@
    "l2_fragments": 2
   },
   {
+   "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+   "path": "data/ops/runbook_rb12.md",
+   "title": "Runbook RB-12: ротация ключей шифрования состояния",
+   "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+   "l1": true,
+   "l2_fragments": 3
+  },
+  {
    "document_id": "fd9485e7-df93-44b0-bc1f-b71d77ef235a",
    "path": "data/projects/docsearch_architecture.md",
    "title": "Архитектура DocSearch",
@@ -358,6 +374,14 @@
    "content_hash": "sha256:95894a4ff5a5574415815ddff6e39e61c3d7a053ed707f5d02412996bcbe610e",
    "l1": true,
    "l2_fragments": 4
+  },
+  {
+   "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+   "path": "data/search/search_synonyms.md",
+   "title": "Словарь синонимов для поиска",
+   "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+   "l1": true,
+   "l2_fragments": 3
   },
   {
    "document_id": "42d85bae-c0b4-443a-a6dd-dc1ec69e7a55",

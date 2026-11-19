@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-16T21:13:50+00:00",
+  "updated_at": "2026-11-19T15:21:34+00:00",
   "documents": [
     {
       "document_id": "7ca9884c-2bca-47ea-b685-20dae1df6072",
@@ -112,6 +112,38 @@
           "from": "input/new_files/agent_memory_compression.md",
           "to": "data/agents/agent_memory_compression.md",
           "at": "2026-11-16T21:13:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "c77a305d-cf71-4ff5-8b1d-b752e019de5d",
+      "original_path": "input/new_files2/agent_tool_quotas.md",
+      "current_path": "data/agents/agent_tool_quotas.md",
+      "title": "Квоты на вызовы инструментов агента",
+      "category": "agents",
+      "description": "Политика квотирования вызовов инструментов агентов по командам (код NEWDOC-2026-D).",
+      "content_hash": "sha256:3da1f2f93378086a659f9b452562229965fbb1389182fd678edfcc3c0f9803c7",
+      "size_bytes": 1001,
+      "line_count": 13,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "5233fd0f-2a1b-5bc0-b11c-42b25e910138",
+          "start_line": 3,
+          "end_line": 6,
+          "summary": "Код политики NEWDOC-2026-D и назначение квоты"
+        }
+      ],
+      "indexed_at": "2026-11-19T15:21:34+00:00",
+      "registered_at": "2026-11-19T15:20:39+00:00",
+      "moves": [
+        {
+          "from": "input/new_files2/agent_tool_quotas.md",
+          "to": "data/agents/agent_tool_quotas.md",
+          "at": "2026-11-19T15:20:39+00:00"
         }
       ]
     },
@@ -2108,6 +2140,38 @@
       ]
     },
     {
+      "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+      "original_path": "input/new_files2/runbook_rb12.md",
+      "current_path": "data/ops/runbook_rb12.md",
+      "title": "Runbook RB-12: ротация ключей шифрования состояния",
+      "category": "ops",
+      "description": "Runbook плановой ротации ключей шифрования сохранённого состояния агентов раз в 90 дней (NEWDOC-2026-F).",
+      "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+      "size_bytes": 904,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "9eb11759-90e3-5285-aebd-f97b13bd9b3d",
+          "start_line": 3,
+          "end_line": 5,
+          "summary": "Периодичность ротации и код NEWDOC-2026-F"
+        }
+      ],
+      "indexed_at": "2026-11-19T15:21:34+00:00",
+      "registered_at": "2026-11-19T15:20:39+00:00",
+      "moves": [
+        {
+          "from": "input/new_files2/runbook_rb12.md",
+          "to": "data/ops/runbook_rb12.md",
+          "at": "2026-11-19T15:20:39+00:00"
+        }
+      ]
+    },
+    {
       "document_id": "fd9485e7-df93-44b0-bc1f-b71d77ef235a",
       "original_path": "input/projects/docsearch_architecture.md",
       "current_path": "data/projects/docsearch_architecture.md",
@@ -2756,6 +2820,38 @@
           "from": "input/inbox_lab1/search_quality_thoughts.md",
           "to": "data/search/search_quality_thoughts.md",
           "at": "2026-11-16T20:56:30+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+      "original_path": "input/new_files2/search_synonyms.md",
+      "current_path": "data/search/search_synonyms.md",
+      "title": "Словарь синонимов для поиска",
+      "category": "search",
+      "description": "Правила использования и обновления словаря синонимов полнотекстового поиска (NEWDOC-2026-E).",
+      "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+      "size_bytes": 843,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "4cda0748-d0f0-5ca3-bc14-fac42d1c3adf",
+          "start_line": 3,
+          "end_line": 6,
+          "summary": "Код NEWDOC-2026-E и пример расширения «чекпоинт»"
+        }
+      ],
+      "indexed_at": "2026-11-19T15:21:34+00:00",
+      "registered_at": "2026-11-19T15:20:39+00:00",
+      "moves": [
+        {
+          "from": "input/new_files2/search_synonyms.md",
+          "to": "data/search/search_synonyms.md",
+          "at": "2026-11-19T15:20:39+00:00"
         }
       ]
     },

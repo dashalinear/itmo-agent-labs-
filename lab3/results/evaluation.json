@@ -1,8 +1,8 @@
 {
   "corpus": {
-    "documents_L0": 56,
-    "with_L1": 55,
-    "fragments_L2": 323,
+    "documents_L0": 59,
+    "with_L1": 58,
+    "fragments_L2": 332,
     "folders": [
       {
         "folder": "_unsorted",
@@ -11,8 +11,8 @@
       },
       {
         "folder": "agents",
-        "documents": 10,
-        "fragments": 31
+        "documents": 11,
+        "fragments": 34
       },
       {
         "folder": "courses",
@@ -31,8 +31,8 @@
       },
       {
         "folder": "ops",
-        "documents": 6,
-        "fragments": 19
+        "documents": 7,
+        "fragments": 22
       },
       {
         "folder": "projects",
@@ -41,8 +41,8 @@
       },
       {
         "folder": "search",
-        "documents": 10,
-        "fragments": 34
+        "documents": 11,
+        "fragments": 37
       },
       {
         "folder": "storage",
@@ -51,14 +51,14 @@
       }
     ],
     "es": {
-      "L1": 55,
-      "L2": 323
+      "L1": 58,
+      "L2": 332
     },
     "validation": {
       "ok": true,
-      "documents": 56,
-      "with_l1": 55,
-      "fragments_checked": 323,
+      "documents": 59,
+      "with_l1": 58,
+      "fragments_checked": 332,
       "problems_total": 0
     }
   },
@@ -151,7 +151,7 @@
       "runs": 0,
       "model_calls": 0,
       "tool_calls": 0,
-      "tokens": 982865,
+      "tokens": 1352969,
       "compactions": 0,
       "peak_input": 0,
       "evidence": 0,
@@ -361,15 +361,132 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "ING4",
+      "kind": "ingest",
+      "status": "completed",
+      "reason": "Все 3 файла из input/new_files2 разложены по темам (data/agents, data/ops, data/search), д",
+      "parent": null,
+      "runs": 2,
+      "model_calls": 13,
+      "tool_calls": 33,
+      "tokens": 165759,
+      "compactions": 1,
+      "peak_input": 17472,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 3,
+      "l2_indexed": 3,
+      "crashes": 1
+    },
+    {
+      "task_id": "ING5",
+      "kind": "ingest",
+      "status": "completed",
+      "reason": "Папка input/new_files_repeat пуста: harness уже удалил 3 файла с дублирующимся содержимым ",
+      "parent": null,
+      "runs": 1,
+      "model_calls": 5,
+      "tool_calls": 6,
+      "tokens": 41353,
+      "compactions": 0,
+      "peak_input": 8728,
+      "evidence": 0,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M5",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 23,
+      "model_calls": 67,
+      "tool_calls": 57,
+      "tokens": 2026674,
+      "compactions": 5,
+      "peak_input": 16937,
+      "evidence": 11,
+      "searches": {
+        "fulltext:L1": 2,
+        "vector:L1": 1,
+        "grep:L1": 2,
+        "grep:L2": 5,
+        "fulltext:L2": 5,
+        "vector:L2": 2
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M5-deep1",
+      "kind": "deep",
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)",
+      "parent": "M5",
+      "runs": 1,
+      "model_calls": 60,
+      "tool_calls": 112,
+      "tokens": 791129,
+      "compactions": 4,
+      "peak_input": 16745,
+      "evidence": 2,
+      "searches": {
+        "fulltext:L1": 5
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M5-exhaustive1",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Полный обход папки storage завершён: 10/10 документов, 47/47 фрагментов прочитаны, 42 упом",
+      "parent": "M5",
+      "runs": 1,
+      "model_calls": 20,
+      "tool_calls": 55,
+      "tokens": 269352,
+      "compactions": 3,
+      "peak_input": 17290,
+      "evidence": 42,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "EXP3",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Найдено подтверждений: 38 в 10 документах: data/storage/st_checkpoint_postgres.md — 4; dat",
+      "parent": "CLI",
+      "runs": 2,
+      "model_calls": 30,
+      "tool_calls": 61,
+      "tokens": 370104,
+      "compactions": 4,
+      "peak_input": 17525,
+      "evidence": 38,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 6,
-    "grep:L1": 10,
-    "vector:L1": 4,
-    "fulltext:L2": 3,
-    "grep:L2": 218,
-    "vector:L2": 2
+    "fulltext:L1": 13,
+    "grep:L1": 12,
+    "vector:L1": 5,
+    "fulltext:L2": 8,
+    "grep:L2": 223,
+    "vector:L2": 4
   },
   "exhaustive": [
     {
@@ -431,6 +548,36 @@
         "L-ST-30"
       ],
       "found_without_keyword": 9
+    },
+    {
+      "task_id": "M5-exhaustive1",
+      "status": "completed",
+      "runs": 1,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 42,
+      "expected_codes": 36,
+      "found_codes": 35,
+      "missing_codes": [
+        "L-ST-30"
+      ],
+      "found_without_keyword": 9
+    },
+    {
+      "task_id": "EXP3",
+      "status": "completed",
+      "runs": 2,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 38,
+      "expected_codes": 36,
+      "found_codes": 36,
+      "missing_codes": [],
+      "found_without_keyword": 10
     }
   ]
 }

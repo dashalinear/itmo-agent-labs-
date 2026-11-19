@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+ "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+ "fragments": [
+  {
+   "fragment_id": "82cc1c02-6c79-545e-878c-556b035a3efa",
+   "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+   "path": "data/search/search_synonyms.md",
+   "folder": "search",
+   "doc_title": "Словарь синонимов для поиска",
+   "section_id": "s01",
+   "section_title": "Зачем",
+   "start_line": 1,
+   "end_line": 5,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "96d0ed29-249d-504a-a9f3-02145cfced36"
+  },
+  {
+   "fragment_id": "96d0ed29-249d-504a-a9f3-02145cfced36",
+   "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+   "path": "data/search/search_synonyms.md",
+   "folder": "search",
+   "doc_title": "Словарь синонимов для поиска",
+   "section_id": "s02",
+   "section_title": "Обновление",
+   "start_line": 7,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+   "ordinal": 2,
+   "prev_id": "82cc1c02-6c79-545e-878c-556b035a3efa",
+   "next_id": "3d546fe0-b65a-5684-832a-dccad6089607"
+  },
+  {
+   "fragment_id": "3d546fe0-b65a-5684-832a-dccad6089607",
+   "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+   "path": "data/search/search_synonyms.md",
+   "folder": "search",
+   "doc_title": "Словарь синонимов для поиска",
+   "section_id": "s03",
+   "section_title": "Ограничения",
+   "start_line": 11,
+   "end_line": 12,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+   "ordinal": 3,
+   "prev_id": "96d0ed29-249d-504a-a9f3-02145cfced36",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-19T15:21:12+00:00"
+}

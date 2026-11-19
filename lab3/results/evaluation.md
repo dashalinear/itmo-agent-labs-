@@ -1,17 +1,17 @@
 # Технические результаты (scripts/evaluate.py)
 
-Корпус: L0 — 56 документов, L1 — 55, L2 — 323 фрагментов; Elasticsearch: {'L1': 55, 'L2': 323}; проверка: {'ok': True, 'documents': 56, 'with_l1': 55, 'fragments_checked': 323, 'problems_total': 0}
+Корпус: L0 — 59 документов, L1 — 58, L2 — 332 фрагментов; Elasticsearch: {'L1': 58, 'L2': 332}; проверка: {'ok': True, 'documents': 59, 'with_l1': 58, 'fragments_checked': 332, 'problems_total': 0}
 
 | папка | документов | фрагментов L2 |
 |---|---|---|
 | _unsorted | 1 | 0 |
-| agents | 10 | 31 |
+| agents | 11 | 34 |
 | courses | 5 | 155 |
 | howto | 2 | 4 |
 | meetings | 6 | 12 |
-| ops | 6 | 19 |
+| ops | 7 | 22 |
 | projects | 6 | 21 |
-| search | 10 | 34 |
+| search | 11 | 37 |
 | storage | 10 | 47 |
 
 ## Задачи
@@ -22,7 +22,7 @@
 | ING2 | ingest | completed | — | 1 | 9 | 21 | 100325 | 0 | 13710 | 0 | 3 / 3 | 0 |
 | ING3 | ingest | completed | — | 1 | 5 | 6 | 39894 | 0 | 8467 | 0 | 0 / 0 | 0 |
 | M1 | main | paused | — | 17 | 200 | 191 | 2664404 | 9 | 16989 | 5 | 0 / 0 | 0 |
-| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 982865 | 0 | 0 | 0 | 0 / 0 | 0 |
+| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 1352969 | 0 | 0 | 0 | 0 / 0 | 0 |
 | EXP1 | exhaustive | paused | CLI | 2 | 62 | 94 | 690043 | 5 | 16885 | 38 | 0 / 0 | 0 |
 | M2 | main | paused | — | 17 | 55 | 44 | 1392548 | 4 | 16698 | 4 | 0 / 0 | 0 |
 | M2-deep1 | deep | paused | M2 | 1 | 30 | 44 | 388140 | 2 | 16961 | 9 | 0 / 0 | 0 |
@@ -33,14 +33,20 @@
 | M4 | main | paused | — | 8 | 18 | 10 | 929292 | 0 | 8886 | 1 | 0 / 0 | 0 |
 | M4-deep1 | deep | paused | M4 | 1 | 40 | 81 | 529461 | 3 | 16761 | 17 | 0 / 0 | 0 |
 | M4-exhaustive1 | exhaustive | completed | M4 | 1 | 19 | 51 | 219297 | 2 | 16658 | 39 | 0 / 0 | 0 |
+| ING4 | ingest | completed | — | 2 | 13 | 33 | 165759 | 1 | 17472 | 0 | 3 / 3 | 1 |
+| ING5 | ingest | completed | — | 1 | 5 | 6 | 41353 | 0 | 8728 | 0 | 0 / 0 | 0 |
+| M5 | main | paused | — | 23 | 67 | 57 | 2026674 | 5 | 16937 | 11 | 0 / 0 | 0 |
+| M5-deep1 | deep | paused | M5 | 1 | 60 | 112 | 791129 | 4 | 16745 | 2 | 0 / 0 | 0 |
+| M5-exhaustive1 | exhaustive | completed | M5 | 1 | 20 | 55 | 269352 | 3 | 17290 | 42 | 0 / 0 | 0 |
+| EXP3 | exhaustive | completed | CLI | 2 | 30 | 61 | 370104 | 4 | 17525 | 38 | 0 / 0 | 0 |
 
 ## Шесть поисковых сочетаний (вызовы основного и deep-агента)
 
 | поиск | L1 | L2 |
 |---|---|---|
-| fulltext | 6 | 3 |
-| grep | 10 | 218 |
-| vector | 4 | 2 |
+| fulltext | 13 | 8 |
+| grep | 12 | 223 |
+| vector | 5 | 4 |
 
 ## Exhaustive: покрытие и контрольные упоминания
 
@@ -50,3 +56,5 @@
 | M2-exhaustive1 | completed | 1 | 47/47 | 10/10 | 40 | 36/36 | 10/10 | — |
 | EXP2 | completed | 2 | 47/47 | 10/10 | 37 | 35/36 | 9/10 | L-ST-30 |
 | M4-exhaustive1 | completed | 1 | 47/47 | 10/10 | 39 | 35/36 | 9/10 | L-ST-30 |
+| M5-exhaustive1 | completed | 1 | 47/47 | 10/10 | 42 | 35/36 | 9/10 | L-ST-30 |
+| EXP3 | completed | 2 | 47/47 | 10/10 | 38 | 36/36 | 10/10 | — |

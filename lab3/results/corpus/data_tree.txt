@@ -1,6 +1,7 @@
 data/_unsorted/empty_todo.txt
 data/agents/agent_evaluation.md
 data/agents/agent_memory_compression.md
+data/agents/agent_tool_quotas.md
 data/agents/agents_seminar_react.txt
 data/agents/compaction_hooks.md
 data/agents/guardrails.md
@@ -28,6 +29,7 @@ data/ops/monitoring.md
 data/ops/oncall_policy.md
 data/ops/runbook_rb09.md
 data/ops/runbook_rb11.md
+data/ops/runbook_rb12.md
 data/projects/docsearch_architecture.md
 data/projects/docsearch_requirements.md
 data/projects/docsearch_risks.md
@@ -42,6 +44,7 @@ data/search/query_rewriting.md
 data/search/query_suggest.md
 data/search/search_quality.md
 data/search/search_quality_thoughts.md
+data/search/search_synonyms.md
 data/search/sharding.md
 data/search/vector_knn.md
 data/storage/st_checkpoint_postgres.md

@@ -1,0 +1,274 @@
+[
+  {
+    "id": 3230,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:05+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 3231,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:05+00:00",
+    "kind": "duplicates_skipped",
+    "data": {
+      "files": [
+        {
+          "file": "input/new_files_repeat/agent_memory_compression.md",
+          "existing": "data/agents/agent_memory_compression.md",
+          "document_id": "4627a263-2ec8-400b-a84c-d454260bc862",
+          "kept_in": "rejected/input/new_files_repeat/agent_memory_compression.md"
+        },
+        {
+          "file": "input/new_files_repeat/query_rewriting.md",
+          "existing": "data/search/query_rewriting.md",
+          "document_id": "59267b10-80a8-48b0-9ab4-97739180dde8",
+          "kept_in": "rejected/input/new_files_repeat/query_rewriting.md"
+        },
+        {
+          "file": "input/new_files_repeat/runbook_rb11.md",
+          "existing": "data/ops/runbook_rb11.md",
+          "document_id": "0f643030-8e9b-4a0a-8878-2cc594d57810",
+          "kept_in": "rejected/input/new_files_repeat/runbook_rb11.md"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3232,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:05+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest"
+    }
+  },
+  {
+    "id": 3233,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12044,
+      "reserve": 2048,
+      "total": 14092,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 3234,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12044,
+      "reserve": 2048,
+      "total": 14092,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 3235,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12044,
+      "actual_input": 7387,
+      "actual_output": 56,
+      "duration_s": 1.16,
+      "calibrated_cpt": 3.1
+    }
+  },
+  {
+    "id": 3236,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10918,
+      "reserve": 2048,
+      "total": 12966,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 3237,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10918,
+      "reserve": 2048,
+      "total": 12966,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 3238,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10918,
+      "actual_input": 7987,
+      "actual_output": 41,
+      "duration_s": 1.19,
+      "calibrated_cpt": 3.396
+    }
+  },
+  {
+    "id": 3239,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10386,
+      "reserve": 2048,
+      "total": 12434,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 3240,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10386,
+      "reserve": 2048,
+      "total": 12434,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)"
+    }
+  },
+  {
+    "id": 3241,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10386,
+      "actual_input": 8400,
+      "actual_output": 15,
+      "duration_s": 0.68,
+      "calibrated_cpt": 3.557
+    }
+  },
+  {
+    "id": 3242,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10023,
+      "reserve": 2048,
+      "total": 12071,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.56)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 3243,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10023,
+      "reserve": 2048,
+      "total": 12071,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.56)"
+    }
+  },
+  {
+    "id": 3244,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10023,
+      "actual_input": 8489,
+      "actual_output": 113,
+      "duration_s": 1.64,
+      "calibrated_cpt": 3.651
+    }
+  },
+  {
+    "id": 3245,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:13+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Папка input/new_files_repeat пуста: harness уже удалил 3 файла с дублирующимся содержимым (agent_memory_compression.md, query_rewriting.md, runbook_rb11.md — они уже в корпусе). Новых файлов для организации нет. Корпус: 59 документов, 58 с L1, 332 фрагментов, validate_corpus ok=true, проблем 0."
+    }
+  },
+  {
+    "id": 3246,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10012,
+      "reserve": 2048,
+      "total": 12060,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 3247,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10012,
+      "reserve": 2048,
+      "total": 12060,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)"
+    }
+  },
+  {
+    "id": 3248,
+    "task_id": "ING5",
+    "ts": "2026-11-19T15:22:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10012,
+      "actual_input": 8728,
+      "actual_output": 137,
+      "duration_s": 1.7,
+      "calibrated_cpt": 3.701
+    }
+  }
+]

@@ -1,0 +1,59 @@
+{
+ "schema": "l0l1l2/1",
+ "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+ "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+ "fragments": [
+  {
+   "fragment_id": "1f4b463d-98d7-5680-a2f5-eb71a8692097",
+   "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+   "path": "data/ops/runbook_rb12.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-12: ротация ключей шифрования состояния",
+   "section_id": "s01",
+   "section_title": "Когда выполнять",
+   "start_line": 1,
+   "end_line": 4,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+   "ordinal": 1,
+   "prev_id": null,
+   "next_id": "9223bd60-d071-5fbc-afa8-0024f253794c"
+  },
+  {
+   "fragment_id": "9223bd60-d071-5fbc-afa8-0024f253794c",
+   "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+   "path": "data/ops/runbook_rb12.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-12: ротация ключей шифрования состояния",
+   "section_id": "s02",
+   "section_title": "Шаги",
+   "start_line": 6,
+   "end_line": 9,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+   "ordinal": 2,
+   "prev_id": "1f4b463d-98d7-5680-a2f5-eb71a8692097",
+   "next_id": "384300ba-ea81-5ad2-9646-e8060248630e"
+  },
+  {
+   "fragment_id": "384300ba-ea81-5ad2-9646-e8060248630e",
+   "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+   "path": "data/ops/runbook_rb12.md",
+   "folder": "ops",
+   "doc_title": "Runbook RB-12: ротация ключей шифрования состояния",
+   "section_id": "s03",
+   "section_title": "Ответственный",
+   "start_line": 11,
+   "end_line": 12,
+   "page_start": null,
+   "page_end": null,
+   "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+   "ordinal": 3,
+   "prev_id": "9223bd60-d071-5fbc-afa8-0024f253794c",
+   "next_id": null
+  }
+ ],
+ "indexed_at": "2026-11-19T15:21:12+00:00"
+}

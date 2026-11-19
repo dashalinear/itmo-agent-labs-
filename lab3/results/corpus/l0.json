@@ -1,11 +1,11 @@
 {
  "schema": "l0l1l2/1",
  "corpus_id": "itmo-lab3",
- "generated_at": "2026-11-16T23:49:37+00:00",
+ "generated_at": "2026-11-19T15:22:13+00:00",
  "totals": {
-  "documents": 56,
-  "with_l1": 55,
-  "fragments": 323
+  "documents": 59,
+  "with_l1": 58,
+  "fragments": 332
  },
  "folders": [
   {
@@ -15,8 +15,8 @@
   },
   {
    "folder": "agents",
-   "documents": 10,
-   "fragments": 31
+   "documents": 11,
+   "fragments": 34
   },
   {
    "folder": "courses",
@@ -35,8 +35,8 @@
   },
   {
    "folder": "ops",
-   "documents": 6,
-   "fragments": 19
+   "documents": 7,
+   "fragments": 22
   },
   {
    "folder": "projects",
@@ -45,8 +45,8 @@
   },
   {
    "folder": "search",
-   "documents": 10,
-   "fragments": 34
+   "documents": 11,
+   "fragments": 37
   },
   {
    "folder": "storage",
@@ -88,6 +88,19 @@
    "title": "Сжатие памяти агента (NEWDOC-2026-A)",
    "description": "Документ о еженедельной компактификации долговременной памяти субагента.",
    "content_hash": "sha256:6f1ed96fc33db21b907fd8cb0c90fdea4dcc6d8abe8c33f78addeb00718842a9",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "c77a305d-cf71-4ff5-8b1d-b752e019de5d",
+   "path": "data/agents/agent_tool_quotas.md",
+   "folder": "agents",
+   "title": "Квоты на вызовы инструментов агента",
+   "description": "Политика квотирования вызовов инструментов агентов по командам (код NEWDOC-2026-D).",
+   "content_hash": "sha256:3da1f2f93378086a659f9b452562229965fbb1389182fd678edfcc3c0f9803c7",
    "is_empty": false,
    "l1": true,
    "sections": 3,
@@ -446,6 +459,19 @@
    "l2_current": true
   },
   {
+   "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+   "path": "data/ops/runbook_rb12.md",
+   "folder": "ops",
+   "title": "Runbook RB-12: ротация ключей шифрования состояния",
+   "description": "Runbook плановой ротации ключей шифрования сохранённого состояния агентов раз в 90 дней (NEWDOC-2026-F).",
+   "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
    "document_id": "fd9485e7-df93-44b0-bc1f-b71d77ef235a",
    "path": "data/projects/docsearch_architecture.md",
    "folder": "projects",
@@ -625,6 +651,19 @@
    "l1": true,
    "sections": 4,
    "l2_fragments": 4,
+   "l2_current": true
+  },
+  {
+   "document_id": "39a5d1c6-5066-4a42-ae86-2cfd99cb796b",
+   "path": "data/search/search_synonyms.md",
+   "folder": "search",
+   "title": "Словарь синонимов для поиска",
+   "description": "Правила использования и обновления словаря синонимов полнотекстового поиска (NEWDOC-2026-E).",
+   "content_hash": "sha256:96837f3eac0658b4aabe09703fa4d72c1fa4a416236f5b34aaabf5aab8cd86ec",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
    "l2_current": true
   },
   {

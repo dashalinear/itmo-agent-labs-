@@ -1,0 +1,2 @@
+﻿Elasticsearch before ING5: L1 58 L2 332
+Elasticsearch after ING5:  L1 58 L2 332

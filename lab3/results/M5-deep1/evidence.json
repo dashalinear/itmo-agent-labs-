@@ -1,0 +1,36 @@
+[
+  {
+    "evidence_id": "ev_92026907c483",
+    "task_id": "M5-deep1",
+    "claim": "Резервные копии состояния DocSearch хранятся на отдельном томе backup-02 (2 ТБ) — решение РС-9, M-13",
+    "kind": "decision",
+    "source_type": "local",
+    "source": "data/meetings/meeting_m13.md",
+    "document_id": "271067a4-a2b2-481f-9201-3d089aa38a18",
+    "content_hash": "sha256:ce5aa929f76fe4f80ca11bb89372001c0727bd005c726c9f0dd50943f5b22a27",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 7,
+    "line_end": 7,
+    "quote": "Решение РС-9: резервные копии хранятся на отдельном томе backup-02, объём 2 ТБ.",
+    "created_at": "2026-11-19T15:23:33+00:00",
+    "fragment_id": "b07120ea-f7af-5a61-aaea-69daf5b2e126"
+  },
+  {
+    "evidence_id": "ev_f73c292cf34f",
+    "task_id": "M5-deep1",
+    "claim": "Для DocSearch выбран PostgreSQL 16 как бэкенд хранения чекпоинтов (решение РС-7, совещание M-12)",
+    "kind": "decision",
+    "source_type": "local",
+    "source": "data/meetings/meeting_m12.md",
+    "document_id": "9af1414d-b416-4d6f-9dc6-d11dd3396bed",
+    "content_hash": "sha256:77e58d6ca052974d35c7cdbf7b3c5fd382eefde37912bd117c1da0630c704646",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 15,
+    "line_end": 15,
+    "quote": "Решение РС-7: бэкенд хранения чекпоинтов DocSearch - PostgreSQL 16; ответственный - Ирина Ковалёва; срок перехода - 20.11.2026.",
+    "created_at": "2026-11-19T15:23:33+00:00",
+    "fragment_id": "a0ce2e93-dfe6-5ae6-a73b-566f8b981702"
+  }
+]

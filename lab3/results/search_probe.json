@@ -11,16 +11,16 @@
         "st_event_sourcing.md",
         "mlops_lecture_monitoring.md",
         "st_snapshot_policy.md",
-        "vector_knn.md",
-        "ir_course_lectures.md"
+        "st_redis_state.md",
+        "st_schema_migrations.md"
       ],
       "found": true,
-      "total": 19,
+      "total": 21,
       "first_hit": {
         "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
         "path": "data/storage/st_event_sourcing.md",
         "title": "Событийная модель журнала состояния",
-        "score": 37.164,
+        "score": 37.967,
         "match": "Вместо снимков хранится <em>журнал</em> событий; <em>состояние</em> восстанавливается проигрыванием. … Event sourcing для <em>состояния</em> агентов: <em>журнал</em> событий, проигрывание, версии событий. … Идея: <em>Журнал</em> событий вместо снимков; восстановление проигрыванием. … Проигрывание <em>журнала</em>: Порядковый номер и идемпотентный ключ; линейный рост времени восстановления [L-ST-11].",
         "next": "get_l1('d4611c67-c357-4667-9cbc-adaa03fa6450')"
       }
@@ -92,7 +92,7 @@
         "meeting_2026-10-09_weekly.md"
       ],
       "found": true,
-      "total": 63,
+      "total": 64,
       "first_hit": {
         "fragment_id": "a0ce2e93-dfe6-5ae6-a73b-566f8b981702",
         "document_id": "9af1414d-b416-4d6f-9dc6-d11dd3396bed",
@@ -102,7 +102,7 @@
           13,
           21
         ],
-        "score": 22.856,
+        "score": 22.882,
         "match": "## <em>Решения</em>\n\n<em>Решение</em> <em>РС</em>-<em>7</em>: бэкенд хранения чекпоинтов DocSearch — <em>PostgreSQL</em> <em>16</em>; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026. … <em>Решение</em> <em>РС</em>-8: индекс фрагментов хранит эмбеддинги размерности 384.\n\nУчения по восстановлению проверяют, что резервные копии действительно читаются.",
         "next": "read_fragment('a0ce2e93-dfe6-5ae6-a73b-566f8b981702')"
       }
