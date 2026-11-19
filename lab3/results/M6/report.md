@@ -22,26 +22,26 @@ _Разделы обзора ещё не написаны._
 ```json
 {
   "tokens": {
-    "spent": 900466,
+    "spent": 1166278,
     "reserved": 0,
     "limit": 4000000,
     "of_which": {
-      "input_tokens": 833950,
-      "output_tokens": 14218,
-      "compaction_input_tokens": 28464,
-      "compaction_output_tokens": 4800,
+      "input_tokens": 1076365,
+      "output_tokens": 19290,
+      "compaction_input_tokens": 43189,
+      "compaction_output_tokens": 8400,
       "failed_call_tokens": 0,
       "interrupted_call_tokens": 19034
     }
   },
   "model_calls": {
-    "used": 15,
+    "used": 35,
     "limit": 300
   },
-  "compaction_calls": 0,
+  "compaction_calls": 3,
   "failed_calls": 0,
   "tool_calls": {
-    "used": 12,
+    "used": 29,
     "limit": 1200
   },
   "search_calls": {
@@ -55,7 +55,7 @@ _Разделы обзора ещё не написаны._
   "cache_hits": 0,
   "bytes_downloaded": 0,
   "active_seconds": {
-    "used": 44.1,
+    "used": 132.9,
     "limit": 10800
   },
   "peak_input_tokens": 16312

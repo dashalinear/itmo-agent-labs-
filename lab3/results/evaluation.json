@@ -485,16 +485,16 @@
       "status": "paused",
       "reason": "waiting for user input",
       "parent": null,
-      "runs": 4,
-      "model_calls": 15,
-      "tool_calls": 12,
-      "tokens": 900466,
-      "compactions": 0,
+      "runs": 8,
+      "model_calls": 35,
+      "tool_calls": 29,
+      "tokens": 1166278,
+      "compactions": 3,
       "peak_input": 16312,
       "evidence": 1,
       "searches": {
-        "grep:L2": 1,
-        "fulltext:L1": 1
+        "grep:L2": 2,
+        "fulltext:L1": 2
       },
       "l1_written": 0,
       "l2_indexed": 0,
@@ -524,11 +524,11 @@
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 15,
+    "fulltext:L1": 16,
     "grep:L1": 12,
     "vector:L1": 5,
     "fulltext:L2": 9,
-    "grep:L2": 228,
+    "grep:L2": 229,
     "vector:L2": 4
   },
   "exhaustive": [

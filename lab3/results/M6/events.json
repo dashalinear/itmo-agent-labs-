@@ -804,5 +804,1060 @@
       "status": "paused",
       "reason": "waiting for user input"
     }
+  },
+  {
+    "id": 4165,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:46:55+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 4166,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:46:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20911,
+      "reserve": 2048,
+      "total": 22959,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 4167,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:04+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 20911,
+      "after_tokens": 10824,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 27,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5056,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и определить, какой подход выбран для DocSearch. Дополнительно ответить на вопрос о ротации ключей шифрования.\n\n## Ограничения пользователя\nВ предоставленном фрагменте явных ограничений с тегами [C1]... нет.\nДоговорённости:\n- Ответы должны содержать подтверждения из текстов (цитаты, document_id, fragment_id, номера строк).\n- Указывать открытые вопросы.\n- Глубокое исследование выполнять в фоне (subagent).\n\n## Решения и договорённости\n- Запущен фоновый субагент `M6-deep1` для глубокого анализа подходов к хранению состояния.\n- Основной агент параллельно ответил на вопрос о ротации ключей, используя поиск и чтение фрагментов.\n- Результат субагента был слишком большим (14771 символов) и был выгружен в артефакт `art_38d05273afc9b0749096`.\n\n## Подтверждённые факты (с источниками)\n1. **Ротация ключей шифрования:**\n   - Документ: `data/ops/runbook_rb12.md` (doc_id `6ece6e18-e403-485e-bdb9-6877f1783728`).\n   - Периодичность: раз в 90 дней (фрагмент `1f4b463d-98d7-5680-a2f5-eb71a8692097`, строка 4).\n   - Отзыв старого ключа: через 7 дней после перешифровки активных чекпоинтов (фрагмент `9223bd60-d071-5fbc-afa8-0024f253794c`, строка 9, evidence_id `ev_0f3d3a639675`).\n   - Код процедуры: NEWDOC-2026-F.\n\n2. **Подходы к хранению состояния (из результата субагента M6-deep1):**\n   - **SQLite:** Локальное хранение, режим WAL. Ограничение: один писатель, таймаут блокировки 5 сек (ERR_LOCK_TIMEOUT, тикет CKPT-7731). Источник: `data/storage/st_checkpoint_sqlite.md` (doc_id `63576563-7a76-4186-a023-d168b5d7873b`).\n   - **PostgreSQL:** Общее хранилище, атомарность. Пул 20 соединений на процесс, JSONB < 1 МБ. Ограничение: таймауты при исчерпании пула. Источник: `data/storage/st_checkpoint_postgres.md` (упомянут в артефакте, evidence_id `ev_0fe09beaa5b5` и др.).\n   - **Event Sourcing:** Полная история, идемпотентность.\n   - **Выбранный подход для DocSearch:** PostgreSQL 16.\n     - Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16.\n     - Ответственный: Ирина Ковалёва.\n     - Срок перехода: 20.11.2026.\n     - Источник: `data/meetings/meeting_m12.md` (doc_id `9af1414d-b416-4d6f-9dc6-d11dd3396bed`, фрагмент `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строка 15, evidence_id `ev_1d409f2abc6d`).\n\n## Прогресс\n- Прочитаны фрагменты `data/ops/runbook_rb12.md` (строки 1-9).\n- Запущен и завершён субагент `M6-deep1` (56 вызовов модели, 88 вызовов инструментов, 4 компакции).\n- Результат субагента сохранён в артефакт `art_38d05273afc9b0749096` (227 строк).\n- Прочитаны строки 1-124 артефакта. Содержит список из 10 документов в папке `storage`, сравнение подходов и список evidence.\n- Осталось прочитать строки 125-227 артефакта для полноты списка evidence и возможных дополнительных деталей.\n\n## Открытые вопросы и следующий шаг\n- Открытых вопросов в результате субагента не указано (`open_questions: []`).\n- Следующий шаг: дочитать артефакт `art_38d05273afc9b0749096` (строки 125-227), чтобы убедиться"
+    }
+  },
+  {
+    "id": 4168,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10824,
+      "reserve": 2048,
+      "total": 12872,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 4169,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10824,
+      "actual_input": 8869,
+      "actual_output": 32,
+      "duration_s": 1.05,
+      "calibrated_cpt": 2.71
+    }
+  },
+  {
+    "id": 4170,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10632,
+      "reserve": 2048,
+      "total": 12680,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 4171,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10632,
+      "reserve": 2048,
+      "total": 12680,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)"
+    }
+  },
+  {
+    "id": 4172,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10632,
+      "actual_input": 9081,
+      "actual_output": 45,
+      "duration_s": 1.14,
+      "calibrated_cpt": 2.774
+    }
+  },
+  {
+    "id": 4173,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:06+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "subagent_result",
+      "artifact_id": "art_38d05273afc9b0749096",
+      "total_chars": 14771,
+      "passed_chars": 2102,
+      "reason": "single result 14771 chars > limit 6000",
+      "step": "lc_run--01a1f4b4-65de-73f3-9028-3fb22451c0a9-0"
+    }
+  },
+  {
+    "id": 4174,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11304,
+      "reserve": 2048,
+      "total": 13352,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 4175,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11304,
+      "reserve": 2048,
+      "total": 13352,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4176,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11304,
+      "actual_input": 9893,
+      "actual_output": 73,
+      "duration_s": 1.42,
+      "calibrated_cpt": 2.81
+    }
+  },
+  {
+    "id": 4177,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11760,
+      "reserve": 2048,
+      "total": 13808,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 4178,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11760,
+      "reserve": 2048,
+      "total": 13808,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4179,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11760,
+      "actual_input": 10424,
+      "actual_output": 74,
+      "duration_s": 1.48,
+      "calibrated_cpt": 2.831
+    }
+  },
+  {
+    "id": 4180,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13881,
+      "reserve": 2048,
+      "total": 15929,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 4181,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13881,
+      "reserve": 2048,
+      "total": 15929,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4182,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13881,
+      "actual_input": 12544,
+      "actual_output": 74,
+      "duration_s": 1.76,
+      "calibrated_cpt": 2.83
+    }
+  },
+  {
+    "id": 4183,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16215,
+      "reserve": 2048,
+      "total": 18263,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 4184,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16215,
+      "reserve": 2048,
+      "total": 18263,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4185,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16215,
+      "actual_input": 15081,
+      "actual_output": 1585,
+      "duration_s": 12.13,
+      "calibrated_cpt": 2.797
+    }
+  },
+  {
+    "id": 4186,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:23+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 4187,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:24+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 4188,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19366,
+      "reserve": 2048,
+      "total": 21414,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 4189,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19366,
+      "after_tokens": 10783,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4600,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и определить, какой подход выбран для DocSearch. Дополнительно ответить на вопрос о ротации ключей шифрования.\n\n## Ограничения пользователя\nВ предоставленном фрагменте явных ограничений с тегами [C1]... нет.\nДоговорённости:\n- Ответы должны содержать подтверждения из текстов (цитаты, document_id, fragment_id, номера строк).\n- Указывать открытые вопросы.\n- Глубокое исследование выполнять в фоне (subagent).\n\n## Решения и договорённости\n- Запущен фоновый субагент `M6-deep1` для глубокого анализа подходов к хранению состояния.\n- Основной агент параллельно ответил на вопрос о ротации ключей, используя поиск и чтение фрагментов.\n- Результат субагента был слишком большим (14771 символов) и был выгружен в артефакт `art_38d05273afc9b0749096`.\n- Основной агент прочитал весь артефакт (строки 1–227) и представил пользователю структурированную сводку выводов субагента.\n\n## Подтверждённые факты (с источниками)\n1. **Ротация ключей шифрования:**\n   - Документ: `data/ops/runbook_rb12.md` (doc_id `6ece6e18-e403-485e-bdb9-6877f1783728`).\n   - Периодичность: раз в 90 дней (фрагмент `1f4b463d-98d7-5680-a2f5-eb71a8692097`, строка 4).\n   - Отзыв старого ключа: через 7 дней после перешифровки активных чекпоинтов (фрагмент `9223bd60-d071-5fbc-afa8-0024f253794c`, строка 9, evidence_id `ev_0f3d3a639675`).\n   - Код процедуры: NEWDOC-2026-F.\n\n2. **Подходы к хранению состояния (из результата субагента M6-deep1):**\n   - **SQLite:** Локальное хранение, режим WAL. Ограничение: один писатель, таймаут блокировки 5 сек (ERR_LOCK_TIMEOUT, тикет CKPT-7731), лимит базы ≤ 2 ГБ, только локальный диск. Источник: `data/storage/st_checkpoint_sqlite.md` (doc_id `63576563-7a76-4186-a023-d168b5d7873b`).\n   - **PostgreSQL:** Общее хранилище, атомарность. Пул 20 соединений на процесс, JSONB < 1 МБ. Ограничение: таймауты при исчерпании пула. Источник: `data/storage/st_checkpoint_postgres.md`.\n   - **Event Sourcing:** Полная история, идемпотентность. Время восстановления растёт линейно с длиной журнала, поэтому делают периодические снимки. Источник: `data/storage/st_event_sourcing.md` (doc_id `d4611c67-c357-4667-9cbc-adaa03fa6450`, фрагмент `98898177-8535-5f92-9970-ab57ebacc367`, строки 15–17, evidence_id `ev_0fe09beaa5b5`).\n   - **Redis:** Данные должны помещаться в RAM; для чекпоинтов используют noeviction.\n   - **Выбранный подход для DocSearch:** PostgreSQL 16.\n     - Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16.\n     - Ответственный: Ирина Ковалёва.\n     - Срок перехода: 20.11.2026.\n     - Источник: `data/meetings/meeting_m12.md` (doc_id `9af1414d-b416-4d6f-9dc6-d11dd3396bed`, фрагмент `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строка 15, evidence_id `ev_1d409f2abc6d`).\n\n## Прогресс\n- Прочитаны фрагменты `data/ops/runbook_rb12.md` (строки 1-9).\n- Запущен и завершён субагент `M6-deep1` (56 вызовов модели, 88 вызовов инструментов, 4 компакции, 757363 токенов).\n- Результат субагента сохранён в артефак"
+    }
+  },
+  {
+    "id": 4190,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10783,
+      "reserve": 2048,
+      "total": 12831,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 4191,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10783,
+      "actual_input": 8843,
+      "actual_output": 91,
+      "duration_s": 1.44,
+      "calibrated_cpt": 2.709
+    }
+  },
+  {
+    "id": 4192,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:33+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "ротация ключ",
+      "hits": 2
+    }
+  },
+  {
+    "id": 4193,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:35+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "ротация ключей шифрования отзыв старого ключа",
+      "hits": 12
+    }
+  },
+  {
+    "id": 4194,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12809,
+      "reserve": 2048,
+      "total": 14857,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 4195,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12809,
+      "reserve": 2048,
+      "total": 14857,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)"
+    }
+  },
+  {
+    "id": 4196,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:37+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12809,
+      "actual_input": 11309,
+      "actual_output": 71,
+      "duration_s": 1.61,
+      "calibrated_cpt": 2.736
+    }
+  },
+  {
+    "id": 4197,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13033,
+      "reserve": 2048,
+      "total": 15081,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 4198,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13033,
+      "reserve": 2048,
+      "total": 15081,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4199,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13033,
+      "actual_input": 11673,
+      "actual_output": 57,
+      "duration_s": 1.54,
+      "calibrated_cpt": 2.746
+    }
+  },
+  {
+    "id": 4200,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13729,
+      "reserve": 2048,
+      "total": 15777,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 4201,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:39+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13729,
+      "reserve": 2048,
+      "total": 15777,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4202,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13729,
+      "actual_input": 12352,
+      "actual_output": 71,
+      "duration_s": 1.73,
+      "calibrated_cpt": 2.75
+    }
+  },
+  {
+    "id": 4203,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14063,
+      "reserve": 2048,
+      "total": 16111,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 4204,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14063,
+      "reserve": 2048,
+      "total": 16111,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4205,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14063,
+      "actual_input": 12723,
+      "actual_output": 136,
+      "duration_s": 2.2,
+      "calibrated_cpt": 2.748
+    }
+  },
+  {
+    "id": 4206,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14343,
+      "reserve": 2048,
+      "total": 16391,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 4207,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14343,
+      "reserve": 2048,
+      "total": 16391,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4208,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14343,
+      "actual_input": 13017,
+      "actual_output": 371,
+      "duration_s": 4.0,
+      "calibrated_cpt": 2.741
+    }
+  },
+  {
+    "id": 4209,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 4210,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 4211,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15566,
+      "reserve": 2048,
+      "total": 17614,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 4212,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15566,
+      "reserve": 2048,
+      "total": 17614,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 4213,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15566,
+      "actual_input": 13407,
+      "actual_output": 32,
+      "duration_s": 1.62,
+      "calibrated_cpt": 2.649
+    }
+  },
+  {
+    "id": 4214,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15531,
+      "reserve": 2048,
+      "total": 17579,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 4215,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15531,
+      "reserve": 2048,
+      "total": 17579,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 4216,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15531,
+      "actual_input": 13619,
+      "actual_output": 294,
+      "duration_s": 3.77,
+      "calibrated_cpt": 2.678
+    }
+  },
+  {
+    "id": 4217,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:53+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 4218,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:53+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 4219,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16270,
+      "reserve": 2048,
+      "total": 18318,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 4220,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16270,
+      "reserve": 2048,
+      "total": 18318,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 4221,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16270,
+      "actual_input": 13945,
+      "actual_output": 45,
+      "duration_s": 1.92,
+      "calibrated_cpt": 2.653
+    }
+  },
+  {
+    "id": 4222,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:55+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "subagent_result",
+      "artifact_id": "art_38d05273afc9b0749096",
+      "total_chars": 14771,
+      "passed_chars": 2102,
+      "reason": "single result 14771 chars > limit 6000",
+      "step": "lc_run--01a1f4b5-2066-7400-8c35-c69328732f0c-0"
+    }
+  },
+  {
+    "id": 4223,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16907,
+      "reserve": 2048,
+      "total": 18955,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4224,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16907,
+      "reserve": 2048,
+      "total": 18955,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 4225,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16907,
+      "actual_input": 14757,
+      "actual_output": 73,
+      "duration_s": 2.02,
+      "calibrated_cpt": 2.686
+    }
+  },
+  {
+    "id": 4226,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17327,
+      "reserve": 2048,
+      "total": 19375,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.69)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 4227,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17327,
+      "reserve": 2048,
+      "total": 19375,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.69)"
+    }
+  },
+  {
+    "id": 4228,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17327,
+      "actual_input": 15288,
+      "actual_output": 74,
+      "duration_s": 2.11,
+      "calibrated_cpt": 2.707
+    }
+  },
+  {
+    "id": 4229,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:47:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19501,
+      "reserve": 2048,
+      "total": 21549,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 4230,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:07+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19501,
+      "after_tokens": 11508,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 13,
+      "kept_messages": 15,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5069,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и определить, какой подход выбран для DocSearch. Дополнительно ответить на вопрос о ротации ключей шифрования.\n\n## Ограничения пользователя\nВ предоставленном фрагменте явных ограничений с тегами [C1]... нет.\nДоговорённости:\n- Ответы должны содержать подтверждения из текстов (цитаты, document_id, fragment_id, номера строк).\n- Указывать открытые вопросы.\n- Глубокое исследование выполнять в фоне (subagent).\n\n## Решения и договорённости\n- Запущен фоновый субагент `M6-deep1` для глубокого анализа подходов к хранению состояния.\n- Основной агент параллельно ответил на вопрос о ротации ключей, используя поиск и чтение фрагментов.\n- Результат субагента был слишком большим (14771 символов) и был выгружен в артефакт `art_38d05273afc9b0749096`.\n- Основной агент прочитал артефакт (строки 1–227, включая повторное чтение строк 13–124) и представил пользователю структурированную сводку выводов субагента.\n- Основной агент выполнил дополнительный поиск (`search_fulltext`, `search_grep`) и чтение секций `s01`, `s02` документа `runbook_rb12.md` для верификации данных о ротации ключей.\n\n## Подтверждённые факты (с источниками)\n1. **Ротация ключей шифрования:**\n   - Документ: `data/ops/runbook_rb12.md` (doc_id `6ece6e18-e403-485e-bdb9-6877f1783728`).\n   - Периодичность: раз в 90 дней (фрагмент `1f4b463d-98d7-5680-a2f5-eb71a8692097`, строка 4).\n   - Код процедуры: NEWDOC-2026-F.\n   - Шаги (фрагмент `9223bd60-d071-5fbc-afa8-0024f253794c`, строки 6–9):\n     1. Выпустить новый ключ в хранилище секретов.\n     2. Перешифровать активные чекпоинты новым ключом, старые оставить до истечения срока хранения.\n     3. Отозвать старый ключ через 7 дней после перешифровки.\n   - Ответственный: дежурный инженер по безопасности; итог фиксируется в журнале изменений (секция `s03`, фрагмент `384300ba-ea81-5ad2-9646-e8060248630e`).\n\n2. **Подходы к хранению состояния (из результата субагента M6-deep1):**\n   - **SQLite:** Локальное хранение, режим WAL. Ограничение: один писатель, таймаут блокировки 5 сек (ERR_LOCK_TIMEOUT, тикет CKPT-7731), лимит базы ≤ 2 ГБ, только локальный диск. Источник: `data/storage/st_checkpoint_sqlite.md` (doc_id `63576563-7a76-4186-a023-d168b5d7873b`).\n   - **PostgreSQL:** Общее хранилище, атомарность. Пул 20 соединений на процесс, JSONB < 1 МБ. Ограничение: таймауты при исчерпании пула. Источник: `data/storage/st_checkpoint_postgres.md`.\n   - **Event Sourcing:** Полная история, идемпотентность. Время восстановления растёт линейно с длиной журнала, поэтому делают периодические снимки. Источник: `data/storage/st_event_sourcing.md` (doc_id `d4611c67-c357-4667-9cbc-adaa03fa6450`, фрагмент `98898177-8535-5f92-9970-ab57ebacc367`, строки 15–17, evidence_id `ev_0fe09beaa5b5`).\n   - **Redis:** Данные должны помещаться в RAM; для чекпоинтов используют noeviction.\n   - **Выбранный подход для DocSearch:** PostgreSQL 16.\n     - Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16.\n     - Ответственный: Ирина Ковалёва.\n     - Срок перехода: 20.11.2026.\n     - Источник: `data/meetings/meeting_m12.md` (doc_id `9af1414d-b416-4d6f-9dc6-d11dd3"
+    }
+  },
+  {
+    "id": 4231,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11508,
+      "reserve": 2048,
+      "total": 13556,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.71)"
+    }
+  },
+  {
+    "id": 4232,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11508,
+      "actual_input": 9349,
+      "actual_output": 74,
+      "duration_s": 1.44,
+      "calibrated_cpt": 2.825
+    }
+  },
+  {
+    "id": 4233,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13367,
+      "reserve": 2048,
+      "total": 15415,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 4234,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13367,
+      "reserve": 2048,
+      "total": 15415,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4235,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13367,
+      "actual_input": 11886,
+      "actual_output": 75,
+      "duration_s": 1.77,
+      "calibrated_cpt": 2.84
+    }
+  },
+  {
+    "id": 4236,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15590,
+      "reserve": 2048,
+      "total": 17638,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 4237,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15590,
+      "reserve": 2048,
+      "total": 17638,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 4238,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15590,
+      "actual_input": 14355,
+      "actual_output": 1725,
+      "duration_s": 14.1,
+      "calibrated_cpt": 2.816
+    }
+  },
+  {
+    "id": 4239,
+    "task_id": "M6",
+    "ts": "2026-11-19T16:48:25+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
   }
 ]
