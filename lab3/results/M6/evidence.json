@@ -1,0 +1,19 @@
+[
+  {
+    "evidence_id": "ev_0f3d3a639675",
+    "task_id": "M6",
+    "claim": "Старый ключ шифрования отзывается через 7 дней после перешифровки чекпоинтов",
+    "kind": "fact",
+    "source_type": "local",
+    "source": "data/ops/runbook_rb12.md",
+    "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+    "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 9,
+    "line_end": 9,
+    "quote": "Шаг 3: отозвать старый ключ через 7 дней после перешифровки.",
+    "created_at": "2026-11-19T16:19:45+00:00",
+    "fragment_id": "9223bd60-d071-5fbc-afa8-0024f253794c"
+  }
+]

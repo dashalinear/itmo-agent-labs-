@@ -1,0 +1,2595 @@
+[
+  {
+    "id": 3929,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:33+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 3931,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:33+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "deep"
+    }
+  },
+  {
+    "id": 3934,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5047,
+      "reserve": 2048,
+      "total": 7095,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 3935,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5047,
+      "reserve": 2048,
+      "total": 7095,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 3939,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5047,
+      "actual_input": 3392,
+      "actual_output": 164,
+      "duration_s": 2.05,
+      "calibrated_cpt": 2.963
+    }
+  },
+  {
+    "id": 3943,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 7031,
+      "reserve": 2048,
+      "total": 9079,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 3944,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 7031,
+      "reserve": 2048,
+      "total": 9079,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)"
+    }
+  },
+  {
+    "id": 3946,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:37+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 7031,
+      "actual_input": 6295,
+      "actual_output": 113,
+      "duration_s": 1.7,
+      "calibrated_cpt": 2.975
+    }
+  },
+  {
+    "id": 3951,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:39+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L2",
+      "query": "agent state storage persistence in-memory database cache",
+      "hits": 0
+    }
+  },
+  {
+    "id": 3952,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:39+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "хранение состояния агента persistence checkpoint",
+      "hits": 31
+    }
+  },
+  {
+    "id": 3953,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9237,
+      "reserve": 2048,
+      "total": 11285,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 3954,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:39+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9237,
+      "reserve": 2048,
+      "total": 11285,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)"
+    }
+  },
+  {
+    "id": 3958,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9237,
+      "actual_input": 8600,
+      "actual_output": 83,
+      "duration_s": 1.6,
+      "calibrated_cpt": 2.941
+    }
+  },
+  {
+    "id": 3959,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11394,
+      "reserve": 2048,
+      "total": 13442,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.94)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 3960,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11394,
+      "reserve": 2048,
+      "total": 13442,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.94)"
+    }
+  },
+  {
+    "id": 3964,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11394,
+      "actual_input": 10532,
+      "actual_output": 126,
+      "duration_s": 2.7,
+      "calibrated_cpt": 2.914
+    }
+  },
+  {
+    "id": 3965,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12615,
+      "reserve": 2048,
+      "total": 14663,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 3966,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12615,
+      "reserve": 2048,
+      "total": 14663,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 3970,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12615,
+      "actual_input": 11701,
+      "actual_output": 128,
+      "duration_s": 2.7,
+      "calibrated_cpt": 2.882
+    }
+  },
+  {
+    "id": 3971,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13987,
+      "reserve": 2048,
+      "total": 16035,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 3972,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:46+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13987,
+      "reserve": 2048,
+      "total": 16035,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 3982,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13987,
+      "actual_input": 12929,
+      "actual_output": 319,
+      "duration_s": 4.23,
+      "calibrated_cpt": 2.854
+    }
+  },
+  {
+    "id": 3983,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14674,
+      "reserve": 2048,
+      "total": 16722,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 3984,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14674,
+      "reserve": 2048,
+      "total": 16722,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 3987,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14674,
+      "actual_input": 13546,
+      "actual_output": 147,
+      "duration_s": 2.97,
+      "calibrated_cpt": 2.827
+    }
+  },
+  {
+    "id": 3988,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15794,
+      "reserve": 2048,
+      "total": 17842,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 3989,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:54+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15794,
+      "reserve": 2048,
+      "total": 17842,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 3990,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15794,
+      "actual_input": 14510,
+      "actual_output": 291,
+      "duration_s": 3.61,
+      "calibrated_cpt": 2.804
+    }
+  },
+  {
+    "id": 3991,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16505,
+      "reserve": 2048,
+      "total": 18553,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 3992,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:19:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16505,
+      "reserve": 2048,
+      "total": 18553,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 3993,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16505,
+      "actual_input": 15105,
+      "actual_output": 129,
+      "duration_s": 2.59,
+      "calibrated_cpt": 2.785
+    }
+  },
+  {
+    "id": 3994,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17789,
+      "reserve": 2048,
+      "total": 19837,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 3995,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17789,
+      "reserve": 2048,
+      "total": 19837,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 3996,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17789,
+      "actual_input": 16202,
+      "actual_output": 191,
+      "duration_s": 3.15,
+      "calibrated_cpt": 2.771
+    }
+  },
+  {
+    "id": 3997,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18628,
+      "reserve": 2048,
+      "total": 20676,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 3998,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18628,
+      "reserve": 2048,
+      "total": 20676,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 3999,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18628,
+      "actual_input": 16961,
+      "actual_output": 240,
+      "duration_s": 3.59,
+      "calibrated_cpt": 2.757
+    }
+  },
+  {
+    "id": 4000,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19499,
+      "reserve": 2048,
+      "total": 21547,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4001,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:15+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19499,
+      "after_tokens": 12278,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 22,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3730,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): механизмы (in-memory, файлы, БД, кэш, checkpointing, event sourcing), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и конкретный подход, выбранный для DocSearch. Для каждого утверждения привести точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк. Отдельно перечислить открытые вопросы.\n\n## Ограничения пользователя\n*   Исследуй в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): какие механизмы (например, in-memory, файлы, БД, кэш, checkpointing, event sourcing и т.п.), чем они различаются по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность), и какой именно подход выбран для DocSearch (или аналогичной системы поиска/агентов в корпусе).\n*   Для каждого утверждения приведи точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк.\n*   Отдельно перечисли открытые вопросы / места, где в корпусе нет подтверждения.\n\n## Решения и договорённости\n*   План работы: 1) Найти документы о хранении состояния (L1); 2) Прочитать L2-фрагменты с описанием механизмов; 3) Найти подход для DocSearch; 4) Собрать цитаты и составить ответ.\n*   Корпус `itmo-lab3` содержит 59 документов, 332 фрагмента. Ключевые папки: `storage` (10 док.), `projects` (6 док.), `meetings` (6 док.).\n\n## Подтверждённые факты (с источниками)\n1.  **Выбранный бэкенд для DocSearch:** PostgreSQL 16.\n    *   *Источник:* `data/projects/docsearch_architecture.md` (doc_id: `fd9485e7-df93-44b0-bc1f-b71d77ef235a`), секция `s03`, фрагмент `af6eaa33-4993-566b-8bac-a84f18624e97`, строки 13-19.\n    *   *Цитата:* \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12).\"\n2.  **Детали решения РС-7:** Бэкенд — PostgreSQL 16, ответственный Ирина Ковалёва, срок перехода 20.11.2026.\n    *   *Источник:* `data/meetings/meeting_m12.md` (doc_id: `9af1414d-b416-4d6f-9dc6-d11dd3396bed`), L1 summary.\n    *   *Примечание:* Требуется чтение L2 для точной цитаты строк.\n3.  **Доступные документы по механизмам хранения (папка `storage`):**\n    *   `st_checkpoint_postgres.md` (doc_id: `e625cae6-6c4f-4673-87db-8839f34f778a`): \"Чекпоинты в PostgreSQL: схема таблиц, пул соединений, миграции\" (5 L2 фрагментов).\n    *   `st_checkpoint_sqlite.md` (doc_id: `63576563-7a76-4186-a023-d168b5d7873b`): \"Чекпоинты в SQLite: WAL, блокировки, резервные копии\" (6 L2 фрагментов).\n    *   `st_encryption_state.md` (doc_id: `3bf69284-f264-4f26-bcd4-a4b8e5f13cf0`): \"Шифрование и защита сохранённого состояния\".\n    *   `st_vector_memory.md`: \"Векторная память и её пределы: эмбеддинги, пределы точности, размер индекса HNSW\" (4 L2 фрагмента).\n    *   `st_retention_policy.txt` (doc_id: `92e89981-2af9-4410-bef8-998a60b843dc`): \"Регламент хранения данных состояния агентов: Сроки хранения чекпоинтов, трасс и артефактов; порядок удаления.\"\n4.  **Архитектура DocSearch:** Компоненты: загрузчик, индекс Elasticsearch уровней L1/L2, основной агент и два субагента.\n    *   *Источник:* `data/projects/docsearch_architecture.md` (doc_id: `fd9485e7-df93-44b0-bc1f-b71d77ef235a`), L1 summary."
+    }
+  },
+  {
+    "id": 4002,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12278,
+      "reserve": 2048,
+      "total": 14326,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4003,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12278,
+      "actual_input": 10627,
+      "actual_output": 241,
+      "duration_s": 2.81,
+      "calibrated_cpt": 2.798
+    }
+  },
+  {
+    "id": 4004,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12857,
+      "reserve": 2048,
+      "total": 14905,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 4005,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12857,
+      "reserve": 2048,
+      "total": 14905,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4006,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12857,
+      "actual_input": 11385,
+      "actual_output": 228,
+      "duration_s": 2.85,
+      "calibrated_cpt": 2.812
+    }
+  },
+  {
+    "id": 4007,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13553,
+      "reserve": 2048,
+      "total": 15601,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 4008,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13553,
+      "reserve": 2048,
+      "total": 15601,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4009,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:24+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13553,
+      "actual_input": 12126,
+      "actual_output": 239,
+      "duration_s": 2.96,
+      "calibrated_cpt": 2.814
+    }
+  },
+  {
+    "id": 4010,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14287,
+      "reserve": 2048,
+      "total": 16335,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4011,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14287,
+      "reserve": 2048,
+      "total": 16335,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4012,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14287,
+      "actual_input": 12875,
+      "actual_output": 207,
+      "duration_s": 2.95,
+      "calibrated_cpt": 2.807
+    }
+  },
+  {
+    "id": 4013,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:27+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "in-memory|in memory|в памяти|памяти процесса",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4014,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14829,
+      "reserve": 2048,
+      "total": 16877,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4015,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14829,
+      "reserve": 2048,
+      "total": 16877,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4016,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14829,
+      "actual_input": 13333,
+      "actual_output": 43,
+      "duration_s": 1.82,
+      "calibrated_cpt": 2.802
+    }
+  },
+  {
+    "id": 4017,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15004,
+      "reserve": 2048,
+      "total": 17052,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 4018,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15004,
+      "reserve": 2048,
+      "total": 17052,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4019,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15004,
+      "actual_input": 13448,
+      "actual_output": 67,
+      "duration_s": 2.06,
+      "calibrated_cpt": 2.799
+    }
+  },
+  {
+    "id": 4020,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:31+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "в оперативной памяти|только в памяти|без персистентности",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4021,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15229,
+      "reserve": 2048,
+      "total": 17277,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 38
+    }
+  },
+  {
+    "id": 4022,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15229,
+      "reserve": 2048,
+      "total": 17277,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4023,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15229,
+      "actual_input": 13627,
+      "actual_output": 54,
+      "duration_s": 1.89,
+      "calibrated_cpt": 2.798
+    }
+  },
+  {
+    "id": 4024,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:33+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "файл",
+      "hits": 3
+    }
+  },
+  {
+    "id": 4025,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15783,
+      "reserve": 2048,
+      "total": 17831,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 4026,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15783,
+      "reserve": 2048,
+      "total": 17831,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4027,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15783,
+      "actual_input": 14203,
+      "actual_output": 132,
+      "duration_s": 2.44,
+      "calibrated_cpt": 2.79
+    }
+  },
+  {
+    "id": 4028,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16776,
+      "reserve": 2048,
+      "total": 18824,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 43
+    }
+  },
+  {
+    "id": 4029,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16776,
+      "reserve": 2048,
+      "total": 18824,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4030,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16776,
+      "actual_input": 15140,
+      "actual_output": 411,
+      "duration_s": 4.56,
+      "calibrated_cpt": 2.779
+    }
+  },
+  {
+    "id": 4031,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17577,
+      "reserve": 2048,
+      "total": 19625,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 46
+    }
+  },
+  {
+    "id": 4032,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17577,
+      "reserve": 2048,
+      "total": 19625,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4033,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17577,
+      "actual_input": 15861,
+      "actual_output": 143,
+      "duration_s": 2.87,
+      "calibrated_cpt": 2.767
+    }
+  },
+  {
+    "id": 4034,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18518,
+      "reserve": 2048,
+      "total": 20566,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 49
+    }
+  },
+  {
+    "id": 4035,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18518,
+      "reserve": 2048,
+      "total": 20566,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4036,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18518,
+      "actual_input": 16723,
+      "actual_output": 323,
+      "duration_s": 4.19,
+      "calibrated_cpt": 2.755
+    }
+  },
+  {
+    "id": 4037,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19235,
+      "reserve": 2048,
+      "total": 21283,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 52
+    }
+  },
+  {
+    "id": 4038,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:56+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19235,
+      "after_tokens": 11504,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 27,
+      "kept_messages": 25,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8239,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): механизмы (in-memory, файлы, БД, кэш, checkpointing, event sourcing), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и конкретный подход, выбранный для DocSearch. Для каждого утверждения привести точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк. Отдельно перечислить открытые вопросы.\n\n## Ограничения пользователя\n*   Исследуй в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): какие механизмы (например, in-memory, файлы, БД, кэш, checkpointing, event sourcing и т.п.), чем они различаются по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность), и какой именно подход выбран для DocSearch (или аналогичной системы поиска/агентов в корпусе).\n*   Для каждого утверждения приведи точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк.\n*   Отдельно перечисли открытые вопросы / места, где в корпусе нет подтверждения.\n\n## Решения и договорённости\n*   План работы: 1) Найти документы о хранении состояния (L1); 2) Прочитать L2-фрагменты с описанием механизмов; 3) Найти подход для DocSearch; 4) Собрать цитаты и составить ответ.\n*   Корпус `itmo-lab3` содержит 59 документов, 332 фрагмента. Ключевые папки: `storage` (10 док.), `projects` (6 док.), `meetings` (6 док.).\n\n## Подтверждённые факты (с источниками)\n1.  **Выбранный бэкенд для DocSearch:** PostgreSQL 16.\n    *   *Источник:* `data/projects/docsearch_architecture.md` (doc_id: `fd9485e7-df93-44b0-bc1f-b71d77ef235a`), секция `s03`, фрагмент `af6eaa33-4993-566b-8bac-a84f18624e97`, строки 15-15.\n    *   *Цитата:* \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12).\"\n    *   *Evidence ID:* `ev_662ef656ecc9`.\n2.  **Детали решения РС-7:** Бэкенд — PostgreSQL 16, ответственный Ирина Ковалёва, срок перехода 20.11.2026.\n    *   *Источник:* `data/meetings/meeting_m12.md` (doc_id: `9af1414d-b416-4d6f-9dc6-d11dd3396bed`), секция `s02`, фрагмент `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строки 15-15.\n    *   *Цитата:* \"Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\"\n    *   *Evidence ID:* `ev_1d409f2abc6d`.\n3.  **PostgreSQL (общее хранилище):**\n    *   *Источник:* `data/storage/st_checkpoint_postgres.md` (doc_id: `e625cae6-6c4f-4673-87db-8839f34f778a`), секция `s01`, фрагмент `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, строки 7-9.\n    *   *Цитата:* \"PostgreSQL выбирают, когда несколько рабочих процессов пишут состояние в общее хранилище. Запись состояния должна быть атомарной: частично записанный чекпоинт хуже, чем его отсутствие.\"\n    *   *Evidence ID:* `ev_fa08a3a6475a`.\n    *   *Ограничение (пул):* Фрагмент `6225b442-1f05-58f6-aa83-4f682be3559f`, строки 25-27: \"Пул соединений ограничивают 20 соединениями на рабочий процесс... при исчерпании пула новые шаги агента ждут свободного соединения и могут упереться в таймаут [L-ST-06].\"\n4.  **SQLite (локальное хранение):**\n    *   *Источник:* `data/storage/st_checkpoint_sqlite.md` (doc"
+    }
+  },
+  {
+    "id": 4039,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11504,
+      "reserve": 2048,
+      "total": 13552,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4040,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11504,
+      "actual_input": 9844,
+      "actual_output": 144,
+      "duration_s": 2.13,
+      "calibrated_cpt": 2.806
+    }
+  },
+  {
+    "id": 4041,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12406,
+      "reserve": 2048,
+      "total": 14454,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 4042,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:20:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12406,
+      "reserve": 2048,
+      "total": 14454,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4043,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12406,
+      "actual_input": 10892,
+      "actual_output": 264,
+      "duration_s": 3.02,
+      "calibrated_cpt": 2.828
+    }
+  },
+  {
+    "id": 4044,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12861,
+      "reserve": 2048,
+      "total": 14909,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4045,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12861,
+      "reserve": 2048,
+      "total": 14909,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4046,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12861,
+      "actual_input": 11457,
+      "actual_output": 148,
+      "duration_s": 2.29,
+      "calibrated_cpt": 2.832
+    }
+  },
+  {
+    "id": 4047,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13776,
+      "reserve": 2048,
+      "total": 15824,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4048,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13776,
+      "reserve": 2048,
+      "total": 15824,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4049,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13776,
+      "actual_input": 12373,
+      "actual_output": 316,
+      "duration_s": 3.54,
+      "calibrated_cpt": 2.826
+    }
+  },
+  {
+    "id": 4050,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14422,
+      "reserve": 2048,
+      "total": 16470,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 4051,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14422,
+      "reserve": 2048,
+      "total": 16470,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4052,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14422,
+      "actual_input": 12996,
+      "actual_output": 143,
+      "duration_s": 2.45,
+      "calibrated_cpt": 2.816
+    }
+  },
+  {
+    "id": 4053,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15217,
+      "reserve": 2048,
+      "total": 17265,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 4054,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15217,
+      "reserve": 2048,
+      "total": 17265,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4055,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15217,
+      "actual_input": 13677,
+      "actual_output": 59,
+      "duration_s": 2.16,
+      "calibrated_cpt": 2.809
+    }
+  },
+  {
+    "id": 4056,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:12+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "Redis|redis|кэш|cache",
+      "hits": 14
+    }
+  },
+  {
+    "id": 4057,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16915,
+      "reserve": 2048,
+      "total": 18963,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 4058,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16915,
+      "reserve": 2048,
+      "total": 18963,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4059,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16915,
+      "actual_input": 15647,
+      "actual_output": 59,
+      "duration_s": 2.22,
+      "calibrated_cpt": 2.771
+    }
+  },
+  {
+    "id": 4060,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17850,
+      "reserve": 2048,
+      "total": 19898,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 4061,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17850,
+      "reserve": 2048,
+      "total": 19898,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4062,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17850,
+      "actual_input": 16302,
+      "actual_output": 146,
+      "duration_s": 2.92,
+      "calibrated_cpt": 2.748
+    }
+  },
+  {
+    "id": 4063,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19052,
+      "reserve": 2048,
+      "total": 21100,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 47
+    }
+  },
+  {
+    "id": 4064,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:26+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19052,
+      "after_tokens": 10989,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 33,
+      "kept_messages": 14,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8821,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): механизмы (in-memory, файлы, БД, кэш, checkpointing, event sourcing), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и конкретный подход, выбранный для DocSearch. Для каждого утверждения привести точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк. Отдельно перечислить открытые вопросы.\n\n## Ограничения пользователя\n*   Исследуй в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): какие механизмы (например, in-memory, файлы, БД, кэш, checkpointing, event sourcing и т.п.), чем они различаются по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность), и какой именно подход выбран для DocSearch (или аналогичной системы поиска/агентов в корпусе).\n*   Для каждого утверждения приведи точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк.\n*   Отдельно перечисли открытые вопросы / места, где в корпусе нет подтверждения.\n\n## Решения и договорённости\n*   План работы: 1) Найти документы о хранении состояния (L1); 2) Прочитать L2-фрагменты с описанием механизмов; 3) Найти подход для DocSearch; 4) Собрать цитаты и составить ответ.\n*   Корпус `itmo-lab3` содержит 59 документов, 332 фрагмента. Ключевые папки: `storage` (10 док.), `projects` (6 док.), `meetings` (6 док.).\n*   Поиск по паттернам \"in-memory\", \"в памяти\", \"в оперативной памяти\" в L2 не дал результатов (0 hits), что указывает на отсутствие явных описаний in-memory хранения в корпусе.\n\n## Подтверждённые факты (с источниками)\n1.  **Выбранный бэкенд для DocSearch:** PostgreSQL 16.\n    *   *Источник:* `data/projects/docsearch_architecture.md` (doc_id: `fd9485e7-df93-44b0-bc1f-b71d77ef235a`), секция `s03`, фрагмент `af6eaa33-4993-566b-8bac-a84f18624e97`, строки 15-15.\n    *   *Цитата:* \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12).\"\n    *   *Evidence ID:* `ev_662ef656ecc9`.\n2.  **Детали решения РС-7:** Бэкенд — PostgreSQL 16, ответственный Ирина Ковалёва, срок перехода 20.11.2026.\n    *   *Источник:* `data/meetings/meeting_m12.md` (doc_id: `9af1414d-b416-4d6f-9dc6-d11dd3396bed`), секция `s02`, фрагмент `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строки 15-15.\n    *   *Цитата:* \"Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\"\n    *   *Evidence ID:* `ev_1d409f2abc6d`.\n3.  **PostgreSQL (общее хранилище):**\n    *   *Источник:* `data/storage/st_checkpoint_postgres.md` (doc_id: `e625cae6-6c4f-4673-87db-8839f34f778a`), секция `s01`, фрагмент `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, строки 7-9.\n    *   *Цитата:* \"PostgreSQL выбирают, когда несколько рабочих процессов пишут состояние в общее хранилище. Запись состояния должна быть атомарной: частично записанный чекпоинт хуже, чем его отсутствие.\"\n    *   *Evidence ID:* `ev_fa08a3a6475a`.\n    *   *Ограничение (пул):* Фрагмент `6225b442-1f05-58f6-aa83-4f682be3559f`, строки 25-27: \"Пул соединений ограничивают 20 соединениями на рабочий процесс... при исчерпании пула новые шаги агента ждут свободного"
+    }
+  },
+  {
+    "id": 4065,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10989,
+      "reserve": 2048,
+      "total": 13037,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4066,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10989,
+      "actual_input": 9541,
+      "actual_output": 293,
+      "duration_s": 3.0,
+      "calibrated_cpt": 2.789
+    }
+  },
+  {
+    "id": 4067,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11407,
+      "reserve": 2048,
+      "total": 13455,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 4068,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11407,
+      "reserve": 2048,
+      "total": 13455,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4069,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11407,
+      "actual_input": 10143,
+      "actual_output": 73,
+      "duration_s": 1.64,
+      "calibrated_cpt": 2.802
+    }
+  },
+  {
+    "id": 4070,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11794,
+      "reserve": 2048,
+      "total": 13842,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 4071,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11794,
+      "reserve": 2048,
+      "total": 13842,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4072,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11794,
+      "actual_input": 10591,
+      "actual_output": 168,
+      "duration_s": 2.39,
+      "calibrated_cpt": 2.803
+    }
+  },
+  {
+    "id": 4073,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12110,
+      "reserve": 2048,
+      "total": 14158,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 4074,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12110,
+      "reserve": 2048,
+      "total": 14158,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4075,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12110,
+      "actual_input": 10914,
+      "actual_output": 140,
+      "duration_s": 2.17,
+      "calibrated_cpt": 2.799
+    }
+  },
+  {
+    "id": 4076,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13186,
+      "reserve": 2048,
+      "total": 15234,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4077,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13186,
+      "reserve": 2048,
+      "total": 15234,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4078,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13186,
+      "actual_input": 11906,
+      "actual_output": 333,
+      "duration_s": 3.68,
+      "calibrated_cpt": 2.793
+    }
+  },
+  {
+    "id": 4079,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13879,
+      "reserve": 2048,
+      "total": 15927,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 4080,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13879,
+      "reserve": 2048,
+      "total": 15927,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4081,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13879,
+      "actual_input": 12537,
+      "actual_output": 70,
+      "duration_s": 1.95,
+      "calibrated_cpt": 2.785
+    }
+  },
+  {
+    "id": 4082,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14435,
+      "reserve": 2048,
+      "total": 16483,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 4083,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14435,
+      "reserve": 2048,
+      "total": 16483,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4084,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14435,
+      "actual_input": 13025,
+      "actual_output": 167,
+      "duration_s": 2.6,
+      "calibrated_cpt": 2.778
+    }
+  },
+  {
+    "id": 4085,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14811,
+      "reserve": 2048,
+      "total": 16859,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4086,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14811,
+      "reserve": 2048,
+      "total": 16859,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4087,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14811,
+      "actual_input": 13348,
+      "actual_output": 148,
+      "duration_s": 2.63,
+      "calibrated_cpt": 2.771
+    }
+  },
+  {
+    "id": 4088,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15922,
+      "reserve": 2048,
+      "total": 17970,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4089,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15922,
+      "reserve": 2048,
+      "total": 17970,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4090,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15922,
+      "actual_input": 14352,
+      "actual_output": 136,
+      "duration_s": 2.68,
+      "calibrated_cpt": 2.765
+    }
+  },
+  {
+    "id": 4091,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16250,
+      "reserve": 2048,
+      "total": 18298,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 4092,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16250,
+      "reserve": 2048,
+      "total": 18298,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4093,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16250,
+      "actual_input": 14648,
+      "actual_output": 74,
+      "duration_s": 2.18,
+      "calibrated_cpt": 2.757
+    }
+  },
+  {
+    "id": 4094,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16877,
+      "reserve": 2048,
+      "total": 18925,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 38
+    }
+  },
+  {
+    "id": 4095,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16877,
+      "reserve": 2048,
+      "total": 18925,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4096,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16877,
+      "actual_input": 15213,
+      "actual_output": 221,
+      "duration_s": 3.34,
+      "calibrated_cpt": 2.75
+    }
+  },
+  {
+    "id": 4097,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17334,
+      "reserve": 2048,
+      "total": 19382,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 4098,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17334,
+      "reserve": 2048,
+      "total": 19382,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4099,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17334,
+      "actual_input": 15596,
+      "actual_output": 146,
+      "duration_s": 2.84,
+      "calibrated_cpt": 2.744
+    }
+  },
+  {
+    "id": 4100,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18494,
+      "reserve": 2048,
+      "total": 20542,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 43
+    }
+  },
+  {
+    "id": 4101,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:21:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18494,
+      "reserve": 2048,
+      "total": 20542,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4102,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18494,
+      "actual_input": 16622,
+      "actual_output": 359,
+      "duration_s": 4.53,
+      "calibrated_cpt": 2.739
+    }
+  },
+  {
+    "id": 4103,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19216,
+      "reserve": 2048,
+      "total": 21264,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 46
+    }
+  },
+  {
+    "id": 4104,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:11+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 19216,
+      "after_tokens": 11208,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 26,
+      "kept_messages": 20,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 7674,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): механизмы (in-memory, файлы, БД, кэш, checkpointing, event sourcing), их различия по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность) и конкретный подход, выбранный для DocSearch. Для каждого утверждения привести точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк. Отдельно перечислить открытые вопросы.\n\n## Ограничения пользователя\n*   Исследуй в корпусе все описанные подходы к хранению состояния агентов (agent state storage / persistence): какие механизмы (например, in-memory, файлы, БД, кэш, checkpointing, event sourcing и т.п.), чем они различаются по ограничениям (масштабируемость, отказоустойчивость, производительность, сложность, консистентность), и какой именно подход выбран для DocSearch (или аналогичной системы поиска/агентов в корпусе).\n*   Для каждого утверждения приведи точные цитаты из L2-фрагментов с document_id, fragment_id и номерами строк.\n*   Отдельно перечисли открытые вопросы / места, где в корпусе нет подтверждения.\n\n## Решения и договорённости\n*   План работы: 1) Найти документы о хранении состояния (L1); 2) Прочитать L2-фрагменты с описанием механизмов; 3) Найти подход для DocSearch; 4) Собрать цитаты и составить ответ.\n*   Корпус `itmo-lab3` содержит 59 документов, 332 фрагмента. Ключевые папки: `storage` (10 док.), `projects` (6 док.), `meetings` (6 док.).\n*   Поиск по паттернам \"in-memory\", \"в памяти\", \"в оперативной памяти\" в L2 не дал результатов (0 hits), что указывает на отсутствие явных описаний in-memory хранения в корпусе.\n*   Поиск по паттернам \"Redis|redis|кэш|cache\" в L2 дал 14 совпадений, выявив документ `data/storage/st_redis_state.md`.\n\n## Подтверждённые факты (с источниками)\n1.  **Выбранный бэкенд для DocSearch:** PostgreSQL 16.\n    *   *Источник:* `data/projects/docsearch_architecture.md` (doc_id: `fd9485e7-df93-44b0-bc1f-b71d77ef235a`), секция `s03`, фрагмент `af6eaa33-4993-566b-8bac-a84f18624e97`, строки 15-15.\n    *   *Цитата:* \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12).\"\n    *   *Evidence ID:* `ev_662ef656ecc9`.\n2.  **Детали решения РС-7:** Бэкенд — PostgreSQL 16, ответственный Ирина Ковалёва, срок перехода 20.11.2026.\n    *   *Источник:* `data/meetings/meeting_m12.md` (doc_id: `9af1414d-b416-4d6f-9dc6-d11dd3396bed`), секция `s02`, фрагмент `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строки 15-15.\n    *   *Цитата:* \"Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\"\n    *   *Evidence ID:* `ev_1d409f2abc6d`.\n3.  **PostgreSQL (общее хранилище):**\n    *   *Источник:* `data/storage/st_checkpoint_postgres.md` (doc_id: `e625cae6-6c4f-4673-87db-8839f34f778a`), секция `s01`, фрагмент `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, строки 7-9.\n    *   *Цитата:* \"PostgreSQL выбирают, когда несколько рабочих процессов пишут состояние в общее хранилище. Запись состояния должна быть атомарной: частично записанный чекпоинт хуже, чем его отсутствие.\"\n    *   *Evidence ID:* `ev_fa08a3a6475a`.\n    *   *Ограничение (пул):* Фрагмент `6225b442-1f05-58f6-aa83-4f682be355"
+    }
+  },
+  {
+    "id": 4105,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11208,
+      "reserve": 2048,
+      "total": 13256,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4106,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11208,
+      "actual_input": 9375,
+      "actual_output": 73,
+      "duration_s": 1.57,
+      "calibrated_cpt": 2.819
+    }
+  },
+  {
+    "id": 4107,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11404,
+      "reserve": 2048,
+      "total": 13452,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 4108,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11404,
+      "reserve": 2048,
+      "total": 13452,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4109,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11404,
+      "actual_input": 9858,
+      "actual_output": 169,
+      "duration_s": 2.3,
+      "calibrated_cpt": 2.862
+    }
+  },
+  {
+    "id": 4110,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11550,
+      "reserve": 2048,
+      "total": 13598,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4111,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11550,
+      "reserve": 2048,
+      "total": 13598,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)"
+    }
+  },
+  {
+    "id": 4112,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11550,
+      "actual_input": 10188,
+      "actual_output": 140,
+      "duration_s": 2.1,
+      "calibrated_cpt": 2.88
+    }
+  },
+  {
+    "id": 4113,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12509,
+      "reserve": 2048,
+      "total": 14557,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 4114,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12509,
+      "reserve": 2048,
+      "total": 14557,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 4115,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12509,
+      "actual_input": 11180,
+      "actual_output": 296,
+      "duration_s": 3.41,
+      "calibrated_cpt": 2.882
+    }
+  },
+  {
+    "id": 4116,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13093,
+      "reserve": 2048,
+      "total": 15141,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 4117,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13093,
+      "reserve": 2048,
+      "total": 15141,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 4118,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13093,
+      "actual_input": 11772,
+      "actual_output": 71,
+      "duration_s": 1.91,
+      "calibrated_cpt": 2.877
+    }
+  },
+  {
+    "id": 4119,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13556,
+      "reserve": 2048,
+      "total": 15604,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 4120,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13556,
+      "reserve": 2048,
+      "total": 15604,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 4121,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13556,
+      "actual_input": 12206,
+      "actual_output": 154,
+      "duration_s": 2.53,
+      "calibrated_cpt": 2.869
+    }
+  },
+  {
+    "id": 4122,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:25+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13870,
+      "reserve": 2048,
+      "total": 15918,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4123,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13870,
+      "reserve": 2048,
+      "total": 15918,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)"
+    }
+  },
+  {
+    "id": 4124,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13870,
+      "actual_input": 12515,
+      "actual_output": 69,
+      "duration_s": 2.09,
+      "calibrated_cpt": 2.858
+    }
+  },
+  {
+    "id": 4125,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14399,
+      "reserve": 2048,
+      "total": 16447,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 4126,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14399,
+      "reserve": 2048,
+      "total": 16447,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)"
+    }
+  },
+  {
+    "id": 4127,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14399,
+      "actual_input": 12993,
+      "actual_output": 175,
+      "duration_s": 2.62,
+      "calibrated_cpt": 2.847
+    }
+  },
+  {
+    "id": 4128,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14745,
+      "reserve": 2048,
+      "total": 16793,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 38
+    }
+  },
+  {
+    "id": 4129,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14745,
+      "reserve": 2048,
+      "total": 16793,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4130,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14745,
+      "actual_input": 13325,
+      "actual_output": 74,
+      "duration_s": 2.04,
+      "calibrated_cpt": 2.834
+    }
+  },
+  {
+    "id": 4131,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15312,
+      "reserve": 2048,
+      "total": 17360,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 4132,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15312,
+      "reserve": 2048,
+      "total": 17360,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4133,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15312,
+      "actual_input": 13809,
+      "actual_output": 164,
+      "duration_s": 2.87,
+      "calibrated_cpt": 2.823
+    }
+  },
+  {
+    "id": 4134,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15684,
+      "reserve": 2048,
+      "total": 17732,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 4135,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15684,
+      "reserve": 2048,
+      "total": 17732,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4136,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:37+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15684,
+      "actual_input": 14135,
+      "actual_output": 70,
+      "duration_s": 2.1,
+      "calibrated_cpt": 2.812
+    }
+  },
+  {
+    "id": 4137,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16063,
+      "reserve": 2048,
+      "total": 18111,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 4138,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16063,
+      "reserve": 2048,
+      "total": 18111,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4139,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16063,
+      "actual_input": 14389,
+      "actual_output": 2048,
+      "duration_s": 17.84,
+      "calibrated_cpt": 2.808
+    }
+  },
+  {
+    "id": 4140,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:55+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "## Подходы к хранению состояния агентов в корпусе (папка storage, 10 документов)\n\n### 1. Чекпоинты в SQLite (data/storage/st_checkpoint_sqlite.md, doc_id 63576563-7a76-4186-a023-d168b5d7873b)\n- Назнач"
+    }
+  },
+  {
+    "id": 4141,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18268,
+      "reserve": 2048,
+      "total": 20316,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 46
+    }
+  },
+  {
+    "id": 4142,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18268,
+      "reserve": 2048,
+      "total": 20316,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4143,
+    "task_id": "M6-deep1",
+    "ts": "2026-11-19T16:22:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18268,
+      "actual_input": 16372,
+      "actual_output": 108,
+      "duration_s": 3.2,
+      "calibrated_cpt": 2.804
+    }
+  }
+]

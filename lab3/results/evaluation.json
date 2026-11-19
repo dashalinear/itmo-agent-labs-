@@ -478,14 +478,57 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M6",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 4,
+      "model_calls": 15,
+      "tool_calls": 12,
+      "tokens": 900466,
+      "compactions": 0,
+      "peak_input": 16312,
+      "evidence": 1,
+      "searches": {
+        "grep:L2": 1,
+        "fulltext:L1": 1
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M6-deep1",
+      "kind": "deep",
+      "status": "completed",
+      "reason": "## Подходы к хранению состояния агентов в корпусе (папка storage, 10 документов)\n\n### 1. Ч",
+      "parent": "M6",
+      "runs": 1,
+      "model_calls": 56,
+      "tool_calls": 88,
+      "tokens": 757363,
+      "compactions": 4,
+      "peak_input": 16961,
+      "evidence": 17,
+      "searches": {
+        "fulltext:L2": 1,
+        "fulltext:L1": 1,
+        "grep:L2": 4
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 13,
+    "fulltext:L1": 15,
     "grep:L1": 12,
     "vector:L1": 5,
-    "fulltext:L2": 8,
-    "grep:L2": 223,
+    "fulltext:L2": 9,
+    "grep:L2": 228,
     "vector:L2": 4
   },
   "exhaustive": [
