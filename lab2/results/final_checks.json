@@ -247,13 +247,13 @@
   {
     "task": "B3",
     "property": "не помечен completed без выполненных критериев",
-    "actual": "paused (budget exhausted before the call (tokens: needed 13320, rema)",
+    "actual": "paused (budget exhausted before the call (tokens: needed 14416, rema)",
     "ok": true
   },
   {
     "task": "B3",
     "property": "второй раунд: новые запросы после чтения страниц",
-    "actual": "1 запросов после чтения",
+    "actual": "7 запросов после чтения",
     "ok": true
   },
   {
@@ -265,15 +265,14 @@
   {
     "task": "B3",
     "property": "не больше 60 % прочитанных страниц с одного домена",
-    "actual": "github.com: 3/5 = 60%",
-    "ok": true
+    "actual": "arxiv.org: 10/10 = 100%",
+    "ok": false
   },
   {
     "task": "B3",
     "property": "домены прочитанных страниц (информативно)",
     "actual": {
-      "github.com": 3,
-      "en.wikipedia.org": 2
+      "arxiv.org": 10
     },
     "ok": true
   }

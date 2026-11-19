@@ -419,13 +419,13 @@ A1, D1 и E1 этого прогона заменены записью `run_fina
 | G2 | move из junction -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | разрешённые write и move внутри root работают | ["ok", "ok"] | OK |
 | G2 | лимит суммарного вывода шага: step total would exceed | 2 | OK |
-| B3 | не помечен completed без выполненных критериев | paused (budget exhausted before the call (tokens: needed 13320, rema) | OK |
-| B3 | второй раунд: новые запросы после чтения страниц | 1 запросов после чтения | OK |
+| B3 | не помечен completed без выполненных критериев | paused (budget exhausted before the call (tokens: needed 14416, rema) | OK |
+| B3 | второй раунд: новые запросы после чтения страниц | 7 запросов после чтения | OK |
 | B3 | прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
-| B3 | не больше 60 % прочитанных страниц с одного домена | github.com: 3/5 = 60% | OK |
-| B3 | домены прочитанных страниц (информативно) | {"github.com": 3, "en.wikipedia.org": 2} | OK |
+| B3 | не больше 60 % прочитанных страниц с одного домена | arxiv.org: 10/10 = 100% | НЕТ |
+| B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 10} | OK |
 
-Итого: 43 OK, 1 НЕТ (scripts/final_checks.py по results/ и traces/).
+Итого: 42 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/).
 <!-- FINAL_CHECKS:END -->
 
 <!-- COUNTERS:BEGIN -->
@@ -436,7 +436,7 @@ _Технические счётчики задач (results/evaluation.md)_
 | A1 | completed (Обзор собран: 5 секций (approaches, limitations, disputed, d) | 2 | 17443 | 20862 / 28000 / 262144 | 551642 (42289) | 39 | 5 | 104 | 0 | 0 | 0 | 161.5 |
 | B1 | paused (budget exhausted before the call (model_calls: needed 1, rem) | 1 | 17054 | 20927 / 28000 / 262144 | 925108 (47025) | 70 | 9 | 72 | 6 | 18 | 5 | 336.4 |
 | B2 | completed (Обзор готов: 4 поисковых запроса, 7 страниц прочитано, 9 evi) | 1 | 16761 | 20493 / 28000 / 262144 | 296785 (11636) | 22 | 2 | 30 | 4 | 10 | 0 | 206.0 |
-| B3 | paused (budget exhausted before the call (tokens: needed 13320, rema) | 1 | 17246 | 20980 / 28000 / 262144 | 1194238 (53158) | 86 | 9 | 106 | 10 | 9 | 3 | 351.5 |
+| B3 | paused (budget exhausted before the call (tokens: needed 14416, rema) | 1 | 18323 | 20859 / 28000 / 262144 | 1189382 (68921) | 85 | 11 | 99 | 10 | 25 | 10 | 619.0 |
 | C1 | completed (Обзор готов: 4 раздела (approaches, limitations, comparison,) | 1 | 17435 | 20918 / 28000 / 262144 | 325945 (25255) | 23 | 3 | 62 | 10 | 10 | 0 | 129.9 |
 | C2 | paused (partial: HTTP-бюджет (6/6) исчерпан; harness требует 8 прочи) | 1 | 17166 | 20955 / 28000 / 262144 | 372267 (15467) | 27 | 2 | 35 | 3 | 6 | 0 | 97.4 |
 | D1 | completed (Обзор собран: 5 разделов (approaches, limitations, disputed,) | 2 | 16602 | 20228 / 28000 / 262144 | 277913 (15569) | 19 | 2 | 51 | 0 | 0 | 0 | 97.2 |

@@ -1,5 +1,5 @@
 ## Цель
-Исследовать подходы к хранению состояния LLM-агентов, найти источники, сопоставить ограничения и подготовить обзор с подтверждениями (evidence).
+Исследовать подходы к хранению состояния LLM-агентов, сопоставить их ограничения и подготовить обзор с подтверждениями (evidence).
 
 ## Ограничения пользователя
 - [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.
@@ -12,40 +12,17 @@
 ## Решения и договорённости
 - Использовать навык `research_web` для автономного поиска.
 - Выполнить минимум 3 поисковых запроса в первом раунде.
-- После чтения первых страниц выполнить уточняющие запросы и перейти по ссылке с прочитанной страницы.
-- Собирать минимум 6 подтверждений (evidence) с URL.
-- Включить в отчет секции: approaches, limitations, comparison, unverified.
-- Ограничить долю одного домена до 60% прочитанных страниц.
-- Бюджет поисковых запросов исчерпан (10/10 использовано). Дальнейший поиск невозможен.
-- Статус задачи: `complete_task` отклонен из-за несоответствия критериям. Необходимо дочитать 1 страницу (итого 5) и пройти по 1 ссылке, найденной на прочитанной странице.
-- Выбраны для чтения: `https://github.com/vaibhav7087/agent-state-checkpoints` (pending), `https://vinithavn.medium.com/advancing-agentic-memory-an-overview-of-modern-memory-management-architectures-in-llm-agents-8df87b0da58f` (error: already processed).
+- Выбрать источники из разных доменов для соблюдения лимита долей доменов (max_domain_share: 0.6).
+- Собрать минимум 6 подтверждений (evidence) с URL.
+- Структура отчета должна включать секции: approaches, limitations, comparison, unverified.
+- Второй раунд: уточнить запросы после чтения первых страниц, пройти по ссылкам из прочитанных статей.
+- При неудаче `complete_task` из-за критериев (домены, ссылки) продолжить работу: искать источники на других доменах и переходить по ссылкам внутри прочитанных страниц.
 
 ## Подтверждённые факты (с источниками)
-1. **Agent Harness**: "structure surrounding a large language model (LLM) that enables it to operate as an AI agent. It manages tool use, memory, state persistence, execution environments and feedback loops, as opposed to the model's internal reasoning."
-   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 149).
-2. **Stateless Model**: "Because a \"base model\" LLM is a stateless probabilistic function that maps input token sequences to output token sequences, the harness is what makes an agent out of a model..."
-   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 151).
-3. **Harness Components**: "Components commonly grouped under a harness include tool dispatch, memory and state persistence, an isolated sandbox or workspace, context management, and guardrails..."
-   - Источник: https://en.wikipedia.org/wiki/Agent_harness (artifact_id: `art_07adcaf63baf6a6afe1b`, строка 159).
-4. **Agent File Format**: "Agent File (.af) is an open standard file format for serializing stateful AI agents. Originally designed for the Letta framework, Agent File provides a portable way to share agents with persistent memory and behavior."
-   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строка 294).
-5. **Agent File Contents**: "Agent Files package all components of a stateful agent: system prompts, editable memory (personality and user information), tool configurations (code and schemas), and LLM se..."
-   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строка 296).
-6. **Portability Goal**: "Agent File addresses the need for a standard that enables: 🔄 Portability: Move agents between systems or deploy them to new environments"
-   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строки 423-425).
-7. **Agent File State Components**: "A .af file contains all the state required to re-create the exact same agent: Model configuration, Message history, System prompt, Memory blocks..."
-   - Источник: https://github.com/letta-ai/agent-file (artifact_id: `art_bfc1d6f64cd670bb0db9`, строки 435-450).
-8. **LangGraph Checkpoint SAP**: "A free, open-source LangGraph's checkpoint saver that uses SAP Agent Memory Service. It enables state persistence backed by SAP Agent Memory Service for durable, long-running workflows and agents."
-   - Источник: https://github.com/S
-## Сжато правилами (без LLM)
-- вызов web_fetch({"url": "https://github.com/letta-ai/agent-file", "force": true})
-  → web_fetch: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "web_fetch", "data": {"url": "https://github.com/letta-ai/agent-file", "url_key": "aecc93f673ce3ad7", "final_url": "htt
-- вызов search_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "query": "state", "max_hits": 30})
-  → search_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "search_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "query": "state", "hits": [{"line": 4, "snippet"
-- вызов read_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 290, "max_lines": 60})
-  → read_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 290, "end_line": 349, "total_lines":
-- вызов read_artifact({"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 420, "max_lines": 60})
-  → read_artifact: ok art_bfc1d6f64cd670bb0db9 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_bfc1d6f64cd670bb0db9", "start_line": 420, "end_line": 479, "total_lines":
-- вызов save_evidence({"claim":
-…(правила: хвост обрезан)…
-d_artifact: ok art_daa2bb99f1925e6d6296 {"ok": true, "tool": "read_artifact", "data": {"artifact_id": "art_daa2bb99f1925e6d6296", "start_line": 195, "end_line": 264, "total_lines":
+1. **Определение рабочей памяти:** «Whatever fits inside the current context window constitutes the agent’s working memory.» (Источник: `https://arxiv.org/html/2603.07670v1`, строка 319, artifact_id: `art_8fa11efb6c6659512101`, evidence_id: `ev_0a5f00cdefa0`).
+2. **Аналогия с моделью Баддли:** «Baddeley’s central executive plus buffer model [Baddeley, 2000] maps neatly: the LLM is the executive, the context window is the buffer, and both share the same bottleneck—limited capacity.» (Источник: `https://arxiv.org/html/2603.07670v1`, строка 320, artifact_id: `art_8fa11efb6c6659512101`).
+3. **Ограничение расширения контекста:** «Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention.» (Источник: `https://arxiv.org/html/2603.07670v1`, строка 541, artifact_id: `art_8fa11efb6c6659512101`, evidence_id: `ev_0f303e210b48`).
+4. **Проблема дрейфа суммаризации:** «Context-resident memory is transparent and infrastructure-free, but it carries a well-known pathology: summarization drift. Each compression pass silently discards low-frequency details.» (Источник: `https://arxiv.org/html/2603.07670v1`, строки 538-539, artifact_id: `art_8fa11efb6c6659512101`, evidence_id: `ev_5bc839714c67`).
+5. **Архитектурный паттерн A (Монолитный контекст):** «Pattern A: Monolithic context. All memory lives inside the prompt. Zero infrastructure, fully transparent, but capacity-capped and prone to summarization drift.» (Источник: `https://arxiv.org/html/2603.07670v1`, строки 931-933, artifact_id: `art_8fa11efb6c6659512101`).
+6. **Архитектурный паттерн B (Контекст + хранилище):** «Pattern B: Context + retrieval store. Working memory in the context window; long-term records in an external vector or structured store.» (Источник: `https://arxiv.org/html/2603.07670v1`, строки 936-940, artifact_id: `art_8fa11efb6c6659512101`, evidence_id: `ev_61da0420c17d`).
+7. **Недостаточность длинного контекста:** «Longer context enlarges working memory but does not provide persistent cross-session storage, structured knowledge organization, selective retrieval from months of history, or governance mechanisms like deletion and access control.» (Источник: `https://arxiv.org/html/2603.07670v1`, строка 980
