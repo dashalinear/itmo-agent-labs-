@@ -322,19 +322,19 @@
   {
     "task": "B4",
     "property": "статус completed по критериям обзора (complete_task)",
-    "actual": "paused (budget exhausted before the call (model_calls: needed 1, rem)",
-    "ok": false
+    "actual": "completed (Обзор готов: 4 раздела (approaches, limitations, comparison,)",
+    "ok": true
   },
   {
     "task": "B4",
     "property": "второй раунд: новые запросы после чтения страниц",
-    "actual": "3 запросов после чтения",
+    "actual": "6 запросов после чтения",
     "ok": true
   },
   {
     "task": "B4",
     "property": "прочитано страниц (web_fetch) не меньше 5",
-    "actual": 11,
+    "actual": 8,
     "ok": true
   },
   {
@@ -347,13 +347,8 @@
     "task": "B4",
     "property": "домены прочитанных страниц (информативно)",
     "actual": {
-      "arize.com": 1,
-      "vahu.org": 1,
-      "www.kunalganglani.com": 1,
-      "docs.langchain.com": 1,
-      "arxiv.org": 5,
-      "mem0.ai": 1,
-      "www.letta.com": 1
+      "arxiv.org": 7,
+      "docs.langchain.com": 1
     },
     "ok": true
   }

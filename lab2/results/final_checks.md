@@ -52,10 +52,10 @@
 | B3 | доп. критерий (сверх задания): прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
 | B3 | доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/14 = 64% | НЕТ |
 | B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "docs.langchain.com": 1, "mortalapps.com": 1, "fast.io": 1, "www.ibm.com": 1, "en.wikipedia.org": 1} | OK |
-| B4 | статус completed по критериям обзора (complete_task) | paused (budget exhausted before the call (model_calls: needed 1, rem) | НЕТ |
-| B4 | второй раунд: новые запросы после чтения страниц | 3 запросов после чтения | OK |
-| B4 | прочитано страниц (web_fetch) не меньше 5 | 11 | OK |
+| B4 | статус completed по критериям обзора (complete_task) | completed (Обзор готов: 4 раздела (approaches, limitations, comparison,) | OK |
+| B4 | второй раунд: новые запросы после чтения страниц | 6 запросов после чтения | OK |
+| B4 | прочитано страниц (web_fetch) не меньше 5 | 8 | OK |
 | B4 | у каждого отобранного или отклонённого URL есть причина | без причины: 0 | OK |
-| B4 | домены прочитанных страниц (информативно) | {"arize.com": 1, "vahu.org": 1, "www.kunalganglani.com": 1, "docs.langchain.com": 1, "arxiv.org": 5, "mem0.ai": 1, "www.letta.com": 1} | OK |
+| B4 | домены прочитанных страниц (информативно) | {"arxiv.org": 7, "docs.langchain.com": 1} | OK |
 
-Итого: 52 OK, 3 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 1.
+Итого: 53 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 0.

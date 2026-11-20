@@ -1,7 +1,7 @@
-Источник: https://arxiv.org/abs/2601.01885v3
-Конечный URL: https://arxiv.org/abs/2601.01885v3
+Источник: https://arxiv.org/abs/2507.22925v1
+Конечный URL: https://arxiv.org/abs/2507.22925v1
 HTTP: 200
-Заголовок: [2601.01885v3] Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents
+Заголовок: [2507.22925v1] Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents
 Получено: полностью
 
 Skip to main content
@@ -19,53 +19,44 @@ Log in
 
 Computer Science > Computation and Language
 
- arXiv:2601.01885v3 (cs)
+ arXiv:2507.22925v1 (cs)
 
- [Submitted on 5 Jan 2026 (v1), last revised 23 Jul 2026 (this version, v3)]
+ [Submitted on 23 Jul 2025]
 
-Title:Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents
+Title:Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents
 
-Authors:Yi Yu, Liuyi Yao, Yuexiang Xie, Qingquan Tan, Jiaqi Feng, Yaliang Li, Libing Wu 
-View a PDF of the paper titled Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents, by Yi Yu and 6 other authors
+Authors:Haoran Sun, Shaoning Zeng 
+View a PDF of the paper titled Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents, by Haoran Sun and 1 other authors
  View PDF
  HTML (experimental)
 
- Abstract:Large language model (LLM) agents face fundamental limitations in long-horizon reasoning due to finite context windows, making effective memory management critical. Existing methods typically handle long-term memory (LTM) and short-term memory (STM) as separate components, relying on heuristics or auxiliary controllers, which limits adaptability and end-to-end optimization. In this paper, we propose Agentic Memory (AgeMem), a unified framework that integrates LTM and STM management directly into the agent's policy. AgeMem exposes memory operations as tool-based actions, enabling the LLM agent to autonomously decide what and when to store, retrieve, update, summarize, or discard information. To train such unified behaviors, we propose a three-stage progressive reinforcement learning strategy and design a step-wise GRPO to address sparse and discontinuous rewards induced by memory operations. Experiments on five long-horizon benchmarks demonstrate that AgeMem consistently outperforms strong memory-augmented baselines across multiple LLM backbones, achieving improved task performance, higher-quality long-term memory, and more efficient context usage.
-
- Comments:
- ACL'26 SAC Highlight. The code is available at this https URL
+ Abstract:Long-term memory is one of the key factors influencing the reasoning capabilities of Large Language Model Agents (LLM Agents). Incorporating a memory mechanism that effectively integrates past interactions can significantly enhance decision-making and contextual coherence of LLM Agents. While recent works have made progress in memory storage and retrieval, such as encoding memory into dense vectors for similarity-based search or organizing knowledge in the form of graph, these approaches often fall short in structured memory organization and efficient retrieval. To address these limitations, we propose a Hierarchical Memory (H-MEM) architecture for LLM Agents that organizes and updates memory in a multi-level fashion based on the degree of semantic abstraction. Each memory vector is embedded with a positional index encoding pointing to its semantically related sub-memories in the next layer. During the reasoning phase, an index-based routing mechanism enables efficient, layer-by-layer retrieval without performing exhaustive similarity computations. We evaluate our method on five task settings from the LoCoMo dataset. Experimental results show that our approach consistently outperforms five baseline methods, demonstrating its effectiveness in long-term dialogue scenarios.
 
  Subjects:
 
- Computation and Language (cs.CL)
+ Computation and Language (cs.CL); Artificial Intelligence (cs.AI)
 
  Cite as:
- arXiv:2601.01885 [cs.CL]
+ arXiv:2507.22925 [cs.CL]
 
  (or 
- arXiv:2601.01885v3 [cs.CL] for this version)
+ arXiv:2507.22925v1 [cs.CL] for this version)
 
- https://doi.org/10.48550/arXiv.2601.01885
+ https://doi.org/10.48550/arXiv.2507.22925
 
  Focus to learn more
 
  arXiv-issued DOI via DataCite
 
-Submission history From: Yi Yu [view email] 
+Submission history From: Haoran Sun [view email] 
  [v1]
- Mon, 5 Jan 2026 08:24:16 UTC (498 KB)
-
- [v2]
- Thu, 30 Apr 2026 07:32:58 UTC (491 KB)
-
- [v3]
- Thu, 23 Jul 2026 06:23:36 UTC (491 KB)
+ Wed, 23 Jul 2025 12:45:44 UTC (1,312 KB)
 
  Full-text links:
 
 Access Paper:
 
-View a PDF of the paper titled Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents, by Yi Yu and 6 other authors
+View a PDF of the paper titled Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents, by Haoran Sun and 1 other authors
 View PDF
 HTML (experimental)
 TeX Source
@@ -88,11 +79,13 @@ cs.CL
  new
  | 
  recent
- | 2026-01
+ | 2025-07
 
  Change to browse by:
 
  cs
+
+ cs.AI
 
 References & Citations
 

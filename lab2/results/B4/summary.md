@@ -1,5 +1,5 @@
 ## Цель
-Подготовить обзор подходов к хранению состояния LLM-агентов с цитатами, сравнением ограничений и разделом «Непроверенное».
+Подготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».
 
 ## Ограничения пользователя
 - [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.
@@ -11,27 +11,25 @@
 - [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.
 
 ## Решения и договорённости
-- Использовать навык `research_web`: 2 раунда поиска, выбор источников с разных доменов, чтение полных страниц.
-- План: 1) поиск, 2) выбор источников, 3) чтение 5+ страниц, 4) уточняющий поиск, 5) написание отчета.
+- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.
+- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.
+- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=["approaches", "limitations", "comparison", "unverified"], min_queries_after_reading=1.
 
 ## Подтверждённые факты (с источниками)
-- Arize: State — механизм удержания информации во времени; LLM stateless. Источник: `https://arize.com/blog/memory-and-state-in-llm-applications/` (art_686c62d3a96c4f35f2a7, стр. 191, 197).
-- Arize: Tiering memory приоритизирует данные (high-priority: предпочтения). Источник: `https://arize.com/blog/memory-and-state-in-llm-applications/` (art_686c62d3a96c4f35f2a7, стр. 312-316).
-- LangGraph: Checkpointer отслеживает тред, Store — долговременную память. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, стр. 145-154).
-- Agentic Memory: Обучение единого управления долгосрочной/краткосрочной памятью. Источник: `https://arxiv.org/abs/2601.01885v3` (art_469d550fcc625fe3537c, стр. 33).
-- Resume Means Resume: Machine-checked контракт для checkpoint/interrupt/resume. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, стр. 33).
-- 4-Tier Memory: CrewAI v1.15.1, Mem0, LangGraph. Источник: `https://www.kunalganglani.com/blog/ai-agent-memory-state-management` (art_a6e178ee9446cc7e403a, стр. 4, 56).
-- Safe to Resume?: Верный rollback не гарантирует безопасное возобновление. Источник: `https://arxiv.org/abs/2608.29381v1` (art_b7186dcb4a8099370749, стр. 33).
-- Cost and Accuracy of LTM: Тестбенч для DMAS; mem0, Graphiti, cognee. Источник: `https://arxiv.org/abs/2601.07978v5` (art_05dab3ed33c97cd22691, стр. 33).
-- Beyond Similarity: MemGate как доверенный поиск памяти. Источник: `https://arxiv.org/abs/2606.06054v1` (art_65be5a9eb50caf56fc57, стр. 33).
-- Mem0: Большие контекстные окна не решают проблему памяти; p95 latency 1.44s. Источник: `https://mem0.ai/library/agent-memory/long-term-memory` (art_2f24015b5e590638d484, стр. 115, 124).
-- Kunalganglani: 4 уровня памяти (in-context, key-value, episodic, semantic); append-only log = state. Источник: `https://www.kunalganglani.com/blog/ai-agent-memory-state-management` (art_a6e178ee9446cc7e403a, стр. 69-70).
+- LangGraph: checkpointer хранит состояние графа треда как чекпоинты (краткосрочная память), store — долговременную память между тредами. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_13f48a2a4ef9).
+- LangGraph: InMemorySaver хранит чекпоинты в RAM — при перезапуске процесса все чекпоинты теряются; для продакшена нужен persistent checkpointer (Postgres/SQLite). Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_8c73704164f8).
+- AMV-L: большинство систем используют age-based retention (TTL), но TTL не ограничивает вычислительный footprint памяти на request path — retrieval candidate sets и vector similarity scans растут непредсказуемо, давая heavy-tailed latency. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_6c1f47d51bae).
+- AMV-L: для предсказуемой производительности long-running LLM-агентов требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_db086ab51e96).
+- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1, ev_ed1f1ed1a38b, ev_4598fa1c7c10).
+- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f, ev_85e20e46b858).
+- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646, ev_7247d64e7b36).
+- REMIT: пять широко используемых agent workflow frameworks по-разному определяют resume semantics, ни один не предоставляет machine-checkable contract, а фактическое поведение нарушает даже заявленные фрагменты. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f).
 
 ## Прогресс
-(дополнено правилами: модель не дописала раздел) в сжатом фрагменте 15 вызовов tools: queue_status×1, read_artifact×4, save_evidence×5, search_artifact×3, web_fetch×1, web_search×1
+(дополнено правилами: модель не дописала раздел) в сжатом фрагменте 15 вызовов tools: queue_status×1, read_artifact×4, save_evidence×8, search_artifact×1, web_search×1
 
 ## Открытые вопросы и следующий шаг
-(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Round 1: 3-4 broad searches on LLM agent state storage; Select sources, queue diverse sites; Read 5+ pages, save evidence; Round 2: refined queries + follow a link; Write report sections (approaches, limitations, comparison, unverified); complete_task
+(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Round 1: 3-4 search queries on LLM agent state storage; Select sources, fetch 5+ pages; Save evidence from pages; Round 2: refined queries + follow a link; Write report sections (approaches, limitations, comparison, unverified); complete_task
 
 ## Артефакты
-(дополнено правилами: модель не дописала раздел) art_2f24015b5e590638d484, art_7250816027508dc1c94d
+(дополнено правилами: модель не дописала раздел) art_06bb89f539a917f10113, art_2c2bba1f59b11d3bbf0c, art_d356641d87397b9bc646, art_ee035e4658cd928988bf
