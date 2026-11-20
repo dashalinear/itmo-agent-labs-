@@ -1,4 +1,4 @@
-catalog.json  (22312 B)
+catalog.json  (23009 B)
 data/
 data/_unsorted/
 data/_unsorted/empty_todo.txt  (0 B)
@@ -13,7 +13,7 @@ data/howto/_about.md  (53 B)
 data/howto/howto_elasticsearch_docker.md  (1088 B)
 data/meetings/
 data/meetings/meeting_2026-10-02_kickoff.md  (829 B)
-data/meetings/meeting_2026-10-09_docsearch.md  (937 B)
+data/meetings/meeting_2026-10-09_docsearch_weekly.md  (937 B)
 data/meetings/meeting_2026-11-10_retro.md  (767 B)
 data/projects/
 data/projects/project_docsearch.md  (1236 B)
