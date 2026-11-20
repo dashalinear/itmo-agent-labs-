@@ -13,7 +13,7 @@ import time
 from dataclasses import replace
 from pathlib import Path
 
-from langchain_core.messages import AIMessage
+from langchain_core.messages import AIMessage, ToolMessage
 
 from organizer.agent import build_agent
 from organizer.cli import Session, wait_for_files
@@ -166,7 +166,10 @@ def test_mcp_server_unavailable_session(tmp_path):
                                                       {"excerpts": json.loads(last.content)["data"]["excerpts"]}, "u")])
     steps = [AIMessage(content="", tool_calls=[call("move", {"source": "input/howto_git_branches.txt",
                                                              "destination": "data/howto/"}, "m")]),
-             AIMessage(content="Разложил."), build, upsert, AIMessage(content="MCP недоступен, индексация не выполнена."),
+             AIMessage(content="Разложил."),
+             # broken excerpts while the server is down: the stub answers mcp_unavailable, no validation loop
+             AIMessage(content="", tool_calls=[call("upsert_excerpts", {"excerpts": [{"document_id": None}]}, "u0")]),
+             build, upsert, AIMessage(content="MCP недоступен, индексация не выполнена."),
              AIMessage(content="", tool_calls=[call("move", {"source": "data/howto/howto_git_branches.txt",
                                                              "destination": "data/guides/"}, "m2")]),
              AIMessage(content="Перенёс.")]
@@ -186,8 +189,8 @@ def test_mcp_server_unavailable_session(tmp_path):
         finally:
             await conn.__aexit__(None, None, None)
     msgs = asyncio.run(run())
-    up = [m for m in msgs if getattr(m, "name", None) == "upsert_excerpts"][-1]
-    assert json.loads(up.content)["error"]["type"] == "mcp_unavailable"
+    ups = [m for m in msgs if getattr(m, "name", None) == "upsert_excerpts"]
+    assert len(ups) == 2 and all(json.loads(u.content)["error"]["type"] == "mcp_unavailable" for u in ups)
     doc = next(d for d in bundle.catalog.load()["documents"] if d["original_path"] == "input/howto_git_branches.txt")
     assert doc["indexing_status"] == "error" and "upsert failed" in doc["index_error"]
     assert doc["current_path"] == "data/guides/howto_git_branches.txt" and (ws / doc["current_path"]).is_file()
@@ -246,3 +249,15 @@ def test_default_limits_let_model_call_limit_fire_first(settings):
     asyncio.run(sess.run_turn("зациклись"))
     end = [e for e in _events(sess.tracer.jsonl) if e["event"] == "turn_end"][-1]
     assert end["stopped_by"] == "model_call_limit" and model.calls == d.model_calls_per_turn
+
+
+def test_empty_model_answer_gets_a_note():
+    """The model ends a turn with empty text (seen with qwen when the output budget goes to reasoning):
+    the CLI prints a note with the failed tools instead of an empty answer."""
+    from organizer.cli import empty_answer_note
+    produced = [AIMessage(content="", tool_calls=[call("upsert_excerpts", {}, "u")]),
+                ToolMessage(content=json.dumps({"ok": False, "tool": "upsert_excerpts",
+                                                "error": {"type": "mcp_unavailable"}}), tool_call_id="u"),
+                AIMessage(content="", usage_metadata={"input_tokens": 10, "output_tokens": 4096, "total_tokens": 4106})]
+    note = empty_answer_note(produced)
+    assert "пустой ответ" in note and "4096" in note and "upsert_excerpts: mcp_unavailable" in note

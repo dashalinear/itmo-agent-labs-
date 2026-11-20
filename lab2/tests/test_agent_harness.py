@@ -313,3 +313,67 @@ async def test_chars_per_token_calibration_is_reused_after_restart(cfg):
         res = await r2.run("A", user_text="продолжай", label="resume")
         first = json.loads(open(res["trace"].replace(".md", ".jsonl"), encoding="utf-8").readline())
         assert first["token_count_method"].startswith(f"heuristic(cpt={cal['cpt']:.2f}")   # not the default 2.60
+
+
+class FlakyNetworkModel(PolicyModel):
+    """The first `drops` calls fail with "Connection error" (the server is not reachable), then it answers."""
+    drops: int = 0
+
+    async def _agenerate(self, messages, stop=None, run_manager=None, **kwargs):
+        if self.drops > 0:
+            self.drops -= 1
+            import httpx
+            import openai
+            raise openai.APIConnectionError(request=httpx.Request("POST", "http://llm.invalid/v1/chat/completions"))
+        return await super()._agenerate(messages, stop, run_manager, **kwargs)
+
+
+async def test_unreachable_llm_is_waited_for_and_costs_nothing(cfg):
+    """Connection errors (the ITMO endpoint dropped out for a few minutes during a campus run) do not use up the
+    3 ordinary attempts: the harness keeps retrying for llm_unreachable_wait_s and charges no tokens for them."""
+    model = FlakyNetworkModel(plan=reading_plan(range(2, 6)) + ["done"], drops=5)
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec(), overrides={"llm_unreachable_wait_s": "60", "backoff_base_s": "0.01"})
+        import harness.middleware as hm
+        real_sleep = hm.asyncio.sleep
+        hm.asyncio.sleep = lambda s: real_sleep(0)           # no real waiting in the test
+        try:
+            await r.run("A")
+        finally:
+            hm.asyncio.sleep = real_sleep
+        errs = [e["data"] for e in r.store.events("A", "model_call_error")]
+        assert len(errs) == 5 and all(e["retry"] for e in errs) and "unreachable_for_s" in errs[0]
+        u = r.store.usage("A")
+        assert u["failed_calls"] == 5 and u["failed_call_tokens"] == 0 and u["model_calls"] > 0
+        assert "LLM unavailable" not in (r.store.get_task("A")["status_reason"] or "")
+
+
+async def test_unreachable_llm_pauses_after_the_wait(cfg):
+    model = FlakyNetworkModel(plan=reading_plan(), drops=10_000)
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec(), overrides={"llm_unreachable_wait_s": "0.5"})
+        import harness.middleware as hm
+        real_sleep = hm.asyncio.sleep
+        hm.asyncio.sleep = lambda s: real_sleep(0.05)
+        try:
+            await r.run("A")
+        finally:
+            hm.asyncio.sleep = real_sleep
+        t = r.store.get_task("A")
+        assert t["status"] == "paused" and "llm_unreachable_wait_s=0.5" in t["status_reason"]
+
+
+async def test_reading_without_evidence_gets_a_strategy_hint(cfg):
+    """A1 on campus: 212 read_lines in a row and no save_evidence. After N reads without evidence the harness
+    attaches harness_hint to the result and writes a guardrail event; the counter restarts after save_evidence."""
+    plan = [[tc("read_lines", {"path": HANDBOOK, "start_line": 1 + 10 * i, "end_line": 8 + 10 * i})] for i in range(7)]
+    plan.append("done")
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec(), overrides={"reads_without_evidence_hint": "3"})
+        await r.run("A")
+        ev = [e["data"] for e in r.store.events("A", "guardrail") if e["data"]["guard"] == "reads_without_evidence"]
+        assert [e["reads"] for e in ev] == [3, 6]
+        hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
+                .read_text(encoding="utf-8").splitlines()]
+        reads = [m for m in hist if m["type"] == "ToolMessage" and m["name"] == "read_lines"]
+        assert ["harness_hint" in m["content"] for m in reads] == [False, False, True, False, False, True, False]

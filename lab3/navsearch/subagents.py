@@ -36,8 +36,19 @@ MAX_RESULT_WAIT_S = 20
 
 DEFAULT_SUB_LIMITS = {
     # sub-agents work in one run until they submit: no per-turn cap (that cap is for the dialog of the main agent)
-    "deep": {"max_total_tokens": 1_200_000, "max_model_calls": 60, "max_tool_calls": 240, "max_model_calls_per_run": 0},
-    "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0},
+    # response_reserve_tokens = max_tokens of a call: with 2048 the final submit_result of M7-deep1 was cut off
+    # (output_tokens 2048, arguments came empty or without open_questions), so sub-agents get more room for it
+    "deep": {"max_total_tokens": 1_200_000, "max_model_calls": 60, "max_tool_calls": 240, "max_model_calls_per_run": 0,
+             "response_reserve_tokens": 6144},
+    "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0,
+                   "response_reserve_tokens": 6144},
+}
+
+FINISH_NUDGE = {
+    "deep": "Твой ход закончился без submit_result. Если бюджет позволяет, допроверь главное, иначе сразу вызови "
+            "submit_result: сначала open_questions, затем краткие findings (до 400 слов) со ссылками на evidence_id.",
+    "exhaustive": "Твой ход закончился без submit_result. Проверь coverage: если область пройдена полностью, вызови "
+                  "submit_result с краткой сводкой (документ -> число упоминаний, до 400 слов); иначе продолжи area_next.",
 }
 
 
@@ -158,10 +169,21 @@ class SubagentManager:
         self.store.create_task(tid, kind, request, spec, limits.to_dict())
         self.store.event(self.parent_task_id, "subtask_started", {"task_id": tid, "kind": kind, "request": request,
                                                                    "scope_folder": scope_folder})
-        self.tasks[tid] = asyncio.create_task(self.runner.run(tid, label=kind, agent_factory=self.factories[kind], verbose=False))
+        self.tasks[tid] = asyncio.create_task(self._run_sub(tid, kind))
         return ok("start_subagent", task_id=tid, kind=kind, status="running", mode="non-blocking",
                   note="The sub-agent works in the background with its own context. Answer the user meanwhile; check "
                        "subagent_status(task_id) and fetch subagent_result(task_id) later.")
+
+    async def _run_sub(self, tid: str, kind: str) -> dict:
+        """One run of the sub-agent; if the model simply stopped talking without submit_result (seen in
+        M7-exhaustive1 with the whole area read), it gets ONE follow-up message in the same task."""
+        res = await self.runner.run(tid, label=kind, agent_factory=self.factories[kind], verbose=False)
+        t = self.store.get_task(tid)
+        if t["status"] == "paused" and "without complete_task" in (t["status_reason"] or ""):
+            self.store.event(tid, "finish_nudge", {"reason": t["status_reason"]})
+            res = await self.runner.run(tid, user_text=FINISH_NUDGE[kind], label=f"{kind}-finish",
+                                        agent_factory=self.factories[kind], verbose=False)
+        return res
 
     def status(self, task_id: str) -> dict:
         t = self.store.get_task(task_id)
@@ -219,8 +241,10 @@ class SubagentManager:
 
 # ------------------------------------------------------------------ result submission inside sub-agents
 class SubmitArgs(BaseModel):
-    findings: str = Field("", description="Your conclusions with references to evidence_id (empty: the harness lists the evidence)")
-    open_questions: list[str] = Field(default_factory=list, description="What remained unclear or unconfirmed")
+    # open_questions goes first: if a long answer is cut by max_tokens, the short required part is already there
+    open_questions: list[str] = Field(default_factory=list, description="What remained unclear or unconfirmed (short items)")
+    findings: str = Field("", description="Your conclusions with references to evidence_id, at most ~400 words "
+                                          "(empty: the harness lists the evidence)")
 
 
 class SubmitTools:
@@ -231,6 +255,9 @@ class SubmitTools:
 
     def submit_result(self, findings: str = "", open_questions: list[str] | None = None) -> dict:
         ev = self.store.evidence(self.task_id)
+        if self.kind == "deep" and not (findings or "").strip() and not open_questions:
+            raise ToolError("empty_arguments", "submit_result came with no arguments at all: the output was probably cut "
+                            "at max_tokens. Call it again with open_questions first and findings of at most 400 words.")
         if not (findings or "").strip():
             by_doc: dict[str, int] = {}
             for e in ev:

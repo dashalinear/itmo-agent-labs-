@@ -51,9 +51,11 @@ class Limits:
     # --- time / retries
     llm_timeout_s: float = 180.0
     llm_retries: int = 2
+    llm_unreachable_wait_s: float = 300.0  # "Connection error" (server not reachable): keep retrying this long
     max_model_calls_per_run: int = 0     # 0 = off; dialog agents: cap per user turn
     repeat_call_warn: int = 3            # same tool + same args N times in one run -> error observation
     repeat_call_stop: int = 6            # ... M times -> the run stops with 'no progress'
+    reads_without_evidence_hint: int = 0  # N reading calls in a row with no new evidence -> a strategy hint (0 = off)
     tool_timeout_s: float = 60.0
 
     @classmethod

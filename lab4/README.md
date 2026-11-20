@@ -282,7 +282,17 @@ powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part topic-c
 powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part growth -SkipTests
 ```
 
-_Результаты — после прогона в сети ИТМО._
+**Прогон `-Part growth` 20.11.2026** (qwen3.8-27b, корпус после предыдущих прогонов):
+
+| Сценарий | Workflow ID / run ID | Activity attempts | Задача harness | Результат |
+|---|---|---|---|---|
+| Файл на новую тему | `ingest-1362a3c0e5` / `01a1f963-c315-7816-a1c0-ca81a6e793c8` | все по 1 | `ING-1362a3c0e5`: 1 запуск | Watcher сам увидел `ui_accessibility.md` и запустил workflow (`traces/processes/watcher7.log`). Загрузчик положил файл в `data/ops/ui_accessibility.md`, L1, L2 и ES построены, workflow завершился за 37 с |
+| Повтор события, пока workflow в RUNNING | тот же `ingest-1362a3c0e5` | — | — | `replay` вернул **то же выполнение** `01a1f963-…` (политика `USE_EXISTING`), нового не создано. `temporal workflow list` по этому id в тот момент показывает одну строку со статусом `Running` (`results/replay_while_running.txt`) |
+| Отчёт по Schedule | `lab4-topics-run-2026-11-20T14:37:46Z` / `01a1f964-5cd9-7bff-bf37-9bef906c65bb` | `run_topic_agent`: **2** | `TOP-20261120T143746Z`: 2 запуска, 30 вызовов модели, 94 tools, 400 774 токена | Запуск сделал сам Schedule (`TemporalScheduledById=lab4-topics`, первое действие при создании). Отчёт **ПОЛНЫЙ**: 15/15 документов, 4 темы, 15 цитат L2. Новый документ стал **отдельной темой T4** «Доступность интерфейса» с пометкой «новая тема», он же есть в таблице «Новые документы и их темы». Прошлые отчёты на месте, в анализ не вошли (исключено 6 служебных) |
+
+Первую попытку `run_topic_agent` в этом прогоне я не планировала. Модель шесть раз подряд вызвала `read_fragment` с одними и теми же аргументами и получила один и тот же ответ. Сработал guard `no_progress` из harness лабы 2, задача ушла в `paused`, activity завершилась ошибкой (`lastFailure` в истории Temporal: «no progress: read_fragment returned the same result 6 times»). Temporal повторил activity, вторая попытка продолжила ту же задачу `TOP-…` (трасса `a22`) и довела отчёт до конца. Получился ещё один живой пример связки «guard в harness, повтор в Temporal» без моего вмешательства.
+
+После прогона `reports.latest` и `reports.latest_complete` указывают на этот отчёт (`results/open_report_latest.txt`, `results/open_report_latest_complete.txt`).
 
 ## 9. Ограничения
 

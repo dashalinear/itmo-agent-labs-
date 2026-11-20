@@ -115,11 +115,13 @@ class CatalogSyncMiddleware(AgentMiddleware):
         err = None if ok else (env.get("error", {}) or {}).get("message") or _content_text(msg.content)[:300]
         if name == "upsert_excerpts":
             by_doc: dict[str, list[dict]] = {}
-            for ex in args.get("excerpts", []):
-                ex = ex if isinstance(ex, dict) else ex.model_dump()
+            for ex in args.get("excerpts", None) or []:
+                ex = ex if isinstance(ex, dict) else getattr(ex, "model_dump", lambda: {})()
+                if not self.catalog.get(ex.get("document_id") or ""):
+                    continue                          # garbage from the model (only reaches here if MCP is down)
                 by_doc.setdefault(ex["document_id"], []).append(
-                    {"excerpt_id": ex.get("excerpt_id"), "start_line": ex["start_line"],
-                     "end_line": ex["end_line"], "summary": ex.get("summary")})
+                    {"excerpt_id": ex.get("excerpt_id"), "start_line": ex.get("start_line"),
+                     "end_line": ex.get("end_line"), "summary": ex.get("summary")})
             for doc_id, items in by_doc.items():
                 if ok:
                     if args.get("mode", "replace") == "merge":
@@ -152,6 +154,10 @@ class CatalogSyncMiddleware(AgentMiddleware):
 
     def _pre(self, request: ToolCallRequest):
         name = request.tool_call["name"]
+        if (getattr(request.tool, "metadata", None) or {}).get("mcp_unavailable"):
+            # MCP server is down: the stub must answer mcp_unavailable right away. Otherwise the agent
+            # keeps fixing excerpts that could not be written anyway (seen in the mcp_down demo session).
+            return None
         if name == "upsert_excerpts":
             problems = self._validate(list(request.tool_call["args"].get("excerpts", [])))
             if problems:

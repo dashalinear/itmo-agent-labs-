@@ -411,3 +411,39 @@ def test_unknown_section_lists_real_sections_and_error_streak_is_pointed_out(env
     assert all(not e["ok"] and e["error"]["type"] == "unknown_section" for e in errs)
     assert errs[0]["error"]["sections"] and errs[0]["error"]["sections"][0]["section_id"].startswith("s")
     assert "harness_hint" in errs[3]["error"] and "harness_hint" not in errs[0]["error"]
+
+
+def test_deep_submit_with_cut_off_arguments_gets_a_clear_error(env):
+    """M7-deep1: submit_result came as {} because the answer hit max_tokens=2048. The error now says so (instead of
+    'open_questions_required'), and the schema puts open_questions first."""
+    from navsearch.subagents import SubmitArgs, SubmitTools
+    from navsearch.tools_corpus import ToolError
+    st = SubmitTools(env.store, env.task_id, "deep")
+    with pytest.raises(ToolError) as e:
+        st.submit_result()
+    assert e.value.type == "empty_arguments" and "max_tokens" in e.value.message
+    assert list(SubmitArgs.model_fields)[0] == "open_questions"
+
+
+async def test_sub_agent_that_stops_without_submit_gets_one_follow_up(env):
+    """M7-exhaustive1 read 47/47 fragments and ended its turn without submit_result: the manager sends ONE
+    follow-up message in the same task; a second silent stop is left as it is (bounded)."""
+    from navsearch.subagents import FINISH_NUDGE, SubagentManager
+
+    class FakeRunner:
+        def __init__(self, store, finish_on):
+            self.store, self.calls, self.finish_on = store, [], finish_on
+
+        async def run(self, tid, user_text=None, label="run", agent_factory=None, verbose=None, overrides=None):
+            self.calls.append((label, user_text))
+            done = len(self.calls) == self.finish_on
+            self.store.set_status(tid, "completed" if done else "paused",
+                                  "ok" if done else "agent ended the turn without complete_task")
+            return {}
+
+    for finish_on, expected_calls, status in ((2, 2, "completed"), (99, 2, "paused")):
+        r = FakeRunner(env.store, finish_on)
+        mgr = SubagentManager(r, {"exhaustive": None}, "P")
+        await mgr._run_sub(env.task_id, "exhaustive")
+        assert len(r.calls) == expected_calls and r.calls[1] == ("exhaustive-finish", FINISH_NUDGE["exhaustive"])
+        assert env.store.get_task(env.task_id)["status"] == status

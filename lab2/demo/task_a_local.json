@@ -45,6 +45,7 @@
     "max_total_tokens": 1500000,
     "max_model_calls": 90,
     "max_tool_calls": 300,
-    "task_deadline_s": 5400
+    "task_deadline_s": 5400,
+    "reads_without_evidence_hint": 25
   }
 }

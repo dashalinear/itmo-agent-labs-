@@ -80,6 +80,41 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         super().__init__()
         self.ctx = ctx
         self._seen: dict[str, tuple[str, int]] = {}
+        self._reads_since_evidence = 0
+
+    READ_TOOLS = {"read_lines", "read_pages", "read_artifact", "search_text", "search_artifact"}
+    PROGRESS_TOOLS = {"save_evidence", "write_report_section"}
+
+    def _evidence_guard(self, request: ToolCallRequest, res):
+        """Reading without progress: in one A1 run the model read the 2000-line handbook in 8-line steps
+        (212 read_lines) and never saved a single quote. After N reads in a row with no saved evidence the
+        harness attaches a hint to the result (a bounded change of strategy, the run itself goes on)."""
+        N = self.ctx.limits.reads_without_evidence_hint
+        name = request.tool_call["name"]
+        if not N or not isinstance(res, ToolMessage):
+            return res
+        if name in self.PROGRESS_TOOLS and '"ok": true' in _text(res.content)[:200]:
+            self._reads_since_evidence = 0
+            return res
+        if name not in self.READ_TOOLS:
+            return res
+        self._reads_since_evidence += 1
+        if self._reads_since_evidence % N:
+            return res
+        self.ctx.emit("guardrail", guard="reads_without_evidence", tool=name, reads=self._reads_since_evidence)
+        hint = (f"{self._reads_since_evidence} reading calls in a row and no new evidence. Stop scanning the document "
+                "line by line: save_evidence for the quotes you have already found, write the report sections you "
+                "can write now, and reach the remaining places with search_text instead of sequential reading.")
+        try:
+            env = json.loads(_text(res.content))
+        except ValueError:
+            env = None
+        if isinstance(env, dict):
+            env["harness_hint"] = hint
+            content = json.dumps(env, ensure_ascii=False)
+        else:
+            content = _text(res.content) + "\n[harness_hint] " + hint
+        return ToolMessage(content=content, tool_call_id=res.tool_call_id, name=res.name, status=res.status)
 
     def _repeat_guard(self, request: ToolCallRequest, res):
         """No-progress detector: the same call (tool + arguments) returning the SAME result again inside one run.
@@ -135,7 +170,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         try:
             res = await asyncio.wait_for(handler(request), timeout=self.ctx.limits.tool_timeout_s)
             self.ctx.crash_check("after", tool=request.tool_call["name"])
-            return self._repeat_guard(request, res)
+            return self._evidence_guard(request, self._repeat_guard(request, res))
         except asyncio.TimeoutError:
             self.ctx.emit("guardrail", guard="tool_timeout", tool=request.tool_call["name"],
                           timeout_s=self.ctx.limits.tool_timeout_s)
@@ -149,7 +184,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         if blocked:
             return blocked
         try:
-            return self._repeat_guard(request, handler(request))
+            return self._evidence_guard(request, self._repeat_guard(request, handler(request)))
         except Exception as e:  # noqa: BLE001
             return _tool_error(request, "tool_exception", f"{type(e).__name__}: {e}"[:800])
 
@@ -567,7 +602,9 @@ class ModelGuardMiddleware(AgentMiddleware):
             ctx.store.update_model_call(call_id, status="blocked", note="exceeds working limit")
             return self._stop("paused", f"request {total} tokens exceeds the working limit {ctx.working_limit}; call not made")
         last_error = None
-        for attempt in range(L.llm_retries + 1):
+        attempt, tries, unreachable_since = 0, 0, None
+        while True:
+            tries += 1
             try:
                 res_id = ctx.budget.reserve("agent", total, est.tokens)
             except BudgetExhausted as e:
@@ -586,14 +623,37 @@ class ModelGuardMiddleware(AgentMiddleware):
                 ctx.emit("model_call_cancelled", reservation=res_id, charged_input_estimate=est.tokens)
                 raise
             except RETRYABLE as e:
-                ctx.budget.fail(res_id, est.tokens)
                 last_error = f"{type(e).__name__}: {e}"[:300]
-                ctx.emit("model_call_error", attempt=attempt + 1, error=last_error, retry=attempt < L.llm_retries)
-                if attempt < L.llm_retries:
-                    await asyncio.sleep(L.backoff_base_s * 4 * (2 ** attempt))
+                # "Connection error" = the request never reached the server (the ITMO endpoint drops out for a few
+                # minutes now and then). Such a call costs nothing and is retried until llm_unreachable_wait_s runs
+                # out; the ordinary retry counter is kept for errors the server actually answered with.
+                unreachable = isinstance(e, openai.APIConnectionError) and not isinstance(e, openai.APITimeoutError)
+                ctx.budget.fail(res_id, 0 if unreachable else est.tokens)
+                if unreachable:
+                    unreachable_since = unreachable_since or time.monotonic()
+                    waited = time.monotonic() - unreachable_since
+                    retry = waited < L.llm_unreachable_wait_s
+                    try:
+                        ctx.budget.check_deadline()
+                    except BudgetExhausted:
+                        retry = False                       # the task deadline is not extended by waiting
+                else:
+                    attempt += 1
+                    retry = attempt <= L.llm_retries
+                ctx.emit("model_call_error", attempt=tries, error=last_error, retry=retry,
+                         **({"unreachable_for_s": round(waited, 1)} if unreachable else {}))
+                if retry:
+                    if unreachable:
+                        pause = min(30.0, max(2.0, waited / 2))
+                    else:
+                        pause = min(30.0, L.backoff_base_s * 4 * (2 ** (attempt - 1)))
+                    await asyncio.sleep(pause)
                     continue
                 ctx.store.update_model_call(call_id, status="error", note=last_error,
                                             duration_s=round(time.perf_counter() - t0, 2))
+                if unreachable:
+                    return self._stop("paused", f"LLM unavailable for {round(waited)} s "
+                                                f"(llm_unreachable_wait_s={L.llm_unreachable_wait_s}): {last_error}")
                 return self._stop("paused", f"LLM unavailable after {L.llm_retries + 1} attempts: {last_error}")
             except openai.BadRequestError as e:
                 ctx.budget.fail(res_id, est.tokens)
@@ -620,7 +680,6 @@ class ModelGuardMiddleware(AgentMiddleware):
             ctx.emit("model_call_done", estimated_input=est.tokens, actual_input=a_in, actual_output=a_out,
                      duration_s=round(time.perf_counter() - t0, 2), calibrated_cpt=round(ctx.counter.cpt, 3))
             return resp
-        return self._stop("paused", f"LLM failed: {last_error}")
 
 
 def render_tokens(m: BaseMessage) -> int:  # small helper used by tests

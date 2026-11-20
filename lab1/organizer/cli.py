@@ -36,6 +36,23 @@ from .llm import build_llm, strip_thinking
 from .mcp_client import MCPConnection, unavailable_tools
 from .tracing import Tracer
 
+
+def empty_answer_note(produced: list) -> str:
+    fails = []
+    for m in produced:
+        if not isinstance(m, ToolMessage):
+            continue
+        try:
+            body = json.loads(str(m.content))
+        except ValueError:
+            continue
+        if isinstance(body, dict) and body.get("ok") is False:
+            fails.append(f"{body.get('tool')}: {(body.get('error') or {}).get('type')}")
+    last = next((m for m in reversed(produced) if isinstance(m, AIMessage)), None)
+    out = ((getattr(last, "usage_metadata", None) or {}).get("output_tokens", 0)) if last else 0
+    return (f"[Модель вернула пустой ответ (output_tokens последнего вызова: {out}). "
+            f"Ошибки инструментов в этом ходе: {', '.join(dict.fromkeys(fails)) or 'нет'}.]")
+
 EXIT_WORDS = {"/exit", "/quit", "exit", "quit", "выход"}
 MODEL_LIMIT_MARK = "Model call limits exceeded"   # text of ModelCallLimitMiddleware's final AIMessage
 WAIT_DIRECTIVE = "@wait_for_files"
@@ -121,6 +138,10 @@ class Session:
             stopped_by = "model_call_limit"
             answer += (f"\n\n[Ход остановлен лимитом выполнения: model_calls_per_turn="
                        f"{self.settings.model_calls_per_turn} (ModelCallLimitMiddleware)]")
+        if not answer.strip():
+            # qwen sometimes spends the whole output budget on hidden reasoning and returns empty text.
+            # Then the user at least sees which tools failed in this turn instead of a blank line.
+            answer = empty_answer_note(produced)
         usage = {"input_tokens": 0, "output_tokens": 0}
         for m in produced:
             u = getattr(m, "usage_metadata", None) or {}

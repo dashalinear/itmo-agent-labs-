@@ -47,7 +47,8 @@ def unavailable_tools(reason: str) -> list[BaseTool]:
                 "message": f"Elasticsearch MCP server is unavailable: {reason}. Indexing/search did not happen."}},
                 ensure_ascii=False)
         return StructuredTool.from_function(func=_fn, name=name, args_schema=_AnyArgs,
-                                            description=f"[UNAVAILABLE] MCP tool {name}")
+                                            description=f"[UNAVAILABLE] MCP tool {name}",
+                                            metadata={"mcp_unavailable": True})
     return [make(n) for n in MCP_TOOL_NAMES]
 
 
