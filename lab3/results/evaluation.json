@@ -151,7 +151,7 @@
       "runs": 0,
       "model_calls": 0,
       "tool_calls": 0,
-      "tokens": 1352969,
+      "tokens": 1681570,
       "compactions": 0,
       "peak_input": 0,
       "evidence": 0,
@@ -521,14 +521,94 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M7",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 7,
+      "model_calls": 26,
+      "tool_calls": 24,
+      "tokens": 1586327,
+      "compactions": 2,
+      "peak_input": 15897,
+      "evidence": 3,
+      "searches": {
+        "fulltext:L2": 2,
+        "fulltext:L1": 2
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M7-deep1",
+      "kind": "deep",
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)",
+      "parent": "M7",
+      "runs": 1,
+      "model_calls": 60,
+      "tool_calls": 132,
+      "tokens": 860076,
+      "compactions": 7,
+      "peak_input": 17168,
+      "evidence": 24,
+      "searches": {
+        "fulltext:L1": 4,
+        "vector:L1": 1,
+        "grep:L2": 13,
+        "grep:L1": 8
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M7-exhaustive1",
+      "kind": "exhaustive",
+      "status": "paused",
+      "reason": "agent ended the turn without complete_task",
+      "parent": "M7",
+      "runs": 1,
+      "model_calls": 32,
+      "tool_calls": 65,
+      "tokens": 416917,
+      "compactions": 5,
+      "peak_input": 17192,
+      "evidence": 40,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "EXP4",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Полный анализ папки storage завершён: прочитано 47/47 фрагментов во всех 10 документах, за",
+      "parent": "CLI",
+      "runs": 2,
+      "model_calls": 26,
+      "tool_calls": 53,
+      "tokens": 328601,
+      "compactions": 3,
+      "peak_input": 16957,
+      "evidence": 34,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 16,
-    "grep:L1": 12,
-    "vector:L1": 5,
-    "fulltext:L2": 9,
-    "grep:L2": 229,
+    "fulltext:L1": 22,
+    "grep:L1": 20,
+    "vector:L1": 6,
+    "fulltext:L2": 11,
+    "grep:L2": 242,
     "vector:L2": 4
   },
   "exhaustive": [
@@ -621,6 +701,41 @@
       "found_codes": 36,
       "missing_codes": [],
       "found_without_keyword": 10
+    },
+    {
+      "task_id": "M7-exhaustive1",
+      "status": "paused",
+      "runs": 1,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 40,
+      "expected_codes": 36,
+      "found_codes": 34,
+      "missing_codes": [
+        "L-ST-16",
+        "L-ST-30"
+      ],
+      "found_without_keyword": 8
+    },
+    {
+      "task_id": "EXP4",
+      "status": "completed",
+      "runs": 2,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 34,
+      "expected_codes": 36,
+      "found_codes": 33,
+      "missing_codes": [
+        "L-ST-21",
+        "L-ST-30",
+        "L-ST-36"
+      ],
+      "found_without_keyword": 7
     }
   ]
 }

@@ -22,7 +22,7 @@
 | ING2 | ingest | completed | — | 1 | 9 | 21 | 100325 | 0 | 13710 | 0 | 3 / 3 | 0 |
 | ING3 | ingest | completed | — | 1 | 5 | 6 | 39894 | 0 | 8467 | 0 | 0 / 0 | 0 |
 | M1 | main | paused | — | 17 | 200 | 191 | 2664404 | 9 | 16989 | 5 | 0 / 0 | 0 |
-| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 1352969 | 0 | 0 | 0 | 0 / 0 | 0 |
+| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 1681570 | 0 | 0 | 0 | 0 / 0 | 0 |
 | EXP1 | exhaustive | paused | CLI | 2 | 62 | 94 | 690043 | 5 | 16885 | 38 | 0 / 0 | 0 |
 | M2 | main | paused | — | 17 | 55 | 44 | 1392548 | 4 | 16698 | 4 | 0 / 0 | 0 |
 | M2-deep1 | deep | paused | M2 | 1 | 30 | 44 | 388140 | 2 | 16961 | 9 | 0 / 0 | 0 |
@@ -41,14 +41,18 @@
 | EXP3 | exhaustive | completed | CLI | 2 | 30 | 61 | 370104 | 4 | 17525 | 38 | 0 / 0 | 0 |
 | M6 | main | paused | — | 8 | 35 | 29 | 1166278 | 3 | 16312 | 1 | 0 / 0 | 0 |
 | M6-deep1 | deep | completed | M6 | 1 | 56 | 88 | 757363 | 4 | 16961 | 17 | 0 / 0 | 0 |
+| M7 | main | paused | — | 7 | 26 | 24 | 1586327 | 2 | 15897 | 3 | 0 / 0 | 0 |
+| M7-deep1 | deep | paused | M7 | 1 | 60 | 132 | 860076 | 7 | 17168 | 24 | 0 / 0 | 0 |
+| M7-exhaustive1 | exhaustive | paused | M7 | 1 | 32 | 65 | 416917 | 5 | 17192 | 40 | 0 / 0 | 0 |
+| EXP4 | exhaustive | completed | CLI | 2 | 26 | 53 | 328601 | 3 | 16957 | 34 | 0 / 0 | 0 |
 
 ## Шесть поисковых сочетаний (вызовы основного и deep-агента)
 
 | поиск | L1 | L2 |
 |---|---|---|
-| fulltext | 16 | 9 |
-| grep | 12 | 229 |
-| vector | 5 | 4 |
+| fulltext | 22 | 11 |
+| grep | 20 | 242 |
+| vector | 6 | 4 |
 
 ## Exhaustive: покрытие и контрольные упоминания
 
@@ -60,3 +64,5 @@
 | M4-exhaustive1 | completed | 1 | 47/47 | 10/10 | 39 | 35/36 | 9/10 | L-ST-30 |
 | M5-exhaustive1 | completed | 1 | 47/47 | 10/10 | 42 | 35/36 | 9/10 | L-ST-30 |
 | EXP3 | completed | 2 | 47/47 | 10/10 | 38 | 36/36 | 10/10 | — |
+| M7-exhaustive1 | paused | 1 | 47/47 | 10/10 | 40 | 34/36 | 8/10 | L-ST-16, L-ST-30 |
+| EXP4 | completed | 2 | 47/47 | 10/10 | 34 | 33/36 | 7/10 | L-ST-21, L-ST-30, L-ST-36 |

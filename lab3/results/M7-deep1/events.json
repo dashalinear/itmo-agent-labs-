@@ -1,0 +1,3178 @@
+[
+  {
+    "id": 4245,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:39+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 4247,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:40+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "deep"
+    }
+  },
+  {
+    "id": 4250,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5341,
+      "reserve": 2048,
+      "total": 7389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 4251,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5341,
+      "reserve": 2048,
+      "total": 7389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 4258,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5341,
+      "actual_input": 3619,
+      "actual_output": 249,
+      "duration_s": 2.67,
+      "calibrated_cpt": 2.952
+    }
+  },
+  {
+    "id": 4259,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:45+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "agent state storage persistence",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4260,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:45+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "session state memory checkpoint",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4261,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5377,
+      "reserve": 2048,
+      "total": 7425,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 4262,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5377,
+      "reserve": 2048,
+      "total": 7425,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)"
+    }
+  },
+  {
+    "id": 4271,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5377,
+      "actual_input": 4141,
+      "actual_output": 76,
+      "duration_s": 1.17,
+      "calibrated_cpt": 3.154
+    }
+  },
+  {
+    "id": 4282,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:49+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "vector",
+      "level": "L1",
+      "query": "how agent state is stored and persisted across restarts",
+      "hits": 10
+    }
+  },
+  {
+    "id": 4284,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9148,
+      "reserve": 2048,
+      "total": 11196,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 4286,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9148,
+      "reserve": 2048,
+      "total": 11196,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.15)"
+    }
+  },
+  {
+    "id": 4293,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9148,
+      "actual_input": 8860,
+      "actual_output": 52,
+      "duration_s": 1.92,
+      "calibrated_cpt": 3.069
+    }
+  },
+  {
+    "id": 4294,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 4295,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11341,
+      "reserve": 2048,
+      "total": 13389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)"
+    }
+  },
+  {
+    "id": 4304,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11341,
+      "actual_input": 10738,
+      "actual_output": 235,
+      "duration_s": 4.45,
+      "calibrated_cpt": 3.012
+    }
+  },
+  {
+    "id": 4305,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14628,
+      "reserve": 2048,
+      "total": 16676,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.01)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 4306,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:50:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14628,
+      "reserve": 2048,
+      "total": 16676,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.01)"
+    }
+  },
+  {
+    "id": 4310,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14628,
+      "actual_input": 13771,
+      "actual_output": 217,
+      "duration_s": 3.72,
+      "calibrated_cpt": 2.962
+    }
+  },
+  {
+    "id": 4311,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16052,
+      "reserve": 2048,
+      "total": 18100,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 4312,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16052,
+      "reserve": 2048,
+      "total": 18100,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)"
+    }
+  },
+  {
+    "id": 4322,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16052,
+      "actual_input": 15027,
+      "actual_output": 493,
+      "duration_s": 8.23,
+      "calibrated_cpt": 2.917
+    }
+  },
+  {
+    "id": 4323,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17165,
+      "reserve": 2048,
+      "total": 19213,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.92)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4324,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17165,
+      "reserve": 2048,
+      "total": 19213,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.92)"
+    }
+  },
+  {
+    "id": 4332,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17165,
+      "actual_input": 15967,
+      "actual_output": 277,
+      "duration_s": 4.62,
+      "calibrated_cpt": 2.88
+    }
+  },
+  {
+    "id": 4333,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19545,
+      "reserve": 2048,
+      "total": 21593,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 4367,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19545,
+      "after_tokens": 10398,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 15,
+      "kept_messages": 14,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4811,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n- **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `data/storage/st_redis_state.md`): Без AOF/RDB состояние теряется при перезапуске; `appendfsync everysec` допускает потерю последней секунды [L-ST-08]; данные должны помещаться в RAM [L-ST-09]; `noeviction` для чекпоинтов [L-ST-10].\n- **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `data/storage/st_checkpoint_sqlite.md`): WAL — читатели не блокируют писателя, один писатель [L-ST-01]; `ERR_LOCK_TIMEOUT` при блокировке >5с (тикет CKPT-7731) [L-ST-02]; сетевые диски не поддерживают надёжные блокировки [L-ST-03]; бэкап через backup API, лимит 2 ГБ [L-ST-04].\n- **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `data/storage/st_checkpoint_postgres.md`): JSONB < 1 МБ [L-ST-05]; пул соединений 20/процесс [L-ST-06]; миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n- **Encryption** (`3bf69284-f264-4f26-bcd4-a4b8e5f13cf0`, `data/storage/st_encryption_state.md`): Шифрование ключом из менеджера секретов [L-ST-27]; доступ только у сервисной роли [L-ST-28]; токены/пароли не записываются [L-ST-29].\n- **Vector Memory** (`data/storage/st_vector_memory.md`): Эмбеддинги, пределы точности, HNSW.\n- **DocSearch Risks** (`e7d3f8c9-9c87-4383-9021-3393c028af1a`, `data/projects/docsearch_risks.md`): Потеря состояния при сбое хранилища.\n\n## Прогресс\n- **Прочитано L1**: `docsearch"
+    }
+  },
+  {
+    "id": 4368,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10398,
+      "reserve": 2048,
+      "total": 12446,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 4369,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10398,
+      "actual_input": 9245,
+      "actual_output": 284,
+      "duration_s": 3.05,
+      "calibrated_cpt": 2.895
+    }
+  },
+  {
+    "id": 4370,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11977,
+      "reserve": 2048,
+      "total": 14025,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.89)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 4371,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11977,
+      "reserve": 2048,
+      "total": 14025,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.89)"
+    }
+  },
+  {
+    "id": 4377,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11977,
+      "actual_input": 10943,
+      "actual_output": 1171,
+      "duration_s": 11.91,
+      "calibrated_cpt": 2.876
+    }
+  },
+  {
+    "id": 4378,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14091,
+      "reserve": 2048,
+      "total": 16139,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 4379,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14091,
+      "reserve": 2048,
+      "total": 16139,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 4380,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14091,
+      "actual_input": 13156,
+      "actual_output": 176,
+      "duration_s": 2.72,
+      "calibrated_cpt": 2.831
+    }
+  },
+  {
+    "id": 4381,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16430,
+      "reserve": 2048,
+      "total": 18478,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4382,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16430,
+      "reserve": 2048,
+      "total": 18478,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4383,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16430,
+      "actual_input": 15143,
+      "actual_output": 288,
+      "duration_s": 3.9,
+      "calibrated_cpt": 2.801
+    }
+  },
+  {
+    "id": 4384,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18315,
+      "reserve": 2048,
+      "total": 20363,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 4385,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:51:54+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18315,
+      "reserve": 2048,
+      "total": 20363,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4392,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18315,
+      "actual_input": 16906,
+      "actual_output": 627,
+      "duration_s": 10.23,
+      "calibrated_cpt": 2.769
+    }
+  },
+  {
+    "id": 4393,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19686,
+      "reserve": 2048,
+      "total": 21734,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 41
+    }
+  },
+  {
+    "id": 4396,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:15+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19686,
+      "after_tokens": 11364,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 26,
+      "kept_messages": 15,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 9322,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `data/storage/st_redis_state.md`):\n  - Без AOF/RDB состояние теряется при перезапуске; `appendfsync everysec` допускает потерю последней секунды [L-ST-08].\n  - Данные должны помещаться в RAM [L-ST-09]; `noeviction` для чекпоинтов [L-ST-10].\n  - *Evidence*: `ev_18979d1b9b6c` (fragment `cd5c7e49-b02e-50c2-8c6e-e67a2d4"
+    }
+  },
+  {
+    "id": 4397,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11364,
+      "reserve": 2048,
+      "total": 13412,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4398,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11364,
+      "actual_input": 9822,
+      "actual_output": 100,
+      "duration_s": 2.0,
+      "calibrated_cpt": 2.816
+    }
+  },
+  {
+    "id": 4399,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:17+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "event sourcing журнал событий восстановление",
+      "hits": 9
+    }
+  },
+  {
+    "id": 4400,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:17+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "in-memory хранение состояния процесса рестарт",
+      "hits": 8
+    }
+  },
+  {
+    "id": 4401,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14907,
+      "reserve": 2048,
+      "total": 16955,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 4402,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14907,
+      "reserve": 2048,
+      "total": 16955,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4403,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14907,
+      "actual_input": 13666,
+      "actual_output": 230,
+      "duration_s": 3.46,
+      "calibrated_cpt": 2.797
+    }
+  },
+  {
+    "id": 4404,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18409,
+      "reserve": 2048,
+      "total": 20457,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 4405,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18409,
+      "reserve": 2048,
+      "total": 20457,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4408,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18409,
+      "actual_input": 16869,
+      "actual_output": 288,
+      "duration_s": 5.25,
+      "calibrated_cpt": 2.779
+    }
+  },
+  {
+    "id": 4409,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20550,
+      "reserve": 2048,
+      "total": 22598,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 4422,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:41+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 20550,
+      "after_tokens": 11728,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 17,
+      "kept_messages": 11,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 7037,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `data/storage/st_redis_state.md`):\n  - Без AOF/RDB состояние теряется при перезапуске; `appendfsync everysec` допускает потерю последней секунды [L-ST-08].\n  - Данные должны помещаться в RAM [L-ST-09]; `noeviction` для чекпоинтов [L-ST-10].\n  - *Evidence*: `ev_18979d1b9b6c` (fragment `cd5c7e49-b02e-50c2-8c6e-e67a2d4"
+    }
+  },
+  {
+    "id": 4423,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11728,
+      "reserve": 2048,
+      "total": 13776,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4431,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11728,
+      "actual_input": 9985,
+      "actual_output": 656,
+      "duration_s": 8.23,
+      "calibrated_cpt": 2.846
+    }
+  },
+  {
+    "id": 4432,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12682,
+      "reserve": 2048,
+      "total": 14730,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 4433,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12682,
+      "reserve": 2048,
+      "total": 14730,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4434,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12682,
+      "actual_input": 11232,
+      "actual_output": 284,
+      "duration_s": 3.56,
+      "calibrated_cpt": 2.866
+    }
+  },
+  {
+    "id": 4435,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14121,
+      "reserve": 2048,
+      "total": 16169,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 4436,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:52:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14121,
+      "reserve": 2048,
+      "total": 16169,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)"
+    }
+  },
+  {
+    "id": 4447,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14121,
+      "actual_input": 12807,
+      "actual_output": 674,
+      "duration_s": 10.29,
+      "calibrated_cpt": 2.856
+    }
+  },
+  {
+    "id": 4448,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15355,
+      "reserve": 2048,
+      "total": 17403,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 4449,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15355,
+      "reserve": 2048,
+      "total": 17403,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)"
+    }
+  },
+  {
+    "id": 4457,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15355,
+      "actual_input": 14069,
+      "actual_output": 289,
+      "duration_s": 6.42,
+      "calibrated_cpt": 2.834
+    }
+  },
+  {
+    "id": 4458,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17371,
+      "reserve": 2048,
+      "total": 19419,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4459,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17371,
+      "reserve": 2048,
+      "total": 19419,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4460,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17371,
+      "actual_input": 15927,
+      "actual_output": 644,
+      "duration_s": 6.56,
+      "calibrated_cpt": 2.811
+    }
+  },
+  {
+    "id": 4461,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18696,
+      "reserve": 2048,
+      "total": 20744,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 4462,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18696,
+      "reserve": 2048,
+      "total": 20744,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4463,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18696,
+      "actual_input": 17168,
+      "actual_output": 131,
+      "duration_s": 3.19,
+      "calibrated_cpt": 2.785
+    }
+  },
+  {
+    "id": 4464,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:20+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "TODO|не решено|требует оценки|открытый вопрос|не определено",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4465,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:20+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "in-memory|in memory|в памяти|RAM",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4466,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19271,
+      "reserve": 2048,
+      "total": 21319,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 39
+    }
+  },
+  {
+    "id": 4488,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:37+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 19271,
+      "after_tokens": 11016,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 20,
+      "kept_messages": 19,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8088,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `data/storage/st_redis_state.md`):\n  - Без AOF/RDB состояние теряется при перезапуске; `appendfsync everysec` допускает потерю последней секунды [L-ST-08].\n  - Данные должны помещаться в RAM [L-ST-09]; `noeviction` для чекпоинтов [L-ST-10].\n  - *Evidence*: `ev_18979d1b9b6c` (fragment `cd5c7e49-b02e-50c2-8c6e-e67a2d4"
+    }
+  },
+  {
+    "id": 4489,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11016,
+      "reserve": 2048,
+      "total": 13064,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4490,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11016,
+      "actual_input": 9551,
+      "actual_output": 216,
+      "duration_s": 2.74,
+      "calibrated_cpt": 2.825
+    }
+  },
+  {
+    "id": 4491,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "не решено",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4492,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "открытый вопрос",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4493,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "TODO",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4494,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "требует оценки",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4495,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11527,
+      "reserve": 2048,
+      "total": 13575,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4496,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11527,
+      "reserve": 2048,
+      "total": 13575,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4497,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11527,
+      "actual_input": 10127,
+      "actual_output": 216,
+      "duration_s": 3.1,
+      "calibrated_cpt": 2.848
+    }
+  },
+  {
+    "id": 4498,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "открытый вопрос",
+      "hits": 2
+    }
+  },
+  {
+    "id": 4499,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "требует оценки",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4500,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "TODO",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4501,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "не решено",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4502,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12395,
+      "reserve": 2048,
+      "total": 14443,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 4503,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12395,
+      "reserve": 2048,
+      "total": 14443,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4504,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12395,
+      "actual_input": 11043,
+      "actual_output": 109,
+      "duration_s": 2.23,
+      "calibrated_cpt": 2.852
+    }
+  },
+  {
+    "id": 4505,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:46+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "вынесен на",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4506,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:46+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "отдельный том",
+      "hits": 1
+    }
+  },
+  {
+    "id": 4507,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12822,
+      "reserve": 2048,
+      "total": 14870,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 4508,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:46+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12822,
+      "reserve": 2048,
+      "total": 14870,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4515,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12822,
+      "actual_input": 11480,
+      "actual_output": 200,
+      "duration_s": 4.52,
+      "calibrated_cpt": 2.85
+    }
+  },
+  {
+    "id": 4516,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:50+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "M-13",
+      "hits": 5
+    }
+  },
+  {
+    "id": 4517,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13884,
+      "reserve": 2048,
+      "total": 15932,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 35
+    }
+  },
+  {
+    "id": 4518,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13884,
+      "reserve": 2048,
+      "total": 15932,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4525,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13884,
+      "actual_input": 12733,
+      "actual_output": 60,
+      "duration_s": 2.85,
+      "calibrated_cpt": 2.821
+    }
+  },
+  {
+    "id": 4526,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14611,
+      "reserve": 2048,
+      "total": 16659,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 4527,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14611,
+      "reserve": 2048,
+      "total": 16659,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 4528,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14611,
+      "actual_input": 13326,
+      "actual_output": 74,
+      "duration_s": 3.02,
+      "calibrated_cpt": 2.798
+    }
+  },
+  {
+    "id": 4529,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15111,
+      "reserve": 2048,
+      "total": 17159,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 39
+    }
+  },
+  {
+    "id": 4530,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:53:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15111,
+      "reserve": 2048,
+      "total": 17159,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4531,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15111,
+      "actual_input": 13734,
+      "actual_output": 219,
+      "duration_s": 3.61,
+      "calibrated_cpt": 2.779
+    }
+  },
+  {
+    "id": 4532,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:00+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "event-sourcing|event sourcing|журнал событий",
+      "hits": 4
+    }
+  },
+  {
+    "id": 4533,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16236,
+      "reserve": 2048,
+      "total": 18284,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 4534,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16236,
+      "reserve": 2048,
+      "total": 18284,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4535,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16236,
+      "actual_input": 14768,
+      "actual_output": 56,
+      "duration_s": 2.26,
+      "calibrated_cpt": 2.759
+    }
+  },
+  {
+    "id": 4536,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17072,
+      "reserve": 2048,
+      "total": 19120,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 4537,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17072,
+      "reserve": 2048,
+      "total": 19120,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4538,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17072,
+      "actual_input": 15399,
+      "actual_output": 140,
+      "duration_s": 2.9,
+      "calibrated_cpt": 2.748
+    }
+  },
+  {
+    "id": 4539,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18169,
+      "reserve": 2048,
+      "total": 20217,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 47
+    }
+  },
+  {
+    "id": 4540,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18169,
+      "reserve": 2048,
+      "total": 20217,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4541,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18169,
+      "actual_input": 16349,
+      "actual_output": 303,
+      "duration_s": 4.2,
+      "calibrated_cpt": 2.74
+    }
+  },
+  {
+    "id": 4542,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18853,
+      "reserve": 2048,
+      "total": 20901,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 50
+    }
+  },
+  {
+    "id": 4543,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18853,
+      "reserve": 2048,
+      "total": 20901,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4544,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18853,
+      "actual_input": 16949,
+      "actual_output": 53,
+      "duration_s": 2.98,
+      "calibrated_cpt": 2.732
+    }
+  },
+  {
+    "id": 4545,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:13+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "PostgreSQL",
+      "hits": 7
+    }
+  },
+  {
+    "id": 4546,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19902,
+      "reserve": 2048,
+      "total": 21950,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 52
+    }
+  },
+  {
+    "id": 4547,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:23+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 5,
+      "before_tokens": 19902,
+      "after_tokens": 11223,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 36,
+      "kept_messages": 16,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 9205,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n- Политика резервных копий: решение РС-9 (том backup-02, 2 ТБ).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Meeting M-13** (`271067a4-a2b2-481f-9201-3d089aa38a18`, `data/meetings/meeting_m13.md`):\n  - **Решение РС-9**: резервные копии хранятся на отдельном томе **backup-02** объёмом **2 ТБ**.\n  - Действия: Марина Белова готовит runbook RB-09 к 25.11.2026.\n  - *Evidence*: L1 summary (подтверждено поиском \"M-13\").\n- **Redis**"
+    }
+  },
+  {
+    "id": 4548,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11223,
+      "reserve": 2048,
+      "total": 13271,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 4549,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11223,
+      "actual_input": 9565,
+      "actual_output": 59,
+      "duration_s": 1.61,
+      "calibrated_cpt": 2.793
+    }
+  },
+  {
+    "id": 4550,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:25+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "get_l1",
+      "repeats": 3
+    }
+  },
+  {
+    "id": 4551,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:25+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11180,
+      "reserve": 2048,
+      "total": 13228,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 4552,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:25+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11180,
+      "reserve": 2048,
+      "total": 13228,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4553,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11180,
+      "actual_input": 9715,
+      "actual_output": 73,
+      "duration_s": 1.82,
+      "calibrated_cpt": 2.832
+    }
+  },
+  {
+    "id": 4554,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11564,
+      "reserve": 2048,
+      "total": 13612,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 4555,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11564,
+      "reserve": 2048,
+      "total": 13612,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4556,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11564,
+      "actual_input": 10223,
+      "actual_output": 313,
+      "duration_s": 3.63,
+      "calibrated_cpt": 2.85
+    }
+  },
+  {
+    "id": 4557,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12063,
+      "reserve": 2048,
+      "total": 14111,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 4558,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12063,
+      "reserve": 2048,
+      "total": 14111,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4559,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12063,
+      "actual_input": 10844,
+      "actual_output": 73,
+      "duration_s": 1.89,
+      "calibrated_cpt": 2.848
+    }
+  },
+  {
+    "id": 4560,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12579,
+      "reserve": 2048,
+      "total": 14627,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 4561,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12579,
+      "reserve": 2048,
+      "total": 14627,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 4562,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12579,
+      "actual_input": 11327,
+      "actual_output": 239,
+      "duration_s": 3.18,
+      "calibrated_cpt": 2.843
+    }
+  },
+  {
+    "id": 4563,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:36+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "TODO|не решено|требует оценки|открытый вопрос|не определено",
+      "hits": 0
+    }
+  },
+  {
+    "id": 4564,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13115,
+      "reserve": 2048,
+      "total": 15163,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 4565,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13115,
+      "reserve": 2048,
+      "total": 15163,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 4566,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13115,
+      "actual_input": 11829,
+      "actual_output": 67,
+      "duration_s": 2.16,
+      "calibrated_cpt": 2.835
+    }
+  },
+  {
+    "id": 4567,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:38+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "открыт|не закрыт|решается на|вынесено",
+      "hits": 8
+    }
+  },
+  {
+    "id": 4568,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14212,
+      "reserve": 2048,
+      "total": 16260,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 4569,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14212,
+      "reserve": 2048,
+      "total": 16260,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 4570,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14212,
+      "actual_input": 13064,
+      "actual_output": 72,
+      "duration_s": 2.28,
+      "calibrated_cpt": 2.806
+    }
+  },
+  {
+    "id": 4571,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14788,
+      "reserve": 2048,
+      "total": 16836,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 4572,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14788,
+      "reserve": 2048,
+      "total": 16836,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 4573,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14788,
+      "actual_input": 13502,
+      "actual_output": 72,
+      "duration_s": 2.3,
+      "calibrated_cpt": 2.785
+    }
+  },
+  {
+    "id": 4574,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15222,
+      "reserve": 2048,
+      "total": 17270,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 4575,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15222,
+      "reserve": 2048,
+      "total": 17270,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 4576,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15222,
+      "actual_input": 13845,
+      "actual_output": 187,
+      "duration_s": 3.22,
+      "calibrated_cpt": 2.767
+    }
+  },
+  {
+    "id": 4577,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:47+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "Redis",
+      "hits": 2
+    }
+  },
+  {
+    "id": 4578,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15970,
+      "reserve": 2048,
+      "total": 18018,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 4579,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15970,
+      "reserve": 2048,
+      "total": 18018,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4580,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15970,
+      "actual_input": 14529,
+      "actual_output": 59,
+      "duration_s": 2.33,
+      "calibrated_cpt": 2.749
+    }
+  },
+  {
+    "id": 4581,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16786,
+      "reserve": 2048,
+      "total": 18834,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 39
+    }
+  },
+  {
+    "id": 4582,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16786,
+      "reserve": 2048,
+      "total": 18834,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4583,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16786,
+      "actual_input": 15183,
+      "actual_output": 146,
+      "duration_s": 3.13,
+      "calibrated_cpt": 2.737
+    }
+  },
+  {
+    "id": 4584,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17885,
+      "reserve": 2048,
+      "total": 19933,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 4585,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17885,
+      "reserve": 2048,
+      "total": 19933,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4586,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17885,
+      "actual_input": 16143,
+      "actual_output": 336,
+      "duration_s": 4.71,
+      "calibrated_cpt": 2.728
+    }
+  },
+  {
+    "id": 4587,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:57+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18587,
+      "reserve": 2048,
+      "total": 20635,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 45
+    }
+  },
+  {
+    "id": 4588,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:54:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18587,
+      "reserve": 2048,
+      "total": 20635,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 4589,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18587,
+      "actual_input": 16783,
+      "actual_output": 64,
+      "duration_s": 2.9,
+      "calibrated_cpt": 2.717
+    }
+  },
+  {
+    "id": 4590,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:00+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "in-memory|in memory|в памяти|в оперативной",
+      "hits": 2
+    }
+  },
+  {
+    "id": 4591,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19153,
+      "reserve": 2048,
+      "total": 21201,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 47
+    }
+  },
+  {
+    "id": 4592,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:09+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 6,
+      "before_tokens": 19153,
+      "after_tokens": 10751,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 29,
+      "kept_messages": 18,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8108,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n- Политика резервных копий: решение РС-9 (том backup-02, 2 ТБ).\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Meeting M-13** (`271067a4-a2b2-481f-9201-3d089aa38a18`, `data/meetings/meeting_m13.md`):\n  - **Решение РС-9**: резервные копии хранятся на отдельном томе **backup-02** объёмом **2 ТБ**.\n  - *Evidence*: `ev_60848e88bdda` (fragment `b07120ea-f7af-5a61-aaea-69daf5b2e126`, lines [7"
+    }
+  },
+  {
+    "id": 4593,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10751,
+      "reserve": 2048,
+      "total": 12799,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 4594,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10751,
+      "actual_input": 9053,
+      "actual_output": 62,
+      "duration_s": 1.82,
+      "calibrated_cpt": 2.79
+    }
+  },
+  {
+    "id": 4595,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:11+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "event|событийн|журнал|append",
+      "hits": 18
+    }
+  },
+  {
+    "id": 4596,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12217,
+      "reserve": 2048,
+      "total": 14265,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 4597,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12217,
+      "reserve": 2048,
+      "total": 14265,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4598,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12217,
+      "actual_input": 10937,
+      "actual_output": 56,
+      "duration_s": 1.97,
+      "calibrated_cpt": 2.794
+    }
+  },
+  {
+    "id": 4599,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:13+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "get_l1",
+      "repeats": 3
+    }
+  },
+  {
+    "id": 4600,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12398,
+      "reserve": 2048,
+      "total": 14446,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 4601,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12398,
+      "reserve": 2048,
+      "total": 14446,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4602,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12398,
+      "actual_input": 11084,
+      "actual_output": 70,
+      "duration_s": 1.89,
+      "calibrated_cpt": 2.799
+    }
+  },
+  {
+    "id": 4603,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12886,
+      "reserve": 2048,
+      "total": 14934,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 4604,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12886,
+      "reserve": 2048,
+      "total": 14934,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4605,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12886,
+      "actual_input": 11558,
+      "actual_output": 70,
+      "duration_s": 2.19,
+      "calibrated_cpt": 2.8
+    }
+  },
+  {
+    "id": 4606,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13398,
+      "reserve": 2048,
+      "total": 15446,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 4607,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13398,
+      "reserve": 2048,
+      "total": 15446,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4610,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13398,
+      "actual_input": 12046,
+      "actual_output": 304,
+      "duration_s": 4.24,
+      "calibrated_cpt": 2.797
+    }
+  },
+  {
+    "id": 4611,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14031,
+      "reserve": 2048,
+      "total": 16079,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 4612,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:22+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14031,
+      "reserve": 2048,
+      "total": 16079,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 4613,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:24+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14031,
+      "actual_input": 12647,
+      "actual_output": 53,
+      "duration_s": 1.92,
+      "calibrated_cpt": 2.791
+    }
+  },
+  {
+    "id": 4614,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:24+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "PostgreSQL",
+      "hits": 7
+    }
+  },
+  {
+    "id": 4615,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15040,
+      "reserve": 2048,
+      "total": 17088,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 4616,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15040,
+      "reserve": 2048,
+      "total": 17088,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 4617,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15040,
+      "actual_input": 13739,
+      "actual_output": 59,
+      "duration_s": 1.98,
+      "calibrated_cpt": 2.77
+    }
+  },
+  {
+    "id": 4618,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:26+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "get_l1",
+      "repeats": 4
+    }
+  },
+  {
+    "id": 4619,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15354,
+      "reserve": 2048,
+      "total": 17402,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 33
+    }
+  },
+  {
+    "id": 4620,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15354,
+      "reserve": 2048,
+      "total": 17402,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 4621,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15354,
+      "actual_input": 13889,
+      "actual_output": 73,
+      "duration_s": 2.13,
+      "calibrated_cpt": 2.759
+    }
+  },
+  {
+    "id": 4622,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15961,
+      "reserve": 2048,
+      "total": 18009,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 35
+    }
+  },
+  {
+    "id": 4623,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15961,
+      "reserve": 2048,
+      "total": 18009,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4624,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15961,
+      "actual_input": 14397,
+      "actual_output": 73,
+      "duration_s": 2.2,
+      "calibrated_cpt": 2.751
+    }
+  },
+  {
+    "id": 4625,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16607,
+      "reserve": 2048,
+      "total": 18655,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 4626,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16607,
+      "reserve": 2048,
+      "total": 18655,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4627,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16607,
+      "actual_input": 14924,
+      "actual_output": 336,
+      "duration_s": 4.04,
+      "calibrated_cpt": 2.747
+    }
+  },
+  {
+    "id": 4628,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17406,
+      "reserve": 2048,
+      "total": 19454,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 4629,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17406,
+      "reserve": 2048,
+      "total": 19454,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4630,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17406,
+      "actual_input": 15656,
+      "actual_output": 2048,
+      "duration_s": 16.69,
+      "calibrated_cpt": 2.741
+    }
+  },
+  {
+    "id": 4631,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17614,
+      "reserve": 2048,
+      "total": 19662,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 4632,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:55:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17614,
+      "reserve": 2048,
+      "total": 19662,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4633,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17614,
+      "actual_input": 15748,
+      "actual_output": 2048,
+      "duration_s": 18.52,
+      "calibrated_cpt": 2.742
+    }
+  },
+  {
+    "id": 4634,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17784,
+      "reserve": 2048,
+      "total": 19832,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 4635,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17784,
+      "reserve": 2048,
+      "total": 19832,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.74)"
+    }
+  },
+  {
+    "id": 4636,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17784,
+      "actual_input": 15840,
+      "actual_output": 2048,
+      "duration_s": 18.13,
+      "calibrated_cpt": 2.746
+    }
+  },
+  {
+    "id": 4637,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:28+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "submit_result",
+      "repeats": 3
+    }
+  },
+  {
+    "id": 4638,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17947,
+      "reserve": 2048,
+      "total": 19995,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 46
+    }
+  },
+  {
+    "id": 4639,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17947,
+      "reserve": 2048,
+      "total": 19995,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4640,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17947,
+      "actual_input": 15945,
+      "actual_output": 2048,
+      "duration_s": 16.22,
+      "calibrated_cpt": 2.752
+    }
+  },
+  {
+    "id": 4641,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:44+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "submit_result",
+      "repeats": 4
+    }
+  },
+  {
+    "id": 4642,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18095,
+      "reserve": 2048,
+      "total": 20143,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 48
+    }
+  },
+  {
+    "id": 4643,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:56:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18095,
+      "reserve": 2048,
+      "total": 20143,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 4644,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18095,
+      "actual_input": 16050,
+      "actual_output": 2048,
+      "duration_s": 17.2,
+      "calibrated_cpt": 2.759
+    }
+  },
+  {
+    "id": 4645,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20069,
+      "reserve": 2048,
+      "total": 22117,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 50
+    }
+  },
+  {
+    "id": 4646,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:10+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 7,
+      "before_tokens": 20069,
+      "after_tokens": 11213,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 30,
+      "kept_messages": 20,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8277,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе `itmo-lab3` все подходы к хранению состояния агентов (agent state / state storage / persistence / session state / memory). Задачи: (1) найти все документы, описывающие подходы (in-memory, файловое, БД, кэш, event-sourcing, checkpointing и т.п.); (2) для каждого подхода извлечь из L2-текста конкретные ограничения (лимиты, производительность, надёжность, масштабируемость, что теряется при рестарте) с точными цитатами, document_id, fragment_id и номерами строк; (3) определить, какой подход выбран именно для DocSearch — найти явное решение (decision) с цитатой; (4) зафиксировать открытые вопросы/неясности (TODO, \"не решено\", \"требует оценки\"). Отчитаться структурированно: список подходов с ограничениями, выбранный подход для DocSearch, открытые вопросы — всё с evidence (fragment_id, lines).\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано. Общие требования к формату:*\n- Отчёт должен быть структурированным.\n- Для каждого подхода: конкретные ограничения с точными цитатами, document_id, fragment_id и номерами строк.\n- Для DocSearch: явное решение (decision) с цитатой.\n- Зафиксировать открытые вопросы/неясности.\n- Всё с evidence (fragment_id, lines).\n\n## Решения и договорённости\n- План работы: 5 шагов (L1 search → L2 extraction → decision for DocSearch → open questions → structured report).\n- Корпус: `itmo-lab3`, 59 документов, 332 фрагмента.\n- Ключевые папки: `storage` (10 docs), `projects` (6 docs), `agents` (11 docs), `meetings` (6 docs).\n- Выбран бэкенд для DocSearch: PostgreSQL 16 (решение РС-7).\n- Политика резервных копий: решение РС-9 (том backup-02, 2 ТБ).\n- На этапе Kickoff (02.10.2026) обсуждалось использование Elasticsearch для лексического поиска, но финальное решение по хранению чекпоинтов — PostgreSQL 16.\n\n## Подтверждённые факты (с источниками)\n- **Корпус**: `corpus_id: itmo-lab3`, 59 документов, 332 фрагмента. Папки: `storage` (10 docs, 47 frags), `projects` (6 docs, 21 frags), `agents` (11 docs, 34 frags), `meetings` (6 docs, 12 frags).\n- **DocSearch Architecture** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `data/projects/docsearch_architecture.md`): Выбор бэкенда хранения чекпоинтов утверждён решением **РС-7** (протокол совещания M-12). Политика резервных копий — решение **РС-9**.\n  - *Evidence*: `ev_641b812e950e` (fragment `af6eaa33-4993-566b-8bac-a84f18624e97`, lines [15, 15]).\n- **Meeting M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `data/meetings/meeting_m12.md`):\n  - **Решение РС-7**: бэкенд хранения чекпоинтов DocSearch — **PostgreSQL 16**; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n  - **Решение РС-8**: индекс фрагментов хранит эмбеддинги размерности 384.\n  - **Открытый вопрос**: Нужен ли отдельный том для резервных копий — вынесено на совещание M-13.\n  - *Evidence*: `ev_d9021851ea4a` (fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, lines [15, 15]); `ev_c98d5ab64442` (fragment `1598719b-934f-5d80-888f-0b0a03f9e5bc`, lines [25, 25]).\n- **Meeting M-13** (`271067a4-a2b2-481f-9201-3d089aa38a18`, `data/meetings/meeting_m13.md`):\n  - **Решение РС-9**: резервные копии хранятся на отдельном томе **backup-02** объёмом **2 ТБ**.\n  - *Evidence*: `ev_"
+    }
+  },
+  {
+    "id": 4647,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11213,
+      "reserve": 2048,
+      "total": 13261,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 4648,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:10+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "token_budget",
+      "resource": "model_calls",
+      "needed": 1,
+      "remaining": 0,
+      "limit": 60
+    }
+  },
+  {
+    "id": 4649,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:10+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)"
+    }
+  },
+  {
+    "id": 4650,
+    "task_id": "M7-deep1",
+    "ts": "2026-11-20T13:57:10+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)"
+    }
+  }
+]
