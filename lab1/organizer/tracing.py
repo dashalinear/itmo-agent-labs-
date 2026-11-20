@@ -108,6 +108,12 @@ class Tracer:
                  (f"  \n**usage:** `{usage}`" if usage else "") +
                  f"\n\n### Assistant\n\n{answer}\n")
 
+    def cli_command(self, command: str, result: Any = None, ok: bool = True) -> None:
+        """A CLI command (/check, /history, /exit, ...) or a script directive (@wait_for_files ...)."""
+        self.event("cli_command", command=command, ok=ok, result=result)
+        short = json.dumps(result, ensure_ascii=False, default=str)
+        self._md(f"> **CLI command** `{command}` -> {'ok' if ok else 'FAILED'}: `{short[:400]}`\n")
+
     def note(self, text: str) -> None:
         self.event("note", text=text)
         self._md(f"> {text}\n")

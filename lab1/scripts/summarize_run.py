@@ -35,14 +35,22 @@ def tool_error_type(content: str) -> str | None:
     return None
 
 
+def tool_ok(content: str) -> bool:
+    try:
+        env = json.loads(content)
+    except (json.JSONDecodeError, TypeError):
+        return False
+    return isinstance(env, dict) and env.get("ok") is True
+
+
 def summarize_session(events: list[dict]) -> dict:
     start = next((e for e in events if e["event"] == "session_start"), {})
-    turns, current, actions = [], None, []
+    turns, current, actions, commands, end = [], None, [], [], {}
     for e in events:
         kind = e["event"]
         if kind == "user_turn":
             current = {"n": len(turns) + 1, "text": e["text"], "run_id": e["run_id"], "calls": Counter(),
-                       "errors": Counter(), "model_calls": 0}
+                       "errors": Counter(), "ok_results": Counter(), "model_calls": 0}
             turns.append(current)
         elif kind == "graph_step" and current and e["run_id"] == current["run_id"]:
             if e["node"] == "model":
@@ -56,13 +64,20 @@ def summarize_session(events: list[dict]) -> dict:
                     t = tool_error_type(m["content"])
                     if t:
                         current["errors"][f"{m.get('name')}:{t}"] += 1
+                    elif tool_ok(m.get("content", "")):
+                        current["ok_results"][m.get("name")] += 1
         elif kind == "turn_end" and current:
             current.update(stopped_by=e.get("stopped_by") or ("model_call_limit" if current.get("limit_message") else None),
                            error=e.get("error"),
                            history_ok=not e.get("history_problems"), duration_s=e.get("duration_s", 0))
         elif kind == "user_action":
             actions.append({"after_turn": len(turns), **{k: e[k] for k in e if k not in ("ts", "session_id", "event")}})
-    return {"start": start, "turns": turns, "actions": actions}
+        elif kind == "cli_command":
+            commands.append({"after_turn": len(turns), "command": e.get("command"), "ok": e.get("ok", True),
+                             "result": e.get("result")})
+        elif kind == "session_end":
+            end = {k: e.get(k) for k in ("ended_by", "user_turns")}
+    return {"start": start, "turns": turns, "actions": actions, "commands": commands, "end": end}
 
 
 def fmt_counter(c: Counter) -> str:
@@ -109,20 +124,45 @@ def scenario_checks(sessions: list[dict]) -> list[tuple[bool, str]]:
         e = all_errors("guard")
         for t in ("invalid_argument", "outside_workspace", "name_conflict"):
             checks.append((e.get(t, 0) > 0, f"guard: a tool returned {t}"))
-        checks.append((e.get("network_error", 0) + e.get("timeout", 0) + e.get("http_error", 0) > 0,
-                       "guard: web_fetch returned a network/HTTP error"))
+        okr = Counter()
+        for t in by["guard"]["summary"]["turns"]:
+            okr.update(t["ok_results"])
+        checks.append((okr.get("web_fetch", 0) > 0, "guard: web_fetch succeeded on the local fixture server"))
+        we = Counter(k for t in by["guard"]["summary"]["turns"] for k in t["errors"].elements() if k.startswith("web_fetch:"))
+        for t in ("http_error", "timeout", "network_error"):
+            checks.append((we.get(f"web_fetch:{t}", 0) > 0, f"guard: web_fetch returned {t}"))
     if "errors" in by:
         e = all_errors("errors")
-        checks.append((e.get("es_unavailable", 0) + e.get("es_error", 0) + e.get("mcp_unavailable", 0) > 0,
+        checks.append((e.get("es_unavailable", 0) + e.get("es_error", 0) > 0,
                        "errors: MCP tools reported unavailable Elasticsearch"))
+    if "mcp_down" in by:
+        s = by["mcp_down"]["summary"]
+        e = all_errors("mcp_down")
+        checks.append((str(s["start"].get("mcp", "")).startswith("MCP unavailable"),
+                       "mcp_down: the CLI could not start the MCP server (session_start.mcp)"))
+        checks.append((e.get("mcp_unavailable", 0) > 0, "mcp_down: an index tool returned mcp_unavailable"))
+        moved = sum(t["ok_results"].get("move", 0) for t in s["turns"])
+        checks.append((moved > 0, "mcp_down: file organization still works (a successful move)"))
     for s in sessions:
         bad = [t["n"] for t in s["summary"]["turns"] if not t.get("history_ok", True)]
         checks.append((not bad, f"{s['label']}: history check OK in every turn" + (f" (bad: {bad})" if bad else "")))
+        end = s["summary"].get("end") or {}
+        checks.append((str(end.get("ended_by", "")).startswith("exit_command"),
+                       f"{s['label']}: session ended by the exit command (session_end.ended_by={end.get('ended_by')})"))
     return checks
 
 
 def results_block() -> list[str]:
     out = []
+    sym = RESULTS / "symlink_test.txt"
+    if sym.exists():
+        status = next((l for l in sym.read_text(encoding="utf-8-sig").splitlines() if l.startswith("status:")), "")
+        out.append(f"- `results/symlink_test.txt` (выход через ссылки): {status[len('status:'):].strip()}")
+    http = RESULTS / "http_fixture_requests.log"
+    if http.exists():
+        reqs = [l for l in http.read_text(encoding="utf-8", errors="replace").splitlines() if " /" in l and "/health" not in l]
+        out.append(f"- `results/http_fixture_requests.log`: локальный HTTP-сервер получил {len(reqs)} запросов web_fetch: "
+                   + ", ".join(cell(l.split(" ", 1)[1], 30) for l in reqs))
     for name in ("verify_report_main.json", "verify_report.json"):
         p = RESULTS / name
         if p.exists():
@@ -196,6 +236,16 @@ def main() -> int:
                 a = acts[t["n"]]
                 L.append(f"| — | *действие: {a['action']} {', '.join(a.get('files', []))} "
                          f"({a.get('added_by', '')})* | | | | |")
+        if sm.get("commands"):
+            L += ["", "Команды CLI (события `cli_command`):", ""]
+            for c in sm["commands"]:
+                res = c["result"]
+                if isinstance(res, dict) and "history_ok" in res:
+                    res = f"history_ok={res['history_ok']}, messages={res.get('messages')}"
+                L.append(f"- после хода {c['after_turn']}: `{c['command']}` -> "
+                         f"{'ok' if c['ok'] else 'FAILED'}, {cell(json.dumps(res, ensure_ascii=False, default=str), 120)}")
+        end = sm.get("end") or {}
+        L += ["", f"Завершение сессии (`session_end.ended_by`): `{end.get('ended_by', 'не записано')}`."]
     checks = scenario_checks(sessions)
     L += ["", "## Проверки сценариев по трассам", ""]
     L += [f"- [{'x' if ok else ' '}] {text}" for ok, text in checks]

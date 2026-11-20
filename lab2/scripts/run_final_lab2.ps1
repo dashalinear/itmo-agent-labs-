@@ -5,15 +5,17 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
 
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1                 # everything (about 30-40 min)
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipB3         # without the real web run B3
-    powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -Only B3        # re-record only these task ids
+    powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -Only A1,G2,P1,B3   # re-record only these task ids
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipPush       # record, do not commit
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -DryRun -WorkDir D:\tmp\lab2_dry
         offline check of this script: scripted models (scripts/dryrun_models.py) instead of the LLM, all state,
         traces and results in -WorkDir, no git, README untouched
 
 Scenarios (task ids):
-  A1   long local analysis; crash after a durable checkpoint (after_tool:30) + resume in a NEW process;
-       completion now requires [C5] verbatim decisions (criterion verbatim_quotes); artifact read after restart
+  P1   CLI pause from a second process after the 1st evidence -> paused at a step boundary; resume in a new process
+  A1   long local analysis; crash right after the 3rd saved evidence (after_tool:save_evidence:3) + resume in a
+       NEW process; completion requires [C5] verbatim decisions (verbatim_quotes) and the three decisions indexed
+       in Elasticsearch through the lab 1 MCP tools (indexed_in_es); artifact read after restart
   D1   token budget 120k -> paused + partial; the user raises the limit; resume keeps the counters (same [C5] check)
   DL1  task deadline 45 s -> guard=deadline, paused, partial result saved
   E1   cancel from another process AFTER 2-3 evidence are saved; the in-flight reservation is released
@@ -95,11 +97,12 @@ if ($DryRun) {
     $outside = Join-Path $WorkDir "outside_area"
     $SkipB3 = $true
     $SkipPush = $true
-    $A1Crash = "after_tool:10"
+    $A1Crash = "after_tool:save_evidence:3"
+    $env:ES_INDEX = "itmo_lab2_dryrun_excerpts"   # dry run never writes into the recorded lab 2 index
     Write-Host "DRY RUN: scripted models, work dir $WorkDir (nothing is committed)" -ForegroundColor Yellow
 } else {
     $outside = Join-Path $lab "outside_area"
-    $A1Crash = "after_tool:30"
+    $A1Crash = "after_tool:save_evidence:3"      # crash right after the 3rd saved evidence: resume shows them restored
 }
 $root = if ($env:TASK_ROOT) { $env:TASK_ROOT } else { Join-Path $lab "workspace" }
 $resultsDir = if ($env:RESULTS_DIR) { $env:RESULTS_DIR } else { Join-Path $lab "results" }
@@ -150,7 +153,7 @@ try {
 
     Step "5. Fresh task root; old traces/results of the re-recorded tasks are replaced"
     Run-Py scripts\prepare_workspace.py --reset
-    $ids = @("A1", "D1", "DL1", "E1", "I1", "C2", "G2")
+    $ids = @("A1", "D1", "DL1", "E1", "P1", "I1", "C2", "G2")
     if (-not $SkipB3) { $ids += "B3" }
     $ids = @($ids | Where-Object { Want $_ })
     Write-Host ("re-recorded task ids: " + ($ids -join ", "))
@@ -159,6 +162,7 @@ try {
         if (Test-Path (Join-Path $resultsDir $id)) { Remove-Item -Recurse -Force (Join-Path $resultsDir $id) }
     }
     if (Want "E1") { Remove-Item (Join-Path $resultsDir "E1_std*.txt") -ErrorAction SilentlyContinue }
+    if (Want "P1") { Remove-Item (Join-Path $resultsDir "P1_std*.txt") -ErrorAction SilentlyContinue }
     New-Item -ItemType Directory -Force $resultsDir | Out-Null
 
     if (Want "A1") {
@@ -213,6 +217,20 @@ try {
         Run-Py scripts\idempotency_report.py --task-id I1
     }
 
+    if (Want "P1") {
+        Step "9b. P1: CLI pause from a second process, status paused, resume in a NEW process"
+        Harness new --spec demo\task_p_pause.json --set $fit | Out-Null
+        $pp = Start-Process -FilePath $py -ArgumentList "-m", "harness.cli", "run", "--task-id", "P1" -PassThru -WindowStyle Hidden `
+            -RedirectStandardOutput (Join-Path $resultsDir "P1_stdout.txt") -RedirectStandardError (Join-Path $resultsDir "P1_stderr.txt")
+        & $py scripts\cancel_when.py --task-id P1 --min-evidence 1 --action wait --timeout 900 | Out-Host
+        Harness pause --task-id P1 --reason "demo: pause from another terminal" | Out-Null
+        $pp.WaitForExit(300000) | Out-Null
+        Write-Host "P1 after pause:"
+        Harness status --task-id P1 | Out-Null
+        Harness resume --task-id P1 | Out-Null
+        Harness status --task-id P1 | Out-Null
+    }
+
     if (Want "C2") {
         Step "11. C2: fixed search results with max_http_requests = 6"
         Harness new --spec demo\task_c2_http.json --set $fit | Out-Null
@@ -224,7 +242,7 @@ try {
         Step "12. G2: guard dialog 2 (absolute paths, junction moves, per-step output limit)"
         New-Item -ItemType Directory -Force $outside | Out-Null
         Set-Content -Path (Join-Path $outside "secret.txt") -Value "outside-the-task-root secret" -Encoding UTF8
-        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { Remove-Item (Join-Path $outside $f) -ErrorAction SilentlyContinue }
+        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md", "written_via_junction.txt") { Remove-Item (Join-Path $outside $f) -ErrorAction SilentlyContinue }
         $link = Join-Path $root "data\link_out"
         if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
         $outsideFwd = $outside.Replace("\", "/")
@@ -239,7 +257,7 @@ try {
         } finally { cmd /c rmdir "$link" | Out-Null; Remove-Item $dialog -ErrorAction SilentlyContinue }
         $bad = @()
         if (-not (Test-Path (Join-Path $outside "secret.txt"))) { $bad += "secret.txt left the outside folder" }
-        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md") { if (Test-Path (Join-Path $outside $f)) { $bad += "$f written outside" } }
+        foreach ($f in "abs_write.txt", "moved_abs.md", "moved_junction.md", "written_via_junction.txt") { if (Test-Path (Join-Path $outside $f)) { $bad += "$f written outside" } }
         if (-not (Test-Path (Join-Path $root "data\search\search_incident_reports.md"))) { $bad += "incident report was moved" }
         if (Test-Path (Join-Path $root "data\secret_copy.txt")) { $bad += "outside file copied into the root" }
         if ($bad) { throw ("guard failed: " + ($bad -join "; ")) }
@@ -259,6 +277,8 @@ try {
 }
 
 Step "14. Evaluation tables and final checks"
+# check-mark symbols copied from web pages are kept as plain words in the committed files (logged per task)
+foreach ($id in $ids) { Run-Py scripts\plain_text_marks.py --task-id $id }
 Run-Py scripts\evaluate.py
 if ($DryRun) { Run-Py scripts\final_checks.py } else { Run-Py scripts\final_checks.py --readme }
 

@@ -87,6 +87,27 @@ def check_local(task: str, out: list) -> None:
         resumed = any(rows[0].get("label") == "resume" for rows in tr)
         out.append(row(task, "сбой после checkpoint и resume в новом процессе", f"crash={crash}, resume={resumed}, "
                        f"запусков {t['runs']}", crash and resumed))
+        crash_ev = next((r for rows in tr for r in rows if r["event"] == "harness:simulated_crash"), {})
+        ev_all = jload(task, "evidence.json", []) or []
+        dups = len(ev_all) - len({(e["source"], e["quote"]) for e in ev_all})
+        resumed_rows = next((rows for rows in tr if rows[0].get("label") == "resume"), [])
+        again = [r.get("data", {}).get("status") for n, _a, r in tool_pairs(resumed_rows) if n == "save_evidence"]
+        out.append(row(task, "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
+                       f"evidence на момент сбоя {crash_ev.get('evidence_at_crash')}, повторённые save_evidence после resume: "
+                       f"{again[:6]}; в конце {len(ev_all)}, дублей {dups}",
+                       (crash_ev.get("evidence_at_crash") or 0) >= 1 and dups == 0))
+        pairs = [p for rows in tr for p in tool_pairs(rows)]
+
+        def _hits(res):
+            d = res.get("data") if isinstance(res.get("data"), dict) else res
+            return len(d.get("hits") or []) if isinstance(d, dict) else 0
+        ups = [r for n, _a, r in pairs if n == "upsert_excerpts"]
+        srch = [r for n, _a, r in pairs if n == "search_excerpts"]
+        es_ok = crit_ok(st, "indexed_in_es")
+        out.append(row(task, "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
+                       f"upsert ok: {sum(1 for r in ups if r.get('ok'))}/{len(ups)}, поиск с хитами: "
+                       f"{sum(1 for r in srch if r.get('ok') and _hits(r))}/{len(srch)}, критерий indexed_in_es: {es_ok}",
+                       any(r.get("ok") for r in ups) and any(r.get("ok") and _hits(r) for r in srch) and bool(es_ok)))
         per_run = max([sum(1 for r in rows if r["event"] == "harness:compaction") for rows in tr] or [0])
         out.append(row(task, ">= 2 компактификаций в одном запуске без реплик пользователя", per_run, per_run >= 2))
         calls = [c for c in st.get("model_calls", []) if c["kind"] == "agent"]
@@ -110,6 +131,26 @@ def check_local(task: str, out: list) -> None:
             ub = tr[-1][0].get("usage_before") or {}
             out.append(row(task, "после resume счётчики не обнулены", f"токены до resume: {ub.get('tokens', {}).get('spent')}",
                            (ub.get("tokens", {}).get("spent") or 0) > 0))
+
+
+def check_p1(out: list) -> None:
+    st = jload("P1", "status.json")
+    if not st:
+        return
+    tr = traces("P1")
+    first = tr[0] if tr else []
+    end1 = next((r for r in first if r["event"] == "session_end"), {})
+    stop1 = next((r for r in first if r["event"] == "harness:task_stopped"), {})
+    out.append(row("P1", "CLI pause из другого процесса: задача paused на границе шага",
+                   f"{end1.get('status')} ({(stop1.get('reason') or '')[:60]})",
+                   end1.get("status") == "paused" and "pause requested" in (stop1.get("reason") or "")))
+    resumed = [rows for rows in tr if rows[0].get("label") == "resume"]
+    ub = (resumed[0][0].get("usage_before") or {}) if resumed else {}
+    out.append(row("P1", "resume в новом процессе продолжил ту же задачу, расход не обнулён",
+                   f"запусков {st['task']['runs']}, вызовов модели до resume {(ub.get('model_calls') or {}).get('used')}, "
+                   f"всего {st['budget']['model_calls']['used']}; статус {st['task']['status']}",
+                   bool(resumed) and (ub.get("model_calls") or {}).get("used", 0) > 0
+                   and st["budget"]["model_calls"]["used"] > (ub.get("model_calls") or {}).get("used", 0)))
 
 
 def check_e1(out: list) -> None:
@@ -197,11 +238,13 @@ def check_g2(out: list) -> None:
         return [((r.get("error") or {}).get("type") if not r.get("ok") else "ok") for r in hits]
     absw = err_of(lambda n, a: n == "write" and re.match(r"^[A-Za-z]:[/\\]", str(a.get("path", ""))))
     absm = err_of(lambda n, a: n == "move" and re.match(r"^[A-Za-z]:[/\\]", str(a.get("destination", ""))))
+    jw = err_of(lambda n, a: n == "write" and "link_out" in str(a.get("path", "")))
     jdst = err_of(lambda n, a: n == "move" and "link_out" in str(a.get("destination", "")))
     jsrc = err_of(lambda n, a: n == "move" and "link_out" in str(a.get("source", "")))
     allowed = err_of(lambda n, a: n in ("write", "move") and "guard_check" in json.dumps(a, ensure_ascii=False))
     for prop, res in (("write по абсолютному пути наружу -> outside_workspace", absw),
                       ("move по абсолютному пути наружу -> outside_workspace", absm),
+                      ("write в junction (data/link_out -> вне root) -> outside_workspace", jw),
                       ("move в junction (data/link_out -> вне root) -> outside_workspace", jdst),
                       ("move из junction -> outside_workspace", jsrc)):
         out.append(row("G2", prop, res or "вызова не было", bool(res) and all(x == "outside_workspace" for x in res)))
@@ -210,6 +253,27 @@ def check_g2(out: list) -> None:
     step = [r for rows in tr for r in rows if r["event"] == "harness:tool_output_offloaded"
             and "step total would exceed" in (r.get("reason") or "")]
     out.append(row("G2", "лимит суммарного вывода шага: step total would exceed", len(step), bool(step)))
+    # the step total itself: all results of that AIMessage together (stubs included) stay within the limit
+    worst = None
+    for rows in tr:
+        calls, sizes = {}, {}
+        for r in rows:
+            if r["event"] != "graph_step":
+                continue
+            for m in r.get("messages", []):
+                if m.get("type") == "AIMessage":
+                    for tc in m.get("tool_calls", []):
+                        calls[tc["id"]] = m.get("id")
+                elif m.get("type") == "ToolMessage" and m.get("tool_call_id") in calls:
+                    k = calls[m["tool_call_id"]]
+                    sizes[k] = sizes.get(k, 0) + len(m.get("content") or "")
+        limit = next((r.get("step_limit") for r in rows if r["event"] == "harness:tool_output_offloaded"), None) or 12000
+        for k, v in sizes.items():
+            if worst is None or v > worst[0]:
+                worst = (v, limit)
+    if worst:
+        out.append(row("G2", "сумма результатов одного шага не больше max_step_result_chars", f"максимум {worst[0]} из {worst[1]}",
+                       worst[0] <= worst[1]))
 
 
 def check_b3(out: list) -> None:
@@ -264,6 +328,115 @@ def comparison_md() -> str | None:
         f"{len(h['facts_confirmed'])} из 5 ({', '.join(h['facts_confirmed']) or '-'}), с документом и страницей |"])
 
 
+def _all_traces() -> list[list[dict]]:
+    out = []
+    for f in sorted(TR.glob("*.jsonl")):
+        try:
+            first = json.loads(f.open(encoding="utf-8").readline())
+        except ValueError:
+            continue
+        out.append((f.name, first))
+    return out
+
+
+def fixed_prompt_md() -> str | None:
+    starts = [(n, r) for n, r in _all_traces() if r.get("event") == "session_start" and r.get("fixed_prompt_tokens")]
+    default = [r["fixed_prompt_tokens"] for _n, r in starts if "cpt=2.60" in (r.get("token_count_method") or "")]
+    if not default:
+        return None
+    a1 = [(n, r) for n, r in starts if n.startswith("A1_")]
+    a1_run = next((n for n, _r in a1 if "_run" in n), None)
+    first_call = None
+    if a1_run:
+        for line in (TR / a1_run).open(encoding="utf-8"):
+            r = json.loads(line)
+            if r["event"] == "harness:model_call_done":
+                first_call = r
+                break
+    a1_resume = next((r for n, r in a1 if "_resume" in n), None)
+    txt = (f"по стартовой эвристике (2,6 символа на токен плюс 10 %) — **{min(default)}–{max(default)} токенов** во всех "
+           f"трассах в `traces/`, начатых с этой эвристикой (поле `fixed_prompt_tokens` в `session_start`)")
+    if first_call:
+        txt += (f". Эвристика с запасом: первый вызов A1 оценён в {first_call['estimated_input']} токенов, а сервер посчитал "
+                f"{first_call['actual_input']} (`usage.input_tokens`); после этого `chars_per_token` калибруется до "
+                f"{first_call['calibrated_cpt']} (`calibrated_cpt` в `model_call_done`)")
+    if a1_resume and "cpt=2.60" not in (a1_resume.get("token_count_method") or ""):
+        txt += (f". Калибровка хранится в state.db (`meta`, ключ `token_calibration:<task>`), поэтому resume A1 начал с "
+                f"`{a1_resume.get('token_count_method')}`, а не с 2,6")
+    return txt + "."
+
+
+def artifacts_md() -> str:
+    lines = []
+    for task in ("A1", "G2", "G1"):
+        d = jload(task, "artifact_after_restart.json")
+        if not d or not d.get("example"):
+            continue
+        e = d["example"]
+        manifest = json.loads((LAB2 / "corpus" / "manifest.json").read_text(encoding="utf-8"))["control_facts"]
+        seen = (e.get("read_artifact_text") or "") + " " + (e.get("search_artifact_hit") or "")
+        fact = e.get("control_fact") or next((f["id"] for f in manifest if all(k in seen for k in f["keywords"])), None)
+        keyword = any(e["query"] == f["keywords"][0] for f in manifest)
+        what = (f"контрольный факт **{fact}**" if fact else
+                "строка с ключевым словом контрольного факта, но не сам факт" if keyword
+                else "последний хит выгруженного результата (не контрольный факт)")
+        lines.append(f"- `results/{task}/artifact_after_restart.json` — `{e['tool']}` ({e['total_chars']} символов, модели "
+                     f"выдано {e['chars_given_to_model']}): {what}; запрос «{e['query'][:70]}», смещение "
+                     f"{e['char_offset_in_artifact']} (дальше выданной части), прочитано через `{e['found_via']}`"
+                     + (f", подтверждено текстом документа (стр. {e['verified_in_document']['page']})"
+                        if (e.get("verified_in_document") or {}).get("snippet_on_page") else "") + ";")
+    return "\n".join(lines)
+
+
+def b3_md() -> str | None:
+    import sys
+    sys.path.insert(0, str(LAB2))
+    import harness  # noqa: F401
+    from harness.web import canonical_url
+    st, q = jload("B3", "status.json"), jload("B3", "queue.json", {}) or {}
+    if not st:
+        return None
+    urls = q.get("urls", [])
+    done = [u for u in urls if u["status"] == "done"]
+    origin = {}
+    for u in done:
+        o = (u.get("discovered_by") or "").split(":")[0] or "?"
+        origin[o] = origin.get(o, 0) + 1
+    papers = {canonical_url(u.get("final_url") or u["url"]) for u in done}
+    hosts = {}
+    for u in done:
+        h = re.sub(r"^https?://([^/]+).*$", r"\1", u.get("final_url") or u["url"])
+        hosts[h] = hosts.get(h, 0) + 1
+    rounds = [e["data"] for e in events("B3", "search_round")]
+    after = sum(1 for r in rounds if r.get("pages_read_before"))
+    tr = traces("B3")
+    pairs = [p for rows in tr for p in tool_pairs(rows)]
+    fetches = {}
+    for n, a, r in pairs:
+        if n == "web_fetch":
+            fetches[a.get("url")] = fetches.get(a.get("url"), 0) + 1
+    repeats = {u: c for u, c in fetches.items() if c > 1}
+    cache = sum(1 for n, _a, r in pairs if n == "web_fetch" and (r.get("data") or {}).get("from_cache"))
+    failed_again = sum(1 for n, _a, r in pairs if n == "web_fetch" and (r.get("error") or {}).get("type") == "already_failed")
+    rep_guard = sum(1 for n, _a, r in pairs if (r.get("error") or {}).get("type") in ("repeated_call", "no_progress"))
+    errs = [u for u in urls if u["status"] == "error"]
+    b = st["budget"]
+    out = [f"- Трассы: {', '.join('`traces/' + rows[0]['session_id'] + '.jsonl`' for rows in tr)}; статус **{st['task']['status']}** "
+           f"({st['task']['status_reason']}); запусков {st['task']['runs']}.",
+           f"- Поиск: {len(rounds)} запросов, из них {len(rounds) - after} до чтения и **{after} после чтения** (`search_round`).",
+           f"- Прочитано {len(done)} URL: " + ", ".join(f"{k} — {v}" for k, v in sorted(origin.items()))
+           + f" (`discovered_by`; `agent` — URL, добавленный агентом напрямую); различных источников после канонизации "
+             f"arXiv abs/html/vN — {len(papers)}. Домены: " + ", ".join(f"{h} — {c}" for h, c in hosts.items()) + ".",
+           f"- Ошибки: " + ("; ".join(f"`{u['url']}` — `{(u['error'] or '').split(':')[0]}`, HTTP-попыток {u['attempts']}"
+                                     for u in errs) if errs else "нет") + ".",
+           f"- Повторные `web_fetch` одного URL: " + (", ".join(f"{u} ×{c}" for u, c in repeats.items()) if repeats else "нет")
+           + f"; из них cache hit {cache}, сразу возвращённая сохранённая ошибка (`already_failed`) {failed_again}; "
+             f"срабатываний `repeated_call`/`no_progress` {rep_guard}.",
+           f"- Evidence {len(jload('B3', 'evidence.json', []) or [])}; вызовов модели {b['model_calls']['used']} из "
+           f"{b['model_calls']['limit']}; токенов {b['tokens']['spent']} из {b['tokens']['limit']}; HTTP {b['http_requests']['used']}."]
+    return "\n".join(out)
+
+
 def replace_block(text: str, name: str, body: str) -> str:
     pat = re.compile(rf"(<!-- {name}:BEGIN -->\n)(.*?)(<!-- {name}:END -->)", re.S)
     return pat.sub(lambda m: m.group(1) + body.rstrip() + "\n" + m.group(3), text) if pat.search(text) else text
@@ -277,6 +450,7 @@ def main() -> None:
     for t in ("A1", "D1"):
         check_local(t, out)
     check_e1(out)
+    check_p1(out)
     check_dl1(out)
     check_c2(out)
     check_i1(out)
@@ -303,6 +477,10 @@ def main() -> None:
         comp = comparison_md()
         if comp:
             text = replace_block(text, "COMPARISON", comp)
+        for block, fn in (("FIXED_PROMPT", fixed_prompt_md), ("ARTIFACTS", artifacts_md), ("B3_SUMMARY", b3_md)):
+            body = fn()
+            if body:
+                text = replace_block(text, block, body)
         ev_md = RES / "evaluation.md"
         if ev_md.exists():
             parts = re.split(r"(?m)^## ", ev_md.read_text(encoding="utf-8"))

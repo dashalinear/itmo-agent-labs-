@@ -248,6 +248,10 @@ class SubmitTools:
             if len(ev) < 2 or searches < 2:
                 raise ToolError("criteria_not_met", "Deep search needs at least 2 search calls and 2 cited fragments",
                                 searches=searches, evidence=len(ev))
+            if not [q for q in (open_questions or []) if str(q).strip()]:
+                raise ToolError("open_questions_required", "Deep search must return open questions: list what is not "
+                                "confirmed, contradictory or outside the corpus; if everything is confirmed, give one "
+                                "item that says so and why")
         self.store.update_task(self.task_id, completion={"completed": True, "findings": findings,
                                                          "open_questions": open_questions or []})
         self.store.set_status(self.task_id, "completed", findings[:200])

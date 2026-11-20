@@ -25,6 +25,18 @@
   },
   {
     "task": "A1",
+    "property": "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
+    "actual": "evidence на момент сбоя 0, повторённые save_evidence после resume: ['saved', 'saved', 'saved', 'saved', 'saved', 'saved']; в конце 10, дублей 0",
+    "ok": false
+  },
+  {
+    "task": "A1",
+    "property": "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
+    "actual": "upsert ok: 0/0, поиск с хитами: 0/0, критерий indexed_in_es: None",
+    "ok": false
+  },
+  {
+    "task": "A1",
     "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
     "actual": 4,
     "ok": true
@@ -215,6 +227,12 @@
   },
   {
     "task": "G2",
+    "property": "write в junction (data/link_out -> вне root) -> outside_workspace",
+    "actual": "вызова не было",
+    "ok": false
+  },
+  {
+    "task": "G2",
     "property": "move в junction (data/link_out -> вне root) -> outside_workspace",
     "actual": [
       "outside_workspace"
@@ -243,6 +261,12 @@
     "property": "лимит суммарного вывода шага: step total would exceed",
     "actual": 2,
     "ok": true
+  },
+  {
+    "task": "G2",
+    "property": "сумма результатов одного шага не больше max_step_result_chars",
+    "actual": "максимум 12711 из 12000",
+    "ok": false
   },
   {
     "task": "B3",

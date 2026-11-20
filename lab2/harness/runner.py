@@ -353,7 +353,7 @@ class TaskRunner:
         for m in msgs:
             if isinstance(m, AIMessage):
                 for tc in m.tool_calls:
-                    print(f"  ↳ [{node}] {tc['name']}({_short(tc['args'])})", flush=True)
+                    print(f"  -> [{node}] {tc['name']}({_short(tc['args'])})", flush=True)
                 if not m.tool_calls and str(m.content).startswith("[harness]"):
                     print(f"  [harness] {m.content}", flush=True)
             elif isinstance(m, ToolMessage):

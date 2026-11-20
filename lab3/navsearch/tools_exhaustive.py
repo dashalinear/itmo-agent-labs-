@@ -31,6 +31,17 @@ AREA_GREP_PAGE = 15
 AREA_FT_PAGE = 15
 
 
+def _merge_ranges(ranges: list[list[int]]) -> list[list[int]]:
+    """Unread line ranges of a document, adjacent/overlapping ones merged (blank lines between fragments)."""
+    out: list[list[int]] = []
+    for a, b in sorted(ranges):
+        if out and a <= out[-1][1] + 2:
+            out[-1][1] = max(out[-1][1], b)
+        else:
+            out.append([a, b])
+    return out
+
+
 class AreaArgs(BaseModel):
     folder: str | None = Field(None, description="Topic folder of the corpus (from L0)")
     document_ids: list[str] | None = Field(None, description="Or an explicit list of document_id")
@@ -208,7 +219,7 @@ class ExhaustiveTools:
             unread = [f for f in frs if f["fragment_id"] not in read]
             docs.append({"document_id": d["document_id"], "path": d["path"], "fragments": len(frs),
                          "read": len(frs) - len(unread), "status": "done" if not unread else ("partial" if len(unread) < len(frs) else "not_started"),
-                         "unread_lines": [[f["start_line"], f["end_line"]] for f in unread][:20],
+                         "unread_lines": _merge_ranges([[f["start_line"], f["end_line"]] for f in unread]),
                          "has_l2": d["has_l2"]})
         for i, fid in enumerate(a["fragment_ids"]):
             if fid not in read:
@@ -218,7 +229,8 @@ class ExhaustiveTools:
         short = self._coverage_short()
         return {**short, "documents_total": len(docs), "documents_done": sum(1 for d in docs if d["status"] == "done"),
                 "documents": docs, "mentions_recorded": len(ev),
-                "resume_cursor": enc_cursor({"p": first_unread}) if first_unread is not None else None,
+                # same shape as area_next's next_cursor; from == p acknowledges nothing, reading starts at p
+                "resume_cursor": enc_cursor({"p": first_unread, "from": first_unread}) if first_unread is not None else None,
                 }
 
     def as_tools(self) -> list[BaseTool]:

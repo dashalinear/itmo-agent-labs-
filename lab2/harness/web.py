@@ -36,10 +36,17 @@ RETRY_STATUS = {429, 500, 502, 503, 504}
 USER_AGENT = "Mozilla/5.0 (compatible; itmo-lab2-research-harness/2.0; +https://www.mediawiki.org/wiki/User-Agent_policy)"
 
 
+_ARXIV = re.compile(r"^/(?:abs|html|pdf)/((?:\d{4}\.\d{4,5})|(?:[a-z\-]+(?:\.[A-Z]{2})?/\d{7}))(?:v\d+)?(?:\.pdf)?/?$")
+
+
 def canonical_url(url: str) -> str:
     p = urlparse(url.strip())
     scheme = p.scheme.lower()
     host = (p.hostname or "").lower()
+    if host in ("arxiv.org", "www.arxiv.org", "export.arxiv.org"):
+        m = _ARXIV.match(p.path or "")
+        if m:       # abs / html / pdf and every vN of one paper are ONE source
+            return f"https://arxiv.org/abs/{m.group(1)}"
     port = p.port
     netloc = host if port in (None, 80 if scheme == "http" else 443) else f"{host}:{port}"
     path = re.sub(r"/{2,}", "/", p.path or "/")

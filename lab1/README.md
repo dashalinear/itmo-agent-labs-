@@ -54,7 +54,7 @@
 | `mcp_es/` | собственный тонкий MCP-сервер над Elasticsearch, схема выдержки |
 | `skills/organize_files/SKILL.md`, `skills/index_excerpts/SKILL.md` | два skill по спецификации Agent Skills |
 | `fixtures/` | тестовые файлы (`input/`, `late/`) и `EXPECTED.md` |
-| `scripts/` | `run_all_demos.ps1` (вся цепочка демо), подготовка workspace, добавление файлов из второго терминала, проверка (`verify.py`), экспорт и восстановление индекса, экспорт графа, сводка прогона (`summarize_run.py`) |
+| `scripts/` | `run_all_demos.ps1` (вся цепочка демо), подготовка workspace, добавление файлов из второго терминала, проверка (`verify.py`), экспорт и восстановление индекса, экспорт графа, сводка прогона (`summarize_run.py`), локальный HTTP-сервер для `web_fetch` (`http_fixture_server.py`) |
 | `demo/` | сценарии диалога для трасс |
 | `traces/` | трассы сессий (`*.jsonl` и `*.md`) |
 | `results/` | снимок workspace, каталог, выгрузка индекса, отчёты `verify`, сводка прогона `RUN_SUMMARY.md` |
@@ -109,14 +109,14 @@ python scripts/verify.py          # детерминированные пров�
 python scripts/export_index.py    # results/index_export.jsonl, catalog.json, data_tree.txt, workspace_snapshot/
 ```
 
-**Все трассы и все `results/` одной командой** (только из сети ИТМО, около 10 минут: в прогоне 19.11.2026 от сброса workspace до коммита прошло 8 минут, плюс тесты; из корня репозитория,
+**Все трассы и все `results/` одной командой** (только из сети ИТМО, около 12 минут: в прогоне 19.11.2026 по прежней цепочке из пяти сессий от сброса workspace до коммита прошло 8 минут, сессия mcp_down и запросы web_fetch к локальному серверу добавляют примерно 2 минуты, плюс тесты около 1 минуты; из корня репозитория,
 скрипт сам переходит в `lab1`):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File lab1\scripts\run_all_demos.ps1
 ```
 
-Скрипт: проверка LLM → `docker compose up` → `pytest` → чистый workspace и пустой индекс → цепочка из пяти сессий
+Скрипт: проверка LLM → `docker compose up` → `pytest` и тесты выхода через ссылки (`results/symlink_test.txt`) → чистый workspace и пустой индекс → цепочка из шести сессий
 (раздел 9) → `verify` → экспорт индекса и графа → `results/RUN_SUMMARY.md` → поиск токена в `traces/` и `results/` →
 удаление трасс прежних прогонов (они не относятся к этой цепочке) → `git commit` **только** `lab1/traces` и
 `lab1/results` → `git push`. Если `verify` не прошёл, старые трассы не удаляются и ничего не коммитится.
@@ -165,6 +165,10 @@ HTTP-ошибка и таймаут превращаются в `error.type = in
   безопасность → Для разработчиков → «Режим разработчика») или под администратором. На машине автора режим
   разработчика выключен, поэтому тест помечается `skipped` с пояснением; системные настройки ради теста не менялись.
   `pathguard` обрабатывает оба вида ссылок одним кодом (`Path.resolve` + `os.path.islink`/`os.path.isjunction`).
+  `run_all_demos.ps1` перед цепочкой отдельно запускает `pytest tests/test_tools_fs.py -k "symlink or junction"` и
+  сохраняет вывод в `results/symlink_test.txt` с состоянием режима разработчика (чтение реестра, без изменений) и
+  строкой `status:`. Если перед запуском включить режим разработчика, там будет `real symlink test PASSED`; если нет —
+  `skipped: no symlink privilege ...`, и это не ошибка прогона. Падение любого из этих тестов останавливает скрипт.
 
 **Лимиты вывода**: каждый tool ограничен `MAX_TOOL_OUTPUT_CHARS` (12000) с флагом `truncated` и подсказкой дочитать
 через head/tail/grep. Кроме того, `ToolGuardMiddleware` обрезает результат **любого** tool, включая MCP.
@@ -257,6 +261,8 @@ graph TD;
   `test_verify_flags_category_drift`);
 - при недоступности ES сервер возвращает `ok=false, error.type=es_unavailable`. Если не стартовал сам MCP-сервер, агент получает
   заглушки с теми же именами (`mcp_unavailable`). Организация файлов продолжает работать, индексация не помечается успешной.
+  Оба случая есть в демо-цепочке: сессия errors (ES остановлен, MCP работает) и сессия mcp_down (сам MCP-сервер не
+  запускается: `MCP_COMMAND` указывает на несуществующую программу), см. раздел 9.
 
 ## 7. Skills
 
@@ -333,34 +339,56 @@ graph TD;
 Трасса каждой сессии пишется в два файла:
 - `traces/session_*.jsonl` — события `session_start`, `user_turn` (с `run_id`), `graph_step` (узел, сообщения,
   tool calls с `id/name/args`, tool results с `tool_call_id/status`), `user_action`, `harness_wait`, `turn_end`
-  (`transitions`, проверка истории, ошибка, `stopped_by` при срабатывании лимита, длительность, usage), `session_end`;
+  (`transitions`, проверка истории, ошибка, `stopped_by` при срабатывании лимита, длительность, usage), `cli_command`
+  (каждая команда `/check`, `/history`, `/catalog`, `/graph`, `/help`, `/exit` и директива сценария `@wait_for_files` с
+  кратким результатом, например `{"history_ok": true, "messages": 87}` для `/check`), `session_end` (`ended_by`:
+  `exit_command (/exit)`, `end_of_script`, `eof (Ctrl+Z / Ctrl+D)`, `ctrl_c` или `error: ...`; число ходов, сводка истории);
 - `traces/session_*.md` — то же в читаемом виде.
 
 Токены вида `sk-…` и `Bearer …` в трассах маскируются.
 
-**Цепочка сессий, которая создаёт `traces/` и `results/`.** `scripts/run_all_demos.ps1` запускает пять сессий CLI
-подряд, все с реальной моделью `qwen3.8-27b`, начиная с чистого workspace (`input` = `fixtures/input`, пустая `data/`)
-и пустого индекса. Каждая следующая сессия продолжает состояние workspace и индекса предыдущей; других сессий
-в `traces/` нет (трассы прежних прогонов скрипт удаляет после успешного прогона).
+**Цепочка сессий, которую записывает `scripts/run_all_demos.ps1`.** Шесть сессий CLI подряд, все с реальной моделью
+`qwen3.8-27b`, начиная с чистого workspace (`input` = `fixtures/input`, пустая `data/`) и пустого индекса. Каждая
+следующая сессия продолжает состояние workspace и индекса предыдущей. Лимиты закреплены: `model_calls_per_turn=25`,
+`recursion_limit=110`. После успешного прогона в `traces/` остаются только эти шесть сессий (трассы прежних прогонов
+скрипт удаляет). Имена файлов трасс — в `results/run_manifest.json` и `results/RUN_SUMMARY.md`.
 
-Прогон, лежащий в репозитории: 19.11.2026, начало 17:09:15 (+03:00), модель `qwen3.8-27b`, лимиты
-`model_calls_per_turn=25`, `recursion_limit=110`; длительность сессий по трассам — около 6 минут (без тестов и экспорта).
+| # | Сценарий | Диалог | Что должна показать трасса |
+|---|---|---|---|
+| — | тесты | | `pytest`; отдельно тесты выхода через ссылки → `results/symlink_test.txt` (настоящий symlink выполняется только при включённом режиме разработчика, иначе записано `skipped: no symlink privilege`) |
+| 1 | main | `demo/dialog_ru.txt` | 16 ходов: организация, просмотр, перенос по уточнению, индексация ≥ 3 документов, поиск, повтор без дублей, перенос проиндексированного файла с обновлением пути и категории, пауза `@wait_for_files` (поздние файлы копирует отдельный процесс PowerShell), «Я добавил файлы…», индексация новой лекции, ошибки `n=0`, `../`, несуществующий файл |
+| — | `verify` | | `results/verify_report_main.json` — состояние сразу после main |
+| 2 | limit | `demo/dialog_limit_ru.txt` | настоящее зацикливание: модель раз за разом вызывает `ls input`, ожидая файл, который никто не добавит; ход останавливает `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); следующий ход той же сессии работает |
+| 3 | guard | `demo/dialog_guard_ru.txt` | 14 ходов, каждая ошибка — результат реального вызова tool: `head n=0`, `tail n=-2` → `invalid_argument`; `../../secret.txt`, `C:\Windows\win.ini`, junction `input/outside_link` (ls/read/grep), `move` в `../` → `outside_workspace`; `move` в занятое имя → `name_conflict` + `suggested_name`; `web_fetch` к локальному серверу `scripts/http_fixture_server.py` (порт 18765, его запускает скрипт): `/page.html` → успех (status 200, title, текст), `/missing` → `http_error` 404, `/slow` (ответ через 20 с при `WEB_TIMEOUT_S=10`) → `timeout`; закрытый порт 9 → `network_error`. Запросы, дошедшие до сервера, — в `results/http_fixture_requests.log` |
+| 4 | errors | `demo/dialog_errors_ru.txt` | Elasticsearch остановлен (`docker compose stop`), MCP-сервер работает: upsert семинара ReAct → `es_unavailable`, статус `error`; перенос проиндексированной заметки → файл перенесён, `update_document_path` → `es_unavailable`, статус `pending_sync` |
+| 5 | mcp_down | `demo/dialog_mcp_down_ru.txt` | не стартует сам MCP-сервер (`MCP_COMMAND` указывает на несуществующую программу, `session_start.mcp = "MCP unavailable (...)"`): индексация инструкции по git → `mcp_unavailable`, в каталоге `error`, успех не заявлен; организация продолжает работать — файл переносится в `data/guides/`; `/catalog` фиксирует статусы |
+| 6 | retry | `demo/dialog_retry_ru.txt` | MCP и ES снова работают: все документы со статусом `pending_sync`/`error` синхронизируются и индексируются, поиск возвращает новые пути, путь и категория в индексе совпадают с каталогом |
+| — | итог | | `verify` → `results/verify_report.json`; `index_export.jsonl`, `catalog.json`, `data_tree.txt`, `workspace_snapshot/`; `results/RUN_SUMMARY.md` — таблица по каждому ходу, команды CLI, `session_end.ended_by` и чек-лист сценариев |
 
-| # | Сценарий | Диалог | Трасса (`traces/*.jsonl` и `.md`) | Ходов / вызовов модели | Что показывает трасса |
-|---|---|---|---|---|---|
-| 1 | main | `demo/dialog_ru.txt` | `session_20261119_170923_70e27b` | 16 / 52 | организация, просмотр, перенос, индексация, поиск, повтор без дублей, перенос проиндексированного файла, поздние файлы, ошибки (подробно ниже) |
-| — | `verify` | | | | `results/verify_report_main.json`: все 5 проверок пройдены |
-| 2 | limit | `demo/dialog_limit_ru.txt` | `session_20261119_171303_5afaf3` | 2 / 27 | **настоящее зацикливание**: в ходе 1 модель 25 раз подряд вызвала `ls input`, ожидая файл, который никто не добавляет; ход остановил `ModelCallLimitMiddleware` («Model call limits exceeded: run limit (25/25)», `turn_end.stopped_by = model_call_limit`, 20,8 с). Ход 2 той же сессии работает: модель объясняет остановку (25 вызовов `ls`) и делает ещё один `ls`; история корректна |
-| 3 | guard | `demo/dialog_guard_ru.txt` | `session_20261119_171335_0afe74` | 11 / 22 | все ошибки — результаты **реальных вызовов tools**: ход 2 `head n=0` и ход 3 `tail n=-2` → `invalid_argument`; ход 4 `../../secret.txt`, ход 5 `C:\Windows\win.ini`, ход 6 `ls input/outside_link` (junction наружу; в `ls input` он показан как `symlink`, `path: null`), ход 7 `read` через junction, ход 9 `move` в `../outside.txt` → `outside_workspace`; ход 8 `grep -r input` → 0 совпадений, файл за junction в `skipped` с причиной `symlink_outside_workspace`; ход 10 `move` kickoff → путь существующей ретроспективы → `name_conflict`, `suggested_name: meeting_2026-11-10_retro_2.md`; ход 11 `web_fetch http://127.0.0.1:9/` → `network_error` |
-| 4 | errors | `demo/dialog_errors_ru.txt` | `session_20261119_171420_ec42f1` | 4 / 14 | ES остановлен, MCP-сервер работает. Ход 2: upsert 4 выдержек семинара ReAct → `es_unavailable`, в каталоге `error`. Ход 3: заметка `search_quality_thoughts.md` перенесена `data/courses/` → `data/projects/`, `update_document_path` → `es_unavailable`, в каталоге `pending_sync`. Ход 4: модель показывает оба статуса из каталога |
-| 5 | retry | `demo/dialog_retry_ru.txt` | `session_20261119_171548_621ff0` | 4 / 13 | ES запущен. Ход 1: найдены 1 `pending_sync` и 1 `error`. Ход 2: `update_document_path` (без аргумента `category`) → `category: projects`, `updated: 2`; upsert семинара → `created: 4`; после этого в каталоге 7 `indexed`, 7 `not_indexed`, ни одного `pending_sync`/`error`. Ход 3: поиск возвращает новые пути. Ход 4: путь и категория заметки в каталоге и в обеих выдержках ES совпадают (`data/projects/…`, `projects`) |
-| — | итог | | | | `results/verify_report.json`: все 5 проверок пройдены, 14 документов в каталоге, 7 проиндексированы, 17 выдержек; `index_export.jsonl`, `catalog.json`, `data_tree.txt`, `workspace_snapshot/` |
+Ожидаемое итоговое состояние после этой цепочки — `fixtures/EXPECTED.md`.
 
-**Основной диалог по ходам** (`session_20261119_170923_70e27b`; номера = реплики `demo/dialog_ru.txt`):
+**Результаты, которые сейчас лежат в `traces/` и `results/`.** Это прогон 19.11.2026 (начало 17:09:15 +03:00,
+коммит f6efd67), записанный ещё по прежней цепочке из пяти сессий: без сессии mcp_down, без HTTP-фикстуры в guard
+(там был только `web_fetch` на закрытый порт) и без событий `cli_command` / `session_end.ended_by` в трассах.
+Следующий запуск `run_all_demos.ps1` целиком перезапишет `traces/` и `results/` по цепочке из шести сессий. Ниже —
+что показывают текущие файлы.
+
+| # | Сценарий | Трасса (`traces/*.jsonl` и `.md`) | Ходов / вызовов модели | Что показывает трасса |
+|---|---|---|---|---|
+| 1 | main | `session_20261119_170923_70e27b` | 16 / 52 | организация, просмотр, перенос, индексация, поиск, повтор без дублей, перенос проиндексированного файла, поздние файлы, ошибки (подробно ниже) |
+| — | `verify` | | | `results/verify_report_main.json`: все 5 проверок пройдены |
+| 2 | limit | `session_20261119_171303_5afaf3` | 2 / 27 | в ходе 1 модель 25 раз подряд вызвала `ls input`; ход остановил `ModelCallLimitMiddleware` («Model call limits exceeded: run limit (25/25)», `stopped_by = model_call_limit`, 20,8 с). Ход 2 работает: модель объясняет остановку и делает ещё один `ls`; история корректна |
+| 3 | guard | `session_20261119_171335_0afe74` | 11 / 22 | ход 2 `head n=0` и ход 3 `tail n=-2` → `invalid_argument`; ход 4 `../../secret.txt`, ход 5 `C:\Windows\win.ini`, ход 6 `ls input/outside_link` (в `ls input` junction показан как `symlink`, `path: null`), ход 7 `read` через junction, ход 9 `move` в `../outside.txt` → `outside_workspace`; ход 8 `grep -r input` → 0 совпадений, файл за junction в `skipped` (`symlink_outside_workspace`); ход 10 → `name_conflict`, `suggested_name: meeting_2026-11-10_retro_2.md`; ход 11 `web_fetch http://127.0.0.1:9/` → `network_error` |
+| 4 | errors | `session_20261119_171420_ec42f1` | 4 / 14 | ход 2: upsert 4 выдержек семинара ReAct → `es_unavailable`, статус `error`; ход 3: заметка `search_quality_thoughts.md` перенесена `data/courses/` → `data/projects/`, `update_document_path` → `es_unavailable`, статус `pending_sync`; ход 4: оба статуса из каталога |
+| 5 | retry | `session_20261119_171548_621ff0` | 4 / 13 | ход 2: `update_document_path` без `category` → `category: projects`, `updated: 2`; upsert семинара → `created: 4`; затем 7 `indexed`, 7 `not_indexed`, `pending_sync`/`error` нет; ход 4: путь и категория заметки в каталоге и в обеих выдержках ES совпадают |
+| — | итог | | | `results/verify_report.json`: все 5 проверок пройдены; 14 документов, 7 проиндексированы, 17 выдержек, 0 расхождений пути/категории с каталогом |
+
+**Основной диалог этого прогона по ходам** (`session_20261119_170923_70e27b`; номера = реплики `demo/dialog_ru.txt`,
+нумерация реплик в новой цепочке та же):
 
 | Ход | Что сделала модель (по трассе) |
 |---|---|
-| 1 | `load_skill(organize_files)`, `ls` input и подпапок, `read` всех 11 непустых файлов, 12 `move`, 12 `catalog_update`. Темы: `courses` (3), `howto` (2), `meetings` (2), `projects` (3), `_unsorted` (пустой `empty_todo.txt`). Одноимённые `notes.md` стали `data/courses/es_seminar_analyzers_shards.md` и `data/meetings/meeting_2026-10-09_docsearch_weekly.md`. Неоднозначную заметку `search_quality_thoughts.md` модель положила в `projects` и записала обоснование в note. Prompt-injection строку из `meetings/notes.md` модель назвала пользователю и не выполнила. Файлы `_about.md` с описанием папок в этом прогоне модель не создавала |
+| 1 | `load_skill(organize_files)`, `ls` input и подпапок, `read` всех 11 непустых файлов, 12 `move`, 12 `catalog_update`. Темы: `courses` (4), `howto` (2), `meetings` (2), `projects` (3), `_unsorted` (пустой `empty_todo.txt`). Одноимённые `notes.md` стали `data/courses/es_seminar_analyzers_shards.md` и `data/meetings/meeting_2026-10-09_docsearch_weekly.md`. Неоднозначную заметку `search_quality_thoughts.md` модель положила в `projects` и записала обоснование в note. Prompt-injection строку из `meetings/notes.md` модель назвала пользователю и не выполнила. Файлы `_about.md` с описанием папок в этом прогоне модель не создавала |
 | 2 | `ls data/projects` |
 | 3 | `move` заметки `data/projects/` → `data/courses/`, причина записана в note |
 | 4 | `ls input` (пусто) и ещё два `ls` по подпапкам `input/courses`, `input/meetings` из первого просмотра: они уже удалены после переноса, оба вернули `not_found` — модель сообщила, что input пуст |
@@ -368,7 +396,7 @@ graph TD;
 | 6 | `search_excerpts` («индекс инвертированный шарды») → 6 выдержек из 4 документов, затем `read` исходной лекции |
 | 7 | `build_excerpts` без диапазонов (`reused_previous_ranges: true`) → `upsert_excerpts` → `created: 0, updated: 2, deleted_stale: 0` |
 | 8 | `get_document_excerpts` → 2 выдержки; `index_stats` → всего 10, дублей нет |
-| 9 | `move` лекции в `data/search/` → `action_required`; `update_document_path` **без** `category` → сервер вернул `category: search`, `updated: 2` (исправленная ошибка); `search_excerpts` уже показывает новый путь и категорию |
+| 9 | `move` лекции в `data/search/` → `action_required`; `update_document_path` **без** `category` → сервер вернул `category: search`, `updated: 2`; `search_excerpts` уже показывает новый путь и категорию |
 | 10 | `search_excerpts("BM25")` → 3 выдержки, путь лекции `data/search/ir_lecture_inverted_index.md` |
 | пауза | CLI ждёт на `@wait_for_files`; файлы скопировал процесс PowerShell PID 37436, CLI PID 37672 (`results/late_files_added.json`, событие `external_files_added` в трассе) |
 | 11 | новый `ls input` → 2 файла, `read` обоих, `move` → `data/meetings/meeting_2026-11-10_retro.md` и `data/search/vector_search_lecture.md`, `catalog_update`; уже разобранные файлы не тронуты |
@@ -381,15 +409,11 @@ graph TD;
 Skills загружаются выборочно: в main — `organize_files` в ходе 1 и `index_excerpts` в ходе 5, каждый один раз за
 сессию; в errors — `index_excerpts` (ход 2) и `organize_files` (ход 3); в retry — `index_excerpts` (ход 2).
 В сессиях limit и guard skills не загружались. История корректна во всех ходах всех пяти сессий.
-В `traces/` только эти пять сессий: трассы прошлых прогонов (`session_20261115_*`) скрипт удалил, коммит f6efd67.
+Трассы ещё более ранних прогонов (`session_20261115_*`) скрипт удалил (коммит f6efd67).
+`results/RUN_SUMMARY.md` этого прогона: все 16 пунктов чек-листа отмечены.
 
-Сводную таблицу по всем ходам и чек-лист сценариев по трассам генерирует `scripts/summarize_run.py` в
-`results/RUN_SUMMARY.md` (в этом прогоне все 16 пунктов отмечены). `results/run_manifest.json` — порядок сессий и их
-трассы. Ожидаемое итоговое состояние описано в `fixtures/EXPECTED.md`, фактическое с ним совпадает. Совпадение пути и
-категории каждой из 17 выдержек `index_export.jsonl` с каталогом: 0 расхождений.
-
-Ходы 13–14 основного диалога просят вызвать tool. В этом прогоне модель вызвала его оба раза. В прошлом прогоне
-она отказала сама, без вызова. Независимо от поведения модели, гарантированная демонстрация — сессия guard: там
+Ходы 13–14 основного диалога просят вызвать tool. В этом прогоне модель вызвала его оба раза. В прогоне 15.11 она
+отказала сама, без вызова. Независимо от поведения модели, гарантированная демонстрация — сессия guard: там
 каждая реплика явно требует вызвать инструмент и показать его ответ.
 
 ## 10. Тесты и проверочные сценарии
@@ -405,7 +429,7 @@ python scripts/verify.py             # проверки результата п�
 | `tests/test_web_fetch.py` | `web_fetch` на локальном HTTP-сервере: текст, HTML, редирект, 404, таймаут, лимит размера, бинарный ответ |
 | `tests/test_catalog_skills_middleware.py` | `build_excerpts`, skills, валидация выдержек (включая `category`), статусы `indexed/error/pending_sync`, категория после `update_document_path`, проверка категории в `verify.py`, таймаут и лимит ToolGuard |
 | `tests/test_agent_offline.py` | топология графа, история нескольких ходов без дублей, переходы model→tools→model, ошибка как наблюдение, остановка по лимиту вызовов и по `recursion_limit` с ремонтом истории |
-| `tests/test_cli_script.py` | процесс CLI в режиме `--script`: пауза `@wait_for_files`, файлы добавляет **другой процесс**, агент видит их повторным `ls`; зацикленный ход помечен `stopped_by=model_call_limit`; при лимитах по умолчанию первым срабатывает лимит вызовов модели |
+| `tests/test_cli_script.py` | процесс CLI в режиме `--script`: пауза `@wait_for_files`, файлы добавляет **другой процесс**, агент видит их повторным `ls`; зацикленный ход помечен `stopped_by=model_call_limit`; при лимитах по умолчанию первым срабатывает лимит вызовов модели; события `cli_command` для `/check`, `/history`, `/catalog`, `/graph`, `/help`, неизвестной команды, `/exit` и `@wait_for_files`, `session_end.ended_by` (`exit_command`, `end_of_script`); сессия с недоступным MCP-сервером (`mcp_unavailable` → `error`, перенос работает); HTTP-фикстура демо (`scripts/http_fixture_server.py`: 200, 404, таймаут) |
 | `tests/test_mcp_es.py` | реальный MCP-сервер и ES: идемпотентный upsert, replace, поиск (русская морфология), обновление пути и категории после переноса, недоступный ES, сквозной прогон агента со сценарной моделью |
 
 Агентные тесты используют `ScriptedChatModel` / `DryRunChatModel`, детерминированные замены LLM. Это проверка
@@ -418,15 +442,15 @@ python scripts/verify.py             # проверки результата п�
 | Сценарий | Где проверяется |
 |---|---|
 | Первичная организация | main, ход 1; `scripts/verify.py` (проверки 1–3) |
-| Диалог и просмотр, история без дублей | main, ходы 2 и 4, `/check` после ходов 1 и 16, `/history`; `test_turns_history_and_transitions` |
+| Диалог и просмотр, история без дублей | main, ходы 2 и 4; поле `history check` в `turn_end` каждого хода (проверка пар tool_call/tool_result и дублей: во всех 37 ходах текущих трасс пусто); с новой цепочки команды `/check` и `/history` записываются в трассу событием `cli_command` с результатом (`history_ok`, число сообщений); `test_turns_history_and_transitions`, `test_cli_commands_traced_and_end_of_script` |
 | Перенос по уточнению | main, ход 3 («Перенеси заметку про поиск в папку курсов»); `test_move_input_to_data_and_between_folders` |
 | Пополнение input | main: пауза `@wait_for_files` после хода 10, файлы копирует отдельный процесс PowerShell (`results/late_files_added.json`), ход 11 «Я добавил файлы, разбери новые» (повторный `ls`), ход 12 — индексация новой лекции; `test_cli_script_with_external_late_files_and_loop_limit`, `test_ls_stable_and_fresh` |
 | Индексация и поиск через MCP | main, ход 5 (`upsert_excerpts`: 5 документов, `created: 10`) и ход 6 (`search_excerpts` + `read` исходного файла); `verify.py` (проверка 4); `test_mcp_upsert_idempotent_search_and_path_update` |
 | Повтор и перенос после индексации | main, ходы 7–10: повтор `created: 0, updated: 2`, по-прежнему 2 выдержки, перенос в `search` + `update_document_path` без `category` → `category: search`, поиск по новому пути; `test_end_to_end_scripted_agent_with_real_mcp`, `test_update_path_without_category_follows_folder` |
 | Skills | `load_skill` в трассе main: ход 1 — `organize_files`, ход 5 — `index_excerpts`, повторно не загружаются; `test_skills_metadata_and_on_demand_load` |
-| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (в этом прогоне tool вызван: `invalid_argument`, `outside_workspace`, `not_found`); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); тесты path guard |
-| Контракты tools | `test_tools_fs.py`, `test_web_fetch.py` |
-| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание (25 вызовов `ls`), остановленное `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; `/exit` в конце каждой сессии |
+| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (в этом прогоне tool вызван: `invalid_argument`, `outside_workspace`, `not_found`); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); недоступный сам MCP-сервер — сессия mcp_down новой цепочки (`mcp_unavailable`, статус `error`, перенос работает) + retry, `test_mcp_server_unavailable_session`; тесты path guard |
+| Контракты tools | `test_tools_fs.py`, `test_web_fetch.py`; в трассе guard новой цепочки — `web_fetch` к локальному серверу: успех, `http_error` 404, `timeout` (в текущих трассах только `network_error`) |
+| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание (25 вызовов `ls`), остановленное `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; завершение сессии — событие `session_end` в каждой трассе; с новой цепочки в нём `ended_by: exit_command (/exit)`, а сама команда `/exit` — событие `cli_command` |
 
 ## 11. Ограничения
 

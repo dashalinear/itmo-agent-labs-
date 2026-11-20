@@ -126,6 +126,14 @@ def _frozen_at(ws: HarnessWorkspace, run_key: str) -> str:
     return json.loads((run_dir(ws, run_key) / "manifest.json").read_text(encoding="utf-8"))["frozen_at"]
 
 
+def _scheduled_label(run_key: str) -> str:
+    """The Schedule gives every period the workflow id '<id>-<scheduled time>'; manual runs carry their start time."""
+    m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
+    if not m:
+        return "—"
+    return (m.group(1).replace("T", " ") + " UTC") + (" (ручной запуск topics-now)" if "manual" in run_key else " (тик Schedule)")
+
+
 def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, evidence: list[dict]) -> tuple[str, dict]:
     d = run_dir(ws, run_key)
     m = json.loads((d / "manifest.json").read_text(encoding="utf-8"))
@@ -165,6 +173,7 @@ def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, ev
     L += ["## Запуск", "",
           "| поле | значение |", "|---|---|",
           f"| run key (Workflow ID) | `{run_key}` |",
+          f"| время запуска по расписанию | {_scheduled_label(run_key)} |",
           f"| Temporal run ID | `{m['run_id']}` |",
           f"| источник запуска | {meta.get('source', 'schedule')} |",
           f"| список корпуса зафиксирован | {m['frozen_at']} (L0 от {m['l0_generated_at']}) |",

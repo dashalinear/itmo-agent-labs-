@@ -55,7 +55,28 @@ def _ev(source, page, quote, claim, kind):
     return tc("save_evidence", {"claim": claim, "kind": kind, "source": source, "page": page, "quote": quote})
 
 
-def local_plan(extra_reading: int = 0) -> list:
+def _es_steps(dec: list) -> list:
+    """lab 1 skill index_excerpts: build_excerpts on the decision lines, upsert_excerpts through MCP, search_excerpts."""
+    from harness.workspace import HarnessWorkspace
+    from organizer.catalog import Catalog
+    from organizer.tools_catalog import CatalogTools
+    root = Path(os.environ.get("TASK_ROOT") or LAB2 / "workspace")
+    ws = HarnessWorkspace(root)
+    cat = Catalog(ws)
+    entry = cat.by_path(H)
+    doc = load_doc(root / H, H)
+    ranges = []
+    for code, page, _q in dec:
+        a, b = doc.page_bounds(page)
+        line = next(i for i in range(a, b + 1) if f"Решение архитектурного совета {code}" in doc.lines[i - 1])
+        ranges.append({"start_line": line, "end_line": line, "summary": f"{code}, стр. {page}"})
+    records = CatalogTools(ws, cat).build_excerpts(entry["document_id"], ranges)["excerpts"]
+    return [[tc("build_excerpts", {"document_id": entry["document_id"], "ranges": ranges})],
+            [tc("upsert_excerpts", {"excerpts": records})],
+            [tc("search_excerpts", {"query": "решение архитектурного совета", "size": 5})]]
+
+
+def local_plan(extra_reading: int = 0, es: bool = False) -> list:
     dec = [(code, p, _quote(H, p, f"Решение архитектурного совета {code}")) for code, p in
            (("АС-01", 4), ("АС-02", 261), ("АС-03", 517))]
     dp = _disputed_pages()
@@ -72,6 +93,8 @@ def local_plan(extra_reading: int = 0) -> list:
          _ev(I, 17, _quote(I, 17, "Вывод разбора"), "кэш не всегда снижает p95", "limitation")],
         [_ev(H, p, _quote(H, p, "Спорное"), f"спорное утверждение, стр. {p}", "controversial") for p in dp],
     ]
+    if es:
+        plan += _es_steps(dec)
     plan += [[tc("read_pages", {"path": H, "start_page": p, "end_page": p + 1})] for p in range(20, 20 + 6 * extra_reading, 6)]
     paraphrase = "\n".join(f"**{c}** (справочник, стр. {p}): «{q[40:120]}…»" for c, p, q in dec)
     verbatim = "\n\n".join(f"**{c}** (справочник, стр. {p}):\n\n> «{q}»" for c, p, q in dec)
@@ -145,20 +168,25 @@ def guard2_plan() -> list:
     return [
         [tc("write", {"path": f"{out}/abs_write.txt", "content": "test"})], "write: outside_workspace",
         [tc("move", {"source": I, "destination": f"{out}/moved_abs.md"})], "move: outside_workspace",
+        [tc("write", {"path": "data/link_out/written_via_junction.txt", "content": "test"})], "write: outside_workspace",
         [tc("move", {"source": I, "destination": "data/link_out/moved_junction.md"})], "move: outside_workspace",
         [tc("move", {"source": "data/link_out/secret.txt", "destination": "data/secret_copy.txt"})], "move: outside_workspace",
         [tc("write", {"path": "data/notes/guard_check.md", "content": "проверка"})],
         [tc("move", {"source": "data/notes/guard_check.md", "destination": "data/notes/guard_check_moved.md"})],
         "разрешённые write и move выполнены",
-        [tc("read_pages", {"path": H, "start_page": a, "end_page": a + 2}) for a in (10, 20, 30, 40)],
+        [tc("read_pages", {"path": H, "start_page": a, "end_page": a + 2}) for a in (10, 20, 30, 3)],
         "два результата выгружены: step total would exceed",
     ]
 
 
 def build(task_id: str | None, limits):
     t = (task_id or "").upper()
-    if t in ("A1", "D1"):
+    if t == "A1":
+        plan, delay = local_plan(es=True), 0.0
+    elif t == "D1":
         plan, delay = local_plan(), 0.0
+    elif t == "P1":
+        plan, delay = local_plan(extra_reading=30), 1.0
     elif t == "E1":
         plan, delay = local_plan(extra_reading=20), 1.5
     elif t == "DL1":

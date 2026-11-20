@@ -197,6 +197,14 @@ class ResearchTools:
                     meta.get("links") or [], text[:3000],
                     "Already fetched and stored; no network request made (fetching it again gives the same). The page "
                     "links are listed in 'links'. Find exact quotes with search_artifact(artifact_id, term).")
+        if row["status"] == "error" and not force and not (row.get("error") or "").startswith("interrupted"):
+            # a URL that already failed in this task (retries exhausted, 4xx, redirect loop...) is not fetched again
+            # automatically: the saved error is returned at once, no HTTP request, no budget
+            self._emit("fetch_error_cached", url=url, url_key=k, error=row.get("error"),
+                       http_requests=self.store.usage(self.task_id).get("http_requests", 0))
+            return err(name, "already_failed", f"This URL already failed in this task: {row.get('error')}", url=url,
+                       url_key=k, attempts=row.get("attempts") or 0, from_cache=True,
+                       hint="Not fetched again (no HTTP request). Choose another source; force=true only with a new reason.")
         self.store.set_url(self.task_id, k, status="running")
         try:
             res = await self.fetcher.fetch(url)

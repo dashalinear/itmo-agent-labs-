@@ -167,7 +167,7 @@ async def baseline(cfg, spec: dict, task_id: str, max_calls: int, no_mcp: bool) 
                     for m in msgs:
                         if isinstance(m, AIMessage):
                             for tc in m.tool_calls:
-                                print(f"  ↳ {tc['name']}({json.dumps(tc['args'], ensure_ascii=False)[:120]})", flush=True)
+                                print(f"  -> {tc['name']}({json.dumps(tc['args'], ensure_ascii=False)[:120]})", flush=True)
         except Exception as e:  # noqa: BLE001
             error = f"{type(e).__name__}: {e}"[:500]
         state = await agent.aget_state(config)

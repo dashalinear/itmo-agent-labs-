@@ -80,8 +80,14 @@ class Watcher:
                 id_conflict_policy=WorkflowIDConflictPolicy.USE_EXISTING,
                 id_reuse_policy=WorkflowIDReusePolicy.ALLOW_DUPLICATE_FAILED_ONLY,
                 execution_timeout=timedelta(hours=4))
-            self.reg.update_batch(batch_id, workflow_id=wid, run_id=h.result_run_id, status="started")
-            self.log(f"[watcher] {reason}: started workflow {wid} run {h.result_run_id}")
+            before = self.reg.batch(batch_id) or {}
+            if before.get("run_id") == h.result_run_id and before.get("status") in ("started", "running"):
+                # USE_EXISTING: the event repeated while the workflow is running -> the same execution is returned
+                self.log(f"[watcher] {reason}: duplicate event, workflow {wid} is already running - the same execution "
+                         f"run {h.result_run_id} was returned, nothing new started")
+            else:
+                self.reg.update_batch(batch_id, workflow_id=wid, run_id=h.result_run_id, status="started")
+                self.log(f"[watcher] {reason}: started workflow {wid} run {h.result_run_id}")
         except WorkflowAlreadyStartedError:   # same id already completed: a duplicate event, nothing new to do
             self.log(f"[watcher] {reason}: duplicate event rejected by Temporal - workflow {wid} already completed, "
                      "not started again")

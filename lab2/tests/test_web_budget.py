@@ -257,3 +257,46 @@ def test_rank_links_puts_content_links_before_site_navigation():
     assert not {"https://arxiv.org/", "https://arxiv.org/search", "https://arxiv.org/login", "https://arxiv.org/IgnoreMe"} & set(ranked)
     same = [{"url": f"http://h/p/x-{i}", "anchor": f"x-{i}"} for i in range(5)]   # equal scores keep the page order
     assert rank_links(same, "http://h/p/a") == same
+
+
+async def test_failed_url_is_not_fetched_again_and_arxiv_versions_are_one_source(store, artifacts, web):
+    base, handler = web
+    rt, budget = mk(store, artifacts, base)
+    hits = lambda: sum(1 for h in handler.hits if h.startswith("/down"))  # noqa: E731
+    h0 = hits()
+    first = j(await rt.web_fetch(f"{base}/down"))
+    assert first["error"]["type"] == "http_error_retries_exhausted" and hits() - h0 == 3
+    http = store.usage("T")["http_requests"]
+    again = j(await rt.web_fetch(f"{base}/down"))                       # saved error, no HTTP request, no budget
+    assert again["error"]["type"] == "already_failed" and hits() - h0 == 3
+    assert store.usage("T")["http_requests"] == http
+    assert any(e["kind"] == "fetch_error_cached" for e in store.events("T"))
+    forced = j(await rt.web_fetch(f"{base}/down", force=True))          # explicit retry is still possible
+    assert forced["error"]["type"] == "http_error_retries_exhausted" and hits() - h0 == 6
+    from harness.web import canonical_url
+    assert len({canonical_url(u) for u in ("https://arxiv.org/abs/2502.12110", "https://arxiv.org/html/2502.12110v11",
+                                           "http://arxiv.org/abs/2502.12110v3", "https://arxiv.org/pdf/2502.12110v2")}) == 1
+
+
+def test_digest_lists_read_and_failed_urls(cfg, store):
+    """Read pages and failed URLs are in the PROGRESS DIGEST (rebuilt from the state before every call), so they
+    survive compaction and the agent does not re-open or re-try them."""
+    from harness.agent import build_harness_agent
+    from langgraph.checkpoint.memory import InMemorySaver
+    from policy import PolicyModel
+    store.add_url("T", "k1", "https://a.example/p1", "https://a.example/p1", "done", "search:q")
+    store.set_url("T", "k1", artifact_id="art_00000000000000000001", final_url="https://a.example/p1")
+    store.add_url("T", "k2", "https://b.example/p2", "https://b.example/p2", "error", "search:q")
+    store.set_url("T", "k2", error="timeout_retries_exhausted: ReadTimeout")
+    b = build_harness_agent(cfg, store, "T", PolicyModel(plan=[]), None, [], InMemorySaver(), 32768, "test")
+    d = b.ctx.digest()
+    assert "https://a.example/p1 -> art_00000000000000000001" in d and "https://b.example/p2 (timeout_retries_exhausted)" in d
+
+
+def test_token_calibration_survives_restart(cfg, store):
+    from harness.agent import build_harness_agent
+    from langgraph.checkpoint.memory import InMemorySaver
+    from policy import PolicyModel
+    store.set_meta("token_calibration:T", {"cpt": 3.07, "calibrations": 5})
+    b = build_harness_agent(cfg, store, "T", PolicyModel(plan=[]), None, [], InMemorySaver(), 32768, "test")
+    assert b.ctx.counter.cpt == 3.07 and b.ctx.counter.calibrations == 5 and "cpt=3.07" in b.ctx.counter.method

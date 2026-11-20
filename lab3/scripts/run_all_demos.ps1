@@ -19,7 +19,7 @@ Steps (task ids):
   EXP1  exhaustive sub-agent from the CLI with a tiny budget (partial), then resume with a larger one
 #>
 param(
-    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation", "final", "deep")][string]$Part = "all",
+    [ValidateSet("all", "dialog", "exhaustive", "rerun", "delegation", "final", "deep", "final2")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$EnvFile = ".env",
@@ -183,6 +183,18 @@ if ($Part -eq "final") {
 if ($Part -eq "deep") {
     Step "D1. M6: deep research delegated in natural language; the main agent answers meanwhile, then uses the result"
     Nav chat --task-id M6 --script demo\dialog_deep_ru.txt | Out-Null
+}
+
+if ($Part -eq "final2") {
+    Step "G1. M7: deep and exhaustive in parallel, the main agent answers meanwhile and uses both results"
+    Nav chat --task-id M7 --script demo\dialog_final2_ru.txt | Out-Null
+
+    Step "G2. EXP4: exhaustive with a tiny budget (partial), remainder saved, resume from the registry's resume_cursor"
+    Nav subagent --kind exhaustive --scope storage --task-id EXP4 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
+    New-Item -ItemType Directory -Force results\EXP4 | Out-Null
+    & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_partial.json
+    Nav resume --task-id EXP4 --set max_model_calls=120 | Out-Null
+    & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_final.json
 }
 
 Step "13. Export and technical results"

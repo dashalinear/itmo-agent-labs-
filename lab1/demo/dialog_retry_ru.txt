@@ -1,4 +1,5 @@
-# Run AFTER dialog_errors_ru.txt with Elasticsearch started again: the retry fixes the index.
+# Last session of the chain: runs AFTER dialog_errors_ru.txt (ES stopped) and dialog_mcp_down_ru.txt (MCP server
+# unavailable) with MCP and Elasticsearch running again: the retry fixes every pending_sync / error document.
 Покажи документы каталога со статусом pending_sync или error.
 Синхронизируй индекс для этих документов: обнови пути, а если документ не проиндексирован — проиндексируй его.
 Найди в Elastic выдержки про оценку качества поиска и про паттерн ReAct и покажи пути к файлам.

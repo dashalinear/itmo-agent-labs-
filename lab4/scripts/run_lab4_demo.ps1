@@ -24,7 +24,7 @@ Scenarios (all automatic, the script only plays the user: it drops files into wo
   E3  a file is added while no watcher runs; the watcher started afterwards picks it up (rescan)
 #>
 param(
-    [ValidateSet("all", "extra", "topic-crash")][string]$Part = "all",
+    [ValidateSet("all", "extra", "topic-crash", "growth")][string]$Part = "all",
     [switch]$SkipPush,
     [switch]$SkipTests,
     [string]$Every = "8m",
@@ -134,6 +134,61 @@ if (-not $SkipTests) {
     Step "2. Tests (deterministic stand-ins for the LLM; Temporal workflows on the real service)"
     & $py -m pytest -q | Out-Host
     if ($LASTEXITCODE -ne 0) { throw "tests failed" }
+}
+
+if ($Part -eq "growth") {
+    Step "W0. Corpus growth with a file on a NEW topic, reported by a Schedule tick (corpus of the main run, no reset)"
+    Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+        Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    TF schedule delete | Out-Null
+    TF-Must fault --clear
+    $w7 = Start-Bg "worker7" $workerArgs
+    $watch7 = Start-Bg "watcher7" "-m topicflow.cli watch"
+    Start-Sleep -Seconds 20
+    if ($w7.HasExited) { throw "worker7 ended at start: see $(Join-Path $logs 'worker7.err.log')" }
+
+    Step "W1. The user drops a file on a new topic; the same detection event is repeated WHILE the workflow runs"
+    TF-Must drop --set new_topic2
+    $bid = $null
+    for ($i = 0; $i -lt 60 -and -not $bid; $i++) {
+        Start-Sleep -Seconds 2
+        $bid = (& $py -c "import topicflow.config as c; from topicflow.registry import Registry; cfg=c.load(); b=[x for x in Registry(cfg.state_dir / 'lab4.db').batches() if x['status'] in ('started','running') and any('ui_accessibility' in f['input_path'] for f in x['files'])]; print(b[-1]['batch_id'] if b else '')" | Out-String).Trim()
+    }
+    if (-not $bid) { throw "the watcher did not start a workflow for the new file" }
+    $replayOut = (& $py -m topicflow.cli replay --batch $bid | Out-String)
+    $ns = if ($env:TEMPORAL_NAMESPACE) { $env:TEMPORAL_NAMESPACE } else { "default" }
+    $listOut = (docker exec itmo-lab4-temporal temporal workflow list --namespace $ns --query "WorkflowId='ingest-$bid'" 2>&1 | Out-String)
+    if ($replayOut -notmatch "already running") { Write-Host "WARNING: the workflow was not RUNNING at replay time (it finished first)" -ForegroundColor Yellow }
+    "replay --batch $bid while the workflow is RUNNING:`r`n$replayOut`r`ntemporal workflow list --query WorkflowId='ingest-$bid':`r`n$listOut" |
+        Out-File -Encoding utf8 (Join-Path $results "replay_while_running.txt")
+    Get-Content (Join-Path $results "replay_while_running.txt")
+    TF-Must wait --batches --timeout 1800
+
+    Step "W2. Next report by the Schedule: the new document must appear as a NEW topic; earlier reports stay"
+    $after = (Get-Date).ToUniversalTime().AddSeconds(-5).ToString("yyyy-MM-ddTHH:mm:ssZ")
+    TF-Must schedule create --every 30m
+    TF-Must wait --schedule-runs 1 --after $after --timeout 3600
+    TF-Must schedule delete
+
+    Step "W3. Traces and results"
+    Stop-Bg
+    TF-Must trace
+    TF-Must export
+    & $py -m topicflow.cli l0 | Out-File -Encoding utf8 (Join-Path $results "l0_view.json")
+    & $py -m topicflow.cli open-report --latest | Out-File -Encoding utf8 (Join-Path $results "open_report_latest.txt")
+    & $py -m topicflow.cli open-report --latest-complete | Out-File -Encoding utf8 (Join-Path $results "open_report_latest_complete.txt")
+    & $py -m topicflow.cli status | Out-File -Encoding utf8 (Join-Path $results "status.txt")
+    Get-Content (Join-Path $results "status.txt")
+    if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
+    Step "W4. Commit and push"
+    git add traces results corpus
+    git commit -m "Lab 4: new-topic file reported by a Schedule tick, replay while running (qwen3.8-27b)"
+    if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
+    git push
+    if ($LASTEXITCODE -ne 0) { throw "git push failed" }
+    Write-Host "`nDone."
+    exit 0
 }
 
 if ($Part -eq "topic-crash") {

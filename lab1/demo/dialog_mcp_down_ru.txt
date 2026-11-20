@@ -1,0 +1,12 @@
+# MCP server unavailable (not just Elasticsearch): session 5 of the chain in run_all_demos.ps1.
+# The script sets MCP_COMMAND to a program that does not exist, so the CLI cannot start the
+# Elasticsearch MCP server; the agent gets placeholder MCP tools that answer `mcp_unavailable`.
+#   - indexing request -> mcp_unavailable, catalog status "error", nothing claimed as indexed
+#   - file organization keeps working: a real move inside data/
+# The next session (demo/dialog_retry_ru.txt, MCP and ES back) indexes the document.
+Положи инструкцию по веткам git в Elastic.
+Хорошо, тогда просто перенеси инструкцию по веткам git в новую папку data/guides.
+Покажи статус индексации и текущий путь инструкции по веткам git в каталоге.
+/catalog
+/check
+/exit

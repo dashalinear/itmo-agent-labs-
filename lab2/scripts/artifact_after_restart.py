@@ -55,11 +55,19 @@ def _verify_in_document(ws: HarnessWorkspace, hit: dict) -> dict | None:
     return {"path": hit["path"], "page": hit["page"], "snippet_on_page": _norm(hit["snippet"])[:80] in page_text}
 
 
+def _control_facts() -> list[dict]:
+    m = json.loads((LAB2 / "corpus" / "manifest.json").read_text(encoding="utf-8"))
+    return m.get("control_facts", [])
+
+
 def check_task(cfg, store: TaskStore, task_id: str, queries: list[str]) -> dict:
+    """Best example over all offloaded outputs of the task: 1) a real control fact (ALL keywords of F1-F5 on the
+    found line), 2) a line with a control-fact keyword, 3) the last hit of the output. Always beyond the given part."""
     ws = HarnessWorkspace(cfg.root)
     arts = ArtifactStore(ws, store, task_id)
+    facts = _control_facts()
     offloaded = [e["data"] for e in store.events(task_id, "tool_output_offloaded")]
-    found, tried = None, []
+    candidates_found, tried = [], []
     for ev in offloaded:
         try:
             text = arts.text(ev["artifact_id"])
@@ -68,12 +76,13 @@ def check_task(cfg, store: TaskStore, task_id: str, queries: list[str]) -> dict:
             continue
         given = int(ev.get("passed_chars") or 0)
         single_line = "\n" not in text
-        candidates = [(q, "control fact") for q in queries]
+        candidates = [(q, "control fact keyword") for q in queries]
         last = _last_hit(text)
         if last:
             # an older artifact is one JSON line: the hit's own line number is a unique search key inside it
             key = f'"line": {last["line"]}' if single_line and last.get("line") else last["snippet"][:60]
             candidates.append((key, "last hit of the offloaded output"))
+        tried.append({"artifact_id": ev["artifact_id"], "tool": ev["tool"], "passed_chars": given})
         for q, why in candidates:
             pos = text.find(q)
             if pos >= 0 and pos < given and not single_line:
@@ -86,17 +95,22 @@ def check_task(cfg, store: TaskStore, task_id: str, queries: list[str]) -> dict:
             if hit is None:
                 continue
             part = arts.read(ev["artifact_id"], line, 1)
+            seen_text = part["text"] + " " + hit["snippet"]
+            fact = next((f["id"] for f in facts if all(k in seen_text for k in f["keywords"])), None)
             found = {"artifact_id": ev["artifact_id"], "tool": ev["tool"], "total_chars": ev["total_chars"],
-                     "chars_given_to_model": given, "query": q, "kind": why, "char_offset_in_artifact": pos,
+                     "chars_given_to_model": given, "query": q, "char_offset_in_artifact": pos,
+                     "kind": (f"control fact {fact}" if fact else
+                              "line with a control-fact keyword (not a control fact)" if why.startswith("control")
+                              else why),
+                     "control_fact": fact,
                      "beyond_given_part": pos >= given, "artifact_layout": "one JSON line" if single_line else "lines",
                      "search_artifact_hit": hit["snippet"][:400], "artifact_line": line,
                      "read_artifact_text": part["text"][:400], "read_artifact_has_query": q in part["text"],
                      "verified_in_document": _verify_in_document(ws, last) if why.startswith("last") and last else None}
             found["found_via"] = "read_artifact" if found["read_artifact_has_query"] else "search_artifact"
-            break
-        tried.append({"artifact_id": ev["artifact_id"], "tool": ev["tool"], "passed_chars": given})
-        if found:
-            break
+            rank = 0 if fact else (1 if why.startswith("control") else 2)
+            candidates_found.append((rank, len(candidates_found), found))
+    found = min(candidates_found, key=lambda t: (t[0], t[1]))[2] if candidates_found else None
     return {"task_id": task_id, "pid": os.getpid(), "note": "new process: artifacts opened from disk after the run",
             "offloaded_outputs": len(offloaded), "artifacts_checked": tried, "example": found,
             "ok": bool(found and found["beyond_given_part"]

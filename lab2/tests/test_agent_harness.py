@@ -271,3 +271,45 @@ async def test_model_calls_per_run_cap_ends_the_turn_not_the_task(cfg):
         assert r.store.usage("A")["model_calls"] == 5
         res2 = await r.run("A", user_text="продолжай")             # the next turn works again
         assert r.store.usage("A")["model_calls"] == 10
+
+
+@pytest.mark.parametrize("n_parallel", [4, 8])
+async def test_step_total_stays_within_limit_with_many_parallel_results(cfg, n_parallel):
+    """Every offloaded result adds an envelope; room for the results still to come is reserved, so the sum of ALL
+    results of one step (previews and reference stubs included) never exceeds max_step_result_chars."""
+    plan = [[tc("read_pages", {"path": HANDBOOK, "start_page": a, "end_page": a + 2}) for a in range(10, 10 + 10 * n_parallel, 10)],
+            "ok"]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        msgs = (await state_of(r))["messages"]
+        tool_msgs = [m for m in msgs if isinstance(m, ToolMessage)]
+        assert len(tool_msgs) == n_parallel
+        total = sum(len(str(m.content)) for m in tool_msgs)
+        assert total <= r.store.get_task("A")["limits"]["max_step_result_chars"], total
+        off = [json.loads(m.content) for m in tool_msgs if '"offloaded": true' in str(m.content)]
+        assert off and all(o["artifact_id"].startswith("art_") and "read_artifact" in o["how_to_continue"] for o in off)
+        ev = [e["data"] for e in r.store.events("A", "tool_output_offloaded")]
+        assert max(e["step_total_after"] for e in ev) <= ev[0]["step_limit"]
+
+
+async def test_chars_per_token_calibration_is_reused_after_restart(cfg):
+    from langchain_core.outputs import ChatGeneration, ChatResult
+
+    class UsageModel(PolicyModel):
+        def _generate(self, messages, stop=None, run_manager=None, **kwargs):
+            m = self._next(messages)
+            chars = sum(len(str(x.content)) for x in messages)
+            m.usage_metadata = {"input_tokens": chars // 3, "output_tokens": 10, "total_tokens": chars // 3 + 10}
+            return ChatResult(generations=[ChatGeneration(message=m)])
+
+    plan = reading_plan(range(2, 8, 2)) + ["стоп"]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=UsageModel(plan=plan), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        cal = r.store.get_meta("token_calibration:A")
+        assert cal and cal["calibrations"] >= 2 and abs(cal["cpt"] - 2.6) > 0.05
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=UsageModel(plan=plan), summarizer=None) as r2:
+        res = await r2.run("A", user_text="продолжай", label="resume")
+        first = json.loads(open(res["trace"].replace(".md", ".jsonl"), encoding="utf-8").readline())
+        assert first["token_count_method"].startswith(f"heuristic(cpt={cal['cpt']:.2f}")   # not the default 2.60

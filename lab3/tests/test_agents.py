@@ -167,6 +167,11 @@ async def test_area_next_is_deterministic_per_cursor(cfg, env):
     assert ex.area_coverage()["fragments_read"] == len(b1["fragments"])      # b2 not acknowledged yet
     again = ex.area_next()                                       # resume without cursor: b2 is delivered again
     assert [f["fragment_id"] for f in again["fragments"]] == [f["fragment_id"] for f in b2["fragments"]]
+    cov = ex.area_coverage()                                     # the registry's resume_cursor is accepted by area_next
+    via_registry = ex.area_next(cov["resume_cursor"])
+    assert [f["fragment_id"] for f in via_registry["fragments"]] == [f["fragment_id"] for f in b2["fragments"]]
+    assert ex.area_coverage()["fragments_read"] == len(b1["fragments"])      # nothing acknowledged by it
+    assert all(len(d["unread_lines"]) <= d["fragments"] for d in cov["documents"])
     g = ex.area_grep("Ограничение")
     assert not g["done"] and g["next_cursor"]                   # more than one page; agent must read on
     ft = ex.area_fulltext("ограничение")
@@ -214,6 +219,10 @@ def deep_policy(messages):
     if t.get("tool") == "cite_fragment":
         return AIMessage(content="", tool_calls=[call("submit_result", {"findings": "PostgreSQL 16, ответственная Ирина Ковалёва",
                                                                          "open_questions": []})])
+    if t.get("tool") == "submit_result" and not t.get("ok"):     # open questions are required: answer with one
+        assert t["error"]["type"] == "open_questions_required"
+        return AIMessage(content="", tool_calls=[call("submit_result", {"findings": "PostgreSQL 16, ответственная Ирина Ковалёва",
+                                                                         "open_questions": ["срок перехода в корпусе не подтверждён вторым источником"]})])
     return AIMessage(content="готово")
 
 

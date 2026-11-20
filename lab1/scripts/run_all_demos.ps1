@@ -16,10 +16,15 @@ Chain (the order matters: every session continues from the workspace/index state
                                       separate PowerShell process -> "new files" turn, error turns
             -> scripts/verify.py -> results/verify_report_main.json
   2 limit   demo/dialog_limit_ru.txt  a genuinely looping request, stopped by the execution limit
-  3 guard   demo/dialog_guard_ru.txt  tool errors through real tool calls; junction pointing outside
+  3 guard   demo/dialog_guard_ru.txt  tool errors through real tool calls; junction pointing outside;
+                                      web_fetch against a local fixture server (200, 404, timeout) + closed port
   4 errors  demo/dialog_errors_ru.txt Elasticsearch STOPPED: upsert fails (error), move of an indexed doc
                                       (pending_sync)
-  5 retry   demo/dialog_retry_ru.txt  Elasticsearch running again: sync fixes the index
+  5 mcp_down demo/dialog_mcp_down_ru.txt  the MCP server itself cannot start (MCP_COMMAND points to a missing
+                                      program): indexing -> mcp_unavailable (error), a move still works
+  6 retry   demo/dialog_retry_ru.txt  MCP and Elasticsearch back: sync and indexing fix everything
+  Before the chain: pytest, and the symlink/junction escape tests saved to results/symlink_test.txt
+  (the real-symlink test runs only if Windows Developer Mode is on; otherwise it is recorded as skipped).
   then verify, index export, graph export, results/RUN_SUMMARY.md, secret scan,
   deletion of the traces from earlier runs (they do not belong to this chain), git commit + push.
 Limits are pinned for reproducibility: AGENT_MODEL_CALLS_PER_TURN=25, AGENT_RECURSION_LIMIT=110.
@@ -115,6 +120,26 @@ if (-not $SkipTests) {
     Run-Py -m pytest -q -p no:cacheprovider
 }
 
+Step "3b. Path-escape tests through links (results/symlink_test.txt)"
+$devMode = "unknown"
+try {
+    $v = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name AllowDevelopmentWithoutDevLicense -ErrorAction Stop
+    $devMode = if ($v.AllowDevelopmentWithoutDevLicense -eq 1) { "on" } else { "off" }
+} catch { $devMode = "off (not configured)" }
+$ErrorActionPreference = "Continue"   # PS 5.1: stderr of a native command under 2>&1 must not throw
+$linkOut = & $py -m pytest tests/test_tools_fs.py -k "symlink or junction" -rs -p no:cacheprovider -W ignore 2>&1 | ForEach-Object { "$_" }
+$linkExit = $LASTEXITCODE
+$ErrorActionPreference = "Stop"
+$symlinkSkipped = @($linkOut | Where-Object { $_ -match "SKIPPED" -and $_ -match "symlink" }).Count -gt 0
+if ($linkExit -ne 0) { $linkStatus = "FAILED (see output below)" }
+elseif (-not $symlinkSkipped) { $linkStatus = "real symlink test PASSED (symlinks are allowed on this machine)" }
+else { $linkStatus = "skipped: no symlink privilege (Windows Developer Mode $devMode); the junction test covers the reparse-point escape" }
+$linkReport = @("lab 1 path-escape tests through links, $(Get-Date -Format o)",
+                "Windows Developer Mode: $devMode", "status: $linkStatus", "", "pytest output:") + $linkOut
+[IO.File]::WriteAllLines((Join-Path $lab "results\symlink_test.txt"), [string[]]$linkReport, (New-Object System.Text.UTF8Encoding $false))
+Write-Host "symlink/junction tests: $linkStatus"
+if ($linkExit -ne 0) { throw "path-escape tests through links failed, see results\symlink_test.txt" }
+
 # Traces of earlier runs: they are not part of this chain and are deleted after a successful run.
 $oldTraces = @(Get-ChildItem traces -File | Where-Object { $_.Name -like "session_*" })
 $env:AGENT_MODEL_CALLS_PER_TURN = "25"
@@ -174,8 +199,26 @@ New-Item -ItemType Directory -Force $outside | Out-Null
 Set-Content -Path (Join-Path $outside "secret.txt") -Value "outside-the-workspace secret" -Encoding UTF8
 $link = Join-Path $lab "workspace\input\outside_link"
 if (-not (Test-Path $link)) { New-Item -ItemType Junction -Path $link -Target $outside | Out-Null }
-try { Run-Session "guard" "tool contract errors, junction outside the workspace" "demo/dialog_guard_ru.txt" }
-finally { cmd /c rmdir "$link" | Out-Null }   # removes only the junction, never the target
+$env:NO_PROXY = "127.0.0.1,localhost"; $env:no_proxy = $env:NO_PROXY
+$httpLog = Join-Path $lab "results\http_fixture_requests.log"
+$httpErr = Join-Path $work "http_fixture_stderr.log"
+$httpSrv = Start-Process -FilePath $py -ArgumentList @("scripts\http_fixture_server.py", "--port", "18765", "--slow", "20") `
+    -WorkingDirectory $lab -RedirectStandardOutput $httpLog -RedirectStandardError $httpErr -NoNewWindow -PassThru
+$httpReady = $false
+$ErrorActionPreference = "Continue"   # PS 5.1: stderr of the probe must not throw
+for ($i = 0; $i -lt 40 -and -not $httpReady; $i++) {
+    Start-Sleep -Milliseconds 250
+    & $py -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:18765/health', timeout=2).status == 200 else 1)" 2>$null
+    $httpReady = ($LASTEXITCODE -eq 0)
+}
+$ErrorActionPreference = "Stop"
+if (-not $httpReady) { Stop-Process -Id $httpSrv.Id -Force -ErrorAction SilentlyContinue; throw "local HTTP fixture server did not start (port 18765 busy?)" }
+Write-Host "HTTP fixture server PID $($httpSrv.Id) on http://127.0.0.1:18765/"
+try { Run-Session "guard" "tool contract errors, junction outside the workspace, web_fetch 200/404/timeout" "demo/dialog_guard_ru.txt" }
+finally {
+    cmd /c rmdir "$link" | Out-Null   # removes only the junction, never the target
+    Stop-Process -Id $httpSrv.Id -Force -ErrorAction SilentlyContinue
+}
 if (-not (Test-Path (Join-Path $outside "secret.txt"))) { throw "outside file disappeared: guard failed" }
 
 Step "9. Session 4 (errors): Elasticsearch STOPPED"
@@ -189,7 +232,12 @@ if ($DryRun) {
     finally { docker compose start; Wait-ES }
 }
 
-Step "10. Session 5 (retry): Elasticsearch running again"
+Step "9b. Session 5 (mcp_down): the MCP server cannot start at all"
+$env:MCP_COMMAND = "lab1-mcp-server-does-not-exist.exe"   # the CLI fails to spawn the MCP server
+try { Run-Session "mcp_down" "MCP server unavailable: indexing fails, organization works" "demo/dialog_mcp_down_ru.txt" }
+finally { Remove-Item Env:MCP_COMMAND }
+
+Step "10. Session 6 (retry): MCP and Elasticsearch running again"
 Run-Session "retry" "retry after Elasticsearch is back" "demo/dialog_retry_ru.txt"
 
 Step "11. Final verify, index export, graph export"
@@ -229,7 +277,7 @@ if ($SkipPush -or $DryRun) { Write-Host "`nDone in ~$elapsed min (git skipped). 
 Step "15. Commit and push (only lab1/traces and lab1/results)"
 git add -A -- traces results
 if ($LASTEXITCODE -ne 0) { throw "git add failed" }
-git commit -m "Lab 1: full demo chain re-recorded with $modelName (5 sessions from a clean workspace), verify, index export, run summary" -- traces results
+git commit -m "Lab 1: full demo chain re-recorded with $modelName (6 sessions from a clean workspace), verify, index export, run summary" -- traces results
 if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
 git push
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }

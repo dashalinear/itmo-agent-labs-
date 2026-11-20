@@ -103,6 +103,122 @@ def test_cli_script_with_external_late_files_and_loop_limit(tmp_path):
     assert any(p.name in m["content"] for e in ls_after for m in e["messages"] for p in LATE)
     assert turns[2]["stopped_by"] == "model_call_limit" and "лимитом выполнения" in turns[2]["answer"]
     assert ev[0]["model"].startswith("dry-run-model")
+    # CLI commands and script directives are recorded in the trace, and so is how the session ended
+    cmds = [e for e in ev if e["event"] == "cli_command"]
+    assert [c["command"].split()[0] for c in cmds] == ["@wait_for_files", "/check", "/exit"]
+    assert cmds[0]["ok"] and len(cmds[0]["result"]["appeared"]) == 2
+    assert cmds[1]["result"]["history_ok"] is True and cmds[1]["result"]["messages"] > 0
+    assert cmds[2]["result"] == "exit"
+    end = [e for e in ev if e["event"] == "session_end"][-1]
+    assert end["ended_by"] == "exit_command (/exit)" and end["user_turns"] == 3
+    md = trace.with_suffix(".md").read_text(encoding="utf-8")
+    assert "**CLI command** `/check`" in md
+
+
+def _run_cli(tmp_path, lines, extra_env=None, extra_args=()):
+    ws = tmp_path / "workspace"
+    if not ws.exists():
+        (ws / "data").mkdir(parents=True)
+        shutil.copytree(PROJECT_ROOT / "fixtures" / "input", ws / "input")
+    traces = tmp_path / "traces"
+    script = tmp_path / "dialog.txt"
+    script.write_text("\n".join(lines), encoding="utf-8")
+    env = {**os.environ, "WORKSPACE_DIR": str(ws), "TRACES_DIR": str(traces), "PYTHONIOENCODING": "utf-8",
+           **(extra_env or {})}
+    r = subprocess.run([sys.executable, "-m", "organizer.cli", "--script", str(script), "--dry-run-model", "--quiet",
+                        *extra_args], cwd=PROJECT_ROOT, env=env, capture_output=True, timeout=180)
+    assert r.returncode == 0, r.stdout.decode("utf-8", "replace") + r.stderr.decode("utf-8", "replace")
+    return _events(next(traces.glob("session_*.jsonl")))
+
+
+def test_cli_commands_traced_and_end_of_script(tmp_path):
+    ev = _run_cli(tmp_path, ["/history", "/catalog", "/graph", "/help", "/nonsense", "Посмотри input."],
+                  extra_args=["--no-mcp"])
+    cmds = {e["command"]: e for e in ev if e["event"] == "cli_command"}
+    assert set(cmds) == {"/history", "/catalog", "/graph", "/help", "/nonsense"}
+    assert "messages" in json.dumps(cmds["/history"]["result"])
+    assert cmds["/catalog"]["result"]["documents"] == 0
+    assert cmds["/graph"]["result"]["mermaid_chars"] > 0
+    assert cmds["/nonsense"]["ok"] is False
+    end = [e for e in ev if e["event"] == "session_end"][-1]
+    assert end["ended_by"] == "end_of_script" and end["user_turns"] == 1
+
+
+def test_mcp_server_unavailable_session(tmp_path):
+    """MCP server cannot start (bad MCP_COMMAND, as in the demo session mcp_down): index tools answer
+    mcp_unavailable, the catalog records `error`, a move still works."""
+    from organizer.config import load_settings
+    from organizer.mcp_client import MCPConnection
+    ws = tmp_path / "workspace"
+    (ws / "data").mkdir(parents=True)
+    shutil.copytree(PROJECT_ROOT / "fixtures" / "input", ws / "input")
+    s = replace(load_settings(), workspace=ws, traces_dir=tmp_path / "traces",
+                mcp_command="lab1-mcp-server-does-not-exist.exe")
+
+    def build(messages):
+        doc = next(d for d in bundle.catalog.load()["documents"] if d["current_path"].endswith("howto_git_branches.txt"))
+        return AIMessage(content="", tool_calls=[call("build_excerpts", {"document_id": doc["document_id"],
+                                                                         "ranges": [{"start_line": 1, "end_line": 3}]}, "b")])
+
+    def upsert(messages):
+        last = [m for m in messages if getattr(m, "name", None) == "build_excerpts"][-1]
+        return AIMessage(content="", tool_calls=[call("upsert_excerpts",
+                                                      {"excerpts": json.loads(last.content)["data"]["excerpts"]}, "u")])
+    steps = [AIMessage(content="", tool_calls=[call("move", {"source": "input/howto_git_branches.txt",
+                                                             "destination": "data/howto/"}, "m")]),
+             AIMessage(content="Разложил."), build, upsert, AIMessage(content="MCP недоступен, индексация не выполнена."),
+             AIMessage(content="", tool_calls=[call("move", {"source": "data/howto/howto_git_branches.txt",
+                                                             "destination": "data/guides/"}, "m2")]),
+             AIMessage(content="Перенёс.")]
+    bundle = None
+
+    async def run():
+        nonlocal bundle
+        conn = MCPConnection(s)
+        tools = await conn.__aenter__()
+        try:
+            assert not conn.available and conn.status.startswith("MCP unavailable")
+            bundle = build_agent(s, ScriptedChatModel(steps=steps), tools)
+            sess = Session(s, bundle, Tracer(s.traces_dir, "mcp_down"), verbose=False)
+            for q in ["разложи", "положи в Elastic", "перенеси в guides"]:
+                await sess.run_turn(q)
+            return await sess.messages()
+        finally:
+            await conn.__aexit__(None, None, None)
+    msgs = asyncio.run(run())
+    up = [m for m in msgs if getattr(m, "name", None) == "upsert_excerpts"][-1]
+    assert json.loads(up.content)["error"]["type"] == "mcp_unavailable"
+    doc = next(d for d in bundle.catalog.load()["documents"] if d["original_path"] == "input/howto_git_branches.txt")
+    assert doc["indexing_status"] == "error" and "upsert failed" in doc["index_error"]
+    assert doc["current_path"] == "data/guides/howto_git_branches.txt" and (ws / doc["current_path"]).is_file()
+    assert validate_history(msgs) == []
+
+
+def test_http_fixture_server_for_web_fetch_demo():
+    """scripts/http_fixture_server.py (started by run_all_demos.ps1 for the guard session):
+    200 HTML page, 404 -> http_error, slow answer -> timeout."""
+    import socket
+    from organizer.results import run_tool
+    from organizer.tools_web import WebTools
+    with socket.socket() as sck:
+        sck.bind(("127.0.0.1", 0))
+        port = sck.getsockname()[1]
+    srv = subprocess.Popen([sys.executable, str(PROJECT_ROOT / "scripts" / "http_fixture_server.py"),
+                            "--port", str(port), "--slow", "3"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    try:
+        assert b"fixture server" in srv.stdout.readline()
+        w = WebTools(timeout_s=1.0, max_bytes=100_000, max_chars=5000)
+        base = f"http://127.0.0.1:{port}"
+        page = json.loads(run_tool("web_fetch", w.web_fetch, f"{base}/page.html"))
+        assert page["ok"] and page["data"]["status"] == 200 and "DocSearch" in page["data"]["title"]
+        assert "console.log" not in page["data"]["text"]
+        missing = json.loads(run_tool("web_fetch", w.web_fetch, f"{base}/missing"))
+        assert missing["error"]["type"] == "http_error" and missing["error"]["status"] == 404
+        slow = json.loads(run_tool("web_fetch", w.web_fetch, f"{base}/slow"))
+        assert slow["error"]["type"] == "timeout"
+    finally:
+        srv.kill()
+        srv.wait(timeout=10)
 
 
 def test_model_call_limit_marked_in_trace(settings):

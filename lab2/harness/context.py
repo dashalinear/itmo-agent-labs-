@@ -113,6 +113,15 @@ class HarnessContext:
         if q["found_total"]:
             lines.append(f"web queue: found {q['found_total']}, selected {q['selected_total']}, read {q['done']}, "
                          f"pending {q['pending']}, errors {q['error']}, skipped {q['skipped']}")
+            # kept here (not in the compacted history): pages already read and URLs that failed are never fetched again
+            done = self.store.urls(self.task_id, "done")
+            if done:
+                lines.append("already read (stored; use search_artifact on artifact_id, do not fetch again): " + "; ".join(
+                    f"{(u['final_url'] or u['url'])[:90]} -> {u['artifact_id']}" for u in done[-25:]))
+            failed = self.store.urls(self.task_id, "error")
+            if failed:
+                lines.append("failed (not retried; choose other sources): " + "; ".join(
+                    f"{u['url'][:90]} ({(u['error'] or '').split(':')[0]})" for u in failed[-15:]))
         return "\n".join(lines)
 
     def build_system(self, summary: str) -> str:

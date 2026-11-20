@@ -27,13 +27,14 @@
 CLI стоит на паузе `@wait_for_files` (сам CLI ничего не копирует).
 
 ## Ожидаемое итоговое состояние после цепочки `run_all_demos.ps1`
-(main → limit → guard → errors → retry, см. README, раздел 9)
+(main → limit → guard → errors → mcp_down → retry, см. README, раздел 9)
 
 | Документ | Где после цепочки | Почему |
 |---|---|---|
 | search_quality_thoughts.md | `data/projects/`, category `projects`, `indexed` | ход 3 main: перенос в courses; сессия errors: перенос в projects при остановленном ES (`pending_sync`); сессия retry: путь и категория в индексе исправлены |
 | ir_lecture_inverted_index.md | `data/search/`, category `search`, `indexed` | ход 9 main: перенос проиндексированного файла и `update_document_path` |
 | agents_seminar_react.txt | `data/courses/`, `indexed` | сессия errors: upsert упал (`error`); retry: проиндексирован |
+| howto_git_branches.txt | `data/guides/`, category `guides`, `indexed` | сессия mcp_down: индексация не удалась (`mcp_unavailable`, статус `error`), файл перенесён в новую папку guides; сессия retry: проиндексирован |
 | project_recsys.md | `data/projects/` | в цепочке не переносится |
 | остальные файлы | по темам из таблицы выше | |
 

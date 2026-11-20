@@ -154,6 +154,9 @@ class ToolRuntimeMiddleware(AgentMiddleware):
             return _tool_error(request, "tool_exception", f"{type(e).__name__}: {e}"[:800])
 
 
+STUB_RESERVE_CHARS = 280      # room reserved per result still to come in the step (a reference stub is about 200-250 chars)
+
+
 class OutputGuardMiddleware(AgentMiddleware):
     """Bounds every tool result before it reaches the model; the full text goes to an artifact."""
 
@@ -161,16 +164,22 @@ class OutputGuardMiddleware(AgentMiddleware):
         super().__init__()
         self.ctx = ctx
         self._used: dict[str, int] = {}
+        self._seen_results: dict[str, int] = {}
         self._lock = threading.Lock()
 
     @staticmethod
     def _step_key(request: ToolCallRequest) -> str:
+        return OutputGuardMiddleware._step_info(request)[0]
+
+    @staticmethod
+    def _step_info(request: ToolCallRequest) -> tuple[str, int]:
+        """(step key, number of tool calls in that step's AIMessage)."""
         cid = request.tool_call["id"]
         state = request.state if isinstance(request.state, dict) else {}
         for m in reversed(state.get("messages", [])):
             if isinstance(m, AIMessage) and any(tc["id"] == cid for tc in m.tool_calls):
-                return m.id or cid
-        return cid
+                return (m.id or cid), len(m.tool_calls)
+        return cid, 1
 
     def _preview(self, text: str, n: int) -> tuple[str, dict]:
         env = parse(text)
@@ -195,34 +204,53 @@ class OutputGuardMiddleware(AgentMiddleware):
             return msg
         L = self.ctx.limits
         text = _text(msg.content)
-        key = self._step_key(request)
+        key, n_calls = self._step_info(request)
         with self._lock:
             used = self._used.get(key, 0)
             remaining = L.max_step_result_chars - used
-            if len(text) <= L.max_tool_result_chars and len(text) <= remaining:
+            seen = self._seen_results.get(key, 0)
+            self._seen_results[key] = seen + 1
+            # every result of this step that is still to come gets at least a reference stub, so room for them is
+            # reserved: the sum of all results of the step (stubs included) stays within max_step_result_chars
+            still_to_come = max(n_calls - seen - 1, 0)
+            room = remaining - still_to_come * STUB_RESERVE_CHARS
+            if len(text) <= L.max_tool_result_chars and len(text) <= room:
                 self._used[key] = used + len(text)
                 return msg
             reason = (f"single result {len(text)} chars > limit {L.max_tool_result_chars}"
                       if len(text) > L.max_tool_result_chars else
                       f"step total would exceed {L.max_step_result_chars} chars (already {used})")
-            n = max(0, min(L.preview_chars, remaining - 700))
             name = request.tool_call["name"]
             args = json.dumps(request.tool_call["args"], ensure_ascii=False)[:300]
             art = self.ctx.artifacts.save(line_friendly(text), "tool_output", f"{name}({args})",
                                           {"tool": name, "args": request.tool_call["args"], "tool_call_id": request.tool_call["id"]})
+            aid = art["artifact_id"]
+            how = (f"read_artifact(artifact_id='{aid}', start_line=1, max_lines=60) "
+                   f"or search_artifact(artifact_id='{aid}', query='...')")
+            n = max(0, min(L.preview_chars, room - 900))
             preview, meta = self._preview(text, n)
             body = {"ok": meta.get("ok", True), "tool": name, "offloaded": True, "reason": reason,
-                    "artifact_id": art["artifact_id"], "total_chars": len(text), "total_lines": art["lines"],
-                    "preview_chars": len(preview), "preview": preview, **({"data_fields": meta["data_fields"]} if meta.get("data_fields") else {}),
-                    "how_to_continue": f"read_artifact(artifact_id='{art['artifact_id']}', start_line=1, max_lines=60) "
-                                       f"or search_artifact(artifact_id='{art['artifact_id']}', query='...')"}
+                    "artifact_id": aid, "total_chars": len(text), "total_lines": art["lines"],
+                    "preview_chars": len(preview), "preview": preview,
+                    **({"data_fields": meta["data_fields"]} if meta.get("data_fields") else {}), "how_to_continue": how}
             content = json.dumps(body, ensure_ascii=False)
+            if len(content) > room and "data_fields" in body:
+                body.pop("data_fields")
+                content = json.dumps(body, ensure_ascii=False)
+            if len(content) > room:
+                # the step budget is (almost) used up: only a minimal reference, still enough to read everything
+                stub = {"ok": meta.get("ok", True), "tool": name, "offloaded": True, "reason": "step limit: reference only",
+                        "artifact_id": aid, "total_chars": len(text), "how_to_continue": f"read_artifact(artifact_id='{aid}')"}
+                content = json.dumps(stub, ensure_ascii=False)
             self._used[key] = used + len(content)
+            step_total = self._used[key]
             if len(self._used) > 200:
                 for k in list(self._used)[:100]:
                     self._used.pop(k, None)
-        self.ctx.emit("tool_output_offloaded", tool=name, artifact_id=art["artifact_id"], total_chars=len(text),
-                      passed_chars=len(content), reason=reason, step=key)
+                    self._seen_results.pop(k, None)
+        self.ctx.emit("tool_output_offloaded", tool=name, artifact_id=aid, total_chars=len(text),
+                      passed_chars=len(content), reason=reason, step=key, step_total_after=step_total,
+                      step_limit=L.max_step_result_chars)
         return msg.model_copy(update={"content": content})
 
     async def awrap_tool_call(self, request: ToolCallRequest, handler):
@@ -584,6 +612,9 @@ class ModelGuardMiddleware(AgentMiddleware):
             ctx.budget.commit(res_id, "agent", a_in, a_out)
             if u.get("input_tokens"):
                 ctx.counter.observe(est.chars, int(u["input_tokens"]))
+                # durable: a resumed process starts with the calibrated chars-per-token, not the default
+                ctx.store.set_meta(f"token_calibration:{ctx.task_id}",
+                                   {"cpt": round(ctx.counter.cpt, 4), "calibrations": ctx.counter.calibrations})
             ctx.store.update_model_call(call_id, status="ok", actual_input=a_in, actual_output=a_out,
                                         duration_s=round(time.perf_counter() - t0, 2))
             ctx.emit("model_call_done", estimated_input=est.tokens, actual_input=a_in, actual_output=a_out,

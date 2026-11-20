@@ -140,26 +140,42 @@ class Session:
                 print(f"    {ok} {m.name}", flush=True)
 
     async def command(self, cmd: str) -> bool:
-        """Handle /commands. Returns False to exit."""
+        """Handle /commands. Returns False to exit. Every command is recorded in the trace
+        (event ``cli_command``) with a short machine-readable result."""
         c = cmd.strip().lower()
         if c in EXIT_WORDS:
+            self.tracer.cli_command(cmd.strip(), result="exit")
             return False
         msgs = await self.messages()
+        ok, result = True, None
         if c == "/help":
             print(HELP)
+            result = "help shown"
         elif c == "/history":
-            print(json.dumps(history_summary(msgs), ensure_ascii=False, indent=2))
+            summary = history_summary(msgs)
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+            result = summary
         elif c == "/check":
             problems = validate_history(msgs)
             print("История корректна: OK" if not problems else "\n".join(problems))
+            ok = not problems
+            result = {"history_ok": ok, "messages": len(msgs), "problems": problems[:20]}
         elif c == "/catalog":
             cat = self.bundle.catalog.load()
             for d in cat["documents"]:
                 print(f"{d['indexing_status']:<12} {d['current_path']}  [{d['document_id'][:8]}] {d['title']}")
+            counts: dict[str, int] = {}
+            for d in cat["documents"]:
+                counts[d["indexing_status"]] = counts.get(d["indexing_status"], 0) + 1
+            result = {"documents": len(cat["documents"]), "status_counts": counts}
         elif c == "/graph":
-            print(self.bundle.agent.get_graph().draw_mermaid())
+            mermaid = self.bundle.agent.get_graph().draw_mermaid()
+            print(mermaid)
+            result = {"mermaid_chars": len(mermaid)}
         else:
             print("Неизвестная команда. " + HELP)
+            ok, result = False, "unknown command"
+        self.tracer.cli_command(cmd.strip(), result=result, ok=ok)
         return True
 
 
@@ -290,35 +306,58 @@ async def amain(argv: list[str] | None = None) -> int:
         if args.script:
             lines = [l.rstrip("\n") for l in args.script.read_text(encoding="utf-8").splitlines()]
             lines = [l for l in lines if l.strip() and not l.lstrip().startswith("#")]
-        while True:
-            if lines is not None:
-                if not lines:
-                    break
-                text = lines.pop(0)
-                print(f"\n> {text}")
-            else:
-                try:
-                    text = await asyncio.to_thread(input, "\n> ")
-                except (EOFError, KeyboardInterrupt):
-                    break
-            text = text.strip()
-            if not text:
-                continue
-            if text == "@add_late_files":
-                print("  [ручное действие пользователя] добавлены:", add_late_files(settings, tracer))
-                continue
-            if text.split()[0] == WAIT_DIRECTIVE:
-                await wait_for_files(settings, tracer, text.split()[1:], timeout_s=args.wait_timeout,
-                                     marker=args.wait_marker)
-                continue
-            if text.startswith("/") or text.lower() in EXIT_WORDS:
-                if not await sess.command(text):
-                    break
-                continue
-            answer = await sess.run_turn(text)
-            print(f"\n{answer}")
-        tracer.event("session_end", history=history_summary(await sess.messages()))
-        print(f"\nСессия завершена. Трасса: {tracer.md}")
+        ended_by, turns = None, 0
+        try:
+            while True:
+                if lines is not None:
+                    if not lines:
+                        ended_by = "end_of_script"
+                        break
+                    text = lines.pop(0)
+                    print(f"\n> {text}")
+                else:
+                    try:
+                        text = await asyncio.to_thread(input, "\n> ")
+                    except EOFError:
+                        ended_by = "eof (Ctrl+Z / Ctrl+D)"
+                        break
+                    except KeyboardInterrupt:
+                        ended_by = "ctrl_c"
+                        break
+                text = text.strip()
+                if not text:
+                    continue
+                if text == "@add_late_files":
+                    copied = add_late_files(settings, tracer)
+                    print("  [ручное действие пользователя] добавлены:", copied)
+                    tracer.cli_command(text, result={"copied_by_this_cli": copied})
+                    continue
+                if text.split()[0] == WAIT_DIRECTIVE:
+                    appeared = await wait_for_files(settings, tracer, text.split()[1:], timeout_s=args.wait_timeout,
+                                                    marker=args.wait_marker)
+                    tracer.cli_command(text, result={"appeared": appeared}, ok=bool(appeared))
+                    continue
+                if text.startswith("/") or text.lower() in EXIT_WORDS:
+                    if not await sess.command(text):
+                        ended_by = f"exit_command ({text})"
+                        break
+                    continue
+                turns += 1
+                answer = await sess.run_turn(text)
+                print(f"\n{answer}")
+        except (KeyboardInterrupt, asyncio.CancelledError):
+            ended_by = "ctrl_c"
+            raise
+        except Exception as e:  # noqa: BLE001 - recorded, then re-raised
+            ended_by = f"error: {type(e).__name__}: {e}"[:300]
+            raise
+        finally:
+            try:
+                hist = history_summary(await sess.messages())
+            except BaseException:  # noqa: BLE001 - never lose the session_end record
+                hist = None
+            tracer.event("session_end", ended_by=ended_by or "unknown", user_turns=turns, history=hist)
+        print(f"\nСессия завершена ({ended_by}). Трасса: {tracer.md}")
         return 0
     finally:
         await mcp.__aexit__(None, None, None)

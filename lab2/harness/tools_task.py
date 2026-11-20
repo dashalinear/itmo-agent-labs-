@@ -255,6 +255,16 @@ class TaskTools:
             share = top[1] / len(done) if done else 0.0
             checks["max_domain_share"] = (bool(done) and share <= crit["max_domain_share"] + 1e-9,
                                           f"{top[0]}: {top[1]}/{len(done)} read pages (max share {crit['max_domain_share']})")
+        if "indexed_in_es" in crit:
+            # lab 1 MCP/Elasticsearch: the catalog marks a document "indexed" only after a successful upsert_excerpts
+            rule = crit["indexed_in_es"]
+            need = int(rule.get("min_excerpts", 1))
+            state = {}
+            for path in rule.get("paths", []):
+                entry = self.catalog.by_path(path) or {}
+                state[path] = (entry.get("indexing_status"), len(entry.get("excerpts") or []))
+            ok = bool(state) and all(st == "indexed" and n >= need for st, n in state.values())
+            checks["indexed_in_es"] = (ok, "; ".join(f"{p}: {st}, {n} excerpts (need {need})" for p, (st, n) in state.items()))
         if "verbatim_quotes" in crit:
             checks["verbatim_quotes"] = self._verbatim_check(crit["verbatim_quotes"], ev)
         return {k: {"ok": v[0], "detail": v[1]} for k, v in checks.items()}

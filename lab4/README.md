@@ -57,16 +57,18 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 
 | Команда | Что делает |
 |---|---|
-| `$py -m topicflow.cli prepare [--reset]` | workspace, индексы `itmo_lab4_l1/l2`, реестр |
-| `$py -m topicflow.cli worker` | Worker: оба workflow и все activities |
-| `$py -m topicflow.cli watch` | наблюдение за `workspace/input` и запуск `IngestNewFiles` |
-| `$py -m topicflow.cli schedule create --every 10m` | создать Schedule (первый запуск сразу; `--no-trigger` — без него) |
-| `$py -m topicflow.cli schedule describe \| pause \| unpause \| trigger \| delete` | статус, пауза, внеочередной запуск, остановка Schedule |
-| `$py -m topicflow.cli status` | реестр: батчи, файлы, отчёты (Workflow ID, run ID, task_id) |
-| `$py -m topicflow.cli l0` / `open-report --latest` | L0 с блоком отчётов / открыть последний отчёт с L0 |
-| `$py -m topicflow.cli topics-now [--set max_model_calls=4]` | разовый запуск `TopicReport` вне расписания |
-| `$py -m topicflow.cli fault --activity A --point P --times N\|always` / `--clear` | инъекция сбоя в activity |
-| `$py -m topicflow.cli trace` / `export` | истории Temporal → `traces/temporal`; результаты → `results/` |
+| `& $py -m topicflow.cli prepare [--reset]` | workspace, индексы `itmo_lab4_l1/l2`, реестр |
+| `& $py -m topicflow.cli worker` | Worker: оба workflow и все activities |
+| `& $py -m topicflow.cli watch` | наблюдение за `workspace/input` и запуск `IngestNewFiles` |
+| `& $py -m topicflow.cli schedule create --every 10m` | создать Schedule (первый запуск сразу; `--no-trigger` — без него) |
+| `& $py -m topicflow.cli schedule describe \| pause \| unpause \| trigger \| delete` | статус, пауза, внеочередной запуск, остановка Schedule |
+| `& $py -m topicflow.cli status` | реестр: батчи, файлы, отчёты (Workflow ID, run ID, task_id) |
+| `& $py -m topicflow.cli l0` / `open-report --latest` | L0 с блоком отчётов / открыть последний отчёт с L0 |
+| `& $py -m topicflow.cli topics-now [--set max_model_calls=4]` | разовый запуск `TopicReport` вне расписания |
+| `& $py -m topicflow.cli fault --activity A --point P --times N\|always` / `--clear` | инъекция сбоя в activity |
+| `& $py -m topicflow.cli replay --batch <batch_id>` | повторить событие обнаружения для батча (Temporal не запустит второе выполнение) |
+| `& $py -m topicflow.cli wait --batches \| --schedule-runs N [--after T] \| --workflow-id W` | дождаться загрузки / запусков Schedule / workflow |
+| `& $py -m topicflow.cli trace` / `export` | истории Temporal → `traces/temporal`; результаты → `results/` |
 
 Пользователь только кладёт файлы в `workspace/input`; команда `drop --set initial|arrivals|new_topic` делает это за него в демо. Полный сценарий со всеми проверками — `scripts\run_lab4_demo.ps1` (в сети ИТМО).
 
@@ -133,6 +135,8 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 | `record_batch`, `stage_batch`, `verify_batch`, `freeze_corpus`, `publish_report` | 30 с – 5 мин | 5 (1 с, ×2, до 20 с) | — | `UnknownBatch` |
 | `run_ingest_agent`, `run_topic_agent` | 1 ч | 3 (5 с, ×2, до 1 мин) | 90 с (в демо 30 с) | — |
 
+В записанных прогонах 17–18.11 start-to-close агентных activity был 2 ч (`startToCloseTimeout=7200s` в историях). После прогонов он сокращён до 1 ч, а execution timeout workflow поднят до 4 ч: 3 попытки с backoff и публикация отчёта помещаются в лимит workflow (коммит 6f2d2ba).
+
 - **Агентная activity.** Каждые 10 с она шлёт heartbeat с расходом задачи. Если Worker убит, Temporal по heartbeat timeout отдаёт попытку живому Worker. Новая попытка открывает ту же задачу harness (`ING-…` / `TOP-…`) и продолжает её с последнего checkpoint и с накопленным бюджетом. В событиях задачи остаётся `temporal_attempt` с номером попытки и `resumed=true`.
 - **Исчерпание бюджета** и собственный `stop_partial` агента — окончательный результат: повтор не добавит бюджета. Отчёт публикуется как ЧАСТИЧНЫЙ. Прочие остановки (сервер LLM недоступен, сбой) поднимают повторяемую ошибку, ограниченную 3 попытками.
 - **Если агентная activity окончательно упала,** workflow всё равно проверяет или публикует то, что есть, и не помечает результат полным.
@@ -150,13 +154,13 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 Воспроизведение индекса и всех сценариев (из `lab4`, `$py = ..\lab3\.venv\Scripts\python.exe`):
 
 ```powershell
-$py -m topicflow.cli prepare --reset          # пустой workspace и индексы itmo_lab4_l1 / itmo_lab4_l2
-$py -m topicflow.cli worker                   # окно 1
-$py -m topicflow.cli watch                    # окно 2
-$py -m topicflow.cli drop --set initial       # окно 3: 10 файлов -> автоматическая загрузка
-$py -m topicflow.cli wait --batches
-$py -m topicflow.cli schedule create --every 8m
-$py -m topicflow.cli drop --set arrivals; $py -m topicflow.cli drop --set new_topic
+& $py -m topicflow.cli prepare --reset          # пустой workspace и индексы itmo_lab4_l1 / itmo_lab4_l2
+& $py -m topicflow.cli worker                   # окно 1
+& $py -m topicflow.cli watch                    # окно 2
+& $py -m topicflow.cli drop --set initial       # окно 3: 10 файлов -> автоматическая загрузка
+& $py -m topicflow.cli wait --batches
+& $py -m topicflow.cli schedule create --every 8m
+& $py -m topicflow.cli drop --set arrivals; & $py -m topicflow.cli drop --set new_topic
 ```
 
 Всё это и сценарии сбоев целиком выполняет `scripts\run_lab4_demo.ps1`.
@@ -209,6 +213,8 @@ $py -m topicflow.cli drop --set arrivals; $py -m topicflow.cli drop --set new_to
 **Открытие с L0.** Вывод `open-report --latest` сохранён в `results/open_report_latest.txt`: `reports.latest` → `document_id` → L1 отчёта → текст. На момент основного прогона последним был частичный отчёт из сценария с бюджетом, он помечен `partial`; для такого случая есть `reports.latest_complete` и `open-report --latest-complete`. После дополнительных прогонов в `reports.history` 6 отчётов, последний — полный (см. ниже).
 
 В выгрузку `traces/temporal` не входят запуски тестов (`test-*`): тесты работают в том же namespace, и `trace` их пропускает.
+
+Логи процессов основного прогона 17.11 (`traces/processes/watcher1.log`, `watcher2.log`, `worker2.log`) оказались пустыми: вывод Python буферизовался, а процессы останавливаются принудительно. Пустые файлы убраны. Автоматический старт и повтор события подтверждают истории Temporal (`ingest-4d4e776d7c`, identity worker в событиях `ActivityTaskStarted`), реестр (`results/status.txt`) и `results/replay_event.txt`. Начиная с прогонов 18.11 логи пишутся без буферизации (`watcher3.log` и др.).
 
 **Исправлено после основного прогона** (по итогам проверки; на результаты таблицы выше не влияет, покрыто тестами):
 - **Перезапуск недоиндексированного батча.** Если агент уже перенёс файл в `data`, но L1/L2 не построил, перезапущенный батч считал файл пропавшим и объявлял себя завершённым. Теперь файл остаётся в батче, агент запускается снова и продолжает задачу, `verify_batch` проверяет файл. Тест `test_restarted_incomplete_batch_runs_the_agent_again_instead_of_claiming_success`.
@@ -263,6 +269,20 @@ powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part topic-c
 | E1. Падение worker во время агента тем | `lab4-topics-manual-2026-11-18T13:20:31.699Z` / `01a1eed0-ebff-7971-aac5-c070e2841a09` | `run_topic_agent`: **2** (первая — `Heartbeat timeout`) | `TOP-manual-20261118T132031699Z`: 2 запуска, 16 вызовов модели, 55 tools, 2 компактификации | Worker #5 убит после 6-го tool агента тем (`simulated_crash after_tool:6`, код 137). Попытка 2 на worker #6 через 36 с **продолжила** ту же задачу: `temporal_attempt` attempt 2, `resumed=true`, `runs_before=1`, `status_before=running`; трасса `a22` — `resume_kind=continue_interrupted_step`. Отчёт **ПОЛНЫЙ**: 14/14 документов, 5 тем, 14 цитат L2 |
 
 В этом отчёте новый документ `latency_budget.md` попал в таблицу «Новые документы и их темы» с пометкой «расширяет тему», а тема T4 помечена «расширена новыми документами: 1». Энергопотребление инференса qwen теперь выделила отдельной темой T5. После этого прогона `reports.latest` и `reports.latest_complete` указывают на этот полный отчёт (`results/open_report_latest.txt`, `results/open_report_latest_complete.txt`).
+
+**Рост корпуса с новой темой по Schedule и повтор события во время работы (`-Part growth`).**
+- **Зачем.** В основном прогоне новый документ попал в расширенную тему. Отдельной темой он стал только в ручном запуске `topics-now`. Повтор события, пока workflow выполняется, был показан только тестом.
+- **Что делает часть.**
+  - Кладёт файл на совсем новую тему (`corpus/new_topic2/ui_accessibility.md`, требования доступности интерфейса, ACC-2026-01).
+  - Сразу повторяет событие обнаружения, пока workflow ещё в RUNNING. Вывод `replay` и `temporal workflow list` сохраняются в `results/replay_while_running.txt`: одно выполнение, тот же run ID.
+  - После загрузки создаёт Schedule и ждёт очередной запуск по расписанию.
+- **В отчёте теперь** есть строка «время запуска по расписанию».
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Part growth -SkipTests
+```
+
+_Результаты — после прогона в сети ИТМО._
 
 ## 9. Ограничения
 

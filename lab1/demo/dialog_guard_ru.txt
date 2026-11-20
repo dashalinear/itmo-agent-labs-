@@ -2,6 +2,8 @@
 # its result, so the error comes from the tool, not from the model refusing).
 # run_all_demos.ps1 creates workspace/input/outside_link as a directory junction pointing OUTSIDE the
 # workspace (a file secret.txt lives there) before this dialog and removes only the junction afterwards.
+# It also starts scripts/http_fixture_server.py on 127.0.0.1:18765 (/page.html 200, /missing 404,
+# /slow answers after 20 s > WEB_TIMEOUT_S=10 -> timeout); port 9 is closed -> network_error.
 # Files are referenced by content, not by a fixed folder, because the folder names were chosen by the
 # model in the main dialog; the first turn resolves the paths through the catalog.
 Через catalog_view найди пути инструкции по веткам git, протокола kickoff-встречи и протокола ретроспективы. Просто перечисли пути.
@@ -14,6 +16,9 @@
 Вызови grep рекурсивно по папке input с шаблоном outside-the-workspace и покажи результат.
 Вызови move: перенеси инструкцию по веткам git в ../outside.txt и покажи результат.
 Вызови move: источник — протокол kickoff-встречи, назначение — ТОЧНЫЙ путь существующего протокола ретроспективы. Ничего не переименовывай и не выбирай другое имя, просто покажи результат инструмента.
+Вызови web_fetch для http://127.0.0.1:18765/page.html и покажи статус, final_url, title и начало текста.
+Вызови web_fetch для http://127.0.0.1:18765/missing и покажи результат инструмента.
+Вызови web_fetch для http://127.0.0.1:18765/slow и покажи результат инструмента.
 Вызови web_fetch для http://127.0.0.1:9/ и покажи результат.
 /check
 /exit

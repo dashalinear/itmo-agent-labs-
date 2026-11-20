@@ -87,6 +87,10 @@ def build_harness_agent(cfg: HarnessConfig, store: TaskStore, task_id: str, mode
     budget = Budget(store, task_id, limits)
     counter = TokenCounter(cfg.chars_per_token, limits.estimate_margin, cfg.token_count_mode,
                            cfg.base.llm_base_url, cfg.base.llm_api_key, cfg.base.llm_model)
+    cal = store.get_meta(f"token_calibration:{task_id}")
+    if cal and cal.get("cpt"):            # calibration of an earlier process of this task survives the restart
+        counter.cpt = float(cal["cpt"])
+        counter.calibrations = int(cal.get("calibrations") or 0)
     artifacts = ArtifactStore(ws, store, task_id, max_chars=max(limits.max_tool_result_chars - 800, 1000))
     skills = build_skills(cfg.skills_dirs)
     fs = HarnessFileTools(ws, catalog, max_chars=5_000_000)       # full results; OutputGuard bounds them

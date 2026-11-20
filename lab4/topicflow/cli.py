@@ -355,7 +355,7 @@ async def amain(argv=None) -> int:
     p = sub.add_parser("prepare"); p.add_argument("--reset", action="store_true")
     sub.add_parser("worker")
     p = sub.add_parser("watch"); p.add_argument("--once", action="store_true")
-    p = sub.add_parser("drop"); p.add_argument("--set", required=True, choices=["initial", "arrivals", "new_topic", "late"])
+    p = sub.add_parser("drop"); p.add_argument("--set", required=True, choices=["initial", "arrivals", "new_topic", "late", "new_topic2"])
     p.add_argument("--repeat", action="store_true", help="the same content under another name (duplicate)")
     p.add_argument("--slow", action="store_true", help="write slowly without .part (stability check)")
     p.add_argument("--only", help="only this file name of the set")

@@ -119,6 +119,14 @@ class TaskStore:
         if "fragment_id" not in cols:                       # migration of a lab 2 database
             self.db.execute("ALTER TABLE evidence ADD COLUMN fragment_id TEXT")
 
+    # -- small durable key/value (e.g. token calibration per task) -------------------
+    def set_meta(self, key: str, value: Any) -> None:
+        self._exec("INSERT OR REPLACE INTO meta (key, value) VALUES (?, ?)", (key, _j(value)))
+
+    def get_meta(self, key: str, default: Any = None) -> Any:
+        r = self._one("SELECT value FROM meta WHERE key=?", (key,))
+        return json.loads(r["value"]) if r and r["value"] is not None else default
+
     def close(self) -> None:
         with self._lock:
             self.db.close()
