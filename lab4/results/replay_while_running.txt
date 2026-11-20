@@ -1,0 +1,7 @@
+﻿replay --batch 1362a3c0e5 while the workflow is RUNNING:
+[watcher] replayed detection event for batch 1362a3c0e5: duplicate event, workflow ingest-1362a3c0e5 is already running - the same execution run 01a1f963-c315-7816-a1c0-ca81a6e793c8 was returned, nothing new started
+
+temporal workflow list --query WorkflowId='ingest-1362a3c0e5':
+  Status      WorkflowId           Type         StartTime  
+  Running  ingest-1362a3c0e5  IngestNewFiles  3 seconds ago
+

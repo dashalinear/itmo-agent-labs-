@@ -1,0 +1,3 @@
+[watcher] watching D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\workspace\input every 2.0s (stable after 3.0s)
+[watcher] new batch 1362a3c0e5: ['input/ui_accessibility.md']
+[watcher] 1 new file(s): started workflow ingest-1362a3c0e5 run 01a1f963-c315-7816-a1c0-ca81a6e793c8

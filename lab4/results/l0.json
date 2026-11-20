@@ -1,18 +1,18 @@
 {
  "schema": "l0l1l2/1",
  "corpus_id": "itmo-lab3",
- "generated_at": "2026-11-18T13:22:29+00:00",
+ "generated_at": "2026-11-20T14:40:08+00:00",
  "totals": {
-  "documents": 20,
-  "with_l1": 20,
-  "fragments": 145,
-  "service_documents": 6
+  "documents": 22,
+  "with_l1": 22,
+  "fragments": 169,
+  "service_documents": 7
  },
  "folders": [
   {
    "folder": "_reports",
-   "documents": 6,
-   "fragments": 103
+   "documents": 7,
+   "fragments": 124
   },
   {
    "folder": "meetings",
@@ -21,8 +21,8 @@
   },
   {
    "folder": "ops",
-   "documents": 5,
-   "fragments": 15
+   "documents": 6,
+   "fragments": 18
   },
   {
    "folder": "search",
@@ -75,6 +75,20 @@
    "l1": true,
    "sections": 6,
    "l2_fragments": 18,
+   "l2_current": true,
+   "service": "topic_report"
+  },
+  {
+   "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+   "path": "data/_reports/topics_20261120T143746Z.md",
+   "folder": "_reports",
+   "title": "Обзор тем корпуса — 2026-11-20",
+   "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-20T14:37:46Z",
+   "content_hash": "sha256:fa2c36fe125be00289e68d489b288aa7d5f67ebfbc7bd5a91885bf800af3bb6c",
+   "is_empty": false,
+   "l1": true,
+   "sections": 6,
+   "l2_fragments": 21,
    "l2_current": true,
    "service": "topic_report"
   },
@@ -192,6 +206,19 @@
    "title": "Политика дежурств",
    "description": "Справка о политике дежурств: смены, эскалация, журнал инцидентов.",
    "content_hash": "sha256:50e7e542a80d2e3e55a0a44c651104245c999fe21f47de71976d98d47a6cade2",
+   "is_empty": false,
+   "l1": true,
+   "sections": 3,
+   "l2_fragments": 3,
+   "l2_current": true
+  },
+  {
+   "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+   "path": "data/ops/ui_accessibility.md",
+   "folder": "ops",
+   "title": "Доступность интерфейса платформы агентов",
+   "description": "Требования и порядок проверки доступности веб-интерфейса платформы агентов (WCAG 2.2, код ACC-2026-01).",
+   "content_hash": "sha256:5d817cac94dadfe366985b73d07d385d9eb02e776a791223ffca97eea548c7c2",
    "is_empty": false,
    "l1": true,
    "sections": 3,
@@ -382,33 +409,46 @@
     "documents_examined": 14,
     "frozen_at": "2026-11-18T13:20:32+00:00",
     "task_id": "TOP-manual-20261118T132031699Z"
+   },
+   {
+    "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
+    "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
+    "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
+    "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+    "path": "data/_reports/topics_20261120T143746Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 15,
+    "documents_examined": 15,
+    "frozen_at": "2026-11-20T14:37:46+00:00",
+    "task_id": "TOP-20261120T143746Z"
    }
   ],
   "latest": {
-   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
-   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
-   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
-   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
-   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+   "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
+   "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+   "path": "data/_reports/topics_20261120T143746Z.md",
    "status": "complete",
-   "topics": 5,
-   "documents_frozen": 14,
-   "documents_examined": 14,
-   "frozen_at": "2026-11-18T13:20:32+00:00",
-   "task_id": "TOP-manual-20261118T132031699Z"
+   "topics": 4,
+   "documents_frozen": 15,
+   "documents_examined": 15,
+   "frozen_at": "2026-11-20T14:37:46+00:00",
+   "task_id": "TOP-20261120T143746Z"
   },
   "latest_complete": {
-   "run_key": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
-   "workflow_id": "lab4-topics-manual-2026-11-18T13:20:31.699Z",
-   "run_id": "01a1eed0-ebff-7971-aac5-c070e2841a09",
-   "document_id": "4c4929df-8600-4da1-ae2f-c6f2f1ec099e",
-   "path": "data/_reports/topics_manual-20261118T132031699Z.md",
+   "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
+   "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+   "path": "data/_reports/topics_20261120T143746Z.md",
    "status": "complete",
-   "topics": 5,
-   "documents_frozen": 14,
-   "documents_examined": 14,
-   "frozen_at": "2026-11-18T13:20:32+00:00",
-   "task_id": "TOP-manual-20261118T132031699Z"
+   "topics": 4,
+   "documents_frozen": 15,
+   "documents_examined": 15,
+   "frozen_at": "2026-11-20T14:37:46+00:00",
+   "task_id": "TOP-20261120T143746Z"
   }
  }
 }

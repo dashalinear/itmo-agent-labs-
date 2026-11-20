@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-18T13:22:29+00:00",
+  "updated_at": "2026-11-20T14:40:08+00:00",
   "documents": [
     {
       "document_id": "5619072d-2acc-4d5a-93eb-8bdc8ac21fa7",
@@ -378,6 +378,152 @@
       ],
       "indexed_at": "2026-11-18T12:01:11+00:00",
       "registered_at": "2026-11-18T12:01:07+00:00",
+      "moves": []
+    },
+    {
+      "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+      "original_path": "data/_reports/topics_20261120T143746Z.md",
+      "current_path": "data/_reports/topics_20261120T143746Z.md",
+      "title": "Обзор тем корпуса — 2026-11-20",
+      "category": "_reports",
+      "description": "Служебный тематический отчёт по корпусу (complete), run lab4-topics-run-2026-11-20T14:37:46Z",
+      "content_hash": "sha256:fa2c36fe125be00289e68d489b288aa7d5f67ebfbc7bd5a91885bf800af3bb6c",
+      "size_bytes": 14803,
+      "line_count": 136,
+      "is_empty": false,
+      "note": "",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "0001813f-674e-59bd-98c0-6f60a1fd1bdc",
+          "start_line": 1,
+          "end_line": 5,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "71a195e8-ab48-591e-828a-be9c23087926",
+          "start_line": 7,
+          "end_line": 16,
+          "summary": "Запуск"
+        },
+        {
+          "excerpt_id": "f0ce4c07-d56e-5e82-89bd-58b7bbb344dd",
+          "start_line": 18,
+          "end_line": 26,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "11a9c9d1-342c-52e1-8796-723c6fb02d1e",
+          "start_line": 28,
+          "end_line": 32,
+          "summary": "Состав и покрытие корпуса"
+        },
+        {
+          "excerpt_id": "767a1140-585c-517b-a455-c4debe8a903a",
+          "start_line": 34,
+          "end_line": 40,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "8d7ff56c-644d-55cf-82e7-592662ffedcd",
+          "start_line": 42,
+          "end_line": 49,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "d9764d18-dc01-562c-ac1c-5ab02caf14ec",
+          "start_line": 51,
+          "end_line": 54,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "ceb35861-b430-5b39-b46a-146f1360ac99",
+          "start_line": 55,
+          "end_line": 58,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "779cb5d6-8dea-5644-9793-9f804b5982c4",
+          "start_line": 60,
+          "end_line": 62,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "bd2ae020-acd2-5bb4-8fbd-64c698032378",
+          "start_line": 64,
+          "end_line": 70,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "86a2fb11-7994-58e6-8359-4469612e69c5",
+          "start_line": 72,
+          "end_line": 75,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "db5643cd-7ec1-5b6d-bcb3-2aae53202466",
+          "start_line": 76,
+          "end_line": 82,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "8ef8e982-8ea1-5f5c-99c4-b85337b865c0",
+          "start_line": 84,
+          "end_line": 89,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "24408400-79e3-55e6-bee5-63d5928d0cf4",
+          "start_line": 91,
+          "end_line": 94,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "8e71e54e-4dfb-55d0-bdcc-c4cc9c6d2613",
+          "start_line": 96,
+          "end_line": 104,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "bc568b83-e6a4-5547-b4c9-9fbd39e4bede",
+          "start_line": 106,
+          "end_line": 106,
+          "summary": "Темы"
+        },
+        {
+          "excerpt_id": "51faad62-e26b-58b2-a506-d73b6e89048e",
+          "start_line": 108,
+          "end_line": 110,
+          "summary": "Итог агента"
+        },
+        {
+          "excerpt_id": "cd2fe20c-511d-5155-9dea-88bdcb88026f",
+          "start_line": 112,
+          "end_line": 114,
+          "summary": "Непроверенные документы и ошибки"
+        },
+        {
+          "excerpt_id": "ffdbfcd2-a4d3-5d22-8061-9ac3c345992f",
+          "start_line": 116,
+          "end_line": 116,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "9ffab148-5fa7-5a45-82a8-418a1c9e89f8",
+          "start_line": 118,
+          "end_line": 127,
+          "summary": "Зафиксированный список документов"
+        },
+        {
+          "excerpt_id": "2c5244a3-0aa8-5036-9dd0-c7dd9eea7024",
+          "start_line": 128,
+          "end_line": 136,
+          "summary": "Зафиксированный список документов"
+        }
+      ],
+      "indexed_at": "2026-11-20T14:40:08+00:00",
+      "registered_at": "2026-11-20T14:40:07+00:00",
       "moves": []
     },
     {
@@ -1001,6 +1147,38 @@
           "from": "input/_batches/4d4e776d7c/oncall.md",
           "to": "data/ops/oncall.md",
           "at": "2026-11-17T20:43:14+00:00"
+        }
+      ]
+    },
+    {
+      "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+      "original_path": "input/_batches/1362a3c0e5/ui_accessibility.md",
+      "current_path": "data/ops/ui_accessibility.md",
+      "title": "Доступность интерфейса платформы агентов",
+      "category": "ops",
+      "description": "Требования (WCAG 2.2 AA, ACC-2026-01) и порядок проверки доступности веб-интерфейса платформы агентов перед релизом.",
+      "content_hash": "sha256:5d817cac94dadfe366985b73d07d385d9eb02e776a791223ffca97eea548c7c2",
+      "size_bytes": 929,
+      "line_count": 12,
+      "is_empty": false,
+      "note": "Размещено в data/ops: операционное требование к процессу релизов платформы (аудит доступности, блокировка релиза).",
+      "indexing_status": "indexed",
+      "index_error": null,
+      "excerpts": [
+        {
+          "excerpt_id": "e8cc5642-badb-568e-a2de-530301e44cdd",
+          "start_line": 3,
+          "end_line": 5,
+          "summary": "Ключевое требование: WCAG 2.2 уровень AA, код ACC-2026-01, контраст 4,5:1, клавиатурная доступность"
+        }
+      ],
+      "indexed_at": "2026-11-20T14:37:34+00:00",
+      "registered_at": "2026-11-20T14:37:15+00:00",
+      "moves": [
+        {
+          "from": "input/_batches/1362a3c0e5/ui_accessibility.md",
+          "to": "data/ops/ui_accessibility.md",
+          "at": "2026-11-20T14:37:15+00:00"
         }
       ]
     },

@@ -1,0 +1,631 @@
+[
+  {
+    "id": 481,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:09+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 482,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:09+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "ingest-1362a3c0e5",
+      "workflow_run_id": "01a1f963-c315-7816-a1c0-ca81a6e793c8",
+      "activity_id": "3",
+      "activity_type": "run_ingest_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 483,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:10+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest-a1"
+    }
+  },
+  {
+    "id": 484,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11771,
+      "reserve": 2048,
+      "total": 13819,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 485,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11771,
+      "reserve": 2048,
+      "total": 13819,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 486,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11771,
+      "actual_input": 7244,
+      "actual_output": 67,
+      "duration_s": 1.56,
+      "calibrated_cpt": 3.095
+    }
+  },
+  {
+    "id": 487,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10751,
+      "reserve": 2048,
+      "total": 12799,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 488,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10751,
+      "reserve": 2048,
+      "total": 12799,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)"
+    }
+  },
+  {
+    "id": 489,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10751,
+      "actual_input": 7912,
+      "actual_output": 55,
+      "duration_s": 1.37,
+      "calibrated_cpt": 3.381
+    }
+  },
+  {
+    "id": 490,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10189,
+      "reserve": 2048,
+      "total": 12237,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 6
+    }
+  },
+  {
+    "id": 491,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10189,
+      "reserve": 2048,
+      "total": 12237,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 492,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10189,
+      "actual_input": 8288,
+      "actual_output": 25,
+      "duration_s": 0.78,
+      "calibrated_cpt": 3.533
+    }
+  },
+  {
+    "id": 493,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9948,
+      "reserve": 2048,
+      "total": 11996,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.53)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 494,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9948,
+      "reserve": 2048,
+      "total": 11996,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.53)"
+    }
+  },
+  {
+    "id": 495,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9948,
+      "actual_input": 8495,
+      "actual_output": 59,
+      "duration_s": 1.26,
+      "calibrated_cpt": 3.615
+    }
+  },
+  {
+    "id": 496,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9910,
+      "reserve": 2048,
+      "total": 11958,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 497,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9910,
+      "reserve": 2048,
+      "total": 11958,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)"
+    }
+  },
+  {
+    "id": 498,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9910,
+      "actual_input": 8749,
+      "actual_output": 16,
+      "duration_s": 0.68,
+      "calibrated_cpt": 3.647
+    }
+  },
+  {
+    "id": 499,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10051,
+      "reserve": 2048,
+      "total": 12099,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 500,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:16+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10051,
+      "reserve": 2048,
+      "total": 12099,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)"
+    }
+  },
+  {
+    "id": 501,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10051,
+      "actual_input": 8989,
+      "actual_output": 446,
+      "duration_s": 3.91,
+      "calibrated_cpt": 3.659
+    }
+  },
+  {
+    "id": 502,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:25+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+      "path": "data/ops/ui_accessibility.md",
+      "sections": 3,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 503,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:25+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10575,
+      "reserve": 2048,
+      "total": 12623,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 504,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:25+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10575,
+      "reserve": 2048,
+      "total": 12623,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.66)"
+    }
+  },
+  {
+    "id": 505,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10575,
+      "actual_input": 9655,
+      "actual_output": 59,
+      "duration_s": 1.16,
+      "calibrated_cpt": 3.639
+    }
+  },
+  {
+    "id": 506,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:27+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+      "fragments": 3,
+      "created": 3,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 507,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10770,
+      "reserve": 2048,
+      "total": 12818,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 508,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10770,
+      "reserve": 2048,
+      "total": 12818,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)"
+    }
+  },
+  {
+    "id": 509,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10770,
+      "actual_input": 9852,
+      "actual_output": 134,
+      "duration_s": 1.6,
+      "calibrated_cpt": 3.614
+    }
+  },
+  {
+    "id": 510,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11250,
+      "reserve": 2048,
+      "total": 13298,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 511,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11250,
+      "reserve": 2048,
+      "total": 13298,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 512,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11250,
+      "actual_input": 10431,
+      "actual_output": 361,
+      "duration_s": 3.14,
+      "calibrated_cpt": 3.57
+    }
+  },
+  {
+    "id": 513,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11740,
+      "reserve": 2048,
+      "total": 13788,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.57)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 514,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11740,
+      "reserve": 2048,
+      "total": 13788,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.57)"
+    }
+  },
+  {
+    "id": 515,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11740,
+      "actual_input": 10947,
+      "actual_output": 208,
+      "duration_s": 2.43,
+      "calibrated_cpt": 3.518
+    }
+  },
+  {
+    "id": 516,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12676,
+      "reserve": 2048,
+      "total": 14724,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 517,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12676,
+      "reserve": 2048,
+      "total": 14724,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)"
+    }
+  },
+  {
+    "id": 518,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12676,
+      "actual_input": 11914,
+      "actual_output": 15,
+      "duration_s": 1.04,
+      "calibrated_cpt": 3.455
+    }
+  },
+  {
+    "id": 519,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13011,
+      "reserve": 2048,
+      "total": 15059,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.45)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 520,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13011,
+      "reserve": 2048,
+      "total": 15059,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.45)"
+    }
+  },
+  {
+    "id": 521,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13011,
+      "actual_input": 12004,
+      "actual_output": 150,
+      "duration_s": 2.09,
+      "calibrated_cpt": 3.417
+    }
+  },
+  {
+    "id": 522,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:40+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Организован 1 файл из input/_batches/1362a3c0e5: ui_accessibility.md -> data/ops/ui_accessibility.md (по содержимому — операционное требование к доступности интерфейса). Построены L1 (3 секции) и L2 (3 фрагмента в ES), сохранён ключевой excerpt (ACC-2026-01, строки 3–5) и проверен поиском. validate_"
+    }
+  },
+  {
+    "id": 523,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13439,
+      "reserve": 2048,
+      "total": 15487,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 524,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13439,
+      "reserve": 2048,
+      "total": 15487,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)"
+    }
+  },
+  {
+    "id": 525,
+    "task_id": "ING-1362a3c0e5",
+    "ts": "2026-11-20T14:37:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13439,
+      "actual_input": 12290,
+      "actual_output": 224,
+      "duration_s": 2.73,
+      "calibrated_cpt": 3.39
+    }
+  }
+]

@@ -387,6 +387,58 @@
    },
    "created_at": "2026-11-18T12:01:24+00:00",
    "updated_at": "2026-11-18T12:01:45+00:00"
+  },
+  {
+   "batch_id": "1362a3c0e5",
+   "workflow_id": "ingest-1362a3c0e5",
+   "run_id": "01a1f963-c315-7816-a1c0-ca81a6e793c8",
+   "task_id": "ING-1362a3c0e5",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/ui_accessibility.md",
+     "size": 929,
+     "mtime_ns": 1795185422565247900
+    }
+   ],
+   "result": {
+    "batch_id": "1362a3c0e5",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/ui_accessibility.md",
+      "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+      "current_path": "data/ops/ui_accessibility.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 21,
+    "agent": {
+     "attempt": 1,
+     "reason": "Организован 1 файл из input/_batches/1362a3c0e5: ui_accessibility.md -> data/ops/ui_accessibility.md (по содержимому — операционное требование к доступности интерфейса). Построены L1 (3 секции) и L2 (3 фрагмента в ES), сохранён ключевой excerpt (ACC-2026-01, строки 3–5) и проверен поиском. validate_",
+     "resumed": false,
+     "run_result": "completed",
+     "runs": 1,
+     "status": "completed",
+     "task_id": "ING-1362a3c0e5",
+     "usage": {
+      "compactions": 0,
+      "model_calls": 13,
+      "tokens": 128589,
+      "tool_calls": 14
+     }
+    }
+   },
+   "created_at": "2026-11-20T14:37:07+00:00",
+   "updated_at": "2026-11-20T14:37:43+00:00"
   }
  ],
  "files": [
@@ -597,6 +649,19 @@
    "current_path": "data/ops/latency_budget.md",
    "note": null,
    "updated_at": "2026-11-18T12:01:45+00:00"
+  },
+  {
+   "input_path": "input/ui_accessibility.md",
+   "size": 929,
+   "mtime_ns": 1795185422565247900,
+   "batch_id": "1362a3c0e5",
+   "status": "indexed",
+   "content_hash": "sha256:5d817cac94dadfe366985b73d07d385d9eb02e776a791223ffca97eea548c7c2",
+   "staged_path": "input/_batches/1362a3c0e5/ui_accessibility.md",
+   "document_id": "b130245a-999e-4e19-9c49-04bf86e527af",
+   "current_path": "data/ops/ui_accessibility.md",
+   "note": null,
+   "updated_at": "2026-11-20T14:37:43+00:00"
   }
  ],
  "reports": [
@@ -789,6 +854,38 @@
    },
    "created_at": "2026-11-18T13:20:32+00:00",
    "updated_at": "2026-11-18T13:22:29+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
+   "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
+   "task_id": "TOP-20261120T143746Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261120T143746Z.md",
+   "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+   "frozen": 15,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
+    "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
+    "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
+    "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
+    "path": "data/_reports/topics_20261120T143746Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 15,
+    "documents_examined": 15,
+    "frozen_at": "2026-11-20T14:37:46+00:00",
+    "task_id": "TOP-20261120T143746Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [
+     "data/ops/ui_accessibility.md"
+    ],
+    "report_count": 7
+   },
+   "created_at": "2026-11-20T14:37:46+00:00",
+   "updated_at": "2026-11-20T14:40:08+00:00"
   }
  ]
 }

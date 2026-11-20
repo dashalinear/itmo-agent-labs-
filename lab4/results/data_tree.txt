@@ -1,6 +1,7 @@
 data/_reports/topics_20261117T204520Z.md
 data/_reports/topics_20261117T204800Z.md
 data/_reports/topics_20261118T115936Z.md
+data/_reports/topics_20261120T143746Z.md
 data/_reports/topics_manual-20261117T204946Z.md
 data/_reports/topics_manual-20261117T205111Z.md
 data/_reports/topics_manual-20261118T132031699Z.md
@@ -10,6 +11,7 @@ data/ops/inference_energy.md
 data/ops/latency_budget.md
 data/ops/monitoring.md
 data/ops/oncall.md
+data/ops/ui_accessibility.md
 data/search/bm25_basics.md
 data/search/hybrid_ranking.md
 data/search/query_cache.md
