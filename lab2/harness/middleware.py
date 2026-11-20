@@ -475,7 +475,8 @@ class CompactionMiddleware(AgentMiddleware):
                 summary = self._rules_summary(summary, msgs[i:j], cap_chars)
                 method = "llm+rules(empty answer)"
             else:
-                cut = (getattr(ai, "response_metadata", None) or {}).get("finish_reason") == "length"
+                cut = ((getattr(ai, "response_metadata", None) or {}).get("finish_reason") == "length"
+                       or a_out >= L.summary_max_tokens - 8)      # qwen does not always report finish_reason
                 summary, added = self._complete_sections(text[:cap_chars], msgs[i:j], cut)
                 if added:
                     method = "llm+rules(sections " + ", ".join(added) + ")"
