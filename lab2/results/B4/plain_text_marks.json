@@ -1,0 +1,11 @@
+{
+  "task_id": "B4",
+  "replaced": {
+    "results\\B4\\history.jsonl": 5,
+    "results\\B4\\web_materials\\21d623b091bbb590.txt": 15,
+    "results\\B4\\web_materials\\4885f1f348b1c99b.txt": 13,
+    "traces\\B4_run1_20261120_225707.jsonl": 5,
+    "traces\\B4_run1_20261120_225707.md": 1
+  },
+  "evidence_with_marks": []
+}

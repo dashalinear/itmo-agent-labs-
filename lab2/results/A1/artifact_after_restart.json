@@ -1,34 +1,44 @@
 {
   "task_id": "A1",
-  "pid": 26084,
+  "pid": 37388,
   "note": "new process: artifacts opened from disk after the run",
-  "offloaded_outputs": 2,
+  "offloaded_outputs": 4,
   "artifacts_checked": [
     {
-      "artifact_id": "art_1fb9ab5bdec90749ee0f",
+      "artifact_id": "art_343b33203a0bd59a1399",
       "tool": "search_text",
       "passed_chars": 1915
     },
     {
-      "artifact_id": "art_30070b1efde2061432d8",
-      "tool": "read_lines",
-      "passed_chars": 1901
+      "artifact_id": "art_188e37068ae7c53f2bec",
+      "tool": "search_excerpts",
+      "passed_chars": 1695
+    },
+    {
+      "artifact_id": "art_afcbc1a7739bca047b09",
+      "tool": "search_excerpts",
+      "passed_chars": 1697
+    },
+    {
+      "artifact_id": "art_69cfbebcf74d6778b62d",
+      "tool": "search_excerpts",
+      "passed_chars": 1698
     }
   ],
   "example": {
-    "artifact_id": "art_30070b1efde2061432d8",
-    "tool": "read_lines",
-    "total_chars": 7680,
-    "chars_given_to_model": 1901,
-    "query": "АС-01",
-    "char_offset_in_artifact": 5961,
-    "kind": "control fact F1",
-    "control_fact": "F1",
+    "artifact_id": "art_188e37068ae7c53f2bec",
+    "tool": "search_excerpts",
+    "total_chars": 6075,
+    "chars_given_to_model": 1695,
+    "query": "АС-02",
+    "char_offset_in_artifact": 2336,
+    "kind": "control fact F2",
+    "control_fact": "F2",
     "beyond_given_part": true,
     "artifact_layout": "lines",
-    "search_artifact_hit": "63: Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндек",
-    "artifact_line": 69,
-    "read_artifact_text": "69: 63: Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.",
+    "search_artifact_hit": "   \"text\": \"Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.\",",
+    "artifact_line": 47,
+    "read_artifact_text": "47:    \"text\": \"Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.\",",
     "read_artifact_has_query": true,
     "verified_in_document": null,
     "found_via": "read_artifact"

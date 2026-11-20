@@ -2,15 +2,15 @@
 
 | задача | ожидаемое свойство | фактически | итог |
 |---|---|---|---|
-| A1 | статус completed только по критериям | completed (Обзор по data/search собран: 5 разделов (approaches, limitations, disputed, deci) | OK |
+| A1 | статус completed только по критериям | completed (Обзор по data/search завершён: 5 разделов, 13 evidence по всем 3 документам, реш) | OK |
 | A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
-| A1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
+| A1 | отказы complete_task до выполнения критериев (информативно) | 1 | OK |
 | A1 | сбой после checkpoint и resume в новом процессе | crash=True, resume=True, запусков 2 | OK |
-| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя 5, повторённые save_evidence после resume: ['saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 17, дублей 0 | OK |
-| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True | OK |
-| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 3 | OK |
-| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20567 / 28000; сверх лимита: 0 | OK |
-| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'АС-01': смещение 5961 > выдано 1901, через read_artifact | OK |
+| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя 3, повторённые save_evidence после resume: [None, 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 13, дублей 0 | OK |
+| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 1/1, поиск с хитами: 0/3, критерий indexed_in_es: True | НЕТ |
+| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 2 | OK |
+| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20686 / 28000; сверх лимита: 0 | OK |
+| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'АС-02': смещение 2336 > выдано 1695, через read_artifact | OK |
 | D1 | статус completed только по критериям | completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary)) | OK |
 | D1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
 | D1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
@@ -52,5 +52,10 @@
 | B3 | доп. критерий (сверх задания): прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
 | B3 | доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/14 = 64% | НЕТ |
 | B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "docs.langchain.com": 1, "mortalapps.com": 1, "fast.io": 1, "www.ibm.com": 1, "en.wikipedia.org": 1} | OK |
+| B4 | статус completed по критериям обзора (complete_task) | paused (budget exhausted before the call (model_calls: needed 1, rem) | НЕТ |
+| B4 | второй раунд: новые запросы после чтения страниц | 3 запросов после чтения | OK |
+| B4 | прочитано страниц (web_fetch) не меньше 5 | 11 | OK |
+| B4 | у каждого отобранного или отклонённого URL есть причина | без причины: 0 | OK |
+| B4 | домены прочитанных страниц (информативно) | {"arize.com": 1, "vahu.org": 1, "www.kunalganglani.com": 1, "docs.langchain.com": 1, "arxiv.org": 5, "mem0.ai": 1, "www.letta.com": 1} | OK |
 
-Итого: 48 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 0.
+Итого: 51 OK, 4 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 2.

@@ -2,7 +2,7 @@
   {
     "task": "A1",
     "property": "статус completed только по критериям",
-    "actual": "completed (Обзор по data/search собран: 5 разделов (approaches, limitations, disputed, deci)",
+    "actual": "completed (Обзор по data/search завершён: 5 разделов, 13 evidence по всем 3 документам, реш)",
     "ok": true
   },
   {
@@ -14,7 +14,7 @@
   {
     "task": "A1",
     "property": "отказы complete_task до выполнения критериев (информативно)",
-    "actual": 0,
+    "actual": 1,
     "ok": true
   },
   {
@@ -26,31 +26,31 @@
   {
     "task": "A1",
     "property": "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
-    "actual": "evidence на момент сбоя 5, повторённые save_evidence после resume: ['saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 17, дублей 0",
+    "actual": "evidence на момент сбоя 3, повторённые save_evidence после resume: [None, 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 13, дублей 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
-    "actual": "upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True",
-    "ok": true
+    "actual": "upsert ok: 1/1, поиск с хитами: 0/3, критерий indexed_in_es: True",
+    "ok": false
   },
   {
     "task": "A1",
     "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
-    "actual": 3,
+    "actual": 2,
     "ok": true
   },
   {
     "task": "A1",
     "property": "нет вызова сверх рабочего лимита",
-    "actual": "макс. оценка+резерв 20567 / 28000; сверх лимита: 0",
+    "actual": "макс. оценка+резерв 20686 / 28000; сверх лимита: 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
-    "actual": "'АС-01': смещение 5961 > выдано 1901, через read_artifact",
+    "actual": "'АС-02': смещение 2336 > выдано 1695, через read_artifact",
     "ok": true
   },
   {
@@ -316,6 +316,44 @@
       "fast.io": 1,
       "www.ibm.com": 1,
       "en.wikipedia.org": 1
+    },
+    "ok": true
+  },
+  {
+    "task": "B4",
+    "property": "статус completed по критериям обзора (complete_task)",
+    "actual": "paused (budget exhausted before the call (model_calls: needed 1, rem)",
+    "ok": false
+  },
+  {
+    "task": "B4",
+    "property": "второй раунд: новые запросы после чтения страниц",
+    "actual": "3 запросов после чтения",
+    "ok": true
+  },
+  {
+    "task": "B4",
+    "property": "прочитано страниц (web_fetch) не меньше 5",
+    "actual": 11,
+    "ok": true
+  },
+  {
+    "task": "B4",
+    "property": "у каждого отобранного или отклонённого URL есть причина",
+    "actual": "без причины: 0",
+    "ok": true
+  },
+  {
+    "task": "B4",
+    "property": "домены прочитанных страниц (информативно)",
+    "actual": {
+      "arize.com": 1,
+      "vahu.org": 1,
+      "www.kunalganglani.com": 1,
+      "docs.langchain.com": 1,
+      "arxiv.org": 5,
+      "mem0.ai": 1,
+      "www.letta.com": 1
     },
     "ok": true
   }
