@@ -163,7 +163,9 @@ def test_mcp_server_unavailable_session(tmp_path):
     def upsert(messages):
         last = [m for m in messages if getattr(m, "name", None) == "build_excerpts"][-1]
         return AIMessage(content="", tool_calls=[call("upsert_excerpts",
-                                                      {"excerpts": json.loads(last.content)["data"]["excerpts"]}, "u")])
+                                                      # as a JSON string, like qwen did in the mcp_down session
+                                                      {"excerpts": json.dumps(json.loads(last.content)["data"]["excerpts"],
+                                                                              ensure_ascii=False)}, "u")])
     steps = [AIMessage(content="", tool_calls=[call("move", {"source": "input/howto_git_branches.txt",
                                                              "destination": "data/howto/"}, "m")]),
              AIMessage(content="Разложил."),

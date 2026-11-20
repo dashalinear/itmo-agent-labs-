@@ -6,10 +6,10 @@ HTTP: 200
 
 ← AI Agents
  Frameworks & Ecosystem
- ☰ Browse
+  Browse
 
- 🤖 AI Agents
- ✕
+  AI Agents
+ 
 
  Foundations 6
 
@@ -647,9 +647,9 @@ Continuing with a new input after potential resume:
 {'__end__': {'messages': [HumanMessage(content='Start planning for Q3 marketing campaign.'), AIMessage(content='The next logical task is to define the target audience and key messaging for the Q3 marketing campaign.'), HumanMessage(content='Executed: The next logical task is to define the target audience and key messaging for the Q3 marketing campaign.. Result: Success.'), HumanMessage(content='Review budget allocations for the campaign.'), AIMessage(content='The next logical task is to analyze the current budget and allocate resources effectively for the Q3 marketing campaign.'), HumanMessage(content='Executed: The next logical task is to analyze the current budget and allocate resources effectively for the Q3 marketing campaign.. Result: Success.')], 'current_task': ''}}
 
  да Best Practices
- ⚠️ Common Mistakes
- ⚡ Performance
- 🏢 Enterprise
+  Common Mistakes
+  Performance
+  Enterprise
 
 Key Takeaways
 
@@ -705,55 +705,55 @@ Yes, checkpointers introduce latency due to state serialization and database I/O
 
 Related Topics
 
- 🤖 AI Agents
+  AI Agents
  LangGraph Subgraphs and Conditional Routing
 
- 🤖 AI Agents
+  AI Agents
  State Machine AI Agent: Deterministic Control in Probabilistic Systems
 
- 🤖 AI Agents
+  AI Agents
  LangGraph PostgreSQL State Checkpointer for Durable Agents
 
- 🤖 AI Agents
+  AI Agents
  AI Agent Retry Logic: Failure Recovery and Limits
 
- 🤖 AI Agents
+  AI Agents
  LangGraph Time-Travel Debugging for Agent Graphs
 
- 🤖 AI Agents
+  AI Agents
  AI Agent Memory Systems: Working, Episodic, Procedural
 
- 🤖 AI Agents
+  AI Agents
  HITL Escalation with LangGraph Interrupt Nodes
 
- 🤖 AI Agents
+  AI Agents
  Tracing Multi-Agent Workflows with OpenTelemetry
 
- 🤖 AI Agents
+  AI Agents
  Cross-Tenant Data Isolation in Multi-Tenant Agents
 
- 🐍 Python
+  Python
  Sessions, Commit & Rollback
 
- 🐍 Python
+  Python
  Tool Use & Function Calling
 
- 🗄 Infrastructure
+  Infrastructure
  Agentic Workflow Infrastructure
 
- 🗄 Infrastructure
+  Infrastructure
  Distributed Trace Analysis
 
- ⚙️ System Design
+  System Design
  State Machine Design
 
- ⚙️ System Design
+  System Design
  Storage Engine Internals
 
- 📚 Learn
+  Learn
  State Machine-Based Agent Orchestration
 
- 📚 Learn
+  Learn
  Agent Short-Term & Long-Term Memory
 
  ← Prev
@@ -763,7 +763,7 @@ Related Topics
  LangGraph Subgraphs and Conditional Routing
 
  Best Practices
- ✕
+ 
 
 1
 
@@ -808,7 +808,7 @@ Design agent states for efficient serialization.
 Complex custom objects in the agent state might not serialize efficiently to JSON. Prefer simple data types, Pydantic models, or ensure custom serializers/deserializers are registered if using complex objects.
 
  Common Mistakes
- ✕
+ 
 
 Forgetting `thread_id` in `config`.
 
@@ -841,7 +841,7 @@ If the database becomes unavailable, the checkpointer operations will fail, pote
 Wrap checkpointer operations (or the entire agent invocation) with robust retry mechanisms, circuit breakers, and error logging to gracefully handle database connectivity issues.
 
  Performance & Scalability
- ✕
+ 
 
 The performance and scalability of LangGraph checkpointers are primarily dictated by the underlying database and the frequency/size of state updates. Each checkpoint operation involves serialization of the graph state, network latency to the database, and database write operations. For PostgresSaver, this translates to an INSERT or UPDATE query on the checkpoints table.
 
@@ -854,7 +854,7 @@ Memory Footprint: The GraphState object itself resides in memory during executio
 Concurrency: Relational databases like PostgreSQL handle concurrency well through transaction isolation. However, frequent writes to the same thread_id can lead to contention if not properly managed, though LangGraph's checkpointer is designed to minimize this by appending new checkpoints rather than directly updating old ones. Proper indexing on thread_id and checkpoint_id is critical for efficient concurrent reads and writes. Caching the latest checkpoint in application memory can reduce database load for read-heavy scenarios, but introduces cache invalidation complexities.
 
  Enterprise Considerations
- ✕
+ 
 
 Security and Data Protection
 

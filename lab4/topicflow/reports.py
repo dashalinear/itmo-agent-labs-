@@ -131,7 +131,10 @@ def _scheduled_label(run_key: str) -> str:
     m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
     if not m:
         return "—"
-    return (m.group(1).replace("T", " ") + " UTC") + (" (ручной запуск topics-now)" if "manual" in run_key else " (тик Schedule)")
+    # a Schedule run is either an interval tick or the immediate action right after `schedule create`; the run key
+    # alone does not tell them apart, so the label says only that the Schedule started it
+    return (m.group(1).replace("T", " ") + " UTC") + (" (ручной запуск topics-now)" if "manual" in run_key
+                                                      else " (запуск Schedule)")
 
 
 def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, evidence: list[dict]) -> tuple[str, dict]:

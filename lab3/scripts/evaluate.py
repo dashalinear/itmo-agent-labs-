@@ -23,6 +23,8 @@ LAB3 = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(LAB3))
 
 import navsearch  # noqa: E402,F401
+
+TRACES = Path(__file__).resolve().parents[1] / "traces"
 from navsearch.agents import Lab3  # noqa: E402
 from navsearch.config import load  # noqa: E402
 from navsearch.embed import HashEmbedder  # noqa: E402
@@ -60,6 +62,10 @@ def main() -> None:
     rows = []
     for t in tasks:
         if t["kind"] == "probe":            # deterministic search probe, not an agent task
+            continue
+        if t["runs"] and not any(TRACES.glob(f"{t['task_id']}_*.jsonl")):
+            # superseded attempt: its traces were removed by run_all_demos.ps1 (final2 keeps only the last run),
+            # the task is still in the local state.db but does not belong to the results
             continue
         task = store.get_task(t["task_id"])
         b = Budget(store, t["task_id"], Limits.from_dict(task["limits"])).snapshot()

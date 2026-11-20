@@ -1,8 +1,8 @@
 # Лабораторная 1. Агент-организатор файлов: LangGraph ReAct, tools, MCP, skills
 
-Диалоговый помощник раскладывает файлы из `workspace/input/` по тематическим папкам `workspace/data/`.
-Он ведёт каталог `workspace/catalog.json` со стабильными `document_id` и по запросу сохраняет точные выдержки
-с метаданными в Elasticsearch **через MCP-сервер**. Результат (каталог и индекс выдержек) служит входом для лабораторной № 3.
+Я сделала диалогового помощника, который раскладывает файлы из `workspace/input/` по тематическим папкам `workspace/data/`.
+Он ведёт каталог `workspace/catalog.json` со стабильными `document_id`, а по запросу сохраняет точные выдержки
+с метаданными в Elasticsearch через MCP-сервер. Каталог и индекс выдержек дальше пойдут на вход лабораторной № 3.
 
 ## Содержание
 1. [Архитектура](#1-архитектура)
@@ -59,15 +59,15 @@
 | `traces/` | трассы сессий (`*.jsonl` и `*.md`) |
 | `results/` | снимок workspace, каталог, выгрузка индекса, отчёты `verify`, сводка прогона `RUN_SUMMARY.md` |
 
-**Версии** (`requirements.txt`, полный lock — `requirements.lock.txt`): Python 3.13.7 (подходит ≥ 3.11),
+Версии зафиксированы в `requirements.txt` (полный lock лежит в `requirements.lock.txt`): Python 3.13.7 (подойдёт любой ≥ 3.11),
 langchain 1.5.0, langgraph 1.2.22, langchain-openai 1.8.0, langchain-mcp-adapters 0.3.2, mcp 1.30.0,
 elasticsearch-py 9.5.1, Elasticsearch 9.5.5 (Docker).
-В текущей документации `create_react_agent` помечен устаревшим, поэтому используется `langchain.agents.create_agent`.
-Это та же библиотечная фабрика ReAct-агента на LangGraph (разрешено заданием).
+В текущей документации `create_react_agent` помечен устаревшим, поэтому я взяла `langchain.agents.create_agent`.
+Это та же библиотечная фабрика ReAct-агента на LangGraph, задание её разрешает.
 
 ## 2. Установка и запуск
 
-Нужны: Python ≥ 3.11, Docker Desktop, доступ к сети ИТМО (LLM-сервер `10.32.2.11` виден только из неё).
+Нужны Python ≥ 3.11, Docker Desktop и доступ к сети ИТМО: LLM-сервер `10.32.2.11` виден только из неё.
 
 ```powershell
 cd lab1
@@ -79,7 +79,7 @@ docker compose up -d            # Elasticsearch 9.5.5 на http://localhost:9200
 python scripts/prepare_workspace.py --reset-index   # workspace/input = fixtures/input, пустая data/, чистый индекс
 ```
 
-**Запуск диалогового CLI:**
+Диалоговый CLI запускается так:
 
 ```powershell
 python -m organizer.cli
@@ -88,19 +88,19 @@ python -m organizer.cli
 Команды CLI: `/help`, `/history` (статистика сообщений), `/check` (проверка пар tool_call/tool_result и дублей),
 `/catalog`, `/graph` (mermaid-схема), `/exit` (также `/quit`, `выход`, Ctrl+Z/Ctrl+C).
 
-**Файлы, добавленные во время открытой сессии.** CLI их не копирует: пока сессия открыта, пользователь кладёт
-файлы в `workspace/input/` сам — во **втором терминале** `python scripts/add_late_files.py` (копирует
-`fixtures/late/*`) или вручную через Проводник. Затем говорит агенту: «Я добавил файлы, разбери новые», и агент
-видит их повторным `ls`.
+Файлы, которые появляются во время открытой сессии, CLI сам не копирует. Пока сессия открыта, пользователь кладёт
+их в `workspace/input/` сам: во втором терминале запускает `python scripts/add_late_files.py` (скрипт копирует
+`fixtures/late/*`) или переносит файлы через Проводник. Потом пишет агенту «Я добавил файлы, разбери новые», и агент
+видит их при повторном `ls`.
 
-В сценарии (`--script`) то же делается паузой: строка `@wait_for_files input/a.md input/b.md` останавливает
-чтение реплик, пока эти файлы не появятся в `input/` (появление и стабильный размер проверяются опросом раз в 0,5 с,
-таймаут `--wait-timeout`, по умолчанию 600 с). На время паузы CLI пишет файл-маркер (`--wait-marker`), по которому
-внешний скрипт понимает, что пора добавлять файлы. В трассе остаются события `harness_wait` и
+В режиме сценария (`--script`) вместо этого стоит пауза. Строка `@wait_for_files input/a.md input/b.md` останавливает
+чтение реплик, пока эти файлы не появятся в `input/`. CLI раз в 0,5 с проверяет, что файл появился и его размер
+перестал меняться; таймаут задаётся `--wait-timeout`, по умолчанию 600 с. На время паузы CLI пишет файл-маркер
+(`--wait-marker`), по нему внешний скрипт понимает, что пора добавлять файлы. В трассе остаются события `harness_wait` и
 `user_action: external_files_added` с полем `added_by: "another process (this CLI only waited, copied nothing)"`.
-Старая директива `@add_late_files` (копирование самим CLI) оставлена для совместимости, в демо не используется.
+Старую директиву `@add_late_files`, при которой файлы копировал сам CLI, я оставила для совместимости, в демо она не используется.
 
-**Ручной прогон основного диалога:**
+Основной диалог можно прогнать вручную:
 
 ```powershell
 python -m organizer.cli --script demo/dialog_ru.txt
@@ -109,28 +109,30 @@ python scripts/verify.py          # детерминированные пров�
 python scripts/export_index.py    # results/index_export.jsonl, catalog.json, data_tree.txt, workspace_snapshot/
 ```
 
-**Все трассы и все `results/` одной командой** (только из сети ИТМО, около 12 минут: в прогоне 19.11.2026 по прежней цепочке из пяти сессий от сброса workspace до коммита прошло 8 минут, сессия mcp_down и запросы web_fetch к локальному серверу добавляют примерно 2 минуты, плюс тесты около 1 минуты; из корня репозитория,
-скрипт сам переходит в `lab1`):
+Все трассы и все `results/` пересоздаются одной командой из корня репозитория (скрипт сам переходит в `lab1`).
+Работает это только из сети ИТМО. В финальном прогоне 20.11.2026 шесть сессий от сброса workspace (18:41:08) до конца
+последней сессии (18:48:59) заняли около 8 минут. До них идут тесты (полный `pytest` у меня занимает около минуты),
+после них проверка, экспорт и коммит.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File lab1\scripts\run_all_demos.ps1
 ```
 
-Скрипт: проверка LLM → `docker compose up` → `pytest` и тесты выхода через ссылки (`results/symlink_test.txt`) → чистый workspace и пустой индекс → цепочка из шести сессий
+Порядок шагов в скрипте: проверка LLM → `docker compose up` → `pytest` и тесты выхода через ссылки (`results/symlink_test.txt`) → чистый workspace и пустой индекс → цепочка из шести сессий
 (раздел 9) → `verify` → экспорт индекса и графа → `results/RUN_SUMMARY.md` → поиск токена в `traces/` и `results/` →
 удаление трасс прежних прогонов (они не относятся к этой цепочке) → `git commit` **только** `lab1/traces` и
-`lab1/results` → `git push`. Если `verify` не прошёл, старые трассы не удаляются и ничего не коммитится.
-Ключи: `-SkipPush`, `-SkipTests`, `-KeepOldTraces`; `-DryRun` — проверка логики скрипта без LLM (детерминированная
-модель-заглушка `--dry-run-model`, только на копии `lab1` вне git-репозитория, без коммита).
+`lab1/results` → `git push`. Если `verify` не прошёл, старые трассы остаются на месте и ничего не коммитится.
+Ключи: `-SkipPush`, `-SkipTests`, `-KeepOldTraces`. `-DryRun` проверяет логику скрипта без LLM: вместо модели
+работает детерминированная заглушка `--dry-run-model`, запуск идёт только на копии `lab1` вне git-репозитория и без коммита.
 
-Воспроизведение индекса без LLM (вход для лабы 3): `python scripts/restore_index.py` создаёт индекс заново
+Индекс можно восстановить и без LLM (это вход для лабы 3): `python scripts/restore_index.py` создаёт его заново
 из `results/index_export.jsonl`.
 
 ## 3. Инструменты (tools)
 
-Все tools типизированы (Pydantic `args_schema` с описаниями) и возвращают единый JSON-конверт:
+Все tools типизированы (Pydantic `args_schema` с описаниями) и возвращают один и тот же JSON-конверт:
 `{"ok": true, "tool": "...", "data": {...}}` или `{"ok": false, "tool": "...", "error": {"type", "message", ...}}`.
-Ошибки — это **наблюдения** для модели, а не исключения. Неверный `n`, отсутствующий файл, конфликт имён,
+Ошибки я отдаю модели как наблюдения, а не бросаю исключения. Неверный `n`, отсутствующий файл, конфликт имён,
 HTTP-ошибка и таймаут превращаются в `error.type = invalid_argument | not_found | name_conflict | http_error | timeout`.
 
 | Tool | Аргументы | Поведение |
@@ -139,52 +141,54 @@ HTTP-ошибка и таймаут превращаются в `error.type = in
 | `head` / `tail` | `path`, `n` | первые / последние `n` строк в исходном порядке; `n` — положительное целое; короткий файл → все строки; пустой → пустой результат |
 | `grep` | `pattern`, `path`, `recursive`, `max_matches`, `ignore_case`, `regex` | буквальная подстрока (regex — расширение); `{path, line (с 1), text}`, `total_matches`, `has_more`, `remaining` |
 | `ls` | `path` | один уровень: имя, тип, размер; стабильный порядок (папки, затем файлы по имени); для документов — `document_id`, title, description, статус; новые файлы видны при повторном вызове |
-| `write` | `path`, `content`, `mode` | UTF-8, `overwrite`/`append`, создаёт родительские папки; **запрещено**: `catalog.json`, `input/`, перезапись каталогизированного документа |
-| `move` | `source`, `destination` | input → data или data → data; создаёт папки; **никогда не перезаписывает** (`name_conflict` + `suggested_name`); проверяет, что старого пути нет, новый есть и hash не изменился; регистрирует или обновляет документ в каталоге; сообщает `action_required`, если индекс нужно синхронизировать |
+| `write` | `path`, `content`, `mode` | UTF-8, `overwrite`/`append`, создаёт родительские папки; запрещено писать в `catalog.json`, в `input/` и поверх каталогизированного документа |
+| `move` | `source`, `destination` | input → data или data → data; создаёт папки; никогда не перезаписывает (`name_conflict` + `suggested_name`); проверяет, что старого пути нет, новый есть и hash не изменился; регистрирует или обновляет документ в каталоге; сообщает `action_required`, если индекс нужно синхронизировать |
 | `web_fetch` | `url` | только http(s); таймаут, лимит байт и редиректов; `url`, `final_url`, `status`, `title`, `text` (HTML → текст), `truncated` |
 | `catalog_view` | `folder`, `status`, `document_id` | записи каталога и отчёт сверки (пропавшие или незарегистрированные файлы) |
 | `catalog_update` | `document_id`, `title`, `description`, `note` | описание документа, обоснование классификации |
 | `build_excerpts` | `document_id`, `ranges` | точный текст строк, `content_hash`, стабильный `excerpt_id`; без `ranges` повторно использует прежние диапазоны |
 | `load_skill` | `name` | полный текст SKILL.md по требованию |
 
-**Защита путей** (`pathguard.py`): путь интерпретируется относительно workspace, нормализуется, все symlink
-и junction разрешаются (`Path.resolve`), после этого проверяется `relative_to(workspace)`.
-Блокируются `../`, абсолютные пути наружу, symlink/junction наружу. `move` не перемещает сами ссылки.
-`grep -r` не ходит по ссылкам наружу.
+Защита путей сделана в `pathguard.py`. Путь интерпретируется относительно workspace и нормализуется, все symlink
+и junction разрешаются (`Path.resolve`), и только после этого проверяется `relative_to(workspace)`.
+Так блокируются `../`, абсолютные пути наружу и symlink/junction наружу. `move` не перемещает сами ссылки,
+а `grep -r` не ходит по ссылкам наружу.
 
-Как это проверено:
-- `../` (в том числе `input/../../x`) и абсолютные пути наружу — `test_dotdot_escape_blocked`,
+Как я это проверяла:
+- `../` (в том числе `input/../../x`) и абсолютные пути наружу проверяют `test_dotdot_escape_blocked` и
   `test_absolute_path_outside_blocked` (все инструменты: read, ls, write, move, grep);
-- **directory junction** (точка повторной обработки NTFS — именно так выглядит выход по ссылке на Windows без
-  особых прав) — `test_junction_escape_blocked_windows`: read/head/tail/write/ls/grep/move через junction,
+- directory junction (точка повторной обработки NTFS; именно так выглядит выход по ссылке на Windows без
+  особых прав) проверяет `test_junction_escape_blocked_windows`: read/head/tail/write/ls/grep/move через junction,
   абсолютный путь через junction, абсолютный путь к цели, комбинация с `../`; файл снаружи остаётся на месте.
-  Тот же junction (`input/outside_link`) скрипт демо создаёт перед сессией guard, и модель обращается к нему
-  реальными вызовами tools;
-- **настоящий symlink** (файловый и каталожный) — `test_symlink_escape_blocked`. Он выполняется там, где
-  создание symlink разрешено: Linux/macOS, Windows с включённым режимом разработчика (Параметры → Обновление и
-  безопасность → Для разработчиков → «Режим разработчика») или под администратором. На машине автора режим
-  разработчика выключен, поэтому тест помечается `skipped` с пояснением; системные настройки ради теста не менялись.
+  Такой же junction (`input/outside_link`) скрипт демо создаёт перед сессией guard, и модель обращается к нему
+  настоящими вызовами tools;
+- настоящий symlink (файловый и каталожный) проверяет `test_symlink_escape_blocked`. Он выполняется там, где
+  создавать symlink разрешено: Linux/macOS, Windows с включённым режимом разработчика (Параметры → Обновление и
+  безопасность → Для разработчиков → «Режим разработчика») или под администратором. Без этих прав тест помечается
+  `skipped` с пояснением. В финальном прогоне 20.11 режим разработчика на моей машине был включён, и тест прошёл.
   `pathguard` обрабатывает оба вида ссылок одним кодом (`Path.resolve` + `os.path.islink`/`os.path.isjunction`).
   `run_all_demos.ps1` перед цепочкой отдельно запускает `pytest tests/test_tools_fs.py -k "symlink or junction"` и
-  сохраняет вывод в `results/symlink_test.txt` с состоянием режима разработчика (чтение реестра, без изменений) и
-  строкой `status:`. Если перед запуском включить режим разработчика, там будет `real symlink test PASSED`; если нет —
-  `skipped: no symlink privilege ...`, и это не ошибка прогона. Падение любого из этих тестов останавливает скрипт.
+  сохраняет вывод в `results/symlink_test.txt` вместе с состоянием режима разработчика (оно только читается из
+  реестра, ничего не меняется) и строкой `status:`. При включённом режиме там будет `real symlink test PASSED`, при
+  выключенном `skipped: no symlink privilege ...`, и это не считается ошибкой прогона. В прогоне 20.11 в файле записано
+  `Windows Developer Mode: on`, `status: real symlink test PASSED (symlinks are allowed on this machine)` и
+  `2 passed, 33 deselected`. Если любой из этих тестов падает, скрипт останавливается.
 
-**Лимиты вывода**: каждый tool ограничен `MAX_TOOL_OUTPUT_CHARS` (12000) с флагом `truncated` и подсказкой дочитать
-через head/tail/grep. Кроме того, `ToolGuardMiddleware` обрезает результат **любого** tool, включая MCP.
+Лимиты вывода. Каждый tool ограничен `MAX_TOOL_OUTPUT_CHARS` (12000): при превышении ставится флаг `truncated` и
+подсказка дочитать через head/tail/grep. Кроме того, `ToolGuardMiddleware` обрезает результат любого tool, в том числе MCP.
 
-**Лимиты выполнения**: `AGENT_MODEL_CALLS_PER_TURN=25` (`ModelCallLimitMiddleware`, `exit_behavior="end"`),
+Лимиты выполнения: `AGENT_MODEL_CALLS_PER_TURN=25` (`ModelCallLimitMiddleware`, `exit_behavior="end"`),
 `AGENT_RECURSION_LIMIT=110` super-step графа за ход, таймаут tool 30 с (`ToolGuardMiddleware`), таймаут хода 600 с,
 таймаут и retry LLM (`ChatOpenAI(timeout=120, max_retries=2)`), таймаут ES 10 с.
-Один вызов модели — это 4 super-step (`before_model`, `model`, `after_model`, `tools`), поэтому
-`recursion_limit` держится выше `4 × 25 = 100`: первым мягко срабатывает лимит вызовов модели, а `recursion_limit`
-остаётся страховкой (при прежнем значении 100 цикл из 25 вызовов упирался именно в него —
-`test_default_limits_let_model_call_limit_fire_first`). Сработавший лимит CLI записывает в трассу
+Один вызов модели занимает 4 super-step (`before_model`, `model`, `after_model`, `tools`), поэтому
+`recursion_limit` должен быть больше `4 × 25 = 100`. Тогда первым мягко срабатывает лимит вызовов модели, а
+`recursion_limit` остаётся страховкой. Сначала у меня стояло 100, и цикл из 25 вызовов упирался именно в него; это
+поймал тест `test_default_limits_let_model_call_limit_fire_first`. Сработавший лимит CLI записывает в трассу
 (`turn_end.stopped_by = model_call_limit | recursion_limit | turn_timeout`) и в ответ.
 
 ## 4. Граф готового ReAct-агента
 
-Граф получен из скомпилированного агента (`python scripts/export_graph.py` → `docs/graph.mmd`, или `/graph` в CLI):
+Граф я получила из скомпилированного агента (`python scripts/export_graph.py` → `docs/graph.mmd`, или `/graph` в CLI):
 
 ```mermaid
 graph TD;
@@ -198,45 +202,50 @@ graph TD;
   tools -.-> before;
 ```
 
-Узлы и рёбра созданы библиотекой: `create_agent` строит `model` и `tools` (ToolNode). Middleware с хуками
-`before_model`/`after_model` добавляет свои узлы. Пунктир — условные переходы.
+Узлы и рёбра создала библиотека: `create_agent` строит `model` и `tools` (ToolNode), а middleware с хуками
+`before_model`/`after_model` добавляет свои узлы. Пунктиром показаны условные переходы.
 
-Как работает один ход (сверяйте с трассой, поле `transitions`):
+Как проходит один ход (это можно сверить с полем `transitions` в трассе):
 
-1. **`__start__`** — в канал `messages` приходит новый `HumanMessage`. Reducer `add_messages` **дописывает** его
+1. `__start__`: в канал `messages` приходит новый `HumanMessage`. Reducer `add_messages` дописывает его
    к истории из checkpointer'а (по `thread_id`), а не заменяет её.
-2. **`ModelCallLimitMiddleware.before_model`** — проверяет счётчик вызовов модели за ход. При превышении
-   прыгает в `__end__` с сообщением о лимите. Так завершается зацикленный сценарий.
-3. **`model`** — вызывает LLM с system prompt, всей историей и схемами 18 tools. Получает `AIMessage`, в нём может быть список `tool_calls` (`id`, `name`, `args`).
-4. **`after_model` → условный переход**: если в `AIMessage` есть `tool_calls`, управление идёт в **`tools`**,
-   иначе в **`__end__`** (финальный ответ).
-5. **`tools`** (ToolNode) выполняет все вызовы шага (параллельно). Каждый вызов оборачивается `wrap_tool_call`:
-   `ToolGuard` (таймаут, исключение → error-наблюдение, лимит вывода) → `CatalogSync` (только для MCP-tools
-   индекса) → сам tool. На каждый вызов создаётся `ToolMessage` с тем же `tool_call_id`. Невалидные аргументы
-   ToolNode сам превращает в error-`ToolMessage`.
-6. **`tools` → `before_model` → `model`** — возврат к модели с наблюдениями. Цикл повторяется, пока модель не ответит без tool calls.
-7. **Завершение**: финальный `AIMessage` без tool calls; либо лимит вызовов модели (`end`); либо
+2. `ModelCallLimitMiddleware.before_model` проверяет счётчик вызовов модели за ход. Если лимит превышен, он
+   переходит в `__end__` с сообщением о лимите. Так и заканчивается зацикленный сценарий.
+3. `model` вызывает LLM с system prompt, всей историей и схемами 18 tools и получает `AIMessage`. В нём может быть список `tool_calls` (`id`, `name`, `args`).
+4. `after_model` и условный переход: если в `AIMessage` есть `tool_calls`, управление идёт в `tools`,
+   иначе в `__end__` (финальный ответ).
+5. `tools` (ToolNode) выполняет все вызовы шага параллельно. Каждый вызов проходит через `wrap_tool_call`:
+   сначала `ToolGuard` (таймаут, исключение → error-наблюдение, лимит вывода), потом `CatalogSync` (только для
+   MCP-tools индекса), потом сам tool. На каждый вызов создаётся `ToolMessage` с тем же `tool_call_id`. Невалидные
+   аргументы ToolNode сам превращает в error-`ToolMessage`.
+6. `tools` → `before_model` → `model`: модель снова получает управление, теперь вместе с наблюдениями. Цикл повторяется, пока она не ответит без tool calls.
+7. Ход заканчивается финальным `AIMessage` без tool calls, срабатыванием лимита вызовов модели (`end`) или
    `recursion_limit` (`GraphRecursionError`). В последнем случае CLI закрывает «висящие» tool calls
-   error-`ToolMessage` через `aupdate_state(as_node="tools")`, и история остаётся валидной.
+   error-`ToolMessage` через `aupdate_state(as_node="tools")`, чтобы история осталась валидной.
    После каждого super-step состояние сохраняется в checkpointer.
 
 ## 5. История диалога в CLI
 
-- Одна CLI-сессия — один `thread_id`, состояние хранится в `InMemorySaver` (сохранение истории на диск в лабе 1 не требуется).
-- Каждая реплика передаётся **только** как новый `HumanMessage`: `agent.astream({"messages": [HumanMessage(text)]}, config)`.
-  Предыдущие сообщения не пересылаются, поэтому дублей нет.
-- Ответы модели, `tool_calls` и `ToolMessage` с корректными `tool_call_id` дописывает сам граф.
-  Поэтому «перенеси этот файл» и «добавь его в Elastic» разрешаются по истории.
-- Системный промпт передаётся отдельно (`system_prompt=`), в историю не попадает. Тексты файлов приходят только
-  как содержимое `ToolMessage` (данные), а реплики пользователя — только как `HumanMessage`.
-- `/check` (и проверка после каждого хода, поле `history check` в трассе) — `history.validate_history`:
-  уникальные id сообщений, у каждого tool call ровно один результат, нет результатов без вызова, нет висящих вызовов.
+- Одна CLI-сессия соответствует одному `thread_id`, состояние хранится в `InMemorySaver` (сохранять историю на диск в лабе 1 не требуется).
+- Каждая реплика передаётся только как новый `HumanMessage`: `agent.astream({"messages": [HumanMessage(text)]}, config)`.
+  Предыдущие сообщения я не пересылаю, поэтому дублей нет.
+- Ответы модели, `tool_calls` и `ToolMessage` с правильными `tool_call_id` дописывает сам граф.
+  Поэтому «перенеси этот файл» и «добавь его в Elastic» агент понимает по истории.
+- Системный промпт передаётся отдельно (`system_prompt=`) и в историю не попадает. Тексты файлов приходят только
+  как содержимое `ToolMessage` (данные), а реплики пользователя только как `HumanMessage`.
+- `/check` (и проверка после каждого хода, поле `history check` в трассе) вызывает `history.validate_history`:
+  id сообщений уникальны, у каждого tool call ровно один результат, нет результатов без вызова и нет висящих вызовов.
+- Если модель закончила ход пустым текстом, CLI не печатает пустую строку, а подставляет пометку из
+  `empty_answer_note` (`organizer/cli.py`): что модель вернула пустой ответ, сколько было `output_tokens` у последнего
+  вызова и какие tools в этом ходе вернули ошибку. С qwen такое бывает, когда весь бюджет вывода уходит на скрытые
+  рассуждения. Я добавила это 20.11, после того как в пробном прогоне сессия mcp_down закончилась пустым ответом
+  (раздел 6). Тест: `test_empty_model_answer_gets_a_note`. В финальном прогоне пометка ни разу не понадобилась.
 
 ## 6. Elasticsearch через MCP
 
-Собственный тонкий MCP-сервер `mcp_es/server.py` (FastMCP, stdio). Агент запускает его подпроцессом
+Я написала собственный тонкий MCP-сервер `mcp_es/server.py` (FastMCP, stdio). Агент запускает его подпроцессом
 (`langchain_mcp_adapters`: `MultiServerMCPClient.session("es")` + `load_mcp_tools`) и держит одну сессию на всё время работы CLI.
-Агент **никогда** не обращается к ES напрямую: прямой клиент есть только в админ-скриптах `scripts/export_index.py`
+Напрямую к ES агент не обращается: прямой клиент есть только в админ-скриптах `scripts/export_index.py`
 и `scripts/restore_index.py`.
 
 | MCP tool | Назначение |
@@ -248,35 +257,43 @@ graph TD;
 
 Ручной запуск сервера: `python -m mcp_es.server` (stdio). Параметры берутся из окружения: `ES_URL`, `ES_INDEX`, `ES_TIMEOUT_S`.
 
-**Согласованность** (`CatalogSyncMiddleware`):
-- *до* `upsert_excerpts` каждая выдержка сверяется с каталогом и файлом: `current_path`, `category`, `content_hash`,
-  текст ровно совпадает со строками `start_line..end_line`. Иначе запись **не выполняется** (`excerpt_validation_failed`);
-- *после* `ok=true` документ получает статус `indexed`, в каталог записывается список диапазонов; при ошибке — `error`;
-- `move` проиндексированного документа ставит статус `pending_sync`. Успешный `update_document_path` возвращает `indexed`
-  только если и путь, и категория в индексе совпали с каталогом; иначе (или при ошибке ES) остаётся `pending_sync`
-  с текстом причины, повтор исправляет. `scripts/verify.py` сравнивает с каталогом и путь, и категорию каждой выдержки.
-  (Исправленная ошибка прошлой версии: при вызове `update_document_path` без `category` индекс сохранял категорию
-  старой папки, а каталог уже показывал новую; регрессионные тесты — `test_update_path_without_category_follows_folder`,
-  `test_store_update_path_derives_category_offline`, `test_catalog_sync_checks_category_after_path_update`,
-  `test_verify_flags_category_drift`);
-- при недоступности ES сервер возвращает `ok=false, error.type=es_unavailable`. Если не стартовал сам MCP-сервер, агент получает
-  заглушки с теми же именами (`mcp_unavailable`). Организация файлов продолжает работать, индексация не помечается успешной.
-  Оба случая есть в демо-цепочке: сессия errors (ES остановлен, MCP работает) и сессия mcp_down (сам MCP-сервер не
-  запускается: `MCP_COMMAND` указывает на несуществующую программу), см. раздел 9.
+За согласованность каталога и индекса отвечает `CatalogSyncMiddleware`:
+- перед `upsert_excerpts` каждая выдержка сверяется с каталогом и файлом: `current_path`, `category`, `content_hash`,
+  текст должен ровно совпадать со строками `start_line..end_line`. Если что-то не сходится, запись не выполняется
+  (`excerpt_validation_failed`);
+- после ответа `ok=true` документ получает статус `indexed`, и в каталог записывается список диапазонов; при ошибке ставится `error`;
+- `move` проиндексированного документа ставит статус `pending_sync`. Успешный `update_document_path` возвращает `indexed`,
+  только если и путь, и категория в индексе совпали с каталогом. Иначе (или при ошибке ES) статус остаётся `pending_sync`
+  с текстом причины, и повторный вызов это исправляет. `scripts/verify.py` сравнивает с каталогом и путь, и категорию
+  каждой выдержки. Здесь у меня раньше была ошибка: если `update_document_path` вызывали без `category`, индекс
+  сохранял категорию старой папки, а каталог уже показывал новую. Я её исправила и добавила регрессионные тесты
+  `test_update_path_without_category_follows_folder`, `test_store_update_path_derives_category_offline`,
+  `test_catalog_sync_checks_category_after_path_update`, `test_verify_flags_category_drift`;
+- если ES недоступен, сервер возвращает `ok=false, error.type=es_unavailable`. Если не стартовал сам MCP-сервер, агент
+  получает заглушки с теми же именами, и они отвечают `mcp_unavailable`. Организация файлов при этом работает, а
+  индексация не помечается успешной. Оба случая есть в демо-цепочке: сессия errors (ES остановлен, MCP работает) и
+  сессия mcp_down (сам MCP-сервер не запускается, потому что `MCP_COMMAND` указывает на несуществующую программу), см. раздел 9;
+- 20.11 мне пришлось поправить поведение заглушек. В пробном прогоне сессии mcp_down `CatalogSyncMiddleware` проверял
+  выдержки и для них: модель несколько раз подряд получала `excerpt_validation_failed`, переделывала выдержки, которые
+  всё равно некуда было записать, и в итоге закончила ход пустым ответом. Теперь заглушки из `organizer/mcp_client.py`
+  помечены `metadata={"mcp_unavailable": True}`, а `_pre` в `organizer/middleware.py` для них проверку пропускает, так
+  что заглушка сразу отвечает `mcp_unavailable`. Это проверяет `test_mcp_server_unavailable_session`: там нарочно
+  передаются сломанные выдержки, и в ответ всё равно приходит `mcp_unavailable`. В финальном прогоне в сессии mcp_down
+  был ровно один вызов `upsert_excerpts`, и он сразу вернул `mcp_unavailable`.
 
 ## 7. Skills
 
-`skills/<name>/SKILL.md` по спецификации Agent Skills: YAML front matter (`name`, `description`) и процедура.
-- **organize_files** — осмотр input, выбор структуры, неоднозначности и конфликты, перенос, обновление каталога, отчёт.
-- **index_excerpts** — выбор выдержек, `build_excerpts` → `upsert_excerpts`, повтор без дублей, синхронизация путей, поиск.
+`skills/<name>/SKILL.md` написаны по спецификации Agent Skills: YAML front matter (`name`, `description`) и процедура.
+- `organize_files`: осмотр input, выбор структуры, неоднозначности и конфликты, перенос, обновление каталога, отчёт.
+- `index_excerpts`: выбор выдержек, `build_excerpts` → `upsert_excerpts`, повтор без дублей, синхронизация путей, поиск.
 
-**Выборочная загрузка.** В системный промпт попадают только `name: description` обоих skills.
-Полный текст возвращает tool `load_skill(name)`, когда запрос подходит под описание. В трассе видно, что на
-организацию загружается `organize_files`, а на индексацию — `index_excerpts`, причём каждый один раз за сессию.
+Skills загружаются выборочно. В системный промпт попадают только `name: description` обоих skills,
+а полный текст возвращает tool `load_skill(name)`, когда запрос подходит под описание. По трассе видно, что для
+организации загружается `organize_files`, для индексации `index_excerpts`, и каждый только один раз за сессию.
 
 ## 8. Контракт данных для лабораторной 3
 
-**Каталог** `workspace/catalog.json` (JSON):
+Каталог `workspace/catalog.json` (JSON):
 
 ```json
 {
@@ -299,7 +316,7 @@ graph TD;
 }
 ```
 
-**Выдержка** в Elasticsearch (индекс `itmo_lab1_excerpts`, mapping в `mcp_es/schema.py`, `dynamic: strict`):
+Выдержка в Elasticsearch (индекс `itmo_lab1_excerpts`, mapping в `mcp_es/schema.py`, `dynamic: strict`):
 
 | Поле | Тип | Смысл |
 |---|---|---|
@@ -308,14 +325,14 @@ graph TD;
 | `current_path` | keyword | путь файла относительно workspace, обновляется после переноса |
 | `title` | text (russian) + `.raw` keyword | |
 | `category` | keyword | |
-| `text` | text (russian) + `.std` | **точный** текст строк файла |
+| `text` | text (russian) + `.std` | точный текст строк файла |
 | `summary` | text | необязательное описание, не заменяет `text` |
 | `start_line`, `end_line` | integer | включительно, нумерация с 1 |
 | `content_hash` | keyword | версия файла |
 | `indexed_at` | date | |
 
-Связь: `excerpt.document_id → catalog.document_id`, а `current_path` задаёт папку и файл. Переход
-«совпадение в ES → файл → соседние строки» выполняется через `read`/`head`/`tail` по `current_path`.
+Связь такая: `excerpt.document_id → catalog.document_id`, а `current_path` задаёт папку и файл. От совпадения в ES
+к файлу и соседним строкам можно перейти через `read`/`head`/`tail` по `current_path`.
 
 ## 9. Пример диалога и трассы
 
@@ -337,21 +354,21 @@ graph TD;
 ```
 
 Трасса каждой сессии пишется в два файла:
-- `traces/session_*.jsonl` — события `session_start`, `user_turn` (с `run_id`), `graph_step` (узел, сообщения,
+- `traces/session_*.jsonl`: события `session_start`, `user_turn` (с `run_id`), `graph_step` (узел, сообщения,
   tool calls с `id/name/args`, tool results с `tool_call_id/status`), `user_action`, `harness_wait`, `turn_end`
   (`transitions`, проверка истории, ошибка, `stopped_by` при срабатывании лимита, длительность, usage), `cli_command`
   (каждая команда `/check`, `/history`, `/catalog`, `/graph`, `/help`, `/exit` и директива сценария `@wait_for_files` с
-  кратким результатом, например `{"history_ok": true, "messages": 87}` для `/check`), `session_end` (`ended_by`:
+  кратким результатом, например `{"history_ok": true, "messages": 158, "problems": []}` для `/check` в конце main), `session_end` (`ended_by`:
   `exit_command (/exit)`, `end_of_script`, `eof (Ctrl+Z / Ctrl+D)`, `ctrl_c` или `error: ...`; число ходов, сводка истории);
-- `traces/session_*.md` — то же в читаемом виде.
+- `traces/session_*.md`: то же в читаемом виде.
 
 Токены вида `sk-…` и `Bearer …` в трассах маскируются.
 
-**Цепочка сессий, которую записывает `scripts/run_all_demos.ps1`.** Шесть сессий CLI подряд, все с реальной моделью
-`qwen3.8-27b`, начиная с чистого workspace (`input` = `fixtures/input`, пустая `data/`) и пустого индекса. Каждая
-следующая сессия продолжает состояние workspace и индекса предыдущей. Лимиты закреплены: `model_calls_per_turn=25`,
-`recursion_limit=110`. После успешного прогона в `traces/` остаются только эти шесть сессий (трассы прежних прогонов
-скрипт удаляет). Имена файлов трасс — в `results/run_manifest.json` и `results/RUN_SUMMARY.md`.
+Цепочку сессий записывает `scripts/run_all_demos.ps1`. Это шесть сессий CLI подряд, все с реальной моделью
+`qwen3.8-27b`. Цепочка начинается с чистого workspace (`input` = `fixtures/input`, пустая `data/`) и пустого индекса,
+и каждая следующая сессия продолжает состояние workspace и индекса предыдущей. Лимиты закреплены: `model_calls_per_turn=25`,
+`recursion_limit=110`. После успешного прогона в `traces/` остаются только эти шесть сессий, трассы прежних прогонов
+скрипт удаляет. Имена файлов трасс записаны в `results/run_manifest.json` и `results/RUN_SUMMARY.md`.
 
 | # | Сценарий | Диалог | Что должна показать трасса |
 |---|---|---|---|
@@ -361,60 +378,71 @@ graph TD;
 | 2 | limit | `demo/dialog_limit_ru.txt` | настоящее зацикливание: модель раз за разом вызывает `ls input`, ожидая файл, который никто не добавит; ход останавливает `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); следующий ход той же сессии работает |
 | 3 | guard | `demo/dialog_guard_ru.txt` | 14 ходов, каждая ошибка — результат реального вызова tool: `head n=0`, `tail n=-2` → `invalid_argument`; `../../secret.txt`, `C:\Windows\win.ini`, junction `input/outside_link` (ls/read/grep), `move` в `../` → `outside_workspace`; `move` в занятое имя → `name_conflict` + `suggested_name`; `web_fetch` к локальному серверу `scripts/http_fixture_server.py` (порт 18765, его запускает скрипт): `/page.html` → успех (status 200, title, текст), `/missing` → `http_error` 404, `/slow` (ответ через 20 с при `WEB_TIMEOUT_S=10`) → `timeout`; закрытый порт 9 → `network_error`. Запросы, дошедшие до сервера, — в `results/http_fixture_requests.log` |
 | 4 | errors | `demo/dialog_errors_ru.txt` | Elasticsearch остановлен (`docker compose stop`), MCP-сервер работает: upsert семинара ReAct → `es_unavailable`, статус `error`; перенос проиндексированной заметки → файл перенесён, `update_document_path` → `es_unavailable`, статус `pending_sync` |
-| 5 | mcp_down | `demo/dialog_mcp_down_ru.txt` | не стартует сам MCP-сервер (`MCP_COMMAND` указывает на несуществующую программу, `session_start.mcp = "MCP unavailable (...)"`): индексация инструкции по git → `mcp_unavailable`, в каталоге `error`, успех не заявлен; организация продолжает работать — файл переносится в `data/guides/`; `/catalog` фиксирует статусы |
+| 5 | mcp_down | `demo/dialog_mcp_down_ru.txt` | не стартует сам MCP-сервер (`MCP_COMMAND` указывает на несуществующую программу, `session_start.mcp = "MCP unavailable (...)"`): индексация инструкции по git → `mcp_unavailable`, статус в каталоге не становится `indexed`, успех не заявлен; организация продолжает работать — файл переносится в `data/guides/`; `/catalog` фиксирует статусы |
 | 6 | retry | `demo/dialog_retry_ru.txt` | MCP и ES снова работают: все документы со статусом `pending_sync`/`error` синхронизируются и индексируются, поиск возвращает новые пути, путь и категория в индексе совпадают с каталогом |
 | — | итог | | `verify` → `results/verify_report.json`; `index_export.jsonl`, `catalog.json`, `data_tree.txt`, `workspace_snapshot/`; `results/RUN_SUMMARY.md` — таблица по каждому ходу, команды CLI, `session_end.ended_by` и чек-лист сценариев |
 
-Ожидаемое итоговое состояние после этой цепочки — `fixtures/EXPECTED.md`.
+Какое итоговое состояние я жду после этой цепочки, описано в `fixtures/EXPECTED.md`.
 
-**Результаты, которые сейчас лежат в `traces/` и `results/`.** Это прогон 19.11.2026 (начало 17:09:15 +03:00,
-коммит f6efd67), записанный ещё по прежней цепочке из пяти сессий: без сессии mcp_down, без HTTP-фикстуры в guard
-(там был только `web_fetch` на закрытый порт) и без событий `cli_command` / `session_end.ended_by` в трассах.
-Следующий запуск `run_all_demos.ps1` целиком перезапишет `traces/` и `results/` по цепочке из шести сессий. Ниже —
-что показывают текущие файлы.
+Сейчас в `traces/` и `results/` лежит финальный прогон 20.11.2026 по цепочке из шести сессий (начало 18:41:08 +03:00,
+модель `qwen3.8-27b`). Ниже то, что показывают эти файлы.
 
 | # | Сценарий | Трасса (`traces/*.jsonl` и `.md`) | Ходов / вызовов модели | Что показывает трасса |
 |---|---|---|---|---|
-| 1 | main | `session_20261119_170923_70e27b` | 16 / 52 | организация, просмотр, перенос, индексация, поиск, повтор без дублей, перенос проиндексированного файла, поздние файлы, ошибки (подробно ниже) |
+| 1 | main | `session_20261120_184115_233982` | 16 / 54 | организация, просмотр, перенос, индексация, поиск, повтор без дублей, перенос проиндексированного файла, поздние файлы, ошибки (подробно ниже) |
 | — | `verify` | | | `results/verify_report_main.json`: все 5 проверок пройдены |
-| 2 | limit | `session_20261119_171303_5afaf3` | 2 / 27 | в ходе 1 модель 25 раз подряд вызвала `ls input`; ход остановил `ModelCallLimitMiddleware` («Model call limits exceeded: run limit (25/25)», `stopped_by = model_call_limit`, 20,8 с). Ход 2 работает: модель объясняет остановку и делает ещё один `ls`; история корректна |
-| 3 | guard | `session_20261119_171335_0afe74` | 11 / 22 | ход 2 `head n=0` и ход 3 `tail n=-2` → `invalid_argument`; ход 4 `../../secret.txt`, ход 5 `C:\Windows\win.ini`, ход 6 `ls input/outside_link` (в `ls input` junction показан как `symlink`, `path: null`), ход 7 `read` через junction, ход 9 `move` в `../outside.txt` → `outside_workspace`; ход 8 `grep -r input` → 0 совпадений, файл за junction в `skipped` (`symlink_outside_workspace`); ход 10 → `name_conflict`, `suggested_name: meeting_2026-11-10_retro_2.md`; ход 11 `web_fetch http://127.0.0.1:9/` → `network_error` |
-| 4 | errors | `session_20261119_171420_ec42f1` | 4 / 14 | ход 2: upsert 4 выдержек семинара ReAct → `es_unavailable`, статус `error`; ход 3: заметка `search_quality_thoughts.md` перенесена `data/courses/` → `data/projects/`, `update_document_path` → `es_unavailable`, статус `pending_sync`; ход 4: оба статуса из каталога |
-| 5 | retry | `session_20261119_171548_621ff0` | 4 / 13 | ход 2: `update_document_path` без `category` → `category: projects`, `updated: 2`; upsert семинара → `created: 4`; затем 7 `indexed`, 7 `not_indexed`, `pending_sync`/`error` нет; ход 4: путь и категория заметки в каталоге и в обеих выдержках ES совпадают |
-| — | итог | | | `results/verify_report.json`: все 5 проверок пройдены; 14 документов, 7 проиндексированы, 17 выдержек, 0 расхождений пути/категории с каталогом |
+| 2 | limit | `session_20261120_184507_e1c785` | 2 / 27 | в ходе 1 модель 25 раз подряд вызвала `ls input`; ход остановил `ModelCallLimitMiddleware` («Model call limits exceeded: run limit (25/25)», `stopped_by = model_call_limit`, 20,6 с). Ход 2 работает: модель объясняет остановку и делает ещё один `ls`; история корректна |
+| 3 | guard | `session_20261120_184540_eba055` | 14 / 28 | ход 1 `catalog_view` (пути нужных документов); ход 2 `head n=0` и ход 3 `tail n=-2` → `invalid_argument`; ход 4 `../../secret.txt`, ход 5 `C:\Windows\win.ini`, ход 6 `ls input/outside_link` (в `ls input` junction показан как `symlink`, `path: null`), ход 7 `read` через junction, ход 9 `move` в `../outside.txt` → `outside_workspace`; ход 8 `grep -r input` → 0 совпадений, файл за junction в `skipped` (`symlink_outside_workspace`); ход 10 → `name_conflict`, `suggested_name: meeting_2026-11-10_retro_2.md`; ход 11 `web_fetch` `/page.html` → status 200, title «Справка DocSearch: поиск по документации»; ход 12 `/missing` → `http_error` 404; ход 13 `/slow` → `timeout` через 10 с; ход 14 `http://127.0.0.1:9/` → `network_error`. В `results/http_fixture_requests.log` три запроса web_fetch: `/page.html` 200, `/missing` 404, `/slow` |
+| 4 | errors | `session_20261120_184638_85b102` | 4 / 14 | ход 2: upsert 4 выдержек семинара ReAct → `es_unavailable`, статус `error`; ход 3: заметка `search_quality_thoughts.md` перенесена `data/courses/` → `data/projects/`, `update_document_path` → `es_unavailable`, статус `pending_sync`; ход 4: оба статуса из каталога |
+| 5 | mcp_down | `session_20261120_184753_e5a665` | 3 / 11 | `session_start.mcp`: «MCP unavailable (FileNotFoundError: [WinError 2] ...)»; ход 1: `build_excerpts` (2 выдержки инструкции по git) и один `upsert_excerpts` → сразу `mcp_unavailable`, модель сообщила, что индексация не выполнена; ход 2: `move` в `data/guides/howto_git_branches.txt`; ход 3: в каталоге путь `data/guides/...` и статус `not_indexed`; `/catalog`: 14 документов, `not_indexed` 7, `error` 1, `indexed` 5, `pending_sync` 1 |
+| 6 | retry | `session_20261120_184820_226798` | 4 / 12 | ход 2: `update_document_path` без `category` → `category: projects`, `updated: 2`; upsert семинара → `created: 4`; после этого 7 `indexed`, 7 `not_indexed`, `pending_sync`/`error` нет; ход 4: путь и категория заметки в каталоге и в обеих выдержках ES совпадают |
+| — | итог | | | `results/verify_report.json`: все 5 проверок пройдены; 14 документов, 7 проиндексированы, 19 выдержек, 0 расхождений пути/категории с каталогом |
 
-**Основной диалог этого прогона по ходам** (`session_20261119_170923_70e27b`; номера = реплики `demo/dialog_ru.txt`,
-нумерация реплик в новой цепочке та же):
+В сессии mcp_down результат разошёлся с тем, что я ожидала. Я рассчитывала, что инструкция по git получит статус
+`error`, как в тесте `test_mcp_server_unavailable_session`. В этом прогоне статус остался `not_indexed`: модель передала
+`excerpts` в `upsert_excerpts` строкой JSON, а не списком, и `CatalogSyncMiddleware` не смог связать вызов с документом.
+Требование задания при этом выполнено: запись не помечена успешной, модель прямо написала, что индексация не выполнена,
+а перенос в `data/guides/` прошёл. Поэтому в retry этот документ и не синхронизировался: среди `pending_sync`/`error`
+его не было, и он остался `not_indexed`.
+
+После прогона я это поправила: `CatalogSyncMiddleware._after` теперь разбирает `excerpts`, пришедшие строкой JSON,
+и неудачный вызов помечает документ `error`. В тесте `test_mcp_server_unavailable_session` заглушке теперь передаётся
+именно строка, как в этом прогоне. Цепочку целиком я ради этого не переснимала, поэтому в трассе выше статус
+по-прежнему `not_indexed`.
+
+Основной диалог этого прогона по ходам (`session_20261120_184115_233982`; номера ходов совпадают с номерами реплик
+`demo/dialog_ru.txt`):
 
 | Ход | Что сделала модель (по трассе) |
 |---|---|
-| 1 | `load_skill(organize_files)`, `ls` input и подпапок, `read` всех 11 непустых файлов, 12 `move`, 12 `catalog_update`. Темы: `courses` (4), `howto` (2), `meetings` (2), `projects` (3), `_unsorted` (пустой `empty_todo.txt`). Одноимённые `notes.md` стали `data/courses/es_seminar_analyzers_shards.md` и `data/meetings/meeting_2026-10-09_docsearch_weekly.md`. Неоднозначную заметку `search_quality_thoughts.md` модель положила в `projects` и записала обоснование в note. Prompt-injection строку из `meetings/notes.md` модель назвала пользователю и не выполнила. Файлы `_about.md` с описанием папок в этом прогоне модель не создавала |
+| 1 | `load_skill(organize_files)`, `ls` для input, двух его подпапок и `data`, `read` всех 11 непустых файлов, 12 `move`, 12 `catalog_update`. Темы: `courses` (4), `howto` (2), `meetings` (2), `projects` (3), `_unsorted` (пустой `empty_todo.txt`). Одноимённые `notes.md` стали `data/courses/es_seminar_analyzers_shards.md` и `data/meetings/meeting_2026-10-09_docsearch_weekly.md`. Неоднозначную заметку `search_quality_thoughts.md` модель положила в `projects` и записала обоснование в note. Строку с prompt injection из `meetings/notes.md` модель назвала пользователю и не выполнила. Файлы `_about.md` с описанием папок в этом прогоне модель не создавала (вызовов `write` нет) |
 | 2 | `ls data/projects` |
 | 3 | `move` заметки `data/projects/` → `data/courses/`, причина записана в note |
-| 4 | `ls input` (пусто) и ещё два `ls` по подпапкам `input/courses`, `input/meetings` из первого просмотра: они уже удалены после переноса, оба вернули `not_found` — модель сообщила, что input пуст |
-| 5 | `load_skill(index_excerpts)`, 5 документов (заметка про качество поиска, лекция про инвертированный индекс, семинар по ES, DocSearch, инструкция по ES в Docker), 5 `build_excerpts`, один `upsert_excerpts` → `created: 10`, проверочный `search_excerpts` |
-| 6 | `search_excerpts` («индекс инвертированный шарды») → 6 выдержек из 4 документов, затем `read` исходной лекции |
-| 7 | `build_excerpts` без диапазонов (`reused_previous_ranges: true`) → `upsert_excerpts` → `created: 0, updated: 2, deleted_stale: 0` |
-| 8 | `get_document_excerpts` → 2 выдержки; `index_stats` → всего 10, дублей нет |
-| 9 | `move` лекции в `data/search/` → `action_required`; `update_document_path` **без** `category` → сервер вернул `category: search`, `updated: 2`; `search_excerpts` уже показывает новый путь и категорию |
-| 10 | `search_excerpts("BM25")` → 3 выдержки, путь лекции `data/search/ir_lecture_inverted_index.md` |
-| пауза | CLI ждёт на `@wait_for_files`; файлы скопировал процесс PowerShell PID 37436, CLI PID 37672 (`results/late_files_added.json`, событие `external_files_added` в трассе) |
-| 11 | новый `ls input` → 2 файла, `read` обоих, `move` → `data/meetings/meeting_2026-11-10_retro.md` и `data/search/vector_search_lecture.md`, `catalog_update`; уже разобранные файлы не тронуты |
-| 12 | `build_excerpts` + `upsert_excerpts` новой лекции → `created: 3`, проверочный поиск |
+| 4 | `ls input` (пусто) и ещё два `ls` по подпапкам `input/courses`, `input/meetings` из первого просмотра. Их уже удалили после переноса, оба вызова вернули `not_found`, и модель сообщила, что input пуст |
+| 5 | `load_skill(index_excerpts)`, 5 документов (заметка про качество поиска, лекция про инвертированный индекс, семинар по ES, DocSearch, инструкция по ES в Docker): 5 `read` с номерами строк, 5 `build_excerpts`, один `upsert_excerpts` → `created: 12`, проверочный `search_excerpts` |
+| 6 | `search_excerpts` («индекс инвертированный шарды») → 8 выдержек из 4 документов, затем `read` файла с первым совпадением, конспекта семинара `data/courses/es_seminar_analyzers_shards.md` |
+| 7 | `build_excerpts` без диапазонов (`reused_previous_ranges: true`) → `upsert_excerpts` → `created: 0, updated: 3, deleted_stale: 0`, затем проверочный `search_excerpts` |
+| 8 | `get_document_excerpts` → 3 выдержки; `index_stats` → всего 12, дублей нет |
+| 9 | `move` лекции в `data/search/` → `action_required`; `update_document_path` без `category` → сервер вернул `category: search`, `updated: 3`; `search_excerpts` уже показывает новый путь и категорию; `catalog_view` по документу |
+| 10 | `search_excerpts("BM25")` → 4 выдержки из 2 файлов (заметка про качество поиска и 3 выдержки лекции), путь лекции `data/search/ir_lecture_inverted_index.md` |
+| пауза | CLI ждёт на `@wait_for_files`; файлы скопировал процесс PowerShell PID 33592, CLI PID 1840 (`results/late_files_added.json`, событие `external_files_added` в трассе) |
+| 11 | новый `ls input` → 2 файла, `read` обоих, `move` → `data/meetings/meeting_2026-11-10_retro.md` и `data/search/vector_search_lecture.md`, `catalog_update`, контрольный `ls input` (пусто); уже разобранные файлы не тронуты |
+| 12 | `read`, `build_excerpts` + `upsert_excerpts` новой лекции → `created: 3`, проверочный поиск |
 | 13 | `head(n=0)` → `invalid_argument` |
 | 14 | `read("../../secret.txt")` → `outside_workspace` |
 | 15 | `read("input/no_such_file.md")` → `not_found` |
 | 16 | `catalog_view`, `ls data`: пустой файл и два `notes.md` описаны, ничего не потеряно |
 
-Skills загружаются выборочно: в main — `organize_files` в ходе 1 и `index_excerpts` в ходе 5, каждый один раз за
-сессию; в errors — `index_excerpts` (ход 2) и `organize_files` (ход 3); в retry — `index_excerpts` (ход 2).
-В сессиях limit и guard skills не загружались. История корректна во всех ходах всех пяти сессий.
-Трассы ещё более ранних прогонов (`session_20261115_*`) скрипт удалил (коммит f6efd67).
-`results/RUN_SUMMARY.md` этого прогона: все 16 пунктов чек-листа отмечены.
+Skills загружались выборочно: в main `organize_files` в ходе 1 и `index_excerpts` в ходе 5, каждый один раз за
+сессию; в errors только `index_excerpts` (ход 2); в mcp_down `index_excerpts` (ход 1) и `organize_files` (ход 2);
+в retry `index_excerpts` (ход 2). В сессиях limit и guard skills не загружались. Проверка истории прошла во всех
+43 ходах всех шести сессий, и каждая сессия закончилась командой `/exit` (`session_end.ended_by = exit_command (/exit)`).
+Трассы прежних прогонов скрипт удалил, в `traces/` лежат только шесть сессий от 20.11.
+В `results/RUN_SUMMARY.md` этого прогона отмечены все 29 пунктов чек-листа.
 
-Ходы 13–14 основного диалога просят вызвать tool. В этом прогоне модель вызвала его оба раза. В прогоне 15.11 она
-отказала сама, без вызова. Независимо от поведения модели, гарантированная демонстрация — сессия guard: там
-каждая реплика явно требует вызвать инструмент и показать его ответ.
+Ходы 13–14 основного диалога просят вызвать tool. В этом прогоне модель вызвала его оба раза, а в прогоне 15.11
+отказалась сама, без вызова. Поэтому гарантированную демонстрацию я вынесла в сессию guard: там каждая реплика
+прямо требует вызвать инструмент и показать его ответ.
 
 ## 10. Тесты и проверочные сценарии
 
@@ -423,49 +451,55 @@ python -m pytest -rs                 # офлайн + интеграция с ES
 python scripts/verify.py             # проверки результата после демо-диалога
 ```
 
+Сейчас в наборе 71 тест. При последнем локальном запуске `python -m pytest -q tests` с запущенным ES я получила
+`71 passed`.
+
 | Тестовый файл | Что проверяет |
 |---|---|
 | `tests/test_tools_fs.py` | контракты read/head/tail/grep/ls/write/move на фиксированных файлах, конфликт имён, дубль, пустой файл, `../`, абсолютный путь, junction наружу (всегда на Windows), настоящий symlink наружу (где symlink разрешены) |
 | `tests/test_web_fetch.py` | `web_fetch` на локальном HTTP-сервере: текст, HTML, редирект, 404, таймаут, лимит размера, бинарный ответ |
 | `tests/test_catalog_skills_middleware.py` | `build_excerpts`, skills, валидация выдержек (включая `category`), статусы `indexed/error/pending_sync`, категория после `update_document_path`, проверка категории в `verify.py`, таймаут и лимит ToolGuard |
 | `tests/test_agent_offline.py` | топология графа, история нескольких ходов без дублей, переходы model→tools→model, ошибка как наблюдение, остановка по лимиту вызовов и по `recursion_limit` с ремонтом истории |
-| `tests/test_cli_script.py` | процесс CLI в режиме `--script`: пауза `@wait_for_files`, файлы добавляет **другой процесс**, агент видит их повторным `ls`; зацикленный ход помечен `stopped_by=model_call_limit`; при лимитах по умолчанию первым срабатывает лимит вызовов модели; события `cli_command` для `/check`, `/history`, `/catalog`, `/graph`, `/help`, неизвестной команды, `/exit` и `@wait_for_files`, `session_end.ended_by` (`exit_command`, `end_of_script`); сессия с недоступным MCP-сервером (`mcp_unavailable` → `error`, перенос работает); HTTP-фикстура демо (`scripts/http_fixture_server.py`: 200, 404, таймаут) |
+| `tests/test_cli_script.py` | процесс CLI в режиме `--script`: пауза `@wait_for_files`, файлы добавляет другой процесс, агент видит их повторным `ls`; зацикленный ход помечен `stopped_by=model_call_limit`; при лимитах по умолчанию первым срабатывает лимит вызовов модели; события `cli_command` для `/check`, `/history`, `/catalog`, `/graph`, `/help`, неизвестной команды, `/exit` и `@wait_for_files`, `session_end.ended_by` (`exit_command`, `end_of_script`); сессия с недоступным MCP-сервером (заглушки сразу отвечают `mcp_unavailable` даже на сломанные выдержки, статус `error`, перенос работает); пометка вместо пустого ответа модели (`test_empty_model_answer_gets_a_note`); HTTP-фикстура демо (`scripts/http_fixture_server.py`: 200, 404, таймаут) |
 | `tests/test_mcp_es.py` | реальный MCP-сервер и ES: идемпотентный upsert, replace, поиск (русская морфология), обновление пути и категории после переноса, недоступный ES, сквозной прогон агента со сценарной моделью |
 
-Агентные тесты используют `ScriptedChatModel` / `DryRunChatModel`, детерминированные замены LLM. Это проверка
-библиотечного графа и инфраструктуры, а **не** демонстрационные трассы: трассы для сдачи пишутся с реальной моделью
+Агентные тесты используют `ScriptedChatModel` / `DryRunChatModel`, детерминированные замены LLM. Они проверяют
+библиотечный граф и инфраструктуру, но демонстрационными трассами не являются: трассы для сдачи я пишу с реальной моделью
 `qwen3.8-27b`. Тесты `test_mcp_es.py` пропускаются (`skipped`), если Elasticsearch не запущен.
 
-**Покрытие проверочных сценариев задания** (номера ходов — пользовательские реплики `demo/dialog_ru.txt`,
+Где покрыты проверочные сценарии задания (номера ходов — это пользовательские реплики `demo/dialog_ru.txt`,
 они же номера ходов в трассе main и в `results/RUN_SUMMARY.md`):
 
 | Сценарий | Где проверяется |
 |---|---|
 | Первичная организация | main, ход 1; `scripts/verify.py` (проверки 1–3) |
-| Диалог и просмотр, история без дублей | main, ходы 2 и 4; поле `history check` в `turn_end` каждого хода (проверка пар tool_call/tool_result и дублей: во всех 37 ходах текущих трасс пусто); с новой цепочки команды `/check` и `/history` записываются в трассу событием `cli_command` с результатом (`history_ok`, число сообщений); `test_turns_history_and_transitions`, `test_cli_commands_traced_and_end_of_script` |
+| Диалог и просмотр, история без дублей | main, ходы 2 и 4; поле `history check` в `turn_end` каждого хода (проверка пар tool_call/tool_result и дублей: во всех 43 ходах текущих трасс пусто); команды `/check` и `/history` записаны в трассу событием `cli_command` с результатом (`history_ok`, число сообщений: в конце main 158); `test_turns_history_and_transitions`, `test_cli_commands_traced_and_end_of_script` |
 | Перенос по уточнению | main, ход 3 («Перенеси заметку про поиск в папку курсов»); `test_move_input_to_data_and_between_folders` |
 | Пополнение input | main: пауза `@wait_for_files` после хода 10, файлы копирует отдельный процесс PowerShell (`results/late_files_added.json`), ход 11 «Я добавил файлы, разбери новые» (повторный `ls`), ход 12 — индексация новой лекции; `test_cli_script_with_external_late_files_and_loop_limit`, `test_ls_stable_and_fresh` |
-| Индексация и поиск через MCP | main, ход 5 (`upsert_excerpts`: 5 документов, `created: 10`) и ход 6 (`search_excerpts` + `read` исходного файла); `verify.py` (проверка 4); `test_mcp_upsert_idempotent_search_and_path_update` |
-| Повтор и перенос после индексации | main, ходы 7–10: повтор `created: 0, updated: 2`, по-прежнему 2 выдержки, перенос в `search` + `update_document_path` без `category` → `category: search`, поиск по новому пути; `test_end_to_end_scripted_agent_with_real_mcp`, `test_update_path_without_category_follows_folder` |
+| Индексация и поиск через MCP | main, ход 5 (`upsert_excerpts`: 5 документов, `created: 12`) и ход 6 (`search_excerpts` + `read` исходного файла); `verify.py` (проверка 4); `test_mcp_upsert_idempotent_search_and_path_update` |
+| Повтор и перенос после индексации | main, ходы 7–10: повтор `created: 0, updated: 3`, по-прежнему 3 выдержки, перенос в `search` + `update_document_path` без `category` → `category: search`, поиск по новому пути; `test_end_to_end_scripted_agent_with_real_mcp`, `test_update_path_without_category_follows_folder` |
 | Skills | `load_skill` в трассе main: ход 1 — `organize_files`, ход 5 — `index_excerpts`, повторно не загружаются; `test_skills_metadata_and_on_demand_load` |
-| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (в этом прогоне tool вызван: `invalid_argument`, `outside_workspace`, `not_found`); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); недоступный сам MCP-сервер — сессия mcp_down новой цепочки (`mcp_unavailable`, статус `error`, перенос работает) + retry, `test_mcp_server_unavailable_session`; тесты path guard |
-| Контракты tools | `test_tools_fs.py`, `test_web_fetch.py`; в трассе guard новой цепочки — `web_fetch` к локальному серверу: успех, `http_error` 404, `timeout` (в текущих трассах только `network_error`) |
-| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание (25 вызовов `ls`), остановленное `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; завершение сессии — событие `session_end` в каждой трассе; с новой цепочки в нём `ended_by: exit_command (/exit)`, а сама команда `/exit` — событие `cli_command` |
+| Конфликты и ошибки | одноимённые `notes.md` и пустой файл (main, ходы 1 и 16); ошибки tools — сессия guard (каждая реплика вызывает tool); main, ходы 13–15 (в этом прогоне tool вызван: `invalid_argument`, `outside_workspace`, `not_found`); недоступный ES — сессии errors + retry (`error`/`pending_sync` → `indexed`); недоступный сам MCP-сервер — сессия mcp_down (`mcp_unavailable` сразу, без `excerpt_validation_failed`, успех не заявлен, перенос работает), `test_mcp_server_unavailable_session`; тесты path guard |
+| Контракты tools | `test_tools_fs.py`, `test_web_fetch.py`; в трассе guard — `web_fetch` к локальному серверу: успех (200), `http_error` 404, `timeout`, плюс `network_error` на закрытом порту 9 |
+| Граф и завершение | раздел 4, `transitions` в трассах; сессия limit — реальное зацикливание (25 вызовов `ls`), остановленное `ModelCallLimitMiddleware` (`stopped_by: model_call_limit`); `test_looping_*`, `test_model_call_limit_marked_in_trace`; завершение сессии — событие `session_end` в каждой трассе, во всех шести `ended_by: exit_command (/exit)`, а сама команда `/exit` записана событием `cli_command` |
 
 ## 11. Ограничения
 
 - LLM-сервер ИТМО доступен только из сети университета; без него работают только тесты.
 - История CLI живёт в памяти процесса (`InMemorySaver`); восстановление после перезапуска — задача лабы 2.
-- Новые файлы обнаруживаются повторным `ls` по просьбе пользователя; фонового watcher нет (по заданию).
-- Каталог ведёт код: агент меняет только title/description/note, остальное недоступно для правки моделью.
-  `write` в `catalog.json` запрещён намеренно, чтобы модель не испортила ID и hash.
-- Замена содержимого уже каталогизированного файла и очистка старых версий выдержек не поддерживаются (по заданию).
+- Новые файлы агент находит повторным `ls` по просьбе пользователя; фонового watcher нет (по заданию он не нужен).
+- Каталог ведёт код: модель может менять только title/description/note, остальные поля ей недоступны.
+  `write` в `catalog.json` я запретила намеренно, чтобы модель не испортила ID и hash.
+- Замену содержимого уже каталогизированного файла и очистку старых версий выдержек я не поддерживаю (по заданию не нужно).
   `build_excerpts` в таком случае возвращает `hash_mismatch`.
-- `os.link`+`unlink` в `move`: при аварии процесса между двумя вызовами может остаться второе имя файла; дубль виден
-  через `duplicate_of` и `verify.py`.
+- `move` сделан через `os.link`+`unlink`: если процесс упадёт между этими двумя вызовами, может остаться второе имя файла.
+  Такой дубль виден через `duplicate_of` и `verify.py`.
 - Таймаут tool прерывает ожидание, но синхронный tool в потоке-исполнителе дорабатывает в фоне.
-- Тест настоящего symlink на Windows требует режима разработчика (или прав администратора); без него он пропускается,
-  а выход через точку повторной обработки NTFS проверяется на directory junction (раздел 3).
-- `traces/` и `results/` пересоздаются только целиком, скриптом `run_all_demos.ps1` (нужна сеть ИТМО); частичного
-  перезапуска отдельных сессий больше нет, чтобы результаты всегда соответствовали одной цепочке.
+- Тест настоящего symlink на Windows требует режима разработчика (или прав администратора). Без них он пропускается,
+  а выход через точку повторной обработки NTFS всё равно проверяется на directory junction (раздел 3).
+- Модель не всегда передаёт аргументы MCP-tools в ожидаемом виде. В финальном прогоне в сессии mcp_down она отдала
+  `excerpts` строкой JSON, и статус документа в каталоге остался `not_indexed`, а не `error`. Разбор строки я добавила
+  уже после прогона (раздел 9), в трассе этого исправления нет.
+- `traces/` и `results/` пересоздаются только целиком, скриптом `run_all_demos.ps1` (нужна сеть ИТМО). Перезапуск
+  отдельных сессий я убрала, чтобы результаты всегда относились к одной цепочке.
 - Индекс учебный: одна нода, без аутентификации, доступен только на `127.0.0.1`.

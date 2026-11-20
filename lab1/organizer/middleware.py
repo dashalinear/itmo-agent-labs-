@@ -115,7 +115,14 @@ class CatalogSyncMiddleware(AgentMiddleware):
         err = None if ok else (env.get("error", {}) or {}).get("message") or _content_text(msg.content)[:300]
         if name == "upsert_excerpts":
             by_doc: dict[str, list[dict]] = {}
-            for ex in args.get("excerpts", None) or []:
+            items_in = args.get("excerpts", None) or []
+            if isinstance(items_in, str):
+                # the stub tool has a free schema, and qwen once passed the list as a JSON string (mcp_down, 20.11)
+                try:
+                    items_in = json.loads(items_in)
+                except ValueError:
+                    items_in = []
+            for ex in items_in if isinstance(items_in, list) else []:
                 ex = ex if isinstance(ex, dict) else getattr(ex, "model_dump", lambda: {})()
                 if not self.catalog.get(ex.get("document_id") or ""):
                     continue                          # garbage from the model (only reaches here if MCP is down)

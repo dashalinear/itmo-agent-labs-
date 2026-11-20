@@ -1,4 +1,5 @@
-"""Replace check-mark symbols that came from downloaded web pages with plain words in the committed copies.
+"""Replace check-mark symbols that came from downloaded web pages with plain words in the committed copies
+and drop pictographs (site menu icons, emoji) from them.
 
     python scripts/plain_text_marks.py --task-id B3
 
@@ -6,12 +7,14 @@ Web pages (e.g. comparison tables) may contain check-mark symbols; the repositor
 results/<task>/ (page copies, history, report, events) and traces/<task>_* the symbols are replaced by "да" / "нет".
 The change is recorded in results/<task>/plain_text_marks.json (files and counts). Evidence quotes that contain
 such a symbol are listed there too (their verbatim check was done against the original page before the replacement).
+Other pictographs (emoji, icons like the menu sign) carry no meaning in the text and are removed.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 
 LAB2 = Path(__file__).resolve().parent.parent
@@ -19,6 +22,7 @@ RES = Path(os.getenv("RESULTS_DIR") or LAB2 / "results")
 TR = Path(os.getenv("TRACES_DIR") or LAB2 / "traces")
 YES = ("\u2713", "\u2714", "\u2705")   # check marks
 NO = ("\u2717", "\u2718", "\u274c")     # crosses
+ICONS = re.compile("[\U0001F000-\U0001FAFF\u2600-\u27bf\u2b00-\u2bff\ufe0f]")   # emoji and site icons
 
 
 def main() -> None:
@@ -32,19 +36,21 @@ def main() -> None:
     ev_path = RES / args.task_id / "evidence.json"
     if ev_path.exists():
         for e in json.loads(ev_path.read_text(encoding="utf-8")):
-            if any(c in e.get("quote", "") for c in YES + NO):
+            if any(c in e.get("quote", "") for c in YES + NO) or ICONS.search(e.get("quote", "")):
                 evidence_hits.append(e["evidence_id"])
     for p in files:
         if p.name == "plain_text_marks.json":
             continue
         t = p.read_text(encoding="utf-8")
         n = sum(t.count(c) for c in YES + NO)
-        if not n:
-            continue
         for c in YES:
             t = t.replace(c, "да")
         for c in NO:
             t = t.replace(c, "нет")
+        t, k = ICONS.subn("", t)
+        n += k
+        if not n:
+            continue
         p.write_text(t, encoding="utf-8", newline="\n")
         changed[str(p.relative_to(LAB2) if LAB2 in p.parents else p)] = n
     out = {"task_id": args.task_id, "replaced": changed, "evidence_with_marks": evidence_hits}

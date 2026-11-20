@@ -41,12 +41,7 @@
 | EXP3 | exhaustive | completed | CLI | 2 | 30 | 61 | 370104 | 4 | 17525 | 38 | 0 / 0 | 0 |
 | M6 | main | paused | — | 8 | 35 | 29 | 1166278 | 3 | 16312 | 1 | 0 / 0 | 0 |
 | M6-deep1 | deep | completed | M6 | 1 | 56 | 88 | 757363 | 4 | 16961 | 17 | 0 / 0 | 0 |
-| M7 | main | paused | — | 14 | 55 | 48 | 3023791 | 5 | 16860 | 3 | 0 / 0 | 0 |
-| M7-deep1 | deep | paused | M7 | 1 | 60 | 132 | 860076 | 7 | 17168 | 24 | 0 / 0 | 0 |
-| M7-exhaustive1 | exhaustive | paused | M7 | 1 | 32 | 65 | 416917 | 5 | 17192 | 40 | 0 / 0 | 0 |
 | EXP4 | exhaustive | completed | CLI | 2 | 26 | 53 | 328601 | 3 | 16957 | 34 | 0 / 0 | 0 |
-| M7-deep2 | deep | paused | M7 | 1 | 39 | 84 | 476624 | 7 | 13782 | 21 | 0 / 0 | 0 |
-| M7-exhaustive2 | exhaustive | paused | M7 | 1 | 45 | 104 | 528431 | 8 | 13649 | 41 | 0 / 0 | 0 |
 | M8 | main | paused | — | 7 | 26 | 27 | 679017 | 2 | 16505 | 4 | 0 / 0 | 0 |
 | M8-deep1 | deep | completed | M8 | 2 | 12 | 39 | 144737 | 3 | 13350 | 12 | 0 / 0 | 0 |
 | M8-exhaustive1 | exhaustive | completed | M8 | 1 | 18 | 52 | 199480 | 3 | 13596 | 41 | 0 / 0 | 0 |
@@ -55,9 +50,9 @@
 
 | поиск | L1 | L2 |
 |---|---|---|
-| fulltext | 29 | 11 |
-| grep | 25 | 253 |
-| vector | 8 | 4 |
+| fulltext | 17 | 9 |
+| grep | 16 | 230 |
+| vector | 6 | 4 |
 
 ## Exhaustive: покрытие и контрольные упоминания
 
@@ -69,7 +64,5 @@
 | M4-exhaustive1 | completed | 1 | 47/47 | 10/10 | 39 | 35/36 | 9/10 | L-ST-30 |
 | M5-exhaustive1 | completed | 1 | 47/47 | 10/10 | 42 | 35/36 | 9/10 | L-ST-30 |
 | EXP3 | completed | 2 | 47/47 | 10/10 | 38 | 36/36 | 10/10 | — |
-| M7-exhaustive1 | paused | 1 | 47/47 | 10/10 | 40 | 34/36 | 8/10 | L-ST-16, L-ST-30 |
 | EXP4 | completed | 2 | 47/47 | 10/10 | 34 | 33/36 | 7/10 | L-ST-21, L-ST-30, L-ST-36 |
-| M7-exhaustive2 | paused | 1 | 47/47 | 10/10 | 41 | 35/36 | 9/10 | L-ST-30 |
 | M8-exhaustive1 | completed | 1 | 47/47 | 10/10 | 41 | 35/36 | 9/10 | L-ST-30 |

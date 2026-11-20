@@ -523,68 +523,6 @@
       "crashes": 0
     },
     {
-      "task_id": "M7",
-      "kind": "main",
-      "status": "paused",
-      "reason": "waiting for user input",
-      "parent": null,
-      "runs": 14,
-      "model_calls": 55,
-      "tool_calls": 48,
-      "tokens": 3023791,
-      "compactions": 5,
-      "peak_input": 16860,
-      "evidence": 3,
-      "searches": {
-        "fulltext:L2": 2,
-        "fulltext:L1": 4
-      },
-      "l1_written": 0,
-      "l2_indexed": 0,
-      "crashes": 0
-    },
-    {
-      "task_id": "M7-deep1",
-      "kind": "deep",
-      "status": "paused",
-      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 60)",
-      "parent": "M7",
-      "runs": 1,
-      "model_calls": 60,
-      "tool_calls": 132,
-      "tokens": 860076,
-      "compactions": 7,
-      "peak_input": 17168,
-      "evidence": 24,
-      "searches": {
-        "fulltext:L1": 4,
-        "vector:L1": 1,
-        "grep:L2": 13,
-        "grep:L1": 8
-      },
-      "l1_written": 0,
-      "l2_indexed": 0,
-      "crashes": 0
-    },
-    {
-      "task_id": "M7-exhaustive1",
-      "kind": "exhaustive",
-      "status": "paused",
-      "reason": "agent ended the turn without complete_task",
-      "parent": "M7",
-      "runs": 1,
-      "model_calls": 32,
-      "tool_calls": 65,
-      "tokens": 416917,
-      "compactions": 5,
-      "peak_input": 17192,
-      "evidence": 40,
-      "searches": {},
-      "l1_written": 0,
-      "l2_indexed": 0,
-      "crashes": 0
-    },
-    {
       "task_id": "EXP4",
       "kind": "exhaustive",
       "status": "completed",
@@ -597,47 +535,6 @@
       "compactions": 3,
       "peak_input": 16957,
       "evidence": 34,
-      "searches": {},
-      "l1_written": 0,
-      "l2_indexed": 0,
-      "crashes": 0
-    },
-    {
-      "task_id": "M7-deep2",
-      "kind": "deep",
-      "status": "paused",
-      "reason": "no progress: search_grep returned the same result 6 times",
-      "parent": "M7",
-      "runs": 1,
-      "model_calls": 39,
-      "tool_calls": 84,
-      "tokens": 476624,
-      "compactions": 7,
-      "peak_input": 13782,
-      "evidence": 21,
-      "searches": {
-        "fulltext:L1": 4,
-        "vector:L1": 1,
-        "grep:L1": 1,
-        "grep:L2": 10
-      },
-      "l1_written": 0,
-      "l2_indexed": 0,
-      "crashes": 0
-    },
-    {
-      "task_id": "M7-exhaustive2",
-      "kind": "exhaustive",
-      "status": "paused",
-      "reason": "no progress: area_grep returned the same result 6 times",
-      "parent": "M7",
-      "runs": 1,
-      "model_calls": 45,
-      "tool_calls": 104,
-      "tokens": 528431,
-      "compactions": 8,
-      "peak_input": 13649,
-      "evidence": 41,
       "searches": {},
       "l1_written": 0,
       "l2_indexed": 0,
@@ -706,11 +603,11 @@
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 29,
-    "grep:L1": 25,
-    "vector:L1": 8,
-    "fulltext:L2": 11,
-    "grep:L2": 253,
+    "fulltext:L1": 17,
+    "grep:L1": 16,
+    "vector:L1": 6,
+    "fulltext:L2": 9,
+    "grep:L2": 230,
     "vector:L2": 4
   },
   "exhaustive": [
@@ -805,23 +702,6 @@
       "found_without_keyword": 10
     },
     {
-      "task_id": "M7-exhaustive1",
-      "status": "paused",
-      "runs": 1,
-      "fragments_read": 47,
-      "fragments_total": 47,
-      "documents_done": 10,
-      "documents_total": 10,
-      "mentions_recorded": 40,
-      "expected_codes": 36,
-      "found_codes": 34,
-      "missing_codes": [
-        "L-ST-16",
-        "L-ST-30"
-      ],
-      "found_without_keyword": 8
-    },
-    {
       "task_id": "EXP4",
       "status": "completed",
       "runs": 2,
@@ -838,22 +718,6 @@
         "L-ST-36"
       ],
       "found_without_keyword": 7
-    },
-    {
-      "task_id": "M7-exhaustive2",
-      "status": "paused",
-      "runs": 1,
-      "fragments_read": 47,
-      "fragments_total": 47,
-      "documents_done": 10,
-      "documents_total": 10,
-      "mentions_recorded": 41,
-      "expected_codes": 36,
-      "found_codes": 35,
-      "missing_codes": [
-        "L-ST-30"
-      ],
-      "found_without_keyword": 9
     },
     {
       "task_id": "M8-exhaustive1",
