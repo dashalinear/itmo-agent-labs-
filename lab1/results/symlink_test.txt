@@ -1,7 +1,7 @@
-lab 1 path-escape tests through links, 2026-11-20T15:55:37.3310944+03:00
+lab 1 path-escape tests through links, 2026-11-20T18:41:08.4660213+03:00
 Windows Developer Mode: on
 status: real symlink test PASSED (symlinks are allowed on this machine)
 
 pytest output:
 ..                                                                       [100%]
-2 passed, 33 deselected in 0.32s
+2 passed, 33 deselected in 0.48s

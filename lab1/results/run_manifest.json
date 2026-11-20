@@ -1,5 +1,5 @@
 {
-    "started_at":  "2026-11-20 15:55:37 +03:00",
+    "started_at":  "2026-11-20 18:41:08 +03:00",
     "model":  "qwen3.8-27b",
     "dry_run":  false,
     "sessions":  [
@@ -7,37 +7,37 @@
                          "label":  "main",
                          "title":  "organization, browsing, moves, indexing, search, late files, errors",
                          "dialog":  "demo/dialog_ru.txt",
-                         "trace":  "traces/session_20261120_155546_2b6e67.jsonl"
+                         "trace":  "traces/session_20261120_184115_233982.jsonl"
                      },
                      {
                          "label":  "limit",
                          "title":  "looping request stopped by the execution limit",
                          "dialog":  "demo/dialog_limit_ru.txt",
-                         "trace":  "traces/session_20261120_155910_1ef16a.jsonl"
+                         "trace":  "traces/session_20261120_184507_e1c785.jsonl"
                      },
                      {
                          "label":  "guard",
                          "title":  "tool contract errors, junction outside the workspace, web_fetch 200/404/timeout",
                          "dialog":  "demo/dialog_guard_ru.txt",
-                         "trace":  "traces/session_20261120_155951_a0c43b.jsonl"
+                         "trace":  "traces/session_20261120_184540_eba055.jsonl"
                      },
                      {
                          "label":  "errors",
                          "title":  "Elasticsearch unavailable: error and pending_sync",
                          "dialog":  "demo/dialog_errors_ru.txt",
-                         "trace":  "traces/session_20261120_160055_2de16f.jsonl"
+                         "trace":  "traces/session_20261120_184638_85b102.jsonl"
                      },
                      {
                          "label":  "mcp_down",
                          "title":  "MCP server unavailable: indexing fails, organization works",
                          "dialog":  "demo/dialog_mcp_down_ru.txt",
-                         "trace":  "traces/session_20261120_160221_1695b8.jsonl"
+                         "trace":  "traces/session_20261120_184753_e5a665.jsonl"
                      },
                      {
                          "label":  "retry",
                          "title":  "retry after Elasticsearch is back",
                          "dialog":  "demo/dialog_retry_ru.txt",
-                         "trace":  "traces/session_20261120_160343_cde074.jsonl"
+                         "trace":  "traces/session_20261120_184820_226798.jsonl"
                      }
                  ]
 }
