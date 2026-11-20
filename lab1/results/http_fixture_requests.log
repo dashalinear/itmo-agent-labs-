@@ -1,5 +1,5 @@
-2026-11-20T18:45:37 fixture server on http://127.0.0.1:18765/
-2026-11-20T18:45:37 /health 200
-2026-11-20T18:46:09 /page.html 200
-2026-11-20T18:46:12 /missing 404
-2026-11-20T18:46:15 /slow received, answering in 20s
+2026-11-20T21:34:14 fixture server on http://127.0.0.1:18765/
+2026-11-20T21:34:14 /health 200
+2026-11-20T21:34:56 /page.html 200
+2026-11-20T21:34:59 /missing 404
+2026-11-20T21:35:02 /slow received, answering in 20s
