@@ -1,4 +1,4 @@
-<#
+﻿<#
 Records all lab 3 traces with the real ITMO model and publishes the results.
 Run INSIDE the ITMO network, Docker Desktop running:
 
@@ -186,15 +186,31 @@ if ($Part -eq "deep") {
 }
 
 if ($Part -eq "final2") {
-    Step "G1. M7: deep and exhaustive in parallel, the main agent answers meanwhile and uses both results"
-    Nav chat --task-id M7 --script demo\dialog_final2_ru.txt | Out-Null
+    # A repeated run must start a NEW dialog task: on 20.11 the second run continued the old M7 and the main
+    # agent mixed up the sub-agents of both runs. So the first free id from M8 on is taken, and the traces and
+    # results of the earlier final2 attempts (M7, M8, ... with their sub-agents) are removed from the repository.
+    $f2 = $null
+    for ($i = 8; $i -lt 100 -and -not $f2; $i++) {
+        & $py -m navsearch.cli status --task-id "M$i" | Out-Null
+        if ($LASTEXITCODE -ne 0) { $f2 = "M$i" }
+    }
+    $old = '^M([7-9]|[1-9][0-9])([_-]|$)'
+    Get-ChildItem traces -File | Where-Object { $_.Name -match $old } | Remove-Item -Force
+    Get-ChildItem results -Directory | Where-Object { $_.Name -match $old } | Remove-Item -Recurse -Force
+    Step "G1. ${f2}: deep and exhaustive in parallel, the main agent answers meanwhile and uses both results"
+    Nav chat --task-id $f2 --script demo\dialog_final2_ru.txt | Out-Null
 
-    Step "G2. EXP4: exhaustive with a tiny budget (partial), remainder saved, resume from the registry's resume_cursor"
-    Nav subagent --kind exhaustive --scope storage --task-id EXP4 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
-    New-Item -ItemType Directory -Force results\EXP4 | Out-Null
-    & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_partial.json
-    Nav resume --task-id EXP4 --set max_model_calls=120 | Out-Null
-    & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_final.json
+    & $py -m navsearch.cli status --task-id EXP4 | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "EXP4 is already recorded (partial -> resume); kept as it is"
+    } else {
+        Step "G2. EXP4: exhaustive with a tiny budget (partial), remainder saved, resume from the registry's resume_cursor"
+        Nav subagent --kind exhaustive --scope storage --task-id EXP4 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
+        New-Item -ItemType Directory -Force results\EXP4 | Out-Null
+        & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_partial.json
+        Nav resume --task-id EXP4 --set max_model_calls=120 | Out-Null
+        & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_final.json
+    }
 }
 
 Step "13. Export and technical results"

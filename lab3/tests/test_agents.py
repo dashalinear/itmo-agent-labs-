@@ -447,3 +447,20 @@ async def test_sub_agent_that_stops_without_submit_gets_one_follow_up(env):
         await mgr._run_sub(env.task_id, "exhaustive")
         assert len(r.calls) == expected_calls and r.calls[1] == ("exhaustive-finish", FINISH_NUDGE["exhaustive"])
         assert env.store.get_task(env.task_id)["status"] == status
+
+
+async def test_sub_agent_stopped_by_no_progress_gets_one_follow_up(env):
+    from navsearch.subagents import FINISH_NUDGE, SubagentManager
+    calls = []
+
+    class R:
+        store = env.store
+
+        async def run(self, tid, user_text=None, label="run", **kw):
+            calls.append(user_text)
+            env.store.set_status(tid, "paused" if len(calls) == 1 else "completed",
+                                 "no progress: area_grep returned the same result 6 times" if len(calls) == 1 else "ok")
+            return {}
+    await SubagentManager(R(), {"exhaustive": None}, "P")._run_sub(env.task_id, "exhaustive")
+    assert len(calls) == 2 and "area_grep" in calls[1] and calls[1].endswith(FINISH_NUDGE["exhaustive"])
+    assert env.store.get_task(env.task_id)["status"] == "completed"

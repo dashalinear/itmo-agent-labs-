@@ -175,13 +175,20 @@ class SubagentManager:
                        "subagent_status(task_id) and fetch subagent_result(task_id) later.")
 
     async def _run_sub(self, tid: str, kind: str) -> dict:
-        """One run of the sub-agent; if the model simply stopped talking without submit_result (seen in
-        M7-exhaustive1 with the whole area read), it gets ONE follow-up message in the same task."""
+        """One run of the sub-agent. If it stopped without submit_result (the model just ended its turn, as
+        M7-exhaustive1 with the whole area read, or the no_progress guard stopped a loop), it gets ONE follow-up
+        message in the same task. A second stop is final: the result is then the explicit partial one."""
         res = await self.runner.run(tid, label=kind, agent_factory=self.factories[kind], verbose=False)
         t = self.store.get_task(tid)
-        if t["status"] == "paused" and "without complete_task" in (t["status_reason"] or ""):
-            self.store.event(tid, "finish_nudge", {"reason": t["status_reason"]})
-            res = await self.runner.run(tid, user_text=FINISH_NUDGE[kind], label=f"{kind}-finish",
+        reason = t["status_reason"] or ""
+        if t["status"] == "paused" and ("without complete_task" in reason or reason.startswith("no progress")):
+            # also after the no_progress guard (M7-deep2 / M7-exhaustive2 repeated one grep 6 times with the
+            # whole area already read): the follow-up names the loop, the repeat counter starts anew in the new run
+            text = FINISH_NUDGE[kind]
+            if reason.startswith("no progress"):
+                text = (f"Харнесс остановил тебя: {reason}. Не повторяй этот вызов. " + text)
+            self.store.event(tid, "finish_nudge", {"reason": reason})
+            res = await self.runner.run(tid, user_text=text, label=f"{kind}-finish",
                                         agent_factory=self.factories[kind], verbose=False)
         return res
 

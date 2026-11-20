@@ -1,4 +1,4 @@
-# Final dialog 2 (python -m navsearch.cli chat --task-id M7 --script demo/dialog_final2_ru.txt)
+# Final dialog 2 (python -m navsearch.cli chat --task-id M8 --script demo/dialog_final2_ru.txt)
 # Deep and exhaustive sub-agents work at the same time; the main agent answers other questions with L2 citations,
 # checks the statuses and finally builds its answers on the sub-agents' results (findings, evidence, open questions).
 Исследуй глубоко: какие подходы к хранению состояния агентов описаны в корпусе, чем они различаются по ограничениям и какой из них выбран для DocSearch. Нужны подтверждения из текстов и открытые вопросы.
