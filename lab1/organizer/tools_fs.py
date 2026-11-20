@@ -179,7 +179,7 @@ class FileTools:
                     if len(matches) < max_matches:
                         matches.append({"path": self.ws.rel(f), "line": i, "text": line[:500]})
         return {"pattern": pattern, "path": self.ws.rel(root), "recursive": recursive,
-                "files_scanned": len(files) - len(skipped), "matches": matches,
+                "files_scanned": len(files) - sum(1 for x in skipped if x["reason"] != "link_outside_workspace"), "matches": matches,
                 "returned": len(matches), "total_matches": total,
                 "has_more": total > len(matches), "remaining": total - len(matches),
                 "skipped": skipped}

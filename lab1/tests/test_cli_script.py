@@ -5,6 +5,8 @@ No LLM: the CLI runs with --dry-run-model / ScriptedChatModel.
 """
 import asyncio
 import json
+
+import pytest
 import os
 import shutil
 import subprocess
@@ -273,3 +275,15 @@ def test_failed_tool_result_has_error_status():
     bad = g._bound(TM(content=json.dumps({"ok": False, "tool": "read", "error": {"type": "not_found"}}), tool_call_id="1"))
     good = g._bound(TM(content=json.dumps({"ok": True, "tool": "read", "data": {}}), tool_call_id="2"))
     assert bad.status == "error" and good.status == "success"
+    mcp = g._bound(TM(content=json.dumps({"ok": False, "error": {"type": "es_unavailable"}}, indent=2), tool_call_id="3"))
+    assert mcp.status == "error"                                    # the MCP server answers with indented JSON
+
+
+def test_mcp_stub_requires_excerpts():
+    """With the server down the model once called upsert_excerpts with no arguments: the stub now requires them."""
+    from organizer.mcp_client import unavailable_tools
+    up = next(t for t in unavailable_tools("X") if t.name == "upsert_excerpts")
+    import pydantic
+    with pytest.raises(pydantic.ValidationError):
+        up.args_schema.model_validate({})
+    assert up.args_schema.model_validate({"excerpts": "[]"}).excerpts == "[]"

@@ -146,8 +146,10 @@ def scenario_checks(sessions: list[dict]) -> list[tuple[bool, str]]:
         cat = RESULTS / "catalog_after_mcp_down.json"
         if cat.exists():
             docs = json.loads(cat.read_text(encoding="utf-8"))["documents"]
-            checks.append((any(d.get("indexing_status") == "error" for d in docs),
-                           "mcp_down: the document whose indexing failed has status error in the catalog"))
+            failed = [d["current_path"] for d in docs if d.get("indexing_status") == "error"
+                      and "MCP server is unavailable" in str(d.get("index_error") or "")]
+            checks.append((bool(failed), "mcp_down: the document whose indexing failed in this session has status "
+                           f"error in the catalog ({', '.join(failed) or 'none'})"))
         moved = sum(t["ok_results"].get("move", 0) for t in s["turns"])
         checks.append((moved > 0, "mcp_down: file organization still works (a successful move)"))
     for s in sessions:

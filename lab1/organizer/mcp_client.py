@@ -10,12 +10,12 @@ from __future__ import annotations
 import contextlib
 import json
 import sys
-from typing import Optional
+from typing import Any, Optional
 
 from langchain_core.tools import BaseTool, StructuredTool
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_mcp_adapters.tools import load_mcp_tools
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .config import PROJECT_ROOT, Settings
 
@@ -39,6 +39,17 @@ class _AnyArgs(BaseModel):
     model_config = {"extra": "allow"}
 
 
+class _UpsertArgs(_AnyArgs):
+    # required like in the real server: in mcp_down (20.11) the model called the stub with no arguments at all,
+    # so the catalog could not tell which document failed; Any, because a JSON string is accepted too
+    excerpts: Any = Field(..., description="excerpts built by build_excerpts")
+    mode: str = "replace"
+
+
+class _DocArgs(_AnyArgs):
+    document_id: str
+
+
 def unavailable_tools(reason: str) -> list[BaseTool]:
     def make(name: str) -> BaseTool:
         def _fn(**_kwargs) -> str:
@@ -46,7 +57,9 @@ def unavailable_tools(reason: str) -> list[BaseTool]:
                 "type": "mcp_unavailable",
                 "message": f"Elasticsearch MCP server is unavailable: {reason}. Indexing/search did not happen."}},
                 ensure_ascii=False)
-        return StructuredTool.from_function(func=_fn, name=name, args_schema=_AnyArgs,
+        schema = {"upsert_excerpts": _UpsertArgs, "update_document_path": _DocArgs,
+                  "get_document_excerpts": _DocArgs, "delete_document_excerpts": _DocArgs}.get(name, _AnyArgs)
+        return StructuredTool.from_function(func=_fn, name=name, args_schema=schema,
                                             description=f"[UNAVAILABLE] MCP tool {name}",
                                             metadata={"mcp_unavailable": True})
     return [make(n) for n in MCP_TOOL_NAMES]

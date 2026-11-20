@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from typing import Any, Awaitable, Callable
 
 from langchain.agents.middleware import AgentMiddleware, ToolCallRequest
@@ -36,6 +37,10 @@ def _error_msg(request: ToolCallRequest, type_: str, message: str, **extra) -> T
                        name=request.tool_call["name"], status="error")
 
 
+# a failed tool envelope, compact (local tools) or indented (the MCP server returns json.dumps(..., indent=2))
+_FAILED_RX = re.compile(r'\s*\{\s*"ok"\s*:\s*false')
+
+
 class ToolGuardMiddleware(AgentMiddleware):
     def __init__(self, timeout_s: float = 30.0, max_chars: int = 12000) -> None:
         super().__init__()
@@ -46,7 +51,7 @@ class ToolGuardMiddleware(AgentMiddleware):
         if not isinstance(msg, ToolMessage):
             return msg
         text = _content_text(msg.content)
-        if text.lstrip().startswith('{"ok": false'):
+        if _FAILED_RX.match(text):
             msg.status = "error"            # the trace shows a failed tool as an error, not as "success"
         if len(text) > self.max_chars:
             msg.content = (text[: self.max_chars] +
