@@ -1,4 +1,4 @@
-catalog.json  (22529 B)
+catalog.json  (21987 B)
 data/
 data/_unsorted/
 data/_unsorted/empty_todo.txt  (0 B)
@@ -6,9 +6,10 @@ data/courses/
 data/courses/agents_seminar_react.txt  (1405 B)
 data/courses/es_seminar_analyzers_shards.md  (1130 B)
 data/courses/mlops_lecture_monitoring.md  (1267 B)
+data/guides/
+data/guides/howto_git_branches.txt  (809 B)
 data/howto/
 data/howto/howto_elasticsearch_docker.md  (1088 B)
-data/howto/howto_git_branches.txt  (809 B)
 data/meetings/
 data/meetings/meeting_2026-10-02_kickoff.md  (829 B)
 data/meetings/meeting_2026-10-09_docsearch_weekly.md  (937 B)

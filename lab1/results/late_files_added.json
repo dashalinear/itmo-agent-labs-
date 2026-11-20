@@ -1,8 +1,8 @@
 {
     "copier":  "run_all_demos.ps1 background job (separate powershell.exe process)",
-    "copier_pid":  37436,
-    "cli_pid":  37672,
-    "copied_at":  "2026-11-19T17:11:39.3681165+03:00",
+    "copier_pid":  19412,
+    "cli_pid":  17596,
+    "copied_at":  "2026-11-20T15:57:54.6718726+03:00",
     "files":  [
                   "input/meeting_2026-11-10_retro.md",
                   "input/vector_search_lecture.md"

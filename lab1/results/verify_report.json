@@ -9,7 +9,8 @@
   "problems": [],
   "topics": {
     "courses": 3,
-    "howto": 2,
+    "guides": 1,
+    "howto": 1,
     "meetings": 3,
     "projects": 3,
     "search": 2
@@ -17,15 +18,14 @@
   "catalog": {
     "documents": 14,
     "status": {
-      "not_indexed": 7,
-      "indexed": 7
+      "not_indexed": 8,
+      "indexed": 6
     }
   },
   "es": {
     "excerpts_per_document": {
       "data/courses/agents_seminar_react.txt": 4,
       "data/courses/es_seminar_analyzers_shards.md": 2,
-      "data/howto/howto_elasticsearch_docker.md": 2,
       "data/projects/project_docsearch.md": 2,
       "data/projects/search_quality_thoughts.md": 2,
       "data/search/ir_lecture_inverted_index.md": 2,
