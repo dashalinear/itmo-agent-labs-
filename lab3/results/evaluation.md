@@ -47,14 +47,17 @@
 | EXP4 | exhaustive | completed | CLI | 2 | 26 | 53 | 328601 | 3 | 16957 | 34 | 0 / 0 | 0 |
 | M7-deep2 | deep | paused | M7 | 1 | 39 | 84 | 476624 | 7 | 13782 | 21 | 0 / 0 | 0 |
 | M7-exhaustive2 | exhaustive | paused | M7 | 1 | 45 | 104 | 528431 | 8 | 13649 | 41 | 0 / 0 | 0 |
+| M8 | main | paused | — | 7 | 26 | 27 | 679017 | 2 | 16505 | 4 | 0 / 0 | 0 |
+| M8-deep1 | deep | completed | M8 | 2 | 12 | 39 | 144737 | 3 | 13350 | 12 | 0 / 0 | 0 |
+| M8-exhaustive1 | exhaustive | completed | M8 | 1 | 18 | 52 | 199480 | 3 | 13596 | 41 | 0 / 0 | 0 |
 
 ## Шесть поисковых сочетаний (вызовы основного и deep-агента)
 
 | поиск | L1 | L2 |
 |---|---|---|
-| fulltext | 28 | 11 |
-| grep | 21 | 252 |
-| vector | 7 | 4 |
+| fulltext | 29 | 11 |
+| grep | 25 | 253 |
+| vector | 8 | 4 |
 
 ## Exhaustive: покрытие и контрольные упоминания
 
@@ -69,3 +72,4 @@
 | M7-exhaustive1 | paused | 1 | 47/47 | 10/10 | 40 | 34/36 | 8/10 | L-ST-16, L-ST-30 |
 | EXP4 | completed | 2 | 47/47 | 10/10 | 34 | 33/36 | 7/10 | L-ST-21, L-ST-30, L-ST-36 |
 | M7-exhaustive2 | paused | 1 | 47/47 | 10/10 | 41 | 35/36 | 9/10 | L-ST-30 |
+| M8-exhaustive1 | completed | 1 | 47/47 | 10/10 | 41 | 35/36 | 9/10 | L-ST-30 |

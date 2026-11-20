@@ -642,14 +642,75 @@
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
+    },
+    {
+      "task_id": "M8",
+      "kind": "main",
+      "status": "paused",
+      "reason": "waiting for user input",
+      "parent": null,
+      "runs": 7,
+      "model_calls": 26,
+      "tool_calls": 27,
+      "tokens": 679017,
+      "compactions": 2,
+      "peak_input": 16505,
+      "evidence": 4,
+      "searches": {
+        "grep:L1": 3,
+        "grep:L2": 1
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M8-deep1",
+      "kind": "deep",
+      "status": "completed",
+      "reason": "Подходы к хранению состояния агентов, описанные в корпусе (папка storage, 10 документов):\n",
+      "parent": "M8",
+      "runs": 2,
+      "model_calls": 12,
+      "tool_calls": 39,
+      "tokens": 144737,
+      "compactions": 3,
+      "peak_input": 13350,
+      "evidence": 12,
+      "searches": {
+        "fulltext:L1": 1,
+        "vector:L1": 1,
+        "grep:L1": 1
+      },
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
+    },
+    {
+      "task_id": "M8-exhaustive1",
+      "kind": "exhaustive",
+      "status": "completed",
+      "reason": "Полный обход папки storage завершён: 10/10 документов, 47/47 фрагментов прочитаны, зафикси",
+      "parent": "M8",
+      "runs": 1,
+      "model_calls": 18,
+      "tool_calls": 52,
+      "tokens": 199480,
+      "compactions": 3,
+      "peak_input": 13596,
+      "evidence": 41,
+      "searches": {},
+      "l1_written": 0,
+      "l2_indexed": 0,
+      "crashes": 0
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 28,
-    "grep:L1": 21,
-    "vector:L1": 7,
+    "fulltext:L1": 29,
+    "grep:L1": 25,
+    "vector:L1": 8,
     "fulltext:L2": 11,
-    "grep:L2": 252,
+    "grep:L2": 253,
     "vector:L2": 4
   },
   "exhaustive": [
@@ -781,6 +842,22 @@
     {
       "task_id": "M7-exhaustive2",
       "status": "paused",
+      "runs": 1,
+      "fragments_read": 47,
+      "fragments_total": 47,
+      "documents_done": 10,
+      "documents_total": 10,
+      "mentions_recorded": 41,
+      "expected_codes": 36,
+      "found_codes": 35,
+      "missing_codes": [
+        "L-ST-30"
+      ],
+      "found_without_keyword": 9
+    },
+    {
+      "task_id": "M8-exhaustive1",
+      "status": "completed",
       "runs": 1,
       "fragments_read": 47,
       "fragments_total": 47,

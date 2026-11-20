@@ -1,0 +1,1481 @@
+[
+  {
+    "id": 5264,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:53+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 5265,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:55+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5266,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5143,
+      "reserve": 2048,
+      "total": 7191,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 5267,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5143,
+      "reserve": 2048,
+      "total": 7191,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5268,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:57+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5143,
+      "actual_input": 3451,
+      "actual_output": 214,
+      "duration_s": 2.56,
+      "calibrated_cpt": 2.965
+    }
+  },
+  {
+    "id": 5270,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:57+00:00",
+    "kind": "subtask_started",
+    "data": {
+      "task_id": "M8-deep1",
+      "kind": "deep",
+      "request": "Исследуй в корпусе все описанные подходы к хранению состояния агентов (agent state / session state / memory / persistence). Для каждого подхода: (1) название и где описан (document_id, fragment_id, строки), (2) как работает, (3) ограничения/компромиссы (лимиты, производительность, надёжность, стоимость), (4) подтверждения цитатами из L2. Затем: какой подход выбран для DocSearch и почему — найди явное решение (decision) с цитатами. Отдельно перечисли открытые вопросы/неопределённости, которые остаются в текстах. Отчитайся структурированно с evidence (document_id, fragment_id, lines) для каждого утверждения.",
+      "scope_folder": "storage"
+    }
+  },
+  {
+    "id": 5272,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 4936,
+      "reserve": 2048,
+      "total": 6984,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 5273,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:29:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 4936,
+      "reserve": 2048,
+      "total": 6984,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)"
+    }
+  },
+  {
+    "id": 5276,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 4936,
+      "actual_input": 3770,
+      "actual_output": 106,
+      "duration_s": 1.76,
+      "calibrated_cpt": 3.183
+    }
+  },
+  {
+    "id": 5277,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:00+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5278,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:00+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2155,
+      "charged": 5111,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5280,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:01+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5281,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5849,
+      "reserve": 2048,
+      "total": 7897,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 5282,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5849,
+      "reserve": 2048,
+      "total": 7897,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5283,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5849,
+      "actual_input": 3912,
+      "actual_output": 200,
+      "duration_s": 2.7,
+      "calibrated_cpt": 2.964
+    }
+  },
+  {
+    "id": 5286,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:04+00:00",
+    "kind": "subtask_started",
+    "data": {
+      "task_id": "M8-exhaustive1",
+      "kind": "exhaustive",
+      "request": "Полный обход ВСЕХ документов папки storage. Найди ВСЕ упоминания ограничений (limitation/limit/ограничение/лимит/компромисс/недостаток/конstraint/не поддерживает/невозможно/не может/ограничено/максимум/минимум/timeout/дедлайн/размер/производительность/стоимость/надёжность). Для каждого упоминания: document_id, fragment_id, строки, точная цитата и краткий комментарий о чём это ограничение. Не пропускай ни одного документа в папке — это полный обход без top-k. Отчитайся полным списком с evidence.",
+      "scope_folder": "storage"
+    }
+  },
+  {
+    "id": 5288,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5524,
+      "reserve": 2048,
+      "total": 7572,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 5289,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5524,
+      "reserve": 2048,
+      "total": 7572,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)"
+    }
+  },
+  {
+    "id": 5306,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5524,
+      "actual_input": 4219,
+      "actual_output": 144,
+      "duration_s": 3.64,
+      "calibrated_cpt": 3.176
+    }
+  },
+  {
+    "id": 5308,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:09+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5309,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:09+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2165,
+      "charged": 10705,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5311,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:11+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5312,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6562,
+      "reserve": 2048,
+      "total": 8610,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 5314,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6562,
+      "reserve": 2048,
+      "total": 8610,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5318,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6562,
+      "actual_input": 4408,
+      "actual_output": 84,
+      "duration_s": 2.64,
+      "calibrated_cpt": 2.953
+    }
+  },
+  {
+    "id": 5319,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:14+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "квот",
+      "hits": 6
+    }
+  },
+  {
+    "id": 5320,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:14+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "квот",
+      "hits": 5
+    }
+  },
+  {
+    "id": 5321,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 7401,
+      "reserve": 2048,
+      "total": 9449,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 5322,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 7401,
+      "reserve": 2048,
+      "total": 9449,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)"
+    }
+  },
+  {
+    "id": 5323,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 7401,
+      "actual_input": 6296,
+      "actual_output": 72,
+      "duration_s": 1.27,
+      "calibrated_cpt": 3.02
+    }
+  },
+  {
+    "id": 5324,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 7572,
+      "reserve": 2048,
+      "total": 9620,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 5325,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 7572,
+      "reserve": 2048,
+      "total": 9620,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)"
+    }
+  },
+  {
+    "id": 5328,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 7572,
+      "actual_input": 6670,
+      "actual_output": 58,
+      "duration_s": 1.4,
+      "calibrated_cpt": 3.042
+    }
+  },
+  {
+    "id": 5329,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:17+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 8226,
+      "reserve": 2048,
+      "total": 10274,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 5330,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:17+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 8226,
+      "reserve": 2048,
+      "total": 10274,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)"
+    }
+  },
+  {
+    "id": 5331,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 8226,
+      "actual_input": 7377,
+      "actual_output": 144,
+      "duration_s": 1.86,
+      "calibrated_cpt": 3.042
+    }
+  },
+  {
+    "id": 5332,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 8842,
+      "reserve": 2048,
+      "total": 10890,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 5333,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 8842,
+      "reserve": 2048,
+      "total": 10890,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.04)"
+    }
+  },
+  {
+    "id": 5340,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 8842,
+      "actual_input": 8085,
+      "actual_output": 340,
+      "duration_s": 4.9,
+      "calibrated_cpt": 3.017
+    }
+  },
+  {
+    "id": 5341,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9476,
+      "reserve": 2048,
+      "total": 11524,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 5342,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9476,
+      "reserve": 2048,
+      "total": 11524,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)"
+    }
+  },
+  {
+    "id": 5343,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9476,
+      "actual_input": 8733,
+      "actual_output": 435,
+      "duration_s": 4.38,
+      "calibrated_cpt": 2.981
+    }
+  },
+  {
+    "id": 5344,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:28+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5345,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:28+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2176,
+      "charged": 2734,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5346,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:28+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2182,
+      "charged": 10100,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5347,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:29+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5350,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11538,
+      "reserve": 2048,
+      "total": 13586,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 5351,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11538,
+      "reserve": 2048,
+      "total": 13586,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5355,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11538,
+      "actual_input": 9189,
+      "actual_output": 65,
+      "duration_s": 2.37,
+      "calibrated_cpt": 2.73
+    }
+  },
+  {
+    "id": 5356,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11356,
+      "reserve": 2048,
+      "total": 13404,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 5357,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11356,
+      "reserve": 2048,
+      "total": 13404,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 5361,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11356,
+      "actual_input": 9469,
+      "actual_output": 129,
+      "duration_s": 4.58,
+      "calibrated_cpt": 2.809
+    }
+  },
+  {
+    "id": 5362,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:36+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5363,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:37+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2185,
+      "charged": 11463,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5364,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:37+00:00",
+    "kind": "budget_interrupted_call",
+    "data": {
+      "reservation": 2191,
+      "charged": 14414,
+      "pid": 35036
+    }
+  },
+  {
+    "id": 5366,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:38+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5367,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12148,
+      "reserve": 2048,
+      "total": 14196,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 5369,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12148,
+      "reserve": 2048,
+      "total": 14196,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5371,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12148,
+      "actual_input": 9634,
+      "actual_output": 81,
+      "duration_s": 2.81,
+      "calibrated_cpt": 2.733
+    }
+  },
+  {
+    "id": 5372,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:41+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "ключ",
+      "hits": 33
+    }
+  },
+  {
+    "id": 5373,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:41+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "ротация",
+      "hits": 3
+    }
+  },
+  {
+    "id": 5374,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13988,
+      "reserve": 2048,
+      "total": 16036,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 5375,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13988,
+      "reserve": 2048,
+      "total": 16036,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 5376,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13988,
+      "actual_input": 12186,
+      "actual_output": 57,
+      "duration_s": 1.91,
+      "calibrated_cpt": 2.763
+    }
+  },
+  {
+    "id": 5377,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14579,
+      "reserve": 2048,
+      "total": 16627,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 5378,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14579,
+      "reserve": 2048,
+      "total": 16627,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 5379,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14579,
+      "actual_input": 12865,
+      "actual_output": 142,
+      "duration_s": 2.59,
+      "calibrated_cpt": 2.778
+    }
+  },
+  {
+    "id": 5380,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15186,
+      "reserve": 2048,
+      "total": 17234,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 5381,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15186,
+      "reserve": 2048,
+      "total": 17234,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 5385,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15186,
+      "actual_input": 13587,
+      "actual_output": 275,
+      "duration_s": 4.01,
+      "calibrated_cpt": 2.777
+    }
+  },
+  {
+    "id": 5388,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15708,
+      "reserve": 2048,
+      "total": 17756,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 5389,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15708,
+      "reserve": 2048,
+      "total": 17756,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 5390,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15708,
+      "actual_input": 14162,
+      "actual_output": 339,
+      "duration_s": 5.71,
+      "calibrated_cpt": 2.767
+    }
+  },
+  {
+    "id": 5391,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:30:55+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5447,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:39+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5448,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17181,
+      "reserve": 2048,
+      "total": 19229,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 5449,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:39+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17181,
+      "reserve": 2048,
+      "total": 19229,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5450,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17181,
+      "actual_input": 14532,
+      "actual_output": 65,
+      "duration_s": 2.22,
+      "calibrated_cpt": 2.659
+    }
+  },
+  {
+    "id": 5451,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17340,
+      "reserve": 2048,
+      "total": 19388,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)",
+      "messages": 45
+    }
+  },
+  {
+    "id": 5452,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17340,
+      "reserve": 2048,
+      "total": 19388,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)"
+    }
+  },
+  {
+    "id": 5453,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17340,
+      "actual_input": 14969,
+      "actual_output": 32,
+      "duration_s": 3.23,
+      "calibrated_cpt": 2.696
+    }
+  },
+  {
+    "id": 5454,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:45+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "subagent_result",
+      "artifact_id": "art_68a1a5045e285ac74796",
+      "total_chars": 9526,
+      "passed_chars": 2075,
+      "reason": "single result 9526 chars > limit 6000",
+      "step": "lc_run--01a1f9cf-696b-70a2-b7db-b7764e212326-0",
+      "step_total_after": 2075,
+      "step_limit": 12000
+    }
+  },
+  {
+    "id": 5455,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18031,
+      "reserve": 2048,
+      "total": 20079,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.70)",
+      "messages": 47
+    }
+  },
+  {
+    "id": 5456,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18031,
+      "reserve": 2048,
+      "total": 20079,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.70)"
+    }
+  },
+  {
+    "id": 5457,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18031,
+      "actual_input": 15749,
+      "actual_output": 74,
+      "duration_s": 2.69,
+      "calibrated_cpt": 2.72
+    }
+  },
+  {
+    "id": 5458,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20208,
+      "reserve": 2048,
+      "total": 22256,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 49
+    }
+  },
+  {
+    "id": 5459,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:57+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 20208,
+      "after_tokens": 12424,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 31,
+      "kept_messages": 18,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6376,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (agent state / session state / memory / persistence), их различия по ограничениям и конкретный выбор для DocSearch. Дополнительно: полный обход папки `storage` на предмет всех упоминаний ограничений. Ответить на вопрос о квотах на вызовы инструментов агента с цитатами.\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано.*\nДоговорённости:\n- Ответы должны содержать подтверждения из текстов (цитаты с document_id, fragment_id, строками).\n- Фоновые задачи не блокируют диалог; статус проверяется по запросу.\n\n## Решения и договорённости\n- Запущены две фоновые подзадачи:\n  - `M8-deep1` (kind: deep) — исследование подходов к хранению состояния и выбора для DocSearch.\n  - `M8-exhaustive1` (kind: exhaustive) — полный обход папки `storage` на предмет ограничений.\n- Для ответа о квотах использован прямой поиск и чтение L2-фрагментов документа `data/agents/agent_tool_quotas.md`.\n\n## Подтверждённые факты (с источниками)\n1. **Квоты на вызовы инструментов:**\n   - Код политики: **NEWDOC-2026-D**.\n   - Квота ограничивает число вызовов инструментов одного агента за сутки; задаётся администратором платформы для каждой команды отдельно.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `1f446f83-bf6c-5025-b22c-23e615666c0b`, строки 4–5.\n   - Значения по умолчанию: не более **2000 вызовов/сутки на команду** и не более **50 вызовов/минуту**. Вызовы веб-поиска считаются отдельно: не более **300/сутки**.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `3bb8a3a0-f854-5968-9308-b53b06d19b57`, строки 8–9.\n     - Evidence ID: `ev_2169e8104664`.\n   - При превышении квоты новые вызовы отклоняются до начала следующих суток, текущая задача ставится на паузу. Повышение квоты согласует руководитель платформы.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `fe34008c-d420-5cbb-9571-3a2e5513b527`, строки 12–13.\n     - Evidence ID: `ev_ec525fb49733`.\n\n2. **Ротация ключей шифрования состояния:**\n   - Документ: `data/ops/runbook_rb12.md` (document_id: `6ece6e18-e403-485e-bdb9-6877f1783728`).\n   - Код процедуры: **NEWDOC-2026-F**.\n   - Ротация выполняется раз в 90 дней.\n     - Источник: L1 summary и section s01 `data/ops/runbook_rb12.md`.\n\n## Прогресс\n- **Прочитано/проанализировано:**\n  - `data/agents/agent_tool_quotas.md` (полный L1 и L2 секции s01, s02, s03).\n  - Поиск по паттернам \"квот\" (L1, L2), \"ротация\" (L1), \"ключ\" (L1).\n- **Фоновые задачи:**\n  - `M8-deep1`: статус `running`, 4 model calls, 0 evidence.\n  - `M8-exhaustive1`: статус `running`, 12 evidence собрано. Покрытие: прочитано 8 из 47 фрагментов, обработано 1 из 10 документов в папке `storage`.\n- **Открытые вопросы:**\n  - Какой именно подход к хранению состояния выбран для DocSearch (ожидается от `M8-deep1`).\n  - Полный список ограничений в папке `storage` (ожидается от `M8-exhaustive1`).\n\n## Открытые вопросы и следующий шаг\n- Дождаться завершения `M8-deep1` и `M8-exhaustive1`.\n- Проверить статус задач по запросу пользователя.\n- Собрать структурированный ответ по подходам к хранению состояния с цитатами.\n- Собрать полный список ограничений из папки `storage` с цитатами.\n\n## Артефакты\n- `M8-deep1` (task_id)\n- `M8-exhaustive1` (task_id)\n- `ev_2169e8104664` (evidence_id)\n- `ev_ec525fb49733` (evidence_id)\n- `c77a305d-cf71-4"
+    }
+  },
+  {
+    "id": 5460,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12424,
+      "reserve": 2048,
+      "total": 14472,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 5461,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12424,
+      "actual_input": 10365,
+      "actual_output": 75,
+      "duration_s": 1.74,
+      "calibrated_cpt": 2.806
+    }
+  },
+  {
+    "id": 5462,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14381,
+      "reserve": 2048,
+      "total": 16429,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 5463,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:34:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14381,
+      "reserve": 2048,
+      "total": 16429,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 5464,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14381,
+      "actual_input": 12877,
+      "actual_output": 75,
+      "duration_s": 2.12,
+      "calibrated_cpt": 2.812
+    }
+  },
+  {
+    "id": 5465,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14793,
+      "reserve": 2048,
+      "total": 16841,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 5466,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14793,
+      "reserve": 2048,
+      "total": 16841,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 5467,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14793,
+      "actual_input": 13335,
+      "actual_output": 33,
+      "duration_s": 2.0,
+      "calibrated_cpt": 2.81
+    }
+  },
+  {
+    "id": 5468,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:03+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "subagent_result",
+      "artifact_id": "art_4484e369e50da8d26661",
+      "total_chars": 21563,
+      "passed_chars": 2114,
+      "reason": "single result 21563 chars > limit 6000",
+      "step": "lc_run--01a1f9cf-b493-72c1-b253-d22e155e7b42-0",
+      "step_total_after": 2114,
+      "step_limit": 12000
+    }
+  },
+  {
+    "id": 5469,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15708,
+      "reserve": 2048,
+      "total": 17756,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 5470,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15708,
+      "reserve": 2048,
+      "total": 17756,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 5471,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15708,
+      "actual_input": 14160,
+      "actual_output": 73,
+      "duration_s": 3.45,
+      "calibrated_cpt": 2.808
+    }
+  },
+  {
+    "id": 5472,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:06+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17959,
+      "reserve": 2048,
+      "total": 20007,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 5473,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:06+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17959,
+      "reserve": 2048,
+      "total": 20007,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 5474,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17959,
+      "actual_input": 16505,
+      "actual_output": 1846,
+      "duration_s": 15.35,
+      "calibrated_cpt": 2.784
+    }
+  },
+  {
+    "id": 5475,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:22+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  },
+  {
+    "id": 5476,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:23+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "chat"
+    }
+  },
+  {
+    "id": 5477,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 21540,
+      "reserve": 2048,
+      "total": 23588,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 5478,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 21540,
+      "after_tokens": 11069,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 23,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6478,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (agent state / session state / memory / persistence), их различия по ограничениям и конкретный выбор для DocSearch. Дополнительно: полный обход папки `storage` на предмет всех упоминаний ограничений. Ответить на вопрос о квотах на вызовы инструментов агента с цитатами.\n\n## Ограничения пользователя\n*В TASK CONTRACT явных ограничений с тегами [C1]... не указано.*\nДоговорённости:\n- Ответы должны содержать подтверждения из текстов (цитаты с document_id, fragment_id, строками).\n- Фоновые задачи не блокируют диалог; статус проверяется по запросу.\n\n## Решения и договорённости\n- Запущены и завершены две фоновые подзадачи:\n  - `M8-deep1` (kind: deep) — исследование подходов к хранению состояния и выбора для DocSearch.\n  - `M8-exhaustive1` (kind: exhaustive) — полный обход папки `storage` на предмет ограничений.\n- Для ответа о квотах использован прямой поиск и чтение L2-фрагментов документа `data/agents/agent_tool_quotas.md`.\n- Для ответа о ротации ключей прочитаны L1 и L2 секции `data/ops/runbook_rb12.md`.\n\n## Подтверждённые факты (с источниками)\n1. **Квоты на вызовы инструментов:**\n   - Код политики: **NEWDOC-2026-D**.\n   - Квота ограничивает число вызовов инструментов одного агента за сутки; задаётся администратором платформы для каждой команды отдельно.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `1f446f83-bf6c-5025-b22c-23e615666c0b`, строки 4–5.\n   - Значения по умолчанию: не более **2000 вызовов/сутки на команду** и не более **50 вызовов/минуту**. Вызовы веб-поиска считаются отдельно: не более **300/сутки**.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `3bb8a3a0-f854-5968-9308-b53b06d19b57`, строки 8–9.\n     - Evidence ID: `ev_2169e8104664`.\n   - При превышении квоты новые вызовы отклоняются до начала следующих суток, текущая задача ставится на паузу. Повышение квоты согласует руководитель платформы.\n     - Источник: `data/agents/agent_tool_quotas.md`, fragment `fe34008c-d420-5cbb-9571-3a2e5513b527`, строки 12–13.\n     - Evidence ID: `ev_ec525fb49733`.\n\n2. **Ротация ключей шифрования состояния:**\n   - Документ: `data/ops/runbook_rb12.md` (document_id: `6ece6e18-e403-485e-bdb9-6877f1783728`).\n   - Код процедуры: **NEWDOC-2026-F**.\n   - Ротация выполняется раз в 90 дней.\n     - Источник: `data/ops/runbook_rb12.md`, fragment `1f4b463d-98d7-5680-a2f5-eb71a8692097`, строка 4.\n     - Evidence ID: `ev_e2aa3cec8f44`.\n   - Старый ключ отзывается через 7 дней после перешифровки.\n     - Источник: `data/ops/runbook_rb12.md`, fragment `9223bd60-d071-5fbc-afa8-0024f253794c`, строка 9.\n     - Evidence ID: `ev_029cbe7538f1`.\n\n3. **Выбор хранилища для DocSearch:**\n   - Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\n     - Источник: `data/meetings/meeting_m12.md`, fragment `a0ce2e93-dfe6-5ae6-a73b-566f8b981702`, строка 15.\n     - Evidence ID: `ev_bbbb2cdfa936`.\n\n4. **Ограничения подходов к хранению (выборка из `M8-deep1`):**\n   - Redis: используется как быстрый кэш состояния между шагами агента.\n     - Источник: `data/storage/st_redis_state.md`, fragment `95c85e6c-d413-51f0-871f-1501376c150"
+    }
+  },
+  {
+    "id": 5479,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11069,
+      "reserve": 2048,
+      "total": 13117,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 5480,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11069,
+      "actual_input": 8883,
+      "actual_output": 473,
+      "duration_s": 4.49,
+      "calibrated_cpt": 2.734
+    }
+  },
+  {
+    "id": 5481,
+    "task_id": "M8",
+    "ts": "2026-11-20T16:35:36+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "waiting for user input"
+    }
+  }
+]
