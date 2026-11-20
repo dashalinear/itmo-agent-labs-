@@ -11,7 +11,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
 Scenarios (task ids):
   A1     long local analysis of data/search (520-page handbook): simulated crash after a durable checkpoint
          (HARNESS_CRASH_AT=after_tool:30), then resume in a NEW process until completed
-  A_base the lab 1 agent (no harness) on the same task: baseline for the comparison table
+  A_base the lab 1 agent (no harness) on task A (recorded 16.11 with the older request: no ES/MCP part, 40 calls)
   D1     tiny token budget -> paused with a partial result; user raises the limit; resume keeps the spent counters
   T1     LLM timeout 1 s -> finite retries -> paused
   E1     cancel from another process while the task is running
@@ -124,7 +124,7 @@ try {
         Harness status --task-id A1 | Out-Null
         Run-Py scripts\artifact_after_restart.py --task-id A1
 
-        Step "8. A_base: the lab 1 agent without harness on the same task"
+        Step "8. A_base: the lab 1 agent without harness on task A"
         Harness baseline --spec demo\task_a_local.json --task-id A_base --max-model-calls 40 | Out-Null
 
         Step "9. D1: token budget exhausted -> partial; user raises the limit; resume keeps spent counters"

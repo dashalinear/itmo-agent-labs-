@@ -424,3 +424,18 @@ async def test_few_model_calls_left_puts_a_budget_hint_into_tool_results(cfg):
         hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
                 .read_text(encoding="utf-8").splitlines()]
         assert any("harness_budget" in m["content"] for m in hist if m["type"] == "ToolMessage")
+
+
+async def test_parallel_report_sections_do_not_collide(cfg):
+    """A1 (20.11): two write_report_section calls of one step failed with permission_denied (WinError 32) because both
+    replaced the same report file. The rendering is serialised now: all parallel sections are written."""
+    step = [tc("write_report_section", {"section_id": f"s{i}", "title": f"Раздел {i}", "body": "текст " * 200})
+            for i in range(6)]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=[step, "done"]), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        assert {s["section_id"] for s in r.store.sections("A")} == {f"s{i}" for i in range(6)}
+        hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
+                .read_text(encoding="utf-8").splitlines()]
+        res = [m for m in hist if m["type"] == "ToolMessage" and m["name"] == "write_report_section"]
+        assert len(res) == 6 and all('"ok": true' in m["content"] for m in res)

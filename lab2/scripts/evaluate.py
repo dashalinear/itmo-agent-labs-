@@ -102,7 +102,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--harness", default="A1")
     ap.add_argument("--baseline", default="A_base")
-    ap.add_argument("--tasks", nargs="*", default=["A1", "B1", "B2", "B3", "C1", "C2", "D1", "DL1", "E1", "G1", "G2", "I1", "T1"])
+    ap.add_argument("--tasks", nargs="*", default=["A1", "B1", "B2", "B3", "B4", "C1", "C2", "D1", "DL1", "E1", "G1", "G2", "I1", "T1"])
     args = ap.parse_args()
     manifest = json.loads((LAB2 / "corpus" / "manifest.json").read_text(encoding="utf-8"))
     out = {"tasks": {}, "facts": {}, "comparison": {}}

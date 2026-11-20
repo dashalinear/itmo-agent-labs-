@@ -17,6 +17,8 @@ from __future__ import annotations
 import hashlib
 import os
 import re
+import threading
+import time
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urlparse
@@ -28,6 +30,8 @@ from organizer.catalog import Catalog
 from organizer.results import ToolError, run_tool
 
 from .artifacts import ArtifactStore
+
+_RENDER_LOCKS: dict = {}          # task_id -> lock around the rendering of report.md
 from .budget import Budget
 from .report import render_report
 from .store import TaskStore
@@ -130,12 +134,23 @@ class TaskTools:
         return self.ws.service_path("tasks", self.task_id, "report.md")
 
     def render(self) -> str:
+        """Re-render report.md. Parallel write_report_section calls of one step run in threads: in A1 (20.11) two of
+        them wrote the same .tmp and os.replace failed with WinError 32. Now one lock per task serialises the
+        rendering, and a replace that hits a file still held by a reader is retried briefly."""
         path = self.report_path()
         path.parent.mkdir(parents=True, exist_ok=True)
-        text = render_report(self.store, self.task_id, self.budget.snapshot())
-        tmp = path.with_suffix(".tmp")
-        tmp.write_text(text, encoding="utf-8", newline="\n")
-        os.replace(tmp, path)
+        with _RENDER_LOCKS.setdefault(self.task_id, threading.Lock()):
+            text = render_report(self.store, self.task_id, self.budget.snapshot())
+            tmp = path.with_suffix(".tmp")
+            tmp.write_text(text, encoding="utf-8", newline="\n")
+            for attempt in range(5):
+                try:
+                    os.replace(tmp, path)
+                    break
+                except PermissionError:
+                    if attempt == 4:
+                        raise
+                    time.sleep(0.2 * (attempt + 1))
         return self.ws.rel(path)
 
     # -- evidence ---------------------------------------------------------------
