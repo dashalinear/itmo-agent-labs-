@@ -101,6 +101,27 @@ async def _ingest(env, files):
     return bid, staged, agent, verify
 
 
+async def test_failed_batch_is_restarted_a_bounded_number_of_times_over_watcher_starts(lab4env):
+    """A batch that keeps failing gets one new run per watcher start, but at most MAX_BATCH_RESTARTS in total."""
+    from dataclasses import replace
+    from topicflow.config import settings
+    from topicflow.watcher import MAX_BATCH_RESTARTS
+    st = replace(settings(), stable_s=0.0, watch_interval_s=0.0)
+    (lab4env.ws.root / "input" / "f.md").write_text("файл f", encoding="utf-8")
+    client = StubTemporal()
+    client.down = True
+    w = Watcher(client=client, cfg=lab4env.cfg, st=st, registry=lab4env.registry, log=lambda *a: None)
+    w.scan()
+    await w.tick()
+    bid = lab4env.registry.batches()[0]["batch_id"]
+    client.down = False
+    for _ in range(MAX_BATCH_RESTARTS + 2):                       # the watcher is started again and again
+        lab4env.registry.update_batch(bid, status="failed")
+        client.started.clear()                                    # the stub reports the workflow as not found
+        await Watcher(client=client, cfg=lab4env.cfg, st=st, registry=lab4env.registry, log=lambda *a: None).recover()
+    assert lab4env.registry.restarts(bid) == MAX_BATCH_RESTARTS
+
+
 async def test_ingestion_batch_is_idempotent_and_duplicates_are_not_indexed(lab4env):
     env = lab4env
     files = put(env, "initial", {"checkpoint_sqlite.md", "bm25_basics.md", "oncall.md"})

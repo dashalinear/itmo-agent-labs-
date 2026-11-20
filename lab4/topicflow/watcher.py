@@ -26,6 +26,7 @@ from temporalio.service import RPCError
 from .registry import BATCH_OPEN, Registry, batch_id_for
 
 IGNORED_SUFFIXES = (".part", ".tmp", ".crdownload", ".partial", ".swp")
+MAX_BATCH_RESTARTS = 3          # restarts of a failed / incomplete batch in total, over all watcher starts
 
 
 def is_temporary(name: str) -> bool:
@@ -99,8 +100,9 @@ class Watcher:
 
     async def recover(self, unstarted_only: bool = False) -> None:
         """On start: restart every batch whose workflow is neither running nor completed (failed/incomplete ones get
-        one new run per watcher start, so retries stay bounded). Periodically (unstarted_only): only batches that were
-        registered but whose workflow could not be started (e.g. Temporal was unavailable at that moment)."""
+        one new run per watcher start and at most MAX_BATCH_RESTARTS in total, so retries stay bounded).
+        Periodically (unstarted_only): only batches that were registered but whose workflow could not be started
+        (e.g. Temporal was unavailable at that moment)."""
         statuses = ("detected",) if unstarted_only else BATCH_OPEN + ("incomplete", "failed")
         for b in self.reg.batches(statuses):
             wid = f"ingest-{b['batch_id']}"
@@ -112,6 +114,14 @@ class Watcher:
                     continue
             except RPCError:
                 pass                                            # never started (watcher stopped in between)
+            if b["status"] in ("incomplete", "failed"):
+                # a batch that keeps failing is restarted at most MAX_BATCH_RESTARTS times in total, also across
+                # watcher restarts (counted in the registry); after that it waits for the user
+                if self.reg.restarts(b["batch_id"]) >= MAX_BATCH_RESTARTS:
+                    self.log(f"[watcher] batch {b['batch_id']} ({b['status']}) was restarted {MAX_BATCH_RESTARTS} times "
+                             "already: not restarted again, see `status` and the workflow history")
+                    continue
+                self.reg.count_restart(b["batch_id"])
             await self.start_batch(b["batch_id"], f"restart of unfinished batch {b['batch_id']} ({b['status']})")
 
     async def tick(self) -> str | None:

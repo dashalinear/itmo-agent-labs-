@@ -96,7 +96,7 @@ class HarnessContext:
         for d in self.store.documents(self.task_id):
             pages = set()
             for r in self.store.ranges(self.task_id, d["path"], d["content_hash"]):
-                if r["unit"] == "page":
+                if r["unit"] in ("page", "page_part"):        # read_pages or read_lines
                     pages.update(range(r["start_no"], r["end_no"] + 1))
             docs.append(f"{d['path']}: read {len(pages)}/{d['pages']} pages{', searched' if d['searched'] else ''}")
         q = self.store.url_counts(self.task_id)

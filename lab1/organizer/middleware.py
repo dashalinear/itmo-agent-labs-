@@ -46,6 +46,8 @@ class ToolGuardMiddleware(AgentMiddleware):
         if not isinstance(msg, ToolMessage):
             return msg
         text = _content_text(msg.content)
+        if text.lstrip().startswith('{"ok": false'):
+            msg.status = "error"            # the trace shows a failed tool as an error, not as "success"
         if len(text) > self.max_chars:
             msg.content = (text[: self.max_chars] +
                            f"\n...[tool output truncated by harness: {len(text)} chars > {self.max_chars}; "

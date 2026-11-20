@@ -361,13 +361,46 @@ class CompactionMiddleware(AgentMiddleware):
         text = "\n".join(lines)
         return text if len(text) <= cap_chars else text[: cap_chars - 200] + "\n…(правила: хвост обрезан)…\n" + text[-180:]
 
+    SUMMARY_SECTIONS = ("Цель", "Ограничения пользователя", "Решения и договорённости",
+                        "Подтверждённые факты (с источниками)", "Прогресс", "Открытые вопросы и следующий шаг",
+                        "Артефакты")
+
+    def _complete_sections(self, text: str, msgs: list[BaseMessage], cut: bool) -> tuple[str, list[str]]:
+        """The summary must keep all 7 sections. If the model ran into max_tokens, the unfinished last line is
+        dropped; every missing section is then added by rules from the compacted messages (marked as such)."""
+        if cut and "\n" in text:
+            text = text[: text.rstrip().rfind("\n")].rstrip()
+        have = {h.strip() for h in re.findall(r"^##\s*(.+?)\s*$", text, flags=re.M)}
+        missing = [h for h in self.SUMMARY_SECTIONS if h not in have]
+        if not missing:
+            return text, []
+        arts = sorted({a for m in msgs for a in re.findall(r"\bart_[0-9a-f]{12,20}\b", _text(m.content))})
+        evs = sorted({a for m in msgs for a in re.findall(r"\bev_[0-9a-f]{12,20}\b", _text(m.content))})
+        calls = [tc["name"] for m in msgs if isinstance(m, AIMessage) for tc in m.tool_calls]
+        plan = (self.ctx.store.get_task(self.ctx.task_id) or {}).get("plan") or []
+        todo = [st.get("title", "") for st in plan if isinstance(st, dict) and st.get("status") not in ("done", "completed")]
+        fill = {
+            "Цель": "см. контракт задачи",
+            "Ограничения пользователя": "см. контракт задачи (ограничения [C*] передаются в каждом вызове)",
+            "Решения и договорённости": "—",
+            "Подтверждённые факты (с источниками)": ("evidence в этом фрагменте: " + ", ".join(evs)) if evs else "—",
+            "Прогресс": (f"в сжатом фрагменте {len(calls)} вызовов tools: "
+                         + ", ".join(f"{n}×{calls.count(n)}" for n in sorted(set(calls)))) if calls else "—",
+            "Открытые вопросы и следующий шаг": ("невыполненные шаги плана: " + "; ".join(todo)) if todo else "по плану задачи",
+            "Артефакты": ", ".join(arts) if arts else "—",
+        }
+        text += "".join(f"\n\n## {h}\n(дополнено правилами: модель не дописала раздел) {fill[h]}" for h in missing)
+        return text, missing
+
     async def _summarize(self, prev: str, msgs: list[BaseMessage]) -> dict:
         ctx, L = self.ctx, self.ctx.limits
         cap_chars = int(L.summary_max_tokens * ctx.counter.cpt * 1.3)
         if ctx.summarizer is None:
             return {"summary": self._rules_summary(prev, msgs, cap_chars), "method": "rules(no summarizer)",
                     "chunks": 0, "cost_in": 0, "cost_out": 0}
-        sys_text = SUMMARIZER_PROMPT.format(words=int(L.summary_max_tokens * 0.6))
+        # Russian text costs about 2.5-3 tokens per word on qwen; with 0.6 words per token almost every summary
+        # hit max_tokens and lost its last sections (audit of 20.11: 38 of 39 summaries ended mid-sentence)
+        sys_text = SUMMARIZER_PROMPT.format(words=int(L.summary_max_tokens * 0.3))
         limit_in = min(ctx.working_limit, ctx.window) - L.summary_max_tokens
         rendered = [_render_for_summary(m, L.summary_tool_clip_chars) for m in msgs]
         contract = ("TASK CONTRACT (copy every user constraint VERBATIM with its [tag] into "
@@ -442,7 +475,10 @@ class CompactionMiddleware(AgentMiddleware):
                 summary = self._rules_summary(summary, msgs[i:j], cap_chars)
                 method = "llm+rules(empty answer)"
             else:
-                summary = text[:cap_chars]
+                cut = (getattr(ai, "response_metadata", None) or {}).get("finish_reason") == "length"
+                summary, added = self._complete_sections(text[:cap_chars], msgs[i:j], cut)
+                if added:
+                    method = "llm+rules(sections " + ", ".join(added) + ")"
             chunks += 1
             i = j
         return {"summary": summary, "method": method, "chunks": chunks, "cost_in": cost_in, "cost_out": cost_out}

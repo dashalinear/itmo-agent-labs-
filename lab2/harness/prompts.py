@@ -56,6 +56,7 @@ Rules:
 - Every confirmed fact keeps its source: document path or URL, page/lines and evidence_id if present; copy numbers and codes exactly (e.g. "АС-01", "12 первичных шардах").
 - Progress: which documents/pages/URLs were read or searched, which report sections exist, what remains.
 - Keep artifact_id values that may be needed again.
+- All 7 sections are required, the last ones too: write short bullet points, never long prose, so the summary fits the word limit; better one line per section than a missing section.
 - Do not invent anything that is not in the input. No preamble, only the summary."""
 
 

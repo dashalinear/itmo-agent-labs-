@@ -200,17 +200,21 @@ if ($Part -eq "final2") {
     Step "G1. ${f2}: deep and exhaustive in parallel, the main agent answers meanwhile and uses both results"
     Nav chat --task-id $f2 --script demo\dialog_final2_ru.txt | Out-Null
 
-    & $py -m navsearch.cli status --task-id EXP4 | Out-Null
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "EXP4 is already recorded (partial -> resume); kept as it is"
-    } else {
-        Step "G2. EXP4: exhaustive with a tiny budget (partial), remainder saved, resume from the registry's resume_cursor"
-        Nav subagent --kind exhaustive --scope storage --task-id EXP4 --set max_model_calls=6 --request-file demo/request_exhaustive_ru.txt | Out-Null
-        New-Item -ItemType Directory -Force results\EXP4 | Out-Null
-        & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_partial.json
-        Nav resume --task-id EXP4 --set max_model_calls=120 | Out-Null
-        & $py -m navsearch.cli coverage --task-id EXP4 | Out-File -Encoding utf8 results\EXP4\coverage_final.json
+    # the same for the partial -> resume demo: a new id from EXP5 on, earlier final2 attempts (EXP4, ...) removed
+    $exp = $null
+    for ($i = 5; $i -lt 100 -and -not $exp; $i++) {
+        & $py -m navsearch.cli status --task-id "EXP$i" | Out-Null
+        if ($LASTEXITCODE -ne 0) { $exp = "EXP$i" }
     }
+    $oldExp = '^EXP([4-9]|[1-9][0-9])([_-]|$)'
+    Get-ChildItem traces -File | Where-Object { $_.Name -match $oldExp } | Remove-Item -Force
+    Get-ChildItem results -Directory | Where-Object { $_.Name -match $oldExp } | Remove-Item -Recurse -Force
+    Step "G2. ${exp}: exhaustive with a tiny budget (partial), remainder saved, resume in a new process"
+    Nav subagent --kind exhaustive --scope storage --task-id $exp --set max_model_calls=8 --request-file demo/request_exhaustive_ru.txt | Out-Null
+    New-Item -ItemType Directory -Force "results\$exp" | Out-Null
+    & $py -m navsearch.cli coverage --task-id $exp | Out-File -Encoding utf8 "results\$exp\coverage_partial.json"
+    Nav resume --task-id $exp --set max_model_calls=120 | Out-Null
+    & $py -m navsearch.cli coverage --task-id $exp | Out-File -Encoding utf8 "results\$exp\coverage_final.json"
 }
 
 Step "13. Export and technical results"

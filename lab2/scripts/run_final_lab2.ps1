@@ -154,7 +154,7 @@ try {
     Step "5. Fresh task root; old traces/results of the re-recorded tasks are replaced"
     Run-Py scripts\prepare_workspace.py --reset
     $ids = @("A1", "D1", "DL1", "E1", "P1", "I1", "C2", "G2")
-    if (-not $SkipB3) { $ids += "B3" }
+    if (-not $SkipB3) { $ids += "B3"; $ids += "B4" }
     $ids = @($ids | Where-Object { Want $_ })
     Write-Host ("re-recorded task ids: " + ($ids -join ", "))
     foreach ($id in $ids) {
@@ -271,6 +271,16 @@ try {
         Harness run --task-id B3 | Out-Null
         Resume-Until-Done "B3" 2
         Harness status --task-id B3 | Out-Null
+    }
+    if (-not $SkipB3 -and (Want "B4")) {
+        # B4 = the same topic under the assignment's own requirements (second round of refined queries, stop when
+        # the review is done). B3 also demands a followed link and <= 60 % pages per domain, which the ITMO
+        # network does not allow (most non-arXiv sites time out there), so B3 can only end partial.
+        Step "13b. B4: real web research, second round, completion by the review criteria"
+        Harness new --spec demo	ask_b4_web.json --set $fit | Out-Null
+        Harness run --task-id B4 | Out-Null
+        Resume-Until-Done "B4" 2
+        Harness status --task-id B4 | Out-Null
     }
 } finally {
     Stop-Process -Id $fx.Id -Force -ErrorAction SilentlyContinue

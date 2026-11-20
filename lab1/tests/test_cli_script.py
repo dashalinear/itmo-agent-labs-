@@ -263,3 +263,13 @@ def test_empty_model_answer_gets_a_note():
                 AIMessage(content="", usage_metadata={"input_tokens": 10, "output_tokens": 4096, "total_tokens": 4106})]
     note = empty_answer_note(produced)
     assert "пустой ответ" in note and "4096" in note and "upsert_excerpts: mcp_unavailable" in note
+
+
+def test_failed_tool_result_has_error_status():
+    """A tool that answers ok:false is marked status="error" in the ToolMessage (and so in the trace)."""
+    from langchain_core.messages import ToolMessage as TM
+    from organizer.middleware import ToolGuardMiddleware
+    g = ToolGuardMiddleware()
+    bad = g._bound(TM(content=json.dumps({"ok": False, "tool": "read", "error": {"type": "not_found"}}), tool_call_id="1"))
+    good = g._bound(TM(content=json.dumps({"ok": True, "tool": "read", "data": {}}), tool_call_id="2"))
+    assert bad.status == "error" and good.status == "success"

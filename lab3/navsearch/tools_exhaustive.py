@@ -1,7 +1,7 @@
 """Exhaustive search tools: NO top-k, NO vector selection, NO ranking that could exclude documents.
 
   area_define(folder | document_ids)  fixes the finite area from L0: every document and ALL its L2 fragments
-  area_next(cursor)                   next fragments of the area in corpus order (path, ordinal), full text;
+  area_next(cursor, no_mention)       next fragments of the area in corpus order (path, ordinal), full text;
                                       delivered fragments go to the coverage registry (state.db ranges, unit=fragment)
   area_grep(pattern, cursor)          literal/regex over ALL source lines of the area, paged to the last hit
   area_fulltext(query, cursor)        Elasticsearch full-text MATCH as a filter, sorted by (path, ordinal) with
@@ -49,6 +49,9 @@ class AreaArgs(BaseModel):
 
 class NextArgs(BaseModel):
     cursor: str | None = Field(None, description="next_cursor of the previous batch; omit to start at the first unread fragment")
+    no_mention: list[str] = Field(default_factory=list, description=(
+        "fragment_ids of the PREVIOUS batch that contain no mention (a fragment with a record_mention needs no entry); "
+        "every fragment of the previous batch must have one of the two verdicts"))
 
 
 class AreaGrepArgs(BaseModel):
@@ -130,9 +133,11 @@ class ExhaustiveTools:
         return idx
 
     # ------------------------------------------------------------------ full reading
-    def area_next(self, cursor: str | None = None) -> dict:
+    def area_next(self, cursor: str | None = None, no_mention: list[str] | None = None) -> dict:
         """A batch counts as READ only when the agent asks for the next one with next_cursor (acknowledgement):
-        a batch delivered right before a budget stop / crash is delivered again on resume (cursor=None)."""
+        a batch delivered right before a budget stop / crash is delivered again on resume (cursor=None).
+        The acknowledgement needs a verdict for EVERY fragment of that batch: a recorded mention or an entry in
+        no_mention. Without it the model could skim a batch and move on (M8/EXP4 missed L-ST-30 this way)."""
         e = self.env
         a = self.area()
         ids = a["fragment_ids"]
@@ -140,7 +145,21 @@ class ExhaustiveTools:
         if cursor:
             c = dec_cursor(cursor, {"p": 0, "from": 0})
             pos = c["p"]
-            for fid in ids[c.get("from", pos): pos]:            # acknowledge the previous batch
+            batch = ids[c.get("from", pos): pos]
+            done = self._read_set()
+            cited = {ev.get("fragment_id") for ev in e.store.evidence(e.task_id)}
+            said_no = set(no_mention or [])
+            missing = [fid for fid in batch if fid not in done and fid not in cited and fid not in said_no]
+            if missing:
+                raise ToolError("verdict_required",
+                                f"{len(missing)} fragment(s) of the previous batch have no verdict. For each one either "
+                                "record_mention (if it contains a mention, also without the keyword) or list its "
+                                "fragment_id in no_mention, then call area_next with the same cursor.",
+                                missing=[{"fragment_id": fid, "path": idx[fid].get("path"),
+                                          "lines": [idx[fid].get("start_line"), idx[fid].get("end_line")]} for fid in missing])
+            if said_no & set(batch):
+                e.store.event(e.task_id, "no_mention_verdicts", {"fragments": sorted(said_no & set(batch))})
+            for fid in batch:                                    # acknowledge the previous batch
                 f = idx[fid]
                 e.store.add_range(e.task_id, fid, f["content_hash"], "fragment", f["ordinal"], f["ordinal"])
         else:
@@ -161,8 +180,9 @@ class ExhaustiveTools:
             i += 1
         return {"done": False, "batch": [pos + 1, i], "of": len(ids), "fragments": out,
                 "next_cursor": enc_cursor({"p": i, "from": pos}), "coverage": self._coverage_short(),
-                "instruction": "Record every mention in this batch with record_mention, then call area_next(next_cursor); "
-                               "the batch counts as read with that call. done=true comes after the last batch."}
+                "instruction": "Record every mention in this batch with record_mention, then call area_next(next_cursor, "
+                               "no_mention=[fragment_ids of this batch without a mention]); the batch counts as read "
+                               "with that call. done=true comes after the last batch."}
 
     # ------------------------------------------------------------------ exhaustive grep / full-text passes
     def area_grep(self, pattern: str, regex: bool = False, ignore_case: bool = True, cursor: str | None = None) -> dict:

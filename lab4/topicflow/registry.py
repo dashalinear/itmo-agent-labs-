@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS files (
 CREATE TABLE IF NOT EXISTS batches (
   batch_id TEXT PRIMARY KEY, workflow_id TEXT, run_id TEXT, task_id TEXT, status TEXT NOT NULL,
   files TEXT NOT NULL, result TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS batch_restarts (batch_id TEXT PRIMARY KEY, n INTEGER NOT NULL, updated_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS reports (
   run_key TEXT PRIMARY KEY, workflow_id TEXT, run_id TEXT, task_id TEXT, status TEXT NOT NULL,
   path TEXT, document_id TEXT, frozen INTEGER, result TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
@@ -68,6 +69,16 @@ class Registry:
     def _all(self, sql: str, params: tuple = ()) -> list[dict]:
         with self._lock:
             return [dict(r) for r in self.db.execute(sql, params).fetchall()]
+
+    # ------------------------------------------------------------------ restarts of failed batches
+    def restarts(self, batch_id: str) -> int:
+        r = self._all("SELECT n FROM batch_restarts WHERE batch_id=?", (batch_id,))
+        return r[0]["n"] if r else 0
+
+    def count_restart(self, batch_id: str) -> int:
+        self._x("INSERT INTO batch_restarts VALUES (?,1,?) ON CONFLICT(batch_id) DO UPDATE SET n=n+1, updated_at=excluded.updated_at",
+                (batch_id, now_iso()))
+        return self.restarts(batch_id)
 
     # ------------------------------------------------------------------ files / batches
     def known(self, input_path: str, size: int, mtime_ns: int) -> dict | None:

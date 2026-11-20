@@ -78,7 +78,7 @@ def render_report(store: TaskStore, task_id: str, budget: dict) -> str:
         for d in docs:
             read = set()
             for r in store.ranges(task_id, d["path"], d["content_hash"]):
-                if r["unit"] == "page":
+                if r["unit"] in ("page", "page_part"):        # read_pages or read_lines
                     read.update(range(r["start_no"], r["end_no"] + 1))
             out.append(f"| {d['path']} | {d['pages']} | {len(read)} | {'да' if d['searched'] else 'нет'} |")
         out.append("")

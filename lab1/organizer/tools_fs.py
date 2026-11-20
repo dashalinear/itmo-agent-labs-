@@ -149,6 +149,12 @@ class FileTools:
         else:
             if recursive:
                 for dirpath, dirs, names in os.walk(root, followlinks=False):
+                    # os.walk does not follow symlinks but does descend into NTFS junctions: such a directory is
+                    # reported as skipped by its own name, its content (outside the workspace) is never listed
+                    for d in list(dirs):
+                        if self.ws.is_symlink_escape(Path(dirpath) / d):
+                            dirs.remove(d)
+                            skipped.append({"path": self.ws.rel(Path(dirpath) / d), "reason": "link_outside_workspace"})
                     dirs.sort()
                     for name in sorted(names):
                         files.append(Path(dirpath) / name)

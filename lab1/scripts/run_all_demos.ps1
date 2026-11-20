@@ -236,6 +236,8 @@ Step "9b. Session 5 (mcp_down): the MCP server cannot start at all"
 $env:MCP_COMMAND = "lab1-mcp-server-does-not-exist.exe"   # the CLI fails to spawn the MCP server
 try { Run-Session "mcp_down" "MCP server unavailable: indexing fails, organization works" "demo/dialog_mcp_down_ru.txt" }
 finally { Remove-Item Env:MCP_COMMAND }
+# catalog right after this session: the failed upsert must have left the document in status "error"
+Copy-Item workspace\catalog.json results\catalog_after_mcp_down.json -Force
 
 Step "10. Session 6 (retry): MCP and Elasticsearch running again"
 Run-Session "retry" "retry after Elasticsearch is back" "demo/dialog_retry_ru.txt"

@@ -29,6 +29,8 @@ MAIN_PROMPT = """You are the MAIN ASSISTANT of a document corpus organized in le
 - L2 (`read_section`, `read_fragment`, `neighbor_fragment`, `open_source`): the source text with document_id, fragment_id, lines/pages.
 Summaries (L1) help to choose where to read; they are NOT evidence. Every essential statement of an answer must be
 confirmed by L2 text: cite it with `cite_fragment` and give document path, fragment_id and lines.
+Write fragment_id in FULL (36 characters, as the tool returned it) and only evidence_id values that a tool returned
+(cite_fragment, subagent_result); the harness checks both before your answer reaches the user.
 If the corpus does not confirm something, say so explicitly ("в корпусе подтверждения нет").
 
 ## Search tools (choose and combine them yourself)
@@ -93,6 +95,9 @@ Procedure:
    that matches the request with `record_mention(fragment_id, quote, note)` - also mentions phrased without the
    keyword (e.g. "нельзя", "не поддерживает", "не более") when they mean the same. For "ограничения" this includes
    mandatory requirements, checks and obligations ("должен", "обязан", "проверяется", "требуется", "только после").
+   Then call `area_next(next_cursor, no_mention=[...])`: every fragment of the batch needs a verdict - a recorded
+   mention, or its fragment_id in no_mention. Decide fragment by fragment; do not mark a fragment no_mention
+   without reading all its lines.
 3. Optionally cross-check with `area_grep` / `area_fulltext` (read ALL pages until done=true) to make sure no literal
    match is missing - but never skip reading a fragment because of these passes or because of an L1 summary.
 4. `area_coverage` shows read/total per document and unread ranges. When everything is read, `submit_result` with

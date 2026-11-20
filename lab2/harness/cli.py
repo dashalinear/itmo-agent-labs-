@@ -65,7 +65,7 @@ def print_status(store: TaskStore, task_id: str, as_json: bool = False) -> int:
     for d in store.documents(task_id):
         pages = set()
         for r in store.ranges(task_id, d["path"], d["content_hash"]):
-            if r["unit"] == "page":
+            if r["unit"] in ("page", "page_part"):        # read_pages or read_lines
                 pages.update(range(r["start_no"], r["end_no"] + 1))
         docs.append({"path": d["path"], "pages_read": len(pages), "pages": d["pages"], "searched": bool(d["searched"])})
     info = {"task_id": task_id, "kind": task["kind"], "status": task["status"], "reason": task["status_reason"],

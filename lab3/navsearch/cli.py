@@ -105,6 +105,8 @@ INGEST_REQUEST = ("Организуй все файлы из папки {folder}
 
 
 PATH_RX = re.compile(r"data/[\w.\-/]+\.(?:md|txt)")
+EV_RX = re.compile(r"\bev_[0-9a-f]+\b")
+SHORT_FRAG_RX = re.compile(r"(?:fragment_id|fragment|frag)[\s:=`'\"]{0,4}([0-9a-f]{8})(?![0-9a-f-])", re.I)
 
 
 def answer_issue(app: Lab3, answer: str) -> str | None:
@@ -115,6 +117,18 @@ def answer_issue(app: Lab3, answer: str) -> str | None:
     if not text or letters < 0.3 * len(text) or letters < 5:
         return ("Предыдущий ответ пустой или нечитаемый. Ответь на последний вопрос пользователя заново, по-русски, "
                 "опираясь на результаты инструментов; если нужных данных нет, вызови инструменты.")
+    evs = set(EV_RX.findall(text))
+    if evs and getattr(app, "runner", None) is not None:
+        st = app.runner.store
+        known_ev = {e["evidence_id"] for t in st.list_tasks() for e in st.evidence(t["task_id"])}
+        bad = sorted(evs - known_ev)
+        if bad:
+            return ("В ответе есть evidence_id, которых нет ни в одной задаче: " + ", ".join(bad[:8]) +
+                    ". Называй только evidence_id, которые вернули cite_fragment / record_mention или subagent_result.")
+    short = sorted(set(SHORT_FRAG_RX.findall(text)))
+    if short:
+        return ("В ответе fragment_id сокращены до 8 символов (" + ", ".join(short[:6]) + "). Указывай fragment_id "
+                "целиком, как его вернул инструмент (36 символов), иначе по ссылке нельзя открыть фрагмент L2.")
     paths = set(PATH_RX.findall(text))
     if paths:
         ws = HarnessWorkspace(app.cfg.root)

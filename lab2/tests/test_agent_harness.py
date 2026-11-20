@@ -377,3 +377,37 @@ async def test_reading_without_evidence_gets_a_strategy_hint(cfg):
                 .read_text(encoding="utf-8").splitlines()]
         reads = [m for m in hist if m["type"] == "ToolMessage" and m["name"] == "read_lines"]
         assert ["harness_hint" in m["content"] for m in reads] == [False, False, True, False, False, True, False]
+
+
+async def test_line_reads_count_as_partly_read_pages(cfg):
+    """A1 read the handbook with read_lines only, and the progress showed 0 pages: now the pages of the lines
+    count as partly read (unit page_part) in task_progress, the digest, the report and status.json."""
+    plan = [[tc("read_lines", {"path": HANDBOOK, "start_line": 1, "end_line": 8})],
+            [tc("read_lines", {"path": HANDBOOK, "start_line": 300, "end_line": 305})], "done"]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        d = next(x for x in r.store.documents_progress("A") if x["path"] == HANDBOOK)
+        assert d["pages_read"] >= 2 and d["status"] == "read"
+
+
+def test_cut_summary_gets_its_missing_sections(cfg):
+    """The summarizer hit max_tokens: the unfinished line is dropped and the missing sections are added by rules."""
+    from harness.middleware import CompactionMiddleware
+    from langchain_core.messages import AIMessage, ToolMessage
+    cm = CompactionMiddleware.__new__(CompactionMiddleware)
+    class Ctx:
+        task_id = "A"
+        class store:
+            @staticmethod
+            def get_task(_):
+                return {"plan": [{"title": "найти АС-03", "status": "doing"}]}
+    cm.ctx = Ctx()
+    text = "## Цель\nобзор\n## Ограничения пользователя\n[C1]\n## Прогресс\nпрочитаны стр. 4, 26"
+    msgs = [AIMessage(content="", tool_calls=[{"name": "read_pages", "args": {}, "id": "1"}]),
+            ToolMessage(content='{"ok": true, "artifact_id": "art_0123456789abcdef"}', tool_call_id="1")]
+    out, added = cm._complete_sections(text, msgs, cut=True)
+    assert "стр. 4, 26" not in out and "## Прогресс" in out                 # the cut line is gone
+    assert added == ["Решения и договорённости", "Подтверждённые факты (с источниками)",
+                     "Открытые вопросы и следующий шаг", "Артефакты"]
+    assert "найти АС-03" in out and "art_0123456789abcdef" in out

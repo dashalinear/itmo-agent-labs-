@@ -305,6 +305,31 @@ def check_b3(out: list) -> None:
     out.append(row("B3", "домены прочитанных страниц (информативно)", hosts, True))
 
 
+def check_b4(out: list) -> None:
+    """B4: the web research under the assignment's own requirements must end completed by the criteria."""
+    st = jload("B4", "status.json")
+    if not st:
+        return
+    q = jload("B4", "queue.json", {}) or {}
+    done = [u for u in q.get("urls", []) if u["status"] == "done"]
+    hosts = {}
+    for u in done:
+        h = re.sub(r"^https?://([^/]+).*$", r"\1", u.get("final_url") or u["url"])
+        hosts[h] = hosts.get(h, 0) + 1
+    t = st["task"]
+    out.append(row("B4", "статус completed по критериям обзора (complete_task)", f"{t['status']} ({(t['status_reason'] or '')[:60]})",
+                   t["status"] == "completed"))
+    crit = st.get("criteria") or {}
+    after = [e["data"]["query"] for e in events("B4", "search_round") if (e["data"] or {}).get("pages_read_before")]
+    out.append(row("B4", "второй раунд: новые запросы после чтения страниц", f"{len(after)} запросов после чтения",
+                   len(after) >= crit.get("min_queries_after_reading", 1)))
+    out.append(row("B4", f"прочитано страниц (web_fetch) не меньше {crit.get('min_web_pages_read', 5)}", len(done),
+                   len(done) >= crit.get("min_web_pages_read", 5)))
+    reasons = [u for u in q.get("urls", []) if u["status"] != "found" and not (u.get("reason") or "").strip()]
+    out.append(row("B4", "у каждого отобранного или отклонённого URL есть причина", f"без причины: {len(reasons)}", not reasons))
+    out.append(row("B4", "домены прочитанных страниц (информативно)", hosts, True))
+
+
 def comparison_md() -> str | None:
     ev = RES / "evaluation.json"
     if not ev.exists():
@@ -456,6 +481,7 @@ def main() -> None:
     check_i1(out)
     check_g2(out)
     check_b3(out)
+    check_b4(out)
     (RES / "final_checks.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     md = ["| задача | ожидаемое свойство | фактически | итог |", "|---|---|---|---|"]
     for r in out:

@@ -128,6 +128,8 @@ def scenario_checks(sessions: list[dict]) -> list[tuple[bool, str]]:
         for t in by["guard"]["summary"]["turns"]:
             okr.update(t["ok_results"])
         checks.append((okr.get("web_fetch", 0) > 0, "guard: web_fetch succeeded on the local fixture server"))
+        for t in ("head", "tail", "write"):
+            checks.append((okr.get(t, 0) > 0, f"guard: a successful {t} call"))
         we = Counter(k for t in by["guard"]["summary"]["turns"] for k in t["errors"].elements() if k.startswith("web_fetch:"))
         for t in ("http_error", "timeout", "network_error"):
             checks.append((we.get(f"web_fetch:{t}", 0) > 0, f"guard: web_fetch returned {t}"))
@@ -141,6 +143,11 @@ def scenario_checks(sessions: list[dict]) -> list[tuple[bool, str]]:
         checks.append((str(s["start"].get("mcp", "")).startswith("MCP unavailable"),
                        "mcp_down: the CLI could not start the MCP server (session_start.mcp)"))
         checks.append((e.get("mcp_unavailable", 0) > 0, "mcp_down: an index tool returned mcp_unavailable"))
+        cat = RESULTS / "catalog_after_mcp_down.json"
+        if cat.exists():
+            docs = json.loads(cat.read_text(encoding="utf-8"))["documents"]
+            checks.append((any(d.get("indexing_status") == "error" for d in docs),
+                           "mcp_down: the document whose indexing failed has status error in the catalog"))
         moved = sum(t["ok_results"].get("move", 0) for t in s["turns"])
         checks.append((moved > 0, "mcp_down: file organization still works (a successful move)"))
     for s in sessions:

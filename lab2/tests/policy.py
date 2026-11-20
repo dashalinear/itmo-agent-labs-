@@ -73,6 +73,8 @@ class SummaryModel(BaseChatModel):
         self.inputs.append(text)
         facts = sorted({w for w in ("АС-01", "АС-02", "АС-03", "INC-2026-017", "nDCG@10") if w in text})
         body = ("## Цель\nобзор документов поиска\n## Ограничения пользователя\n[C1] [C2] [C3] [C4] [C5]\n"
-                f"## Подтверждённые факты (с источниками)\n{', '.join(facts) or '—'}\n## Прогресс\nчитаются страницы\n")
+                "## Решения и договорённости\n—\n"
+                f"## Подтверждённые факты (с источниками)\n{', '.join(facts) or '—'}\n## Прогресс\nчитаются страницы\n"
+                "## Открытые вопросы и следующий шаг\nчитать дальше\n## Артефакты\n—\n")
         return ChatResult(generations=[ChatGeneration(message=AIMessage(
             content=body, usage_metadata={"input_tokens": len(text) // 3, "output_tokens": 60, "total_tokens": len(text) // 3 + 60}))])

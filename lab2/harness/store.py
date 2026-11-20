@@ -268,6 +268,18 @@ class TaskStore:
                    (task_id, path, document_id, content_hash, pages, lines, chars, 0, status, now_iso()))
         return "changed" if old else "new"
 
+    def documents_progress(self, task_id: str) -> list[dict]:
+        """Documents with the pages read (by read_pages or partly by read_lines) and a status from that."""
+        out = []
+        for d in self.documents(task_id):
+            read = set()
+            for r in self.ranges(task_id, d["path"], d["content_hash"]):
+                if r["unit"] in ("page", "page_part"):
+                    read.update(range(r["start_no"], r["end_no"] + 1))
+            out.append({**d, "pages_read": len(read),
+                        "status": "read" if read else ("searched" if d["searched"] else d["status"])})
+        return out
+
     def documents(self, task_id: str) -> list[dict]:
         return self._all("SELECT * FROM documents WHERE task_id=? ORDER BY path", (task_id,))
 

@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from typing import Literal
 
 from langchain_core.tools import BaseTool, StructuredTool
@@ -266,11 +267,20 @@ class SubmitTools:
             raise ToolError("empty_arguments", "submit_result came with no arguments at all: the output was probably cut "
                             "at max_tokens. Call it again with open_questions first and findings of at most 400 words.")
         if not (findings or "").strip():
-            by_doc: dict[str, int] = {}
+            ids_by_doc: dict[str, list[str]] = {}
             for e in ev:
-                by_doc[e["source"]] = by_doc.get(e["source"], 0) + 1
-            findings = (f"Найдено подтверждений: {len(ev)} в {len(by_doc)} документах: "
-                        + "; ".join(f"{p} — {n}" for p, n in sorted(by_doc.items())) + " (итог собран harness по evidence)")
+                ids_by_doc.setdefault(e["source"], []).append(e["evidence_id"])
+            findings = (f"Найдено подтверждений: {len(ev)} в {len(ids_by_doc)} документах: "
+                        + "; ".join(f"{p} — {len(v)} ({', '.join(v)})" for p, v in sorted(ids_by_doc.items()))
+                        + " (итог собран harness по evidence)")
+        known = {e["evidence_id"] for e in ev}
+        cited = set(re.findall(r"\bev_[0-9a-f]{12}\b", findings))
+        unknown = sorted(set(re.findall(r"\bev_[0-9a-f]+", findings)) - known)
+        if unknown:
+            # M8 chat6 relayed "ev_7245ffda" (a fragment id prefix): only real evidence ids may be cited
+            raise ToolError("unknown_evidence", "findings cite evidence ids that do not exist in this task: "
+                            + ", ".join(unknown[:10]) + ". Use only evidence_id values returned by record_mention / "
+                            "cite_fragment.", known=sorted(known)[:40])
         if self.kind == "exhaustive":
             cov = self.coverage_fn()
             if not cov["complete"]:
@@ -282,10 +292,27 @@ class SubmitTools:
             if len(ev) < 2 or searches < 2:
                 raise ToolError("criteria_not_met", "Deep search needs at least 2 search calls and 2 cited fragments",
                                 searches=searches, evidence=len(ev))
+            l2 = sum(1 for e in self.store.events(self.task_id, "corpus_search") if (e["data"] or {}).get("level") == "L2")
+            if not l2:
+                raise ToolError("criteria_not_met", "Deep search needs at least one search on L2 (source fragments), "
+                                "not only on L1 summaries")
+            need = min(3, len(known))
+            if len(cited & known) < need:
+                raise ToolError("evidence_refs_required", f"findings must refer to the evidence: cite at least {need} "
+                                "evidence_id values next to the conclusions they confirm; a conclusion without an "
+                                "evidence_id goes to open_questions as unconfirmed", known=sorted(known)[:40])
             if not [q for q in (open_questions or []) if str(q).strip()]:
                 raise ToolError("open_questions_required", "Deep search must return open questions: list what is not "
                                 "confirmed, contradictory or outside the corpus; if everything is confirmed, give one "
                                 "item that says so and why")
+        if self.kind == "exhaustive":
+            # counts per document are taken from the evidence by code, not from the model's text
+            # (M8-exhaustive1 wrote "3" for SQLite with 5 recorded mentions and left 4 documents without a count)
+            by_doc: dict[str, list[str]] = {}
+            for e in ev:
+                by_doc.setdefault(e["source"], []).append(e["evidence_id"])
+            findings = (findings.rstrip() + "\n\nУпоминания по документам (посчитано harness по evidence, всего "
+                        + f"{len(ev)}):\n" + "\n".join(f"- {path}: {len(ids)} ({', '.join(ids)})" for path, ids in sorted(by_doc.items())))
         self.store.update_task(self.task_id, completion={"completed": True, "findings": findings,
                                                          "open_questions": open_questions or []})
         self.store.set_status(self.task_id, "completed", findings[:200])

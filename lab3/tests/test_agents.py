@@ -75,6 +75,11 @@ class Router(BaseChatModel):
         return self._generate(messages)
 
 
+def _no_mention(batch: dict) -> list[str]:
+    """Verdicts for area_next: fragments of the batch without a contract code."""
+    return [f["fragment_id"] for f in batch.get("fragments", []) if not re.search(r"\[L-ST-\d\d\]", f["text"])]
+
+
 def exhaustive_policy(messages):
     t = last_tool(messages)
     d = t.get("data", {})
@@ -93,12 +98,13 @@ def exhaustive_policy(messages):
             return AIMessage(content="", tool_calls=[call("area_coverage", {})])
         if calls:            # first record the mentions of this batch, then ask for the next one
             return AIMessage(content="", tool_calls=calls)
-        return AIMessage(content="", tool_calls=[call("area_next", {"cursor": d["next_cursor"]})])
+        return AIMessage(content="", tool_calls=[call("area_next", {"cursor": d["next_cursor"], "no_mention": _no_mention(d)})])
     if t.get("tool") == "record_mention":
         # continue after the batch these mentions came from
         for m in reversed(messages):
             if isinstance(m, ToolMessage) and m.name == "area_next":
-                return AIMessage(content="", tool_calls=[call("area_next", {"cursor": json.loads(m.content)["data"]["next_cursor"]})])
+                b = json.loads(m.content)["data"]
+                return AIMessage(content="", tool_calls=[call("area_next", {"cursor": b["next_cursor"], "no_mention": _no_mention(b)})])
         return AIMessage(content="", tool_calls=[call("area_next", {})])
     if t.get("tool") == "area_coverage":
         if d.get("complete"):
@@ -161,8 +167,14 @@ async def test_area_next_is_deterministic_per_cursor(cfg, env):
     ex = ExhaustiveTools(env, CorpusTools(env))
     ex.area_define(folder="storage")
     b1 = ex.area_next()
-    b2 = ex.area_next(b1["next_cursor"])
-    replay = ex.area_next(b1["next_cursor"])                    # a tools step replayed after a crash
+    from navsearch.tools_corpus import ToolError
+    with pytest.raises(ToolError) as no_verdict:                   # moving on without a verdict per fragment
+        ex.area_next(b1["next_cursor"])
+    assert no_verdict.value.type == "verdict_required" and len(no_verdict.value.extra["missing"]) == len(b1["fragments"])
+    assert ex.area_coverage()["fragments_read"] == 0               # nothing acknowledged by the refused call
+    nm = [f["fragment_id"] for f in b1["fragments"]]
+    b2 = ex.area_next(b1["next_cursor"], no_mention=nm)
+    replay = ex.area_next(b1["next_cursor"], no_mention=nm)       # a tools step replayed after a crash
     assert [f["fragment_id"] for f in b2["fragments"]] == [f["fragment_id"] for f in replay["fragments"]]
     assert ex.area_coverage()["fragments_read"] == len(b1["fragments"])      # b2 not acknowledged yet
     again = ex.area_next()                                       # resume without cursor: b2 is delivered again
@@ -219,9 +231,14 @@ def deep_policy(messages):
     if t.get("tool") == "cite_fragment":
         return AIMessage(content="", tool_calls=[call("submit_result", {"findings": "PostgreSQL 16, ответственная Ирина Ковалёва",
                                                                          "open_questions": []})])
-    if t.get("tool") == "submit_result" and not t.get("ok"):     # open questions are required: answer with one
-        assert t["error"]["type"] == "open_questions_required"
-        return AIMessage(content="", tool_calls=[call("submit_result", {"findings": "PostgreSQL 16, ответственная Ирина Ковалёва",
+    if t.get("tool") == "submit_result" and not t.get("ok"):
+        evs = [json.loads(m.content)["data"]["evidence_id"] for m in messages
+               if isinstance(m, ToolMessage) and m.name == "cite_fragment" and json.loads(m.content).get("ok")]
+        findings = f"PostgreSQL 16 [{evs[0]}], ответственная Ирина Ковалёва [{evs[1]}]"
+        if t["error"]["type"] == "evidence_refs_required":        # conclusions must point to the evidence
+            return AIMessage(content="", tool_calls=[call("submit_result", {"findings": findings, "open_questions": []})])
+        assert t["error"]["type"] == "open_questions_required"    # open questions are required: answer with one
+        return AIMessage(content="", tool_calls=[call("submit_result", {"findings": findings,
                                                                          "open_questions": ["срок перехода в корпусе не подтверждён вторым источником"]})])
     return AIMessage(content="готово")
 
@@ -379,6 +396,26 @@ def test_answer_check_flags_invented_paths_and_unreadable_answers(cfg, corpus):
     ws = HarnessWorkspace(corpus["root"])
     real = Levels(ws, Catalog(ws)).l0()["documents"][3]["path"]
     assert answer_issue(app, f"Документ найден: `{real}`, строка 12.") is None
+    # fragment ids cut to 8 characters (M6 chat4, M8 chat6) are returned to the agent; full ids pass
+    short = answer_issue(app, f"`{real}`, frag `f357c648`, строки 7-9")
+    assert short and "f357c648" in short
+    full = "3bb8a3a0-f854-5968-9308-b53b06d19b57"
+    assert answer_issue(app, f"`{real}`, fragment `{full}`, fragment_id: {full}") is None
+
+
+def test_answer_check_rejects_evidence_ids_that_do_not_exist(env):
+    from navsearch.cli import answer_issue
+    from navsearch.tools_corpus import CorpusTools
+    ct = CorpusTools(env)
+    hit = ct.search_grep("РС-7", "L2")["hits"][0]
+    ev = ct.cite_fragment(hit["fragment_id"], hit["text"][:60], "РС-7")["evidence_id"]
+
+    class App:
+        class runner:
+            store = env.store
+        cfg = None
+    bad = answer_issue(App, f"Подтверждено [{ev}] и [ev_7245ffda].")
+    assert bad and "ev_7245ffda" in bad and ev not in bad
 
 
 def test_repeated_ingestion_of_known_content_is_skipped_before_the_agent(cfg, corpus):

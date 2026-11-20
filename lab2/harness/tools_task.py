@@ -299,10 +299,10 @@ class TaskTools:
         for d in self.store.documents(self.task_id):
             read = set()
             for r in self.store.ranges(self.task_id, d["path"], d["content_hash"]):
-                if r["unit"] == "page":
+                if r["unit"] in ("page", "page_part"):        # read_pages or read_lines
                     read.update(range(r["start_no"], r["end_no"] + 1))
             docs.append({"path": d["path"], "pages": d["pages"], "pages_read": len(read), "searched": bool(d["searched"]),
-                         "status": d["status"]})
+                         "status": "read" if read else ("searched" if d["searched"] else d["status"])})
         ev = self.store.evidence(self.task_id)
         by_source: dict[str, int] = {}
         for e in ev:

@@ -376,7 +376,7 @@ class TaskRunner:
                                               "completion", "limits")},
                 "constraints": task["spec"].get("constraints", []), "criteria": task["spec"].get("criteria", {}),
                 "budget": budget.snapshot(), "queue": store.url_counts(task_id),
-                "documents": store.documents(task_id), "summary_version": task.get("summary_version"),
+                "documents": store.documents_progress(task_id), "summary_version": task.get("summary_version"),
                 "compactions": [{k: c[k] for k in ("id", "ts", "before_tokens", "after_tokens", "removed_messages",
                                                    "kept_messages", "summary_tokens", "method", "chunks", "cost_input",
                                                    "cost_output", "note")} for c in store.compactions(task_id)],
