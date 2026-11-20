@@ -56,6 +56,7 @@ class Limits:
     repeat_call_warn: int = 3            # same tool + same args N times in one run -> error observation
     repeat_call_stop: int = 6            # ... M times -> the run stops with 'no progress'
     reads_without_evidence_hint: int = 0  # N reading calls in a row with no new evidence -> a strategy hint (0 = off)
+    budget_hint_calls: int = 0           # <= N model calls left -> every tool result says: write the report, finish
     tool_timeout_s: float = 60.0
 
     @classmethod

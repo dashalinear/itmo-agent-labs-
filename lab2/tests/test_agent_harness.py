@@ -411,3 +411,16 @@ def test_cut_summary_gets_its_missing_sections(cfg):
     assert added == ["Решения и договорённости", "Подтверждённые факты (с источниками)",
                      "Открытые вопросы и следующий шаг", "Артефакты"]
     assert "найти АС-03" in out and "art_0123456789abcdef" in out
+
+
+async def test_few_model_calls_left_puts_a_budget_hint_into_tool_results(cfg):
+    """B4: all model calls went to reading. With budget_hint_calls=N the last N calls see harness_budget."""
+    model = PolicyModel(plan=reading_plan(range(2, 40, 2)))
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
+        r.create(spec(), overrides={"max_model_calls": "8", "budget_hint_calls": "3"})
+        await r.run("A")
+        ev = [e["data"] for e in r.store.events("A", "guardrail") if e["data"]["guard"] == "budget_hint"]
+        assert ev and all(e["model_calls_left"] <= 3 for e in ev)
+        hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
+                .read_text(encoding="utf-8").splitlines()]
+        assert any("harness_budget" in m["content"] for m in hist if m["type"] == "ToolMessage")

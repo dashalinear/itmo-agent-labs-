@@ -88,7 +88,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 - Файл, который ещё пишется, не читается. Имена `*.part`, `*.tmp`, `*.crdownload`, `~*`, `.*` пропускаются. Демо пишет `<name>.part` и переименовывает файл, когда запись закончена. Остальные файлы должны 3 с не менять размер и mtime.
 - Готовые незарегистрированные файлы одного прохода образуют батч. Его id считается как хеш списка «путь | размер | mtime», поэтому одно и то же событие всегда даёт тот же id.
 - Сначала батч и его файлы записываются в реестр (`workspace/.harness/lab4.db`), потом запускается workflow `ingest-<batch_id>` с `id_conflict_policy=USE_EXISTING` и `id_reuse_policy=ALLOW_DUPLICATE_FAILED_ONLY`. Если тот же батч стартует повторно, второго выполнения не появляется, а повтор уже завершённого батча Temporal отклоняет.
-- При старте watcher перезапускает батчи, у которых workflow не работает и не завершён успешно. На каждый старт watcher это один новый запуск, так что число повторов ограничено. Потом watcher заново сканирует `input`. Папки `input/_*` зарезервированы.
+- При старте watcher перезапускает батчи, у которых workflow не работает и не завершён успешно. На каждый старт watcher это один новый запуск, а всего упавший батч перезапускается не больше трёх раз (`MAX_BATCH_RESTARTS`, счётчик хранится в реестре и переживает перезапуски watcher). Дальше батч ждёт меня, а watcher пишет об этом в лог. Тест `test_failed_batch_is_restarted_a_bounded_number_of_times_over_watcher_starts`. Потом watcher заново сканирует `input`. Папки `input/_*` зарезервированы.
 - Если Temporal был недоступен в момент обнаружения, батч остаётся в реестре со статусом `detected`. Watcher при этом не падает и раз в ~30 с снова пытается запустить его workflow.
 
 **Workflow `IngestNewFiles`.**
@@ -171,7 +171,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 
 ## 7. Тесты
 
-`..\lab3\.venv\Scripts\python.exe -m pytest -q` запускает 9 тестов. Им нужен Elasticsearch, а последнему ещё и Temporal на `localhost:7233` (без него тест пропускается). Вместо LLM работают детерминированные политики `tests/fake_llm.py`. Они берут по 5 документов за шаг, как требует лимит вывода шага, и продолжают работу после падения worker. Писать сводку они не умеют, поэтому для них я подняла рабочий лимит контекста (`limit_overrides`). Саму компактификацию я проверяла в лабе 2.
+`..\lab3\.venv\Scripts\python.exe -m pytest -q` запускает 10 тестов. Им нужен Elasticsearch, а последнему ещё и Temporal на `localhost:7233` (без него тест пропускается). Вместо LLM работают детерминированные политики `tests/fake_llm.py`. Они берут по 5 документов за шаг, как требует лимит вывода шага, и продолжают работу после падения worker. Писать сводку они не умеют, поэтому для них я подняла рабочий лимит контекста (`limit_overrides`). Саму компактификацию я проверяла в лабе 2.
 
 | Тест | Что проверяет |
 |---|---|
@@ -179,6 +179,7 @@ docker run -d --name itmo-lab4-temporal --user root -p 7233:7233 -p 8233:8233 -v
 | `test_restarted_incomplete_batch_runs_the_agent_again_instead_of_claiming_success` | агент перенёс файл в `data`, но не проиндексировал; перезапущенный батч снова вызывает агента и доводит L1/L2, а не объявляет успех |
 | `test_same_content_in_two_batches_staged_before_indexing_is_one_document` | одинаковый контент в двух батчах до индексации → второй в `rejected/`, документ один |
 | `test_watcher_survives_temporal_outage_and_rescans_after_restart` | Temporal недоступен в момент обнаружения → батч зарегистрирован и запускается позже; новый процесс watcher подбирает файл, добавленный, пока он был выключен, и не стартует повторно уже запущенный батч |
+| `test_failed_batch_is_restarted_a_bounded_number_of_times_over_watcher_starts` | батч, который падает снова и снова, перезапускается при старте watcher, но всего не больше `MAX_BATCH_RESTARTS` = 3 раз, сколько бы раз watcher ни запускали |
 | `test_ingestion_batch_is_idempotent_and_duplicates_are_not_indexed` | батч → `data` + L1/L2/ES; повтор каждого шага ничего не дублирует; тот же контент под другим именем → `rejected/`, второго документа нет |
 | `test_two_reports_on_l0_and_the_second_covers_the_new_topic` | два отчёта на L0, `latest` и история; повтор публикации даёт тот же документ; второй отчёт видит новый документ и тему, отчёты в анализ не входят |
 | `test_budget_exhaustion_gives_a_partial_report_and_retry_does_not_duplicate` | бюджет → ЧАСТИЧНЫЙ отчёт с причинами; сбой после записи файла → повтор без дубля |

@@ -32,8 +32,8 @@
   {
     "task": "A1",
     "property": "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
-    "actual": "upsert ok: 1/1, поиск с хитами: 0/3, критерий indexed_in_es: True",
-    "ok": false
+    "actual": "upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True",
+    "ok": true
   },
   {
     "task": "A1",

@@ -419,7 +419,7 @@ A1, D1 и E1 из этого прогона я заменила записью `
 | A1 | отказы complete_task до выполнения критериев (информативно) | 1 | OK |
 | A1 | сбой после checkpoint и resume в новом процессе | crash=True, resume=True, запусков 2 | OK |
 | A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя 3, повторённые save_evidence после resume: [None, 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 13, дублей 0 | OK |
-| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 1/1, поиск с хитами: 0/3, критерий indexed_in_es: True | НЕТ |
+| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True | OK |
 | A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 2 | OK |
 | A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20686 / 28000; сверх лимита: 0 | OK |
 | A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'АС-02': смещение 2336 > выдано 1695, через read_artifact | OK |
@@ -470,7 +470,7 @@ A1, D1 и E1 из этого прогона я заменила записью `
 | B4 | у каждого отобранного или отклонённого URL есть причина | без причины: 0 | OK |
 | B4 | домены прочитанных страниц (информативно) | {"arize.com": 1, "vahu.org": 1, "www.kunalganglani.com": 1, "docs.langchain.com": 1, "arxiv.org": 5, "mem0.ai": 1, "www.letta.com": 1} | OK |
 
-Итого: 51 OK, 4 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 2.
+Итого: 52 OK, 3 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 1.
 <!-- FINAL_CHECKS:END -->
 
 <!-- COUNTERS:BEGIN -->

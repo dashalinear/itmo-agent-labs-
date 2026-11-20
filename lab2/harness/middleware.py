@@ -81,9 +81,36 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         self.ctx = ctx
         self._seen: dict[str, tuple[str, int]] = {}
         self._reads_since_evidence = 0
+        self._last_budget_left = None
 
     READ_TOOLS = {"read_lines", "read_pages", "read_artifact", "search_text", "search_artifact"}
     PROGRESS_TOOLS = {"save_evidence", "write_report_section"}
+
+    def _budget_hint(self, res: ToolMessage) -> ToolMessage:
+        """B4 on 20.11 spent all 120 model calls on reading and never wrote the report: when only a few calls are
+        left, every tool result says so (once per result, the run itself is not stopped)."""
+        K = self.ctx.limits.budget_hint_calls
+        if not K:
+            return res
+        mc = self.ctx.budget.snapshot()["model_calls"]
+        left = (mc.get("limit") or 0) - (mc.get("used") or 0)
+        if not mc.get("limit") or left > K:
+            return res
+        note = (f"Only {max(left, 0)} model calls left. Stop reading: write the missing report sections with "
+                "write_report_section from the evidence you have, then complete_task (or stop_partial).")
+        if self._last_budget_left == left:
+            return res
+        self._last_budget_left = left
+        self.ctx.emit("guardrail", guard="budget_hint", model_calls_left=left)
+        try:
+            env = json.loads(_text(res.content))
+        except ValueError:
+            env = None
+        if isinstance(env, dict):
+            content = json.dumps({**env, "harness_budget": note}, ensure_ascii=False)
+        else:
+            content = _text(res.content) + "\n[harness_budget] " + note
+        return ToolMessage(content=content, tool_call_id=res.tool_call_id, name=res.name, status=res.status)
 
     def _evidence_guard(self, request: ToolCallRequest, res):
         """Reading without progress: in one A1 run the model read the 2000-line handbook in 8-line steps
@@ -91,7 +118,10 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         harness attaches a hint to the result (a bounded change of strategy, the run itself goes on)."""
         N = self.ctx.limits.reads_without_evidence_hint
         name = request.tool_call["name"]
-        if not N or not isinstance(res, ToolMessage):
+        if not isinstance(res, ToolMessage):
+            return res
+        res = self._budget_hint(res)
+        if not N:
             return res
         if name in self.PROGRESS_TOOLS and '"ok": true' in _text(res.content)[:200]:
             self._reads_since_evidence = 0

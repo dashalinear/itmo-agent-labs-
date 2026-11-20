@@ -99,6 +99,9 @@ def check_local(task: str, out: list) -> None:
         pairs = [p for rows in tr for p in tool_pairs(rows)]
 
         def _hits(res):
+            if res.get("offloaded"):          # a long result went to an artifact: its preview still has "total"
+                m = re.search(r'"total"\s*:\s*(\d+)', str(res.get("preview") or ""))
+                return int(m.group(1)) if m else 0
             d = res.get("data") if isinstance(res.get("data"), dict) else res
             return len(d.get("hits") or []) if isinstance(d, dict) else 0
         ups = [r for n, _a, r in pairs if n == "upsert_excerpts"]
