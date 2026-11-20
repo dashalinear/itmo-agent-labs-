@@ -2,15 +2,15 @@
 
 | задача | ожидаемое свойство | фактически | итог |
 |---|---|---|---|
-| A1 | статус completed только по критериям | paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.) | НЕТ |
-| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | None | НЕТ |
+| A1 | статус completed только по критериям | completed (Обзор по data/search собран: 5 разделов (approaches, limitations, disputed, deci) | OK |
+| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
 | A1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
-| A1 | сбой после checkpoint и resume в новом процессе | crash=False, resume=True, запусков 4 | НЕТ |
-| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя None, повторённые save_evidence после resume: []; в конце 0, дублей 0 | НЕТ |
-| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 0/0, поиск с хитами: 0/0, критерий indexed_in_es: None | НЕТ |
-| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 17 | OK |
-| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20999 / 28000; сверх лимита: 0 | OK |
-| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'nDCG@10': смещение 2121 > выдано 1915, через read_artifact | OK |
+| A1 | сбой после checkpoint и resume в новом процессе | crash=True, resume=True, запусков 2 | OK |
+| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя 5, повторённые save_evidence после resume: ['saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved', 'already_saved']; в конце 17, дублей 0 | OK |
+| A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True | OK |
+| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 3 | OK |
+| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20567 / 28000; сверх лимита: 0 | OK |
+| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'АС-01': смещение 5961 > выдано 1901, через read_artifact | OK |
 | D1 | статус completed только по критериям | completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary)) | OK |
 | D1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
 | D1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
@@ -21,8 +21,8 @@
 | E1 | отмена после сохранения 2-3 evidence | 2 | OK |
 | E1 | резерв токенов освобождён после отмены | reserved=0, interrupted_call_tokens=12283 | OK |
 | E1 | частичный отчёт сохранён | true | OK |
-| P1 | CLI pause из другого процесса: задача paused на границе шага | paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Con) | НЕТ |
-| P1 | resume в новом процессе продолжил ту же задачу, расход не обнулён | запусков 2, вызовов модели до resume 0, всего 24; статус paused | НЕТ |
+| P1 | CLI pause из другого процесса: задача paused на границе шага | paused (pause requested by the user (demo: pause from another termin) | OK |
+| P1 | resume в новом процессе продолжил ту же задачу, расход не обнулён | запусков 2, вызовов модели до resume 11, всего 24; статус paused | OK |
 | DL1 | paused по дедлайну задачи (не completed) | paused (budget exhausted: task deadline reached (task_deadline_s: needed 47.8,) | OK |
 | DL1 | trace: harness:guardrail guard=deadline | 1 | OK |
 | DL1 | частичный отчёт сохранён (evidence: сколько успело сохраниться до дедлайна) | evidence 0, отчёт: True | OK |
@@ -53,4 +53,4 @@
 | B3 | доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/14 = 64% | НЕТ |
 | B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "docs.langchain.com": 1, "mortalapps.com": 1, "fast.io": 1, "www.ibm.com": 1, "en.wikipedia.org": 1} | OK |
 
-Итого: 41 OK, 9 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 7.
+Итого: 48 OK, 2 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 0.

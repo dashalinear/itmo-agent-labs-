@@ -1,12 +1,84 @@
 Задача P1 · run · start · модель qwen3.8-27b · окно 262144 (measured: max accepted max_tokens 262126 + prompt 18 = 262144, confirmed with prompt 1519 -> 262144 (46 probe requests); before: GET /models: no window field; POST /tokenize: HTTP 404; impossible max_tokens: HTTP 400, text: '{"error":{"message":"litellm.BadRequestError: Hosted_vllmException - {\\"error\\":{\\"message\\":\\"max_tokens=10000000 cannot be greater than max_model_len=max_tota' [cached 2026-11-15T21:26:55+00:00]) · рабочий лимит 28000 · резерв ответа 2048 · heuristic(cpt=2.60, margin=10%)
-трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_164013.md
-  [harness] model_call_error {"attempt": 1, "error": "OpenAIConnectionError: Connection error.", "retry": true}
-  [harness] model_call_error {"attempt": 2, "error": "OpenAIConnectionError: Connection error.", "retry": true}
-  [harness] model_call_error {"attempt": 3, "error": "OpenAIConnectionError: Connection error.", "retry": false}
-  [harness] task_stopped {"status": "paused", "reason": "LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error."}
-  [harness] [harness] Задача приостановлена: LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.. Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
+трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_185459.md
+  -> [model] load_skill({"name": "analyze_large_docs"})
+  -> [model] ls({"path": "data/search"})
+    ok load_skill
+    ok ls
+  -> [model] update_plan({"steps": [{"title": "Инвентаризация документов (doc_info)", "status": "doing"}, {"title": "Найти АС-01/02/03 в справочнике", "status": "todo"}, {"tit…)
+  -> [model] search_text({"query": "АС-0", "path": "data/search/search_engineering_handbook.md", "max_hits": 30})
+  -> [model] search_text({"query": "INC-2026-017", "path": "data/search/search_incident_reports.md", "max_hits": 10})
+  -> [model] search_text({"query": "кафедра", "path": "data/search/ir_course_lectures.md", "max_hits": 15})
+    ok update_plan
+    ok search_text
+    ok search_text
+    ok search_text
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 55, "end_line": 75})
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 4310, "end_line": 4325})
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 8555, "end_line": 8570})
+  -> [model] read_lines({"path": "data/search/search_incident_reports.md", "start_line": 225, "end_line": 260})
+  -> [model] search_text({"query": "метрика качества", "path": "data/search/ir_course_lectures.md", "max_hits": 15})
+    ok read_lines
+    ok read_lines
+    ok read_lines
+    ok read_lines
+    ok search_text
+  -> [model] search_text({"query": "решение", "path": "data/search/ir_course_lectures.md", "max_hits": 20})
+  -> [model] search_text({"query": "метрика", "path": "data/search/ir_course_lectures.md", "max_hits": 20})
+    ok search_text
+    ok search_text
+  -> [model] read_lines({"path": "data/search/ir_course_lectures.md", "start_line": 668, "end_line": 685})
+  -> [model] search_text({"query": "Спорное утверждение", "path": "data/search", "max_hits": 30})
+  -> [model] search_text({"query": "Ограничение", "path": "data/search", "max_hits": 30})
+    ok read_lines
+  [harness] tool_output_offloaded {"tool": "search_text", "artifact_id": "art_be75ac7a32c06ac03ddb", "total_chars": 9597, "passed_chars": 1913, "reason": "single result 9597 chars > limit 6000", "step": "lc_run--01a1f9ab-32e7-7240-b06d-6ff83a866734-0", "…
+  [harness] tool_output_offloaded {"tool": "search_text", "artifact_id": "art_491e1b2f1b4d36909a4d", "total_chars": 7751, "passed_chars": 1919, "reason": "single result 7751 chars > limit 6000", "step": "lc_run--01a1f9ab-32e7-7240-b06d-6ff83a866734-0", "…
+    OFFLOADED search_text
+    OFFLOADED search_text
+  [harness] compaction {"n": 1, "before_tokens": 19514, "after_tokens": 12611, "reserve": 2048, "working_limit": 28000, "removed_messages": 17, "kept_messages": 5, "method": "llm", "chunks": 1, "cost_input": 5898, "cost_output": 1200, "note": …
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 38, "end_line": 46})
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 18, "end_line": 24})
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 86, "end_line": 92})
+    ok read_lines
+    ok read_lines
+    ok read_lines
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 138, "end_line": 144})
+  -> [model] read_lines({"path": "data/search/search_engineering_handbook.md", "start_line": 236, "end_line": 242})
+  -> [model] search_text({"query": "Подход.", "path": "data/search/ir_course_lectures.md", "max_hits": 10})
+    ok read_lines
+    ok read_lines
+    ok search_text
+  -> [model] search_text({"query": "Подход", "path": "data/search/ir_course_lectures.md", "max_hits": 10})
+  -> [model] search_text({"query": "Ограничение", "path": "data/search/ir_course_lectures.md", "max_hits": 10})
+  -> [model] search_text({"query": "Спорное", "path": "data/search/ir_course_lectures.md", "max_hits": 10})
+    ok search_text
+    ok search_text
+    ok search_text
+  -> [model] search_text({"query": "Тезис лекции", "path": "data/search/ir_course_lectures.md", "max_hits": 10})
+  -> [model] search_text({"query": "Ограничение", "path": "data/search/search_incident_reports.md", "max_hits": 10})
+    ok search_text
+    ok search_text
+  -> [model] read_lines({"path": "data/search/ir_course_lectures.md", "start_line": 6, "end_line": 16})
+  -> [model] read_lines({"path": "data/search/ir_course_lectures.md", "start_line": 120, "end_line": 130})
+  -> [model] read_lines({"path": "data/search/search_incident_reports.md", "start_line": 1, "end_line": 20})
+  [harness] guardrail {"guard": "reads_without_evidence", "tool": "read_lines", "reads": 25}
+    ok read_lines
+    ok read_lines
+    ok read_lines
+  -> [model] save_evidence({"claim": "Решение АС-01: эталонный кластер «Северный» хранит индекс в 12 первичных шардах с одной репликой; увеличение шардов только через АС.", "kin…)
+  -> [model] save_evidence({"claim": "Решение АС-02: итоговая оценка гибридного поиска = 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще раза в квартал.", "kind": "dec…)
+  -> [model] save_evidence({"claim": "Решение АС-03: при p95 векторной ветви > 450 мс дольше 10 минут ветвь отключается, запросы обслуживает только BM25.", "kind": "decision", "…)
+  -> [model] save_evidence({"claim": "Решение кафедры: основной показатель качества в домашних заданиях — nDCG@10, MRR — только для навигационных запросов.", "kind": "decision",…)
+  -> [model] save_evidence({"claim": "Инцидент INC-2026-017: 14.03.2026 поиск недоступен 38 минут из-за переполнения кэша запросов (лимит 2 ГБ) и долгих пауз сборки мусора.", "k…)
+    ok save_evidence
+    ERR save_evidence
+    ok save_evidence
+    ok save_evidence
+    ok save_evidence
+  [harness] compaction {"n": 2, "before_tokens": 19554, "after_tokens": 12054, "reserve": 2048, "working_limit": 28000, "removed_messages": 23, "kept_messages": 7, "method": "llm", "chunks": 1, "cost_input": 8170, "cost_output": 1200, "note": …
+  [harness] task_stopped {"status": "paused", "reason": "pause requested by the user (demo: pause from another terminal)"}
+  [harness] [harness] Задача приостановлена: pause requested by the user (demo: pause from another terminal). Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
 
-[harness] Задача приостановлена: LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.. Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
+[harness] Задача приостановлена: pause requested by the user (demo: pause from another terminal). Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
 
-[статус: paused — LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.]
-трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_164013.md
+[статус: paused — pause requested by the user (demo: pause from another terminal)]
+трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_185459.md

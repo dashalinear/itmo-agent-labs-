@@ -1,25 +1,25 @@
 {
   "tasks": {
     "A1": {
-      "status": "paused",
-      "reason": "LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.",
-      "runs": 4,
-      "success": false,
-      "peak_input_tokens": 17992,
-      "max_estimate_plus_reserve": 20999,
+      "status": "completed",
+      "reason": "Обзор по data/search собран: 5 разделов (approaches, limitations, disputed, decisions, summary), 17 evidence по всем 3 документам, решения АС-01/АС-02/АС-03 приведены дословно с номерами страниц, решение кафедры о метрике качества и разбор INC-2026-017 включены. Три решения АС проиндексированы в Ela",
+      "runs": 2,
+      "success": true,
+      "peak_input_tokens": 17195,
+      "max_estimate_plus_reserve": 20567,
       "working_limit": 28000,
       "window": 262144,
-      "tokens_total": 1185711,
-      "compaction_tokens": 159539,
-      "model_calls": 62,
-      "compaction_calls": 16,
-      "failed_calls": 13,
-      "tool_calls": 234,
+      "tokens_total": 498237,
+      "compaction_tokens": 39365,
+      "model_calls": 34,
+      "compaction_calls": 5,
+      "failed_calls": 0,
+      "tool_calls": 83,
       "search_calls": 0,
       "http_requests": 0,
       "cache_hits": 0,
-      "active_seconds": 365.5,
-      "compactions": 17,
+      "active_seconds": 156.9,
+      "compactions": 5,
       "queue": {
         "found": 0,
         "pending": 0,
@@ -451,113 +451,123 @@
           "position": "beginning",
           "expected_page": 4,
           "file": "search_engineering_handbook.md",
-          "in_evidence": false,
-          "evidence_pages": [],
-          "page_correct": null,
-          "in_report": false,
+          "in_evidence": true,
+          "evidence_pages": [
+            4
+          ],
+          "page_correct": true,
+          "in_report": true,
           "in_final_summary": true,
-          "summaries_after_first_mention": "17/17"
+          "summaries_after_first_mention": "5/5"
         },
         {
           "fact": "F2",
           "position": "middle",
           "expected_page": 261,
           "file": "search_engineering_handbook.md",
-          "in_evidence": false,
-          "evidence_pages": [],
-          "page_correct": null,
-          "in_report": false,
+          "in_evidence": true,
+          "evidence_pages": [
+            261
+          ],
+          "page_correct": true,
+          "in_report": true,
           "in_final_summary": true,
-          "summaries_after_first_mention": "17/17"
+          "summaries_after_first_mention": "5/5"
         },
         {
           "fact": "F3",
           "position": "end",
           "expected_page": 517,
           "file": "search_engineering_handbook.md",
-          "in_evidence": false,
-          "evidence_pages": [],
-          "page_correct": null,
-          "in_report": false,
+          "in_evidence": true,
+          "evidence_pages": [
+            517
+          ],
+          "page_correct": true,
+          "in_report": true,
           "in_final_summary": true,
-          "summaries_after_first_mention": "17/17"
+          "summaries_after_first_mention": "5/5"
         },
         {
           "fact": "F4",
           "position": "middle",
           "expected_page": 47,
           "file": "ir_course_lectures.md",
-          "in_evidence": false,
-          "evidence_pages": [],
-          "page_correct": null,
-          "in_report": false,
+          "in_evidence": true,
+          "evidence_pages": [
+            47
+          ],
+          "page_correct": true,
+          "in_report": true,
           "in_final_summary": true,
-          "summaries_after_first_mention": "17/17"
+          "summaries_after_first_mention": "5/5"
         },
         {
           "fact": "F5",
           "position": "beginning",
           "expected_page": 17,
           "file": "search_incident_reports.md",
-          "in_evidence": false,
-          "evidence_pages": [],
-          "page_correct": null,
-          "in_report": false,
+          "in_evidence": true,
+          "evidence_pages": [
+            17
+          ],
+          "page_correct": true,
+          "in_report": true,
           "in_final_summary": true,
-          "summaries_after_first_mention": "17/17"
+          "summaries_after_first_mention": "5/5"
         }
       ],
       "constraints": [
         {
           "constraint": "[C1]",
           "pinned_in_every_call": true,
-          "in_compaction_summaries": "17/17"
+          "in_compaction_summaries": "5/5"
         },
         {
           "constraint": "[C2]",
           "pinned_in_every_call": true,
-          "in_compaction_summaries": "17/17"
+          "in_compaction_summaries": "5/5"
         },
         {
           "constraint": "[C3]",
           "pinned_in_every_call": true,
-          "in_compaction_summaries": "17/17"
+          "in_compaction_summaries": "5/5"
         },
         {
           "constraint": "[C4]",
           "pinned_in_every_call": true,
-          "in_compaction_summaries": "17/17"
+          "in_compaction_summaries": "5/5"
         },
         {
           "constraint": "[C5]",
           "pinned_in_every_call": true,
-          "in_compaction_summaries": "17/17"
+          "in_compaction_summaries": "5/5"
         }
       ],
-      "compactions": 17
+      "compactions": 5
     }
   },
   "comparison": {
     "harness": {
-      "status": "paused",
-      "reason": "LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.",
-      "runs": 4,
-      "success": false,
-      "peak_input_tokens": 17992,
-      "max_estimate_plus_reserve": 20999,
+      "status": "completed",
+      "reason": "Обзор по data/search собран: 5 разделов (approaches, limitations, disputed, decisions, summary), 17 evidence по всем 3 документам, решения АС-01/АС-02/АС-03 приведены дословно с номерами страниц, решение кафедры о метрике качества и разбор INC-2026-017 включены. Три решения АС проиндексированы в Ela",
+      "runs": 2,
+      "success": true,
+      "peak_input_tokens": 17195,
+      "max_estimate_plus_reserve": 20567,
       "working_limit": 28000,
       "window": 262144,
-      "tokens_total": 1185711,
-      "compaction_tokens": 159539,
-      "model_calls": 62,
-      "compaction_calls": 16,
-      "failed_calls": 13,
-      "tool_calls": 234,
+      "tokens_total": 498237,
+      "compaction_tokens": 39365,
+      "model_calls": 34,
+      "compaction_calls": 5,
+      "failed_calls": 0,
+      "tool_calls": 83,
       "search_calls": 0,
       "http_requests": 0,
       "cache_hits": 0,
-      "active_seconds": 365.5,
-      "compactions": 17,
+      "active_seconds": 156.9,
+      "compactions": 5,
       "queue": {
         "found": 0,
         "pending": 0,
@@ -571,7 +581,13 @@
       },
       "calls_over_working_limit": 0,
       "blocked_calls": 0,
-      "facts_confirmed": []
+      "facts_confirmed": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5"
+      ]
     },
     "baseline": {
       "status": "finished",

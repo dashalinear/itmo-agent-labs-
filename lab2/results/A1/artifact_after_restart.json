@@ -1,44 +1,34 @@
 {
   "task_id": "A1",
-  "pid": 8236,
+  "pid": 26084,
   "note": "new process: artifacts opened from disk after the run",
-  "offloaded_outputs": 4,
+  "offloaded_outputs": 2,
   "artifacts_checked": [
     {
-      "artifact_id": "art_32e0c41720638ed2bc9a",
+      "artifact_id": "art_1fb9ab5bdec90749ee0f",
       "tool": "search_text",
       "passed_chars": 1915
     },
     {
-      "artifact_id": "art_13423daa50013ef53bc7",
-      "tool": "search_text",
-      "passed_chars": 1913
-    },
-    {
-      "artifact_id": "art_9dcb093cf4978ff424b0",
-      "tool": "search_text",
-      "passed_chars": 1904
-    },
-    {
-      "artifact_id": "art_81d24f84ec0903fcf723",
-      "tool": "search_text",
-      "passed_chars": 1919
+      "artifact_id": "art_30070b1efde2061432d8",
+      "tool": "read_lines",
+      "passed_chars": 1901
     }
   ],
   "example": {
-    "artifact_id": "art_32e0c41720638ed2bc9a",
-    "tool": "search_text",
-    "total_chars": 6006,
-    "chars_given_to_model": 1915,
-    "query": "nDCG@10",
-    "char_offset_in_artifact": 2121,
-    "kind": "line with a control-fact keyword (not a control fact)",
-    "control_fact": null,
+    "artifact_id": "art_30070b1efde2061432d8",
+    "tool": "read_lines",
+    "total_chars": 7680,
+    "chars_given_to_model": 1901,
+    "query": "АС-01",
+    "char_offset_in_artifact": 5961,
+    "kind": "control fact F1",
+    "control_fact": "F1",
     "beyond_given_part": true,
     "artifact_layout": "lines",
-    "search_artifact_hit": "    \"snippet\": \"апросом, Преподаватель привёл пример с набор навигационных запросов и показал, что значение метрики nDCG@10 меняется на 0,08 при изменении настройки.\"",
-    "artifact_line": 55,
-    "read_artifact_text": "55:     \"snippet\": \"апросом, Преподаватель привёл пример с набор навигационных запросов и показал, что значение метрики nDCG@10 меняется на 0,08 при изменении настройки.\"",
+    "search_artifact_hit": "63: Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндек",
+    "artifact_line": 69,
+    "read_artifact_text": "69: 63: Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.",
     "read_artifact_has_query": true,
     "verified_in_document": null,
     "found_via": "read_artifact"
