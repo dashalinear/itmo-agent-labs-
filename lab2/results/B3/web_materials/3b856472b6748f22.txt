@@ -1,0 +1,303 @@
+Источник: https://fast.io/resources/langgraph-persistence/
+Конечный URL: https://fast.io/resources/langgraph-persistence/
+HTTP: 200
+Заголовок: LangGraph Persistence Guide: Checkpointers & State (2026) | Fastio
+Получено: полностью
+
+Skip to main content 
+
+by
+
+ProductAgentsAppsPricing
+Log inBook a demoStart 14-day trial
+
+ Home 
+ / Resources 
+ / Agent Memory and Storage 
+ / How to Implement LangGraph Persistence for Long-Term Memory 
+ AI & Agents 
+ How to Implement LangGraph Persistence for Long-Term Memory 
+ LangGraph persistence allows AI agents to maintain state and memory across multiple sessions by saving graph checkpoints to a database. This guide covers how to set up Postgres checkpointers, manage long-term agent memory, and handle human-in-the-loop workflows without losing context. 
+ Tom Langridge 
+ · 8 min read
+ · 
+Updated Feb 9, 2026 
+ Share 
+ Share on X Share on LinkedIn 
+Copy link
+
+Fastio for agentic teams 
+
+Give your agents a workspace with the files they need.
+
+ Start 14-Day Trial 
+See how it works
+
+Monthly billing only. Card required. The trial ends after 14 days or when trial
+ credits run out, whichever comes first. Then your selected plan bills automatically
+ unless you change or cancel it before then. Annual plans have no trial and bill
+ immediately.
+
+ What is LangGraph Persistence? 
+
+LangGraph persistence lets AI agents save their state after every execution step. Without it, agents are ephemeral. When the script ends, the conversation memory disappears. Persistence writes a "checkpoint" to a database or file every time the graph moves to a new node. Persistence is built around Threads. A thread represents one conversation or task. By giving every action a thread_id, LangGraph keeps different users and tasks separate. When you resume a thread, the agent picks up where it left off. It reconstructs its internal state from the last checkpoint. This enables three production features:
+
+Long-term Memory: Agents resume conversations days or weeks later, remembering details from earlier sessions.
+
+Human-in-the-Loop: Pause an agent, wait for human approval (like a high-value purchase or sensitive email), then resume from the same state.
+
+Error Recovery: If an agent crashes or infrastructure fails, replay from the last checkpoint instead of starting over. This saves time and API costs.
+
+Helpful references: Fastio Workspaces, Fastio Collaboration, and Fastio AI.
+
+Related guides
+
+How to Use AutoGen Memory: Managing State in Microsoft's Agent FrameworkAutoGen memory lets agents remember conversation history and learned facts across runs, creating "teachable" agents. By...
+In-Memory File Systems in Python: Overcoming Agent RAM Limits and Memory CeilingsAn in-memory file system in Python provides volatile storage for agent tasks, but container heap limits can cause...
+Managing the LangGraph Context Window in Multi-Agent WorkflowsThe LangGraph context window represents the aggregate token limit imposed by the underlying LLM on all accumulated...
+How to Connect LangGraph to Cloud StorageA LangGraph storage connector bridges cyclical agent graphs with external cloud storage drives, allowing graph nodes to...
+How to Implement AI Agent Long-Term Memory SolutionsLong-term memory enables AI agents to retain context, user preferences, and learned behaviors across sessions. This...
+Best Knowledge Graph Databases for RAG Pipelines (2026 Guide)Vector databases often miss the connections needed for accurate RAG. Knowledge graph databases solve this by keeping...
+
+More on this subject: Agent Memory and Storage (357 guides) 
+
+ How Checkpointers Work 
+
+In LangGraph, a Checkpointer is a class that saves and loads the graph's state. When you compile your graph, you pass a checkpointer instance. This connects the graph's execution logic to your storage backend. The workflow is automatic. It follows a "read-execute-write" cycle:
+
+Retrieve: The user sends a message with a thread_id. LangGraph queries the database for the latest checkpoint matching that ID.
+
+Initialize: It loads the state (variables, message history, internal flags) into memory.
+
+Execute: The agent processes the input, moving through the graph's nodes.
+
+Persist: After each step, the new state is serialized and saved to the database as a new checkpoint. LangGraph doesn't overwrite the previous state. It keeps a history of checkpoints. This enables "time travel." You can tell an agent to return to an earlier state (if a tool call failed or the user wants to try a different path) and branch from there. This separates compute (the running agent) from memory (the database). Any worker node can pick up any task, making deployments stateless and scalable.
+
+ Step-by-Step: Setting up InMemory Checkpointer 
+
+For local testing, use the MemorySaver. This stores checkpoints in RAM. It's fast and requires no configuration, but clears when the process restarts. Good for prototyping and unit testing your graph logic.
+
+1. Install LangGraph
+
+pip install -U langgraph
+
+2. Import and Initialize
+
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import StateGraph
+
+### Initialize the checkpointer
+checkpointer = MemorySaver()
+
+### Build your graph (simplified example)
+builder = StateGraph(...)
+### ... define nodes and edges ...
+
+### Compile with the checkpointer
+graph = builder.compile(checkpointer=checkpointer)
+
+3. Run with a Thread ID
+To use persistence, provide a config dictionary with a thread_id. This ID unlocks the agent's memory.
+
+config = {"configurable": {"thread_id": "user-123"}}
+
+### First interaction
+response = graph.invoke({"messages": [("user", "Hi, I'm Tom")]}, config=config)
+
+### Second interaction - Agent remembers "Tom"
+response = graph.invoke({"messages": [("user", "What is my name?")]}, config=config)
+
+ Production: Implementing Postgres Persistence 
+
+For production, MemorySaver won't work. You need a durable database that handles concurrent requests and provides long-term reliability. PostgreSQL is the common choice for LangGraph persistence. It supports JSONB for complex state objects and maintains transactional integrity.
+
+1. Install Dependencies
+
+pip install psycopg psycopg-pool langgraph-checkpoint-postgres
+
+2. Configure the PostgresSaver
+In production, use a connection pool to manage database resources. Use PostgresSaver for synchronous code or AsyncPostgresSaver for async applications.
+
+from langgraph.checkpoint.postgres import PostgresSaver
+from psycopg_pool import ConnectionPool
+
+DB_URI = "postgresql://user:pass@localhost:5432/db"
+
+### Create a connection pool context manager
+with ConnectionPool(DB_URI) as pool:
+ checkpointer = PostgresSaver(pool)
+
+### ONE-TIME SETUP: Create the necessary tables
+ checkpointer.setup()
+
+### Compile the graph
+ graph = builder.compile(checkpointer=checkpointer)
+
+### Run the graph
+ config = {"configurable": {"thread_id": "session-99"}}
+ graph.invoke(..., config=config)
+
+Important Note: The checkpointer.setup() method must be called once to create the schema, including tables like checkpoints and checkpoint_blobs. In production deployments, handle this as part of a CI/CD migration script or a separate management command. Don't run it inside the primary application runtime. This prevents the app from trying to create tables that already exist or failing due to insufficient permissions during normal operation.
+
+ Build Stateful Agents with Fastio for langgraph persistence 
+ Combine LangGraph's logic with Fastio's storage. Keep your Postgres database clean by offloading file storage to our high-performance cloud. 
+ Start 14-Day Trial 
+
+ Handling Human-in-the-Loop Workflows 
+
+Persistence enables "Human-in-the-Loop" (HITL) patterns where an agent pauses for input. The state is saved to the database, so the human doesn't need to respond immediately. The agent can wait for minutes, hours, or days without consuming compute resources.
+
+How it works:
+
+Define Interrupts: Set interrupt_before or interrupt_after points during graph compilation: graph.compile(checkpointer=checkpointer, interrupt_before=["approval_node"]).
+
+Execution Pause: Run the agent. It executes nodes sequentially until it reaches the approval_node. Then it saves its state and stops.
+
+Dormant State: The system sits idle in the database. No Python process needs to stay alive.
+
+Human Review: A human operator reviews the current state via a dashboard or UI. They can see what the agent plans to do by inspecting the latest checkpoint.
+
+State Modification (Optional): The human can use graph.update_state() to modify the agent's memory or pending actions before it continues.
+
+Resume: The human sends a "resume" command. The agent loads the updated state from Postgres and picks up where it stopped.
+
+ Managing Large Artifacts in Agent State 
+
+A common mistake is storing large binary artifacts (PDFs, high-resolution images, massive JSON datasets) directly in the LangGraph state.
+
+The Problem with State Bloat:
+LangGraph creates a new checkpoint at every step. If your agent state includes a 50MB PDF and the agent takes 10 steps, the checkpointer writes 500MB of data to PostgreSQL. This causes database bloat, slower queries, and higher storage costs. It also slows down state loading.
+
+The Recommended Reference Architecture:
+Store large files in specialized storage (like Fastio) and keep only the reference URL or metadata in the LangGraph state.
+
+Ingest and Upload: When the agent receives a file, upload it to Fastio using a secure API or MCP server.
+
+Store Metadata: The agent stores a lightweight reference like {"file_url": "https://fast.io/share/xyz123", "filename": "report.pdf"} in its state.
+
+Efficient Persistence: The checkpoint is tiny (a few hundred bytes), keeping your Postgres database lean and fast.
+
+Just-in-Time Retrieval: When a node needs the file, it fetches the content using the URL or passes the URL to an LLM with vision or document analysis capabilities. This keeps your persistence layer performant while your agent retains access to unlimited data volumes.
+
+Sources
+
+References used to verify factual claims in this guide.
+
+ 1 LangGraph Documentation 
+Accessed Feb 16, 2026 
+ If your agent state includes a 50MB PDF and the agent takes 10 steps, the checkpointer writes 500MB of data to PostgreSQL. 
+
+Frequently Asked Questions
+
+ How do I save LangGraph state? 
+ You save LangGraph state by passing a 'checkpointer' object (like MemorySaver or PostgresSaver) to the compile() method of your graph. You must also provide a unique thread_id in the config when invoking the graph. What is the difference between MemorySaver and PostgresSaver? 
+ MemorySaver stores checkpoints in the computer's RAM, so data is lost when the program stops. PostgresSaver stores checkpoints in a PostgreSQL database, allowing state to persist across restarts and long periods of time. Can I persist large files in LangGraph state? 
+ It is not recommended. Storing large files directly in state bloats your database because a new copy is saved at every step. Instead, store files in external storage like Fastio and only save the file URL in the LangGraph state. What is a thread_id in LangGraph? 
+ A thread_id is a unique identifier used to group a series of interactions into a single conversation or task. It allows the checkpointer to retrieve the correct state for a specific user, ensuring that different sessions remain isolated and secure. Can I go back to a previous state in LangGraph? 
+ Yes, LangGraph persistence supports 'time travel.' By using the thread_id and a specific checkpoint_id, you can inspect previous states, fork the conversation, or even restart from a middle point if an error occurred. 
+
+Related Resources
+
+ Ripley AI 
+Built-in AI: search, chat, and summarize 
+
+ Collaboration 
+Real-time co-editing and teamwork 
+
+ Build Stateful Agents with Fastio for langgraph persistence 
+ Combine LangGraph's logic with Fastio's storage. Keep your Postgres database clean by offloading file storage to our high-performance cloud. 
+ Start 14-Day Trial View Pricing 
+
+ by 
+
+AI project workspaces. One place for a project's files, its team, and the agents that work on it, whichever tools they come from.
+
+ Product 
+ Workspaces 
+ Collaboration 
+ Customization 
+ AI Storage 
+ Ripley AI 
+ Company Brain 
+ Sharing 
+ Portals 
+ E-Signature 
+ Metadata 
+ Search 
+ Dashboard 
+ Cloud Sync 
+ Cloud Import 
+ Media Engine 
+ Desktop App 
+
+ Solutions 
+ Marketing Teams 
+ Creative Agencies 
+ Video Production 
+ Construction 
+ Manufacturing 
+ Real Estate 
+ Education 
+ Legal 
+ All Solutions 
+
+ Agents 
+ Agents Overview 
+ Claude 
+ OpenAI 
+ Grok 
+ Cursor 
+ Gemini 
+ OpenClaw 
+
+ Developers 
+ Developer Hub 
+ API Docs 
+ MCP Server 
+ CLI 
+
+ Compare 
+ vs Dropbox 
+ vs Box 
+ vs Google Drive 
+ vs OneDrive 
+ vs Egnyte 
+ vs ShareFile 
+ vs WeTransfer 
+ vs Nextcloud 
+ vs pCloud 
+ vs Frame.io 
+ Feature Matrix 
+ All Alternatives 
+
+ Company 
+ Help Center 
+ About 
+ Contact 
+ Press 
+ Security 
+ Trust Center 
+ Resources 
+ Blog 
+
+ Legal 
+ Privacy 
+ Terms 
+ Fair Use 
+ DPA 
+ Sub-processors 
+ Data Deletion 
+ Patents 
+ Abuse 
+ Responsible Disclosure 
+
+Get started with Fastio 
+Start with a 14-day Business Trial. If you use all your included trial credits before the trial ends, you'll be automatically upgraded to a full subscription. 
+
+Pricing
+
+Sign In
+
+Start trial
+
+ © 2026 VividEngine, LLC. All rights reserved. b293e69 Do Not Sell or Share My Personal Information

@@ -99,7 +99,7 @@ python -m harness.cli baseline --spec demo\task_a_local.json --task-id A_base   
 | Что входит в оценку | системный промпт + skills, TASK CONTRACT, PROGRESS DIGEST, CONTEXT SUMMARY, все сообщения, **схемы 33 tools**, резерв ответа |
 
 Фиксированная часть запроса (промпт со skills, контракт, digest и схемы 33 tools) <!-- FIXED_PROMPT:BEGIN -->
-по стартовой эвристике (2,6 символа на токен плюс 10 %) — **10785–11530 токенов** во всех трассах в `traces/`, начатых с этой эвристикой (поле `fixed_prompt_tokens` в `session_start`). Эвристика с запасом: первый вызов A1 оценён в 11659 токенов, а сервер посчитал 7284 (`usage.input_tokens`); после этого `chars_per_token` калибруется до 3.072 (`calibrated_cpt` в `model_call_done`).
+по стартовой эвристике (2,6 символа на токен плюс 10 %) — **10785–11639 токенов** во всех трассах в `traces/`, начатых с этой эвристикой (поле `fixed_prompt_tokens` в `session_start`). Эвристика с запасом: первый вызов A1 оценён в 11979 токенов, а сервер посчитал 7474 (`usage.input_tokens`); после этого `chars_per_token` калибруется до 3.074 (`calibrated_cpt` в `model_call_done`). Калибровка хранится в state.db (`meta`, ключ `token_calibration:<task>`), поэтому resume A1 начал с `heuristic(cpt=3.22, margin=10%)`, а не с 2,6.
 <!-- FIXED_PROMPT:END -->
 (числа генерирует `scripts/final_checks.py --readme` из трасс). Схемы 27 локальных tools — около 16 600 символов, ещё 6 схем дают MCP-tools ES; без MCP оценка около 9 400 токенов. Если фиксированная часть с резервом не помещается в рабочий лимит, задача не запускается и получает статус `paused` с явной причиной `fixed prompt part … > working limit` (тест `test_fixed_prompt_that_does_not_fit_is_reported`).
 
@@ -194,8 +194,8 @@ Task root фиксируется при создании задачи (`spec.roo
 
 Проверка «факт за пределами выданного фрагмента после перезапуска» — `scripts/artifact_after_restart.py`. Скрипт работает в новом процессе: берёт события `tool_output_offloaded` задачи и ищет контрольный факт со смещением больше `passed_chars`, то есть дальше части, которую видела модель. Если контрольного факта в артефакте нет, берётся последний хит выгруженного результата и сверяется со страницей документа. Результаты:
 <!-- ARTIFACTS:BEGIN -->
-- `results/A1/artifact_after_restart.json` — `search_text` (12717 символов, модели выдано 1915): последний хит выгруженного результата (не контрольный факт); запрос «Спорное утверждение (из обсуждения команды «Рекомендации»): », смещение 2138 (дальше выданной части), прочитано через `read_artifact`, подтверждён текстом документа (стр. 237);
-- `results/G2/artifact_after_restart.json` — `read_pages` (4861 символов, модели выдано 1937): строка с ключевым словом контрольного факта, но не сам факт; запрос «nDCG@10», смещение 2312 (дальше выданной части), прочитано через `read_artifact`;
+- `results/A1/artifact_after_restart.json` — `search_text` (6006 символов, модели выдано 1915): строка с ключевым словом контрольного факта, но не сам факт; запрос «nDCG@10», смещение 2121 (дальше выданной части), прочитано через `read_artifact`;
+- `results/G2/artifact_after_restart.json` — `read_pages` (5267 символов, модели выдано 412): контрольный факт **F1**; запрос «АС-01», смещение 3578 (дальше выданной части), прочитано через `read_artifact`;
 - `results/G1/artifact_after_restart.json` — `read_pages` (8395 символов, модели выдано 1919): контрольный факт **F1**; запрос «АС-01», смещение 5227 (дальше выданной части), прочитано через `search_artifact`;
 <!-- ARTIFACTS:END -->
 
@@ -248,12 +248,12 @@ Task root фиксируется при создании задачи (`spec.roo
 **Последняя запись B3** (генерируется `final_checks.py --readme` из `results/B3` и трасс):
 
 <!-- B3_SUMMARY:BEGIN -->
-- Трассы: `traces/B3_run1_20261119_195343.jsonl`; статус **paused** (budget exhausted before the call (tokens: needed 14416, remaining 10618 of 1200000)); запусков 1.
+- Трассы: `traces/B3_run1_20261120_164319.jsonl`; статус **paused** (budget exhausted before the call (tokens: needed 12770, remaining 12715 of 1200000)); запусков 1.
 - Поиск: 10 запросов, из них 3 до чтения и **7 после чтения** (`search_round`).
-- Прочитано 10 URL: agent — 3, search — 7 (`discovered_by`; `agent` — URL, добавленный агентом напрямую); различных источников после канонизации arXiv abs/html/vN — 9. Домены: arxiv.org — 10.
-- Ошибки: `https://arize.com/blog/memory-and-state-in-llm-applications/` — `timeout_retries_exhausted`, HTTP-попыток 6; `https://docs.langchain.com/oss/python/langgraph/persistence` — `timeout_retries_exhausted`, HTTP-попыток 9.
-- Повторные `web_fetch` одного URL: https://docs.langchain.com/oss/python/langgraph/persistence ×3, https://arize.com/blog/memory-and-state-in-llm-applications/ ×2, https://arxiv.org/abs/2608.03836v3 ×3, https://arxiv.org/abs/2606.29778v1 ×2, https://arxiv.org/abs/2507.22925v1 ×2, https://arxiv.org/abs/2510.09720v1 ×2, https://arxiv.org/html/2603.07670v1 ×2, https://arxiv.org/abs/2310.08560v2 ×2, https://arxiv.org/abs/2608.29381v1 ×2; из них cache hit 8, сразу возвращённая сохранённая ошибка (`already_failed`) 0; срабатываний `repeated_call`/`no_progress` 1.
-- Evidence 13; вызовов модели 85 из 90; токенов 1189382 из 1200000; HTTP 25.
+- Прочитано 14 URL: search — 14 (`discovered_by`; `agent` — URL, добавленный агентом напрямую); различных источников после канонизации arXiv abs/html/vN — 14. Домены: arxiv.org — 9, docs.langchain.com — 1, mortalapps.com — 1, fast.io — 1, www.ibm.com — 1, en.wikipedia.org — 1.
+- Ошибки: `https://stackoverflow.com/questions/79607143/how-to-implement-subgraph-memory-persistence-in-langgraph-when-parent-and-subgra` — `http_error`, HTTP-попыток 1; `https://stackoverflow.com/questions/79694863/how-to-store-and-load-the-state-from-an-external-database` — `http_error`, HTTP-попыток 1.
+- Повторные `web_fetch` одного URL: нет; из них cache hit 0, сразу возвращённая сохранённая ошибка (`already_failed`) 0; срабатываний `repeated_call`/`no_progress` 0.
+- Evidence 22; вызовов модели 83 из 90; токенов 1187285 из 1200000; HTTP 16.
 <!-- B3_SUMMARY:END -->
 
 Значки-галочки со скачанных страниц (таблицы сравнения) в закоммиченных копиях и трассах заменяются словами «да»/«нет» скриптом `scripts/plain_text_marks.py`. Что именно заменено, записано в `results/<task>/plain_text_marks.json`; там же перечислены evidence, в цитатах которых были такие знаки. Дословная проверка цитат выполнялась по исходной странице до замены.
@@ -403,15 +403,15 @@ A1, D1 и E1 этого прогона заменены записью `run_fina
 <!-- FINAL_CHECKS:BEGIN -->
 | задача | ожидаемое свойство | фактически | итог |
 |---|---|---|---|
-| A1 | статус completed только по критериям | completed (Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), ) | OK |
-| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
+| A1 | статус completed только по критериям | paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.) | НЕТ |
+| A1 | [C5] решения АС-01..03 дословно (проверка complete_task) | None | НЕТ |
 | A1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
-| A1 | сбой после checkpoint и resume в новом процессе | crash=True, resume=True, запусков 2 | OK |
-| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя 0, повторённые save_evidence после resume: ['saved', 'saved', 'saved', 'saved', 'saved', 'saved']; в конце 10, дублей 0 | НЕТ |
+| A1 | сбой после checkpoint и resume в новом процессе | crash=False, resume=True, запусков 4 | НЕТ |
+| A1 | сбой после сохранённых evidence; после resume они восстановлены, дублей нет | evidence на момент сбоя None, повторённые save_evidence после resume: []; в конце 0, дублей 0 | НЕТ |
 | A1 | MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит | upsert ok: 0/0, поиск с хитами: 0/0, критерий indexed_in_es: None | НЕТ |
-| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 4 | OK |
-| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20862 / 28000; сверх лимита: 0 | OK |
-| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'Спорное утверждение (из обсуждения команды «Рекомендации»): ': смещение 2138 > выдано 1915, через read_artifact | OK |
+| A1 | >= 2 компактификаций в одном запуске без реплик пользователя | 17 | OK |
+| A1 | нет вызова сверх рабочего лимита | макс. оценка+резерв 20999 / 28000; сверх лимита: 0 | OK |
+| A1 | факт за пределами выданного фрагмента найден в артефакте в новом процессе | 'nDCG@10': смещение 2121 > выдано 1915, через read_artifact | OK |
 | D1 | статус completed только по критериям | completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary)) | OK |
 | D1 | [C5] решения АС-01..03 дословно (проверка complete_task) | ok | OK |
 | D1 | отказы complete_task до выполнения критериев (информативно) | 0 | OK |
@@ -422,6 +422,8 @@ A1, D1 и E1 этого прогона заменены записью `run_fina
 | E1 | отмена после сохранения 2-3 evidence | 2 | OK |
 | E1 | резерв токенов освобождён после отмены | reserved=0, interrupted_call_tokens=12283 | OK |
 | E1 | частичный отчёт сохранён | true | OK |
+| P1 | CLI pause из другого процесса: задача paused на границе шага | paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Con) | НЕТ |
+| P1 | resume в новом процессе продолжил ту же задачу, расход не обнулён | запусков 2, вызовов модели до resume 0, всего 24; статус paused | НЕТ |
 | DL1 | paused по дедлайну задачи (не completed) | paused (budget exhausted: task deadline reached (task_deadline_s: needed 47.8,) | OK |
 | DL1 | trace: harness:guardrail guard=deadline | 1 | OK |
 | DL1 | частичный отчёт сохранён (evidence: сколько успело сохраниться до дедлайна) | evidence 0, отчёт: True | OK |
@@ -440,19 +442,19 @@ A1, D1 и E1 этого прогона заменены записью `run_fina
 | I1 | итоговый статус (информативно) | completed | OK |
 | G2 | write по абсолютному пути наружу -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | move по абсолютному пути наружу -> outside_workspace | ["outside_workspace"] | OK |
-| G2 | write в junction (data/link_out -> вне root) -> outside_workspace | вызова не было | НЕТ |
+| G2 | write в junction (data/link_out -> вне root) -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | move в junction (data/link_out -> вне root) -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | move из junction -> outside_workspace | ["outside_workspace"] | OK |
 | G2 | разрешённые write и move внутри root работают | ["ok", "ok"] | OK |
 | G2 | лимит суммарного вывода шага: step total would exceed | 2 | OK |
-| G2 | сумма результатов одного шага не больше max_step_result_chars | максимум 12711 из 12000 | НЕТ |
-| B3 | не помечен completed без выполненных критериев | paused (budget exhausted before the call (tokens: needed 14416, rema) | OK |
+| G2 | сумма результатов одного шага не больше max_step_result_chars | максимум 11962 из 12000 | OK |
+| B3 | не помечен completed без выполненных критериев | paused (budget exhausted before the call (tokens: needed 12770, rema) | OK |
 | B3 | второй раунд: новые запросы после чтения страниц | 7 запросов после чтения | OK |
 | B3 | доп. критерий (сверх задания): прочитана страница по ссылке с прочитанной страницы (found_on) | 0; link_followed событий: 0 | НЕТ |
-| B3 | доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена | arxiv.org: 10/10 = 100% | НЕТ |
-| B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 10} | OK |
+| B3 | доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена | arxiv.org: 9/14 = 64% | НЕТ |
+| B3 | домены прочитанных страниц (информативно) | {"arxiv.org": 9, "docs.langchain.com": 1, "mortalapps.com": 1, "fast.io": 1, "www.ibm.com": 1, "en.wikipedia.org": 1} | OK |
 
-Итого: 42 OK, 6 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 4.
+Итого: 41 OK, 9 НЕТ (scripts/final_checks.py по results/ и traces/); из них 2 — дополнительные критерии сверх задания, по обязательным требованиям НЕТ: 7.
 <!-- FINAL_CHECKS:END -->
 
 <!-- COUNTERS:BEGIN -->
@@ -460,39 +462,39 @@ _Технические счётчики задач (results/evaluation.md)_
 
 | задача | статус | запусков | пик входа | макс. оценка+резерв / рабочий лимит / окно | токены (из них компакт.) | вызовы модели | компакт. | tools | поиск | HTTP | cache | время, с |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| A1 | completed (Обзор собран: 5 секций (approaches, limitations, disputed, d) | 2 | 17443 | 20862 / 28000 / 262144 | 551642 (42289) | 39 | 5 | 104 | 0 | 0 | 0 | 161.5 |
+| A1 | paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Con) | 4 | 17992 | 20999 / 28000 / 262144 | 1185711 (159539) | 62 | 17 | 234 | 0 | 0 | 0 | 365.5 |
 | B1 | paused (budget exhausted before the call (model_calls: needed 1, rem) | 1 | 17054 | 20927 / 28000 / 262144 | 925108 (47025) | 70 | 9 | 72 | 6 | 18 | 5 | 336.4 |
 | B2 | completed (Обзор готов: 4 поисковых запроса, 7 страниц прочитано, 9 evi) | 1 | 16761 | 20493 / 28000 / 262144 | 296785 (11636) | 22 | 2 | 30 | 4 | 10 | 0 | 206.0 |
-| B3 | paused (budget exhausted before the call (tokens: needed 14416, rema) | 1 | 18323 | 20859 / 28000 / 262144 | 1189382 (68921) | 85 | 11 | 99 | 10 | 25 | 10 | 619.0 |
+| B3 | paused (budget exhausted before the call (tokens: needed 12770, rema) | 1 | 17161 | 20977 / 28000 / 262144 | 1187285 (59712) | 83 | 9 | 109 | 10 | 16 | 0 | 357.3 |
 | C1 | completed (Обзор готов: 4 раздела (approaches, limitations, comparison,) | 1 | 17435 | 20918 / 28000 / 262144 | 325945 (25255) | 23 | 3 | 62 | 10 | 10 | 0 | 129.9 |
 | C2 | paused (partial: HTTP-бюджет (6/6) исчерпан; harness требует 8 прочи) | 1 | 17166 | 20955 / 28000 / 262144 | 372267 (15467) | 27 | 2 | 35 | 3 | 6 | 0 | 97.4 |
 | D1 | completed (Обзор собран: 5 разделов (approaches, limitations, disputed,) | 2 | 16602 | 20228 / 28000 / 262144 | 277913 (15569) | 19 | 2 | 51 | 0 | 0 | 0 | 97.2 |
 | DL1 | paused (budget exhausted: task deadline reached (task_deadline_s: ne) | 1 | 18119 | 20998 / 28000 / 262144 | 160975 (15357) | 11 | 2 | 27 | 0 | 0 | 0 | 56.6 |
 | E1 | cancelled (cancel requested by the user; the in-flight operation was in) | 1 | 16479 | 19839 / 28000 / 262144 | 178846 (14950) | 12 | 2 | 33 | 0 | 0 | 0 | 46.8 |
 | G1 | paused (waiting for user input) | 12 | 13191 | 17256 / 28000 / 262144 | 240683 (5490) | 26 | 1 | 15 | 0 | 6 | 0 | 61.6 |
-| G2 | paused (waiting for user input) | 6 | 14611 | 19721 / 28000 / 262144 | 114054 (0) | 13 | 0 | 10 | 0 | 0 | 0 | 25.6 |
+| G2 | paused (waiting for user input) | 7 | 15508 | 18550 / 28000 / 262144 | 163823 (0) | 17 | 0 | 14 | 0 | 0 | 0 | 31.1 |
 | I1 | completed (Исследование завершено: прочитано 9 страниц (W1), 21 evidenc) | 4 | 17167 | 20726 / 28000 / 262144 | 426414 (24899) | 32 | 3 | 61 | 3 | 10 | 4 | 123.2 |
 | T1 | paused (LLM unavailable after 3 attempts: TimeoutError: ) | 1 | 7105 | 13389 / 28000 / 262144 | 40006 (0) | 1 | 0 | 2 | 0 | 0 | 0 | 9.9 |
 <!-- COUNTERS:END -->
 
 <!-- FACTS:BEGIN -->
-_Контрольные факты и ограничения: A1 (компактификаций: 5) (results/evaluation.md)_
+_Контрольные факты и ограничения: A1 (компактификаций: 17) (results/evaluation.md)_
 
 | факт | место | ожид. стр. | в evidence | стр. в evidence | в отчёте | в итоговом summary | в summary после первого упоминания |
 |---|---|---|---|---|---|---|---|
-| F1 | beginning (search_engineering_handbook.md) | 4 | да | [4] | да | да | 5/5 |
-| F2 | middle (search_engineering_handbook.md) | 261 | да | [261] | да | да | 5/5 |
-| F3 | end (search_engineering_handbook.md) | 517 | да | [517] | да | да | 5/5 |
-| F4 | middle (ir_course_lectures.md) | 47 | да | [47] | да | да | 5/5 |
-| F5 | beginning (search_incident_reports.md) | 17 | да | [17] | да | да | 5/5 |
+| F1 | beginning (search_engineering_handbook.md) | 4 | нет | [] | нет | да | 17/17 |
+| F2 | middle (search_engineering_handbook.md) | 261 | нет | [] | нет | да | 17/17 |
+| F3 | end (search_engineering_handbook.md) | 517 | нет | [] | нет | да | 17/17 |
+| F4 | middle (ir_course_lectures.md) | 47 | нет | [] | нет | да | 17/17 |
+| F5 | beginning (search_incident_reports.md) | 17 | нет | [] | нет | да | 17/17 |
 
 | ограничение | закреплено в каждом вызове (TASK CONTRACT) | в summary компактификаций |
 |---|---|---|
-| [C1] | да | 5/5 |
-| [C2] | да | 5/5 |
-| [C3] | да | 5/5 |
-| [C4] | да | 5/5 |
-| [C5] | да | 5/5 |
+| [C1] | да | 17/17 |
+| [C2] | да | 17/17 |
+| [C3] | да | 17/17 |
+| [C4] | да | 17/17 |
+| [C5] | да | 17/17 |
 <!-- FACTS:END -->
 
 Пять ограничений задачи A закреплены в TASK CONTRACT каждого вызова, поэтому все вызовы видят их дословно независимо от summary. Суммаризатор тоже получает контракт и обязан переносить ограничения с тегами. В прогоне A1 от 16.11 он этого ещё не делал (0 из 5 summary), в B2 — `[W1]`–`[W5]` дословно в 2 из 2 summary. Сколько summary нового A1 содержат теги, видно в последней колонке таблицы ограничений выше.
@@ -508,14 +510,14 @@ _Контрольные факты и ограничения: A1 (компакт
 <!-- COMPARISON:BEGIN -->
 | Показатель (задача A, qwen3.8-27b) | Исходный агент (лаба 1) | Harness (A1) |
 |---|---|---|
-| Лимит вызовов модели (разный!) | **40** (`baseline --max-model-calls 40`), использовано 40 | **90** (`max_model_calls` задачи A), использовано 39 |
-| Успешность | нет: лимит вызовов исчерпан, итогового ответа нет | да (completed) |
-| Пик контекста (вход, токены) | 132412 | 17443 (рабочий лимит 28000) |
-| Расход токенов | 2455084 | 551642 (в т. ч. компактификация 42289) |
-| Вызовы модели | 40 | 39 + 5 компактификаций |
-| Вызовы tools | 49 | 104 |
-| Время, с | 114.2 | 161.5 (активное время всех запусков) |
-| Контрольные факты в итоговом ответе | 0 из 5 (итогового ответа нет) | 5 из 5 (F1, F2, F3, F4, F5), с документом и страницей |
+| Лимит вызовов модели (разный!) | **40** (`baseline --max-model-calls 40`), использовано 40 | **90** (`max_model_calls` задачи A), использовано 62 |
+| Успешность | нет: лимит вызовов исчерпан, итогового ответа нет | нет (paused) |
+| Пик контекста (вход, токены) | 132412 | 17992 (рабочий лимит 28000) |
+| Расход токенов | 2455084 | 1185711 (в т. ч. компактификация 159539) |
+| Вызовы модели | 40 | 62 + 16 компактификаций |
+| Вызовы tools | 49 | 234 |
+| Время, с | 114.2 | 365.5 (активное время всех запусков) |
+| Контрольные факты в итоговом ответе | 0 из 5 (итогового ответа нет) | 0 из 5 (-), с документом и страницей |
 <!-- COMPARISON:END -->
 
 У исходного агента каждый результат tool попадал в историю целиком (до 12 000 символов), поэтому контекст рос до 132 тыс. токенов и каждый следующий вызов стоил дороже. Harness держит вход в пределах рабочего лимита 28 000 за счёт компактификации и выгрузки больших результатов. Он делает больше вызовов tools (выборочное чтение мелкими диапазонами), но тратит меньше токенов; точные числа — в таблице выше.

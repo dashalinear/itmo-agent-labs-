@@ -1,0 +1,235 @@
+Источник: https://arxiv.org/abs/2602.06052v4
+Конечный URL: https://arxiv.org/abs/2602.06052v4
+HTTP: 200
+Заголовок: [2602.06052v4] A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents
+Получено: полностью
+
+Skip to main content
+
+ Search
+
+ Submit
+ Donate
+
+ Log in
+
+ Search arXiv
+
+ Press Enter to search · Advanced search
+
+Computer Science > Computation and Language
+
+ arXiv:2602.06052v4 (cs)
+
+ [Submitted on 14 Jan 2026 (v1), last revised 4 Aug 2026 (this version, v4)]
+
+Title:A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents
+
+Authors:Wei-Chieh Huang, Weizhi Zhang, Yueqing Liang, Yuanchen Bei, Yankai Chen, Tao Feng, Xinyu Pan, Zhen Tan, Yu Wang, Tianxin Wei, Shanglin Wu, Ruiyao Xu, Liangwei Yang, Rui Yang, Wooseong Yang, Chin-Yuan Yeh, Hanrong Zhang, Haozhen Zhang, Siqi Zhu, Henry Peng Zou, Wanjia Zhao, Song Wang, Wujiang Xu, Zixuan Ke, Zheng Hui, Dawei Li, Yaozu Wu, Langzhou He, Chen Wang, Xiongxiao Xu, Baixiang Huang, Juntao Tan, Shelby Heinecke, Huan Wang, Caiming Xiong, Ahmed A. Metwally, Jun Yan, Chen-Yu Lee, Hanqing Zeng, Yinglong Xia, Xiaokai Wei, Ali Payani, Yu Wang, Haitong Ma, Wenya Wang, Chenguang Wang, Yu Zhang, Xin Eric Wang, Yongfeng Zhang, Jiaxuan You, Hanghang Tong, Xiao Luo, Xue Liu, Yizhou Sun, Wei Wang, Julian McAuley, James Zou, Jiawei Han, Philip S. Yu, Kai Shu 
+View a PDF of the paper titled A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents, by Wei-Chieh Huang and 59 other authors
+ View PDF
+ HTML (experimental)
+
+ Abstract:Research in artificial intelligence is shifting from model innovations and benchmark scores towards problem definition and rigorous real-world evaluation. As the field enters the "second half," the central challenge becomes real utility in long-horizon, dynamic, and user-dependent settings such as agentic coding, deep research, and computer use, where LLM-based agents face context explosion beyond fixed context windows and must continuously accumulate, manage, and selectively reuse information across extended interactions. Memory, with hundreds of papers released in 2025, therefore emerges as the critical solution to fill this utility gap. Beyond passive storage, memory is increasingly the substrate through which agents self-evolve: short-term memory gates which experiences are perceived and abstracted during execution, while long-term memory consolidates them into reusable knowledge and skills, forming the loop through which agents improve from their own experience. In this survey, we provide a unified view of foundation agent memory along three dimensions: memory substrate (internal parametric state and external retrieval-augmented stores), cognitive mechanism (sensory, working, episodic, semantic, and procedural), and memory subject (user-centric personalization and agent-centric experience). We then analyze how memory is operated under single- and multi-agent topologies and highlight learning policies over memory operations, showing how memory management itself is becoming a trainable capability spanning reinforcement-learned context curation, experience consolidation at decision time, and the emerging ecosystem of portable, shareable agent skills. Finally, we review evaluation benchmarks and metrics for memory utility, and outline open challenges and future directions.
+
+ Comments:
+ Accepted at Transactions on Machine Learning Research (TMLR) with Survey Certification. Project page: this https URL
+
+ Subjects:
+
+ Computation and Language (cs.CL); Artificial Intelligence (cs.AI)
+
+ Cite as:
+ arXiv:2602.06052 [cs.CL]
+
+ (or 
+ arXiv:2602.06052v4 [cs.CL] for this version)
+
+ https://doi.org/10.48550/arXiv.2602.06052
+
+ Focus to learn more
+
+ arXiv-issued DOI via DataCite
+
+Submission history From: Wei-Chieh Huang [view email] 
+ [v1]
+ Wed, 14 Jan 2026 07:38:38 UTC (24,370 KB)
+
+ [v2]
+ Mon, 9 Feb 2026 18:53:33 UTC (8,325 KB)
+
+ [v3]
+ Tue, 10 Feb 2026 07:16:39 UTC (8,325 KB)
+
+ [v4]
+ Tue, 4 Aug 2026 20:54:45 UTC (13,539 KB)
+
+ Full-text links:
+
+Access Paper:
+
+View a PDF of the paper titled A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents, by Wei-Chieh Huang and 59 other authors
+View PDF
+HTML (experimental)
+TeX Source
+
+view license
+
+Current browse context:
+
+cs.CL
+
+ < prev
+
+   |   
+ next >
+
+ new
+ | 
+ recent
+ | 2026-02
+
+ Change to browse by:
+
+ cs
+
+ cs.AI
+
+References & Citations
+
+NASA ADS
+Google Scholar
+
+Semantic Scholar
+
+ export BibTeX citation
+ Loading...
+
+BibTeX formatted citation
+ ×
+
+ loading...
+
+ Data provided by: 
+
+Bookmark
+
+ Bibliographic Tools
+
+Bibliographic and Citation Tools
+
+ Bibliographic Explorer Toggle
+
+ Bibliographic Explorer (What is the Explorer?)
+
+ Connected Papers Toggle
+
+ Connected Papers (What is Connected Papers?)
+
+ Litmaps Toggle
+
+ Litmaps (What is Litmaps?)
+
+ scite.ai Toggle
+
+ scite Smart Citations (What are Smart Citations?)
+
+ Code, Data, Media
+
+Code, Data and Media Associated with this Article
+
+ alphaXiv Toggle
+
+ alphaXiv (What is alphaXiv?)
+
+ Links to Code Toggle
+
+ CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+
+ DagsHub Toggle
+
+ DagsHub (What is DagsHub?)
+
+ GotitPub Toggle
+
+ Gotit.pub (What is GotitPub?)
+
+ Huggingface Toggle
+
+ Hugging Face (What is Huggingface?)
+
+ ScienceCast Toggle
+
+ ScienceCast (What is ScienceCast?)
+
+ Demos
+
+Demos
+
+ Replicate Toggle
+
+ Replicate (What is Replicate?)
+
+ Spaces Toggle
+
+ Hugging Face Spaces (What is Spaces?)
+
+ Spaces Toggle
+
+ TXYZ.AI (What is TXYZ.AI?)
+
+ Related Papers
+
+Recommenders and Search Tools
+
+ Link to Influence Flower
+
+ Influence Flower (What are Influence Flowers?)
+
+ Core recommender toggle
+
+ CORE Recommender (What is CORE?)
+
+Author
+
+Venue
+
+Institution
+
+Topic
+
+ About arXivLabs
+
+arXivLabs: experimental projects with community collaborators
+
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+
+ Which authors of this paper are endorsers? |
+ Disable MathJax (What is MathJax?)
+
+ We gratefully acknowledge support from
+ our major funders,
+ member institutions, ,
+ and all contributors.
+
+ About
+ ·
+ Help
+ ·
+ Contact
+ ·
+ Subscribe
+ ·
+ Copyright
+ ·
+ Privacy
+ ·
+ Accessibility
+ ·
+ Operational Status (opens in new tab)
+
+Major funding support from

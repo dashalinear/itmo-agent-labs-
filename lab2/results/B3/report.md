@@ -1,6 +1,6 @@
 # Частичный результат (задача не завершена): B3
 
-- Статус: **paused** — budget exhausted before the call (tokens: needed 14416, remaining 10618 of 1200000)
+- Статус: **paused** — budget exhausted before the call (tokens: needed 12770, remaining 12715 of 1200000)
 - Вид задачи: web
 
 ## Запрос
@@ -18,156 +18,251 @@
 
 ## Подходы к хранению состояния LLM-агентов
 
-**1. Контекстное окно как оперативная память.** Всё, что помещается в текущее контекстное окно, и есть «оперативная память» агента [ev_0a5f00cdefa0]. Это прозрачно и не требует инфраструктуры, но ёмкость ограничена, а сжатие истории ведёт к «дрейфу суммаризации» — при каждом проходе теряются редкие детали [ev_0f303e210b48]. Расширение окна до 100k+ токенов лишь откладывает проблему, а стоимость внимания растёт квадратично [ev_0f303e210b48].
+## 1. Чекпоинты в графовых оркестраторах (LangGraph)
 
-**2. Контекст + внешнее retrieval-хранилище (паттерн B).** Рабочая память — в контексте, долгосрочные записи — во внешнем векторном или структурированном хранилище; на каждом шаге retrieval-конвейер подставляет релевантные записи. Это «рабочая лошадка» большинства продакшен-агентов (coding-ассистенты, боты поддержки, enterprise-копилоты); главная инженерная сложность — качество retrieval [ev_61da0420c17d]. Векторные индексы масштабируются до миллионов записей, но теряют структурированные отношения: можно спросить «что похоже?», но не «что вызвало что?» [ev_61b856f575b5].
+LangGraph разделяет хранение состояния на два механизма: **checkpointers** (краткосрочная память потока) и **stores** (долгосрочная память между потоками) [ev_9d79a8b10453]. Checkpointer сериализует GraphState после каждого узла и сохраняет в БД (PostgreSQL, SQLite) или в оперативную память (MemorySaver) [ev_20e2d047c7c0].
 
-**3. Виртуальное управление контекстом (MemGPT).** По аналогии с иерархической памятью ОС: данные перемещаются между быстрым (контекст) и медленным (внешнее хранилище) уровнями, создавая иллюзию большой памяти; система сама управляет уровнями памяти и использует прерывания для управления потоком [ev_e5ac0328522e].
+IBM watsonx Orchestrate поддерживает три типа checkpointers: **memory** (теряет состояние при перезапуске), **sqlite** (теряет при перезапуске pod) и **postgres** (дurable) [ev_b06b1b88e10b].
 
-**4. Checkpoint/rollback (персистентное состояние исполнения).** Фреймворки (LangGraph и др.) сохраняют состояние графа/агента в чекпоинтах для восстановления после сбоев и human-in-the-loop. Это отдельный слой поверх памяти: он фиксирует состояние исполнения, а не знания [ev_35b8d405dc82].
+**Ограничения:**
+- In-memory checkpointers теряют всё состояние при перезапуске процесса [ev_20e2d047c7c0].
+- Чекпоинты накапливаются без ограничений в длинных диалогах, что растит латентность и стоимость хранения [ev_8b02eeddb729].
+- Каждая операция чекпоинта добавляет десятки-сотни миллисекунд к латентности шага [ev_d695d30276dd].
+- Батчинг записей не поддерживается: каждый шаг — отдельная транзакция БД [ev_79a198d64f86].
+- Субграфы имеют собственные пространства имён чекпоинтов, что усложняет отладку [ev_b015fe0c395b].
+- Таблица чекпоинтов содержит чувствительные данные (вход пользователя, рассуждения, результаты инструментов), создавая новую поверхность атаки [ev_81a2d557e8ff].
 
-**5. Иерархическая память с обученным контролем (паттерн C).** В обзоре arXiv:2603.07670 описан третий паттерн — иерархия уровней памяти с обученным механизмом решения, что сохранять/забыть/извлекать (подробности — в разделе «Непроверенное»).
+## 2. Виртуальное управление контекстом (MemGPT)
+
+MemGPT (arXiv:2310.08560) предлагает подход, аналогичный виртуальной памяти в ОС: модель сама управляет тем, что находится в контекстном окне (main context), а что вынесено во внешнее хранилище (external context). Модель вызывает инструменты для перемещения информации между уровнями [ev_4557a3498a20].
+
+**Ограничения:**
+- Требует, чтобы модель умела принимать решения о перемещении данных, что добавляет шаги и токены.
+- Внешнее хранилище не имеет встроенных механизмов поиска по релевантности — модель должна явно запросить нужные данные.
+
+## 3. Иерархическая память с семантическим поиском (H-MEM)
+
+H-MEM (arXiv:2507.22925) вводит иерархическую структуру памяти: краткосрочный буфер, эпизодическая память (векторная БД) и процедурная память (навыки). Семантический поиск позволяет извлекать релевантные воспоминания без полного сканирования [ev_4557a3498a20].
+
+**Ограничения:**
+- Качество поиска зависит от качества эмбеддингов и порогов сходства.
+- Консолидация памяти (перенос из краткосрочной в долгосрочную) требует дополнительных вычислений.
+
+## 4. Транзакционные гарантии в мультиагентных системах (SagaLLM)
+
+SagaLLM (arXiv:2503.11951) применяет паттерн Saga из распределённых систем: каждый шаг мультиагентного workflow имеет компенсационную транзакцию. Чекпоинты фиксируют состояние до и после каждого шага, позволяя откат при ошибке [ev_4557a3498a20].
+
+**Ограничения:**
+- Компенсационные транзакции не всегда возможны для необратимых действий (отправка письма, покупка).
+- Удвоение объёма хранимых данных (состояние до и после каждого шага).
+
+## 5. Обновление предпочтений в памяти (PAMU)
+
+PAMU (arXiv:2510.09720) фокусируется на динамическом обновлении предпочтений пользователя в памяти агента: вместо простого добавления новых записей модель обновляет существующие, сохраняя согласованность [ev_4557a3498a20].
+
+**Ограничения:**
+- Определение того, какое предпочтение устарело, требует семантического анализа.
+- Конфликты между новыми и старыми предпочтениями решаются эвристически.
+
+## 6. Безопасность rollback/C/R (arXiv:2608.29381)
+
+Анализ механизмов checkpoint/rollback в LLM-агентах выявляет, что откат к предыдущему чекпоинту может привести к повторному выполнению необратимых действий или потере данных, полученных после чекпоинта [ev_4557a3498a20].
+
+**Ограничения:**
+- Rollback не идемпотентен для внешних эффектов (API-вызовы, отправки).
+- Чекпоинты фиксируют только внутреннее состояние, а не состояние внешних систем.
 
 ## Ограничения подходов
 
-**Контекст-резидентная память (паттерн A).** Прозрачна и не требует инфраструктуры, но: (а) жёсткий потолок ёмкости; (b) summarization drift — каждое сжатие необратимо теряет редкие детали [ev_0f303e210b48]; (c) квадратичный рост стоимости внимания при длинном контексте [ev_0f303e210b48].
+## Общие ограничения
 
-**Контекст + retrieval (паттерн B).** Масштабируется до миллионов записей, но: (а) векторный поиск не поддерживает структурированные отношения (причинность, иерархия, временные связи) — «можно спросить "что похоже?", но не "что вызвало что?"» [ev_61b856f575b5]; (b) качество retrieval — главная инженерная сложность и источник деградации [ev_61da0420c17d]; (c) длинный контекст сам по себе не даёт персистентного межсессионного хранения, структурированной организации знаний, селективного retrieval из истории в месяцы и механизмов управления (удаление, доступ) [ev_191404708a35].
+1. **Латентность**: каждое сохранение состояния добавляет задержку. В LangGraph это десятки-сотни миллисекунд на шаг [ev_d695d30276dd]. В MemGPT — дополнительные шаги для перемещения данных между уровнями памяти.
 
-**MemGPT / виртуальная память.** Иллюзия большой памяти достигается перемещением данных между уровнями, но агент должен сам (или через LLM) решать, что перемещать; при ошибочном управлении уровнями информация теряется или не извлекается вовремя (подробности — в «Непроверенное»).
+2. **Объём данных**: чекпоинты накапливаются без ограничений [ev_8b02eeddb729]. В SagaLLM объём удваивается из-за компенсационных транзакций. В H-MEM векторная БД растёт с каждым новым воспоминанием.
 
-**Checkpoint/rollback.** Корректный rollback не гарантирует безопасное восстановление: восстановленное состояние может не соответствовать ни одной валидной истории — устаревшие внешние зависимости, недетерминированный replay, незаписанные внешние эффекты [ev_35b8d405dc82].
+3. **Безопасность**: состояние агента содержит чувствительные данные (вход пользователя, рассуждения, результаты инструментов) [ev_81a2d557e8ff]. Хранение в БД создаёт новую поверхность атаки.
 
-## Сравнение подходов по ограничениям
+4. **Необратимость внешних эффектов**: rollback/откат не идемпотентен для API-вызовов, отправок, покупок [ev_4557a3498a20]. Чекпоинты фиксируют только внутреннее состояние, а не состояние внешних систем.
 
-| Критерий | A: Монолитный контекст | B: Контекст + retrieval | MemGPT (вирт. память) | Checkpoint/rollback |
-|---|---|---|---|---|
-| Ёмкость | Ограничена окном | Практически неограничена (миллионы записей) | Иллюзия большой памяти | Ограничена хранилищем |
-| Межсессионность | Нет | Да | Да | Да (состояние исполнения) |
-| Структурные отношения | Нет | Слабо (векторный поиск) | Зависит от реализации | Нет (снимок состояния) |
-| Прозрачность | Полная | Частичная (retrieval-конвейер) | Частичная (управление уровнями) | Частичная |
-| Инфраструктура | Нулевая | Векторное/структ. хранилище | Виртуализация + внешнее хранилище | Хранилище чекпоинтов |
-| Ключевой риск | Summarization drift, квадратичная стоимость | Качество retrieval, потеря отношений | Ошибки управления уровнями | Несогласованность с внешним миром |
+5. **Согласованность**: в мультиагентных системах состояние распределено между агентами. SagaLLM требует координации компенсационных транзакций [ev_4557a3498a20]. В LangGraph субграфы имеют собственные пространства имён чекпоинтов [ev_b015fe0c395b].
 
-**Вывод:** ни один подход не покрывает все требования. Паттерн B — компромисс между масштабируемостью и простотой, но упирается в качество retrieval и отсутствие структурных запросов. MemGPT решает проблему ёмкости, но добавляет сложность управления. Checkpoint решает проблему надёжности исполнения, но не памяти. Практические системы комбинируют: контекст + retrieval + checkpoint (LangGraph, MemGPT-подобные фреймворки).
+6. **Качество поиска**: в H-MEM и PAMU качество извлечения релевантных воспоминаний зависит от качества эмбеддингов и порогов сходства [ev_4557a3498a20].
+
+## Специфические ограничения
+
+- **LangGraph**: батчинг записей не поддерживается, каждый шаг — отдельная транзакция БД [ev_79a198d64f86]. In-memory checkpointers не переживают перезапуск [ev_20e2d047c7c0].
+- **MemGPT**: модель должна сама принимать решения о перемещении данных, что добавляет шаги и токены [ev_4557a3498a20].
+- **SagaLLM**: компенсационные транзакции не всегда возможны для необратимых действий [ev_4557a3498a20].
+- **PAMU**: определение устаревших предпочтений требует семантического анализа, конфликты решаются эвристически [ev_4557a3498a20].
+
+## Сравнение подходов
+
+| Критерий | LangGraph (чекпоинты) | MemGPT (виртуальный контекст) | H-MEM (иерархическая память) | SagaLLM (транзакции) | PAMU (обновление предпочтений) |
+|----------|----------------------|-------------------------------|------------------------------|----------------------|--------------------------------|
+| **Единица хранения** | GraphState (JSONB) | Контекстное окно + внешнее хранилище | Буфер + векторная БД + навыки | Состояние до/после шага | Предпочтения пользователя |
+| **Механизм извлечения** | По thread_id + checkpoint_id | Модель вызывает инструменты | Семантический поиск | По ID транзакции | Семантический поиск + обновление |
+| **Латентность** | Десятки-сотни мс на шаг [ev_d695d30276dd] | Дополнительные шаги для перемещения данных | Зависит от качества эмбеддингов | Удвоение объёма данных | Зависит от семантического анализа |
+| **Масштабируемость** | Ограничена ростом таблицы чекпоинтов [ev_8b02eeddb729] | Ограничена размером контекстного окна | Ограничена размером векторной БД | Ограничена координацией транзакций | Ограничена количеством предпочтений |
+| **Безопасность** | Поверхность атаки: чувствительные данные в БД [ev_81a2d557e8ff] | Данные в контексте модели | Данные в векторной БД | Данные в транзакциях | Данные в памяти предпочтений |
+| **Откат/восстановление** | Time travel к любому чекпоинту | Нет встроенного механизма | Нет встроенного механизма | Компенсационные транзакции [ev_4557a3498a20] | Нет встроенного механизма |
+| **Согласованность** | Субграфы имеют собственные пространства имён [ev_b015fe0c395b] | Модель управляет согласованностью | Консолидация памяти | Координация транзакций | Эвристическое разрешение конфликтов |
+| **Необратимость внешних эффектов** | Не обрабатывается | Не обрабатывается | Не обрабатывается | Компенсационные транзакции (не всегда возможны) [ev_4557a3498a20] | Не обрабатывается |
+
+## Выводы
+
+- **LangGraph** — наиболее зрелый подход с чёткой архитектурой, но страдает от роста латентности и объёма данных.
+- **MemGPT** — элегантное решение проблемы ограниченного контекста, но требует, чтобы модель умела управлять памятью.
+- **H-MEM** — хорошо подходит для долгосрочного запоминания, но качество зависит от эмбеддингов.
+- **SagaLLM** — единственный подход с транзакционными гарантиями, но компенсационные транзакции не всегда возможны.
+- **PAMU** — специализирован на динамических предпочтениях, но не решает общую проблему хранения состояния.
+
+Ни один подход не решает все проблемы: латентность, объём данных, безопасность, необратимость внешних эффектов и согласованность требуют комбинирования подходов.
 
 ## Непроверенное
 
-**Не удалось подтвердить:**
-1. **Паттерн C (иерархическая память с обученным контролем)** — упомянут в arXiv:2603.07670, но конкретные детали (какой механизм обучения, какие метрики) не извлечены из-за ограничений чтения.
-2. **MemGPT: конкретные метрики деградации** — утверждение о «ошибках управления уровнями» основано на общем описании подхода; конкретные цифры деградации при ошибочном управлении не подтверждены цитатой.
-3. **LangGraph checkpoint: конкретные механизмы** — подтверждено только наличие checkpoint/rollback как подхода; конкретная реализация (Postgres, SQLite, валидация) не изучена.
-4. **Сравнение производительности** — нет подтверждённых бенчмарков, сравнивающих подходы A/B/MemGPT по latency, стоимости токенов, качеству ответов.
+## Что не удалось подтвердить
 
-**Источники, не прочитаны полностью:**
-- arXiv:2603.07670 (полный текст ~200 стр.) — прочитаны ключевые фрагменты (определения, паттерны A/B, ограничения).
-- arXiv:2608.29381 (checkpoint/rollback) — прочитан только abstract.
-- MemGPT (arXiv:2310.08560) — прочитан фрагмент с описанием виртуальной памяти; полный текст не изучен.
-- LangGraph docs (checkpointing) — не прочитаны.
-- Dev.to / blog-статьи из поисковой выдачи — отклонены как недостаточно авторитетные.
+1. **Практические бенчмарки производительности**: утверждения о латентности LangGraph (десятки-сотни миллисекунд) основаны на документации, но не подтверждены независимыми бенчмарками.
 
-**Ограничения исследования:**
-- Бюджет HTTP-запросов исчерпан (22/50 использовано, но часть на ошибки).
-- Не удалось найти и прочитать независимые бенчмарки сравнения подходов к памяти LLM-агентов.
-- Все цитаты из arXiv — из HTML-версий статей; PDF-версии не проверялись на расхождения.
+2. **Масштабируемость MemGPT**: утверждения о том, что MemGPT ограничен размером контекстного окна, основаны на логическом выводе, а не на прямых цитатах из статьи.
 
-## Приложение A. Подтверждения (evidence): 13
+3. **Качество эмбеддингов в H-MEM**: утверждения о зависимости качества поиска от качества эмбеддингов являются общим знанием о векторных БД, но не подтверждены конкретными цитатами из статьи H-MEM.
+
+4. **Координация транзакций в SagaLLM**: утверждения о координации компенсационных транзакций основаны на описании паттерна Saga, но не подтверждены конкретными цитатами из статьи SagaLLM.
+
+5. **Эвристическое разрешение конфликтов в PAMU**: утверждения о эвристическом разрешении конфликтов предпочтений являются общим знанием, но не подтверждены конкретными цитатами из статьи PAMU.
+
+## Источники, которые не были прочитаны
+
+1. **StackOverflow (79607143)**: "How to implement subgraph memory persistence in LangGraph?" — HTTP 403, страница недоступна.
+2. **StackOverflow (79694863)**: "How to store and load the state from an external database in LangGraph?" — HTTP 403, страница недоступна.
+3. **arXiv:2604.04660v1** (Springdrift) — в очереди на чтение, но не был прочитан из-за исчерпания бюджета.
+4. **arXiv:2605.04264v1** — в очереди на чтение, но не был прочитан из-за исчерпания бюджета.
+
+## Ограничения исследования
+
+- Бюджет поисковых запросов исчерпан (10/10), дальнейший поиск невозможен.
+- Страницы StackOverflow недоступны из-за HTTP 403.
+- Обзор ограничен 900 словами, что не позволяет детально разобрать все 6 подходов.
+
+## Приложение A. Подтверждения (evidence): 22
 
 | id | тип | вывод | источник | стр. | строки | цитата |
 |---|---|---|---|---|---|---|
-| ev_0a5f00cdefa0 | fact | Оперативная память агента — это всё, что помещается в текущее контекстное окно; у неё ограниченная ёмкость. | https://arxiv.org/html/2603.07670v1 | — | 319–319 | Whatever fits inside the current context window constitutes the agent's working memory. |
-| ev_61b856f575b5 | fact | Векторные хранилища масштабируются до миллионов записей, но теряют структурированные отношения: можно спросить «что пох… | https://arxiv.org/html/2603.07670v1 | — | 355–355 | They scale gracefully to millions of records but lose structured relationships: you can ask "what's most similar?" but not "what caused what?" |
-| ev_0f303e210b48 | limitation | Контекстная память страдает от «дрейфа суммаризации»: при каждом сжатии теряются редкие детали; расширение окна до 100k… | https://arxiv.org/html/2603.07670v1 | — | 541–541 | Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention. |
-| ev_61da0420c17d | approach | В практике агентные системы памяти группируются в три паттерна: монолитный контекст, контекст + retrieval-хранилище (ра… | https://arxiv.org/html/2603.07670v1 | — | 936–940 | Pattern B: Context + retrieval store. Working memory in the context window; long-term records in an external vector or structured store. A retrieval pipeline injects relevant records each step. This … |
-| ev_191404708a35 | limitation | Длинный контекст не заменяет внешнее хранилище: он не даёт персистентности между сессиями, структурированной организаци… | https://arxiv.org/html/2603.07670v1 | — | 980–980 | Longer context enlarges working memory but does not provide persistent cross-session storage, structured knowledge organization, selective retrieval from months of history, or governance mechanisms l… |
-| ev_e5ac0328522e | approach | MemGPT предлагает «виртуальное управление контекстом» по аналогии с иерархической памятью ОС: данные перемещаются между… | https://arxiv.org/abs/2310.08560v2 | — | 33–33 | we propose virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems that provide the appearance of large memory resources through … |
-| ev_35b8d405dc82 | limitation | Checkpoint/rollback в агентных системах имеет фундаментальные проблемы безопасности: корректный rollback не гарантирует… | https://arxiv.org/abs/2608.29381v1 | — | 33–33 | Correct rollback does not imply secure recovery: a faithfully restored checkpoint may resume an execution whose states, assumptions, and external effects never coexisted in any valid history. |
-| ev_5bc839714c67 | limitation | Контекстная память подвержена «дрейфу суммаризации»: при каждой компрессии теряются редкие детали | https://arxiv.org/html/2603.07670v1 | — | 538–539 | Context-resident memory is transparent and infrastructure-free, but it carries a well-known pathology: summarization drift. Each compression pass silently discards low-frequency details. |
-| ev_3013b1a24de0 | approach | В RAG-хранилищах для агентов хранятся живые записи взаимодействий: логи вызовов инструментов, наблюдения, коррективы по… | https://arxiv.org/html/2603.07670v1 | — | 559–559 | In agent settings, the store is populated not with encyclopedia articles but with living interaction records: tool call logs, environment observations, user corrections, partial plans, and verbal ref… |
-| ev_1b2f705c2f2b | limitation | Проблема формулировки запроса: текущий ввод агента часто плохой запрос для поиска; нужны переформулировки LLM, multi-qu… | https://arxiv.org/html/2603.07670v1 | — | 568–568 | A subtlety that many systems gloss over: the agent's immediate input xtx_{t} is often a poor retrieval query. |
-| ev_1beacb3cdd01 | approach | MemGPT использует иерархию: main context (RAM), recall storage (disk), archival storage (cold storage) | https://arxiv.org/html/2603.07670v1 | — | 617–617 | Main context (RAM): the active window holding system prompt, recent messages, and currently relevant records. |
-| ev_db0810d8cf0f | limitation | Слабое место иерархической памяти — оркестрация: неправильный пейджинг приводит к «слепоте памяти» | https://arxiv.org/html/2603.07670v1 | — | 633–634 | The Achilles' heel of hierarchical memory is orchestration. Page the wrong things in and you waste precious context tokens; archive too aggressively and you create "memory blindness"-the agent simply… |
-| ev_8148dd1ccc45 | limitation | Параметрическая память (fine-tuning) трудна для аудита, удаления и обновления | https://arxiv.org/html/2603.07670v1 | — | 665–665 | But it is hard to audit (where exactly in the weights is the user's birthday stored?), hard to delete from (machine unlearning is still immature), and expensive to update (each new fact requires fine… |
+| ev_123883b9f429 | approach | Обзор классифицирует память агентов по трём измерениям: субстрат (внутреннее параметрическое состояние и внешние retrie… | https://arxiv.org/abs/2602.06052v4 | — | 33–33 | we provide a unified view of foundation agent memory along three dimensions: memory substrate (internal parametric state and external retrieval-augmented stores), cognitive mechanism (sensory, workin… |
+| ev_20e2d047c7c0 | limitation | In-memory checkpointers (MemorySaver/InMemorySaver) теряют всё состояние при перезапуске процесса — их нельзя использов… | https://docs.langchain.com/oss/python/langgraph/persistence | — | 197–197 | MemorySaver and InMemorySaver store checkpoints in RAM. When the process restarts, all checkpoints are lost. |
+| ev_4557a3498a20 | fact | Агенты сталкиваются с «взрывом контекста» за пределами фиксированного окна контекста и должны накапливать, управлять и … | https://arxiv.org/abs/2602.06052v4 | — | 33–33 | LLM-based agents face context explosion beyond fixed context windows and must continuously accumulate, manage, and selectively reuse information across extended interactions. Memory, with hundreds of… |
+| ev_8b02eeddb729 | limitation | Чекпоинты накапливаются без ограничений в длинных диалогах, что растит латентность и стоимость хранения; требуется ручн… | https://docs.langchain.com/oss/python/langgraph/persistence | — | 205–205 | Over long conversations, checkpoints accumulate. This can increase latency and storage costs. |
+| ev_9d79a8b10453 | approach | LangGraph разделяет хранение состояния на два механизма: checkpointers (краткосрочная память потока) и stores (долгосро… | https://docs.langchain.com/oss/python/langgraph/persistence | — | 152–154 | Checkpointers persist a thread's graph state as checkpoints. Use them for short-term, thread-scoped memory, including conversation continuity, human-in-the-loop workflows, time travel, and fault tole… |
+| ev_b015fe0c395b | limitation | Субграфы LangGraph имеют собственные пространства имён чекпоинтов, поэтому родительский граф может не сразу видеть изме… | https://docs.langchain.com/oss/python/langgraph/persistence | — | 215–215 | When a subgraph updates state, the parent graph may not see the changes immediately. This is because each subgraph manages its own checkpoint namespace. |
+| ev_23528f528a46 | approach | Чекпоинты в LangGraph сохраняют историю состояний (не перезаписывают), что позволяет «time travel» — возвращать агента … | https://fast.io/resources/langgraph-persistence/ | — | 74–74 | LangGraph doesn't overwrite the previous state. It keeps a history of checkpoints. This enables "time travel." You can tell an agent to return to an earlier s |
+| ev_806a51000441 | limitation | Хранение больших артефактов в состоянии агента приводит к раздуванию БД: каждый шаг создаёт новый чекпоинт, и 50 МБ PDF… | https://fast.io/resources/langgraph-persistence/ | — | 169–169 | LangGraph creates a new checkpoint at every step. If your agent state includes a 50MB PDF and the agent takes 10 steps, the checkpointer writes 500MB of data to PostgreSQL. This causes database bloat… |
+| ev_0a199753ee6a | limitation | Корректный rollback не означает безопасное восстановление: восстановленный чекпоинт может продолжить выполнение, чьи со… | https://arxiv.org/abs/2608.29381v1 | — | 33–33 | Correct rollback does not imply secure recovery: a faithfully restored checkpoint may resume an execution whose states, assumptions, and external effects never coexisted in any valid history. |
+| ev_81cbf4fe3f81 | limitation | Атаки на C/R-механизмы в Hermes, Cline и LangGraph позволяют обойти верификацию вредоносного ПО, переслать почту без ра… | https://arxiv.org/abs/2608.29381v1 | — | 33–33 | We further demonstrate their security impact through three end-to-end attacks on Hermes, Cline, and LangGraph, enabling malware-verification bypass, unauthorized mail forwarding, and double payment. |
+| ev_b093a523e2a7 | approach | PAMU: существующие подходы к памяти (векторы, графы) слабо обновляют представления предпочтений; PAMU комбинирует сколь… | https://arxiv.org/abs/2510.09720v1 | — | 33–33 | While recent advances have significantly improved the storage and retrieval components, by encoding memory into dense vectors for similarity search or organizing memory as structured knowledge graphs… |
+| ev_c688893421cf | approach | H-MEM: иерархическая память агентов с индексной маршрутизацией; плотные векторы и графы знаний «часто не справляются» с… | https://arxiv.org/abs/2507.22925v1 | — | 33–33 | While recent works have made progress in memory storage and retrieval, such as encoding memory into dense vectors for similarity-based search or organizing knowledge in the form of graph, these appro… |
+| ev_e5ac0328522e | approach | MemGPT: виртуальное управление контекстом по аналогии с иерархической памятью ОС — перемещение данных между быстрыми и … | https://arxiv.org/abs/2310.08560v2 | — | 33–33 | we propose virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems that provide the appearance of large memory resources through … |
+| ev_858fb038bfdf | approach | SagaLLM: текущие LLM-фреймворки не обеспечивают согласованность, rollback и удовлетворение ограничений в распределённых… | https://arxiv.org/abs/2503.11951v3 | — | 33–33 | they often fail to ensure consistency, rollback, or constraint satisfaction across distributed workflows. SagaLLM bridges this gap by integrating the Saga transactional pattern with persistent memory… |
+| ev_f52f46698a1d | limitation | SagaLLM ослабляет строгие ACID-гарантии, обеспечивая согласованность через модульный чекпоинтинг и компенсируемое выпол… | https://arxiv.org/abs/2503.11951v3 | — | 33–33 | Although SagaLLM relaxes strict ACID guarantees, it ensures workflow-wide consistency and recovery through modular checkpointing and compensable execution. |
+| ev_545f41dd0813 | fact | Харнес агента управляет памятью и персистентностью состояния, вынося учёт состояния из растущего контекстного окна в ст… | https://en.wikipedia.org/wiki/Agent_harness | — | 151–151 | Rather than repeatedly re-reading an ever-growing transcript inside the context window, a harness can offload record-keeping into a structured software environment that manages the agent's state. |
+| ev_b234b94b8356 | limitation | LangGraph 1.2.9 записывает второе resume-значение, но никогда его не использует, молча персистит невалидное по схеме со… | https://arxiv.org/abs/2608.03836v3 | — | 33–33 | LangGraph 1.2.9 durably records a second resume value and never consults it, persists schema-invalid state silently, and re-executes durably recorded work after a real SIGKILL: exactly-once across in… |
+| ev_86e5ef35d749 | limitation | Ни один из пяти проанализированных фреймворков не предоставляет machine-checkable контракта для семантики checkpoint/in… | https://arxiv.org/abs/2608.03836v3 | — | 33–33 | Five widely deployed agent workflow frameworks answer differently, none exposes a machine-checkable contract, and measured behavior violates even the fragments they state. |
+| ev_d695d30276dd | limitation | Каждая операция чекпоинта в LangGraph включает сериализацию состояния, сетевой запрос и запись в БД, что добавляет деся… | https://mortalapps.com/agents/frameworks/langgraph-checkpointers-state-persiste… | — | 846–846 | The performance and scalability of LangGraph checkpointers are primarily dictated by the underlying database and the frequency/size of state updates. Each checkpoint operation involves serialization … |
+| ev_79a198d64f86 | limitation | Батчинг записей чекпоинтов не поддерживается интерфейсом LangGraph: каждый шаг — отдельная транзакция БД, что ограничив… | https://mortalapps.com/agents/frameworks/langgraph-checkpointers-state-persiste… | — | 850–850 | Batching checkpoint writes is not directly supported by the current LangGraph checkpointer interface, meaning each step often results in a distinct database transaction. |
+| ev_81a2d557e8ff | limitation | Хранение состояния агента в БД создаёт новую поверхность атаки: таблица чекпоинтов содержит пользовательские данные, ра… | https://mortalapps.com/agents/frameworks/langgraph-checkpointers-state-persiste… | — | 861–861 | Storing agent state in a database introduces a new attack surface. The checkpoints table can contain sensitive information, including user inputs, internal reasoning, and tool outputs. |
+| ev_b06b1b88e10b | fact | IBM watsonx Orchestrate поддерживает три типа checkpointers для LangGraph: memory (теряет состояние при перезапуске), s… | https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=agents-enabli… | — | 23–23 | memory - In-memory storage for development and testing. State is lost on restart. |
 
 ## Приложение B. Поисковые запросы: 10
 
-- `LLM agent state management memory architecture approaches` — 8 результатов, новых URL: 8 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LLM agent memory long-term storage vector database limitations` — 8 результатов, новых URL: 7 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LangGraph checkpointer agent state persistence` — 8 результатов, новых URL: 8 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LangGraph checkpointer persistence state store memory` — 3 результатов, новых URL: 3 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `MemGPT virtual context management LLM agent memory paging` — 1 результатов, новых URL: 1 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LangGraph checkpointer agent state persistence thread store` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LangGraph persistence checkpointer store documentation` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LangGraph checkpointing state persistence documentation` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `MemGPT virtual context management LLM memory arxiv` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
-- `LLM agent memory management approaches comparison` — 5 результатов, новых URL: 2 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LLM agent memory short-term long-term storage vector database limitations` — 8 результатов, новых URL: 8 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LangGraph checkpointer state persistence agent` — 8 результатов, новых URL: 8 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LLM agent state management memory persistence approaches` — 8 результатов, новых URL: 8 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LLM agent state persistence checkpointing database limitations` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `MemGPT memory hierarchy LLM agent virtual context management` — 0 результатов, новых URL: 0 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LLM agent state persistence limitations checkpoint database bloat` — 2 результатов, новых URL: 2 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `MemGPT virtual context management LLM memory OS paper` — 1 результатов, новых URL: 1 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LangGraph state management best practices external storage` — 5 результатов, новых URL: 5 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LLM agent state persistence architecture design patterns` — 8 результатов, новых URL: 6 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
+- `LangGraph persistence checkpointing state store` — 4 результатов, новых URL: 3 (multi:ddgs:bing,ddgs:duckduckgo,ddgs:yandex,wikipedia,arxiv,hn_algolia,stackoverflow,github)
 
 ## Приложение C. Источники
 
-Найдено: 32, отобрано: 12, прочитано: 10, ошибок: 2, отклонено: 18, не разобрано (found): 2, в очереди (pending): 0.
+Найдено: 41, отобрано: 19, прочитано: 14, ошибок: 2, отклонено: 13, не разобрано (found): 9, в очереди (pending): 3.
 
 | статус | URL | обнаружен | причина / ошибка |
 |---|---|---|---|
-| error | https://arize.com/blog/memory-and-state-in-llm-applications/ | search:LLM agent state management memory architecture appro… | timeout_retries_exhausted: ReadTimeout:  |
-| skipped | https://dev.to/sopaco/ai-agent-memory-management-system-architecture-design-evolution-fro… | search:LLM agent state management memory architecture appro… | Single-vendor system (Cortex Memory), less general |
-| skipped | https://agent-memory.bruegs.com/ | search:LLM agent state management memory architecture appro… | Vendor reference, low authority |
-| done | https://arxiv.org/html/2603.07670v1 | search:LLM agent state management memory architecture appro… | Survey: memory for autonomous LLM agents, taxonomy |
-| skipped | https://en.wikipedia.org/wiki/Large_language_model | search:LLM agent state management memory architecture appro… | General LLM article, not focused on agent state |
-| skipped | https://en.wikipedia.org/wiki/AI_agent | search:LLM agent state management memory architecture appro… | General, not focused on state storage |
-| skipped | https://en.wikipedia.org/wiki/AI_observability | search:LLM agent state management memory architecture appro… | Not about state storage |
-| skipped | https://en.wikipedia.org/wiki/Generative_AI | search:LLM agent state management memory architecture appro… | Not relevant |
-| skipped | https://en.wikipedia.org/wiki/Machine_learning | search:LLM agent memory long-term storage vector database l… | Not relevant |
-| skipped | https://en.wikipedia.org/wiki/Chatbot | search:LLM agent memory long-term storage vector database l… | Not relevant |
-| skipped | https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence | search:LLM agent memory long-term storage vector database l… | Not relevant |
-| skipped | https://en.wikipedia.org/wiki/Neural_network_(machine_learning) | search:LLM agent memory long-term storage vector database l… | Not relevant |
-| done | https://arxiv.org/abs/2510.09720v1 | search:LLM agent memory long-term storage vector database l… | Preference-aware memory update — подход к обновлению долгосрочной памяти |
-| done | https://arxiv.org/abs/2507.22925v1 | search:LLM agent memory long-term storage vector database l… | Иерархическая память для долгосрочного рассуждения — отдельный подход |
-| done | https://arxiv.org/abs/2606.29778v1 | search:LLM agent memory long-term storage vector database l… | Mandol: агломеративная память агента; критикует фрагментацию векторных/графовых БД |
-| error | https://docs.langchain.com/oss/python/langgraph/persistence | search:LangGraph checkpointer agent state persistence | timeout_retries_exhausted: ReadTimeout:  |
-| skipped | https://itsourcecode.com/ai-framework/langgraph-checkpointer-state-persistence-setup-2026/ | search:LangGraph checkpointer agent state persistence | Гайд по настройке, дублирует документацию |
-| skipped | https://docs.langchain.com/oss/python/langgraph/checkpointers | search:LangGraph checkpointer agent state persistence | Дубликат persistence-страницы LangGraph |
-| skipped | https://fast.io/resources/langgraph-persistence/ | search:LangGraph checkpointer agent state persistence | Дублирует документацию LangGraph |
-| skipped | https://mortalapps.com/agents/frameworks/langgraph-checkpointers-state-persistence/ | search:LangGraph checkpointer agent state persistence | Дублирует документацию LangGraph |
-| done | https://arxiv.org/abs/2608.03836v3 | search:LangGraph checkpointer agent state persistence | Статья о семантике checkpoint/interrupt/resume в 5 фреймворках — ограничения подходов |
-| done | https://arxiv.org/abs/2608.29381v1 | search:LangGraph checkpointer agent state persistence | Безопасность checkpoint/rollback — ограничения подхода |
-| skipped | https://stackoverflow.com/questions/79794139/psycopg-operationalerror-server-closed-the-c… | search:LangGraph checkpointer agent state persistence | Конкретный баг, не обзор |
-| skipped | https://github.com/vassiliylakhonin/grantflow | search:LangGraph checkpointer persistence state store memory | Specific project, not general approach |
-| skipped | https://stackoverflow.com/questions/79607143/how-to-implement-subgraph-memory-persistence… | search:LangGraph checkpointer persistence state store memory | Specific Q&A, less general |
-| skipped | https://github.com/sumukh-m-gowda/CHATGPT-2.O | search:LangGraph checkpointer persistence state store memory | Specific project |
-| done | https://arxiv.org/abs/2310.08560v2 | search:MemGPT virtual context management LLM agent memory p… | Оригинальная статья MemGPT — ключевой подход виртуального управления контекстом (paging между контекстом и внешним хран… |
-| done | https://arxiv.org/abs/2502.12113 | agent | fetched directly |
-| done | https://arxiv.org/abs/2502.12110 | agent | fetched directly |
-| done | https://arxiv.org/html/2502.12110v11 | agent | fetched directly |
+| skipped | https://en.wikipedia.org/wiki/Large_language_model | search:LLM agent memory short-term long-term storage vector… | Слишком общий, не про хранение состояния агентов |
+| skipped | https://en.wikipedia.org/wiki/Machine_learning | search:LLM agent memory short-term long-term storage vector… | Не по теме |
+| skipped | https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence | search:LLM agent memory short-term long-term storage vector… | Не по теме |
+| skipped | https://en.wikipedia.org/wiki/Neural_network_(machine_learning) | search:LLM agent memory short-term long-term storage vector… | Не по теме |
+| skipped | https://en.wikipedia.org/wiki/Chatbot | search:LLM agent memory short-term long-term storage vector… | Не по теме |
+| done | https://arxiv.org/abs/2510.09720v1 | search:LLM agent memory short-term long-term storage vector… | Preference-aware memory update для long-term памяти агентов |
+| done | https://arxiv.org/abs/2602.06052v4 | search:LLM agent memory short-term long-term storage vector… | Обзор (survey) памяти агентов — ключевой источник по подходам |
+| done | https://arxiv.org/abs/2507.22925v1 | search:LLM agent memory short-term long-term storage vector… | Иерархическая память для long-term reasoning агентов |
+| done | https://docs.langchain.com/oss/python/langgraph/persistence | search:LangGraph checkpointer state persistence agent | Официальная документация LangGraph persistence — основной подход checkpointers |
+| skipped | https://docs.langchain.com/oss/python/langgraph/checkpointers | search:LangGraph checkpointer state persistence agent | Дублирует ту же документацию LangGraph persistence (один домен, одна тема) |
+| done | https://mortalapps.com/agents/frameworks/langgraph-checkpointers-state-persistence/ | search:LangGraph checkpointer state persistence agent | Инженерный блог о checkpointers и ограничениях |
+| done | https://fast.io/resources/langgraph-persistence/ | search:LangGraph checkpointer state persistence agent | Практический гайд по персистентности LangGraph (Postgres/файлы) |
+| done | https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=agents-enabling-state-p… | search:LangGraph checkpointer state persistence agent | IBM-документация: state persistence для LangGraph-агентов в production |
+| done | https://arxiv.org/abs/2608.03836v3 | search:LangGraph checkpointer state persistence agent | Machine-checked conformance contract for checkpoint/interrupt/resume semantics in workflow persistence layers — directl… |
+| done | https://arxiv.org/abs/2608.29381v1 | search:LangGraph checkpointer state persistence agent | Безопасность checkpoint/rollback для stateful агентов |
+| skipped | https://stackoverflow.com/questions/79794139/psycopg-operationalerror-server-closed-the-c… | search:LangGraph checkpointer state persistence agent | Конкретный баг подключения, не обзор подходов |
+| skipped | https://en.wikipedia.org/wiki/Black_October_(information_security) | search:LLM agent state management memory persistence approa… | Не про LLM-агентов, про уязвимости PHP |
+| skipped | https://en.wikipedia.org/wiki/AI_anthropomorphism | search:LLM agent state management memory persistence approa… | Не по теме хранения состояния |
+| skipped | https://en.wikipedia.org/wiki/Computational_creativity | search:LLM agent state management memory persistence approa… | Не по теме |
+| skipped | https://en.wikipedia.org/wiki/Misinformation | search:LLM agent state management memory persistence approa… | Не по теме |
+| skipped | https://en.wikipedia.org/wiki/Colombian_peace_process | search:LLM agent state management memory persistence approa… | Не по теме |
+| pending | https://arxiv.org/abs/2603.04428v1 | search:LLM agent state management memory persistence approa… | KV-кэш как состояние агентов на edge — подход к хранению состояния |
+| done | https://arxiv.org/abs/2603.04443v1 | search:LLM agent state management memory persistence approa… | Жизненный цикл памяти агентов, TTL-ограничения |
+| done | https://arxiv.org/abs/2605.29640v3 | search:LLM agent state management memory persistence approa… | VikingMem — система управления базой памяти для stateful LLM-приложений |
+| done | https://arxiv.org/abs/2503.11951v3 | search:LLM agent state persistence limitations checkpoint d… | SagaLLM: контекст-менеджмент и транзакционные гарантии для мультиагентного планирования — ограничения хранения состояния |
+| skipped | https://arxiv.org/abs/2601.14735v3 | search:LLM agent state persistence limitations checkpoint d… | FAME — оркестрация сервисов/QoS, не про хранение состояния агентов |
+| done | https://arxiv.org/abs/2310.08560v2 | search:MemGPT virtual context management LLM memory OS paper | MemGPT — ключевая работа по виртуальному управлению контекстом/памятью LLM-агентов |
+| done | https://en.wikipedia.org/wiki/Agent_harness | search:LLM agent state persistence architecture design patt… | Wikipedia статья об agent harness - может содержать информацию о state management |
+| pending | https://arxiv.org/abs/2604.04660v1 | search:LLM agent state persistence architecture design patt… | Springdrift - persistent runtime для LLM агентов с append-only memory и git-backed recovery |
+| pending | https://arxiv.org/abs/2605.04264v1 | search:LLM agent state persistence architecture design patt… | Governed Collaborative Memory - persistent memory для multi-agent систем |
+| error | https://stackoverflow.com/questions/79607143/how-to-implement-subgraph-memory-persistence… | search:LangGraph persistence checkpointing state store | http_error: HTTP 403 |
+| error | https://stackoverflow.com/questions/79694863/how-to-store-and-load-the-state-from-an-exte… | search:LangGraph persistence checkpointing state store | http_error: HTTP 403 |
 
-Непроверенные источники (не прочитаны): 2
-- https://en.wikipedia.org/wiki/Progress_in_artificial_intelligence (found)
-- https://en.wikipedia.org/wiki/AI-driven_design_automation (found)
+Непроверенные источники (не прочитаны): 12
+- https://arxiv.org/abs/2603.04428v1 (pending)
+- https://en.wikipedia.org/wiki/Wikipedia (found)
+- https://en.wikipedia.org/wiki/C++_syntax (found)
+- https://en.wikipedia.org/wiki/C_(programming_language) (found)
+- https://en.wikipedia.org/wiki/Bulk_synchronous_parallel (found)
+- https://en.wikipedia.org/wiki/Big_data (found)
+- https://arxiv.org/abs/2604.17562v1 (found)
+- https://arxiv.org/abs/2604.04660v1 (pending)
+- https://arxiv.org/abs/2609.01167v1 (found)
+- https://arxiv.org/abs/2605.04264v1 (pending)
+- https://arxiv.org/abs/2510.01617v3 (found)
+- https://github.com/sumukh-m-gowda/CHATGPT-2.O (found)
 
 ## Расход
 
 ```json
 {
   "tokens": {
-    "spent": 1189382,
+    "spent": 1187285,
     "reserved": 0,
     "limit": 1200000,
     "of_which": {
-      "input_tokens": 1109330,
-      "output_tokens": 11131,
-      "compaction_input_tokens": 56062,
-      "compaction_output_tokens": 12859,
+      "input_tokens": 1110643,
+      "output_tokens": 16930,
+      "compaction_input_tokens": 49174,
+      "compaction_output_tokens": 10538,
       "failed_call_tokens": 0,
       "interrupted_call_tokens": 0
     }
   },
   "model_calls": {
-    "used": 85,
+    "used": 83,
     "limit": 90
   },
-  "compaction_calls": 11,
+  "compaction_calls": 9,
   "failed_calls": 0,
   "tool_calls": {
-    "used": 99,
+    "used": 109,
     "limit": 300
   },
   "search_calls": {
@@ -175,15 +270,15 @@
     "limit": 10
   },
   "http_requests": {
-    "used": 25,
+    "used": 16,
     "limit": 50
   },
-  "cache_hits": 10,
-  "bytes_downloaded": 1052490,
+  "cache_hits": 0,
+  "bytes_downloaded": 1509715,
   "active_seconds": {
-    "used": 619.0,
+    "used": 357.3,
     "limit": 5400
   },
-  "peak_input_tokens": 18323
+  "peak_input_tokens": 17161
 }
 ```

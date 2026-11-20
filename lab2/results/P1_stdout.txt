@@ -1,0 +1,12 @@
+Задача P1 · run · start · модель qwen3.8-27b · окно 262144 (measured: max accepted max_tokens 262126 + prompt 18 = 262144, confirmed with prompt 1519 -> 262144 (46 probe requests); before: GET /models: no window field; POST /tokenize: HTTP 404; impossible max_tokens: HTTP 400, text: '{"error":{"message":"litellm.BadRequestError: Hosted_vllmException - {\\"error\\":{\\"message\\":\\"max_tokens=10000000 cannot be greater than max_model_len=max_tota' [cached 2026-11-15T21:26:55+00:00]) · рабочий лимит 28000 · резерв ответа 2048 · heuristic(cpt=2.60, margin=10%)
+трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_164013.md
+  [harness] model_call_error {"attempt": 1, "error": "OpenAIConnectionError: Connection error.", "retry": true}
+  [harness] model_call_error {"attempt": 2, "error": "OpenAIConnectionError: Connection error.", "retry": true}
+  [harness] model_call_error {"attempt": 3, "error": "OpenAIConnectionError: Connection error.", "retry": false}
+  [harness] task_stopped {"status": "paused", "reason": "LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error."}
+  [harness] [harness] Задача приостановлена: LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.. Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
+
+[harness] Задача приостановлена: LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.. Прогресс, evidence и отчёт сохранены; расход не сбрасывается.
+
+[статус: paused — LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.]
+трасса: D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab2\traces\P1_run1_20261120_164013.md

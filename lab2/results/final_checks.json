@@ -2,14 +2,14 @@
   {
     "task": "A1",
     "property": "статус completed только по критериям",
-    "actual": "completed (Обзор собран: 5 секций (approaches, limitations, disputed, decisions, summary), )",
-    "ok": true
+    "actual": "paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Connection error.)",
+    "ok": false
   },
   {
     "task": "A1",
     "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
-    "actual": "ok",
-    "ok": true
+    "actual": "None",
+    "ok": false
   },
   {
     "task": "A1",
@@ -20,13 +20,13 @@
   {
     "task": "A1",
     "property": "сбой после checkpoint и resume в новом процессе",
-    "actual": "crash=True, resume=True, запусков 2",
-    "ok": true
+    "actual": "crash=False, resume=True, запусков 4",
+    "ok": false
   },
   {
     "task": "A1",
     "property": "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
-    "actual": "evidence на момент сбоя 0, повторённые save_evidence после resume: ['saved', 'saved', 'saved', 'saved', 'saved', 'saved']; в конце 10, дублей 0",
+    "actual": "evidence на момент сбоя None, повторённые save_evidence после resume: []; в конце 0, дублей 0",
     "ok": false
   },
   {
@@ -38,19 +38,19 @@
   {
     "task": "A1",
     "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
-    "actual": 4,
+    "actual": 17,
     "ok": true
   },
   {
     "task": "A1",
     "property": "нет вызова сверх рабочего лимита",
-    "actual": "макс. оценка+резерв 20862 / 28000; сверх лимита: 0",
+    "actual": "макс. оценка+резерв 20999 / 28000; сверх лимита: 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
-    "actual": "'Спорное утверждение (из обсуждения команды «Рекомендации»): ': смещение 2138 > выдано 1915, через read_artifact",
+    "actual": "'nDCG@10': смещение 2121 > выдано 1915, через read_artifact",
     "ok": true
   },
   {
@@ -112,6 +112,18 @@
     "property": "частичный отчёт сохранён",
     "actual": true,
     "ok": true
+  },
+  {
+    "task": "P1",
+    "property": "CLI pause из другого процесса: задача paused на границе шага",
+    "actual": "paused (LLM unavailable after 3 attempts: OpenAIConnectionError: Con)",
+    "ok": false
+  },
+  {
+    "task": "P1",
+    "property": "resume в новом процессе продолжил ту же задачу, расход не обнулён",
+    "actual": "запусков 2, вызовов модели до resume 0, всего 24; статус paused",
+    "ok": false
   },
   {
     "task": "DL1",
@@ -228,8 +240,10 @@
   {
     "task": "G2",
     "property": "write в junction (data/link_out -> вне root) -> outside_workspace",
-    "actual": "вызова не было",
-    "ok": false
+    "actual": [
+      "outside_workspace"
+    ],
+    "ok": true
   },
   {
     "task": "G2",
@@ -265,13 +279,13 @@
   {
     "task": "G2",
     "property": "сумма результатов одного шага не больше max_step_result_chars",
-    "actual": "максимум 12711 из 12000",
-    "ok": false
+    "actual": "максимум 11962 из 12000",
+    "ok": true
   },
   {
     "task": "B3",
     "property": "не помечен completed без выполненных критериев",
-    "actual": "paused (budget exhausted before the call (tokens: needed 14416, rema)",
+    "actual": "paused (budget exhausted before the call (tokens: needed 12770, rema)",
     "ok": true
   },
   {
@@ -289,14 +303,19 @@
   {
     "task": "B3",
     "property": "доп. критерий (сверх задания): не больше 60 % прочитанных страниц с одного домена",
-    "actual": "arxiv.org: 10/10 = 100%",
+    "actual": "arxiv.org: 9/14 = 64%",
     "ok": false
   },
   {
     "task": "B3",
     "property": "домены прочитанных страниц (информативно)",
     "actual": {
-      "arxiv.org": 10
+      "arxiv.org": 9,
+      "docs.langchain.com": 1,
+      "mortalapps.com": 1,
+      "fast.io": 1,
+      "www.ibm.com": 1,
+      "en.wikipedia.org": 1
     },
     "ok": true
   }

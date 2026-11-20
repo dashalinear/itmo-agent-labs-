@@ -1,0 +1,135 @@
+Источник: https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=agents-enabling-state-persistence-langgraph
+Конечный URL: https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=agents-enabling-state-persistence-langgraph
+HTTP: 200
+Заголовок: Enabling state persistence for LangGraph agents | IBM watsonx Orchestrate Base | IBM Documentation
+Получено: полностью
+
+Enabling state persistence for LangGraph agents
+
+Enable state persistence with checkpoints for LangGraph agents. Configure persistence in your agent's YAML file by using the checkpointer field.
+
+checkpointer field section
+
+The checkpointer field section is optional and enables state persistence across conversation turns. If omitted, your agent operates in stateless mode.
+
+Checkpointer types
+
+When you specify the checkpointer field section, you can configure the checkpointer with the following options:
+
+checkpointer.type
+
+The type of checkpointer to use:
+
+memory - In-memory storage for development and testing. State is lost on restart.
+
+Use case: Development, testing, temporary sessions
+
+Requirements: None
+
+Persistence: Lost on agent restart
+
+sqlite - File-based persistence using SQLite. State is lost on agent pod restart.
+
+Use case: Single-instance deployments, testing
+
+Requirements: Add langgraph-checkpoint-sqlite to requirements.txt
+
+Persistence: Lost on pod restart
+
+postgres - Database persistence using PostgreSQL for production use.
+
+Use case: Production deployments requiring durable state
+
+Requirements: Add langgraph-checkpoint-postgres to requirements.txt
+
+Persistence: Durable across restarts
+
+Additional configuration: Requires connection_string_key
+
+checkpointer.connection_string_key
+
+Field required if you use the postgres type. The app ID of the connection containing the PostgreSQL database connection string.
+
+Setup steps for PostgreSQL database persistence
+
+Create a connection with credential type api_key
+
+Provide your PostgreSQL connection string as the API key value
+
+Use the connection's app ID as the value for connection_string_key
+
+Select this connection during the agent import process
+
+The system automatically manages database connections and schema setup at runtime.
+
+Example configuration
+
+Agent with postgres checkpointer
+
+spec_version: v1
+kind: agent
+name: stateful_agent
+title: Stateful Support Agent
+description: Agent with persistent state using PostgreSQL
+deployment:
+ code_bundle:
+ entrypoint: agent:create_agent
+checkpointer:
+ type: postgres
+ connection_string_key: postgres_db
+
+requirements.txt:
+
+langgraph>=0.6.0
+langchain-core>=0.3.0
+langgraph-checkpoint-postgres
+
+Note: LangGraph version
+
+Minimum version: LangGraph ^0.6.0
+
+ Ensure your LangGraph agent is built with version 0.6.0 or higher, which includes native async streaming support.
+
+In this example, postgres_db is the app ID of a connection you must create before importing. This connection must have credential type api_key and contain your PostgreSQL database connection string. You select this connection during the import process.
+
+Agent with SQLite checkpointer
+
+spec_version: v1
+kind: agent
+name: sqlite_agent
+title: SQLite Stateful Agent
+description: Agent with SQLite state persistence
+deployment:
+ code_bundle:
+ entrypoint: agent:create_agent
+checkpointer:
+ type: sqlite
+
+requirements.txt:
+
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langgraph-checkpoint-sqlite
+
+Agent with memory checkpointer
+
+spec_version: v1
+kind: agent
+name: dev_agent
+title: Development Agent
+description: Agent with in-memory state for testing
+deployment:
+ code_bundle:
+ entrypoint: agent:create_agent
+checkpointer:
+ type: memory
+
+No additional dependencies required for memory checkpointer beyond the base LangGraph requirements.
+
+What to do next
+
+Importing LangGraph agents
+
+Creating connections for LangGraph agents
+
+Managing connections
