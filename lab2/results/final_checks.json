@@ -2,7 +2,7 @@
   {
     "task": "A1",
     "property": "статус completed только по критериям",
-    "actual": "completed (Обзор по data/search собран: 10 evidence (в каждом из 3 документов), разделы app)",
+    "actual": "completed (Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary))",
     "ok": true
   },
   {
@@ -14,7 +14,7 @@
   {
     "task": "A1",
     "property": "отказы complete_task до выполнения критериев (информативно)",
-    "actual": 2,
+    "actual": 1,
     "ok": true
   },
   {
@@ -26,8 +26,8 @@
   {
     "task": "A1",
     "property": "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
-    "actual": "evidence на момент сбоя 0, повторённые save_evidence после resume: [None, None, 'saved', 'saved', 'saved', 'saved']; в конце 10, дублей 0",
-    "ok": false
+    "actual": "evidence на момент сбоя 5, повторённые save_evidence после resume: [None, 'already_saved', 'already_saved', 'already_saved', 'saved', 'already_saved']; в конце 16, дублей 0",
+    "ok": true
   },
   {
     "task": "A1",
@@ -38,19 +38,19 @@
   {
     "task": "A1",
     "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
-    "actual": 5,
+    "actual": 3,
     "ok": true
   },
   {
     "task": "A1",
     "property": "нет вызова сверх рабочего лимита",
-    "actual": "макс. оценка+резерв 20876 / 28000; сверх лимита: 0",
+    "actual": "макс. оценка+резерв 20975 / 28000; сверх лимита: 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
-    "actual": "'АС-02': смещение 4358 > выдано 824, через read_artifact",
+    "actual": "'АС-03': смещение 704 > выдано 692, через read_artifact",
     "ok": true
   },
   {

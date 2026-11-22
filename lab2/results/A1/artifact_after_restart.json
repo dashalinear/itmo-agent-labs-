@@ -1,44 +1,44 @@
 {
   "task_id": "A1",
-  "pid": 10580,
+  "pid": 9196,
   "note": "new process: artifacts opened from disk after the run",
   "offloaded_outputs": 4,
   "artifacts_checked": [
     {
-      "artifact_id": "art_854645426e07f7613ad6",
+      "artifact_id": "art_50e2d2f2c65de202d4da",
       "tool": "search_text",
       "passed_chars": 1919
     },
     {
-      "artifact_id": "art_16d21a590d1baaa2bbc5",
+      "artifact_id": "art_6062abd261e07bf839af",
       "tool": "search_text",
-      "passed_chars": 1913
+      "passed_chars": 1915
     },
     {
-      "artifact_id": "art_b739fa9600b95db13cbb",
+      "artifact_id": "art_c08f17d1c7b6e790c22d",
       "tool": "search_text",
-      "passed_chars": 1904
+      "passed_chars": 1922
     },
     {
-      "artifact_id": "art_d99fde6cb4ec80036e3a",
+      "artifact_id": "art_87a18837d0f5c0afea45",
       "tool": "search_excerpts",
-      "passed_chars": 824
+      "passed_chars": 692
     }
   ],
   "example": {
-    "artifact_id": "art_d99fde6cb4ec80036e3a",
+    "artifact_id": "art_87a18837d0f5c0afea45",
     "tool": "search_excerpts",
-    "total_chars": 5273,
-    "chars_given_to_model": 824,
-    "query": "АС-02",
-    "char_offset_in_artifact": 4358,
-    "kind": "control fact F2",
-    "control_fact": "F2",
+    "total_chars": 5299,
+    "chars_given_to_model": 692,
+    "query": "АС-03",
+    "char_offset_in_artifact": 704,
+    "kind": "control fact F3",
+    "control_fact": "F3",
     "beyond_given_part": true,
     "artifact_layout": "lines",
-    "search_artifact_hit": "   \"text\": \"Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.\",",
-    "artifact_line": 81,
-    "read_artifact_text": "81:    \"text\": \"Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.\",",
+    "search_artifact_hit": "   \"summary\": \"Решение АС-03: отключение векторной ветви при p95 > 450 мс дольше 10 минут\",",
+    "artifact_line": 17,
+    "read_artifact_text": "17:    \"summary\": \"Решение АС-03: отключение векторной ветви при p95 > 450 мс дольше 10 минут\",",
     "read_artifact_has_query": true,
     "verified_in_document": null,
     "found_via": "read_artifact"

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:42+00:00",
+    "ts": "2026-11-22T19:29:24+00:00",
     "kind": "status",
     "data": {
       "status": "queued"
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:48+00:00",
+    "ts": "2026-11-22T19:29:31+00:00",
     "kind": "status",
     "data": {
       "status": "running",
@@ -21,7 +21,7 @@
   {
     "id": 3,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:48+00:00",
+    "ts": "2026-11-22T19:29:31+00:00",
     "kind": "context_check",
     "data": {
       "estimated_input": 11979,
@@ -37,7 +37,7 @@
   {
     "id": 4,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:48+00:00",
+    "ts": "2026-11-22T19:29:31+00:00",
     "kind": "model_call_plan",
     "data": {
       "estimated_input": 11979,
@@ -51,41 +51,41 @@
   {
     "id": 5,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:51+00:00",
+    "ts": "2026-11-22T19:29:33+00:00",
     "kind": "model_call_done",
     "data": {
       "estimated_input": 11979,
       "actual_input": 7474,
-      "actual_output": 254,
-      "duration_s": 2.97,
+      "actual_output": 323,
+      "duration_s": 2.86,
       "calibrated_cpt": 3.074
     }
   },
   {
     "id": 6,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:51+00:00",
+    "ts": "2026-11-22T19:29:34+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11174,
+      "estimated_input": 11798,
       "reserve": 2048,
-      "total": 13222,
+      "total": 13846,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.07)",
-      "messages": 4
+      "messages": 7
     }
   },
   {
     "id": 7,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:51+00:00",
+    "ts": "2026-11-22T19:29:34+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11174,
+      "estimated_input": 11798,
       "reserve": 2048,
-      "total": 13222,
+      "total": 13846,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.07)"
@@ -94,1137 +94,839 @@
   {
     "id": 8,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:53+00:00",
+    "ts": "2026-11-22T19:29:35+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 11174,
-      "actual_input": 8421,
+      "estimated_input": 11798,
+      "actual_input": 9109,
       "actual_output": 180,
-      "duration_s": 2.25,
-      "calibrated_cpt": 3.323
+      "duration_s": 1.88,
+      "calibrated_cpt": 3.285
     }
   },
   {
     "id": 9,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:53+00:00",
+    "ts": "2026-11-22T19:29:36+00:00",
     "kind": "tool_output_offloaded",
     "data": {
       "tool": "search_text",
-      "artifact_id": "art_854645426e07f7613ad6",
+      "artifact_id": "art_50e2d2f2c65de202d4da",
       "total_chars": 9128,
       "passed_chars": 1919,
       "reason": "single result 9128 chars > limit 6000",
-      "step": "lc_run--01a204ae-c072-74b5-9f74-ce3be7341eb5-0",
-      "step_total_after": 1919,
+      "step": "lc_run--01a204bc-396f-74fa-8387-9357b4ac8d7a-0",
+      "step_total_after": 3907,
       "step_limit": 12000
     }
   },
   {
     "id": 10,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:53+00:00",
+    "ts": "2026-11-22T19:29:36+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11875,
+      "estimated_input": 12595,
       "reserve": 2048,
-      "total": 13923,
+      "total": 14643,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 8
+      "method": "heuristic(cpt=3.29)",
+      "messages": 11
     }
   },
   {
     "id": 11,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:53+00:00",
+    "ts": "2026-11-22T19:29:36+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11875,
+      "estimated_input": 12595,
       "reserve": 2048,
-      "total": 13923,
+      "total": 14643,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.32)"
+      "method": "heuristic(cpt=3.29)"
     }
   },
   {
     "id": 12,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:56+00:00",
+    "ts": "2026-11-22T19:29:38+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 11875,
-      "actual_input": 10129,
-      "actual_output": 241,
-      "duration_s": 2.68,
-      "calibrated_cpt": 3.403
+      "estimated_input": 12595,
+      "actual_input": 10807,
+      "actual_output": 302,
+      "duration_s": 2.77,
+      "calibrated_cpt": 3.355
     }
   },
   {
     "id": 13,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:56+00:00",
+    "ts": "2026-11-22T19:29:38+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 15036,
+      "estimated_input": 16095,
       "reserve": 2048,
-      "total": 17084,
+      "total": 18143,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.40)",
-      "messages": 13
+      "method": "heuristic(cpt=3.35)",
+      "messages": 17
     }
   },
   {
     "id": 14,
     "task_id": "A1",
-    "ts": "2026-11-22T19:14:56+00:00",
+    "ts": "2026-11-22T19:29:38+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 15036,
+      "estimated_input": 16095,
       "reserve": 2048,
-      "total": 17084,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.40)"
-    }
-  },
-  {
-    "id": 15,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:14:58+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15036,
-      "actual_input": 14239,
-      "actual_output": 60,
-      "duration_s": 1.83,
-      "calibrated_cpt": 3.341
-    }
-  },
-  {
-    "id": 16,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:14:58+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15474,
-      "reserve": 2048,
-      "total": 17522,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 17,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:14:58+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15474,
-      "reserve": 2048,
-      "total": 17522,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)"
-    }
-  },
-  {
-    "id": 18,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:14:59+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15474,
-      "actual_input": 14399,
-      "actual_output": 59,
-      "duration_s": 1.86,
-      "calibrated_cpt": 3.301
-    }
-  },
-  {
-    "id": 19,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:14:59+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15925,
-      "reserve": 2048,
-      "total": 17973,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.30)",
-      "messages": 17
-    }
-  },
-  {
-    "id": 20,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:00+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15925,
-      "reserve": 2048,
-      "total": 17973,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.30)"
-    }
-  },
-  {
-    "id": 21,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:01+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15925,
-      "actual_input": 14675,
-      "actual_output": 61,
-      "duration_s": 1.63,
-      "calibrated_cpt": 3.273
-    }
-  },
-  {
-    "id": 22,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:01+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16997,
-      "reserve": 2048,
-      "total": 19045,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.27)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 23,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:01+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16997,
-      "reserve": 2048,
-      "total": 19045,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.27)"
-    }
-  },
-  {
-    "id": 24,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:03+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16997,
-      "actual_input": 15641,
-      "actual_output": 112,
-      "duration_s": 2.13,
-      "calibrated_cpt": 3.247
-    }
-  },
-  {
-    "id": 25,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:03+00:00",
-    "kind": "tool_output_offloaded",
-    "data": {
-      "tool": "search_text",
-      "artifact_id": "art_16d21a590d1baaa2bbc5",
-      "total_chars": 9597,
-      "passed_chars": 1913,
-      "reason": "single result 9597 chars > limit 6000",
-      "step": "lc_run--01a204ae-e9ab-7238-8a9b-18b567b24dd1-0",
-      "step_total_after": 2153,
-      "step_limit": 12000
-    }
-  },
-  {
-    "id": 26,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:03+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18019,
-      "reserve": 2048,
-      "total": 20067,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.25)",
-      "messages": 22
-    }
-  },
-  {
-    "id": 27,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:03+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18019,
-      "reserve": 2048,
-      "total": 20067,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.25)"
-    }
-  },
-  {
-    "id": 28,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:06+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18019,
-      "actual_input": 16545,
-      "actual_output": 114,
-      "duration_s": 2.26,
-      "calibrated_cpt": 3.224
-    }
-  },
-  {
-    "id": 29,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:06+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18471,
-      "reserve": 2048,
-      "total": 20519,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.22)",
-      "messages": 25
-    }
-  },
-  {
-    "id": 30,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:06+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18471,
-      "reserve": 2048,
-      "total": 20519,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.22)"
-    }
-  },
-  {
-    "id": 31,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:08+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18471,
-      "actual_input": 16838,
-      "actual_output": 118,
-      "duration_s": 2.3,
-      "calibrated_cpt": 3.208
-    }
-  },
-  {
-    "id": 32,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:08+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19551,
-      "reserve": 2048,
-      "total": 21599,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)",
-      "messages": 28
-    }
-  },
-  {
-    "id": 33,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:17+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 1,
-      "before_tokens": 19551,
-      "after_tokens": 12184,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 21,
-      "kept_messages": 7,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 6675,
-      "cost_output": 1163,
-      "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только ч...» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в ква...» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_16d21a590d1baaa2bbc5`). Пример: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4); «две ветви удваивают нагрузку...» (handbook, стр. 261).\n\n## Прогресс\n- Прочитаны: `ls` каталога, фрагменты handbook (стр. 4, 261, 517), lectures (стр. 47), incidents (стр. 16-19).\n- Найдены все 3 решения АС, решение кафедры, INC-2026-017.\n- Собрано 5+ evidence (нужно ≥8).\n- Не выполнено: индексация в ES, написание обзора.\n\n## Открытые вопросы и следующий шаг\n- Прочитать артефакты `art_854645426e07f7613ad6` (метрики) и `art_16d21a590d1baaa2bbc5` (спорные утверждения) для сбора дополнительных evidence.\n- Выполнить `build_excerpts` и `upsert_excerpts` для АС-01..03.\n- Проверить `search_excerpts`.\n- Написать разделы обзора.\n\n## Артефакты\n- `art_854645426e07f7613ad6`: результаты поиска «метрик» в lectures.\n- `art_16d21a590d1baaa2bbc5`: результаты поиска «Спорное утверждение» в handbook.",
-      "kept_tail": [
-        {
-          "type": "HumanMessage"
-        },
-        {
-          "type": "AIMessage",
-          "tool_calls": [
-            "chatcmpl-tool-ad0a35be239b7444",
-            "chatcmpl-tool-a024df6e322f7586"
-          ]
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-ad0a35be239b7444"
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-a024df6e322f7586"
-        },
-        {
-          "type": "AIMessage",
-          "tool_calls": [
-            "chatcmpl-tool-8cd1d77be6448f23",
-            "chatcmpl-tool-9f795748713abe5b"
-          ]
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-8cd1d77be6448f23"
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-9f795748713abe5b"
-        }
-      ]
-    }
-  },
-  {
-    "id": 34,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:17+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12184,
-      "reserve": 2048,
-      "total": 14232,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)"
-    }
-  },
-  {
-    "id": 35,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:19+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12184,
-      "actual_input": 10056,
-      "actual_output": 120,
-      "duration_s": 1.7,
-      "calibrated_cpt": 3.332
-    }
-  },
-  {
-    "id": 36,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:19+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12635,
-      "reserve": 2048,
-      "total": 14683,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 37,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:19+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12635,
-      "reserve": 2048,
-      "total": 14683,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)"
-    }
-  },
-  {
-    "id": 38,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:20+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12635,
-      "actual_input": 11147,
-      "actual_output": 120,
-      "duration_s": 1.61,
-      "calibrated_cpt": 3.365
-    }
-  },
-  {
-    "id": 39,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:20+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13357,
-      "reserve": 2048,
-      "total": 15405,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.36)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 40,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:20+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13357,
-      "reserve": 2048,
-      "total": 15405,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.36)"
-    }
-  },
-  {
-    "id": 41,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:22+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13357,
-      "actual_input": 12206,
-      "actual_output": 120,
-      "duration_s": 1.66,
-      "calibrated_cpt": 3.348
-    }
-  },
-  {
-    "id": 42,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:22+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14231,
-      "reserve": 2048,
-      "total": 16279,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.35)",
-      "messages": 16
-    }
-  },
-  {
-    "id": 43,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:22+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14231,
-      "reserve": 2048,
-      "total": 16279,
+      "total": 18143,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.35)"
     }
   },
   {
-    "id": 44,
+    "id": 15,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:24+00:00",
+    "ts": "2026-11-22T19:29:40+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14231,
-      "actual_input": 13278,
-      "actual_output": 120,
-      "duration_s": 1.79,
-      "calibrated_cpt": 3.304
+      "estimated_input": 16095,
+      "actual_input": 15268,
+      "actual_output": 60,
+      "duration_s": 1.87,
+      "calibrated_cpt": 3.289
     }
   },
   {
-    "id": 45,
+    "id": 16,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:24+00:00",
+    "ts": "2026-11-22T19:29:40+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 15307,
+      "estimated_input": 16573,
       "reserve": 2048,
-      "total": 17355,
+      "total": 18621,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.30)",
+      "method": "heuristic(cpt=3.29)",
       "messages": 19
     }
   },
   {
-    "id": 46,
+    "id": 17,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:24+00:00",
+    "ts": "2026-11-22T19:29:40+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 15307,
+      "estimated_input": 16573,
       "reserve": 2048,
-      "total": 17355,
+      "total": 18621,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.30)"
+      "method": "heuristic(cpt=3.29)"
     }
   },
   {
-    "id": 47,
+    "id": 18,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:26+00:00",
+    "ts": "2026-11-22T19:29:42+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 15307,
-      "actual_input": 14396,
-      "actual_output": 124,
-      "duration_s": 1.99,
-      "calibrated_cpt": 3.249
+      "estimated_input": 16573,
+      "actual_input": 15426,
+      "actual_output": 59,
+      "duration_s": 1.85,
+      "calibrated_cpt": 3.248
     }
   },
   {
-    "id": 48,
+    "id": 19,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:26+00:00",
-    "kind": "guardrail",
-    "data": {
-      "guard": "reads_without_evidence",
-      "tool": "read_lines",
-      "reads": 25
-    }
-  },
-  {
-    "id": 49,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:26+00:00",
+    "ts": "2026-11-22T19:29:42+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 16593,
+      "estimated_input": 17051,
       "reserve": 2048,
-      "total": 18641,
+      "total": 19099,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.25)",
-      "messages": 22
+      "messages": 21
     }
   },
   {
-    "id": 50,
+    "id": 20,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:26+00:00",
+    "ts": "2026-11-22T19:29:42+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 16593,
+      "estimated_input": 17051,
       "reserve": 2048,
-      "total": 18641,
+      "total": 19099,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.25)"
     }
   },
   {
-    "id": 51,
+    "id": 21,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:28+00:00",
+    "ts": "2026-11-22T19:29:44+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 16593,
-      "actual_input": 15628,
-      "actual_output": 124,
-      "duration_s": 2.31,
-      "calibrated_cpt": 3.192
+      "estimated_input": 17051,
+      "actual_input": 15702,
+      "actual_output": 61,
+      "duration_s": 1.75,
+      "calibrated_cpt": 3.221
     }
   },
   {
-    "id": 52,
+    "id": 22,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:28+00:00",
+    "ts": "2026-11-22T19:29:44+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 17818,
+      "estimated_input": 18220,
       "reserve": 2048,
-      "total": 19866,
+      "total": 20268,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.22)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 23,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18220,
+      "reserve": 2048,
+      "total": 20268,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.22)"
+    }
+  },
+  {
+    "id": 24,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18220,
+      "actual_input": 16757,
+      "actual_output": 107,
+      "duration_s": 2.37,
+      "calibrated_cpt": 3.195
+    }
+  },
+  {
+    "id": 25,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:47+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "search_text",
+      "artifact_id": "art_6062abd261e07bf839af",
+      "total_chars": 12717,
+      "passed_chars": 1915,
+      "reason": "single result 12717 chars > limit 6000",
+      "step": "lc_run--01a204bc-625c-7644-9985-b091f28e6d32-0",
+      "step_total_after": 1915,
+      "step_limit": 12000
+    }
+  },
+  {
+    "id": 26,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:47+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "search_text",
+      "artifact_id": "art_c08f17d1c7b6e790c22d",
+      "total_chars": 10262,
+      "passed_chars": 1922,
+      "reason": "single result 10262 chars > limit 6000",
+      "step": "lc_run--01a204bc-625c-7644-9985-b091f28e6d32-0",
+      "step_total_after": 3837,
+      "step_limit": 12000
+    }
+  },
+  {
+    "id": 27,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19839,
+      "reserve": 2048,
+      "total": 21887,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.19)",
-      "messages": 25
+      "messages": 26
     }
   },
   {
-    "id": 53,
+    "id": 28,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:28+00:00",
+    "ts": "2026-11-22T19:29:54+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19839,
+      "after_tokens": 12279,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 22,
+      "kept_messages": 4,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6911,
+      "cost_output": 989,
+      "note": "",
+      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01/02/03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр документов → поиск ключевых фактов → сбор evidence → индексация в ES → написание обзора.\n- Стратегия чтения: `search_text` для локализации, затем `read_lines` для конкретных страниц.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только ч...» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в ква...» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n\n## Прогресс\n- Прочитаны метаданные всех 3 документов (`doc_info`).\n- Выполнен поиск и чтение страниц с АС-01/02/03, решением кафедры, INC-2026-017.\n- Найдены фрагменты с подходами (гибридный поиск, RRF, RAG) и ограничениями (OCR, нагрузка на кластер) в справочнике.\n- Не начата индексация в Elasticsearch.\n- Не написан итоговый обзор.\n\n## Открытые вопросы и следующий шаг\n- Получить полные дословные цитаты для АС-01 и АС-02 (текущие сниппеты обрезаны).\n- Найти спорные утверждения (disputed claims) в документах.\n- Индексировать 3 решения АС в ES через MCP (`build_excerpts`, `upsert_excerpts`) и проверить `search_excerpts`.\n- Написать разделы обзора: approaches, limitations, disputed, decisions, summary.\n\n## Артефакты\n- `art_50e2d2f2c65de202d4da`: результат поиска \"метрик\" в `ir_course_lectures.md` (117 хитов, 228 строк).",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-969685114279d1eb",
+            "chatcmpl-tool-9d3d44b4ae712084"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-969685114279d1eb"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d3d44b4ae712084"
+        }
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:54+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 17818,
+      "estimated_input": 12279,
       "reserve": 2048,
-      "total": 19866,
+      "total": 14327,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.19)"
     }
   },
   {
-    "id": 54,
+    "id": 30,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:31+00:00",
+    "ts": "2026-11-22T19:29:56+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 17818,
-      "actual_input": 16728,
-      "actual_output": 124,
-      "duration_s": 2.28,
-      "calibrated_cpt": 3.139
+      "estimated_input": 12279,
+      "actual_input": 10027,
+      "actual_output": 118,
+      "duration_s": 1.58,
+      "calibrated_cpt": 3.335
+    }
+  },
+  {
+    "id": 31,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12708,
+      "reserve": 2048,
+      "total": 14756,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.34)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 32,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12708,
+      "reserve": 2048,
+      "total": 14756,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.34)"
+    }
+  },
+  {
+    "id": 33,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12708,
+      "actual_input": 11096,
+      "actual_output": 120,
+      "duration_s": 1.57,
+      "calibrated_cpt": 3.384
+    }
+  },
+  {
+    "id": 34,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12845,
+      "reserve": 2048,
+      "total": 14893,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 35,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12845,
+      "reserve": 2048,
+      "total": 14893,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 36,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12845,
+      "actual_input": 11400,
+      "actual_output": 112,
+      "duration_s": 1.65,
+      "calibrated_cpt": 3.41
+    }
+  },
+  {
+    "id": 37,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13051,
+      "reserve": 2048,
+      "total": 15099,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 38,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:29:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13051,
+      "reserve": 2048,
+      "total": 15099,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 39,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13051,
+      "actual_input": 11689,
+      "actual_output": 118,
+      "duration_s": 1.73,
+      "calibrated_cpt": 3.42
+    }
+  },
+  {
+    "id": 40,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13320,
+      "reserve": 2048,
+      "total": 15368,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 41,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13320,
+      "reserve": 2048,
+      "total": 15368,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)"
+    }
+  },
+  {
+    "id": 42,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13320,
+      "actual_input": 11987,
+      "actual_output": 116,
+      "duration_s": 1.76,
+      "calibrated_cpt": 3.422
+    }
+  },
+  {
+    "id": 43,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13619,
+      "reserve": 2048,
+      "total": 15667,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 44,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13619,
+      "reserve": 2048,
+      "total": 15667,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)"
+    }
+  },
+  {
+    "id": 45,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13619,
+      "actual_input": 12283,
+      "actual_output": 114,
+      "duration_s": 1.74,
+      "calibrated_cpt": 3.42
+    }
+  },
+  {
+    "id": 46,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:05+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "reads_without_evidence",
+      "tool": "search_text",
+      "reads": 25
+    }
+  },
+  {
+    "id": 47,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14146,
+      "reserve": 2048,
+      "total": 16194,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 48,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14146,
+      "reserve": 2048,
+      "total": 16194,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.42)"
+    }
+  },
+  {
+    "id": 49,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14146,
+      "actual_input": 12791,
+      "actual_output": 118,
+      "duration_s": 1.84,
+      "calibrated_cpt": 3.412
+    }
+  },
+  {
+    "id": 50,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14484,
+      "reserve": 2048,
+      "total": 16532,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 51,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14484,
+      "reserve": 2048,
+      "total": 16532,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 52,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14484,
+      "actual_input": 13091,
+      "actual_output": 116,
+      "duration_s": 1.82,
+      "calibrated_cpt": 3.404
+    }
+  },
+  {
+    "id": 53,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15680,
+      "reserve": 2048,
+      "total": 17728,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 54,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15680,
+      "reserve": 2048,
+      "total": 17728,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)"
     }
   },
   {
     "id": 55,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:31+00:00",
-    "kind": "context_check",
+    "ts": "2026-11-22T19:30:10+00:00",
+    "kind": "model_call_done",
     "data": {
-      "estimated_input": 19070,
-      "reserve": 2048,
-      "total": 21118,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.14)",
-      "messages": 28
+      "estimated_input": 15680,
+      "actual_input": 14467,
+      "actual_output": 116,
+      "duration_s": 1.91,
+      "calibrated_cpt": 3.368
     }
   },
   {
     "id": 56,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:40+00:00",
-    "kind": "compaction",
+    "ts": "2026-11-22T19:30:11+00:00",
+    "kind": "context_check",
     "data": {
-      "n": 2,
-      "before_tokens": 19070,
-      "after_tokens": 12179,
+      "estimated_input": 17776,
       "reserve": 2048,
+      "total": 19824,
+      "trigger": 21000,
       "working_limit": 28000,
-      "removed_messages": 24,
-      "kept_messages": 4,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 9517,
-      "cost_output": 1333,
-      "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только ч...» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в ква...» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_16d21a590d1baaa2bbc5`). Пример: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; стр. 15, line 239).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345).\n\n## Прогресс\n- Прочитаны: `ls` каталога, фрагменты handbook (стр. 3, 4, 9, 15, 21, 27, 28, 33, 34, 39, 40, 45, 46, 51, 52, 57, 58, 63, 64, 69, 70, 75, 76, 82, 261, 517), lectures (стр. 47), incidents (стр. 16-19).\n- Найдены все 3 решения АС, решение кафедры, INC-2026-017.\n- Собрано 5+ evidence (нужно ≥8).\n- Не выполнено: индексация в ES, написание обзора.\n\n## Открытые вопросы и следующий шаг\n- Прочитать артефакты `art_854645426e07f7613ad6` (метрики) и `art_16d21a590d1baaa2bbc5` (спорные утверждения) для сбора дополнительных evidence.\n- Выполнить `build_excerpts` и `upsert_excerpts` для АС-01..03.\n- Проверить `search_excerpts`.\n- Написать разделы обзора.\n\n## Артефакты\n- `art_854645426e07f7613ad6`: результаты поиска «метрик» в lectures.\n- `art_16d21a590d1baaa2bbc5`: результаты поиска «Спорное утверждение» в handbook.",
-      "kept_tail": [
-        {
-          "type": "HumanMessage"
-        },
-        {
-          "type": "AIMessage",
-          "tool_calls": [
-            "chatcmpl-tool-976edd195e7d2eb4",
-            "chatcmpl-tool-a087600336d22c43"
-          ]
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-976edd195e7d2eb4"
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-a087600336d22c43"
-        }
-      ]
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "messages": 31
     }
   },
   {
     "id": 57,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:40+00:00",
+    "ts": "2026-11-22T19:30:11+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12179,
+      "estimated_input": 17776,
       "reserve": 2048,
-      "total": 14227,
+      "total": 19824,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.14)"
+      "method": "heuristic(cpt=3.37)"
     }
   },
   {
     "id": 58,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:42+00:00",
+    "ts": "2026-11-22T19:30:13+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12179,
-      "actual_input": 9949,
-      "actual_output": 124,
-      "duration_s": 1.48,
-      "calibrated_cpt": 3.277
+      "estimated_input": 17776,
+      "actual_input": 16742,
+      "actual_output": 118,
+      "duration_s": 2.45,
+      "calibrated_cpt": 3.305
     }
   },
   {
     "id": 59,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:42+00:00",
+    "ts": "2026-11-22T19:30:13+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12590,
+      "estimated_input": 18927,
       "reserve": 2048,
-      "total": 14638,
+      "total": 20975,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.28)",
-      "messages": 7
+      "method": "heuristic(cpt=3.31)",
+      "messages": 34
     }
   },
   {
     "id": 60,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:42+00:00",
+    "ts": "2026-11-22T19:30:13+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12590,
+      "estimated_input": 18927,
       "reserve": 2048,
-      "total": 14638,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)"
-    }
-  },
-  {
-    "id": 61,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:43+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12590,
-      "actual_input": 11044,
-      "actual_output": 124,
-      "duration_s": 1.56,
-      "calibrated_cpt": 3.319
-    }
-  },
-  {
-    "id": 62,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:43+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13330,
-      "reserve": 2048,
-      "total": 15378,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 63,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:44+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13330,
-      "reserve": 2048,
-      "total": 15378,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)"
-    }
-  },
-  {
-    "id": 64,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:46+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13330,
-      "actual_input": 12117,
-      "actual_output": 124,
-      "duration_s": 2.09,
-      "calibrated_cpt": 3.312
-    }
-  },
-  {
-    "id": 65,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:46+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14195,
-      "reserve": 2048,
-      "total": 16243,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.31)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 66,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:46+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14195,
-      "reserve": 2048,
-      "total": 16243,
+      "total": 20975,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.31)"
     }
   },
   {
-    "id": 67,
+    "id": 61,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:48+00:00",
+    "ts": "2026-11-22T19:30:15+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14195,
-      "actual_input": 13104,
-      "actual_output": 124,
-      "duration_s": 1.92,
-      "calibrated_cpt": 3.283
+      "estimated_input": 18927,
+      "actual_input": 17674,
+      "actual_output": 116,
+      "duration_s": 2.43,
+      "calibrated_cpt": 3.255
     }
   },
   {
-    "id": 68,
+    "id": 62,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:48+00:00",
+    "ts": "2026-11-22T19:30:16+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 15180,
+      "estimated_input": 19945,
       "reserve": 2048,
-      "total": 17228,
+      "total": 21993,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.28)",
-      "messages": 16
+      "method": "heuristic(cpt=3.25)",
+      "messages": 37
     }
   },
   {
-    "id": 69,
+    "id": 63,
     "task_id": "A1",
-    "ts": "2026-11-22T19:15:48+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15180,
-      "reserve": 2048,
-      "total": 17228,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)"
-    }
-  },
-  {
-    "id": 70,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:50+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15180,
-      "actual_input": 14125,
-      "actual_output": 124,
-      "duration_s": 2.03,
-      "calibrated_cpt": 3.244
-    }
-  },
-  {
-    "id": 71,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:50+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16223,
-      "reserve": 2048,
-      "total": 18271,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 72,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:50+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16223,
-      "reserve": 2048,
-      "total": 18271,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)"
-    }
-  },
-  {
-    "id": 73,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:52+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16223,
-      "actual_input": 15122,
-      "actual_output": 124,
-      "duration_s": 2.1,
-      "calibrated_cpt": 3.201
-    }
-  },
-  {
-    "id": 74,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:52+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17290,
-      "reserve": 2048,
-      "total": 19338,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.20)",
-      "messages": 22
-    }
-  },
-  {
-    "id": 75,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:52+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17290,
-      "reserve": 2048,
-      "total": 19338,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.20)"
-    }
-  },
-  {
-    "id": 76,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:54+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17290,
-      "actual_input": 16186,
-      "actual_output": 124,
-      "duration_s": 2.25,
-      "calibrated_cpt": 3.153
-    }
-  },
-  {
-    "id": 77,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:54+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18475,
-      "reserve": 2048,
-      "total": 20523,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.15)",
-      "messages": 25
-    }
-  },
-  {
-    "id": 78,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:54+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18475,
-      "reserve": 2048,
-      "total": 20523,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.15)"
-    }
-  },
-  {
-    "id": 79,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:57+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18475,
-      "actual_input": 17272,
-      "actual_output": 124,
-      "duration_s": 2.46,
-      "calibrated_cpt": 3.107
-    }
-  },
-  {
-    "id": 80,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:15:57+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19649,
-      "reserve": 2048,
-      "total": 21697,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.11)",
-      "messages": 28
-    }
-  },
-  {
-    "id": 81,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:08+00:00",
+    "ts": "2026-11-22T19:30:25+00:00",
     "kind": "compaction",
     "data": {
-      "n": 3,
-      "before_tokens": 19649,
-      "after_tokens": 12423,
+      "n": 2,
+      "before_tokens": 19945,
+      "after_tokens": 11723,
       "reserve": 2048,
       "working_limit": 28000,
-      "removed_messages": 24,
+      "removed_messages": 33,
       "kept_messages": 4,
-      "method": "llm+rules(sections Артефакты)",
+      "method": "llm",
       "chunks": 1,
-      "cost_input": 10142,
-      "cost_output": 1600,
+      "cost_input": 8022,
+      "cost_output": 1385,
       "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только ч...» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в ква...» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_16d21a590d1baaa2bbc5`). Пример: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; стр. 15, line 239).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n- Прочитаны: `ls` каталога, фрагменты handbook (стр. 3, 4, 9, 15, 21, 27, 28, 33, 34, 39, 40, 45, 46, 51, 52, 57, 58, 63, 64, 69, 70, 75, 76, 82, 88, 93, 94, 100, 106, 112, 118, 124, 130, 136, 142, 148, 154, 160, 161, 166, 167, 172, 173, 178, 261, 517), lectures (стр. 47), incidents (стр. 16-19).\n- Найдены все 3 решения АС, решение кафедры, INC-2026-017.\n- Собрано 5+ evidence (нужно ≥8).\n- Не выполнено: индексация в ES, написание обзора.\n\n## Открытые вопросы и следующий шаг\n- Прочитать артефакты `art_854645426e07f7613ad6` (метрики) и `art_16d21a590d1baaa2bbc5` (спорные утверждения) для сбора дополнительных evidence.\n- Выполнить `build_excerpts` и `upsert_excerpts` для АС-01..03.\n- Проверить `search_excerpts`.\n- Написать разделы обзора.\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01/02/03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр документов → поиск ключевых фактов → сбор evidence → индексация в ES → написание обзора.\n- Стратегия чтения: `search_text` для локализации, затем `read_lines` для конкретных страниц.\n- Спорные утверждения и ограничения найдены только в `search_engineering_handbook.md`; в других документах таких маркеров нет.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только ч...» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в ква...» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорное утверждение 1**: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки. Контраргумент: Инкрементальная загрузка с проверкой хэшей даёт ту же полноту при меньшей нагрузке...» — `data/search/search_engineering_handbook.md`, стр. 3, line 41.\n- **Спорное утверждение 2**: «Дедупликацию лучше выполнять только после индексации. Контраргумент: Дубли, попавшие в индекс, искажают статистику термов и выдачу; дешевле отсеивать их до записи.» — `data/search/search_engineering_handbook.md`, стр. 9, line 141.\n- **Ограничение**: «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц.» — `data/search/search_engineering_handbook.md`, стр. 2, line 21.\n- **Инцидент HNSW**: «Симптом: отставание индексации на 4 ч. Причина: исчерпание памяти графа HNSW. Исправление: вынос векторного индекса на отдельный узел.» — `data/search/search_incident_reports.md`, стр. 3, line 39.\n\n## Прогресс\n- Прочитаны метаданные всех 3 документов.\n- Выполнен поиск и чтение страниц с АС-01/02/03, решением кафедры, INC-2026-017.\n- Найдены спорные утверждения (стр. 3, 9) и ограничения (стр. 2) в справочнике.\n- Найдены примеры подходов (BM25, векторный поиск, HNSW) в конспекте и отчётах.\n- Не начата индексация в Elasticsearch.\n- Не написан итоговый обзор.\n\n## Открытые вопросы и следующий шаг\n- Получить полные дословные цитаты для АС-01 и АС-02 (текущие сниппеты обрезаны).\n- Индексировать 3 решения АС в ES через MCP (`build_excerpts`, `upsert_excerpts`) и проверить `search_excerpts`.\n- Написать разделы обзора: approaches, limitations, disputed, decisions, summary.\n\n## Артефакты\n- `art_50e2d2f2c65de202d4da`: результат поиска \"метрик\" в `ir_course_lectures.md`.\n- `art_6062abd261e07bf839af`: результат поиска \"Спорное утверждение\" (87 хитов).\n- `art_c08f17d1c7b6e790c22d`: результат поиска \"Ограничение:\" (260 хитов).",
       "kept_tail": [
         {
           "type": "HumanMessage"
@@ -1232,95 +934,353 @@
         {
           "type": "AIMessage",
           "tool_calls": [
-            "chatcmpl-tool-a170e0bf69df4841",
-            "chatcmpl-tool-99c0ad80d88832d9"
+            "chatcmpl-tool-83f94f190629c6c6",
+            "chatcmpl-tool-a43210d3874c34a4"
           ]
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-a170e0bf69df4841"
+          "tool_call_id": "chatcmpl-tool-83f94f190629c6c6"
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-99c0ad80d88832d9"
+          "tool_call_id": "chatcmpl-tool-a43210d3874c34a4"
         }
       ]
     }
   },
   {
-    "id": 82,
+    "id": 64,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:08+00:00",
+    "ts": "2026-11-22T19:30:25+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12423,
+      "estimated_input": 11723,
       "reserve": 2048,
-      "total": 14471,
+      "total": 13771,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.11)"
+      "method": "heuristic(cpt=3.25)"
+    }
+  },
+  {
+    "id": 65,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11723,
+      "actual_input": 9679,
+      "actual_output": 120,
+      "duration_s": 1.48,
+      "calibrated_cpt": 3.382
+    }
+  },
+  {
+    "id": 66,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12014,
+      "reserve": 2048,
+      "total": 14062,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 67,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12014,
+      "reserve": 2048,
+      "total": 14062,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 68,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:28+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12014,
+      "actual_input": 10614,
+      "actual_output": 62,
+      "duration_s": 1.21,
+      "calibrated_cpt": 3.415
+    }
+  },
+  {
+    "id": 69,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12259,
+      "reserve": 2048,
+      "total": 14307,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 70,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12259,
+      "reserve": 2048,
+      "total": 14307,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 71,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12259,
+      "actual_input": 11088,
+      "actual_output": 120,
+      "duration_s": 1.59,
+      "calibrated_cpt": 3.415
+    }
+  },
+  {
+    "id": 72,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12880,
+      "reserve": 2048,
+      "total": 14928,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 73,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12880,
+      "reserve": 2048,
+      "total": 14928,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 74,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12880,
+      "actual_input": 11888,
+      "actual_output": 118,
+      "duration_s": 1.68,
+      "calibrated_cpt": 3.385
+    }
+  },
+  {
+    "id": 75,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13737,
+      "reserve": 2048,
+      "total": 15785,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 76,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13737,
+      "reserve": 2048,
+      "total": 15785,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 77,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13737,
+      "actual_input": 12717,
+      "actual_output": 115,
+      "duration_s": 1.76,
+      "calibrated_cpt": 3.35
+    }
+  },
+  {
+    "id": 78,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14678,
+      "reserve": 2048,
+      "total": 16726,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.35)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 79,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14678,
+      "reserve": 2048,
+      "total": 16726,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.35)"
+    }
+  },
+  {
+    "id": 80,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14678,
+      "actual_input": 13637,
+      "actual_output": 114,
+      "duration_s": 1.85,
+      "calibrated_cpt": 3.31
+    }
+  },
+  {
+    "id": 81,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15166,
+      "reserve": 2048,
+      "total": 17214,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.31)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 82,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:30:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15166,
+      "reserve": 2048,
+      "total": 17214,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.31)"
     }
   },
   {
     "id": 83,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:10+00:00",
+    "ts": "2026-11-22T19:30:37+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12423,
-      "actual_input": 10209,
-      "actual_output": 124,
-      "duration_s": 1.52,
-      "calibrated_cpt": 3.235
+      "estimated_input": 15166,
+      "actual_input": 13929,
+      "actual_output": 117,
+      "duration_s": 2.03,
+      "calibrated_cpt": 3.284
     }
   },
   {
     "id": 84,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:10+00:00",
+    "ts": "2026-11-22T19:30:37+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12879,
+      "estimated_input": 17419,
       "reserve": 2048,
-      "total": 14927,
+      "total": 19467,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.24)",
-      "messages": 7
+      "method": "heuristic(cpt=3.28)",
+      "messages": 24
     }
   },
   {
     "id": 85,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:10+00:00",
+    "ts": "2026-11-22T19:30:37+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12879,
+      "estimated_input": 17419,
       "reserve": 2048,
-      "total": 14927,
+      "total": 19467,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.24)"
+      "method": "heuristic(cpt=3.28)"
     }
   },
   {
     "id": 86,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:12+00:00",
+    "ts": "2026-11-22T19:30:40+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12879,
-      "actual_input": 11409,
-      "actual_output": 124,
-      "duration_s": 1.72,
-      "calibrated_cpt": 3.264
+      "estimated_input": 17419,
+      "actual_input": 16373,
+      "actual_output": 117,
+      "duration_s": 2.31,
+      "calibrated_cpt": 3.229
     }
   },
   {
     "id": 87,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:12+00:00",
+    "ts": "2026-11-22T19:30:40+00:00",
     "kind": "guardrail",
     "data": {
       "guard": "reads_without_evidence",
@@ -1331,266 +1291,50 @@
   {
     "id": 88,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:12+00:00",
+    "ts": "2026-11-22T19:30:40+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13800,
+      "estimated_input": 18631,
       "reserve": 2048,
-      "total": 15848,
+      "total": 20679,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.26)",
-      "messages": 10
+      "method": "heuristic(cpt=3.23)",
+      "messages": 27
     }
   },
   {
     "id": 89,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:12+00:00",
+    "ts": "2026-11-22T19:30:40+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13800,
+      "estimated_input": 18631,
       "reserve": 2048,
-      "total": 15848,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.26)"
-    }
-  },
-  {
-    "id": 90,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:13+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13800,
-      "actual_input": 12666,
-      "actual_output": 124,
-      "duration_s": 1.75,
-      "calibrated_cpt": 3.244
-    }
-  },
-  {
-    "id": 91,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:13+00:00",
-    "kind": "guardrail",
-    "data": {
-      "guard": "reads_blocked",
-      "tool": "read_lines",
-      "reads": 50
-    }
-  },
-  {
-    "id": 92,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:13+00:00",
-    "kind": "guardrail",
-    "data": {
-      "guard": "reads_blocked",
-      "tool": "read_lines",
-      "reads": 50
-    }
-  },
-  {
-    "id": 93,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:13+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14251,
-      "reserve": 2048,
-      "total": 16299,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 94,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:13+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14251,
-      "reserve": 2048,
-      "total": 16299,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)"
-    }
-  },
-  {
-    "id": 95,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:18+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14251,
-      "actual_input": 12954,
-      "actual_output": 444,
-      "duration_s": 4.18,
-      "calibrated_cpt": 3.236
-    }
-  },
-  {
-    "id": 96,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:18+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14862,
-      "reserve": 2048,
-      "total": 16910,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)",
-      "messages": 16
-    }
-  },
-  {
-    "id": 97,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:18+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14862,
-      "reserve": 2048,
-      "total": 16910,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)"
-    }
-  },
-  {
-    "id": 98,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:20+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14862,
-      "actual_input": 13524,
-      "actual_output": 116,
-      "duration_s": 1.82,
-      "calibrated_cpt": 3.225
-    }
-  },
-  {
-    "id": 99,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:20+00:00",
-    "kind": "guardrail",
-    "data": {
-      "guard": "reads_blocked",
-      "tool": "search_text",
-      "reads": 50
-    }
-  },
-  {
-    "id": 100,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:20+00:00",
-    "kind": "guardrail",
-    "data": {
-      "guard": "reads_blocked",
-      "tool": "search_text",
-      "reads": 50
-    }
-  },
-  {
-    "id": 101,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:20+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15282,
-      "reserve": 2048,
-      "total": 17330,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.23)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 102,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:20+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15282,
-      "reserve": 2048,
-      "total": 17330,
+      "total": 20679,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.23)"
     }
   },
   {
-    "id": 103,
+    "id": 90,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:24+00:00",
+    "ts": "2026-11-22T19:30:55+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 15282,
-      "actual_input": 13804,
-      "actual_output": 455,
-      "duration_s": 4.14,
-      "calibrated_cpt": 3.222
+      "estimated_input": 18631,
+      "actual_input": 17367,
+      "actual_output": 2048,
+      "duration_s": 15.43,
+      "calibrated_cpt": 3.184
     }
   },
   {
-    "id": 104,
+    "id": 91,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:24+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15854,
-      "reserve": 2048,
-      "total": 17902,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.22)",
-      "messages": 21
-    }
-  },
-  {
-    "id": 105,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:24+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15854,
-      "reserve": 2048,
-      "total": 17902,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.22)"
-    }
-  },
-  {
-    "id": 106,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:29+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15854,
-      "actual_input": 14335,
-      "actual_output": 444,
-      "duration_s": 4.22,
-      "calibrated_cpt": 3.217
-    }
-  },
-  {
-    "id": 107,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:29+00:00",
+    "ts": "2026-11-22T19:30:55+00:00",
     "kind": "simulated_crash",
     "data": {
       "at": "after_tool:save_evidence:3",
@@ -1598,19 +1342,19 @@
       "tool": "save_evidence",
       "count": 3,
       "usage_at_crash": {
-        "model_calls": 31,
-        "tool_calls": 57,
+        "model_calls": 27,
+        "tool_calls": 68,
         "http_requests": 0,
         "cache_hits": 0
       },
-      "evidence_at_crash": 0,
+      "evidence_at_crash": 5,
       "urls_running": []
     }
   },
   {
-    "id": 108,
+    "id": 92,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:39+00:00",
+    "ts": "2026-11-22T19:31:05+00:00",
     "kind": "status",
     "data": {
       "status": "running",
@@ -1618,212 +1362,40 @@
     }
   },
   {
-    "id": 109,
+    "id": 93,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:40+00:00",
+    "ts": "2026-11-22T19:31:05+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 16456,
+      "estimated_input": 22403,
       "reserve": 2048,
-      "total": 18504,
+      "total": 24451,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.22)",
-      "messages": 24
+      "method": "heuristic(cpt=3.18)",
+      "messages": 41
     }
   },
   {
-    "id": 110,
+    "id": 94,
     "task_id": "A1",
-    "ts": "2026-11-22T19:16:40+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16456,
-      "reserve": 2048,
-      "total": 18504,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.22)"
-    }
-  },
-  {
-    "id": 111,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:42+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16456,
-      "actual_input": 14906,
-      "actual_output": 58,
-      "duration_s": 1.84,
-      "calibrated_cpt": 3.209
-    }
-  },
-  {
-    "id": 112,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:42+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16896,
-      "reserve": 2048,
-      "total": 18944,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)",
-      "messages": 26
-    }
-  },
-  {
-    "id": 113,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:42+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16896,
-      "reserve": 2048,
-      "total": 18944,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)"
-    }
-  },
-  {
-    "id": 114,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:45+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16896,
-      "actual_input": 15371,
-      "actual_output": 275,
-      "duration_s": 3.15,
-      "calibrated_cpt": 3.194
-    }
-  },
-  {
-    "id": 115,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:45+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17665,
-      "reserve": 2048,
-      "total": 19713,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.19)",
-      "messages": 29
-    }
-  },
-  {
-    "id": 116,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:45+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17665,
-      "reserve": 2048,
-      "total": 19713,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.19)"
-    }
-  },
-  {
-    "id": 117,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:48+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17665,
-      "actual_input": 16179,
-      "actual_output": 280,
-      "duration_s": 3.29,
-      "calibrated_cpt": 3.171
-    }
-  },
-  {
-    "id": 118,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:48+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18473,
-      "reserve": 2048,
-      "total": 20521,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.17)",
-      "messages": 32
-    }
-  },
-  {
-    "id": 119,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:48+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18473,
-      "reserve": 2048,
-      "total": 20521,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.17)"
-    }
-  },
-  {
-    "id": 120,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:52+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18473,
-      "actual_input": 16978,
-      "actual_output": 274,
-      "duration_s": 3.35,
-      "calibrated_cpt": 3.142
-    }
-  },
-  {
-    "id": 121,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:16:52+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19255,
-      "reserve": 2048,
-      "total": 21303,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.14)",
-      "messages": 35
-    }
-  },
-  {
-    "id": 122,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:03+00:00",
+    "ts": "2026-11-22T19:31:16+00:00",
     "kind": "compaction",
     "data": {
-      "n": 4,
-      "before_tokens": 19255,
-      "after_tokens": 12132,
+      "n": 3,
+      "before_tokens": 22403,
+      "after_tokens": 15052,
       "reserve": 2048,
       "working_limit": 28000,
-      "removed_messages": 31,
-      "kept_messages": 4,
-      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "removed_messages": 26,
+      "kept_messages": 15,
+      "method": "llm+rules(sections Артефакты)",
       "chunks": 1,
-      "cost_input": 9030,
+      "cost_input": 8817,
       "cost_output": 1600,
       "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63. Evidence: `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317. Evidence: `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_16d21a590d1baaa2bbc5`). Пример: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; стр. 15, line 239).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n- Прочитаны: `ls` каталога, фрагменты handbook (стр. 3, 4, 9, 15, 21, 27, 28, 33, 34, 39, 40, 45, 46, 51, 52, 57, 58, 63, 64, 69, 70, 75, 76, 82, 88, 93, 94, 100, 106, 112, 118, 124, 130, 136, 142, 148, 154, 160, 161, 166, 167, 172, 173, 178, 184, 185, 190, 191, 196, 197, 202, 203, 208, 209, 214, 215, 261, 517), lectures (стр. 47), incidents (стр. 16-19).\n- Найдены все 3 решения АС, решение кафедры, INC-2026-017.\n- Собрано 2 evidence (нужно ≥8).\n- Не выполнено: индексация в ES, написание обзора.\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search, doc_info по файлам; Найти решения АС-01..03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence (>=8) по всем документам; Индексировать 3 решения АС в ES (build_excerpts + upsert_excerpts), проверить search_excerpts; Написать разделы обзора (approaches, limitations, disputed, decisions, summary); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01/02/03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр документов → поиск ключевых фактов → сбор evidence → индексация в ES → написание обзора.\n- Стратегия чтения: `search_text` для локализации, затем `read_lines` для конкретных страниц.\n- Спорные утверждения и ограничения найдены только в `search_engineering_handbook.md`; в других документах таких маркеров нет.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора. После разбора лимит кэша снижен до 1 ГБ, вытеснение — LRU.» — `data/search/search_incident_reports.md`, стр. 17, line 233.\n- **Спорное утверждение 1**: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки. Контраргумент: Инкрементальная загрузка с проверкой хэшей даёт ту же полноту при меньшей нагрузке; полная переиндексация лишь маскирует ошибки учёта изменений.» — `data/search/search_engineering_handbook.md`, стр. 3, line 41.\n- **Спорное утверждение 2**: «Дедупликацию лучше выполнять только после индексации. Контраргумент: Дубли, попавшие в индекс, искажают статистику термов и выдачу; дешевле отсеивать их до записи.» — `data/search/search_engineering_handbook.md`, стр. 9, line 141.\n- **Ограничение 1**: «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц.» — `data/search/search_engineering_handbook.md`, стр. 2, line 21.\n- **Ограничение 2**: «OCR не выполняется, поэтому сканы без текстового слоя попадают в индекс только с метаданными.» — `data/search/search_engineering_handbook.md`, стр. 4, line 55.\n- **Инцидент HNSW**: «Симптом: отставание индексации на 4 ч. Причина: исчерпание памяти графа HNSW. Исправление: вынос векторного индекса на отдельный узел.» — `data/search/search_incident_reports.md`, стр. 3, line 39.\n- **Подход (метаданные)**: «Метаданные (автор, дата, раздел) извлекаются на этапе загрузки и хранятся как отдельные поля, а не внутри текста.» — `data/search/search_engineering_handbook.md`, стр. 2, line 19.\n- **Подход (загрузчик)**: «Загрузчик сохраняет исходный документ и извлечённый текст раздельно, чтобы повторный парсинг не требовал повторной загрузки.» — `data/search/search_engineering_handbook.md`, стр. 4, line 53.\n- **Лекция 1**: «Релевантность определяется по отношению к потребности, а не к словам запроса.» — `data/search/ir_course_lectures.md`, стр. 1, line 9.\n- **Лекция 2**: «Булева модель возвращает документы, точно удовлетворяющие логическому выражению.» — `data/search/ir_course_lectures.md`, стр. 9, line 123.\n- **Урок (инциденты)**: «параметры ранжирования нельзя менять без офлайн-оценки.» — `data/search/search_incident_reports.md`, стр. 1, line 13.\n\n## Прогресс\n- Прочитаны метаданные всех 3 документов.\n- Выполнен поиск и чтение страниц с АС-01/02/03, решением кафедры, INC-2026-017.\n- Найдены спорные утверждения (стр. 3, 9) и ограничения (стр. 2, 4) в справочнике.\n- Найдены примеры подходов (BM25, векторный поиск, HNSW, булева модель) в конспекте и отчётах.\n- Не начата индексация в Elasticsearch.\n- Не написан итоговый обзор.\n\n## Открытые вопросы и следующий шаг\n- Индексировать 3 решения АС в ES через MCP (`build_excerpts`, `upsert_excerpts`) и проверить `search_excerpts`.\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
       "kept_tail": [
         {
           "type": "HumanMessage"
@@ -1831,1100 +1403,369 @@
         {
           "type": "AIMessage",
           "tool_calls": [
-            "chatcmpl-tool-82f4cfc712e6134f",
-            "chatcmpl-tool-b6e80c7d9265cce7"
+            "chatcmpl-tool-888f50aba7a3e40d",
+            "chatcmpl-tool-9fb5a3e5ccbac5bf",
+            "chatcmpl-tool-af54ab627841c19c",
+            "chatcmpl-tool-b003a73751209bc2",
+            "chatcmpl-tool-84411dd8db5b5603",
+            "chatcmpl-tool-8a88878f61e4c554",
+            "chatcmpl-tool-bf3646444f1eab12",
+            "chatcmpl-tool-ab6f8c5756572117",
+            "chatcmpl-tool-a22da5b5cdc02e63",
+            "chatcmpl-tool-85bd3fa9c7967ee2",
+            "chatcmpl-tool-8035d764c10fedfd",
+            "chatcmpl-tool-a065bb1aa41eb4f7",
+            "chatcmpl-tool-8219eef774dc2468"
           ]
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-82f4cfc712e6134f"
+          "tool_call_id": "chatcmpl-tool-888f50aba7a3e40d"
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-b6e80c7d9265cce7"
+          "tool_call_id": "chatcmpl-tool-9fb5a3e5ccbac5bf"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-af54ab627841c19c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b003a73751209bc2"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-84411dd8db5b5603"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a88878f61e4c554"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bf3646444f1eab12"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ab6f8c5756572117"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a22da5b5cdc02e63"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-85bd3fa9c7967ee2"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8035d764c10fedfd"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a065bb1aa41eb4f7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8219eef774dc2468"
         }
       ]
     }
   },
   {
-    "id": 123,
+    "id": 95,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:03+00:00",
+    "ts": "2026-11-22T19:31:16+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12132,
+      "estimated_input": 15052,
       "reserve": 2048,
-      "total": 14180,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.14)"
-    }
-  },
-  {
-    "id": 124,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:05+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12132,
-      "actual_input": 9946,
-      "actual_output": 240,
-      "duration_s": 2.31,
-      "calibrated_cpt": 3.275
-    }
-  },
-  {
-    "id": 125,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:05+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12276,
-      "reserve": 2048,
-      "total": 14324,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 126,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:05+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12276,
-      "reserve": 2048,
-      "total": 14324,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)"
-    }
-  },
-  {
-    "id": 127,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:09+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12276,
-      "actual_input": 10721,
-      "actual_output": 471,
-      "duration_s": 4.11,
-      "calibrated_cpt": 3.323
-    }
-  },
-  {
-    "id": 128,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:09+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12681,
-      "reserve": 2048,
-      "total": 14729,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 129,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:09+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12681,
-      "reserve": 2048,
-      "total": 14729,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)"
-    }
-  },
-  {
-    "id": 130,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:11+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12681,
-      "actual_input": 11404,
-      "actual_output": 51,
-      "duration_s": 1.45,
-      "calibrated_cpt": 3.33
-    }
-  },
-  {
-    "id": 131,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:11+00:00",
-    "kind": "tool_output_offloaded",
-    "data": {
-      "tool": "search_text",
-      "artifact_id": "art_b739fa9600b95db13cbb",
-      "total_chars": 9225,
-      "passed_chars": 1904,
-      "reason": "single result 9225 chars > limit 6000",
-      "step": "lc_run--01a204b0-de00-722c-a24b-827cd419f1ee-0",
-      "step_total_after": 1904,
-      "step_limit": 12000
-    }
-  },
-  {
-    "id": 132,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:11+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13360,
-      "reserve": 2048,
-      "total": 15408,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)",
-      "messages": 12
-    }
-  },
-  {
-    "id": 133,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:11+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13360,
-      "reserve": 2048,
-      "total": 15408,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)"
-    }
-  },
-  {
-    "id": 134,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:12+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13360,
-      "actual_input": 12162,
-      "actual_output": 70,
-      "duration_s": 1.63,
-      "calibrated_cpt": 3.319
-    }
-  },
-  {
-    "id": 135,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14471,
-      "reserve": 2048,
-      "total": 16519,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 14
-    }
-  },
-  {
-    "id": 136,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14471,
-      "reserve": 2048,
-      "total": 16519,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)"
-    }
-  },
-  {
-    "id": 137,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:15+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14471,
-      "actual_input": 13469,
-      "actual_output": 118,
-      "duration_s": 2.15,
-      "calibrated_cpt": 3.279
-    }
-  },
-  {
-    "id": 138,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:15+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15414,
-      "reserve": 2048,
-      "total": 17462,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)",
-      "messages": 17
-    }
-  },
-  {
-    "id": 139,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:15+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15414,
-      "reserve": 2048,
-      "total": 17462,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)"
-    }
-  },
-  {
-    "id": 140,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:19+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15414,
-      "actual_input": 14302,
-      "actual_output": 457,
-      "duration_s": 4.24,
-      "calibrated_cpt": 3.243
-    }
-  },
-  {
-    "id": 141,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:19+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16249,
-      "reserve": 2048,
-      "total": 18297,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)",
-      "messages": 20
-    }
-  },
-  {
-    "id": 142,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:19+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16249,
-      "reserve": 2048,
-      "total": 18297,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.24)"
-    }
-  },
-  {
-    "id": 143,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:21+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16249,
-      "actual_input": 14971,
-      "actual_output": 58,
-      "duration_s": 1.69,
-      "calibrated_cpt": 3.215
-    }
-  },
-  {
-    "id": 144,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:21+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17866,
-      "reserve": 2048,
-      "total": 19914,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)",
-      "messages": 22
-    }
-  },
-  {
-    "id": 145,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:21+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17866,
-      "reserve": 2048,
-      "total": 19914,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.21)"
-    }
-  },
-  {
-    "id": 146,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:23+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17866,
-      "actual_input": 16609,
-      "actual_output": 116,
-      "duration_s": 2.27,
-      "calibrated_cpt": 3.176
-    }
-  },
-  {
-    "id": 147,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:23+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18828,
-      "reserve": 2048,
-      "total": 20876,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.18)",
-      "messages": 25
-    }
-  },
-  {
-    "id": 148,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:23+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18828,
-      "reserve": 2048,
-      "total": 20876,
+      "total": 17100,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.18)"
     }
   },
   {
-    "id": 149,
+    "id": 96,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:27+00:00",
+    "ts": "2026-11-22T19:31:21+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18828,
-      "actual_input": 17399,
-      "actual_output": 325,
-      "duration_s": 3.77,
-      "calibrated_cpt": 3.144
+      "estimated_input": 15052,
+      "actual_input": 12446,
+      "actual_output": 526,
+      "duration_s": 4.56,
+      "calibrated_cpt": 3.301
     }
   },
   {
-    "id": 150,
+    "id": 97,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:27+00:00",
+    "ts": "2026-11-22T19:31:21+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19542,
+      "estimated_input": 15420,
       "reserve": 2048,
-      "total": 21590,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.14)",
-      "messages": 28
-    }
-  },
-  {
-    "id": 151,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:38+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 5,
-      "before_tokens": 19542,
-      "after_tokens": 12207,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 24,
-      "kept_messages": 4,
-      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
-      "chunks": 1,
-      "cost_input": 7850,
-      "cost_output": 1600,
-      "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63. Evidence: `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317. Evidence: `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561. Evidence: `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675. Evidence: `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233. Evidence: `ev_3ce2e7f3f979`.\n- **Вывод INC-2026-017**: «Вывод разбора: утверждение «кэш результатов всегда снижает p95» не подтвердилось — при большом кэше паузы сборки мусора увеличили хвост задержки.» — `data/search/search_incident_reports.md`, стр. 17, line 235. Evidence: `ev_fec677963eef`.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_b739fa9600b95db13cbb`). Пример 1: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; Evidence: `ev_50128f0ca141`). Пример 2: «Дедупликацию лучше выполнять только после индексации» (стр. 9, line 141; Evidence: `ev_b2b0c4d2a8d3`).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4, line 55); «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц» (handbook, стр. 2, line 21); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: data/search/ir_course_lectures.md: 2/90 стр.; data/search/search_engineering_handbook.md: 64/520 стр.; data/search/search_incident_reports.md: 4/45 стр.; evidence 10; ; разделы отчёта: decisions; в сжатом фрагменте 15 вызовов tools: read_artifact×1, read_lines×6, save_evidence×6, search_text×2\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search, doc_info по файлам; Найти решения АС-01..03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence (>=8) по всем документам; Индексировать 3 решения АС в ES (build_excerpts + upsert_excerpts), проверить search_excerpts; Написать разделы обзора (approaches, limitations, disputed, decisions, summary); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_b739fa9600b95db13cbb",
-      "kept_tail": [
-        {
-          "type": "HumanMessage"
-        },
-        {
-          "type": "AIMessage",
-          "tool_calls": [
-            "chatcmpl-tool-87bffe53f5e973cd",
-            "chatcmpl-tool-bd7101898549553b"
-          ]
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-87bffe53f5e973cd"
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-bd7101898549553b"
-        }
-      ]
-    }
-  },
-  {
-    "id": 152,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:38+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12207,
-      "reserve": 2048,
-      "total": 14255,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.14)"
-    }
-  },
-  {
-    "id": 153,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:41+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12207,
-      "actual_input": 9797,
-      "actual_output": 124,
-      "duration_s": 2.42,
-      "calibrated_cpt": 3.307
-    }
-  },
-  {
-    "id": 154,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:41+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13040,
-      "reserve": 2048,
-      "total": 15088,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.31)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 155,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:41+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13040,
-      "reserve": 2048,
-      "total": 15088,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.31)"
-    }
-  },
-  {
-    "id": 156,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:45+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13040,
-      "actual_input": 11483,
-      "actual_output": 427,
-      "duration_s": 4.12,
-      "calibrated_cpt": 3.344
-    }
-  },
-  {
-    "id": 157,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:45+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13476,
-      "reserve": 2048,
-      "total": 15524,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 158,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:45+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13476,
-      "reserve": 2048,
-      "total": 15524,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)"
-    }
-  },
-  {
-    "id": 159,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:47+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13476,
-      "actual_input": 12132,
-      "actual_output": 122,
-      "duration_s": 1.75,
-      "calibrated_cpt": 3.35
-    }
-  },
-  {
-    "id": 160,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:47+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14042,
-      "reserve": 2048,
-      "total": 16090,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.35)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 161,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:47+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14042,
-      "reserve": 2048,
-      "total": 16090,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.35)"
-    }
-  },
-  {
-    "id": 162,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:48+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14042,
-      "actual_input": 12784,
-      "actual_output": 120,
-      "duration_s": 1.77,
-      "calibrated_cpt": 3.339
-    }
-  },
-  {
-    "id": 163,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:48+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14960,
-      "reserve": 2048,
-      "total": 17008,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)",
-      "messages": 16
-    }
-  },
-  {
-    "id": 164,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:49+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14960,
-      "reserve": 2048,
-      "total": 17008,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.34)"
-    }
-  },
-  {
-    "id": 165,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:53+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14960,
-      "actual_input": 13914,
-      "actual_output": 434,
-      "duration_s": 4.1,
-      "calibrated_cpt": 3.299
-    }
-  },
-  {
-    "id": 166,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:17:53+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15732,
-      "reserve": 2048,
-      "total": 17780,
+      "total": 17468,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.30)",
-      "messages": 19
+      "messages": 20
     }
   },
   {
-    "id": 167,
+    "id": 98,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:53+00:00",
+    "ts": "2026-11-22T19:31:21+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 15732,
+      "estimated_input": 15420,
       "reserve": 2048,
-      "total": 17780,
+      "total": 17468,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.30)"
     }
   },
   {
-    "id": 168,
+    "id": 99,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:56+00:00",
+    "ts": "2026-11-22T19:31:22+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 15732,
-      "actual_input": 14564,
-      "actual_output": 265,
-      "duration_s": 3.05,
-      "calibrated_cpt": 3.264
+      "estimated_input": 15420,
+      "actual_input": 13378,
+      "actual_output": 29,
+      "duration_s": 1.3,
+      "calibrated_cpt": 3.352
     }
   },
   {
-    "id": 169,
+    "id": 100,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:56+00:00",
+    "ts": "2026-11-22T19:31:22+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 17425,
+      "estimated_input": 16328,
       "reserve": 2048,
-      "total": 19473,
+      "total": 18376,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.26)",
+      "method": "heuristic(cpt=3.35)",
       "messages": 22
     }
   },
   {
-    "id": 170,
+    "id": 101,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:56+00:00",
+    "ts": "2026-11-22T19:31:22+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 17425,
+      "estimated_input": 16328,
       "reserve": 2048,
-      "total": 19473,
+      "total": 18376,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.26)"
+      "method": "heuristic(cpt=3.35)"
     }
   },
   {
-    "id": 171,
+    "id": 102,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:58+00:00",
+    "ts": "2026-11-22T19:31:24+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 17425,
-      "actual_input": 16211,
-      "actual_output": 118,
-      "duration_s": 2.28,
-      "calibrated_cpt": 3.223
+      "estimated_input": 16328,
+      "actual_input": 14224,
+      "actual_output": 28,
+      "duration_s": 1.54,
+      "calibrated_cpt": 3.397
     }
   },
   {
-    "id": 172,
+    "id": 103,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:58+00:00",
+    "ts": "2026-11-22T19:31:24+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 18222,
+      "estimated_input": 16683,
       "reserve": 2048,
-      "total": 20270,
+      "total": 18731,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.22)",
-      "messages": 25
+      "method": "heuristic(cpt=3.40)",
+      "messages": 24
     }
   },
   {
-    "id": 173,
+    "id": 104,
     "task_id": "A1",
-    "ts": "2026-11-22T19:17:58+00:00",
+    "ts": "2026-11-22T19:31:24+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 18222,
+      "estimated_input": 16683,
       "reserve": 2048,
-      "total": 20270,
+      "total": 18731,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.22)"
+      "method": "heuristic(cpt=3.40)"
     }
   },
   {
-    "id": 174,
+    "id": 105,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:03+00:00",
+    "ts": "2026-11-22T19:31:27+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18222,
-      "actual_input": 16861,
-      "actual_output": 456,
-      "duration_s": 4.68,
-      "calibrated_cpt": 3.189
+      "estimated_input": 16683,
+      "actual_input": 14901,
+      "actual_output": 242,
+      "duration_s": 3.09,
+      "calibrated_cpt": 3.408
     }
   },
   {
-    "id": 175,
+    "id": 106,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:03+00:00",
+    "ts": "2026-11-22T19:31:27+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19124,
+      "estimated_input": 17602,
       "reserve": 2048,
-      "total": 21172,
+      "total": 19650,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.19)",
+      "method": "heuristic(cpt=3.41)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 107,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:31:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17602,
+      "reserve": 2048,
+      "total": 19650,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 108,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:31:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17602,
+      "actual_input": 16219,
+      "actual_output": 1007,
+      "duration_s": 8.26,
+      "calibrated_cpt": 3.376
+    }
+  },
+  {
+    "id": 109,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:31:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18633,
+      "reserve": 2048,
+      "total": 20681,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
       "messages": 28
     }
   },
   {
-    "id": 176,
+    "id": 110,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:14+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 6,
-      "before_tokens": 19124,
-      "after_tokens": 12192,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 24,
-      "kept_messages": 4,
-      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
-      "chunks": 1,
-      "cost_input": 8076,
-      "cost_output": 1600,
-      "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63. Evidence: `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317. Evidence: `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561. Evidence: `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675. Evidence: `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233. Evidence: `ev_3ce2e7f3f979`.\n- **Вывод INC-2026-017**: «Вывод разбора: утверждение «кэш результатов всегда снижает p95» не подтвердилось — при большом кэше паузы сборки мусора увеличили хвост задержки.» — `data/search/search_incident_reports.md`, стр. 17, line 235. Evidence: `ev_fec677963eef`.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_b739fa9600b95db13cbb`). Пример 1: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; Evidence: `ev_50128f0ca141`). Пример 2: «Дедупликацию лучше выполнять только после индексации» (стр. 9, line 141; Evidence: `ev_b2b0c4d2a8d3`).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4, line 55; Evidence: `ev_fd1cd1e47db6`); «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц» (handbook, стр. 2, line 21; Evidence: `ev_15d5777c14c7`); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n- Прочитаны: `ir_course_lectures.md` (стр. 47-48), `search_engineering_handbook.md` (стр. 3, 9, 261, 517), `search_incident_reports.md` (стр. 16-18).\n- Собрано 10 evidence (минимум 8 выполнено).\n- Разделы отчёта: decisions (черновик).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search, doc_info по файлам; Найти решения АС-01..03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence (>=8) по всем документам; Индексировать 3 решения АС в ES (build_excerpts + upsert_excerpts), проверить search_excerpts; Написать разделы обзора (approaches, limitations, disputed, decisions, summary); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
-      "kept_tail": [
-        {
-          "type": "HumanMessage"
-        },
-        {
-          "type": "AIMessage",
-          "tool_calls": [
-            "chatcmpl-tool-87cf0a3f07d22853",
-            "chatcmpl-tool-afc3a1d1b232a461"
-          ]
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-87cf0a3f07d22853"
-        },
-        {
-          "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-afc3a1d1b232a461"
-        }
-      ]
-    }
-  },
-  {
-    "id": 177,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:14+00:00",
+    "ts": "2026-11-22T19:31:38+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12192,
+      "estimated_input": 18633,
       "reserve": 2048,
-      "total": 14240,
+      "total": 20681,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.19)"
+      "method": "heuristic(cpt=3.38)"
     }
   },
   {
-    "id": 178,
+    "id": 111,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:15+00:00",
+    "ts": "2026-11-22T19:31:40+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12192,
-      "actual_input": 9941,
-      "actual_output": 29,
-      "duration_s": 0.94,
-      "calibrated_cpt": 3.331
-    }
-  },
-  {
-    "id": 179,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:15+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12818,
-      "reserve": 2048,
-      "total": 14866,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)",
-      "messages": 6
-    }
-  },
-  {
-    "id": 180,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:15+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12818,
-      "reserve": 2048,
-      "total": 14866,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)"
-    }
-  },
-  {
-    "id": 181,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:16+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12818,
-      "actual_input": 10787,
-      "actual_output": 28,
-      "duration_s": 0.98,
-      "calibrated_cpt": 3.433
-    }
-  },
-  {
-    "id": 182,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:16+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13005,
-      "reserve": 2048,
-      "total": 15053,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.43)",
-      "messages": 8
-    }
-  },
-  {
-    "id": 183,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:16+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13005,
-      "reserve": 2048,
-      "total": 15053,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.43)"
-    }
-  },
-  {
-    "id": 184,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:19+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13005,
-      "actual_input": 11467,
-      "actual_output": 238,
-      "duration_s": 2.58,
-      "calibrated_cpt": 3.469
-    }
-  },
-  {
-    "id": 185,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:19+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13811,
-      "reserve": 2048,
-      "total": 15859,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 186,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:19+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13811,
-      "reserve": 2048,
-      "total": 15859,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)"
-    }
-  },
-  {
-    "id": 187,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:26+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13811,
-      "actual_input": 12790,
-      "actual_output": 1001,
-      "duration_s": 7.61,
-      "calibrated_cpt": 3.436
-    }
-  },
-  {
-    "id": 188,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:29+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14781,
-      "reserve": 2048,
-      "total": 16829,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)",
-      "messages": 12
-    }
-  },
-  {
-    "id": 189,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:29+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14781,
-      "reserve": 2048,
-      "total": 16829,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)"
-    }
-  },
-  {
-    "id": 190,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:18:31+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14781,
-      "actual_input": 14019,
+      "estimated_input": 18633,
+      "actual_input": 17446,
       "actual_output": 152,
-      "duration_s": 2.29,
-      "calibrated_cpt": 3.372
+      "duration_s": 2.63,
+      "calibrated_cpt": 3.323
     }
   },
   {
-    "id": 191,
+    "id": 112,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:31+00:00",
+    "ts": "2026-11-22T19:31:40+00:00",
     "kind": "tool_output_offloaded",
     "data": {
       "tool": "search_excerpts",
-      "artifact_id": "art_d99fde6cb4ec80036e3a",
-      "total_chars": 5273,
-      "passed_chars": 824,
-      "reason": "step total would exceed 12000 chars (already 10734)",
-      "step": "lc_run--01a204b2-13f1-7256-b513-bc2981579810-0",
-      "step_total_after": 11558,
+      "artifact_id": "art_87a18837d0f5c0afea45",
+      "total_chars": 5299,
+      "passed_chars": 692,
+      "reason": "step total would exceed 12000 chars (already 10857)",
+      "step": "lc_run--01a204be-1ded-7101-af3d-3249447f8aaf-0",
+      "step_total_after": 11549,
       "step_limit": 12000
     }
   },
   {
-    "id": 192,
+    "id": 113,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:31+00:00",
+    "ts": "2026-11-22T19:31:40+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19041,
+      "estimated_input": 22957,
       "reserve": 2048,
-      "total": 21089,
+      "total": 25005,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.37)",
-      "messages": 16
+      "method": "heuristic(cpt=3.32)",
+      "messages": 32
     }
   },
   {
-    "id": 193,
+    "id": 114,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:42+00:00",
+    "ts": "2026-11-22T19:31:51+00:00",
     "kind": "compaction",
     "data": {
-      "n": 7,
-      "before_tokens": 19041,
-      "after_tokens": 14841,
+      "n": 4,
+      "before_tokens": 22957,
+      "after_tokens": 15231,
       "reserve": 2048,
       "working_limit": 28000,
-      "removed_messages": 11,
+      "removed_messages": 27,
       "kept_messages": 5,
-      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
       "chunks": 1,
-      "cost_input": 4990,
+      "cost_input": 7961,
       "cost_output": 1600,
       "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63. Evidence: `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317. Evidence: `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561. Evidence: `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675. Evidence: `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233. Evidence: `ev_3ce2e7f3f979`.\n- **Вывод INC-2026-017**: «Вывод разбора: утверждение «кэш результатов всегда снижает p95» не подтвердилось — при большом кэше паузы сборки мусора увеличили хвост задержки.» — `data/search/search_incident_reports.md`, стр. 17, line 235. Evidence: `ev_fec677963eef`.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_b739fa9600b95db13cbb`). Пример 1: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; Evidence: `ev_50128f0ca141`). Пример 2: «Дедупликацию лучше выполнять только после индексации» (стр. 9, line 141; Evidence: `ev_b2b0c4d2a8d3`).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4, line 55; Evidence: `ev_fd1cd1e47db6`); «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц» (handbook, стр. 2, line 21; Evidence: `ev_15d5777c14c7`); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n- Прочитаны: `ir_course_lectures.md` (стр. 47-48), `search_engineering_handbook.md` (стр. 3, 9, 261, 517), `search_incident_reports.md` (стр. 16-18).\n- Собрано 10 evidence (минимум 8 выполнено).\n- Разделы отчёта: decisions (черновик).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search, doc_info по файлам; Найти решения АС-01..03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence (>=8) по всем документам; Индексировать 3 решения АС в ES (build_excerpts + upsert_excerpts), проверить search_excerpts; Написать разделы обзора (approaches, limitations, disputed, decisions, summary); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01/02/03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр документов → поиск ключевых фактов → сбор evidence → индексация в ES → написание обзора.\n- Стратегия чтения: `search_text` для локализации, затем `read_lines` для конкретных страниц.\n- Спорные утверждения и ограничения найдены только в `search_engineering_handbook.md`; в других документах таких маркеров нет.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63, `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317, `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561, `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675, `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора. После разбора лимит кэша снижен до 1 ГБ, вытеснение — LRU.» — `data/search/search_incident_reports.md`, стр. 17, line 233, `ev_3ce2e7f3f979`.\n- **Спорное утверждение 1**: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки. Контраргумент: Инкрементальная загрузка с проверкой хэшей даёт ту же полноту при меньшей нагрузке; полная переиндексация лишь маскирует ошибки учёта изменений.» — `data/search/search_engineering_handbook.md`, стр. 3, line 41, `ev_50128f0ca141`.\n- **Спорное утверждение 2**: «Дедупликацию лучше выполнять только после индексации. Контраргумент: Дубли, попавшие в индекс, искажают статистику термов и выдачу; дешевле отсеивать их до записи.» — `data/search/search_engineering_handbook.md`, стр. 9, line 141, `ev_b2b0c4d2a8d3`.\n- **Ограничение 1**: «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц.» — `data/search/search_engineering_handbook.md`, стр. 2, line 21, `ev_15d5777c14c7`.\n- **Ограничение 2**: «OCR не выполняется, поэтому сканы без текстового слоя попадают в индекс только с метаданными.» — `data/search/search_engineering_handbook.md`, стр. 4, line 55, `ev_fd1cd1e47db6`.\n- **Инцидент HNSW**: «Симптом: отставание индексации на 4 ч. Причина: исчерпание памяти графа HNSW. Исправление: вынос векторного индекса на отдельный узел.» — `data/search/search_incident_reports.md`, стр. 3, line 39, `ev_e41f0116e9bd`.\n- **Подход (метаданные)**: «Метаданные (автор, дата, раздел) извлекаются на этапе загрузки и хранятся как отдельные поля, а не внутри текста.» — `data/search/search_engineering_handbook.md`, стр. 2, line 19, `ev_3bdbdc15f501`.\n- **Подход (загрузчик)**: «Загрузчик сохраняет исходный документ и извлечённый текст раздельно, чтобы повторный парсинг не требовал повторной загрузки.» — `data/search/search_engineering_handbook.md`, стр. 4, line 53, `ev_1a05f187fc29`.\n- **Лекция 1**: «Релевантность определяется по отношению к потребности, а не к словам запроса.» — `data/search/ir_course_lectures.md`, стр. 1, line 9, `ev_9476fdefd672`.\n- **Лекция 2**: «Булева модель возвращает документы, точно удовлетворяющие логическому выражению.» — `data/search/ir_course_lectures.md`, стр. 9, line 123, `ev_a0d4bd736c74`.\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: data/search/ir_course_lectures.md: 6/90 стр.; data/search/search_engineering_handbook.md: 9/520 стр.; data/search/search_incident_reports.md: 7/45 стр.; evidence 16; ; разделы отчёта: нет; в сжатом фрагменте 21 вызовов tools: build_excerpts×1, catalog_view×1, load_skill×1, save_evidence×17, upsert_excerpts×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search и размеры документов; Найти решения АС-01/02/03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence по всем документам; Индексировать 3 решения АС в ES и проверить поиском; Написать разделы обзора (approaches, limitations, disputed, decisions, summary)\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
       "kept_tail": [
         {
           "type": "HumanMessage"
@@ -2932,148 +1773,148 @@
         {
           "type": "AIMessage",
           "tool_calls": [
-            "chatcmpl-tool-ac8d2c4a3a6362a7",
-            "chatcmpl-tool-b3d38967bb672856",
-            "chatcmpl-tool-8f3c26ee48dec02d"
+            "chatcmpl-tool-8811937c1f2f6eed",
+            "chatcmpl-tool-b9c10c4ff4ae85f5",
+            "chatcmpl-tool-ae8f1899e8ddbcd1"
           ]
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-ac8d2c4a3a6362a7"
+          "tool_call_id": "chatcmpl-tool-8811937c1f2f6eed"
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-b3d38967bb672856"
+          "tool_call_id": "chatcmpl-tool-b9c10c4ff4ae85f5"
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-8f3c26ee48dec02d"
+          "tool_call_id": "chatcmpl-tool-ae8f1899e8ddbcd1"
         }
       ]
     }
   },
   {
-    "id": 194,
+    "id": 115,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:42+00:00",
+    "ts": "2026-11-22T19:31:51+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 14841,
+      "estimated_input": 15231,
       "reserve": 2048,
-      "total": 16889,
+      "total": 17279,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.37)"
+      "method": "heuristic(cpt=3.32)"
     }
   },
   {
-    "id": 195,
+    "id": 116,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:52+00:00",
+    "ts": "2026-11-22T19:31:53+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14841,
-      "actual_input": 14502,
-      "actual_output": 1206,
-      "duration_s": 10.89,
-      "calibrated_cpt": 3.274
+      "estimated_input": 15231,
+      "actual_input": 14573,
+      "actual_output": 73,
+      "duration_s": 1.69,
+      "calibrated_cpt": 3.254
     }
   },
   {
-    "id": 196,
+    "id": 117,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:53+00:00",
+    "ts": "2026-11-22T19:31:53+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 16648,
+      "estimated_input": 15831,
       "reserve": 2048,
-      "total": 18696,
+      "total": 17879,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.27)",
-      "messages": 9
+      "method": "heuristic(cpt=3.25)",
+      "messages": 7
     }
   },
   {
-    "id": 197,
+    "id": 118,
     "task_id": "A1",
-    "ts": "2026-11-22T19:18:53+00:00",
+    "ts": "2026-11-22T19:31:53+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 16648,
+      "estimated_input": 15831,
       "reserve": 2048,
-      "total": 18696,
+      "total": 17879,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.27)"
+      "method": "heuristic(cpt=3.25)"
     }
   },
   {
-    "id": 198,
+    "id": 119,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:01+00:00",
+    "ts": "2026-11-22T19:32:07+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 16648,
-      "actual_input": 15919,
-      "actual_output": 758,
-      "duration_s": 8.0,
-      "calibrated_cpt": 3.205
+      "estimated_input": 15831,
+      "actual_input": 14884,
+      "actual_output": 1820,
+      "duration_s": 14.09,
+      "calibrated_cpt": 3.206
     }
   },
   {
-    "id": 199,
+    "id": 120,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:01+00:00",
+    "ts": "2026-11-22T19:32:07+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 17928,
+      "estimated_input": 18098,
       "reserve": 2048,
-      "total": 19976,
+      "total": 20146,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.20)",
+      "method": "heuristic(cpt=3.21)",
       "messages": 12
     }
   },
   {
-    "id": 200,
+    "id": 121,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:01+00:00",
+    "ts": "2026-11-22T19:32:07+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 17928,
+      "estimated_input": 18098,
       "reserve": 2048,
-      "total": 19976,
+      "total": 20146,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.20)"
+      "method": "heuristic(cpt=3.21)"
     }
   },
   {
-    "id": 201,
+    "id": 122,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:03+00:00",
+    "ts": "2026-11-22T19:32:12+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 17928,
-      "actual_input": 16818,
-      "actual_output": 107,
-      "duration_s": 2.7,
-      "calibrated_cpt": 3.159
+      "estimated_input": 18098,
+      "actual_input": 16979,
+      "actual_output": 440,
+      "duration_s": 5.14,
+      "calibrated_cpt": 3.161
     }
   },
   {
-    "id": 202,
+    "id": 123,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:03+00:00",
+    "ts": "2026-11-22T19:32:12+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 18545,
+      "estimated_input": 18907,
       "reserve": 2048,
-      "total": 20593,
+      "total": 20955,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -3082,41 +1923,41 @@
     }
   },
   {
-    "id": 203,
+    "id": 124,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:03+00:00",
+    "ts": "2026-11-22T19:32:12+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 18545,
+      "estimated_input": 18907,
       "reserve": 2048,
-      "total": 20593,
+      "total": 20955,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.16)"
     }
   },
   {
-    "id": 204,
+    "id": 125,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:07+00:00",
+    "ts": "2026-11-22T19:32:15+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18545,
-      "actual_input": 17118,
-      "actual_output": 228,
-      "duration_s": 3.24,
-      "calibrated_cpt": 3.133
+      "estimated_input": 18907,
+      "actual_input": 17498,
+      "actual_output": 126,
+      "duration_s": 2.78,
+      "calibrated_cpt": 3.132
     }
   },
   {
-    "id": 205,
+    "id": 126,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:07+00:00",
+    "ts": "2026-11-22T19:32:15+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19232,
+      "estimated_input": 19446,
       "reserve": 2048,
-      "total": 21280,
+      "total": 21494,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -3125,24 +1966,24 @@
     }
   },
   {
-    "id": 206,
+    "id": 127,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:17+00:00",
+    "ts": "2026-11-22T19:32:26+00:00",
     "kind": "compaction",
     "data": {
-      "n": 8,
-      "before_tokens": 19232,
-      "after_tokens": 12099,
+      "n": 5,
+      "before_tokens": 19446,
+      "after_tokens": 12283,
       "reserve": 2048,
       "working_limit": 28000,
       "removed_messages": 13,
       "kept_messages": 3,
-      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
       "chunks": 1,
-      "cost_input": 5491,
+      "cost_input": 5459,
       "cost_output": 1600,
       "note": "",
-      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01..03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр каталога → поиск ключевых фактов → сбор evidence (≥8) → индексация в ES → написание разделов (approaches, limitations, disputed, decisions, summary) → complete_task.\n- Для индексации использовать skill `index_excerpts` (build_excerpts, upsert_excerpts, search_excerpts).\n- Harness hint: прекратить последовательное чтение, использовать `search_text` и `save_evidence` для уже найденных цитат.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63. Evidence: `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317. Evidence: `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561. Evidence: `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675. Evidence: `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора...» — `data/search/search_incident_reports.md`, стр. 17, line 233. Evidence: `ev_3ce2e7f3f979`.\n- **Вывод INC-2026-017**: «Вывод разбора: утверждение «кэш результатов всегда снижает p95» не подтвердилось — при большом кэше паузы сборки мусора увеличили хвост задержки.» — `data/search/search_incident_reports.md`, стр. 17, line 235. Evidence: `ev_fec677963eef`.\n- **Спорные утверждения**: найдено 87 упоминаний в `search_engineering_handbook.md` (артефакт `art_b739fa9600b95db13cbb`). Пример 1: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки» (стр. 3, line 41; Evidence: `ev_50128f0ca141`). Пример 2: «Дедупликацию лучше выполнять только после индексации» (стр. 9, line 141; Evidence: `ev_b2b0c4d2a8d3`).\n- **Ограничения**: «OCR не выполняется...» (handbook, стр. 4, line 55; Evidence: `ev_fd1cd1e47db6`); «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц» (handbook, стр. 2, line 21; Evidence: `ev_15d5777c14c7`); «две ветви удваивают нагрузку...» (handbook, стр. 261); «синонимы из словаря не учитывают контекст...» (handbook, стр. 82, line 1345; стр. 88, line 1445); «хранение позиций увеличивает размер индекса примерно на треть» (handbook, стр. 100, line 1645; стр. 106, line 1745; стр. 112, line 1843; стр. 118, line 1943; стр. 124, line 2041; стр. 130, line 2139); «оценки разных запросов несопоставимы, поэтому абсолютный порог релевантности по BM25 ненадёжен» (handbook, стр. 136, line 2243; стр. 142, line 2341; стр. 148, line 2441; стр. 154, line 2539); «векторный поиск плохо находит точные коды и редкие имена собственные» (handbook, стр. 178, line 2939).\n\n## Прогресс\n- Прочитаны: `ir_course_lectures.md` (стр. 47-48), `search_engineering_handbook.md` (стр. 3, 9, 261, 517), `search_incident_reports.md` (стр. 16-18).\n- Собрано 10 evidence (минимум 8 выполнено).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_d99fde6cb4ec80036e3a",
+      "summary": "## Цель\nСобрать обзор по документам `data/search`: подходы, ограничения, спорные утверждения, решения АС-01/02/03, решение кафедры, разбор INC-2026-017. Индексировать 3 решения АС в Elasticsearch и проверить поиск.\n\n## Ограничения пользователя\n- [C1] Каждый проверяемый вывод обзора ссылается на документ и страницу через evidence.\n- [C2] Использовать только документы из data/search, без интернета.\n- [C3] Обзор не длиннее 1200 слов.\n- [C4] Спорные утверждения — отдельным разделом, с аргументами за и против.\n- [C5] Решения архитектурного совета (АС-01, АС-02, АС-03) привести дословно с номером страницы.\n\n## Решения и договорённости\n- План: осмотр документов → поиск ключевых фактов → сбор evidence → индексация в ES → написание обзора.\n- Стратегия чтения: `search_text` для локализации, затем `read_lines` для конкретных страниц.\n- Спорные утверждения и ограничения найдены только в `search_engineering_handbook.md`; в других документах таких маркеров нет.\n\n## Подтверждённые факты (с источниками)\n- **АС-01**: «Решение архитектурного совета АС-01: эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах с одной репликой; увеличение числа шардов допускается только через полную переиндексацию.» — `data/search/search_engineering_handbook.md`, стр. 4, line 63, `ev_62b63fb9b27c`.\n- **АС-02**: «Решение архитектурного совета АС-02: в гибридном поиске итоговая оценка вычисляется как 0,7·BM25_norm + 0,3·cosine; веса пересматриваются не чаще одного раза в квартал.» — `data/search/search_engineering_handbook.md`, стр. 261, line 4317, `ev_7a4c5df422ff`.\n- **АС-03**: «Решение архитектурного совета АС-03: если p95 задержки векторной ветви превышает 450 мс дольше 10 минут, ветвь отключается и запросы обслуживаются только BM25.» — `data/search/search_engineering_handbook.md`, стр. 517, line 8561, `ev_592fb8dc9b5c`.\n- **Решение кафедры**: «Решение кафедры для курса: основной показатель качества в домашних заданиях — nDCG@10, а MRR используется только для навигационных запросов.» — `data/search/ir_course_lectures.md`, стр. 47, line 675, `ev_ccab4918fede`.\n- **INC-2026-017**: «Инцидент INC-2026-017: 14 марта 2026 года поиск был недоступен 38 минут; причина — переполнение кэша запросов при лимите 2 ГБ и длительные паузы сборки мусора. После разбора лимит кэша снижен до 1 ГБ, вытеснение — LRU.» — `data/search/search_incident_reports.md`, стр. 17, line 233, `ev_3ce2e7f3f979`.\n- **Спорное утверждение 1**: «Полная переиндексация раз в сутки надёжнее инкрементальной загрузки. Контраргумент: Инкрементальная загрузка с проверкой хэшей даёт ту же полноту при меньшей нагрузке; полная переиндексация лишь маскирует ошибки учёта изменений.» — `data/search/search_engineering_handbook.md`, стр. 3, line 41, `ev_50128f0ca141`.\n- **Спорное утверждение 2**: «Дедупликацию лучше выполнять только после индексации. Контраргумент: Дубли, попавшие в индекс, искажают статистику термов и выдачу; дешевле отсеивать их до записи.» — `data/search/search_engineering_handbook.md`, стр. 9, line 141, `ev_b2b0c4d2a8d3`.\n- **Ограничение 1**: «документы больше 50 МБ не парсятся целиком — индексируется только первые 2000 страниц.» — `data/search/search_engineering_handbook.md`, стр. 2, line 21, `ev_15d5777c14c7`.\n- **Ограничение 2**: «OCR не выполняется, поэтому сканы без текстового слоя попадают в индекс только с метаданными.» — `data/search/search_engineering_handbook.md`, стр. 4, line 55, `ev_fd1cd1e47db6`.\n- **Инцидент HNSW**: «Симптом: отставание индексации на 4 ч. Причина: исчерпание памяти графа HNSW. Исправление: вынос векторного индекса на отдельный узел.» — `data/search/search_incident_reports.md`, стр. 3, line 39, `ev_e41f0116e9bd`.\n- **Подход (метаданные)**: «Метаданные (автор, дата, раздел) извлекаются на этапе загрузки и хранятся как отдельные поля, а не внутри текста.» — `data/search/search_engineering_handbook.md`, стр. 2, line 19, `ev_3bdbdc15f501`.\n- **Подход (загрузчик)**: «Загрузчик сохраняет исходный документ и извлечённый текст раздельно, чтобы повторный парсинг не требовал повторной загрузки.» — `data/search/search_engineering_handbook.md`, стр. 4, line 53, `ev_1a05f187fc29`.\n- **Лекция 1**: «Релевантность определяется по отношению к потребности, а не к словам запроса.» — `data/search/ir_course_lectures.md`, стр. 1, line 9, `ev_9476fdefd672`.\n- **Лекция 2**: «Булева модель возвращает документы, точно удовлетворяющие логическому выражению.» — `data/search/ir_course_lectures.md`, стр. 9, line 123, `ev_a0d4bd736c74`.\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: data/search/ir_course_lectures.md: 6/90 стр.; data/search/search_engineering_handbook.md: 9/520 стр.; data/search/search_incident_reports.md: 7/45 стр.; evidence 16; ; разделы отчёта: approaches, decisions, disputed, limitations, summary; в сжатом фрагменте 9 вызовов tools: search_artifact×1, search_excerpts×3, write_report_section×5\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Осмотреть data/search и размеры документов; Найти решения АС-01/02/03 в справочнике; Найти решение кафедры о метрике качества в конспекте; Найти разбор INC-2026-017; Собрать evidence по всем документам; Индексировать 3 решения АС в ES и проверить поиском; Написать разделы обзора (approaches, limitations, disputed, decisions, summary)\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_87a18837d0f5c0afea45",
       "kept_tail": [
         {
           "type": "HumanMessage"
@@ -3150,223 +1991,137 @@
         {
           "type": "AIMessage",
           "tool_calls": [
-            "chatcmpl-tool-8cbeb40e26ce4d07"
+            "chatcmpl-tool-988bdff9bff45230"
           ]
         },
         {
           "type": "ToolMessage",
-          "tool_call_id": "chatcmpl-tool-8cbeb40e26ce4d07"
+          "tool_call_id": "chatcmpl-tool-988bdff9bff45230"
         }
       ]
     }
   },
   {
-    "id": 207,
+    "id": 128,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:17+00:00",
+    "ts": "2026-11-22T19:32:26+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12099,
+      "estimated_input": 12283,
       "reserve": 2048,
-      "total": 14147,
+      "total": 14331,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.13)"
     }
   },
   {
-    "id": 208,
+    "id": 129,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:18+00:00",
+    "ts": "2026-11-22T19:32:28+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12099,
-      "actual_input": 9627,
-      "actual_output": 15,
-      "duration_s": 0.82,
-      "calibrated_cpt": 3.309
+      "estimated_input": 12283,
+      "actual_input": 9655,
+      "actual_output": 198,
+      "duration_s": 2.25,
+      "calibrated_cpt": 3.325
     }
   },
   {
-    "id": 209,
+    "id": 130,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:18+00:00",
+    "ts": "2026-11-22T19:32:28+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12351,
+      "estimated_input": 12017,
       "reserve": 2048,
-      "total": 14399,
+      "total": 14065,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.31)",
+      "method": "heuristic(cpt=3.32)",
       "messages": 5
     }
   },
   {
-    "id": 210,
+    "id": 131,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:18+00:00",
+    "ts": "2026-11-22T19:32:28+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12351,
+      "estimated_input": 12017,
       "reserve": 2048,
-      "total": 14399,
+      "total": 14065,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.31)"
+      "method": "heuristic(cpt=3.32)"
     }
   },
   {
-    "id": 211,
+    "id": 132,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:20+00:00",
+    "ts": "2026-11-22T19:32:30+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12351,
-      "actual_input": 10512,
-      "actual_output": 169,
-      "duration_s": 2.21,
-      "calibrated_cpt": 3.394
+      "estimated_input": 12017,
+      "actual_input": 10061,
+      "actual_output": 126,
+      "duration_s": 1.53,
+      "calibrated_cpt": 3.434
     }
   },
   {
-    "id": 212,
+    "id": 133,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:20+00:00",
+    "ts": "2026-11-22T19:32:30+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Обзор собран: 5 разделов (approaches, limitations, disputed, decisions, summary), 16 evidence со ссылками на документы и страницы, все три решения АС-01/02/03 приведены дословно с номерами страниц и найдены поиском search_excerpts в Elasticsearch (3 выдержки, категория search), решение кафедры (nDCG"
+    }
+  },
+  {
+    "id": 134,
+    "task_id": "A1",
+    "ts": "2026-11-22T19:32:30+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12304,
+      "estimated_input": 11970,
       "reserve": 2048,
-      "total": 14352,
+      "total": 14018,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.39)",
+      "method": "heuristic(cpt=3.43)",
       "messages": 7
     }
   },
   {
-    "id": 213,
+    "id": 135,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:20+00:00",
+    "ts": "2026-11-22T19:32:30+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12304,
+      "estimated_input": 11970,
       "reserve": 2048,
-      "total": 14352,
+      "total": 14018,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.39)"
+      "method": "heuristic(cpt=3.43)"
     }
   },
   {
-    "id": 214,
+    "id": 136,
     "task_id": "A1",
-    "ts": "2026-11-22T19:19:23+00:00",
+    "ts": "2026-11-22T19:32:34+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12304,
-      "actual_input": 10750,
-      "actual_output": 229,
-      "duration_s": 2.31,
-      "calibrated_cpt": 3.443
-    }
-  },
-  {
-    "id": 215,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:23+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12618,
-      "reserve": 2048,
-      "total": 14666,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)",
-      "messages": 9
-    }
-  },
-  {
-    "id": 216,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:23+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12618,
-      "reserve": 2048,
-      "total": 14666,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)"
-    }
-  },
-  {
-    "id": 217,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:24+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12618,
-      "actual_input": 11216,
-      "actual_output": 121,
-      "duration_s": 1.65,
-      "calibrated_cpt": 3.467
-    }
-  },
-  {
-    "id": 218,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:24+00:00",
-    "kind": "status",
-    "data": {
-      "status": "completed",
-      "reason": "Обзор по data/search собран: 10 evidence (в каждом из 3 документов), разделы approaches/limitations/disputed/decisions/summary, решения АС-01..03 приведены дословно со страницами, 3 выдержки АС проиндексированы в ES и найдены поиском, решение кафедры (nDCG@10) и разбор INC-2026-017 включены."
-    }
-  },
-  {
-    "id": 219,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:24+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12848,
-      "reserve": 2048,
-      "total": 14896,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)",
-      "messages": 11
-    }
-  },
-  {
-    "id": 220,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:24+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12848,
-      "reserve": 2048,
-      "total": 14896,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)"
-    }
-  },
-  {
-    "id": 221,
-    "task_id": "A1",
-    "ts": "2026-11-22T19:19:29+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12848,
-      "actual_input": 11506,
-      "actual_output": 452,
-      "duration_s": 4.49,
-      "calibrated_cpt": 3.479
+      "estimated_input": 11970,
+      "actual_input": 10356,
+      "actual_output": 461,
+      "duration_s": 4.31,
+      "calibrated_cpt": 3.497
     }
   }
 ]
