@@ -151,7 +151,7 @@
       "runs": 0,
       "model_calls": 0,
       "tool_calls": 0,
-      "tokens": 1957891,
+      "tokens": 2161889,
       "compactions": 0,
       "peak_input": 0,
       "evidence": 0,
@@ -523,78 +523,80 @@
       "crashes": 0
     },
     {
-      "task_id": "M9",
+      "task_id": "M10",
       "kind": "main",
       "status": "paused",
       "reason": "waiting for user input",
       "parent": null,
       "runs": 8,
-      "model_calls": 31,
-      "tool_calls": 29,
-      "tokens": 1308248,
-      "compactions": 2,
-      "peak_input": 16721,
-      "evidence": 5,
+      "model_calls": 47,
+      "tool_calls": 49,
+      "tokens": 1712180,
+      "compactions": 5,
+      "peak_input": 17503,
+      "evidence": 6,
       "searches": {
-        "fulltext:L1": 3
+        "fulltext:L2": 4,
+        "fulltext:L1": 2
       },
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
     },
     {
-      "task_id": "M9-deep1",
+      "task_id": "M10-deep1",
       "kind": "deep",
       "status": "completed",
-      "reason": "## Подходы к хранению состояния агентов в корпусе itmo-lab3\n\n### 1. Чекпоинты в PostgreSQL",
-      "parent": "M9",
+      "reason": "## Подходы к хранению состояния агентов (все с L2-подтверждением)\n\n**1. Чекпоинты в Postgr",
+      "parent": "M10",
       "runs": 1,
-      "model_calls": 56,
-      "tool_calls": 103,
-      "tokens": 690857,
-      "compactions": 10,
-      "peak_input": 13736,
-      "evidence": 24,
+      "model_calls": 57,
+      "tool_calls": 102,
+      "tokens": 713242,
+      "compactions": 11,
+      "peak_input": 13759,
+      "evidence": 30,
       "searches": {
         "fulltext:L1": 3,
-        "fulltext:L2": 2,
-        "grep:L2": 11
+        "vector:L1": 2,
+        "grep:L2": 8,
+        "vector:L2": 1
       },
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
     },
     {
-      "task_id": "M9-exhaustive1",
+      "task_id": "M10-exhaustive1",
       "kind": "exhaustive",
       "status": "completed",
-      "reason": "Полный обход папки storage завершён: 10/10 документов, 47/47 фрагментов, 42 зафиксированны",
-      "parent": "M9",
+      "reason": "Полный обход папки storage завершён: 10/10 документов, 47/47 L2-фрагментов прочитаны (area",
+      "parent": "M10",
       "runs": 1,
-      "model_calls": 17,
-      "tool_calls": 52,
-      "tokens": 193729,
-      "compactions": 4,
-      "peak_input": 13412,
-      "evidence": 42,
+      "model_calls": 31,
+      "tool_calls": 59,
+      "tokens": 380748,
+      "compactions": 9,
+      "peak_input": 13674,
+      "evidence": 36,
       "searches": {},
       "l1_written": 0,
       "l2_indexed": 0,
       "crashes": 0
     },
     {
-      "task_id": "EXP5",
+      "task_id": "EXP6",
       "kind": "exhaustive",
       "status": "completed",
-      "reason": "Полное покрытие папки storage: 10/10 документов, 47/47 фрагментов прочитано, 36 упоминаний",
+      "reason": "Просмотрены все 10 документов папки storage (47/47 фрагментов). Всего зафиксировано 44 упо",
       "parent": "CLI",
       "runs": 2,
-      "model_calls": 24,
-      "tool_calls": 53,
-      "tokens": 276321,
-      "compactions": 6,
-      "peak_input": 13507,
-      "evidence": 36,
+      "model_calls": 18,
+      "tool_calls": 55,
+      "tokens": 203998,
+      "compactions": 5,
+      "peak_input": 12911,
+      "evidence": 44,
       "searches": {},
       "l1_written": 0,
       "l2_indexed": 0,
@@ -602,12 +604,12 @@
     }
   ],
   "search_combinations": {
-    "fulltext:L1": 22,
+    "fulltext:L1": 21,
     "grep:L1": 12,
-    "vector:L1": 5,
-    "fulltext:L2": 11,
-    "grep:L2": 240,
-    "vector:L2": 4
+    "vector:L1": 7,
+    "fulltext:L2": 13,
+    "grep:L2": 237,
+    "vector:L2": 5
   },
   "exhaustive": [
     {
@@ -701,36 +703,40 @@
       "found_without_keyword": 10
     },
     {
-      "task_id": "M9-exhaustive1",
+      "task_id": "M10-exhaustive1",
       "status": "completed",
       "runs": 1,
       "fragments_read": 47,
       "fragments_total": 47,
       "documents_done": 10,
       "documents_total": 10,
-      "mentions_recorded": 42,
+      "mentions_recorded": 36,
       "expected_codes": 36,
-      "found_codes": 35,
+      "found_codes": 33,
       "missing_codes": [
-        "L-ST-30"
+        "L-ST-10",
+        "L-ST-21",
+        "L-ST-36"
       ],
-      "found_without_keyword": 9
+      "found_without_keyword": 7
     },
     {
-      "task_id": "EXP5",
+      "task_id": "EXP6",
       "status": "completed",
       "runs": 2,
       "fragments_read": 47,
       "fragments_total": 47,
       "documents_done": 10,
       "documents_total": 10,
-      "mentions_recorded": 36,
+      "mentions_recorded": 44,
       "expected_codes": 36,
-      "found_codes": 35,
+      "found_codes": 33,
       "missing_codes": [
-        "L-ST-30"
+        "L-ST-16",
+        "L-ST-21",
+        "L-ST-36"
       ],
-      "found_without_keyword": 9
+      "found_without_keyword": 7
     }
   ]
 }
