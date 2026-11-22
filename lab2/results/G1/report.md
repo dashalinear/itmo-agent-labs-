@@ -30,14 +30,14 @@ _Разделы обзора ещё не написаны._
 ```json
 {
   "tokens": {
-    "spent": 240683,
+    "spent": 264937,
     "reserved": 0,
     "limit": 600000,
     "of_which": {
-      "input_tokens": 231765,
-      "output_tokens": 3428,
-      "compaction_input_tokens": 4290,
-      "compaction_output_tokens": 1200,
+      "input_tokens": 261792,
+      "output_tokens": 3145,
+      "compaction_input_tokens": 0,
+      "compaction_output_tokens": 0,
       "failed_call_tokens": 0,
       "interrupted_call_tokens": 0
     }
@@ -46,7 +46,7 @@ _Разделы обзора ещё не написаны._
     "used": 26,
     "limit": 60
   },
-  "compaction_calls": 1,
+  "compaction_calls": 0,
   "failed_calls": 0,
   "tool_calls": {
     "used": 15,
@@ -63,9 +63,9 @@ _Разделы обзора ещё не написаны._
   "cache_hits": 0,
   "bytes_downloaded": 1000084,
   "active_seconds": {
-    "used": 61.6,
+    "used": 54.0,
     "limit": 5400
   },
-  "peak_input_tokens": 13191
+  "peak_input_tokens": 14972
 }
 ```

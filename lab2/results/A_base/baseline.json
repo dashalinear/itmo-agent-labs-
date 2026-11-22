@@ -2,336 +2,736 @@
   "task_id": "A_base",
   "mode": "baseline",
   "error": null,
-  "duration_s": 114.2,
-  "model_calls": 40,
+  "duration_s": 108.4,
+  "model_calls": 90,
   "failed_calls": 0,
-  "tool_calls": 49,
-  "input_tokens": 2451839,
-  "output_tokens": 3245,
-  "peak_input_tokens": 132412,
-  "peak_estimated_input": 167933,
-  "answer": "Model call limits exceeded: run limit (40/40)",
+  "tool_calls": 100,
+  "input_tokens": 3009386,
+  "output_tokens": 7452,
+  "peak_input_tokens": 43453,
+  "peak_estimated_input": 52302,
+  "answer": "Model call limits exceeded: run limit (90/90)",
   "calls": [
     {
-      "estimated_input": 6470,
+      "estimated_input": 6661,
       "messages": 1,
       "status": "ok",
-      "actual_input": 4452,
-      "actual_output": 54,
+      "actual_input": 4560,
+      "actual_output": 55,
       "duration_s": 1.16
     },
     {
-      "estimated_input": 8115,
+      "estimated_input": 8520,
       "messages": 4,
       "status": "ok",
-      "actual_input": 5669,
+      "actual_input": 5883,
       "actual_output": 184,
-      "duration_s": 1.67
+      "duration_s": 1.69
     },
     {
-      "estimated_input": 9117,
+      "estimated_input": 9522,
       "messages": 8,
       "status": "ok",
-      "actual_input": 6523,
-      "actual_output": 151,
-      "duration_s": 1.48
+      "actual_input": 6737,
+      "actual_output": 105,
+      "duration_s": 1.29
     },
     {
-      "estimated_input": 9524,
+      "estimated_input": 14442,
       "messages": 11,
       "status": "ok",
-      "actual_input": 6869,
+      "actual_input": 11145,
+      "actual_output": 125,
+      "duration_s": 1.7
+    },
+    {
+      "estimated_input": 16323,
+      "messages": 14,
+      "status": "ok",
+      "actual_input": 12745,
+      "actual_output": 60,
+      "duration_s": 1.09
+    },
+    {
+      "estimated_input": 16509,
+      "messages": 16,
+      "status": "ok",
+      "actual_input": 12906,
+      "actual_output": 60,
+      "duration_s": 0.9
+    },
+    {
+      "estimated_input": 21259,
+      "messages": 18,
+      "status": "ok",
+      "actual_input": 16338,
       "actual_output": 119,
+      "duration_s": 1.5
+    },
+    {
+      "estimated_input": 21632,
+      "messages": 21,
+      "status": "ok",
+      "actual_input": 16646,
+      "actual_output": 105,
+      "duration_s": 1.2
+    },
+    {
+      "estimated_input": 28113,
+      "messages": 24,
+      "status": "ok",
+      "actual_input": 21902,
+      "actual_output": 120,
+      "duration_s": 1.87
+    },
+    {
+      "estimated_input": 28522,
+      "messages": 27,
+      "status": "ok",
+      "actual_input": 22248,
+      "actual_output": 45,
+      "duration_s": 0.74
+    },
+    {
+      "estimated_input": 33263,
+      "messages": 29,
+      "status": "ok",
+      "actual_input": 26122,
+      "actual_output": 81,
+      "duration_s": 1.62
+    },
+    {
+      "estimated_input": 33817,
+      "messages": 31,
+      "status": "ok",
+      "actual_input": 26665,
+      "actual_output": 81,
+      "duration_s": 1.11
+    },
+    {
+      "estimated_input": 34372,
+      "messages": 33,
+      "status": "ok",
+      "actual_input": 27208,
+      "actual_output": 81,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 34926,
+      "messages": 35,
+      "status": "ok",
+      "actual_input": 27751,
+      "actual_output": 81,
+      "duration_s": 0.99
+    },
+    {
+      "estimated_input": 35480,
+      "messages": 37,
+      "status": "ok",
+      "actual_input": 28294,
+      "actual_output": 160,
+      "duration_s": 1.74
+    },
+    {
+      "estimated_input": 36666,
+      "messages": 40,
+      "status": "ok",
+      "actual_input": 29354,
+      "actual_output": 162,
+      "duration_s": 1.83
+    },
+    {
+      "estimated_input": 37196,
+      "messages": 43,
+      "status": "ok",
+      "actual_input": 29832,
+      "actual_output": 81,
+      "duration_s": 1.08
+    },
+    {
+      "estimated_input": 37408,
+      "messages": 45,
+      "status": "ok",
+      "actual_input": 30023,
+      "actual_output": 81,
+      "duration_s": 1.18
+    },
+    {
+      "estimated_input": 37620,
+      "messages": 47,
+      "status": "ok",
+      "actual_input": 30214,
+      "actual_output": 77,
+      "duration_s": 1.15
+    },
+    {
+      "estimated_input": 37829,
+      "messages": 49,
+      "status": "ok",
+      "actual_input": 30397,
+      "actual_output": 76,
+      "duration_s": 1.02
+    },
+    {
+      "estimated_input": 38035,
+      "messages": 51,
+      "status": "ok",
+      "actual_input": 30578,
+      "actual_output": 75,
+      "duration_s": 1.08
+    },
+    {
+      "estimated_input": 38238,
+      "messages": 53,
+      "status": "ok",
+      "actual_input": 30757,
+      "actual_output": 74,
+      "duration_s": 0.96
+    },
+    {
+      "estimated_input": 38478,
+      "messages": 55,
+      "status": "ok",
+      "actual_input": 30969,
+      "actual_output": 75,
+      "duration_s": 1.33
+    },
+    {
+      "estimated_input": 38719,
+      "messages": 57,
+      "status": "ok",
+      "actual_input": 31184,
+      "actual_output": 75,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 38922,
+      "messages": 59,
+      "status": "ok",
+      "actual_input": 31363,
+      "actual_output": 79,
+      "duration_s": 0.92
+    },
+    {
+      "estimated_input": 39128,
+      "messages": 61,
+      "status": "ok",
+      "actual_input": 31549,
+      "actual_output": 79,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 39334,
+      "messages": 63,
+      "status": "ok",
+      "actual_input": 31735,
+      "actual_output": 79,
+      "duration_s": 1.09
+    },
+    {
+      "estimated_input": 39540,
+      "messages": 65,
+      "status": "ok",
+      "actual_input": 31921,
+      "actual_output": 79,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 39745,
+      "messages": 67,
+      "status": "ok",
+      "actual_input": 32107,
+      "actual_output": 79,
+      "duration_s": 1.09
+    },
+    {
+      "estimated_input": 39951,
+      "messages": 69,
+      "status": "ok",
+      "actual_input": 32293,
+      "actual_output": 79,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 40157,
+      "messages": 71,
+      "status": "ok",
+      "actual_input": 32479,
+      "actual_output": 79,
+      "duration_s": 0.99
+    },
+    {
+      "estimated_input": 40363,
+      "messages": 73,
+      "status": "ok",
+      "actual_input": 32665,
+      "actual_output": 79,
+      "duration_s": 1.04
+    },
+    {
+      "estimated_input": 40569,
+      "messages": 75,
+      "status": "ok",
+      "actual_input": 32851,
+      "actual_output": 79,
+      "duration_s": 1.2
+    },
+    {
+      "estimated_input": 40775,
+      "messages": 77,
+      "status": "ok",
+      "actual_input": 33037,
+      "actual_output": 79,
+      "duration_s": 0.98
+    },
+    {
+      "estimated_input": 40980,
+      "messages": 79,
+      "status": "ok",
+      "actual_input": 33223,
+      "actual_output": 79,
+      "duration_s": 1.07
+    },
+    {
+      "estimated_input": 41186,
+      "messages": 81,
+      "status": "ok",
+      "actual_input": 33409,
+      "actual_output": 79,
+      "duration_s": 1.23
+    },
+    {
+      "estimated_input": 41392,
+      "messages": 83,
+      "status": "ok",
+      "actual_input": 33595,
+      "actual_output": 79,
+      "duration_s": 1.05
+    },
+    {
+      "estimated_input": 41598,
+      "messages": 85,
+      "status": "ok",
+      "actual_input": 33781,
+      "actual_output": 79,
+      "duration_s": 1.09
+    },
+    {
+      "estimated_input": 41804,
+      "messages": 87,
+      "status": "ok",
+      "actual_input": 33967,
+      "actual_output": 79,
+      "duration_s": 0.99
+    },
+    {
+      "estimated_input": 42010,
+      "messages": 89,
+      "status": "ok",
+      "actual_input": 34153,
+      "actual_output": 79,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 42216,
+      "messages": 91,
+      "status": "ok",
+      "actual_input": 34339,
+      "actual_output": 79,
+      "duration_s": 1.11
+    },
+    {
+      "estimated_input": 42421,
+      "messages": 93,
+      "status": "ok",
+      "actual_input": 34525,
+      "actual_output": 79,
+      "duration_s": 0.99
+    },
+    {
+      "estimated_input": 42627,
+      "messages": 95,
+      "status": "ok",
+      "actual_input": 34711,
+      "actual_output": 79,
+      "duration_s": 1.01
+    },
+    {
+      "estimated_input": 42833,
+      "messages": 97,
+      "status": "ok",
+      "actual_input": 34897,
+      "actual_output": 79,
+      "duration_s": 1.12
+    },
+    {
+      "estimated_input": 43039,
+      "messages": 99,
+      "status": "ok",
+      "actual_input": 35083,
+      "actual_output": 79,
+      "duration_s": 1.18
+    },
+    {
+      "estimated_input": 43245,
+      "messages": 101,
+      "status": "ok",
+      "actual_input": 35269,
+      "actual_output": 79,
       "duration_s": 1.17
     },
     {
-      "estimated_input": 14449,
-      "messages": 14,
+      "estimated_input": 43451,
+      "messages": 103,
       "status": "ok",
-      "actual_input": 10754,
-      "actual_output": 60,
-      "duration_s": 1.22
+      "actual_input": 35455,
+      "actual_output": 79,
+      "duration_s": 1.09
     },
     {
-      "estimated_input": 18601,
-      "messages": 16,
+      "estimated_input": 43656,
+      "messages": 105,
       "status": "ok",
-      "actual_input": 13725,
-      "actual_output": 120,
-      "duration_s": 1.57
+      "actual_input": 35641,
+      "actual_output": 79,
+      "duration_s": 1.11
     },
     {
-      "estimated_input": 18963,
-      "messages": 19,
+      "estimated_input": 43862,
+      "messages": 107,
       "status": "ok",
-      "actual_input": 14035,
-      "actual_output": 121,
-      "duration_s": 1.28
+      "actual_input": 35827,
+      "actual_output": 79,
+      "duration_s": 1.09
     },
     {
-      "estimated_input": 19327,
-      "messages": 22,
+      "estimated_input": 44068,
+      "messages": 109,
       "status": "ok",
-      "actual_input": 14347,
-      "actual_output": 157,
-      "duration_s": 1.65
+      "actual_input": 36013,
+      "actual_output": 79,
+      "duration_s": 1.2
     },
     {
-      "estimated_input": 19818,
-      "messages": 25,
+      "estimated_input": 44274,
+      "messages": 111,
       "status": "ok",
-      "actual_input": 14767,
-      "actual_output": 45,
-      "duration_s": 0.86
+      "actual_input": 36199,
+      "actual_output": 79,
+      "duration_s": 1.08
     },
     {
-      "estimated_input": 24559,
-      "messages": 27,
+      "estimated_input": 44480,
+      "messages": 113,
       "status": "ok",
-      "actual_input": 18641,
-      "actual_output": 81,
-      "duration_s": 1.52
+      "actual_input": 36385,
+      "actual_output": 79,
+      "duration_s": 1.03
     },
     {
-      "estimated_input": 25113,
-      "messages": 29,
+      "estimated_input": 44686,
+      "messages": 115,
       "status": "ok",
-      "actual_input": 19184,
-      "actual_output": 45,
-      "duration_s": 0.88
+      "actual_input": 36571,
+      "actual_output": 79,
+      "duration_s": 1.17
     },
     {
-      "estimated_input": 29854,
-      "messages": 31,
+      "estimated_input": 44892,
+      "messages": 117,
       "status": "ok",
-      "actual_input": 23058,
-      "actual_output": 44,
+      "actual_input": 36757,
+      "actual_output": 79,
+      "duration_s": 1.13
+    },
+    {
+      "estimated_input": 45097,
+      "messages": 119,
+      "status": "ok",
+      "actual_input": 36943,
+      "actual_output": 79,
+      "duration_s": 1.15
+    },
+    {
+      "estimated_input": 45303,
+      "messages": 121,
+      "status": "ok",
+      "actual_input": 37129,
+      "actual_output": 79,
+      "duration_s": 1.02
+    },
+    {
+      "estimated_input": 45509,
+      "messages": 123,
+      "status": "ok",
+      "actual_input": 37315,
+      "actual_output": 79,
+      "duration_s": 1.17
+    },
+    {
+      "estimated_input": 45715,
+      "messages": 125,
+      "status": "ok",
+      "actual_input": 37501,
+      "actual_output": 79,
+      "duration_s": 1.18
+    },
+    {
+      "estimated_input": 45921,
+      "messages": 127,
+      "status": "ok",
+      "actual_input": 37687,
+      "actual_output": 79,
+      "duration_s": 1.18
+    },
+    {
+      "estimated_input": 46127,
+      "messages": 129,
+      "status": "ok",
+      "actual_input": 37873,
+      "actual_output": 79,
+      "duration_s": 1.03
+    },
+    {
+      "estimated_input": 46332,
+      "messages": 131,
+      "status": "ok",
+      "actual_input": 38059,
+      "actual_output": 79,
+      "duration_s": 1.18
+    },
+    {
+      "estimated_input": 46538,
+      "messages": 133,
+      "status": "ok",
+      "actual_input": 38245,
+      "actual_output": 79,
+      "duration_s": 1.1
+    },
+    {
+      "estimated_input": 46744,
+      "messages": 135,
+      "status": "ok",
+      "actual_input": 38431,
+      "actual_output": 79,
+      "duration_s": 1.2
+    },
+    {
+      "estimated_input": 46950,
+      "messages": 137,
+      "status": "ok",
+      "actual_input": 38617,
+      "actual_output": 79,
+      "duration_s": 1.09
+    },
+    {
+      "estimated_input": 47156,
+      "messages": 139,
+      "status": "ok",
+      "actual_input": 38803,
+      "actual_output": 79,
+      "duration_s": 1.3
+    },
+    {
+      "estimated_input": 47362,
+      "messages": 141,
+      "status": "ok",
+      "actual_input": 38989,
+      "actual_output": 79,
+      "duration_s": 1.26
+    },
+    {
+      "estimated_input": 47568,
+      "messages": 143,
+      "status": "ok",
+      "actual_input": 39175,
+      "actual_output": 79,
       "duration_s": 1.46
     },
     {
-      "estimated_input": 34598,
-      "messages": 33,
+      "estimated_input": 47773,
+      "messages": 145,
       "status": "ok",
-      "actual_input": 27315,
-      "actual_output": 43,
-      "duration_s": 1.53
+      "actual_input": 39361,
+      "actual_output": 79,
+      "duration_s": 1.2
     },
     {
-      "estimated_input": 39341,
-      "messages": 35,
+      "estimated_input": 47979,
+      "messages": 147,
       "status": "ok",
-      "actual_input": 32613,
-      "actual_output": 123,
-      "duration_s": 2.25
+      "actual_input": 39547,
+      "actual_output": 79,
+      "duration_s": 1.15
     },
     {
-      "estimated_input": 48844,
-      "messages": 38,
+      "estimated_input": 48185,
+      "messages": 149,
       "status": "ok",
-      "actual_input": 39887,
-      "actual_output": 73,
-      "duration_s": 2.25
+      "actual_input": 39733,
+      "actual_output": 79,
+      "duration_s": 1.2
     },
     {
-      "estimated_input": 53608,
-      "messages": 40,
+      "estimated_input": 48391,
+      "messages": 151,
       "status": "ok",
-      "actual_input": 43588,
-      "actual_output": 73,
-      "duration_s": 1.94
+      "actual_input": 39919,
+      "actual_output": 79,
+      "duration_s": 1.31
     },
     {
-      "estimated_input": 58372,
-      "messages": 42,
+      "estimated_input": 48597,
+      "messages": 153,
       "status": "ok",
-      "actual_input": 47289,
-      "actual_output": 73,
-      "duration_s": 2.19
+      "actual_input": 40105,
+      "actual_output": 79,
+      "duration_s": 1.16
     },
     {
-      "estimated_input": 63135,
-      "messages": 44,
+      "estimated_input": 48803,
+      "messages": 155,
       "status": "ok",
-      "actual_input": 50990,
-      "actual_output": 73,
-      "duration_s": 3.63
+      "actual_input": 40291,
+      "actual_output": 79,
+      "duration_s": 1.3
     },
     {
-      "estimated_input": 67899,
-      "messages": 46,
+      "estimated_input": 49008,
+      "messages": 157,
       "status": "ok",
-      "actual_input": 54691,
-      "actual_output": 73,
-      "duration_s": 3.94
+      "actual_input": 40477,
+      "actual_output": 79,
+      "duration_s": 1.15
     },
     {
-      "estimated_input": 72662,
-      "messages": 48,
+      "estimated_input": 49214,
+      "messages": 159,
       "status": "ok",
-      "actual_input": 58392,
-      "actual_output": 73,
-      "duration_s": 2.19
+      "actual_input": 40663,
+      "actual_output": 79,
+      "duration_s": 1.36
     },
     {
-      "estimated_input": 77426,
-      "messages": 50,
+      "estimated_input": 49420,
+      "messages": 161,
       "status": "ok",
-      "actual_input": 62093,
-      "actual_output": 73,
-      "duration_s": 2.17
+      "actual_input": 40849,
+      "actual_output": 79,
+      "duration_s": 1.19
     },
     {
-      "estimated_input": 82189,
-      "messages": 52,
+      "estimated_input": 49626,
+      "messages": 163,
       "status": "ok",
-      "actual_input": 65794,
-      "actual_output": 73,
-      "duration_s": 2.31
+      "actual_input": 41035,
+      "actual_output": 79,
+      "duration_s": 1.11
     },
     {
-      "estimated_input": 86953,
-      "messages": 54,
+      "estimated_input": 49832,
+      "messages": 165,
       "status": "ok",
-      "actual_input": 69495,
-      "actual_output": 73,
-      "duration_s": 2.34
+      "actual_input": 41221,
+      "actual_output": 79,
+      "duration_s": 1.13
     },
     {
-      "estimated_input": 91716,
-      "messages": 56,
+      "estimated_input": 50038,
+      "messages": 167,
       "status": "ok",
-      "actual_input": 73196,
-      "actual_output": 73,
-      "duration_s": 2.45
+      "actual_input": 41407,
+      "actual_output": 79,
+      "duration_s": 1.33
     },
     {
-      "estimated_input": 96480,
-      "messages": 58,
+      "estimated_input": 50244,
+      "messages": 169,
       "status": "ok",
-      "actual_input": 76897,
-      "actual_output": 73,
-      "duration_s": 2.35
+      "actual_input": 41593,
+      "actual_output": 79,
+      "duration_s": 1.17
     },
     {
-      "estimated_input": 101243,
-      "messages": 60,
+      "estimated_input": 50449,
+      "messages": 171,
       "status": "ok",
-      "actual_input": 80598,
-      "actual_output": 73,
-      "duration_s": 2.98
+      "actual_input": 41779,
+      "actual_output": 79,
+      "duration_s": 1.19
     },
     {
-      "estimated_input": 106007,
-      "messages": 62,
+      "estimated_input": 50655,
+      "messages": 173,
       "status": "ok",
-      "actual_input": 84299,
-      "actual_output": 73,
-      "duration_s": 3.11
+      "actual_input": 41965,
+      "actual_output": 79,
+      "duration_s": 1.26
     },
     {
-      "estimated_input": 110770,
-      "messages": 64,
+      "estimated_input": 50861,
+      "messages": 175,
       "status": "ok",
-      "actual_input": 88000,
-      "actual_output": 73,
-      "duration_s": 2.46
+      "actual_input": 42151,
+      "actual_output": 79,
+      "duration_s": 1.27
     },
     {
-      "estimated_input": 115534,
-      "messages": 66,
+      "estimated_input": 51067,
+      "messages": 177,
       "status": "ok",
-      "actual_input": 91701,
-      "actual_output": 73,
-      "duration_s": 2.8
+      "actual_input": 42337,
+      "actual_output": 79,
+      "duration_s": 1.29
     },
     {
-      "estimated_input": 120298,
-      "messages": 68,
+      "estimated_input": 51273,
+      "messages": 179,
       "status": "ok",
-      "actual_input": 95402,
-      "actual_output": 73,
-      "duration_s": 2.53
+      "actual_input": 42523,
+      "actual_output": 79,
+      "duration_s": 1.06
     },
     {
-      "estimated_input": 125061,
-      "messages": 70,
+      "estimated_input": 51479,
+      "messages": 181,
       "status": "ok",
-      "actual_input": 99103,
-      "actual_output": 73,
-      "duration_s": 2.99
+      "actual_input": 42709,
+      "actual_output": 79,
+      "duration_s": 1.12
     },
     {
-      "estimated_input": 129825,
-      "messages": 72,
+      "estimated_input": 51684,
+      "messages": 183,
       "status": "ok",
-      "actual_input": 102804,
-      "actual_output": 73,
-      "duration_s": 4.15
+      "actual_input": 42895,
+      "actual_output": 79,
+      "duration_s": 1.13
     },
     {
-      "estimated_input": 134588,
-      "messages": 74,
+      "estimated_input": 51890,
+      "messages": 185,
       "status": "ok",
-      "actual_input": 106505,
-      "actual_output": 73,
-      "duration_s": 3.21
+      "actual_input": 43081,
+      "actual_output": 79,
+      "duration_s": 1.11
     },
     {
-      "estimated_input": 139352,
-      "messages": 76,
+      "estimated_input": 52096,
+      "messages": 187,
       "status": "ok",
-      "actual_input": 110206,
-      "actual_output": 73,
-      "duration_s": 4.08
+      "actual_input": 43267,
+      "actual_output": 79,
+      "duration_s": 1.26
     },
     {
-      "estimated_input": 144115,
-      "messages": 78,
+      "estimated_input": 52302,
+      "messages": 189,
       "status": "ok",
-      "actual_input": 113907,
-      "actual_output": 73,
-      "duration_s": 3.67
-    },
-    {
-      "estimated_input": 148879,
-      "messages": 80,
-      "status": "ok",
-      "actual_input": 117608,
-      "actual_output": 73,
-      "duration_s": 3.65
-    },
-    {
-      "estimated_input": 153642,
-      "messages": 82,
-      "status": "ok",
-      "actual_input": 121309,
-      "actual_output": 73,
-      "duration_s": 11.32
-    },
-    {
-      "estimated_input": 158406,
-      "messages": 84,
-      "status": "ok",
-      "actual_input": 125010,
-      "actual_output": 73,
-      "duration_s": 5.73
-    },
-    {
-      "estimated_input": 163169,
-      "messages": 86,
-      "status": "ok",
-      "actual_input": 128711,
-      "actual_output": 73,
-      "duration_s": 6.41
-    },
-    {
-      "estimated_input": 167933,
-      "messages": 88,
-      "status": "ok",
-      "actual_input": 132412,
-      "actual_output": 73,
-      "duration_s": 6.11
+      "actual_input": 43453,
+      "actual_output": 79,
+      "duration_s": 1.09
     }
   ],
-  "trace": "D:\\загрузки\\AI in production & MLOps\\itmo-agent-labs\\lab2\\traces\\A_base_baseline_20261116_011539.md"
+  "trace": "D:\\загрузки\\AI in production & MLOps\\itmo-agent-labs\\lab2\\traces\\A_base_baseline_20261122_184639.md"
 }

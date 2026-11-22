@@ -1,17 +1,17 @@
 [
   {
-    "id": 632,
+    "id": 313,
     "task_id": "C1",
-    "ts": "2026-11-15T22:27:59+00:00",
+    "ts": "2026-11-22T15:48:58+00:00",
     "kind": "status",
     "data": {
       "status": "queued"
     }
   },
   {
-    "id": 633,
+    "id": 314,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:03+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "status",
     "data": {
       "status": "running",
@@ -19,14 +19,14 @@
     }
   },
   {
-    "id": 634,
+    "id": 315,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:03+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11427,
+      "estimated_input": 11791,
       "reserve": 2048,
-      "total": 13475,
+      "total": 13839,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -35,1049 +35,1491 @@
     }
   },
   {
-    "id": 635,
+    "id": 316,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:03+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11427,
+      "estimated_input": 11791,
       "reserve": 2048,
-      "total": 13475,
+      "total": 13839,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=2.60)"
     }
   },
   {
-    "id": 636,
+    "id": 317,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:05+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 11427,
-      "actual_input": 7165,
-      "actual_output": 228,
-      "duration_s": 2.21,
-      "calibrated_cpt": 3.066
+      "estimated_input": 11791,
+      "actual_input": 7358,
+      "actual_output": 27,
+      "duration_s": 0.72,
+      "calibrated_cpt": 3.073
     }
   },
   {
-    "id": 637,
+    "id": 318,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:06+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11009,
+      "estimated_input": 11181,
       "reserve": 2048,
-      "total": 13057,
+      "total": 13229,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.07)",
-      "messages": 4
+      "messages": 3
     }
   },
   {
-    "id": 638,
+    "id": 319,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:06+00:00",
+    "ts": "2026-11-22T15:49:04+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11009,
+      "estimated_input": 11181,
       "reserve": 2048,
-      "total": 13057,
+      "total": 13229,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.07)"
     }
   },
   {
-    "id": 639,
+    "id": 320,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:07+00:00",
+    "ts": "2026-11-22T15:49:06+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 11009,
-      "actual_input": 8104,
-      "actual_output": 96,
-      "duration_s": 1.25,
-      "calibrated_cpt": 3.35
+      "estimated_input": 11181,
+      "actual_input": 8164,
+      "actual_output": 183,
+      "duration_s": 1.8,
+      "calibrated_cpt": 3.371
     }
   },
   {
-    "id": 640,
+    "id": 321,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:07+00:00",
+    "ts": "2026-11-22T15:49:06+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12092,
+      "estimated_input": 10603,
       "reserve": 2048,
-      "total": 14140,
+      "total": 12651,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.35)",
-      "messages": 7
+      "method": "heuristic(cpt=3.37)",
+      "messages": 5
     }
   },
   {
-    "id": 641,
+    "id": 322,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:07+00:00",
+    "ts": "2026-11-22T15:49:06+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12092,
+      "estimated_input": 10603,
       "reserve": 2048,
-      "total": 14140,
+      "total": 12651,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.35)"
+      "method": "heuristic(cpt=3.37)"
     }
   },
   {
-    "id": 642,
+    "id": 323,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:08+00:00",
+    "ts": "2026-11-22T15:49:08+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12092,
-      "actual_input": 10346,
-      "actual_output": 96,
-      "duration_s": 1.47,
-      "calibrated_cpt": 3.427
+      "estimated_input": 10603,
+      "actual_input": 8540,
+      "actual_output": 95,
+      "duration_s": 1.2,
+      "calibrated_cpt": 3.539
     }
   },
   {
-    "id": 643,
+    "id": 324,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:08+00:00",
+    "ts": "2026-11-22T15:49:08+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LangGraph checkpointing state persistence LLM agents",
+      "pages_read_before": 0,
+      "new_urls": 9,
+      "round": 1
+    }
+  },
+  {
+    "id": 325,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:08+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LLM agent state storage backends memory long-term",
+      "pages_read_before": 0,
+      "new_urls": 10,
+      "round": 1
+    }
+  },
+  {
+    "id": 326,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:08+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13848,
+      "estimated_input": 12046,
       "reserve": 2048,
-      "total": 15896,
+      "total": 14094,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 327,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12046,
+      "reserve": 2048,
+      "total": 14094,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 328,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12046,
+      "actual_input": 10838,
+      "actual_output": 97,
+      "duration_s": 1.46,
+      "calibrated_cpt": 3.546
+    }
+  },
+  {
+    "id": 329,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:09+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LLM agent context compaction summarization token limit",
+      "pages_read_before": 0,
+      "new_urls": 7,
+      "round": 1
+    }
+  },
+  {
+    "id": 330,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:09+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "durable execution LLM agents idempotency retries",
+      "pages_read_before": 0,
+      "new_urls": 5,
+      "round": 1
+    }
+  },
+  {
+    "id": 331,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13802,
+      "reserve": 2048,
+      "total": 15850,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 332,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13802,
+      "reserve": 2048,
+      "total": 15850,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.55)"
+    }
+  },
+  {
+    "id": 333,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13802,
+      "actual_input": 12885,
+      "actual_output": 94,
+      "duration_s": 1.68,
+      "calibrated_cpt": 3.501
+    }
+  },
+  {
+    "id": 334,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:11+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "схема состояния LLM агента state schema threads",
+      "pages_read_before": 0,
+      "new_urls": 3,
+      "round": 1
+    }
+  },
+  {
+    "id": 335,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:11+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LLM agent state security prompt injection persistence",
+      "pages_read_before": 0,
+      "new_urls": 5,
+      "round": 1
+    }
+  },
+  {
+    "id": 336,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15899,
+      "reserve": 2048,
+      "total": 17947,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.50)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 337,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15899,
+      "reserve": 2048,
+      "total": 17947,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.50)"
+    }
+  },
+  {
+    "id": 338,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15899,
+      "actual_input": 15088,
+      "actual_output": 96,
+      "duration_s": 2.01,
+      "calibrated_cpt": 3.434
+    }
+  },
+  {
+    "id": 339,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:13+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "агент состояние безопасность хранение секретов в чекпоинтах",
+      "pages_read_before": 0,
+      "new_urls": 5,
+      "round": 1
+    }
+  },
+  {
+    "id": 340,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:13+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "agent state backend comparison sqlite postgres redis",
+      "pages_read_before": 0,
+      "new_urls": 8,
+      "round": 1
+    }
+  },
+  {
+    "id": 341,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18175,
+      "reserve": 2048,
+      "total": 20223,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.43)",
-      "messages": 10
+      "messages": 17
     }
   },
   {
-    "id": 644,
+    "id": 342,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:08+00:00",
+    "ts": "2026-11-22T15:49:13+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13848,
+      "estimated_input": 18175,
       "reserve": 2048,
-      "total": 15896,
+      "total": 20223,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.43)"
     }
   },
   {
-    "id": 645,
+    "id": 343,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:10+00:00",
+    "ts": "2026-11-22T15:49:15+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 13848,
-      "actual_input": 12608,
-      "actual_output": 93,
-      "duration_s": 1.75,
-      "calibrated_cpt": 3.418
+      "estimated_input": 18175,
+      "actual_input": 17306,
+      "actual_output": 99,
+      "duration_s": 2.37,
+      "calibrated_cpt": 3.363
     }
   },
   {
-    "id": 646,
+    "id": 344,
     "task_id": "C1",
-    "ts": "2026-11-15T22:28:10+00:00",
+    "ts": "2026-11-22T15:49:15+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "идемпотентность инструментов агента повторные вызовы side effects",
+      "pages_read_before": 0,
+      "new_urls": 2,
+      "round": 1
+    }
+  },
+  {
+    "id": 345,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:15+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LLM agent memory consolidation forgetting stale facts",
+      "pages_read_before": 0,
+      "new_urls": 0,
+      "round": 1
+    }
+  },
+  {
+    "id": 346,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:15+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 15685,
+      "estimated_input": 20596,
       "reserve": 2048,
-      "total": 17733,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.42)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 647,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:10+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15685,
-      "reserve": 2048,
-      "total": 17733,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.42)"
-    }
-  },
-  {
-    "id": 648,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:12+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15685,
-      "actual_input": 14621,
-      "actual_output": 95,
-      "duration_s": 1.96,
-      "calibrated_cpt": 3.376
-    }
-  },
-  {
-    "id": 649,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17856,
-      "reserve": 2048,
-      "total": 19904,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.38)",
-      "messages": 16
-    }
-  },
-  {
-    "id": 650,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17856,
-      "reserve": 2048,
-      "total": 19904,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.38)"
-    }
-  },
-  {
-    "id": 651,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:14+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17856,
-      "actual_input": 16801,
-      "actual_output": 91,
-      "duration_s": 2.27,
-      "calibrated_cpt": 3.322
-    }
-  },
-  {
-    "id": 652,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:14+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19993,
-      "reserve": 2048,
-      "total": 22041,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 653,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:24+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 1,
-      "before_tokens": 19993,
-      "after_tokens": 12020,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 15,
-      "kept_messages": 4,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 4767,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием LLM-агентов. Ключевые аспекты: чекпоинты, бэкенды хранения, долговременная память, компактификация контекста, durable execution, идемпотентность, схема состояния и безопасность.\n\n## Ограничения пользователя\n- Собрать очередь из **>=50 URL** (статус: в процессе, найдено 47).\n- Прочитать **>=5** самых релевантных страниц (web_fetch).\n- Сохранить **>=6** evidence с точными цитатами.\n- Написать разделы обзора: approaches, limitations, comparison, unverified (объем **<=900 слов**).\n- Завершить задачу через `complete_task`.\n\n## Решения и договорённости\n- Использовать навык `research_web` для автономного поиска без заранее заданного списка URL.\n- Разбить тему на 3-6 аспектов и сформулировать специфические запросы (RU/EN).\n- Отслеживать дубликаты и отклонять нерелевантные источники через `select_sources`.\n- Останавливаться при выполнении критериев TASK CONTRACT или исчерпании полезных источников.\n\n## Подтверждённые факты (с источниками)\n*Примечание: Факты ниже извлечены из сниппетов поисковой выдачи (status: \"found\"). Полные цитаты для evidence будут получены после web_fetch.*\n\n1. **Чекпоинты**: Содержат значения каналов состояния, версию и список ожидающих записей узлов.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-1` (url_key: `2363f86856c57c3a`).\n2. **Восстановление**: История чекпоинтов позволяет вернуться к прошлому шагу и запустить альтернативную ветку.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-2` (url_key: `d022a890b3b3b980`).\n3. **Durable Execution**: Недетерминированные действия (включая вызовы LLM) выносят в activities с повторами.\n   - Источник: `http://127.0.0.1:8765/p/durable-2` (url_key: `c3aed09f7b622ed9`).\n4. **Память**: Записи снабжают временем создания и источником для отбрасывания устаревших фактов.\n   - Источник: `http://127.0.0.1:8765/p/memory-1` (url_key: `a27a868da382a0fe`).\n5. **Компактификация**: Summary должно сохранять цель, ограничения, решения, факты с источниками и открытые вопросы.\n   - Источник: `http://127.0.0.1:8765/p/compaction-1` (url_key: `0877bd67afa54381`).\n6. **Схема состояния**: Версия схемы хранится рядом с данными для миграции старого состояния.\n   - Источник: `http://127.0.0.1:8765/p/schema-1` (url_key: `ec90898914588900`).\n7. **Бэкенды**: SQLite подходит для одного процесса и локальных экспериментов.\n   - Источник: `http://127.0.0.1:8765/p/backends-1` (url_key: `6fafb22fa2aa10dc`).\n\n## Прогресс\n- **Выполнено**:\n  - Загрузка навыка `research_web`.\n  - Обновление плана (6 шагов).\n  - Выполнено 8 поисковых запросов (`web_search`).\n  - Найдено **47 уникальных URL** в очереди (found_total: 47).\n  - Отобраны ключевые темы: checkpoint, durable, memory, compaction, schema, backends.\n- **В процессе**:\n  - Формулирование запросов (шаг 1 плана, статус \"doing\").\n- **Осталось**:\n  - Найти еще минимум 3 URL, чтобы достичь цели >=50.\n  - Выбрать источники (`select_sources`).\n  - Прочитать >=5 страниц (`web_fetch`).\n  - Сформировать evidence и написать отчет.\n\n## Открытые вопросы и следующий шаг\n- **Открытые вопросы**:\n  - Какие конкретные бэкенды (PostgreSQL, Redis) рекомендуются для облачных развёртываний? (Сниппет `backends-3` обрывается).\n  - Как именно обрабатывается безопасность (prompt injection) в хранилище состояния? (Запрос вернул 0 новых URL, только дубликаты).\n- **Следующий шаг**:\n  1. Выполнить дополнительные поисковые запросы для доведения количества URL до 50+ (например, по конкретным ошибкам или сравнениям).\n  2. Вызвать `"
-    }
-  },
-  {
-    "id": 654,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:24+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12020,
-      "reserve": 2048,
-      "total": 14068,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)"
-    }
-  },
-  {
-    "id": 655,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:38+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12020,
-      "actual_input": 10487,
-      "actual_output": 2048,
-      "duration_s": 14.33,
-      "calibrated_cpt": 3.374
-    }
-  },
-  {
-    "id": 656,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:38+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11933,
-      "reserve": 2048,
-      "total": 13981,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)",
-      "messages": 6
-    }
-  },
-  {
-    "id": 657,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:38+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11933,
-      "reserve": 2048,
-      "total": 13981,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)"
-    }
-  },
-  {
-    "id": 658,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:47+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11933,
-      "actual_input": 10546,
-      "actual_output": 1103,
-      "duration_s": 8.49,
-      "calibrated_cpt": 3.407
-    }
-  },
-  {
-    "id": 659,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:47+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13517,
-      "reserve": 2048,
-      "total": 15565,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.41)",
-      "messages": 8
-    }
-  },
-  {
-    "id": 660,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:47+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13517,
-      "reserve": 2048,
-      "total": 15565,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.41)"
-    }
-  },
-  {
-    "id": 661,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:48+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13517,
-      "actual_input": 12924,
-      "actual_output": 92,
-      "duration_s": 1.65,
-      "calibrated_cpt": 3.335
-    }
-  },
-  {
-    "id": 662,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:49+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14832,
-      "reserve": 2048,
-      "total": 16880,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)",
-      "messages": 11
-    }
-  },
-  {
-    "id": 663,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:49+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14832,
-      "reserve": 2048,
-      "total": 16880,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.33)"
-    }
-  },
-  {
-    "id": 664,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:51+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14832,
-      "actual_input": 13993,
-      "actual_output": 91,
-      "duration_s": 1.76,
-      "calibrated_cpt": 3.279
-    }
-  },
-  {
-    "id": 665,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:52+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16086,
-      "reserve": 2048,
-      "total": 18134,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)",
-      "messages": 14
-    }
-  },
-  {
-    "id": 666,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:52+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16086,
-      "reserve": 2048,
-      "total": 18134,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.28)"
-    }
-  },
-  {
-    "id": 667,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:54+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16086,
-      "actual_input": 15042,
-      "actual_output": 92,
-      "duration_s": 1.9,
-      "calibrated_cpt": 3.235
-    }
-  },
-  {
-    "id": 668,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:54+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17324,
-      "reserve": 2048,
-      "total": 19372,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.23)",
-      "messages": 17
-    }
-  },
-  {
-    "id": 669,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:54+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17324,
-      "reserve": 2048,
-      "total": 19372,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.23)"
-    }
-  },
-  {
-    "id": 670,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:57+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17324,
-      "actual_input": 16077,
-      "actual_output": 94,
-      "duration_s": 2.08,
-      "calibrated_cpt": 3.2
-    }
-  },
-  {
-    "id": 671,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:57+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18530,
-      "reserve": 2048,
-      "total": 20578,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.20)",
-      "messages": 20
-    }
-  },
-  {
-    "id": 672,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:28:58+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18530,
-      "reserve": 2048,
-      "total": 20578,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.20)"
-    }
-  },
-  {
-    "id": 673,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:00+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18530,
-      "actual_input": 17113,
-      "actual_output": 93,
-      "duration_s": 2.15,
-      "calibrated_cpt": 3.17
-    }
-  },
-  {
-    "id": 674,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:00+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19710,
-      "reserve": 2048,
-      "total": 21758,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.17)",
-      "messages": 23
-    }
-  },
-  {
-    "id": 675,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:09+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 2,
-      "before_tokens": 19710,
-      "after_tokens": 11668,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 19,
-      "kept_messages": 4,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 7255,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием LLM-агентов. Ключевые аспекты: чекпоинты, бэкенды хранения, долговременная память, компактификация контекста, durable execution, идемпотентность, схема состояния и безопасность.\n\n## Ограничения пользователя\n- Собрать очередь из **>=50 URL** (статус: выполнено, найдено 55).\n- Прочитать **>=5** самых релевантных страниц (web_fetch) (статус: выполнено, прочитано 8).\n- Сохранить **>=6** evidence с точными цитатами (статус: в процессе, страницы загружены, evidence не сохранены).\n- Написать разделы обзора: approaches, limitations, comparison, unverified (объем **<=900 слов**).\n- Завершить задачу через `complete_task`.\n\n## Решения и договорённости\n- Использовать навык `research_web` для автономного поиска без заранее заданного списка URL.\n- Разбить тему на 3-6 аспектов и сформулировать специфические запросы (RU/EN).\n- Отслеживать дубликаты и отклонять нерелевантные источники через `select_sources`.\n- Останавливаться при выполнении критериев TASK CONTRACT или исчерпании полезных источников.\n\n## Подтверждённые факты (с источниками)\n*Факты подтверждены полным текстом страниц (web_fetch).*\n\n1. **Чекпоинты**: Содержат значения каналов состояния, версию и список ожидающих записей узлов. `thread_id` связывает последовательность чекпоинтов. Синхронная запись гарантирует сохранение до следующего шага.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-1` (artifact_id: `art_bbb135ac159f9cf2ce89`).\n2. **Восстановление**: История чекпоинтов позволяет вернуться к прошлому шагу и запустить альтернативную ветку. Checkpointer сохраняет состояние после каждого super-step.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-2` (artifact_id: `art_44bde56f35d768794f36`).\n3. **Durable Execution**: Недетерминированные действия (включая вызовы LLM) выносят в activities с повторами. Таймауты разделяют на ожидание запуска и выполнение.\n   - Источник: `http://127.0.0.1:8765/p/durable-2` (artifact_id: `art_49777c7f11ede5cb40f1`).\n4. **Память**: Записи снабжают временем создания и источником для отбрасывания устаревших фактов. Долговременную память хранят как документы с пространствами имён.\n   - Источник: `http://127.0.0.1:8765/p/memory-1` (artifact_id: `art_76dd4ff85d0b44b891ef`).\n5. **Компактификация**: Summary должно сохранять цель, ограничения, решения, факты с источниками и открытые вопросы. Сжимать можно только завершённые фрагменты.\n   - Источник: `http://127.0.0.1:8765/p/compaction-1` (artifact_id: `art_ecb3d174a0170ef8b191`).\n6. **Схема состояния**: Версия схемы хранится рядом с данными для миграции. Сериализация сообщений должна сохранять идентификаторы вызовов инструментов.\n   - Источник: `http://127.0.0.1:8765/p/schema-1` (artifact_id: `art_773a3ce896bfd0027ddc`).\n7. **Бэкенды**: SQLite подходит для одного процесса (режим WAL). Для облаков — управляемая база с резервным копированием.\n   - Источник: `http://127.0.0.1:8765/p/backends-1` (artifact_id: `art_f24794db09a832942e89`).\n8. **Идемпотентность**: Ключ строят из устойчивых признаков операции (задача, документ, версия). Upsert по устойчивому идентификатору делает повторную запись безопасной.\n   - Источник: `http://127.0.0.1:8765/p/idempotency-1` (artifact_id: `art_5aba2c887a7ca3d8f878`).\n\n## Прогресс\n- **Выполнено**:\n  - Загрузка навыка `research_web`.\n  - Выполнено 10 поисковых запросов (`web_search`).\n  - Найдено **55 уникальных URL** в очереди (found_total: 55).\n  - Выполнен `select_sources`: 20 URL в статусе \"pending\", 2 пропущены (включ"
-    }
-  },
-  {
-    "id": 676,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:09+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11668,
-      "reserve": 2048,
-      "total": 13716,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.17)"
-    }
-  },
-  {
-    "id": 677,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:17+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11668,
-      "actual_input": 9462,
-      "actual_output": 1101,
-      "duration_s": 8.0,
-      "calibrated_cpt": 3.32
-    }
-  },
-  {
-    "id": 678,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:17+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12894,
-      "reserve": 2048,
-      "total": 14942,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 679,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:17+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12894,
-      "reserve": 2048,
-      "total": 14942,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.32)"
-    }
-  },
-  {
-    "id": 680,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:20+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12894,
-      "actual_input": 11218,
-      "actual_output": 278,
-      "duration_s": 2.72,
-      "calibrated_cpt": 3.369
-    }
-  },
-  {
-    "id": 681,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:20+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15123,
-      "reserve": 2048,
-      "total": 17171,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)",
-      "messages": 20
-    }
-  },
-  {
-    "id": 682,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:20+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15123,
-      "reserve": 2048,
-      "total": 17171,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)"
-    }
-  },
-  {
-    "id": 683,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:34+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15123,
-      "actual_input": 13701,
-      "actual_output": 1825,
-      "duration_s": 13.42,
-      "calibrated_cpt": 3.361
-    }
-  },
-  {
-    "id": 684,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:34+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18156,
-      "reserve": 2048,
-      "total": 20204,
+      "total": 22644,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.36)",
-      "messages": 35
+      "messages": 20
     }
   },
   {
-    "id": 685,
+    "id": 347,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:34+00:00",
+    "ts": "2026-11-22T15:49:24+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 20596,
+      "after_tokens": 12243,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 16,
+      "kept_messages": 4,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5270,
+      "cost_output": 1048,
+      "note": "",
+      "summary": "## Цель\nИсследовать подходы к хранению состояния LLM-агентов (чекпоинты, бэкенды, память, компактификация, durable execution, идемпотентность, схема, безопасность), собрать очередь из 50+ URL, прочитать 5+ страниц и подготовить обзор с подтверждениями.\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n\n## Решения и договорённости\n- Использовать навык `research_web`.\n- Выполнить 2 раунда поиска: широкий (Round 1) и уточняющий (Round 2).\n- Собирать URL в очередь с указанием причин релевантности.\n- Читать только самые релевантные страницы, соблюдая бюджет.\n- Финальный отчет должен содержать секции: approaches, limitations, comparison, unverified.\n\n## Подтверждённые факты (с источниками)\n*Примечание: Факты пока не подтверждены полными цитатами (web_fetch), только сниппеты поиска.*\n- Чекпоинт содержит значения каналов состояния, версию и список ожидающих записей узлов (URL: `http://127.0.0.1:8765/p/checkpoint-1`, snippet).\n- История чекпоинтов позволяет вернуться к прошлому шагу и запустить альтернативную ветку (URL: `http://127.0.0.1:8765/p/checkpoint-2`, snippet).\n- Записи памяти снабжают временем создания и источником для отбрасывания устаревших фактов (URL: `http://127.0.0.1:8765/p/memory-1`, snippet).\n- Память о пользователе обновляют явными операциями записи (URL: `http://127.0.0.1:8765/p/memory-2`, snippet).\n- Недетерминированные действия (вызовы LLM) выносят в activities с повторами (URL: `http://127.0.0.1:8765/p/durable-2`, snippet).\n- Summary должно сохранять цель, ограничения, решения, факты с источниками (URL: `http://127.0.0.1:8765/p/compaction-1`, snippet).\n- Секреты не должны попадать в состояние и трассы агента (URL: `http://127.0.0.1:8765/p/security-1`, snippet).\n- SQLite подходит для одного процесса и локальных экспериментов (URL: `http://127.0.0.1:8765/p/backends-1`, snippet).\n\n## Прогресс\n- Выполнено 8 поисковых запросов (Round 1).\n- Собрана очередь из 52 уникальных URL (цель 50+ достигнута).\n- Статус очереди: 52 found, 0 read.\n- Прочитано страниц: 0 (нужно 5+).\n- Собрано evidence: 0 (нужно 6+).\n- Написано разделов обзора: 0.\n\n## Открытые вопросы и следующий шаг\n- Выбрать 5-7 самых релевантных URL из очереди для полного чтения (`web_fetch`).\n- Прочитать страницы, извлечь цитаты для evidence.\n- Выполнить Round 2 поиска (уточняющие запросы, ссылки со страниц).\n- Написать разделы обзора: approaches, limitations, comparison, unverified.\n- Проверить критерии завершения: min_search_queries=3 (выполнено), min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6.\n\n## Артефакты\n- План задач: 7 шагов (Round 1 in progress, остальные todo).\n- Очередь URL: 52 элемента (ключевые: checkpoint-1..3, memory-1..3, compaction-1..3, durable-2/5/7, security-1..3, backends-1..3, schema-1..3).\n- Навык: `research_web` загружен.",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a3d39104c3b84cce",
+            "chatcmpl-tool-acc173d80553ac50"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a3d39104c3b84cce"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-acc173d80553ac50"
+        }
+      ]
+    }
+  },
+  {
+    "id": 348,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:24+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 18156,
+      "estimated_input": 12243,
       "reserve": 2048,
-      "total": 20204,
+      "total": 14291,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.36)"
     }
   },
   {
-    "id": 686,
+    "id": 349,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:37+00:00",
+    "ts": "2026-11-22T15:49:38+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18156,
-      "actual_input": 16951,
-      "actual_output": 255,
-      "duration_s": 3.35,
-      "calibrated_cpt": 3.309
+      "estimated_input": 12243,
+      "actual_input": 10709,
+      "actual_output": 2048,
+      "duration_s": 14.32,
+      "calibrated_cpt": 3.412
     }
   },
   {
-    "id": 687,
+    "id": 350,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:37+00:00",
+    "ts": "2026-11-22T15:49:38+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 18870,
+      "estimated_input": 12164,
       "reserve": 2048,
-      "total": 20918,
+      "total": 14212,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 6
+    }
+  },
+  {
+    "id": 351,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12164,
+      "reserve": 2048,
+      "total": 14212,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 352,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12164,
+      "actual_input": 10768,
+      "actual_output": 2048,
+      "duration_s": 14.74,
+      "calibrated_cpt": 3.444
+    }
+  },
+  {
+    "id": 353,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12149,
+      "reserve": 2048,
+      "total": 14197,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.44)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 354,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:49:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12149,
+      "reserve": 2048,
+      "total": 14197,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.44)"
+    }
+  },
+  {
+    "id": 355,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12149,
+      "actual_input": 10828,
+      "actual_output": 1485,
+      "duration_s": 11.24,
+      "calibrated_cpt": 3.464
+    }
+  },
+  {
+    "id": 356,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14341,
+      "reserve": 2048,
+      "total": 16389,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.46)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 357,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14341,
+      "reserve": 2048,
+      "total": 16389,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.46)"
+    }
+  },
+  {
+    "id": 358,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:06+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14341,
+      "actual_input": 14037,
+      "actual_output": 92,
+      "duration_s": 1.93,
+      "calibrated_cpt": 3.359
+    }
+  },
+  {
+    "id": 359,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15986,
+      "reserve": 2048,
+      "total": 18034,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.36)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 360,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15986,
+      "reserve": 2048,
+      "total": 18034,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.36)"
+    }
+  },
+  {
+    "id": 361,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15986,
+      "actual_input": 15324,
+      "actual_output": 92,
+      "duration_s": 1.98,
+      "calibrated_cpt": 3.282
+    }
+  },
+  {
+    "id": 362,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17561,
+      "reserve": 2048,
+      "total": 19609,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.28)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 363,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17561,
+      "reserve": 2048,
+      "total": 19609,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.28)"
+    }
+  },
+  {
+    "id": 364,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17561,
+      "actual_input": 16612,
+      "actual_output": 91,
+      "duration_s": 2.05,
+      "calibrated_cpt": 3.223
+    }
+  },
+  {
+    "id": 365,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19089,
+      "reserve": 2048,
+      "total": 21137,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.22)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 366,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:21+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19089,
+      "after_tokens": 12061,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 15,
+      "kept_messages": 4,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5659,
+      "cost_output": 1184,
+      "note": "",
+      "summary": "## Цель\nИсследовать подходы к хранению состояния LLM-агентов (чекпоинты, бэкенды, память, компактификация, durable execution, идемпотентность, схема, безопасность), собрать очередь из 50+ URL, прочитать 5+ страниц и подготовить обзор с подтверждениями.\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n\n## Решения и договорённости\n- Использовать навык `research_web`.\n- Выполнить 2 раунда поиска: широкий (Round 1) и уточняющий (Round 2).\n- Собирать URL в очередь с указанием причин релевантности.\n- Читать только самые релевантные страницы, соблюдая бюджет.\n- Финальный отчет должен содержать секции: approaches, limitations, comparison, unverified.\n\n## Подтверждённые факты (с источниками)\n*Примечание: Факты пока не подтверждены полными цитатами (web_fetch), только сниппеты поиска.*\n- Чекпоинт содержит значения каналов состояния, версию и список ожидающих записей узлов (URL: `http://127.0.0.1:8765/p/checkpoint-1`, snippet).\n- История чекпоинтов позволяет вернуться к прошлому шагу и запустить альтернативную ветку (URL: `http://127.0.0.1:8765/p/checkpoint-2`, snippet).\n- Записи памяти снабжают временем создания и источником для отбрасывания устаревших фактов (URL: `http://127.0.0.1:8765/p/memory-1`, snippet).\n- Память о пользователе обновляют явными операциями записи (URL: `http://127.0.0.1:8765/p/memory-2`, snippet).\n- Недетерминированные действия (вызовы LLM) выносят в activities с повторами (URL: `http://127.0.0.1:8765/p/durable-2`, snippet).\n- Summary должно сохранять цель, ограничения, решения, факты с источниками (URL: `http://127.0.0.1:8765/p/compaction-1`, snippet).\n- Секреты не должны попадать в состояние и трассы агента (URL: `http://127.0.0.1:8765/p/security-1`, snippet).\n- SQLite подходит для одного процесса и локальных экспериментов (URL: `http://127.0.0.1:8765/p/backends-1`, snippet).\n\n## Прогресс\n- Выполнено 10 поисковых запросов (Round 1 + уточняющие).\n- Собрана очередь из 54 уникальных URL (цель 50+ достигнута).\n- Статус очереди: 54 found, 23 pending, 8 skipped.\n- Прочитано страниц: 4 (checkpoint-1, backends-1, memory-1, compaction-1).\n- Собрано evidence: 0 (нужно 6+).\n- Написано разделов обзора: 0.\n\n## Открытые вопросы и следующий шаг\n- Прочитать ещё 1-3 страницы (например, durable-2, security-1, schema-1) для выполнения [W1].\n- Извлечь цитаты из прочитанных страниц для evidence.\n- Выполнить Round 2 поиска (уточняющие запросы, ссылки со страниц).\n- Написать разделы обзора: approaches, limitations, comparison, unverified.\n- Проверить критерии завершения: min_search_queries=3 (выполнено), min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6.\n\n## Артефакты\n- План задач: 7 шагов (Round 1 in progress, остальные todo).\n- Очередь URL: 54 элемента (ключевые: checkpoint-1..3, memory-1..3, compaction-1..3, durable-2/5/7, security-1..3, backends-1..3, schema-1..3).\n- Навык: `research_web` загружен.\n- Прочитанные страницы: checkpoint-1 (art_bbb135ac159f9cf2ce89), backends-1 (art_f24794db09a832942e89), memory-1 (art_76dd4ff85d0b44b891ef), compaction-1 (art_ecb3d174a0170ef8b191).",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-981efcdb0d5aa0f8",
+            "chatcmpl-tool-bee811f35eca0308"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-981efcdb0d5aa0f8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bee811f35eca0308"
+        }
+      ]
+    }
+  },
+  {
+    "id": 367,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12061,
+      "reserve": 2048,
+      "total": 14109,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.22)"
+    }
+  },
+  {
+    "id": 368,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12061,
+      "actual_input": 10035,
+      "actual_output": 93,
+      "duration_s": 1.35,
+      "calibrated_cpt": 3.338
+    }
+  },
+  {
+    "id": 369,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12870,
+      "reserve": 2048,
+      "total": 14918,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.34)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 370,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12870,
+      "reserve": 2048,
+      "total": 14918,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.34)"
+    }
+  },
+  {
+    "id": 371,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:24+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12870,
+      "actual_input": 11352,
+      "actual_output": 92,
+      "duration_s": 1.46,
+      "calibrated_cpt": 3.373
+    }
+  },
+  {
+    "id": 372,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:24+00:00",
+    "kind": "fetch_cache_hit",
+    "data": {
+      "url": "http://127.0.0.1:8765/p/checkpoint-1",
+      "url_key": "2363f86856c57c3a",
+      "artifact_id": "art_bbb135ac159f9cf2ce89",
+      "http_requests": 8,
+      "url_http_attempts": 1
+    }
+  },
+  {
+    "id": 373,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:24+00:00",
+    "kind": "fetch_cache_hit",
+    "data": {
+      "url": "http://127.0.0.1:8765/p/backends-1",
+      "url_key": "6fafb22fa2aa10dc",
+      "artifact_id": "art_f24794db09a832942e89",
+      "http_requests": 8,
+      "url_http_attempts": 1
+    }
+  },
+  {
+    "id": 374,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13855,
+      "reserve": 2048,
+      "total": 15903,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 375,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13855,
+      "reserve": 2048,
+      "total": 15903,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)"
+    }
+  },
+  {
+    "id": 376,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13855,
+      "actual_input": 12548,
+      "actual_output": 92,
+      "duration_s": 1.66,
+      "calibrated_cpt": 3.371
+    }
+  },
+  {
+    "id": 377,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:26+00:00",
+    "kind": "fetch_cache_hit",
+    "data": {
+      "url": "http://127.0.0.1:8765/p/memory-1",
+      "url_key": "a27a868da382a0fe",
+      "artifact_id": "art_76dd4ff85d0b44b891ef",
+      "http_requests": 8,
+      "url_http_attempts": 1
+    }
+  },
+  {
+    "id": 378,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:26+00:00",
+    "kind": "fetch_cache_hit",
+    "data": {
+      "url": "http://127.0.0.1:8765/p/compaction-1",
+      "url_key": "0877bd67afa54381",
+      "artifact_id": "art_ecb3d174a0170ef8b191",
+      "http_requests": 8,
+      "url_http_attempts": 1
+    }
+  },
+  {
+    "id": 379,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14992,
+      "reserve": 2048,
+      "total": 17040,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 380,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14992,
+      "reserve": 2048,
+      "total": 17040,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)"
+    }
+  },
+  {
+    "id": 381,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14992,
+      "actual_input": 13764,
+      "actual_output": 2048,
+      "duration_s": 15.06,
+      "calibrated_cpt": 3.35
+    }
+  },
+  {
+    "id": 382,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18391,
+      "reserve": 2048,
+      "total": 20439,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.35)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 383,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18391,
+      "reserve": 2048,
+      "total": 20439,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.35)"
+    }
+  },
+  {
+    "id": 384,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18391,
+      "actual_input": 17051,
+      "actual_output": 231,
+      "duration_s": 3.51,
+      "calibrated_cpt": 3.311
+    }
+  },
+  {
+    "id": 385,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18955,
+      "reserve": 2048,
+      "total": 21003,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.31)",
-      "messages": 38
+      "messages": 28
     }
   },
   {
-    "id": 688,
+    "id": 386,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:37+00:00",
+    "ts": "2026-11-22T15:50:55+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 18955,
+      "after_tokens": 11077,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 25,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8580,
+      "cost_output": 1415,
+      "note": "",
+      "summary": "## Цель\nИсследовать подходы к хранению состояния LLM-агентов (чекпоинты, бэкенды, память, компактификация, durable execution, идемпотентность, схема, безопасность), собрать очередь из 50+ URL, прочитать 5+ страниц и подготовить обзор с подтверждениями.\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n\n## Решения и договорённости\n- Использовать навык `research_web`.\n- Выполнить 2 раунда поиска: широкий (Round 1) и уточняющий (Round 2).\n- Собирать URL в очередь с указанием причин релевантности.\n- Читать только самые релевантные страницы, соблюдая бюджет.\n- Финальный отчет должен содержать секции: approaches, limitations, comparison, unverified.\n\n## Подтверждённые факты (с источниками)\n- Чекпоинт хранит значения каналов, версию, ожидающие узлы; `thread_id` связывает последовательность (URL: `http://127.0.0.1:8765/p/checkpoint-1`, ev_29043dc075f7).\n- Полная история чекпоинтов быстро увеличивает объём базы (URL: `http://127.0.0.1:8765/p/checkpoint-1`, ev_60820d54ea9c).\n- SQLite для одного процесса; PostgreSQL для нескольких; сетевое хранилище добавляет задержку (URL: `http://127.0.0.1:8765/p/backends-1`, ev_9583bea2990c, ev_a8a6b26297ee).\n- Память хранят как документы с пространствами имён; векторный поиск не гарантирует точности (URL: `http://127.0.0.1:8765/p/memory-1`, ev_165272c6c868).\n- Summary сохраняет цель, ограничения, решения, факты; сжимают только завершённые фрагменты (URL: `http://127.0.0.1:8765/p/compaction-1`, ev_9745d44c3bb6).\n- Рекурсивная суммаризация без ограничений может зациклиться (URL: `http://127.0.0.1:8765/p/compaction-1`, ev_e37467548bca).\n- Durable execution: недетерминированные действия в activities; не делает внешние эффекты идемпотентными (URL: `http://127.0.0.1:8765/p/durable-2`, ev_bd24faf743bb).\n- Идемпотентность: ключ из устойчивых признаков; реестр операций; чекпоинт не знает о побочных эффектах (URL: `http://127.0.0.1:8765/p/idempotency-3`, ev_2d2cc1118721, ev_660ff884fbf8).\n- Схема: версия рядом с данными; несовместимые изменения ломают старые чекпоинты (URL: `http://127.0.0.1:8765/p/schema-1`, ev_8916e7591ba3).\n- Безопасность: секреты хранят отдельно; шифрование не защищает от утечки через логи (URL: `http://127.0.0.1:8765/p/security-1`, art_0aea0a4dc9a8cd78c04f).\n\n## Прогресс\n- Выполнено 10 поисковых запросов.\n- Собрана очередь из 54 уникальных URL.\n- Прочитано страниц: 8 (checkpoint-1, backends-1, memory-1, compaction-1, durable-2, security-1, schema-1, idempotency-3).\n- Собрано evidence: 11 (нужно 6+).\n- Написано разделов обзора: 0.\n\n## Открытые вопросы и следующий шаг\n- Написать разделы обзора: approaches, limitations, comparison, unverified.\n- Проверить критерии завершения: min_search_queries=3 (выполнено), min_web_pages_read=5 (выполнено), min_web_sources_cited=4 (выполнено), min_evidence=6 (выполнено).\n- Убедиться, что обзор не длиннее 900 слов.\n\n## Артефакты\n- План задач: 7 шагов.\n- Очередь URL: 54 элемента.\n- Навык: `research_web` загружен.\n- Прочитанные страницы: checkpoint-1 (art_bbb135ac159f9cf2ce89), backends-1 (art_f24794db09a832942e89), memory-1 (art_76dd4ff85d0b44b891ef), compaction-1 (art_ecb3d174a0170ef8b191), durable-2 (art_49777c7f11ede5cb40f1), security-1 (art_0aea0a4dc9a8cd78c04f), schema-1 (art_773a3ce896bfd0027ddc), idempotency-3 (art_bae9e7494794a8270436).",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8d27a76421ff5891"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8d27a76421ff5891"
+        }
+      ]
+    }
+  },
+  {
+    "id": 387,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:50:55+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 18870,
+      "estimated_input": 11077,
       "reserve": 2048,
-      "total": 20918,
+      "total": 13125,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.31)"
     }
   },
   {
-    "id": 689,
+    "id": 388,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:50+00:00",
+    "ts": "2026-11-22T15:51:00+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18870,
-      "actual_input": 17435,
-      "actual_output": 1442,
-      "duration_s": 12.52,
-      "calibrated_cpt": 3.27
+      "estimated_input": 11077,
+      "actual_input": 9536,
+      "actual_output": 547,
+      "duration_s": 4.75,
+      "calibrated_cpt": 3.382
     }
   },
   {
-    "id": 690,
+    "id": 389,
     "task_id": "C1",
-    "ts": "2026-11-15T22:29:50+00:00",
+    "ts": "2026-11-22T15:51:00+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 21173,
+      "estimated_input": 11469,
       "reserve": 2048,
-      "total": 23221,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.27)",
-      "messages": 43
-    }
-  },
-  {
-    "id": 691,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:58+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 3,
-      "before_tokens": 21173,
-      "after_tokens": 12366,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 37,
-      "kept_messages": 6,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 9633,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПровести автономное веб-исследование (research_web) по теме управления состоянием LLM-агентов. Ключевые аспекты: чекпоинты, бэкенды хранения, долговременная память, компактификация контекста, durable execution, идемпотентность, схема состояния и безопасность.\n\n## Ограничения пользователя\n- Собрать очередь из **>=50 URL** (статус: выполнено, найдено 55).\n- Прочитать **>=5** самых релевантных страниц (web_fetch) (статус: выполнено, прочитано 10).\n- Сохранить **>=6** evidence с точными цитатами (статус: выполнено, сохранено 16).\n- Написать разделы обзора: approaches, limitations, comparison, unverified (объем **<=900 слов**).\n- Завершить задачу через `complete_task`.\n\n## Решения и договорённости\n- Использовать навык `research_web` для автономного поиска без заранее заданного списка URL.\n- Разбить тему на 3-6 аспектов и сформулировать специфические запросы (RU/EN).\n- Отслеживать дубликаты и отклонять нерелевантные источники через `select_sources`.\n- Останавливаться при выполнении критериев TASK CONTRACT или исчерпании полезных источников.\n- При ошибке `quote_not_found` использовать `read_artifact` для получения точного текста страницы перед повторным сохранением evidence.\n\n## Подтверждённые факты (с источниками)\n*Факты подтверждены полным текстом страниц (web_fetch) и сохранены как evidence.*\n\n1. **Чекпоинты**: Содержат значения каналов состояния, версию и список ожидающих записей узлов. `thread_id` связывает последовательность чекпоинтов.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-1` (artifact_id: `art_bbb135ac159f9cf2ce89`, evidence_id: `ev_7e96e3ca434c`).\n2. **Восстановление**: История чекпоинтов позволяет вернуться к прошлому шагу и запустить альтернативную ветку. Checkpointer сохраняет состояние после каждого super-step.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-2` (artifact_id: `art_44bde56f35d768794f36`, evidence_id: `ev_37e92a24d6b6`).\n3. **Ограничение чекпоинтов**: Чекпоинт фиксирует состояние графа, но не откатывает внешние эффекты инструментов.\n   - Источник: `http://127.0.0.1:8765/p/checkpoint-2` (artifact_id: `art_44bde56f35d768794f36`, evidence_id: `ev_b54a0e9bc568`).\n4. **Durable Execution**: Недетерминированные действия (включая вызовы LLM) выносят в activities с повторами. Таймауты разделяют на ожидание запуска и выполнение.\n   - Источник: `http://127.0.0.1:8765/p/durable-2` (artifact_id: `art_49777c7f11ede5cb40f1`, evidence_id: `ev_573794d5d200`).\n5. **Память**: Долговременную память хранят как документы с пространствами имён, например по пользователю. Записи снабжают временем создания и источником.\n   - Источник: `http://127.0.0.1:8765/p/memory-1` (artifact_id: `art_76dd4ff85d0b44b891ef`, evidence_id: `ev_bbf936377296`).\n6. **Ограничение памяти**: Векторная память не гарантирует точного совпадения фактов.\n   - Источник: `http://127.0.0.1:8765/p/memory-1` (artifact_id: `art_76dd4ff85d0b44b891ef`, evidence_id: `ev_e7b2c7ae4518`).\n7. **Компактификация**: Summary должно сохранять цель, ограничения, решения, подтверждённые факты с источниками и открытые вопросы. Сжимать можно только завершённые фрагменты.\n   - Источник: `http://127.0.0.1:8765/p/compaction-1` (artifact_id: `art_ecb3d174a0170ef8b191`, evidence_id: `ev_44f35c1ef3f3`).\n8. **Ограничение компактификации**: Рекурсивная суммаризация без ограничений может зациклиться.\n   - Источник: `http://127.0.0.1:8765/p/compaction-1` ("
-    }
-  },
-  {
-    "id": 692,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:29:59+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12366,
-      "reserve": 2048,
-      "total": 14414,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.27)"
-    }
-  },
-  {
-    "id": 693,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:30:01+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12366,
-      "actual_input": 10350,
-      "actual_output": 302,
-      "duration_s": 2.82,
-      "calibrated_cpt": 3.377
-    }
-  },
-  {
-    "id": 694,
-    "task_id": "C1",
-    "ts": "2026-11-15T22:30:01+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12340,
-      "reserve": 2048,
-      "total": 14388,
+      "total": 13517,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.38)",
-      "messages": 8
+      "messages": 5
     }
   },
   {
-    "id": 695,
+    "id": 390,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:01+00:00",
+    "ts": "2026-11-22T15:51:00+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12340,
+      "estimated_input": 11469,
       "reserve": 2048,
-      "total": 14388,
+      "total": 13517,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.38)"
     }
   },
   {
-    "id": 696,
+    "id": 391,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:05+00:00",
+    "ts": "2026-11-22T15:51:03+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12340,
-      "actual_input": 10728,
-      "actual_output": 363,
-      "duration_s": 3.2,
-      "calibrated_cpt": 3.432
+      "estimated_input": 11469,
+      "actual_input": 10160,
+      "actual_output": 323,
+      "duration_s": 2.87,
+      "calibrated_cpt": 3.412
     }
   },
   {
-    "id": 697,
+    "id": 392,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:05+00:00",
+    "ts": "2026-11-22T15:51:03+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12565,
+      "estimated_input": 11731,
       "reserve": 2048,
-      "total": 14613,
+      "total": 13779,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.43)",
-      "messages": 10
+      "method": "heuristic(cpt=3.41)",
+      "messages": 7
     }
   },
   {
-    "id": 698,
+    "id": 393,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:05+00:00",
+    "ts": "2026-11-22T15:51:03+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12565,
+      "estimated_input": 11731,
       "reserve": 2048,
-      "total": 14613,
+      "total": 13779,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.43)"
+      "method": "heuristic(cpt=3.41)"
     }
   },
   {
-    "id": 699,
+    "id": 394,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:07+00:00",
+    "ts": "2026-11-22T15:51:06+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12565,
-      "actual_input": 11167,
-      "actual_output": 226,
-      "duration_s": 2.33,
-      "calibrated_cpt": 3.455
+      "estimated_input": 11731,
+      "actual_input": 10560,
+      "actual_output": 309,
+      "duration_s": 2.9,
+      "calibrated_cpt": 3.42
     }
   },
   {
-    "id": 700,
+    "id": 395,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:07+00:00",
+    "ts": "2026-11-22T15:51:06+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12790,
+      "estimated_input": 12048,
       "reserve": 2048,
-      "total": 14838,
+      "total": 14096,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.46)",
-      "messages": 12
+      "method": "heuristic(cpt=3.42)",
+      "messages": 9
     }
   },
   {
-    "id": 701,
+    "id": 396,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:07+00:00",
+    "ts": "2026-11-22T15:51:06+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12790,
+      "estimated_input": 12048,
       "reserve": 2048,
-      "total": 14838,
+      "total": 14096,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.46)"
+      "method": "heuristic(cpt=3.42)"
     }
   },
   {
-    "id": 702,
+    "id": 397,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:09+00:00",
+    "ts": "2026-11-22T15:51:08+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12790,
-      "actual_input": 11470,
-      "actual_output": 123,
-      "duration_s": 1.89,
-      "calibrated_cpt": 3.465
+      "estimated_input": 12048,
+      "actual_input": 10946,
+      "actual_output": 175,
+      "duration_s": 2.37,
+      "calibrated_cpt": 3.413
     }
   },
   {
-    "id": 703,
+    "id": 398,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:09+00:00",
+    "ts": "2026-11-22T15:51:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12362,
+      "reserve": 2048,
+      "total": 14410,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 399,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12362,
+      "reserve": 2048,
+      "total": 14410,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 400,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12362,
+      "actual_input": 11200,
+      "actual_output": 77,
+      "duration_s": 1.41,
+      "calibrated_cpt": 3.409
+    }
+  },
+  {
+    "id": 401,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12645,
+      "reserve": 2048,
+      "total": 14693,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 402,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12645,
+      "reserve": 2048,
+      "total": 14693,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 403,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12645,
+      "actual_input": 11434,
+      "actual_output": 185,
+      "duration_s": 2.14,
+      "calibrated_cpt": 3.406
+    }
+  },
+  {
+    "id": 404,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13057,
+      "reserve": 2048,
+      "total": 15105,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 405,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13057,
+      "reserve": 2048,
+      "total": 15105,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 406,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13057,
+      "actual_input": 11811,
+      "actual_output": 77,
+      "duration_s": 1.41,
+      "calibrated_cpt": 3.402
+    }
+  },
+  {
+    "id": 407,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13250,
+      "reserve": 2048,
+      "total": 15298,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 408,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13250,
+      "reserve": 2048,
+      "total": 15298,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)"
+    }
+  },
+  {
+    "id": 409,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13250,
+      "actual_input": 11957,
+      "actual_output": 185,
+      "duration_s": 2.14,
+      "calibrated_cpt": 3.399
+    }
+  },
+  {
+    "id": 410,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13661,
+      "reserve": 2048,
+      "total": 15709,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 411,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:16+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13661,
+      "reserve": 2048,
+      "total": 15709,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.40)"
+    }
+  },
+  {
+    "id": 412,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:17+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13661,
+      "actual_input": 12334,
+      "actual_output": 77,
+      "duration_s": 1.49,
+      "calibrated_cpt": 3.395
+    }
+  },
+  {
+    "id": 413,
+    "task_id": "C1",
+    "ts": "2026-11-22T15:51:17+00:00",
     "kind": "status",
     "data": {
       "status": "completed",
-      "reason": "Обзор готов: 4 раздела (approaches, limitations, comparison, unverified), 16 подтверждённых evidence с точными цитатами с 10 прочитанных страниц, очередь 56 URL (>=50), охвачены все 8 подтем. Ограничения подходов сопоставлены в разделе comparison. Непроверенное явно выделено."
+      "reason": "Обзор готов: 4 раздела (approaches, limitations, comparison, unverified), 12 evidence, 8 страниц прочитано, 10 поисковых запросов, 54 URL в очереди. Все критерии выполнены."
     }
   },
   {
-    "id": 704,
+    "id": 414,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:09+00:00",
+    "ts": "2026-11-22T15:51:17+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13042,
+      "estimated_input": 13920,
       "reserve": 2048,
-      "total": 15090,
+      "total": 15968,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.46)",
-      "messages": 14
+      "method": "heuristic(cpt=3.40)",
+      "messages": 21
     }
   },
   {
-    "id": 705,
+    "id": 415,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:09+00:00",
+    "ts": "2026-11-22T15:51:17+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13042,
+      "estimated_input": 13920,
       "reserve": 2048,
-      "total": 15090,
+      "total": 15968,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.46)"
+      "method": "heuristic(cpt=3.40)"
     }
   },
   {
-    "id": 706,
+    "id": 416,
     "task_id": "C1",
-    "ts": "2026-11-15T22:30:13+00:00",
+    "ts": "2026-11-22T15:51:20+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 13042,
-      "actual_input": 11741,
-      "actual_output": 413,
-      "duration_s": 4.29,
-      "calibrated_cpt": 3.468
+      "estimated_input": 13920,
+      "actual_input": 12558,
+      "actual_output": 281,
+      "duration_s": 3.1,
+      "calibrated_cpt": 3.392
     }
   }
 ]

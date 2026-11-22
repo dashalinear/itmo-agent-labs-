@@ -26,7 +26,7 @@
       "compaction_trigger": 0.75,
       "compaction_target": 0.45,
       "compaction_min_gain": 0.05,
-      "summary_max_tokens": 1200,
+      "summary_max_tokens": 1600,
       "summary_tool_clip_chars": 1200,
       "max_compaction_chunks": 4,
       "max_tool_result_chars": 6000,
@@ -36,6 +36,13 @@
       "max_lines_per_read": 300,
       "llm_timeout_s": 1,
       "llm_retries": 2,
+      "llm_unreachable_wait_s": 300.0,
+      "max_model_calls_per_run": 0,
+      "repeat_call_warn": 3,
+      "repeat_call_stop": 6,
+      "reads_without_evidence_hint": 0,
+      "max_step_seconds": 0.0,
+      "budget_hint_calls": 0,
       "tool_timeout_s": 60.0
     }
   },
@@ -59,15 +66,15 @@
   },
   "budget": {
     "tokens": {
-      "spent": 40006,
+      "spent": 53317,
       "reserved": 0,
       "limit": 1500000,
       "of_which": {
-        "input_tokens": 7105,
+        "input_tokens": 7298,
         "output_tokens": 54,
         "compaction_input_tokens": 0,
         "compaction_output_tokens": 0,
-        "failed_call_tokens": 32847,
+        "failed_call_tokens": 45965,
         "interrupted_call_tokens": 0
       }
     },
@@ -76,7 +83,7 @@
       "limit": 90
     },
     "compaction_calls": 0,
-    "failed_calls": 3,
+    "failed_calls": 4,
     "tool_calls": {
       "used": 2,
       "limit": 300
@@ -92,10 +99,10 @@
     "cache_hits": 0,
     "bytes_downloaded": 0,
     "active_seconds": {
-      "used": 9.9,
+      "used": 12.9,
       "limit": 5400
     },
-    "peak_input_tokens": 7105
+    "peak_input_tokens": 7298
   },
   "queue": {
     "found": 0,
@@ -112,65 +119,68 @@
     {
       "task_id": "T1",
       "path": "data/search/ir_course_lectures.md",
-      "document_id": "8d702971-b28d-4c49-a448-c32afce650c2",
+      "document_id": "69598fd7-d3cd-4b30-9227-6c709aa46ffe",
       "content_hash": "sha256:841dee300cdbb99f501fa7bdd830e6cf8f1ff8ab0e53da307db3617f2c8be346",
       "pages": 90,
       "lines": 1289,
       "chars": 92443,
       "searched": 0,
       "status": "pending",
-      "updated_at": "2026-11-15T22:21:28+00:00"
+      "updated_at": "2026-11-22T15:48:39+00:00",
+      "pages_read": 0
     },
     {
       "task_id": "T1",
       "path": "data/search/search_engineering_handbook.md",
-      "document_id": "61dd80ad-bb83-4e45-9e6c-a8dce2f29ef6",
+      "document_id": "4a97e240-176e-4fbc-964f-5f20662a4a8d",
       "content_hash": "sha256:7fa2082bb3ac0c85c84bf3f7fd3e41e38ed9eec15ee61c8d6d33d1d196800b4c",
       "pages": 520,
       "lines": 8611,
       "chars": 685785,
       "searched": 0,
       "status": "pending",
-      "updated_at": "2026-11-15T22:21:28+00:00"
+      "updated_at": "2026-11-22T15:48:39+00:00",
+      "pages_read": 0
     },
     {
       "task_id": "T1",
       "path": "data/search/search_incident_reports.md",
-      "document_id": "ff000dc4-d816-4603-bbb5-52c40e9f73c1",
+      "document_id": "855cee44-1d2b-41a6-bae8-d64140b33e9c",
       "content_hash": "sha256:519137486bb60131646bf252fa5c9f379aa7354eab3310119782c934c50b1531",
       "pages": 45,
       "lines": 627,
       "chars": 24980,
       "searched": 0,
       "status": "pending",
-      "updated_at": "2026-11-15T22:21:28+00:00"
+      "updated_at": "2026-11-22T15:48:39+00:00",
+      "pages_read": 0
     }
   ],
   "summary_version": 0,
   "compactions": [],
   "model_calls": [
     {
-      "id": 120,
+      "id": 106,
       "task_id": "T1",
-      "ts": "2026-11-15T22:21:28+00:00",
+      "ts": "2026-11-22T15:48:39+00:00",
       "kind": "agent",
-      "estimated_input": 11341,
+      "estimated_input": 11705,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,
       "method": "heuristic(cpt=2.60)",
-      "actual_input": 7105,
+      "actual_input": 7298,
       "actual_output": 54,
-      "duration_s": 0.85,
+      "duration_s": 0.74,
       "status": "ok",
       "note": null
     },
     {
-      "id": 121,
+      "id": 107,
       "task_id": "T1",
-      "ts": "2026-11-15T22:21:29+00:00",
+      "ts": "2026-11-22T15:48:43+00:00",
       "kind": "agent",
-      "estimated_input": 10949,
+      "estimated_input": 11420,
       "reserve": 2048,
       "working_limit": 28000,
       "window_tokens": 262144,

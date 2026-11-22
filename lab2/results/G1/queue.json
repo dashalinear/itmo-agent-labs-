@@ -9,17 +9,17 @@
       "final_url": null,
       "title": "",
       "snippet": "",
-      "status": "pending",
+      "status": "error",
       "discovered_by": "agent",
       "reason": "fetched directly",
       "attempts": 0,
       "http_status": null,
       "artifact_id": null,
       "content_hash": null,
-      "error": "interrupted while running; re-queued",
+      "error": "interrupted: tool timeout or cancel",
       "duplicate_of": null,
       "rank": null,
-      "updated_at": "2026-11-15T22:31:20+00:00"
+      "updated_at": "2026-11-22T15:52:20+00:00"
     },
     {
       "task_id": "G1",
@@ -39,7 +39,7 @@
       "error": "http_error_retries_exhausted: HTTP 503 after 3 attempts",
       "duplicate_of": null,
       "rank": null,
-      "updated_at": "2026-11-15T22:31:24+00:00"
+      "updated_at": "2026-11-22T15:52:27+00:00"
     },
     {
       "task_id": "G1",
@@ -59,7 +59,7 @@
       "error": null,
       "duplicate_of": null,
       "rank": null,
-      "updated_at": "2026-11-15T22:31:28+00:00"
+      "updated_at": "2026-11-22T15:52:32+00:00"
     }
   ]
 }

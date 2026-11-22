@@ -1,17 +1,17 @@
 [
   {
-    "id": 352,
+    "id": 300,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:24+00:00",
+    "ts": "2026-11-22T15:48:33+00:00",
     "kind": "status",
     "data": {
       "status": "queued"
     }
   },
   {
-    "id": 353,
+    "id": 301,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:28+00:00",
+    "ts": "2026-11-22T15:48:39+00:00",
     "kind": "status",
     "data": {
       "status": "running",
@@ -19,14 +19,14 @@
     }
   },
   {
-    "id": 354,
+    "id": 302,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:28+00:00",
+    "ts": "2026-11-22T15:48:39+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11341,
+      "estimated_input": 11705,
       "reserve": 2048,
-      "total": 13389,
+      "total": 13753,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -35,66 +35,23 @@
     }
   },
   {
-    "id": 355,
+    "id": 303,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:28+00:00",
+    "ts": "2026-11-22T15:48:39+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11341,
+      "estimated_input": 11705,
       "reserve": 2048,
-      "total": 13389,
+      "total": 13753,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=2.60)"
     }
   },
   {
-    "id": 356,
+    "id": 304,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:29+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11341,
-      "actual_input": 7105,
-      "actual_output": 54,
-      "duration_s": 0.85,
-      "calibrated_cpt": 3.067
-    }
-  },
-  {
-    "id": 357,
-    "task_id": "T1",
-    "ts": "2026-11-15T22:21:29+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 10949,
-      "reserve": 2048,
-      "total": 12997,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.07)",
-      "messages": 4
-    }
-  },
-  {
-    "id": 358,
-    "task_id": "T1",
-    "ts": "2026-11-15T22:21:29+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 10949,
-      "reserve": 2048,
-      "total": 12997,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.07)"
-    }
-  },
-  {
-    "id": 359,
-    "task_id": "T1",
-    "ts": "2026-11-15T22:21:30+00:00",
+    "ts": "2026-11-22T15:48:40+00:00",
     "kind": "model_call_error",
     "data": {
       "attempt": 1,
@@ -103,9 +60,63 @@
     }
   },
   {
-    "id": 360,
+    "id": 305,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:33+00:00",
+    "ts": "2026-11-22T15:48:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11705,
+      "actual_input": 7298,
+      "actual_output": 54,
+      "duration_s": 0.74,
+      "calibrated_cpt": 3.075
+    }
+  },
+  {
+    "id": 306,
+    "task_id": "T1",
+    "ts": "2026-11-22T15:48:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11420,
+      "reserve": 2048,
+      "total": 13468,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 307,
+    "task_id": "T1",
+    "ts": "2026-11-22T15:48:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11420,
+      "reserve": 2048,
+      "total": 13468,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.07)"
+    }
+  },
+  {
+    "id": 308,
+    "task_id": "T1",
+    "ts": "2026-11-22T15:48:44+00:00",
+    "kind": "model_call_error",
+    "data": {
+      "attempt": 1,
+      "error": "TimeoutError: ",
+      "retry": true
+    }
+  },
+  {
+    "id": 309,
+    "task_id": "T1",
+    "ts": "2026-11-22T15:48:47+00:00",
     "kind": "model_call_error",
     "data": {
       "attempt": 2,
@@ -114,9 +125,9 @@
     }
   },
   {
-    "id": 361,
+    "id": 310,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:38+00:00",
+    "ts": "2026-11-22T15:48:52+00:00",
     "kind": "model_call_error",
     "data": {
       "attempt": 3,
@@ -125,9 +136,9 @@
     }
   },
   {
-    "id": 362,
+    "id": 311,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:38+00:00",
+    "ts": "2026-11-22T15:48:52+00:00",
     "kind": "status",
     "data": {
       "status": "paused",
@@ -135,9 +146,9 @@
     }
   },
   {
-    "id": 363,
+    "id": 312,
     "task_id": "T1",
-    "ts": "2026-11-15T22:21:38+00:00",
+    "ts": "2026-11-22T15:48:52+00:00",
     "kind": "task_stopped",
     "data": {
       "status": "paused",

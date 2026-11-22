@@ -1,17 +1,17 @@
 [
   {
-    "id": 1,
+    "id": 524,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:35+00:00",
+    "ts": "2026-11-22T15:52:42+00:00",
     "kind": "status",
     "data": {
       "status": "queued"
     }
   },
   {
-    "id": 2,
+    "id": 525,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:42+00:00",
+    "ts": "2026-11-22T15:52:48+00:00",
     "kind": "status",
     "data": {
       "status": "running",
@@ -19,9 +19,9 @@
     }
   },
   {
-    "id": 3,
+    "id": 526,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:42+00:00",
+    "ts": "2026-11-22T15:52:48+00:00",
     "kind": "context_check",
     "data": {
       "estimated_input": 11625,
@@ -35,9 +35,9 @@
     }
   },
   {
-    "id": 4,
+    "id": 527,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:42+00:00",
+    "ts": "2026-11-22T15:52:48+00:00",
     "kind": "model_call_plan",
     "data": {
       "estimated_input": 11625,
@@ -49,22 +49,22 @@
     }
   },
   {
-    "id": 5,
+    "id": 528,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:43+00:00",
+    "ts": "2026-11-22T15:52:49+00:00",
     "kind": "model_call_done",
     "data": {
       "estimated_input": 11625,
       "actual_input": 7252,
       "actual_output": 27,
-      "duration_s": 1.0,
+      "duration_s": 0.78,
       "calibrated_cpt": 3.074
     }
   },
   {
-    "id": 6,
+    "id": 529,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:43+00:00",
+    "ts": "2026-11-22T15:52:49+00:00",
     "kind": "context_check",
     "data": {
       "estimated_input": 11039,
@@ -78,9 +78,9 @@
     }
   },
   {
-    "id": 7,
+    "id": 530,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:43+00:00",
+    "ts": "2026-11-22T15:52:49+00:00",
     "kind": "model_call_plan",
     "data": {
       "estimated_input": 11039,
@@ -92,31 +92,30 @@
     }
   },
   {
-    "id": 8,
+    "id": 531,
     "task_id": "B4",
-    "ts": "2026-11-20T21:03:45+00:00",
+    "ts": "2026-11-22T15:52:51+00:00",
     "kind": "model_call_done",
     "data": {
       "estimated_input": 11039,
       "actual_input": 8058,
       "actual_output": 236,
-      "duration_s": 2.43,
+      "duration_s": 2.15,
       "calibrated_cpt": 3.372
     }
   },
   {
-    "id": 9,
+    "id": 532,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:16+00:00",
+    "ts": "2026-11-22T15:53:10+00:00",
     "kind": "search_engines",
     "data": {
       "query": "LLM agent state management memory persistence approaches",
       "ok": {
-        "wikipedia": 5,
-        "arxiv": 3
+        "ddgs:bing": 4,
+        "wikipedia": 4
       },
       "failed": {
-        "ddgs:bing": "TimeoutError: ",
         "ddgs:duckduckgo": "DDGSException: No results found.",
         "ddgs:yandex": "TimeoutError: "
       },
@@ -124,9 +123,9 @@
     }
   },
   {
-    "id": 10,
+    "id": 533,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:16+00:00",
+    "ts": "2026-11-22T15:53:10+00:00",
     "kind": "search_round",
     "data": {
       "query": "LLM agent state management memory persistence approaches",
@@ -136,18 +135,1069 @@
     }
   },
   {
-    "id": 11,
+    "id": 534,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:18+00:00",
+    "ts": "2026-11-22T15:53:11+00:00",
     "kind": "search_engines",
     "data": {
-      "query": "LangGraph checkpointer state persistence agent",
+      "query": "LangGraph checkpointing state persistence agents",
       "ok": {
-        "ddgs:yandex": 5,
+        "ddgs:bing": 5,
         "wikipedia": 0,
         "arxiv": 2,
-        "hn_algolia": 0,
-        "stackoverflow": 1
+        "hn_algolia": 1
+      },
+      "failed": {
+        "ddgs:duckduckgo": "DDGSException: No results found.",
+        "ddgs:yandex": "TimeoutException: error sending request for url (https://www.startpage.com/sp/search) > operation timed out"
+      },
+      "skipped": []
+    }
+  },
+  {
+    "id": 535,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:11+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "LangGraph checkpointing state persistence agents",
+      "pages_read_before": 0,
+      "new_urls": 8,
+      "round": 1
+    }
+  },
+  {
+    "id": 536,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13257,
+      "reserve": 2048,
+      "total": 15305,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 537,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13257,
+      "reserve": 2048,
+      "total": 15305,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)"
+    }
+  },
+  {
+    "id": 538,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13257,
+      "actual_input": 10809,
+      "actual_output": 566,
+      "duration_s": 5.11,
+      "calibrated_cpt": 3.521
+    }
+  },
+  {
+    "id": 539,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:33+00:00",
+    "kind": "search_engines",
+    "data": {
+      "query": "vector database long-term memory LLM agents MemGPT Mem0 limitations",
+      "ok": {
+        "wikipedia": 0,
+        "arxiv": 5,
+        "stackoverflow": 0,
+        "github": 0
+      },
+      "failed": {
+        "ddgs:bing": "TimeoutError: ",
+        "hn_algolia": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain ("
+      },
+      "skipped": [
+        "ddgs:duckduckgo",
+        "ddgs:yandex"
+      ]
+    }
+  },
+  {
+    "id": 540,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:33+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "vector database long-term memory LLM agents MemGPT Mem0 limitations",
+      "pages_read_before": 0,
+      "new_urls": 5,
+      "round": 1
+    }
+  },
+  {
+    "id": 541,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14900,
+      "reserve": 2048,
+      "total": 16948,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 542,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14900,
+      "reserve": 2048,
+      "total": 16948,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)"
+    }
+  },
+  {
+    "id": 543,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14900,
+      "actual_input": 12958,
+      "actual_output": 79,
+      "duration_s": 1.69,
+      "calibrated_cpt": 3.577
+    }
+  },
+  {
+    "id": 544,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17785,
+      "reserve": 2048,
+      "total": 19833,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 545,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17785,
+      "reserve": 2048,
+      "total": 19833,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 546,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17785,
+      "actual_input": 15546,
+      "actual_output": 140,
+      "duration_s": 2.28,
+      "calibrated_cpt": 3.627
+    }
+  },
+  {
+    "id": 547,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18268,
+      "reserve": 2048,
+      "total": 20316,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 548,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:39+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18268,
+      "reserve": 2048,
+      "total": 20316,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 549,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18268,
+      "actual_input": 16230,
+      "actual_output": 73,
+      "duration_s": 1.87,
+      "calibrated_cpt": 3.652
+    }
+  },
+  {
+    "id": 550,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19828,
+      "reserve": 2048,
+      "total": 21876,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 551,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:48+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19828,
+      "after_tokens": 11674,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 6,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3937,
+      "cost_output": 880,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Страница Arize AI прочитана (20504 chars), artifact_id: `art_f5de14155dde518b8b8e`. URL: https://arize.com/blog/memory-and-state-in-llm-applications/\n- Страница LangGraph Persistence прочитана (5587 chars), artifact_id: `art_d386c05025cc3edfd176`. URL: https://docs.langchain.com/oss/python/langgraph/persistence\n- В LangGraph persistence: \"Persistence lets LangGraph applications keep useful information beyond a single graph run.\" (источник: docs.langchain.com)\n- В LangGraph: \"Use them for long-term, cross-thread memory, including user preferences, facts, and shared knowledge.\" (источник: docs.langchain.com)\n- В Arize: \"The term 'memory' is often used in discussions about LLM applications, bu...\" (источник: arize.com)\n\n## Прогресс\n- Выполнено 3 поисковых запроса (Round 1): \"LLM agent state management...\", \"LangGraph checkpointing...\", \"vector database long-term memory...\".\n- Найдено 21 URL, выбрано 7 в очередь (pending).\n- Прочитано 2 страницы из 5 необходимых.\n- Осталось: прочитать ещё 3+ страницы, выполнить Round 2 (уточнённые запросы), собрать 6+ evidence, написать отчёт.\n\n## Открытые вопросы и следующий шаг\n- Прочитать оставшиеся страницы из очереди (arxiv.org, agentmemo.ai и др.).\n- Выполнить Round 2: уточнить запросы на основе прочитанного (min_queries_after_reading=1).\n- Собрать минимум 6 evidence с цитатами.\n- Написать разделы: approaches, limitations, comparison, unverified.\n\n## Артефакты\n- `art_f5de14155dde518b8b8e` — Arize AI blog (20504 chars)\n- `art_d386c05025cc3edfd176` — LangGraph Persistence docs (5587 chars)\n- Очередь: 7 pending, 5 skipped, 0 done",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a3bfb7ccfee913be",
+            "chatcmpl-tool-80a6dfa3a58a642a"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a3bfb7ccfee913be"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-80a6dfa3a58a642a"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9ce030bf4639a01d"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9ce030bf4639a01d"
+        }
+      ]
+    }
+  },
+  {
+    "id": 552,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11674,
+      "reserve": 2048,
+      "total": 13722,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)"
+    }
+  },
+  {
+    "id": 553,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11674,
+      "actual_input": 10438,
+      "actual_output": 73,
+      "duration_s": 1.27,
+      "calibrated_cpt": 3.67
+    }
+  },
+  {
+    "id": 554,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13298,
+      "reserve": 2048,
+      "total": 15346,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 555,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13298,
+      "reserve": 2048,
+      "total": 15346,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.67)"
+    }
+  },
+  {
+    "id": 556,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13298,
+      "actual_input": 11831,
+      "actual_output": 73,
+      "duration_s": 1.33,
+      "calibrated_cpt": 3.695
+    }
+  },
+  {
+    "id": 557,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14914,
+      "reserve": 2048,
+      "total": 16962,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 558,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14914,
+      "reserve": 2048,
+      "total": 16962,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.70)"
+    }
+  },
+  {
+    "id": 559,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14914,
+      "actual_input": 13284,
+      "actual_output": 73,
+      "duration_s": 1.48,
+      "calibrated_cpt": 3.718
+    }
+  },
+  {
+    "id": 560,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16088,
+      "reserve": 2048,
+      "total": 18136,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.72)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 561,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16088,
+      "reserve": 2048,
+      "total": 18136,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.72)"
+    }
+  },
+  {
+    "id": 562,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16088,
+      "actual_input": 14626,
+      "actual_output": 73,
+      "duration_s": 1.87,
+      "calibrated_cpt": 3.71
+    }
+  },
+  {
+    "id": 563,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17759,
+      "reserve": 2048,
+      "total": 19807,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.71)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 564,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:53:54+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17759,
+      "reserve": 2048,
+      "total": 19807,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.71)"
+    }
+  },
+  {
+    "id": 565,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17759,
+      "actual_input": 16306,
+      "actual_output": 2048,
+      "duration_s": 15.2,
+      "calibrated_cpt": 3.688
+    }
+  },
+  {
+    "id": 566,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:10+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "agent ended the turn without complete_task"
+    }
+  },
+  {
+    "id": 567,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:20+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "resume"
+    }
+  },
+  {
+    "id": 568,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18565,
+      "reserve": 2048,
+      "total": 20613,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.69)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 569,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18565,
+      "reserve": 2048,
+      "total": 20613,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.69)"
+    }
+  },
+  {
+    "id": 570,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18565,
+      "actual_input": 18420,
+      "actual_output": 28,
+      "duration_s": 2.01,
+      "calibrated_cpt": 3.556
+    }
+  },
+  {
+    "id": 571,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:22+00:00",
+    "kind": "tool_output_offloaded",
+    "data": {
+      "tool": "queue_status",
+      "artifact_id": "art_412ae5f9375347f369b0",
+      "total_chars": 6265,
+      "passed_chars": 1883,
+      "reason": "single result 6265 chars > limit 6000",
+      "step": "lc_run--01a203f7-2d72-7417-84d7-d20a4bd881fc-0",
+      "step_total_after": 1883,
+      "step_limit": 12000
+    }
+  },
+  {
+    "id": 572,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19888,
+      "reserve": 2048,
+      "total": 21936,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.56)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 573,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:29+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19888,
+      "after_tokens": 10999,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 13,
+      "kept_messages": 5,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 4483,
+      "cost_output": 957,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Arize AI (URL: https://arize.com/blog/memory-and-state-in-llm-applications/):\n  - \"The term 'memory' is often used in discussions about LLM applications, but it’s an abstraction that can mean different things to different people.\" (line 171)\n  - \"LLMs have a fixed context window, limiting how much information they can process at once.\" (line 239)\n  - \"Stateful designs often improve user experience and application performance but come with increased costs.\" (line 243)\n  - \"Domain-specific applications benefit from storing structured entities as discrete memory variables.\" (line 316)\n- LangGraph Persistence (URL: https://docs.langchain.com/oss/python/langgraph/persistence):\n  - \"LangGraph’s persistence layer gives agents short-term memory through checkpointers and long-term memory through stores.\" (line 145)\n  - \"Checkpointers persist a thread’s graph state as checkpoints. Use them for short-term, thread-scoped memory...\" (line 152)\n  - \"Most applications can use both: a checkpointer tracks the current thread, and a store tracks durable information across threads.\" (line 156)\n\n## Прогресс\n- Выполнено 3 поисковых запроса (Round 1).\n- Найдено 21 URL, выбрано 7 в очередь.\n- Прочитано 2 страницы из 5 необходимых (Arize, LangGraph).\n- Детально изучены разделы Arize (lines 155-493) и LangGraph (lines 120-239).\n- Осталось: прочитать ещё 3+ страницы, выполнить Round 2 (уточнённые запросы), собрать 6+ evidence, написать отчёт.\n\n## Открытые вопросы и следующий шаг\n- Прочитать оставшиеся страницы из очереди (arxiv.org, agentmemo.ai и др.).\n- Выполнить Round 2: уточнить запросы на основе прочитанного (min_queries_after_reading=1).\n- Собрать минимум 6 evidence с цитатами.\n- Написать разделы: approaches, limitations, comparison, unverified.\n\n## Артефакты\n- `art_f5de14155dde518b8b8e` — Arize AI blog (20504 chars, 566 lines)\n- `art_d386c05025cc3edfd176` — LangGraph Persistence docs (5587 chars, 244 lines)\n- Очередь: 7 pending, 5 skipped, 0 done",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage"
+        },
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-835562b907b2c610"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-835562b907b2c610"
+        }
+      ]
+    }
+  },
+  {
+    "id": 574,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10999,
+      "reserve": 2048,
+      "total": 13047,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.56)"
+    }
+  },
+  {
+    "id": 575,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10999,
+      "actual_input": 11119,
+      "actual_output": 74,
+      "duration_s": 1.25,
+      "calibrated_cpt": 3.408
+    }
+  },
+  {
+    "id": 576,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13449,
+      "reserve": 2048,
+      "total": 15497,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 577,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13449,
+      "reserve": 2048,
+      "total": 15497,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.41)"
+    }
+  },
+  {
+    "id": 578,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13449,
+      "actual_input": 13149,
+      "actual_output": 75,
+      "duration_s": 1.47,
+      "calibrated_cpt": 3.307
+    }
+  },
+  {
+    "id": 579,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14978,
+      "reserve": 2048,
+      "total": 17026,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.31)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 580,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14978,
+      "reserve": 2048,
+      "total": 17026,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.31)"
+    }
+  },
+  {
+    "id": 581,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14978,
+      "actual_input": 14344,
+      "actual_output": 42,
+      "duration_s": 1.45,
+      "calibrated_cpt": 3.235
+    }
+  },
+  {
+    "id": 582,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16941,
+      "reserve": 2048,
+      "total": 18989,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.23)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 583,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16941,
+      "reserve": 2048,
+      "total": 18989,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.23)"
+    }
+  },
+  {
+    "id": 584,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:37+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16941,
+      "actual_input": 15736,
+      "actual_output": 142,
+      "duration_s": 2.33,
+      "calibrated_cpt": 3.201
+    }
+  },
+  {
+    "id": 585,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17957,
+      "reserve": 2048,
+      "total": 20005,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.20)",
+      "messages": 14
+    }
+  },
+  {
+    "id": 586,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17957,
+      "reserve": 2048,
+      "total": 20005,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.20)"
+    }
+  },
+  {
+    "id": 587,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17957,
+      "actual_input": 16456,
+      "actual_output": 146,
+      "duration_s": 2.5,
+      "calibrated_cpt": 3.184
+    }
+  },
+  {
+    "id": 588,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:39+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19279,
+      "reserve": 2048,
+      "total": 21327,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 589,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:48+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19279,
+      "after_tokens": 12329,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 13,
+      "kept_messages": 4,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6236,
+      "cost_output": 1286,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Arize AI (URL: https://arize.com/blog/memory-and-state-in-llm-applications/):\n  - \"The term 'memory' is often used in discussions about LLM applications, but it’s an abstraction that can mean different things to different people.\" (line 171)\n  - \"LLMs have a fixed context window, limiting how much information they can process at once.\" (line 239)\n  - \"Stateful designs often improve user experience and application performance but come with increased costs.\" (line 243)\n  - \"Domain-specific applications benefit from storing structured entities as discrete memory variables.\" (line 316)\n- LangGraph Persistence (URL: https://docs.langchain.com/oss/python/langgraph/persistence):\n  - \"LangGraph’s persistence layer gives agents short-term memory through checkpointers and long-term memory through stores.\" (line 145)\n  - \"Checkpointers persist a thread’s graph state as checkpoints. Use them for short-term, thread-scoped memory...\" (line 152)\n  - \"Most applications can use both: a checkpointer tracks the current thread, and a store tracks durable information across threads.\" (line 156)\n- arXiv 2603.07670 (URL: https://arxiv.org/html/2603.07670):\n  - \"Large language model (LLM) agents increasingly operate in settings where a single context window is far too small to capture what has happened, what was learned, and what should not be repeated.\" (line 165)\n  - \"Whatever fits inside the current context window constitutes the agent’s working memory.\" (line 317)\n  - \"Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention.\" (line 539)\n  - \"Memory-augmented agents are expensive: large context windows, multiple retrieval calls per step, ever-growing stores.\" (line 1031)\n\n## Прогресс\n- Выполнено 3 поисковых запроса (Round 1).\n- Найдено 21 URL, выбрано 7 в очередь.\n- Прочитано 3 страницы из 5 необходимых (Arize, LangGraph, arXiv 2603.07670).\n- Детально изучены разделы Arize (lines 155-493), LangGraph (lines 120-239), arXiv (searches: \"context window\", \"vector database\").\n- Осталось: прочитать ещё 2+ страницы, выполнить Round 2 (уточнённые запросы), собрать 6+ evidence, написать отчёт.\n\n## Открытые вопросы и следующий шаг\n- Прочитать оставшиеся страницы из очереди (arxiv.org/abs/2608.03836v3, agentmemo.ai и др.).\n- Выполнить Round 2: уточнить запросы на основе прочитанного (min_queries_after_reading=1).\n- Собрать минимум 6 evidence с цитатами.\n- Написать разделы: approaches, limitations, comparison, unverified.\n\n## Артефакты\n- `art_f5de14155dde518b8b8e` — Arize AI blog (20504 chars, 566 lines)\n- `art_d386c05025cc3edfd176` — LangGraph Persistence docs (5587 chars, 244 lines)\n- `art_7b845c58fd95fdaf7181` — arXiv 2603.07670 (80465 chars)\n- `art_412ae5f9375347f369b0` — queue_status (6265 chars, 197 lines)\n- Очередь: 5 pending, 5 skipped, 3 done",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-92893007554c1a5d",
+            "chatcmpl-tool-94dcd413e74ad1b8"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-92893007554c1a5d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-94dcd413e74ad1b8"
+        }
+      ]
+    }
+  },
+  {
+    "id": 590,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12329,
+      "reserve": 2048,
+      "total": 14377,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.18)"
+    }
+  },
+  {
+    "id": 591,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12329,
+      "actual_input": 9733,
+      "actual_output": 73,
+      "duration_s": 1.09,
+      "calibrated_cpt": 3.373
+    }
+  },
+  {
+    "id": 592,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12113,
+      "reserve": 2048,
+      "total": 14161,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)",
+      "messages": 6
+    }
+  },
+  {
+    "id": 593,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12113,
+      "reserve": 2048,
+      "total": 14161,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.37)"
+    }
+  },
+  {
+    "id": 594,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12113,
+      "actual_input": 10134,
+      "actual_output": 808,
+      "duration_s": 6.53,
+      "calibrated_cpt": 3.484
+    }
+  },
+  {
+    "id": 595,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12883,
+      "reserve": 2048,
+      "total": 14931,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.48)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 596,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12883,
+      "reserve": 2048,
+      "total": 14931,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.48)"
+    }
+  },
+  {
+    "id": 597,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12883,
+      "actual_input": 11323,
+      "actual_output": 160,
+      "duration_s": 1.92,
+      "calibrated_cpt": 3.523
+    }
+  },
+  {
+    "id": 598,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12985,
+      "reserve": 2048,
+      "total": 15033,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 599,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:54:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12985,
+      "reserve": 2048,
+      "total": 15033,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.52)"
+    }
+  },
+  {
+    "id": 600,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12985,
+      "actual_input": 11602,
+      "actual_output": 101,
+      "duration_s": 1.74,
+      "calibrated_cpt": 3.537
+    }
+  },
+  {
+    "id": 601,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:18+00:00",
+    "kind": "search_engines",
+    "data": {
+      "query": "LLM agent memory vector database vs key-value store limitations production",
+      "ok": {
+        "ddgs:yandex": 5,
+        "wikipedia": 3
       },
       "failed": {
         "ddgs:bing": "TimeoutError: ",
@@ -157,440 +1207,419 @@
     }
   },
   {
-    "id": 12,
+    "id": 602,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:18+00:00",
+    "ts": "2026-11-22T15:55:18+00:00",
     "kind": "search_round",
     "data": {
-      "query": "LangGraph checkpointer state persistence agent",
-      "pages_read_before": 0,
+      "query": "LLM agent memory vector database vs key-value store limitations production",
+      "pages_read_before": 3,
       "new_urls": 8,
-      "round": 1
+      "round": 2
     }
   },
   {
-    "id": 13,
+    "id": 603,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:18+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13310,
-      "reserve": 2048,
-      "total": 15358,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 14,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:18+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13310,
-      "reserve": 2048,
-      "total": 15358,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.37)"
-    }
-  },
-  {
-    "id": 15,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:20+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13310,
-      "actual_input": 10845,
-      "actual_output": 94,
-      "duration_s": 1.68,
-      "calibrated_cpt": 3.522
-    }
-  },
-  {
-    "id": 16,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:40+00:00",
+    "ts": "2026-11-22T15:55:19+00:00",
     "kind": "search_engines",
     "data": {
-      "query": "LLM agent memory long-term storage vector database limitations",
+      "query": "\"agent memory\" checkpointing state persistence LangGraph vs external store tradeoffs",
       "ok": {
-        "wikipedia": 5,
-        "arxiv": 3
-      },
-      "failed": {
-        "ddgs:yandex": "TimeoutError: "
-      },
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo"
-      ]
-    }
-  },
-  {
-    "id": 17,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:40+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "LLM agent memory long-term storage vector database limitations",
-      "pages_read_before": 0,
-      "new_urls": 8,
-      "round": 1
-    }
-  },
-  {
-    "id": 18,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:47+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "MemGPT Letta agent memory virtual context management",
-      "ok": {
+        "ddgs:yandex": 5,
         "wikipedia": 0,
         "arxiv": 0,
-        "hn_algolia": 0,
         "stackoverflow": 0,
         "github": 0
       },
       "failed": {
-        "ddgs:yandex": "TimeoutError: "
+        "ddgs:bing": "TimeoutException: error sending request for url (https://www.startpage.com/sp/search) > operation timed out",
+        "ddgs:duckduckgo": "DDGSException: No results found.",
+        "hn_algolia": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain ("
       },
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo"
+      "skipped": []
+    }
+  },
+  {
+    "id": 604,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:19+00:00",
+    "kind": "search_round",
+    "data": {
+      "query": "\"agent memory\" checkpointing state persistence LangGraph vs external store tradeoffs",
+      "pages_read_before": 3,
+      "new_urls": 4,
+      "round": 2
+    }
+  },
+  {
+    "id": 605,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15402,
+      "reserve": 2048,
+      "total": 17450,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 606,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15402,
+      "reserve": 2048,
+      "total": 17450,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 607,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15402,
+      "actual_input": 13806,
+      "actual_output": 671,
+      "duration_s": 6.14,
+      "calibrated_cpt": 3.547
+    }
+  },
+  {
+    "id": 608,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:25+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16762,
+      "reserve": 2048,
+      "total": 18810,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.55)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 609,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:25+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16762,
+      "reserve": 2048,
+      "total": 18810,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.55)"
+    }
+  },
+  {
+    "id": 610,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16762,
+      "actual_input": 15245,
+      "actual_output": 85,
+      "duration_s": 1.85,
+      "calibrated_cpt": 3.535
+    }
+  },
+  {
+    "id": 611,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:28+00:00",
+    "kind": "fetch_error",
+    "data": {
+      "url": "https://folarin.dev/blog/langgraph-state-checkpointing-and-persistence",
+      "type": "http_error",
+      "log": [
+        {
+          "url": "https://folarin.dev/blog/langgraph-state-checkpointing-and-persistence",
+          "attempt": 1,
+          "status": 402
+        }
       ]
     }
   },
   {
-    "id": 19,
+    "id": 612,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:47+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "MemGPT Letta agent memory virtual context management",
-      "pages_read_before": 0,
-      "new_urls": 0,
-      "round": 1
-    }
-  },
-  {
-    "id": 20,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:04:47+00:00",
+    "ts": "2026-11-22T15:55:29+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 14277,
+      "estimated_input": 18711,
       "reserve": 2048,
-      "total": 16325,
+      "total": 20759,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.52)",
-      "messages": 10
+      "method": "heuristic(cpt=3.54)",
+      "messages": 21
     }
   },
   {
-    "id": 21,
+    "id": 613,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:47+00:00",
+    "ts": "2026-11-22T15:55:29+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 14277,
+      "estimated_input": 18711,
       "reserve": 2048,
-      "total": 16325,
+      "total": 20759,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.52)"
+      "method": "heuristic(cpt=3.54)"
     }
   },
   {
-    "id": 22,
+    "id": 614,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:57+00:00",
+    "ts": "2026-11-22T15:55:31+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14277,
-      "actual_input": 12254,
-      "actual_output": 1109,
-      "duration_s": 9.91,
-      "calibrated_cpt": 3.598
+      "estimated_input": 18711,
+      "actual_input": 16869,
+      "actual_output": 137,
+      "duration_s": 2.34,
+      "calibrated_cpt": 3.536
     }
   },
   {
-    "id": 23,
+    "id": 615,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:57+00:00",
+    "ts": "2026-11-22T15:55:32+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 16076,
+      "estimated_input": 18956,
       "reserve": 2048,
-      "total": 18124,
+      "total": 21004,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 616,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:42+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 18956,
+      "after_tokens": 10595,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 20,
+      "kept_messages": 4,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6245,
+      "cost_output": 1552,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Arize AI (URL: https://arize.com/blog/memory-and-state-in-llm-applications/):\n  - \"The term 'memory' is often used in discussions about LLM applications, but it’s an abstraction that can mean different things to different people.\" (line 171)\n  - \"LLMs have a fixed context window, limiting how much information they can process at once.\" (line 239)\n  - \"Stateful designs often improve user experience and application performance but come with increased costs.\" (line 243)\n  - \"Domain-specific applications benefit from storing structured entities as discrete memory variables.\" (line 316)\n- LangGraph Persistence (URL: https://docs.langchain.com/oss/python/langgraph/persistence):\n  - \"LangGraph’s persistence layer gives agents short-term memory through checkpointers and long-term memory through stores.\" (line 145)\n  - \"Checkpointers persist a thread’s graph state as checkpoints. Use them for short-term, thread-scoped memory...\" (line 152)\n  - \"Most applications can use both: a checkpointer tracks the current thread, and a store tracks durable information across threads.\" (line 156)\n- arXiv 2603.07670 (URL: https://arxiv.org/html/2603.07670):\n  - \"Large language model (LLM) agents increasingly operate in settings where a single context window is far too small to capture what has happened, what was learned, and what should not be repeated.\" (line 165)\n  - \"Whatever fits inside the current context window constitutes the agent’s working memory.\" (line 317)\n  - \"Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention.\" (line 539)\n  - \"Memory-augmented agents are expensive: large context windows, multiple retrieval calls per step, ever-growing stores.\" (line 1031)\n  - \"Context-resident memory is transparent and infrastructure-free, but it carries a well-known pathology: summarization drift.\" (line 536, ev_4cc9ac1595f7)\n  - \"Long context is not memory. Despite context windows stretching to 200k tokens [Chen et al., 2023], long-context models consistently underperform purpose-built memory systems on tasks requiring selective retrieval and active management.\" (line 766, ev_c3248fc55c1f)\n  - \"RAG-based agents beat pure long-context baselines across the board, yet the primary bottleneck is no longer storage—it is retrieval quality.\" (line 771, ev_4659ba3e27b9)\n  - \"Parametric memory excels at seamless knowledge integration but fails at targeted deletion and auditing. Non-parametric memory supports inspection and governance but can feel “bolted on”—the agent sometimes ignores retrieved records or uses them inconsistently.\" (line 784, ev_be1eb5b0c66f)\n\n## Прогресс\n- Выполнено 5 поисковых запроса (Round 1: 3, Round 2: 2).\n- Найдено 33 URL, выбрано 10 в очередь.\n- Прочитано 4 страницы из 5 необходимых (Arize, LangGraph, arXiv 2603.07670, mem0.ai).\n- Детально изучены разделы Arize (lines 155-493), LangGraph (lines 120-239), arXiv (lines 530-544, 760-785), mem0.ai (полный текст).\n- Осталось: прочитать ещё 1+ страницу, собрать 6+ evidence (сейчас 4), написать отчёт.\n\n## Открытые вопросы и следующий шаг\n- Прочитать оставшиеся страницы из очереди (explore.n1n.ai и др.).\n- Собрать минимум 6 evidence с цитатами (сейчас 4).\n- Написать разделы: approaches, limitations, comparison, unverified.\n\n## Артефакты\n- `art_f5de14155dde518b8b8e` — Arize AI blog (20504 chars, 566 lines)\n- `art_d386c05025cc3edfd176` — LangGraph Persistence docs (5587 chars, 244 lines)\n- `art_7b845c58fd95fdaf7181` — arXiv 2603.07670 (80465 chars)\n- `art_412ae5f9375347f369b0` — queue_status (6265 chars, 197 lines)\n- `art_5a2d77aa255bedbfd545` — mem0.ai Vector Databases vs. Memory Layers (24857 chars)\n- Очередь: 7 pending, 15 skipped, 4 done",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-bef42dc8c1bfbd03",
+            "chatcmpl-tool-8a2876c568421b9f"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bef42dc8c1bfbd03"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a2876c568421b9f"
+        }
+      ]
+    }
+  },
+  {
+    "id": 617,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10595,
+      "reserve": 2048,
+      "total": 12643,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 618,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10595,
+      "actual_input": 9337,
+      "actual_output": 69,
+      "duration_s": 1.04,
+      "calibrated_cpt": 3.576
+    }
+  },
+  {
+    "id": 619,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11390,
+      "reserve": 2048,
+      "total": 13438,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 6
+    }
+  },
+  {
+    "id": 620,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11390,
+      "reserve": 2048,
+      "total": 13438,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 621,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11390,
+      "actual_input": 10317,
+      "actual_output": 71,
+      "duration_s": 1.25,
+      "calibrated_cpt": 3.576
+    }
+  },
+  {
+    "id": 622,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13144,
+      "reserve": 2048,
+      "total": 15192,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 623,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13144,
+      "reserve": 2048,
+      "total": 15192,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 624,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13144,
+      "actual_input": 11665,
+      "actual_output": 72,
+      "duration_s": 1.4,
+      "calibrated_cpt": 3.604
+    }
+  },
+  {
+    "id": 625,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14810,
+      "reserve": 2048,
+      "total": 16858,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.60)",
-      "messages": 12
+      "messages": 10
     }
   },
   {
-    "id": 24,
+    "id": 626,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:57+00:00",
+    "ts": "2026-11-22T15:55:46+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 16076,
+      "estimated_input": 14810,
       "reserve": 2048,
-      "total": 18124,
+      "total": 16858,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.60)"
     }
   },
   {
-    "id": 25,
+    "id": 627,
     "task_id": "B4",
-    "ts": "2026-11-20T21:04:59+00:00",
+    "ts": "2026-11-22T15:55:50+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 16076,
-      "actual_input": 14632,
-      "actual_output": 83,
-      "duration_s": 2.0,
-      "calibrated_cpt": 3.588
+      "estimated_input": 14810,
+      "actual_input": 13376,
+      "actual_output": 319,
+      "duration_s": 3.33,
+      "calibrated_cpt": 3.606
     }
   },
   {
-    "id": 26,
+    "id": 628,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:06+00:00",
+    "ts": "2026-11-22T15:55:50+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19072,
+      "estimated_input": 15366,
       "reserve": 2048,
-      "total": 21120,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.59)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 27,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:14+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 1,
-      "before_tokens": 19072,
-      "after_tokens": 12323,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 11,
-      "kept_messages": 4,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 3463,
-      "cost_output": 1017,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Пока нет прочитанных страниц, evidence не собран.\n- Найдены URL в очереди (не прочитаны):\n  - `https://docs.langchain.com/oss/python/langgraph/persistence` (url_key: 011ded74c9d8d6d6)\n  - `https://arxiv.org/abs/2603.04443v1` (url_key: 436644318d880885)\n  - `https://arxiv.org/abs/2605.29640v3` (url_key: 0346709079e6fff4)\n  - `https://arxiv.org/abs/2608.03836v3` (url_key: 697f2ce62947ff3c)\n  - `https://arxiv.org/abs/2606.29778v1` (url_key: 8bb8f95a6157cba7)\n  - `https://arxiv.org/abs/2507.22925v1` (url_key: 17097ec00b5f57df)\n  - `https://arxiv.org/abs/2603.04428v1` (url_key: 0a9a891f7186b2ef)\n\n## Прогресс\n- Выполнено 4 поисковых запроса (Round 1):\n  1. \"LLM agent state management memory persistence approaches\"\n  2. \"LangGraph checkpointer state persistence agent\"\n  3. \"MemGPT Letta agent memory virtual context management\" (0 результатов)\n  4. \"LLM agent memory long-term storage vector database limitations\"\n- Выбрано 7 источников в очередь на чтение (pending=7), 17 пропущено.\n- Страницы ещё не прочитаны (read_total=0).\n- Round 2 не начат.\n- Отчёт не написан.\n\n## Открытые вопросы и следующий шаг\n- Прочитать 5+ страниц из очереди (web_fetch).\n- Собрать evidence (цитаты с URL) для каждого утверждения.\n- Выполнить Round 2: уточнить запросы на основе прочитанного, добавить источники с других сайтов.\n- Написать разделы: approaches, limitations, comparison, unverified.\n- Проверить выполнение всех критериев и вызвать complete_task.\n\n## Артефакты\n- План: 6 шагов (Round 1 → выбор → evidence → Round 2 → отчёт → complete_task).\n- Очередь: 7 pending URL (см. выше), 17 skipped.\n- Навык: `research_web` загружен."
-    }
-  },
-  {
-    "id": 28,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:14+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12323,
-      "reserve": 2048,
-      "total": 14371,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.59)"
-    }
-  },
-  {
-    "id": 29,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:16+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12323,
-      "actual_input": 10934,
-      "actual_output": 90,
-      "duration_s": 1.83,
-      "calibrated_cpt": 3.619
-    }
-  },
-  {
-    "id": 30,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:19+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15032,
-      "reserve": 2048,
-      "total": 17080,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.62)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 31,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:19+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15032,
-      "reserve": 2048,
-      "total": 17080,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.62)"
-    }
-  },
-  {
-    "id": 32,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:21+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15032,
-      "actual_input": 13551,
-      "actual_output": 90,
-      "duration_s": 2.02,
-      "calibrated_cpt": 3.627
-    }
-  },
-  {
-    "id": 33,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:24+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17803,
-      "reserve": 2048,
-      "total": 19851,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.63)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 34,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:24+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17803,
-      "reserve": 2048,
-      "total": 19851,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.63)"
-    }
-  },
-  {
-    "id": 35,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:27+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17803,
-      "actual_input": 16309,
-      "actual_output": 97,
-      "duration_s": 2.46,
-      "calibrated_cpt": 3.61
-    }
-  },
-  {
-    "id": 36,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "agent memory survey limitations vector database context window token cost",
-      "ok": {
-        "wikipedia": 4,
-        "arxiv": 0,
-        "hn_algolia": 0,
-        "stackoverflow": 0,
-        "github": 0
-      },
-      "failed": {},
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
-      ]
-    }
-  },
-  {
-    "id": 37,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "agent memory survey limitations vector database context window token cost",
-      "pages_read_before": 6,
-      "new_urls": 1,
-      "round": 2
-    }
-  },
-  {
-    "id": 38,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "MemGPT Letta virtual context management memory hierarchy LLM agent",
-      "ok": {
-        "wikipedia": 0,
-        "arxiv": 0,
-        "hn_algolia": 0,
-        "stackoverflow": 0,
-        "github": 0
-      },
-      "failed": {},
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
-      ]
-    }
-  },
-  {
-    "id": 39,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "MemGPT Letta virtual context management memory hierarchy LLM agent",
-      "pages_read_before": 6,
-      "new_urls": 0,
-      "round": 2
-    }
-  },
-  {
-    "id": 40,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18840,
-      "reserve": 2048,
-      "total": 20888,
+      "total": 17414,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -599,75 +1628,378 @@
     }
   },
   {
-    "id": 41,
+    "id": 629,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:41+00:00",
+    "ts": "2026-11-22T15:55:50+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 18840,
+      "estimated_input": 15366,
       "reserve": 2048,
-      "total": 20888,
+      "total": 17414,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.61)"
     }
   },
   {
-    "id": 42,
+    "id": 630,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:43+00:00",
+    "ts": "2026-11-22T15:55:51+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 18840,
-      "actual_input": 17238,
-      "actual_output": 53,
-      "duration_s": 2.29,
-      "calibrated_cpt": 3.593
+      "estimated_input": 15366,
+      "actual_input": 13920,
+      "actual_output": 39,
+      "duration_s": 1.45,
+      "calibrated_cpt": 3.602
     }
   },
   {
-    "id": 43,
+    "id": 631,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:52+00:00",
-    "kind": "search_engines",
+    "ts": "2026-11-22T15:55:51+00:00",
+    "kind": "context_check",
     "data": {
-      "query": "MemGPT arxiv 2310.08560",
-      "ok": {
-        "wikipedia": 0,
-        "arxiv": 0,
-        "hn_algolia": 1,
-        "stackoverflow": 0,
-        "github": 2
-      },
-      "failed": {},
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
+      "estimated_input": 16216,
+      "reserve": 2048,
+      "total": 18264,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 632,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16216,
+      "reserve": 2048,
+      "total": 18264,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)"
+    }
+  },
+  {
+    "id": 633,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16216,
+      "actual_input": 14680,
+      "actual_output": 54,
+      "duration_s": 1.69,
+      "calibrated_cpt": 3.599
+    }
+  },
+  {
+    "id": 634,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:54+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17750,
+      "reserve": 2048,
+      "total": 19798,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 635,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:54+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17750,
+      "reserve": 2048,
+      "total": 19798,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)"
+    }
+  },
+  {
+    "id": 636,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17750,
+      "actual_input": 16064,
+      "actual_output": 74,
+      "duration_s": 1.96,
+      "calibrated_cpt": 3.596
+    }
+  },
+  {
+    "id": 637,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:55:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19468,
+      "reserve": 2048,
+      "total": 21516,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 638,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:07+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 5,
+      "before_tokens": 19468,
+      "after_tokens": 12000,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 16,
+      "kept_messages": 3,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 5137,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Arize AI (URL: https://arize.com/blog/memory-and-state-in-llm-applications/):\n  - \"The term 'memory' is often used in discussions about LLM applications, but it’s an abstraction that can mean different things to different people.\" (line 171)\n  - \"LLMs have a fixed context window, limiting how much information they can process at once.\" (line 239)\n  - \"Stateful designs often improve user experience and application performance but come with increased costs.\" (line 243)\n  - \"Domain-specific applications benefit from storing structured entities as discrete memory variables.\" (line 316)\n- LangGraph Persistence (URL: https://docs.langchain.com/oss/python/langgraph/persistence):\n  - \"LangGraph’s persistence layer gives agents short-term memory through checkpointers and long-term memory through stores.\" (line 145)\n  - \"Checkpointers persist a thread’s graph state as checkpoints. Use them for short-term, thread-scoped memory...\" (line 152)\n  - \"Most applications can use both: a checkpointer tracks the current thread, and a store tracks durable information across threads.\" (line 156)\n- arXiv 2603.07670 (URL: https://arxiv.org/html/2603.07670):\n  - \"Large language model (LLM) agents increasingly operate in settings where a single context window is far too small to capture what has happened, what was learned, and what should not be repeated.\" (line 165)\n  - \"Whatever fits inside the current context window constitutes the agent’s working memory.\" (line 317)\n  - \"Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention.\" (line 539)\n  - \"Memory-augmented agents are expensive: large context windows, multiple retrieval calls per step, ever-growing stores.\" (line 1031)\n  - \"Context-resident memory is transparent and infrastructure-free, but it carries a well-known pathology: summarization drift.\" (line 536, ev_4cc9ac1595f7)\n  - \"Long context is not memory. Despite context windows stretching to 200k tokens [Chen et al., 2023], long-context models consistently underperform purpose-built memory systems on tasks requiring selective retrieval and active management.\" (line 766, ev_c3248fc55c1f)\n  - \"RAG-based agents beat pure long-context baselines across the board, yet the primary bottleneck is no longer storage—it is retrieval quality.\" (line 771, ev_4659ba3e27b9)\n  - \"Parametric memory excels at seamless knowledge integration but fails at targeted deletion and auditing. Non-parametric memory supports inspection and governance but can feel “bolted on”—the agent sometimes ignores retrieved records or uses them inconsistently.\" (line 784, ev_be1eb5b0c66f)\n- mem0.ai (URL: https://mem0.ai/library/agent-memory/vector-databases-and-memory-for-ai-agents):\n  - \"They know nothing about the content of what they store. They cannot distinguish a user preference from a random sentence. They have no awareness of time, contradiction, or relevance to a task.\" (line 79, ev_fbc72fab7e33)\n  - \"The result is memory pollution: the store has grown to contain more noise than signal, and the noise is semantic...\" (line 211, ev_42f0cdc173ae)\n\n## Прогресс\n- Выполнено 5 поисковых запроса (Round 1: 3, Round 2: 2).\n- Найдено 33 URL, выбрано 10 в очередь.\n- Прочитано 5 страниц из 5 необходимых (Arize, LangGraph, arXiv 2603.07670, mem0.ai, explore.n1n.ai).\n- Детально изучены разделы Arize (lines 155-493), LangGraph (lines 120-239), arXiv (lines 530-544, 760-785), mem0.ai (lines 1-212), explore.n1n.ai (полный текст).\n- Собрано 6 evidence (минимум выполнено).\n- Осталось: написать отчёт с разделами approaches, limitations, comparison, unverified.\n\n## Открытые вопросы и следующий шаг\n- Написать разделы: approaches, limitations, comparison, unverified.\n- Убедиться, что обзор не превышает 900 слов.\n- Указать непроверенные источники (5 pending в очереди).\n\n## Артефакты\n- `art_f5de14155dde518b8b8e` — Arize AI blog (20504 chars, 566 lines)\n- `art_d386c05025cc3edfd176` — LangGraph Persistence docs (5587 chars, 244 lines)",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b3335e4f65d2c9f7"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3335e4f65d2c9f7"
+        }
       ]
     }
   },
   {
-    "id": 44,
+    "id": 639,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:52+00:00",
-    "kind": "search_round",
+    "ts": "2026-11-22T15:56:07+00:00",
+    "kind": "model_call_plan",
     "data": {
-      "query": "MemGPT arxiv 2310.08560",
-      "pages_read_before": 6,
-      "new_urls": 3,
-      "round": 2
+      "estimated_input": 12000,
+      "reserve": 2048,
+      "total": 14048,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.60)"
     }
   },
   {
-    "id": 45,
+    "id": 640,
     "task_id": "B4",
-    "ts": "2026-11-20T21:05:52+00:00",
+    "ts": "2026-11-22T15:56:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12000,
+      "actual_input": 10753,
+      "actual_output": 72,
+      "duration_s": 1.29,
+      "calibrated_cpt": 3.613
+    }
+  },
+  {
+    "id": 641,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:08+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 19385,
+      "estimated_input": 13234,
       "reserve": 2048,
-      "total": 21433,
+      "total": 15282,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 642,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13234,
+      "reserve": 2048,
+      "total": 15282,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 643,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13234,
+      "actual_input": 11882,
+      "actual_output": 431,
+      "duration_s": 4.15,
+      "calibrated_cpt": 3.627
+    }
+  },
+  {
+    "id": 644,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13887,
+      "reserve": 2048,
+      "total": 15935,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 645,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13887,
+      "reserve": 2048,
+      "total": 15935,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 646,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13887,
+      "actual_input": 12556,
+      "actual_output": 590,
+      "duration_s": 6.26,
+      "calibrated_cpt": 3.629
+    }
+  },
+  {
+    "id": 647,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14515,
+      "reserve": 2048,
+      "total": 16563,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 648,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14515,
+      "reserve": 2048,
+      "total": 16563,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.63)"
+    }
+  },
+  {
+    "id": 649,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14515,
+      "actual_input": 13243,
+      "actual_output": 15,
+      "duration_s": 1.29,
+      "calibrated_cpt": 3.616
+    }
+  },
+  {
+    "id": 650,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15223,
+      "reserve": 2048,
+      "total": 17271,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)",
+      "messages": 12
+    }
+  },
+  {
+    "id": 651,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15223,
+      "reserve": 2048,
+      "total": 17271,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)"
+    }
+  },
+  {
+    "id": 652,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15223,
+      "actual_input": 13970,
+      "actual_output": 244,
+      "duration_s": 3.02,
+      "calibrated_cpt": 3.594
+    }
+  },
+  {
+    "id": 653,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:56:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15787,
+      "reserve": 2048,
+      "total": 17835,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -676,1450 +2008,84 @@
     }
   },
   {
-    "id": 46,
+    "id": 654,
     "task_id": "B4",
-    "ts": "2026-11-20T21:06:01+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 2,
-      "before_tokens": 19385,
-      "after_tokens": 11061,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 9,
-      "kept_messages": 6,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 4497,
-      "cost_output": 1097,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- LangGraph: checkpointer отслеживает текущий тред, store — долговременную память между тредами (user preferences, facts). Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176).\n- AMV-L: для контроля tail-latency в long-running LLM системах требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40).\n- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1).\n- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c).\n- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646).\n- Hierarchical Memory: подход для high-efficiency long-term reasoning в LLM agents. Источник: `https://arxiv.org/abs/2507.22925v1` (art_06bb89f539a917f10113).\n\n## Прогресс\n- Выполнено 4 поисковых запроса (Round 1).\n- Прочитано 6 страниц (web_fetch): LangGraph docs, 5 arXiv статей.\n- Собрано 6 подтверждённых фактов с URL.\n- Round 2 не начат.\n- Отчёт не написан.\n\n## Открытые вопросы и следующий шаг\n- Выполнить Round 2: уточнить запросы на основе прочитанного (min_queries_after_reading=1).\n- При необходимости прочитать 1 страницу с другого сайта (W6).\n- Написать разделы: approaches, limitations, comparison, unverified.\n- Проверить выполнение всех критериев и вызвать complete_task.\n\n## Артефакты\n- План: 6 шагов (Round 1 → выбор → evidence → Round 2 → отчёт → complete_task).\n- Очередь: 1 pending URL (`https://arxiv.org/abs/2603.04428v1`, url_key: 0a9a891f7186b2ef), 17 skipped.\n- Навык: `research_web` загружен."
-    }
-  },
-  {
-    "id": 47,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:01+00:00",
+    "ts": "2026-11-22T15:56:23+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 11061,
+      "estimated_input": 15787,
       "reserve": 2048,
-      "total": 13109,
+      "total": 17835,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.59)"
     }
   },
   {
-    "id": 48,
+    "id": 655,
     "task_id": "B4",
-    "ts": "2026-11-20T21:06:03+00:00",
+    "ts": "2026-11-22T15:56:28+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 11061,
-      "actual_input": 10172,
-      "actual_output": 218,
-      "duration_s": 2.62,
-      "calibrated_cpt": 3.571
+      "estimated_input": 15787,
+      "actual_input": 14435,
+      "actual_output": 595,
+      "duration_s": 5.35,
+      "calibrated_cpt": 3.577
     }
   },
   {
-    "id": 49,
+    "id": 656,
     "task_id": "B4",
-    "ts": "2026-11-20T21:06:03+00:00",
+    "ts": "2026-11-22T15:56:28+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 11564,
+      "estimated_input": 16502,
       "reserve": 2048,
-      "total": 13612,
+      "total": 18550,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 8
-    }
-  },
-  {
-    "id": 50,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:03+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11564,
-      "reserve": 2048,
-      "total": 13612,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 51,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:05+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11564,
-      "actual_input": 10678,
-      "actual_output": 43,
-      "duration_s": 1.33,
-      "calibrated_cpt": 3.541
-    }
-  },
-  {
-    "id": 52,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:07+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13094,
-      "reserve": 2048,
-      "total": 15142,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 53,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:07+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13094,
-      "reserve": 2048,
-      "total": 15142,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 54,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:10+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13094,
-      "actual_input": 12112,
-      "actual_output": 278,
-      "duration_s": 3.22,
-      "calibrated_cpt": 3.509
-    }
-  },
-  {
-    "id": 55,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:10+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13728,
-      "reserve": 2048,
-      "total": 15776,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 56,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:10+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13728,
-      "reserve": 2048,
-      "total": 15776,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 57,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:12+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13728,
-      "actual_input": 12570,
-      "actual_output": 70,
-      "duration_s": 1.87,
-      "calibrated_cpt": 3.49
-    }
-  },
-  {
-    "id": 58,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14282,
-      "reserve": 2048,
-      "total": 16330,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 59,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14282,
-      "reserve": 2048,
-      "total": 16330,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)"
-    }
-  },
-  {
-    "id": 60,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:15+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14282,
-      "actual_input": 13004,
-      "actual_output": 274,
-      "duration_s": 3.24,
-      "calibrated_cpt": 3.477
-    }
-  },
-  {
-    "id": 61,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:15+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14830,
-      "reserve": 2048,
-      "total": 16878,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 18
-    }
-  },
-  {
-    "id": 62,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:15+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14830,
-      "reserve": 2048,
-      "total": 16878,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 63,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:17+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14830,
-      "actual_input": 13462,
-      "actual_output": 70,
-      "duration_s": 1.98,
-      "calibrated_cpt": 3.467
-    }
-  },
-  {
-    "id": 64,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:17+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15006,
-      "reserve": 2048,
-      "total": 17054,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)",
-      "messages": 20
-    }
-  },
-  {
-    "id": 65,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:17+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15006,
-      "reserve": 2048,
-      "total": 17054,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.47)"
-    }
-  },
-  {
-    "id": 66,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:19+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15006,
-      "actual_input": 13613,
-      "actual_output": 69,
-      "duration_s": 1.91,
-      "calibrated_cpt": 3.457
-    }
-  },
-  {
-    "id": 67,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:19+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15453,
-      "reserve": 2048,
-      "total": 17501,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.46)",
-      "messages": 22
-    }
-  },
-  {
-    "id": 68,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:19+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15453,
-      "reserve": 2048,
-      "total": 17501,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.46)"
-    }
-  },
-  {
-    "id": 69,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:21+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15453,
-      "actual_input": 13996,
-      "actual_output": 70,
-      "duration_s": 1.96,
-      "calibrated_cpt": 3.449
-    }
-  },
-  {
-    "id": 70,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:21+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16234,
-      "reserve": 2048,
-      "total": 18282,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)",
-      "messages": 24
-    }
-  },
-  {
-    "id": 71,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:21+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16234,
-      "reserve": 2048,
-      "total": 18282,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)"
-    }
-  },
-  {
-    "id": 72,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:25+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16234,
-      "actual_input": 14583,
-      "actual_output": 346,
-      "duration_s": 3.93,
-      "calibrated_cpt": 3.451
-    }
-  },
-  {
-    "id": 73,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:25+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16834,
-      "reserve": 2048,
-      "total": 18882,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)",
-      "messages": 27
-    }
-  },
-  {
-    "id": 74,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:25+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16834,
-      "reserve": 2048,
-      "total": 18882,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)"
-    }
-  },
-  {
-    "id": 75,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:28+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16834,
-      "actual_input": 15154,
-      "actual_output": 143,
-      "duration_s": 2.49,
-      "calibrated_cpt": 3.45
-    }
-  },
-  {
-    "id": 76,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:28+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17222,
-      "reserve": 2048,
-      "total": 19270,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)",
-      "messages": 30
-    }
-  },
-  {
-    "id": 77,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:28+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17222,
-      "reserve": 2048,
-      "total": 19270,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.45)"
-    }
-  },
-  {
-    "id": 78,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:30+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17222,
-      "actual_input": 15531,
-      "actual_output": 145,
-      "duration_s": 2.58,
-      "calibrated_cpt": 3.444
-    }
-  },
-  {
-    "id": 79,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:30+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18756,
-      "reserve": 2048,
-      "total": 20804,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)",
-      "messages": 33
-    }
-  },
-  {
-    "id": 80,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:30+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18756,
-      "reserve": 2048,
-      "total": 20804,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.44)"
-    }
-  },
-  {
-    "id": 81,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:35+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18756,
-      "actual_input": 16600,
-      "actual_output": 368,
-      "duration_s": 4.34,
-      "calibrated_cpt": 3.464
-    }
-  },
-  {
-    "id": 82,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:35+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19292,
-      "reserve": 2048,
-      "total": 21340,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.46)",
-      "messages": 36
-    }
-  },
-  {
-    "id": 83,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:44+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 3,
-      "before_tokens": 19292,
-      "after_tokens": 10687,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 32,
-      "kept_messages": 4,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 7380,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- LangGraph: checkpointer отслеживает текущий тред, store — долговременную память между тредами. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_2c1bc34bfc5b).\n- AMV-L: для контроля tail-latency в long-running LLM системах требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_5e7668cffb5e, ev_db086ab51e96).\n- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1).\n- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c).\n- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646).\n- Hierarchical Memory: подход для high-efficiency long-term reasoning в LLM agents. Источник: `https://arxiv.org/abs/2507.22925v1` (art_06bb89f539a917f10113).\n- MemGPT: virtual context management, иерархия уровней памяти (как в ОС) для расширения контекста LLM за пределы ограниченного context window. Источник: `https://arxiv.org/abs/2310.08560` (art_ee035e4658cd928988bf, ev_3d58fea5c3c6).\n\n## Прогресс\n- Выполнено 7 поисковых запросов (Round 1: 4, Round 2: 3).\n- Прочитано 7 страниц (web_fetch): LangGraph docs, 6 arXiv статей.\n- Собрано 7 подтверждённых фактов с URL (evidence_total: 4).\n- Round 2 начат: уточнены запросы по прочитанному (MemGPT, agent memory survey).\n- Отчёт не написан.\n\n## Открытые вопросы и следующий шаг\n- Написать разделы: approaches, limitations, comparison, unverified.\n- Проверить выполнение всех критериев и вызвать complete_task.\n\n## Артефакты\n- План: 6 шагов (Round 1 → выбор → evidence → Round 2 → отчёт → complete_task)."
-    }
-  },
-  {
-    "id": 84,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:44+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 10687,
-      "reserve": 2048,
-      "total": 12735,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.46)"
-    }
-  },
-  {
-    "id": 85,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:47+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 10687,
-      "actual_input": 9347,
-      "actual_output": 286,
-      "duration_s": 3.26,
-      "calibrated_cpt": 3.515
-    }
-  },
-  {
-    "id": 86,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:47+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 10997,
-      "reserve": 2048,
-      "total": 13045,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 87,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:47+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 10997,
-      "reserve": 2048,
-      "total": 13045,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 88,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:49+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 10997,
-      "actual_input": 9784,
-      "actual_output": 105,
-      "duration_s": 1.68,
-      "calibrated_cpt": 3.538
-    }
-  },
-  {
-    "id": 89,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:49+00:00",
-    "kind": "fetch_cache_hit",
-    "data": {
-      "url": "https://arxiv.org/abs/2606.29778v1",
-      "url_key": "8bb8f95a6157cba7",
-      "artifact_id": "art_d356641d87397b9bc646",
-      "http_requests": 7,
-      "url_http_attempts": 1
-    }
-  },
-  {
-    "id": 90,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:49+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12561,
-      "reserve": 2048,
-      "total": 14609,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 10
-    }
-  },
-  {
-    "id": 91,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:49+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12561,
-      "reserve": 2048,
-      "total": 14609,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 92,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:51+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12561,
-      "actual_input": 11373,
-      "actual_output": 217,
-      "duration_s": 2.49,
-      "calibrated_cpt": 3.536
-    }
-  },
-  {
-    "id": 93,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:51+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13293,
-      "reserve": 2048,
-      "total": 15341,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 94,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:51+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13293,
-      "reserve": 2048,
-      "total": 15341,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 95,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:53+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13293,
-      "actual_input": 12041,
-      "actual_output": 73,
-      "duration_s": 1.67,
-      "calibrated_cpt": 3.531
-    }
-  },
-  {
-    "id": 96,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:53+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14150,
-      "reserve": 2048,
-      "total": 16198,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 97,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:53+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14150,
-      "reserve": 2048,
-      "total": 16198,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 98,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:57+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14150,
-      "actual_input": 12725,
-      "actual_output": 341,
-      "duration_s": 3.63,
-      "calibrated_cpt": 3.536
-    }
-  },
-  {
-    "id": 99,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:57+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14688,
-      "reserve": 2048,
-      "total": 16736,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 18
-    }
-  },
-  {
-    "id": 100,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:06:57+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14688,
-      "reserve": 2048,
-      "total": 16736,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 101,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:01+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14688,
-      "actual_input": 13296,
-      "actual_output": 342,
-      "duration_s": 4.03,
-      "calibrated_cpt": 3.53
-    }
-  },
-  {
-    "id": 102,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:01+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15268,
-      "reserve": 2048,
-      "total": 17316,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 21
-    }
-  },
-  {
-    "id": 103,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:01+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15268,
-      "reserve": 2048,
-      "total": 17316,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 104,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:02+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15268,
-      "actual_input": 13790,
-      "actual_output": 57,
-      "duration_s": 1.72,
-      "calibrated_cpt": 3.525
-    }
-  },
-  {
-    "id": 105,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:02+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15513,
-      "reserve": 2048,
-      "total": 17561,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 23
-    }
-  },
-  {
-    "id": 106,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:02+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15513,
-      "reserve": 2048,
-      "total": 17561,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 107,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:04+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15513,
-      "actual_input": 14024,
-      "actual_output": 71,
-      "duration_s": 1.85,
-      "calibrated_cpt": 3.519
-    }
-  },
-  {
-    "id": 108,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:04+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16420,
-      "reserve": 2048,
-      "total": 18468,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)",
-      "messages": 25
-    }
-  },
-  {
-    "id": 109,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:04+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16420,
-      "reserve": 2048,
-      "total": 18468,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)"
-    }
-  },
-  {
-    "id": 110,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:08+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16420,
-      "actual_input": 14800,
-      "actual_output": 335,
-      "duration_s": 3.84,
-      "calibrated_cpt": 3.516
-    }
-  },
-  {
-    "id": 111,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:08+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17032,
-      "reserve": 2048,
-      "total": 19080,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)",
-      "messages": 28
-    }
-  },
-  {
-    "id": 112,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:08+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17032,
-      "reserve": 2048,
-      "total": 19080,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)"
-    }
-  },
-  {
-    "id": 113,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:10+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17032,
-      "actual_input": 15362,
-      "actual_output": 58,
-      "duration_s": 1.94,
-      "calibrated_cpt": 3.511
-    }
-  },
-  {
-    "id": 114,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:10+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17286,
-      "reserve": 2048,
-      "total": 19334,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 30
-    }
-  },
-  {
-    "id": 115,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:10+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17286,
-      "reserve": 2048,
-      "total": 19334,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 116,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:12+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17286,
-      "actual_input": 15558,
-      "actual_output": 71,
-      "duration_s": 2.12,
-      "calibrated_cpt": 3.508
-    }
-  },
-  {
-    "id": 117,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17862,
-      "reserve": 2048,
-      "total": 19910,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 32
-    }
-  },
-  {
-    "id": 118,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17862,
-      "reserve": 2048,
-      "total": 19910,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 119,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:15+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17862,
-      "actual_input": 15992,
-      "actual_output": 161,
-      "duration_s": 2.8,
-      "calibrated_cpt": 3.513
-    }
-  },
-  {
-    "id": 120,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:15+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18139,
-      "reserve": 2048,
-      "total": 20187,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 34
-    }
-  },
-  {
-    "id": 121,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:15+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18139,
-      "reserve": 2048,
-      "total": 20187,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 122,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:18+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18139,
-      "actual_input": 16273,
-      "actual_output": 60,
-      "duration_s": 2.3,
-      "calibrated_cpt": 3.513
-    }
-  },
-  {
-    "id": 123,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:18+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18543,
-      "reserve": 2048,
-      "total": 20591,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 36
-    }
-  },
-  {
-    "id": 124,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:18+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18543,
-      "reserve": 2048,
-      "total": 20591,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 125,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:20+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18543,
-      "actual_input": 16652,
-      "actual_output": 73,
-      "duration_s": 2.21,
-      "calibrated_cpt": 3.512
-    }
-  },
-  {
-    "id": 126,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:20+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19110,
-      "reserve": 2048,
-      "total": 21158,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 38
-    }
-  },
-  {
-    "id": 127,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:29+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 4,
-      "before_tokens": 19110,
-      "after_tokens": 11173,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 31,
-      "kept_messages": 7,
-      "method": "llm",
-      "chunks": 1,
-      "cost_input": 6796,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- LangGraph: checkpointer отслеживает текущий тред, store — долговременную память между тредами. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_2c1bc34bfc5b).\n- AMV-L: для контроля tail-latency в long-running LLM системах требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_5e7668cffb5e, ev_db086ab51e96).\n- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1, ev_ed1f1ed1a38b, ev_4598fa1c7c10).\n- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f, ev_85e20e46b858).\n- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646, ev_7247d64e7b36).\n- Hierarchical Memory: подход для high-efficiency long-term reasoning в LLM agents. Источник: `https://arxiv.org/abs/2507.22925v1` (art_06bb89f539a917f10113).\n- MemGPT: virtual context management, иерархия уровней памяти (как в ОС) для расширения контекста LLM за пределы ограниченного context window. Источник: `https://arxiv.org/abs/2310.08560` (art_ee035e4658cd928988bf, ev_3d58fea5c3c6).\n\n## Прогресс\n- Выполнено 7 поисковых запросов (Round 1: 4, Round 2: 3).\n- Прочитано 7 страниц (web_fetch): LangGraph docs, 6 arXiv статей.\n- Собрано 9 подтверждённых фактов с URL (evidence_total: 9).\n- Round 2 начат: уточнены запросы по прочитанному (MemGPT, agent memory survey).\n- Отчёт не написан.\n\n## Открытые вопросы и следующий шаг\n- Написать разделы: approaches, limitations, comparison, unverified.\n- Проверить выполнение всех критериев и вызвать complete_task.\n\n## Артефакты"
-    }
-  },
-  {
-    "id": 128,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:29+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11173,
-      "reserve": 2048,
-      "total": 13221,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 129,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:33+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11173,
-      "actual_input": 9880,
-      "actual_output": 188,
-      "duration_s": 4.17,
-      "calibrated_cpt": 3.544
-    }
-  },
-  {
-    "id": 130,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:33+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11385,
-      "reserve": 2048,
-      "total": 13433,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 9
-    }
-  },
-  {
-    "id": 131,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:33+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11385,
-      "reserve": 2048,
-      "total": 13433,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 132,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:35+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11385,
-      "actual_input": 10189,
-      "actual_output": 58,
-      "duration_s": 1.4,
-      "calibrated_cpt": 3.558
-    }
-  },
-  {
-    "id": 133,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:35+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11560,
-      "reserve": 2048,
-      "total": 13608,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 11
-    }
-  },
-  {
-    "id": 134,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:35+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11560,
-      "reserve": 2048,
-      "total": 13608,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 135,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:36+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11560,
-      "actual_input": 10389,
-      "actual_output": 59,
-      "duration_s": 1.5,
-      "calibrated_cpt": 3.565
-    }
-  },
-  {
-    "id": 136,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:36+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11665,
-      "reserve": 2048,
-      "total": 13713,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 137,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:36+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11665,
-      "reserve": 2048,
-      "total": 13713,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 138,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:38+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11665,
-      "actual_input": 10531,
-      "actual_output": 57,
-      "duration_s": 1.43,
-      "calibrated_cpt": 3.563
-    }
-  },
-  {
-    "id": 139,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:38+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11889,
-      "reserve": 2048,
-      "total": 13937,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 140,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:38+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11889,
-      "reserve": 2048,
-      "total": 13937,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 141,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:39+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11889,
-      "actual_input": 10724,
-      "actual_output": 59,
-      "duration_s": 1.38,
-      "calibrated_cpt": 3.562
-    }
-  },
-  {
-    "id": 142,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:39+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12252,
-      "reserve": 2048,
-      "total": 14300,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
+      "method": "heuristic(cpt=3.58)",
       "messages": 17
     }
   },
   {
-    "id": 143,
+    "id": 657,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:39+00:00",
+    "ts": "2026-11-22T15:56:28+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12252,
+      "estimated_input": 16502,
       "reserve": 2048,
-      "total": 14300,
+      "total": 18550,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.56)"
+      "method": "heuristic(cpt=3.58)"
     }
   },
   {
-    "id": 144,
+    "id": 658,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:41+00:00",
+    "ts": "2026-11-22T15:56:35+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12252,
-      "actual_input": 11074,
-      "actual_output": 144,
-      "duration_s": 2.08,
+      "estimated_input": 16502,
+      "actual_input": 15106,
+      "actual_output": 578,
+      "duration_s": 6.29,
       "calibrated_cpt": 3.556
     }
   },
   {
-    "id": 145,
+    "id": 659,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:41+00:00",
+    "ts": "2026-11-22T15:56:35+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 12533,
+      "estimated_input": 17243,
       "reserve": 2048,
-      "total": 14581,
+      "total": 19291,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
@@ -2128,1819 +2094,377 @@
     }
   },
   {
-    "id": 146,
+    "id": 660,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:41+00:00",
+    "ts": "2026-11-22T15:56:35+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 12533,
+      "estimated_input": 17243,
       "reserve": 2048,
-      "total": 14581,
+      "total": 19291,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.56)"
     }
   },
   {
-    "id": 147,
+    "id": 661,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:43+00:00",
+    "ts": "2026-11-22T15:56:37+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 12533,
-      "actual_input": 11338,
-      "actual_output": 57,
-      "duration_s": 1.38,
-      "calibrated_cpt": 3.548
-    }
-  },
-  {
-    "id": 148,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:43+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13179,
-      "reserve": 2048,
-      "total": 15227,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.55)",
-      "messages": 21
-    }
-  },
-  {
-    "id": 149,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:43+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13179,
-      "reserve": 2048,
-      "total": 15227,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.55)"
-    }
-  },
-  {
-    "id": 150,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:44+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13179,
-      "actual_input": 11904,
-      "actual_output": 72,
-      "duration_s": 1.61,
-      "calibrated_cpt": 3.541
-    }
-  },
-  {
-    "id": 151,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:44+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13689,
-      "reserve": 2048,
-      "total": 15737,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 23
-    }
-  },
-  {
-    "id": 152,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:44+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13689,
-      "reserve": 2048,
-      "total": 15737,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 153,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:47+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13689,
-      "actual_input": 12343,
-      "actual_output": 151,
-      "duration_s": 2.3,
+      "estimated_input": 17243,
+      "actual_input": 15780,
+      "actual_output": 113,
+      "duration_s": 2.39,
       "calibrated_cpt": 3.536
     }
   },
   {
-    "id": 154,
+    "id": 662,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:47+00:00",
+    "ts": "2026-11-22T15:56:37+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13988,
+      "estimated_input": 17573,
       "reserve": 2048,
-      "total": 16036,
+      "total": 19621,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.54)",
-      "messages": 25
+      "messages": 21
     }
   },
   {
-    "id": 155,
+    "id": 663,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:47+00:00",
+    "ts": "2026-11-22T15:56:37+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13988,
+      "estimated_input": 17573,
       "reserve": 2048,
-      "total": 16036,
+      "total": 19621,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.54)"
     }
   },
   {
-    "id": 156,
+    "id": 664,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:49+00:00",
+    "ts": "2026-11-22T15:56:43+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 13988,
-      "actual_input": 12610,
-      "actual_output": 59,
-      "duration_s": 1.98,
-      "calibrated_cpt": 3.531
+      "estimated_input": 17573,
+      "actual_input": 16011,
+      "actual_output": 581,
+      "duration_s": 5.36,
+      "calibrated_cpt": 3.521
     }
   },
   {
-    "id": 157,
+    "id": 665,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:49+00:00",
+    "ts": "2026-11-22T15:56:43+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 14225,
+      "estimated_input": 18292,
       "reserve": 2048,
-      "total": 16273,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 27
-    }
-  },
-  {
-    "id": 158,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:49+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14225,
-      "reserve": 2048,
-      "total": 16273,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 159,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:51+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14225,
-      "actual_input": 12833,
-      "actual_output": 72,
-      "duration_s": 1.99,
-      "calibrated_cpt": 3.523
-    }
-  },
-  {
-    "id": 160,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:51+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14545,
-      "reserve": 2048,
-      "total": 16593,
+      "total": 20340,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.52)",
-      "messages": 29
+      "messages": 23
     }
   },
   {
-    "id": 161,
+    "id": 666,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:51+00:00",
+    "ts": "2026-11-22T15:56:43+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 14545,
+      "estimated_input": 18292,
       "reserve": 2048,
-      "total": 16593,
+      "total": 20340,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.52)"
     }
   },
   {
-    "id": 162,
+    "id": 667,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:53+00:00",
+    "ts": "2026-11-22T15:56:49+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14545,
-      "actual_input": 13157,
-      "actual_output": 144,
-      "duration_s": 2.5,
-      "calibrated_cpt": 3.511
+      "estimated_input": 18292,
+      "actual_input": 16667,
+      "actual_output": 641,
+      "duration_s": 6.76,
+      "calibrated_cpt": 3.506
     }
   },
   {
-    "id": 163,
+    "id": 668,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:53+00:00",
+    "ts": "2026-11-22T15:56:49+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 14856,
+      "estimated_input": 19022,
       "reserve": 2048,
-      "total": 16904,
+      "total": 21070,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.51)",
-      "messages": 31
+      "messages": 25
     }
   },
   {
-    "id": 164,
+    "id": 669,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:53+00:00",
+    "ts": "2026-11-22T15:57:01+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 6,
+      "before_tokens": 19022,
+      "after_tokens": 11378,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 22,
+      "kept_messages": 3,
+      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5593,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор/чтение 5+ страниц → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- Arize AI (URL: https://arize.com/blog/memory-and-state-in-llm-applications/):\n  - \"The term 'memory' is often used in discussions about LLM applications, but it’s an abstraction that can mean different things to different people.\" (line 171)\n  - \"LLMs have a fixed context window, limiting how much information they can process at once.\" (line 239)\n  - \"Stateful designs often improve user experience and application performance but come with increased costs.\" (line 243, ev_4859d20f6dd1)\n  - \"Domain-specific applications benefit from storing structured entities as discrete memory variables.\" (line 316)\n- LangGraph Persistence (URL: https://docs.langchain.com/oss/python/langgraph/persistence):\n  - \"LangGraph’s persistence layer gives agents short-term memory through checkpointers and long-term memory through stores.\" (line 145, ev_57781f5ec58a)\n  - \"Checkpointers persist a thread’s graph state as checkpoints. Use them for short-term, thread-scoped memory...\" (line 152)\n  - \"Most applications can use both: a checkpointer tracks the current thread, and a store tracks durable information across threads.\" (line 156, ev_89f9260e5213)\n- arXiv 2603.07670 (URL: https://arxiv.org/html/2603.07670):\n  - \"Large language model (LLM) agents increasingly operate in settings where a single context window is far too small to capture what has happened, what was learned, and what should not be repeated.\" (line 165)\n  - \"Whatever fits inside the current context window constitutes the agent’s working memory.\" (line 317)\n  - \"Extending context windows to 100k+ tokens [Chen et al., 2023] delays the problem but cannot eliminate it, and longer contexts incur quadratic cost increases in attention.\" (line 539)\n  - \"Memory-augmented agents are expensive: large context windows, multiple retrieval calls per step, ever-growing stores.\" (line 1031)\n  - \"Context-resident memory is transparent and infrastructure-free, but it carries a well-known pathology: summarization drift.\" (line 536, ev_4cc9ac1595f7)\n  - \"Long context is not memory. Despite context windows stretching to 200k tokens [Chen et al., 2023], long-context models consistently underperform purpose-built memory systems on tasks requiring selective retrieval and active management.\" (line 766, ev_c3248fc55c1f)\n  - \"RAG-based agents beat pure long-context baselines across the board, yet the primary bottleneck is no longer storage—it is retrieval quality.\" (line 771, ev_4659ba3e27b9)\n  - \"Parametric memory excels at seamless knowledge integration but fails at targeted deletion and auditing. Non-parametric memory supports inspection and governance but can feel “bolted on”—the agent sometimes ignores retrieved records or uses them inconsistently.\" (line 784, ev_be1eb5b0c66f)\n- mem0.ai (URL: https://mem0.ai/library/agent-memory/vector-databases-and-memory-for-ai-agents):\n  - \"They know nothing about the content of what they store. They cannot distinguish a user preference from a random sentence. They have no awareness of time, contradiction, or relevance to a task.\" (line 79, ev_fbc72fab7e33)\n  - \"The result is memory pollution: the store has grown to contain more noise than signal, and the noise is semantic...\" (line 211, ev_42f0cdc173ae)\n- explore.n1n.ai (URL: https://explore.n1n.ai/blog/rethinking-agent-memory-vector-databases-overkill-2026-07-25):\n  - \"Vector search answers the question: 'What are the things most similar to this query?' This is inherently fu...\" (line 31, ev_074ddcb57c6b)\n  - \"Embedding Costs: Every write requires a call to an embedding API. Indexing...\" (lines 33-36, ev_e88fab39a04a)\n\n## Прогресс\n- Выполнено 5 поисковых запроса (Round 1: 3, Round 2: 2).\n- Найдено 33 URL, выбрано 10 в очередь.\n- Прочитано 5 страниц из 5 необходимых (Arize, LangGraph, arXiv 2603.07670, mem0.ai, explore.n1n.ai).\n- Детально изучены разделы Arize (lines 155-493), LangGraph (lines 120-239), arXiv (lines 530-544, 760-785), mem0.ai (lines 1-212), explore.n1n.ai (полный текст).\n- Собрано 11 evidence (минимум 6 выполнен).\n- Написаны разделы: approaches (updated, 5 cited evidence), limitations (updated, 8 cited evidence).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Round 1: 3-4 search queries on LLM agent state storage; Select sources, fetch 5+ pages; Save evidence from pages; Round 2: refined queries + follow a link; Write report sections (approaches, limitations, comparison, unverified); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_191abf9d0ab39a8720c4",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8236c425940b1016"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8236c425940b1016"
+        }
+      ]
+    }
+  },
+  {
+    "id": 670,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:01+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 14856,
+      "estimated_input": 11378,
       "reserve": 2048,
-      "total": 16904,
+      "total": 13426,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.51)"
     }
   },
   {
-    "id": 165,
+    "id": 671,
     "task_id": "B4",
-    "ts": "2026-11-20T21:07:55+00:00",
+    "ts": "2026-11-22T15:57:04+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 14856,
-      "actual_input": 13418,
-      "actual_output": 57,
-      "duration_s": 1.87,
-      "calibrated_cpt": 3.5
-    }
-  },
-  {
-    "id": 166,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:55+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15030,
-      "reserve": 2048,
-      "total": 17078,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)",
-      "messages": 33
-    }
-  },
-  {
-    "id": 167,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:55+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15030,
-      "reserve": 2048,
-      "total": 17078,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)"
-    }
-  },
-  {
-    "id": 168,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:57+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15030,
-      "actual_input": 13556,
-      "actual_output": 56,
-      "duration_s": 1.8,
-      "calibrated_cpt": 3.49
-    }
-  },
-  {
-    "id": 169,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:57+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15468,
-      "reserve": 2048,
-      "total": 17516,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)",
-      "messages": 35
-    }
-  },
-  {
-    "id": 170,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:57+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15468,
-      "reserve": 2048,
-      "total": 17516,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)"
-    }
-  },
-  {
-    "id": 171,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:59+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15468,
-      "actual_input": 13926,
-      "actual_output": 70,
-      "duration_s": 1.98,
-      "calibrated_cpt": 3.482
-    }
-  },
-  {
-    "id": 172,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:59+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16240,
-      "reserve": 2048,
-      "total": 18288,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 37
-    }
-  },
-  {
-    "id": 173,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:07:59+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16240,
-      "reserve": 2048,
-      "total": 18288,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 174,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:02+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16240,
-      "actual_input": 14513,
-      "actual_output": 178,
-      "duration_s": 2.81,
-      "calibrated_cpt": 3.484
-    }
-  },
-  {
-    "id": 175,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:02+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16551,
-      "reserve": 2048,
-      "total": 18599,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 39
-    }
-  },
-  {
-    "id": 176,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:02+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16551,
-      "reserve": 2048,
-      "total": 18599,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 177,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:05+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16551,
-      "actual_input": 14812,
-      "actual_output": 153,
-      "duration_s": 2.5,
-      "calibrated_cpt": 3.483
-    }
-  },
-  {
-    "id": 178,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:05+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16840,
-      "reserve": 2048,
-      "total": 18888,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 41
-    }
-  },
-  {
-    "id": 179,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:05+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16840,
-      "reserve": 2048,
-      "total": 18888,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 180,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:07+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16840,
-      "actual_input": 15085,
-      "actual_output": 59,
-      "duration_s": 1.92,
-      "calibrated_cpt": 3.481
-    }
-  },
-  {
-    "id": 181,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:07+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 17262,
-      "reserve": 2048,
-      "total": 19310,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 43
-    }
-  },
-  {
-    "id": 182,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:07+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 17262,
-      "reserve": 2048,
-      "total": 19310,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 183,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:09+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 17262,
-      "actual_input": 15448,
-      "actual_output": 73,
-      "duration_s": 1.95,
-      "calibrated_cpt": 3.479
-    }
-  },
-  {
-    "id": 184,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:09+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18028,
-      "reserve": 2048,
-      "total": 20076,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)",
-      "messages": 45
-    }
-  },
-  {
-    "id": 185,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:09+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18028,
-      "reserve": 2048,
-      "total": 20076,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.48)"
-    }
-  },
-  {
-    "id": 186,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:12+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18028,
-      "actual_input": 15957,
-      "actual_output": 168,
-      "duration_s": 2.92,
-      "calibrated_cpt": 3.492
-    }
-  },
-  {
-    "id": 187,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18276,
-      "reserve": 2048,
-      "total": 20324,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)",
-      "messages": 47
-    }
-  },
-  {
-    "id": 188,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18276,
-      "reserve": 2048,
-      "total": 20324,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)"
-    }
-  },
-  {
-    "id": 189,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:15+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18276,
-      "actual_input": 16245,
-      "actual_output": 189,
-      "duration_s": 3.02,
-      "calibrated_cpt": 3.499
-    }
-  },
-  {
-    "id": 190,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:15+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18599,
-      "reserve": 2048,
-      "total": 20647,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)",
-      "messages": 49
-    }
-  },
-  {
-    "id": 191,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:15+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18599,
-      "reserve": 2048,
-      "total": 20647,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)"
-    }
-  },
-  {
-    "id": 192,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:17+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18599,
-      "actual_input": 16556,
-      "actual_output": 58,
-      "duration_s": 2.11,
-      "calibrated_cpt": 3.504
-    }
-  },
-  {
-    "id": 193,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:17+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19051,
-      "reserve": 2048,
-      "total": 21099,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)",
-      "messages": 51
-    }
-  },
-  {
-    "id": 194,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:25+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 5,
-      "before_tokens": 19051,
-      "after_tokens": 11227,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 44,
-      "kept_messages": 7,
-      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
-      "chunks": 1,
-      "cost_input": 7684,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- LangGraph: checkpointer хранит состояние графа треда как чекпоинты (краткосрочная память), store — долговременную память между тредами. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_13f48a2a4ef9).\n- LangGraph: InMemorySaver хранит чекпоинты в RAM — при перезапуске процесса все чекпоинты теряются; для продакшена нужен persistent checkpointer (Postgres/SQLite). Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_8c73704164f8).\n- AMV-L: большинство систем используют age-based retention (TTL), но TTL не ограничивает вычислительный footprint памяти на request path — retrieval candidate sets и vector similarity scans растут непредсказуемо, давая heavy-tailed latency. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_6c1f47d51bae).\n- AMV-L: для предсказуемой производительности long-running LLM-агентов требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_db086ab51e96).\n- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1, ev_ed1f1ed1a38b, ev_4598fa1c7c10).\n- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f, ev_85e20e46b858).\n- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646, ev_7247d64e7b36).\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) в сжатом фрагменте 22 вызовов tools: read_artifact×5, save_evidence×7, search_artifact×10\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Round 1: 3-4 search queries on LLM agent state storage; Select sources, fetch 5+ pages; Save evidence from pages; Round 2: refined queries + follow a link; Write report sections (approaches, limitations, comparison, unverified); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_06bb89f539a917f10113, art_0c16c3d04950b33dc0c1, art_d386c05025cc3edfd176, art_ee035e4658cd928988bf, art_f4eaad0978f98478aa40"
-    }
-  },
-  {
-    "id": 195,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:25+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11227,
-      "reserve": 2048,
-      "total": 13275,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)"
-    }
-  },
-  {
-    "id": 196,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:27+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11227,
-      "actual_input": 9960,
-      "actual_output": 73,
-      "duration_s": 1.45,
-      "calibrated_cpt": 3.532
-    }
-  },
-  {
-    "id": 197,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:27+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12045,
-      "reserve": 2048,
-      "total": 14093,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 9
-    }
-  },
-  {
-    "id": 198,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:27+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12045,
-      "reserve": 2048,
-      "total": 14093,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 199,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:29+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12045,
-      "actual_input": 10730,
-      "actual_output": 146,
-      "duration_s": 2.46,
-      "calibrated_cpt": 3.553
-    }
-  },
-  {
-    "id": 200,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:30+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12251,
-      "reserve": 2048,
-      "total": 14299,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.55)",
-      "messages": 11
-    }
-  },
-  {
-    "id": 201,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:30+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12251,
-      "reserve": 2048,
-      "total": 14299,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.55)"
-    }
-  },
-  {
-    "id": 202,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:32+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12251,
-      "actual_input": 10999,
-      "actual_output": 198,
-      "duration_s": 2.37,
-      "calibrated_cpt": 3.561
-    }
-  },
-  {
-    "id": 203,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:32+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 12531,
-      "reserve": 2048,
-      "total": 14579,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 204,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:32+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 12531,
-      "reserve": 2048,
-      "total": 14579,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 205,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:33+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 12531,
-      "actual_input": 11320,
-      "actual_output": 73,
-      "duration_s": 1.49,
-      "calibrated_cpt": 3.559
-    }
-  },
-  {
-    "id": 206,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:34+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13291,
-      "reserve": 2048,
-      "total": 15339,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 207,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:34+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13291,
-      "reserve": 2048,
-      "total": 15339,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 208,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:36+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13291,
-      "actual_input": 11938,
-      "actual_output": 191,
-      "duration_s": 2.4,
-      "calibrated_cpt": 3.565
-    }
-  },
-  {
-    "id": 209,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:36+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13595,
-      "reserve": 2048,
-      "total": 15643,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 17
-    }
-  },
-  {
-    "id": 210,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:36+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13595,
-      "reserve": 2048,
-      "total": 15643,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 211,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:39+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13595,
-      "actual_input": 12250,
-      "actual_output": 208,
-      "duration_s": 2.7,
-      "calibrated_cpt": 3.565
-    }
-  },
-  {
-    "id": 212,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:39+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13957,
-      "reserve": 2048,
-      "total": 16005,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 213,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:39+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13957,
-      "reserve": 2048,
-      "total": 16005,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 214,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:40+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13957,
-      "actual_input": 12578,
-      "actual_output": 74,
-      "duration_s": 1.69,
-      "calibrated_cpt": 3.564
-    }
-  },
-  {
-    "id": 215,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:40+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14587,
-      "reserve": 2048,
-      "total": 16635,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 21
-    }
-  },
-  {
-    "id": 216,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:40+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14587,
-      "reserve": 2048,
-      "total": 16635,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 217,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:43+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14587,
-      "actual_input": 13121,
-      "actual_output": 214,
-      "duration_s": 2.85,
-      "calibrated_cpt": 3.565
-    }
-  },
-  {
-    "id": 218,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:43+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14970,
-      "reserve": 2048,
-      "total": 17018,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 23
-    }
-  },
-  {
-    "id": 219,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:43+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14970,
-      "reserve": 2048,
-      "total": 17018,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 220,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:45+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14970,
-      "actual_input": 13454,
-      "actual_output": 72,
-      "duration_s": 1.74,
-      "calibrated_cpt": 3.566
-    }
-  },
-  {
-    "id": 221,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:45+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15570,
-      "reserve": 2048,
-      "total": 17618,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 25
-    }
-  },
-  {
-    "id": 222,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:45+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15570,
-      "reserve": 2048,
-      "total": 17618,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 223,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:48+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15570,
-      "actual_input": 13975,
-      "actual_output": 209,
-      "duration_s": 2.84,
-      "calibrated_cpt": 3.569
-    }
-  },
-  {
-    "id": 224,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:48+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15943,
-      "reserve": 2048,
-      "total": 17991,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 27
-    }
-  },
-  {
-    "id": 225,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:48+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15943,
-      "reserve": 2048,
-      "total": 17991,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 226,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:08:50+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15943,
-      "actual_input": 14301,
-      "actual_output": 86,
-      "duration_s": 1.99,
-      "calibrated_cpt": 3.571
-    }
-  },
-  {
-    "id": 227,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:21+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "LLM agent state persistence checkpointing limitations production challenges",
-      "ok": {
-        "hn_algolia": 0,
-        "github": 0
-      },
-      "failed": {
-        "wikipedia": "ConnectTimeout: ",
-        "arxiv": "ReadTimeout: ",
-        "stackoverflow": "ConnectError: "
-      },
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
-      ]
-    }
-  },
-  {
-    "id": 228,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:21+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "LLM agent state persistence checkpointing limitations production challenges",
-      "pages_read_before": 7,
-      "new_urls": 0,
-      "round": 2
-    }
-  },
-  {
-    "id": 229,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:21+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18028,
-      "reserve": 2048,
-      "total": 20076,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 30
-    }
-  },
-  {
-    "id": 230,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:21+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18028,
-      "reserve": 2048,
-      "total": 20076,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 231,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:23+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18028,
-      "actual_input": 16208,
-      "actual_output": 49,
-      "duration_s": 2.1,
-      "calibrated_cpt": 3.571
-    }
-  },
-  {
-    "id": 232,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:54+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "Letta MemGPT memory hierarchy external context agent state management",
-      "ok": {
-        "wikipedia": 0,
-        "arxiv": 0,
-        "hn_algolia": 0,
-        "stackoverflow": 0,
-        "github": 0
-      },
-      "failed": {},
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
-      ]
-    }
-  },
-  {
-    "id": 233,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:54+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "Letta MemGPT memory hierarchy external context agent state management",
-      "pages_read_before": 7,
-      "new_urls": 0,
-      "round": 2
-    }
-  },
-  {
-    "id": 234,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:54+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 18299,
-      "reserve": 2048,
-      "total": 20347,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 32
-    }
-  },
-  {
-    "id": 235,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:54+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 18299,
-      "reserve": 2048,
-      "total": 20347,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 236,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:09:56+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 18299,
-      "actual_input": 16491,
-      "actual_output": 47,
-      "duration_s": 2.39,
-      "calibrated_cpt": 3.566
-    }
-  },
-  {
-    "id": 237,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:29+00:00",
-    "kind": "search_engines",
-    "data": {
-      "query": "agent memory system comparison vector store graph database limitations survey",
-      "ok": {
-        "wikipedia": 5,
-        "arxiv": 2,
-        "hn_algolia": 0,
-        "stackoverflow": 0,
-        "github": 0
-      },
-      "failed": {},
-      "skipped": [
-        "ddgs:bing",
-        "ddgs:duckduckgo",
-        "ddgs:yandex"
-      ]
-    }
-  },
-  {
-    "id": 238,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:29+00:00",
-    "kind": "search_round",
-    "data": {
-      "query": "agent memory system comparison vector store graph database limitations survey",
-      "pages_read_before": 7,
-      "new_urls": 4,
-      "round": 2
-    }
-  },
-  {
-    "id": 239,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:29+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 19444,
-      "reserve": 2048,
-      "total": 21492,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)",
-      "messages": 34
-    }
-  },
-  {
-    "id": 240,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:38+00:00",
-    "kind": "compaction",
-    "data": {
-      "n": 6,
-      "before_tokens": 19444,
-      "after_tokens": 11389,
-      "reserve": 2048,
-      "working_limit": 28000,
-      "removed_messages": 29,
-      "kept_messages": 5,
-      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
-      "chunks": 1,
-      "cost_input": 6543,
-      "cost_output": 1200,
-      "note": "",
-      "summary": "## Цель\nПодготовить обзор подходов к хранению состояния LLM-агентов с цитатами-подтверждениями, сравнением ограничений и разделом «Непроверенное».\n\n## Ограничения пользователя\n- [W1] Прочитать полностью (web_fetch) не меньше 5 реально найденных страниц.\n- [W2] Каждое утверждение обзора подтверждено цитатой со страницы (evidence с URL); snippet поисковика подтверждением не считается.\n- [W3] Обзор не длиннее 900 слов.\n- [W4] Отдельный раздел «Непроверенное»: что не удалось подтвердить и какие источники не прочитаны.\n- [W5] Сравнить подходы по их ограничениям.\n- [W6] Минимум два раунда: после чтения первых страниц уточнить запросы по прочитанному; брать страницы с разных сайтов, если они доступны.\n- [W7] Остановиться, когда требования к обзору выполнены: читать всю очередь не нужно.\n\n## Решения и договорённости\n- Использовать навык `research_web`: 2 раунда поиска, выбор источников, чтение страниц, сбор evidence.\n- План: Round 1 (поиск) → выбор 7 источников → чтение → Round 2 (уточнение) → написание отчёта.\n- Критерии завершения: min_search_queries=3, min_web_pages_read=5, min_web_sources_cited=4, min_evidence=6, required_sections=[\"approaches\", \"limitations\", \"comparison\", \"unverified\"], min_queries_after_reading=1.\n\n## Подтверждённые факты (с источниками)\n- LangGraph: checkpointer хранит состояние графа треда как чекпоинты (краткосрочная память), store — долговременную память между тредами. Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_13f48a2a4ef9).\n- LangGraph: InMemorySaver хранит чекпоинты в RAM — при перезапуске процесса все чекпоинты теряются; для продакшена нужен persistent checkpointer (Postgres/SQLite). Источник: `https://docs.langchain.com/oss/python/langgraph/persistence` (art_d386c05025cc3edfd176, ev_8c73704164f8).\n- AMV-L: большинство систем используют age-based retention (TTL), но TTL не ограничивает вычислительный footprint памяти на request path — retrieval candidate sets и vector similarity scans растут непредсказуемо, давая heavy-tailed latency. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_6c1f47d51bae).\n- AMV-L: для предсказуемой производительности long-running LLM-агентов требуется явное управление размером working-set памяти и value-driven lifecycle management, а не только retention time. Источник: `https://arxiv.org/abs/2603.04443v1` (art_f4eaad0978f98478aa40, ev_db086ab51e96).\n- VikingMem: система управления базой памяти для stateful LLM-приложений; генерирует high-level summary memories, приоритизирует недавние, сжимает старые; превосходит baseline на 30% в retrieval effectiveness. Источник: `https://arxiv.org/abs/2605.29640v3` (art_0c16c3d04950b33dc0c1, ev_ed1f1ed1a38b, ev_4598fa1c7c10).\n- REMIT: reference sequencer с Verus-verified recovery core для checkpoint/interrupt/resume семантик в workflow persistence layers. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f, ev_85e20e46b858).\n- Mandol: agglomerative agent memory system для long-term conversations; 4.8x insertion speedup при 10 QPS. Источник: `https://arxiv.org/abs/2606.29778v1` (art_d356641d87397b9bc646, ev_7247d64e7b36).\n- REMIT: пять широко используемых agent workflow frameworks по-разному определяют resume semantics, ни один не предоставляет machine-checkable contract, а фактическое поведение нарушает даже заявленные фрагменты. Источник: `https://arxiv.org/abs/2608.03836v3` (art_2c2bba1f59b11d3bbf0c, ev_5a91846e5d7f).\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) в сжатом фрагменте 15 вызовов tools: queue_status×1, read_artifact×4, save_evidence×8, search_artifact×1, web_search×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Round 1: 3-4 search queries on LLM agent state storage; Select sources, fetch 5+ pages; Save evidence from pages; Round 2: refined queries + follow a link; Write report sections (approaches, limitations, comparison, unverified); complete_task\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) art_06bb89f539a917f10113, art_2c2bba1f59b11d3bbf0c, art_d356641d87397b9bc646, art_ee035e4658cd928988bf"
-    }
-  },
-  {
-    "id": 241,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:38+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11389,
-      "reserve": 2048,
-      "total": 13437,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.57)"
-    }
-  },
-  {
-    "id": 242,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:40+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11389,
-      "actual_input": 10326,
-      "actual_output": 165,
-      "duration_s": 2.44,
-      "calibrated_cpt": 3.565
-    }
-  },
-  {
-    "id": 243,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:40+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 11757,
-      "reserve": 2048,
-      "total": 13805,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)",
-      "messages": 7
-    }
-  },
-  {
-    "id": 244,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:40+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 11757,
-      "reserve": 2048,
-      "total": 13805,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.56)"
-    }
-  },
-  {
-    "id": 245,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:42+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 11757,
-      "actual_input": 10733,
-      "actual_output": 45,
-      "duration_s": 1.86,
+      "estimated_input": 11378,
+      "actual_input": 9990,
+      "actual_output": 234,
+      "duration_s": 3.06,
       "calibrated_cpt": 3.552
     }
   },
   {
-    "id": 246,
+    "id": 672,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:47+00:00",
+    "ts": "2026-11-22T15:57:04+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13243,
+      "estimated_input": 11567,
       "reserve": 2048,
-      "total": 15291,
+      "total": 13615,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
       "method": "heuristic(cpt=3.55)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 673,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11567,
+      "reserve": 2048,
+      "total": 13615,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.55)"
+    }
+  },
+  {
+    "id": 674,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11567,
+      "actual_input": 10303,
+      "actual_output": 72,
+      "duration_s": 1.37,
+      "calibrated_cpt": 3.576
+    }
+  },
+  {
+    "id": 675,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11731,
+      "reserve": 2048,
+      "total": 13779,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 676,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11731,
+      "reserve": 2048,
+      "total": 13779,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 677,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11731,
+      "actual_input": 10505,
+      "actual_output": 147,
+      "duration_s": 1.79,
+      "calibrated_cpt": 3.591
+    }
+  },
+  {
+    "id": 678,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12018,
+      "reserve": 2048,
+      "total": 14066,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.59)",
       "messages": 9
     }
   },
   {
-    "id": 247,
+    "id": 679,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:47+00:00",
+    "ts": "2026-11-22T15:57:07+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13243,
+      "estimated_input": 12018,
       "reserve": 2048,
-      "total": 15291,
+      "total": 14066,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.55)"
+      "method": "heuristic(cpt=3.59)"
     }
   },
   {
-    "id": 248,
+    "id": 680,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:49+00:00",
+    "ts": "2026-11-22T15:57:08+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 13243,
-      "actual_input": 12031,
-      "actual_output": 173,
-      "duration_s": 2.65,
-      "calibrated_cpt": 3.546
+      "estimated_input": 12018,
+      "actual_input": 10808,
+      "actual_output": 72,
+      "duration_s": 1.29,
+      "calibrated_cpt": 3.599
     }
   },
   {
-    "id": 249,
+    "id": 681,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:49+00:00",
+    "ts": "2026-11-22T15:57:08+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Обзор готов: 5 страниц прочитано, 11 evidence, 4 раздела (approaches, limitations, comparison, unverified), 5 поисковых запросов (2 после чтения), источники с разных сайтов."
+    }
+  },
+  {
+    "id": 682,
+    "task_id": "B4",
+    "ts": "2026-11-22T15:57:08+00:00",
     "kind": "context_check",
     "data": {
-      "estimated_input": 13553,
+      "estimated_input": 12250,
       "reserve": 2048,
-      "total": 15601,
+      "total": 14298,
       "trigger": 21000,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.55)",
+      "method": "heuristic(cpt=3.60)",
       "messages": 11
     }
   },
   {
-    "id": 250,
+    "id": 683,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:49+00:00",
+    "ts": "2026-11-22T15:57:08+00:00",
     "kind": "model_call_plan",
     "data": {
-      "estimated_input": 13553,
+      "estimated_input": 12250,
       "reserve": 2048,
-      "total": 15601,
+      "total": 14298,
       "working_limit": 28000,
       "window": 262144,
-      "method": "heuristic(cpt=3.55)"
+      "method": "heuristic(cpt=3.60)"
     }
   },
   {
-    "id": 251,
+    "id": 684,
     "task_id": "B4",
-    "ts": "2026-11-20T21:10:52+00:00",
+    "ts": "2026-11-22T15:57:11+00:00",
     "kind": "model_call_done",
     "data": {
-      "estimated_input": 13553,
-      "actual_input": 12326,
-      "actual_output": 192,
-      "duration_s": 2.66,
-      "calibrated_cpt": 3.537
-    }
-  },
-  {
-    "id": 252,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:52+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 13920,
-      "reserve": 2048,
-      "total": 15968,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)",
-      "messages": 13
-    }
-  },
-  {
-    "id": 253,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:52+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 13920,
-      "reserve": 2048,
-      "total": 15968,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.54)"
-    }
-  },
-  {
-    "id": 254,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:59+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 13920,
-      "actual_input": 12639,
-      "actual_output": 725,
-      "duration_s": 7.07,
-      "calibrated_cpt": 3.529
-    }
-  },
-  {
-    "id": 255,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:59+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 14784,
-      "reserve": 2048,
-      "total": 16832,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)",
-      "messages": 15
-    }
-  },
-  {
-    "id": 256,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:10:59+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 14784,
-      "reserve": 2048,
-      "total": 16832,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.53)"
-    }
-  },
-  {
-    "id": 257,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:05+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 14784,
-      "actual_input": 13441,
-      "actual_output": 442,
-      "duration_s": 6.17,
-      "calibrated_cpt": 3.519
-    }
-  },
-  {
-    "id": 258,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:05+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15366,
-      "reserve": 2048,
-      "total": 17414,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)",
-      "messages": 17
-    }
-  },
-  {
-    "id": 259,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:05+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15366,
-      "reserve": 2048,
-      "total": 17414,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.52)"
-    }
-  },
-  {
-    "id": 260,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:11+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15366,
-      "actual_input": 13962,
-      "actual_output": 488,
-      "duration_s": 6.12,
-      "calibrated_cpt": 3.509
-    }
-  },
-  {
-    "id": 261,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:12+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 15971,
-      "reserve": 2048,
-      "total": 18019,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)",
-      "messages": 19
-    }
-  },
-  {
-    "id": 262,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:12+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 15971,
-      "reserve": 2048,
-      "total": 18019,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.51)"
-    }
-  },
-  {
-    "id": 263,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:16+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 15971,
-      "actual_input": 14527,
-      "actual_output": 319,
-      "duration_s": 4.04,
-      "calibrated_cpt": 3.497
-    }
-  },
-  {
-    "id": 264,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:16+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16445,
-      "reserve": 2048,
-      "total": 18493,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)",
-      "messages": 21
-    }
-  },
-  {
-    "id": 265,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:16+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16445,
-      "reserve": 2048,
-      "total": 18493,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.50)"
-    }
-  },
-  {
-    "id": 266,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:18+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16445,
-      "actual_input": 14925,
-      "actual_output": 97,
-      "duration_s": 2.22,
-      "calibrated_cpt": 3.486
-    }
-  },
-  {
-    "id": 267,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:18+00:00",
-    "kind": "status",
-    "data": {
-      "status": "completed",
-      "reason": "Обзор готов: 4 раздела (approaches, limitations, comparison, unverified), 21 evidence с URL, 8 страниц прочитано, 4+ источника процитировано, 2 раунда поиска (round 2: refined queries после чтения), сравнение по ограничениям, раздел «Непроверенное»."
-    }
-  },
-  {
-    "id": 268,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:18+00:00",
-    "kind": "context_check",
-    "data": {
-      "estimated_input": 16782,
-      "reserve": 2048,
-      "total": 18830,
-      "trigger": 21000,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)",
-      "messages": 23
-    }
-  },
-  {
-    "id": 269,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:18+00:00",
-    "kind": "model_call_plan",
-    "data": {
-      "estimated_input": 16782,
-      "reserve": 2048,
-      "total": 18830,
-      "working_limit": 28000,
-      "window": 262144,
-      "method": "heuristic(cpt=3.49)"
-    }
-  },
-  {
-    "id": 270,
-    "task_id": "B4",
-    "ts": "2026-11-20T21:11:22+00:00",
-    "kind": "model_call_done",
-    "data": {
-      "estimated_input": 16782,
-      "actual_input": 15192,
-      "actual_output": 323,
-      "duration_s": 3.8,
-      "calibrated_cpt": 3.479
+      "estimated_input": 12250,
+      "actual_input": 11049,
+      "actual_output": 233,
+      "duration_s": 2.62,
+      "calibrated_cpt": 3.601
     }
   }
 ]
