@@ -172,6 +172,19 @@ class ToolRuntimeMiddleware(AgentMiddleware):
                                "(say explicitly what the corpus does not confirm)." + hint)
         return res
 
+    def _reading_blocked(self, request: ToolCallRequest) -> ToolMessage | None:
+        """Second stage of the reads-without-evidence detector: hints alone did not help in A1 of 22.11 (four hints,
+        112 reads, 3 evidence). After 2N reads in a row without progress, reading tools are not run until the agent
+        saves evidence or writes a report section (a bounded change of strategy, the task goes on)."""
+        N = self.ctx.limits.reads_without_evidence_hint
+        if not N or request.tool_call["name"] not in self.READ_TOOLS or self._reads_since_evidence < 2 * N:
+            return None
+        self.ctx.emit("guardrail", guard="reads_blocked", tool=request.tool_call["name"], reads=self._reads_since_evidence)
+        return _tool_error(request, "reads_blocked_until_evidence",
+                           f"{self._reads_since_evidence} reading calls in a row without new evidence: reading is paused. "
+                           "Save the quotes you already found with save_evidence and write the report sections you can "
+                           "write now; reading works again after that.")
+
     def _step_time(self, request: ToolCallRequest) -> ToolMessage | None:
         """One time budget for all parallel tool calls of one model step (max_step_seconds, 0 = off): a call that
         starts after the step's budget is used up is not run."""
@@ -190,7 +203,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
     def _pre(self, request: ToolCallRequest) -> ToolMessage | None:
         ctx = self.ctx
         ctx.crash_check()
-        blocked = self._step_time(request)
+        blocked = self._step_time(request) or self._reading_blocked(request)
         if blocked:
             return blocked
         ctrl = ctx.store.get_control(ctx.task_id)

@@ -480,3 +480,20 @@ def test_parallel_calls_of_one_step_share_one_time_budget():
     blocked = mw._step_time(req(2))
     assert blocked is not None and "step_time_exhausted" in blocked.content
     assert events and events[0][1]["guard"] == "step_time"
+
+
+async def test_reading_is_blocked_after_twice_n_reads_without_evidence(cfg):
+    """After 2N reads in a row without evidence the reading tools are not executed until a save_evidence."""
+    plan = [[tc("read_lines", {"path": HANDBOOK, "start_line": 1 + 10 * i, "end_line": 8 + 10 * i})] for i in range(5)]
+    plan.append([tc("save_evidence", {"claim": "шарды", "kind": "fact", "source": HANDBOOK, "page": 4,
+                                      "quote": "эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах"})])
+    plan.append([tc("read_lines", {"path": HANDBOOK, "start_line": 200, "end_line": 205})])
+    plan.append("done")
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec(), overrides={"reads_without_evidence_hint": "2"})
+        await r.run("A")
+        hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
+                .read_text(encoding="utf-8").splitlines()]
+        reads = [json.loads(m["content"]) for m in hist if m["type"] == "ToolMessage" and m["name"] == "read_lines"]
+        assert [x["ok"] for x in reads] == [True, True, True, True, False, True]     # 5th blocked, after evidence free
+        assert reads[4]["error"]["type"] == "reads_blocked_until_evidence"

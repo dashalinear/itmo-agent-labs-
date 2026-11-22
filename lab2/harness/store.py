@@ -148,11 +148,16 @@ class TaskStore:
                 raise
 
     def _one(self, sql: str, params: Iterable = ()) -> dict | None:
-        row = self._exec(sql, params).fetchone()
+        # fetch under the same lock: with the connection shared between threads, a fetch outside the lock could read
+        # the cursor of a parallel query (lab 3, M10: subagent_status of an existing task answered unknown_task)
+        with self._lock:
+            row = self.db.execute(sql, tuple(params)).fetchone()
         return dict(row) if row else None
 
     def _all(self, sql: str, params: Iterable = ()) -> list[dict]:
-        return [dict(r) for r in self._exec(sql, params).fetchall()]
+        with self._lock:
+            rows = self.db.execute(sql, tuple(params)).fetchall()
+        return [dict(r) for r in rows]
 
     # -- tasks --------------------------------------------------------------
     def create_task(self, task_id: str, kind: str, request: str, spec: dict, limits: dict) -> dict:
