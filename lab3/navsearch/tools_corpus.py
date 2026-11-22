@@ -523,7 +523,7 @@ class CorpusTools:
             return None
         t = self.env.store.get_task(self.env.task_id)
         limit = int((t or {}).get("limits", {}).get("max_model_calls") or 0)
-        used = int(self.env.store.usage(self.env.task_id).get("model_calls", 0))
+        used = int(self.env.store.usage(self.env.task_id).get("model_calls") or 0)
         if limit and limit - used <= self.BUDGET_WARN_CALLS:
             return (f"Only {max(limit - used, 0)} of {limit} model calls left. Stop searching: call "
                     "submit_result(findings, open_questions) NOW with the evidence you have and list "

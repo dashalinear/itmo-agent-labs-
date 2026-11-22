@@ -6,7 +6,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part web    # only web scenarios B, C
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part guard  # only the guardrail dialog G1
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part b2     # only the real web research B2
-    ... -SkipPush -SkipTests
+    ... -SkipTests                   # add -Push to commit and push the results
 
 Scenarios (task ids):
   A1     long local analysis of data/search (520-page handbook): simulated crash after a durable checkpoint

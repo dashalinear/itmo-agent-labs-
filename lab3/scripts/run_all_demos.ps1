@@ -8,7 +8,7 @@ Run INSIDE the ITMO network, Docker Desktop running:
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part rerun -MainTask M2 -ExpTask EXP2
                                                         # dialog + exhaustive again with new task ids, corpus kept
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1 -Part delegation -MainTask M3 -SkipTests
-    ... -SkipPush -SkipTests
+    ... -SkipTests                   # add -Push to commit and push the results
 
 Steps (task ids):
   ING1  ingestion AGENT over workspace\input (53 files): simulated crash after the 80th tool, resume in a new process

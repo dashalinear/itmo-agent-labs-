@@ -17,7 +17,9 @@
 | search_quality_thoughts.md | courses **или** projects | **неоднозначный** («заметка про поиск»): нужен уточняющий вопрос или обоснование |
 | empty_todo.txt | `_unsorted` | **пустой** файл: остаётся в каталоге с пояснением, не индексируется |
 
-Имена папок выбирает модель по содержимому; подсказка в системном промпте — `courses`, `projects`, `meetings`, `howto`.
+Имена папок модель выбирает сама по содержимому, системный промпт их не подсказывает, поэтому колонка «Ожидаемая
+тема» задаёт тему, а не обязательное имя папки. В прогоне 22.11.2026 модель выбрала `courses`, `howto`, `meetings`,
+`projects` и `_unsorted`; одноимённые `notes.md` легли в разные папки под своими именами.
 
 ## Файлы для добавления во время сессии `fixtures/late/`
 - meeting_2026-11-10_retro.md → meetings
@@ -45,26 +47,26 @@ CLI стоит на паузе `@wait_for_files` (сам CLI ничего не �
 про поиск и новая лекция из `fixtures/late/`, в retry семинар ReAct и инструкция по git. Остальные документы
 остаются `not_indexed`, пустой `empty_todo.txt` не индексируется никогда.
 
-### Что получилось в прогоне 21.11.2026 (00:30, `results/catalog.json`)
+### Что получилось в прогоне 22.11.2026 (18:27, `results/catalog.json`)
 
-14 документов: 8 `indexed`, 6 `not_indexed`, `pending_sync` и `error` нет; в индексе 17 выдержек, расхождений
+14 документов: 8 `indexed`, 6 `not_indexed`, `pending_sync` и `error` нет; в индексе 19 выдержек, расхождений
 пути и категории с каталогом 0; `scripts/verify.py` — все 5 проверок пройдены.
 
 | Документ (`current_path`) | Статус | Выдержек |
 |---|---|---|
 | `data/courses/agents_seminar_react.txt` | `indexed` | 4 |
-| `data/courses/es_seminar_analyzers_shards.md` | `indexed` | 2 |
+| `data/courses/notes.md` | `indexed` | 2 |
 | `data/guides/howto_git_branches.txt` | `indexed` | 2 |
-| `data/howto/howto_elasticsearch_docker.md` | `indexed` | 1 |
+| `data/howto/howto_elasticsearch_docker.md` | `indexed` | 2 |
 | `data/projects/project_docsearch.md` | `indexed` | 2 |
-| `data/projects/search_quality_thoughts.md` | `indexed` | 1 |
+| `data/projects/search_quality_thoughts.md` | `indexed` | 2 |
 | `data/search/ir_lecture_inverted_index.md` | `indexed` | 2 |
 | `data/search/vector_search_lecture.md` | `indexed` | 3 |
 | `data/_unsorted/empty_todo.txt` | `not_indexed` | 0 |
 | `data/courses/mlops_lecture_monitoring.md` | `not_indexed` | 0 |
 | `data/meetings/meeting_2026-10-02_kickoff.md` | `not_indexed` | 0 |
-| `data/meetings/meeting_2026-10-09_docsearch_weekly.md` | `not_indexed` | 0 |
 | `data/meetings/meeting_2026-11-10_retro.md` | `not_indexed` | 0 |
+| `data/meetings/notes.md` | `not_indexed` | 0 |
 | `data/projects/project_recsys.md` | `not_indexed` | 0 |
 
 Это совпадает со всеми ожиданиями выше. Инструкция по git после сессии mcp_down была в статусе `error` с

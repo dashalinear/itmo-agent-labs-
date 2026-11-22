@@ -3,7 +3,7 @@ Records all lab 4 scenarios with the real ITMO model, the real Temporal service 
 Run INSIDE the ITMO network, Docker Desktop running (Elasticsearch from lab 1, Temporal dev server in Docker):
 
     powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1
-    powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -SkipTests -SkipPush -Every 8m
+    powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -SkipTests -Every 8m   # add -Push to commit and push
 
 Scenarios (all automatic, the script only plays the user: it drops files into workspace\input):
   1  automatic ingestion: 10 files -> watcher -> IngestNewFiles; worker #1 is killed DURING the ingestion agent

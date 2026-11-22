@@ -6,7 +6,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1                 # everything (about 30-40 min)
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipB3         # without the real web run B3
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -Only A1,G2,P1,B3   # re-record only these task ids
-    powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -SkipPush       # record, do not commit
+    powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -Push           # record and commit + push (without -Push: record only)
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1 -DryRun -WorkDir D:\tmp\lab2_dry
         offline check of this script: scripted models (scripts/dryrun_models.py) instead of the LLM, all state,
         traces and results in -WorkDir, no git, README untouched

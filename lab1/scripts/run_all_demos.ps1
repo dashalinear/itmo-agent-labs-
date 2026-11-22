@@ -1,10 +1,10 @@
 <#
 Re-records ALL lab 1 demo traces and results with the real ITMO model, from a clean workspace and an
-empty index, as ONE chain of CLI sessions, then commits and pushes only lab1/traces and lab1/results.
+empty index, as ONE chain of CLI sessions, with -Push it then commits and pushes only lab1/traces and lab1/results.
 Run INSIDE the ITMO network (the LLM server is not reachable outside), from any directory:
 
     powershell -ExecutionPolicy Bypass -File lab1\scripts\run_all_demos.ps1
-    ... -SkipPush        # everything except git commit/push
+    ... -Push            # also git commit + push of traces and results (without it: record only)
     ... -SkipTests       # do not run pytest first
     ... -KeepOldTraces   # do not delete the traces that existed before this run
     ... -DryRun          # plumbing check WITHOUT the LLM (deterministic stand-in model); only on a copy of
@@ -26,7 +26,7 @@ Chain (the order matters: every session continues from the workspace/index state
   Before the chain: pytest, and the symlink/junction escape tests saved to results/symlink_test.txt
   (the real-symlink test runs only if Windows Developer Mode is on; otherwise it is recorded as skipped).
   then verify, index export, graph export, results/RUN_SUMMARY.md, secret scan,
-  deletion of the traces from earlier runs (they do not belong to this chain), git commit + push.
+  deletion of the traces from earlier runs (they do not belong to this chain), git commit + push with -Push.
 Limits are pinned for reproducibility: AGENT_MODEL_CALLS_PER_TURN=25, AGENT_RECURSION_LIMIT=110.
 #>
 param(
