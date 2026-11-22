@@ -2,19 +2,19 @@
   {
     "task": "A1",
     "property": "статус completed только по критериям",
-    "actual": "paused (budget exhausted before the call (model_calls: needed 1, remaining 0 of 90))",
-    "ok": false
+    "actual": "completed (Обзор по data/search собран: 10 evidence (в каждом из 3 документов), разделы app)",
+    "ok": true
   },
   {
     "task": "A1",
     "property": "[C5] решения АС-01..03 дословно (проверка complete_task)",
-    "actual": "None",
-    "ok": false
+    "actual": "ok",
+    "ok": true
   },
   {
     "task": "A1",
     "property": "отказы complete_task до выполнения критериев (информативно)",
-    "actual": 0,
+    "actual": 2,
     "ok": true
   },
   {
@@ -26,31 +26,31 @@
   {
     "task": "A1",
     "property": "сбой после сохранённых evidence; после resume они восстановлены, дублей нет",
-    "actual": "evidence на момент сбоя 3, повторённые save_evidence после resume: ['already_saved', 'saved', 'saved', 'saved', 'saved', 'saved']; в конце 16, дублей 0",
-    "ok": true
-  },
-  {
-    "task": "A1",
-    "property": "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
-    "actual": "upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: None",
+    "actual": "evidence на момент сбоя 0, повторённые save_evidence после resume: [None, None, 'saved', 'saved', 'saved', 'saved']; в конце 10, дублей 0",
     "ok": false
   },
   {
     "task": "A1",
+    "property": "MCP Elasticsearch лабы 1: upsert_excerpts записал выдержки, search_excerpts их находит",
+    "actual": "upsert ok: 1/1, поиск с хитами: 3/3, критерий indexed_in_es: True",
+    "ok": true
+  },
+  {
+    "task": "A1",
     "property": ">= 2 компактификаций в одном запуске без реплик пользователя",
-    "actual": 8,
+    "actual": 5,
     "ok": true
   },
   {
     "task": "A1",
     "property": "нет вызова сверх рабочего лимита",
-    "actual": "макс. оценка+резерв 20909 / 28000; сверх лимита: 0",
+    "actual": "макс. оценка+резерв 20876 / 28000; сверх лимита: 0",
     "ok": true
   },
   {
     "task": "A1",
     "property": "факт за пределами выданного фрагмента найден в артефакте в новом процессе",
-    "actual": "'АС-01': смещение 1436 > выдано 1177, через read_artifact",
+    "actual": "'АС-02': смещение 4358 > выдано 824, через read_artifact",
     "ok": true
   },
   {
