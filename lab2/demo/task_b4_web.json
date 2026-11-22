@@ -39,6 +39,7 @@
     "http_timeout_s": 20,
     "tool_timeout_s": 150,
     "reads_without_evidence_hint": 20,
-    "budget_hint_calls": 15
+    "budget_hint_calls": 15,
+    "max_step_seconds": 240
   }
 }

@@ -39,7 +39,7 @@ class Limits:
     compaction_trigger: float = 0.70     # compact when input+reserve > trigger * working limit
     compaction_target: float = 0.45      # keep the recent tail within target * working limit
     compaction_min_gain: float = 0.05    # compact only if >= this share of the working limit can be removed
-    summary_max_tokens: int = 1200
+    summary_max_tokens: int = 1600     # 1200 was too little for 7 sections in Russian
     summary_tool_clip_chars: int = 1200  # how much of each tool result the summarizer sees
     max_compaction_chunks: int = 4       # LLM chunks per compaction, then rule-based fallback
     # --- tool outputs
@@ -56,6 +56,7 @@ class Limits:
     repeat_call_warn: int = 3            # same tool + same args N times in one run -> error observation
     repeat_call_stop: int = 6            # ... M times -> the run stops with 'no progress'
     reads_without_evidence_hint: int = 0  # N reading calls in a row with no new evidence -> a strategy hint (0 = off)
+    max_step_seconds: float = 0.0        # one time budget for all parallel tool calls of one model step (0 = off)
     budget_hint_calls: int = 0           # <= N model calls left -> every tool result says: write the report, finish
     tool_timeout_s: float = 60.0
 

@@ -196,6 +196,27 @@ class TaskTools:
             rec.update(source_type="local", source=rel, document_id=entry["document_id"] if entry else None,
                        content_hash=doc.content_hash, page_start=doc.page_of_line(pos[0]),
                        page_end=doc.page_of_line(pos[1]), line_start=pos[0], line_end=pos[1])
+        # the same place quoted twice (a shorter / longer cut of one line) is one piece of evidence: in A1 and B4
+        # each decision line was saved twice. A quote inside an existing one is already saved; a longer quote that
+        # contains an existing one replaces its text and keeps its evidence_id (references stay valid).
+        nq = _norm(q)
+        for old in self.store.evidence(self.task_id):
+            if old["source"] != rec["source"] or (old["content_hash"] or "") != (rec["content_hash"] or ""):
+                continue
+            if old["line_end"] < rec["line_start"] or rec["line_end"] < old["line_start"]:
+                continue
+            no = _norm(old["quote"])
+            if nq in no or no in nq:
+                status = "already_saved"
+                if len(nq) > len(no):
+                    self.store.extend_evidence(old["evidence_id"], quote=q, claim=claim, line_start=rec["line_start"],
+                                               line_end=rec["line_end"], page_start=rec.get("page_start"),
+                                               page_end=rec.get("page_end"))
+                    status = "extended"
+                return {"evidence_id": old["evidence_id"], "status": status, "source": rec["source"],
+                        "line_start": rec["line_start"], "line_end": rec["line_end"],
+                        "note": "the same place was already cited; one evidence per place",
+                        "evidence_total": len(self.store.evidence(self.task_id))}
         key = "|".join([self.task_id, rec["source"], rec["content_hash"] or "", q])
         rec["evidence_id"] = "ev_" + hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]
         created = self.store.add_evidence(rec)
@@ -337,9 +358,41 @@ class TaskTools:
         if missing:
             raise ToolError("criteria_not_met", "Completion criteria are not met; continue the work or call stop_partial",
                             missing=missing)
+        # the plan must describe what was really done (A1, B4, C1 ended "completed" with steps still todo/doing)
+        task = self.store.get_task(self.task_id) or {}
+        plan = task.get("plan") or []
+        open_steps = [s.get("title") for s in plan if isinstance(s, dict) and s.get("status") not in ("done", "skipped")]
+        # only for the research tasks of lab 2 (local / web); the agents of labs 3-4 that reuse this tool keep
+        # their own completion rules
+        if open_steps and task.get("kind") in ("local", "web"):
+            raise ToolError("plan_open", "Close the plan first: update_plan with done (or skipped) for every step",
+                            open_steps=open_steps[:8])
+        # "Непроверенное" must not call a page unread that the harness has fetched (B4 said so about MemGPT)
+        wrong = self._unverified_contradictions()
+        if wrong:
+            raise ToolError("unverified_contradicts_queue", "The section 'unverified' says these sources were not read, "
+                            "but they were fetched and are in the queue as done; correct the section",
+                            sources=wrong[:8])
         self.store.update_task(self.task_id, completion={"completed": True, "note": note, "criteria": crit})
         self.store.set_status(self.task_id, "completed", note[:300])
         return {"status": "completed", "criteria": crit, "report": self.render()}
+
+    def _unverified_contradictions(self) -> list[str]:
+        sec = next((s for s in self.store.sections(self.task_id) if s["section_id"] == "unverified"), None)
+        if not sec:
+            return []
+        done = [u for u in self.store.urls(self.task_id) if u["status"] == "done"]
+        out = []
+        for sentence in re.split(r"(?<=[.!?;])\s+|\n", sec.get("body") or ""):
+            if not re.search(r"не\s+прочит|не\s+изучен|не\s+открыт|не\s+скачан|недоступ", sentence, re.I):
+                continue
+            for u in done:
+                keys = set(re.findall(r"\d{4}\.\d{4,5}", u["url"]))          # arXiv ids
+                keys |= {w for w in re.findall(r"[A-Za-z][A-Za-z0-9\-]{4,}", u.get("title") or "")
+                         if w.lower() not in {"agent", "agents", "large", "language", "model", "models", "arxiv", "memory"}}
+                if any(k in sentence for k in keys):
+                    out.append(u["final_url"] or u["url"])
+        return sorted(set(out))
 
     def stop_partial(self, reason: str, unverified: list[str] | None = None) -> dict:
         self.store.update_task(self.task_id, completion={"completed": False, "partial": True, "reason": reason,

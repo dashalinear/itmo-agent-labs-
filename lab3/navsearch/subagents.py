@@ -45,6 +45,9 @@ DEFAULT_SUB_LIMITS = {
                    "response_reserve_tokens": 6144},
 }
 
+SHORT_FRAG_RX = re.compile(r"(?:fragment_id|fragment|frag)[\s:=`'\"]{0,4}([0-9a-f]{8})(?![0-9a-f-])", re.I)
+NOT_READ_RX = re.compile(r"не\s+прочит|не\s+найден|не\s+собран|не\s+открыт|не\s+изучен", re.I)
+
 FINISH_NUDGE = {
     "deep": "Твой ход закончился без submit_result. Если бюджет позволяет, допроверь главное, иначе сразу вызови "
             "submit_result: сначала open_questions, затем краткие findings (до 400 слов) со ссылками на evidence_id.",
@@ -167,7 +170,9 @@ class SubagentManager:
         spec = {"task_id": tid, "kind": kind, "request": request, "parent_task_id": self.parent_task_id,
                 "corpus_id": "itmo-lab3", "scope_folder": scope_folder, "scope": [], "root": parent["spec"]["root"],
                 "constraints": parent["spec"].get("constraints", []), "criteria": {}}
-        self.store.create_task(tid, kind, request, spec, limits.to_dict())
+        # metadata goes to the sub-agent separately from the request text (it is not part of the question)
+        first = request + (f"\n\n[метаданные задачи] папка: {scope_folder}" if scope_folder else "")
+        self.store.create_task(tid, kind, first, spec, limits.to_dict())
         self.store.event(self.parent_task_id, "subtask_started", {"task_id": tid, "kind": kind, "request": request,
                                                                    "scope_folder": scope_folder})
         self.tasks[tid] = asyncio.create_task(self._run_sub(tid, kind))
@@ -281,7 +286,23 @@ class SubmitTools:
             raise ToolError("unknown_evidence", "findings cite evidence ids that do not exist in this task: "
                             + ", ".join(unknown[:10]) + ". Use only evidence_id values returned by record_mention / "
                             "cite_fragment.", known=sorted(known)[:40])
+        text_all = findings + "\n" + "\n".join(str(q) for q in (open_questions or []))
+        short = sorted(set(SHORT_FRAG_RX.findall(text_all)))
+        if short:
+            raise ToolError("short_ids", "fragment_id must be given in full (36 characters, as the tools returned it), "
+                            "not cut to 8 characters: " + ", ".join(short[:8]))
         if self.kind == "exhaustive":
+            # a cross-check pass that was started must be read to the end (EXP5 stopped area_grep at 30 of 49 hits)
+            unfinished = []
+            for kind, key in (("area_grep_page", "pattern"), ("area_fulltext_page", "query")):
+                runs: dict[str, bool] = {}
+                for e in self.store.events(self.task_id, kind):
+                    d = e["data"] or {}
+                    runs[d.get(key)] = runs.get(d.get(key), False) or bool(d.get("done"))
+                unfinished += [f"{kind.split('_')[1]} '{k}'" for k, ok_ in runs.items() if not ok_]
+            if unfinished:
+                raise ToolError("pass_incomplete", "cross-check passes were started but not read to done=true: "
+                                + "; ".join(unfinished[:6]) + ". Read their remaining pages with next_cursor.")
             cov = self.coverage_fn()
             if not cov["complete"]:
                 raise ToolError("coverage_incomplete", f"{cov['fragments_total'] - cov['fragments_read']} fragments of the area are "
@@ -301,6 +322,25 @@ class SubmitTools:
                 raise ToolError("evidence_refs_required", f"findings must refer to the evidence: cite at least {need} "
                                 "evidence_id values next to the conclusions they confirm; a conclusion without an "
                                 "evidence_id goes to open_questions as unconfirmed", known=sorted(known)[:40])
+            # after many compactions M9-deep1 wrote "Redis ... не прочитан" while it had cited Redis itself
+            docs = {}
+            for e in ev:
+                docs.setdefault(e["source"].rsplit("/", 1)[-1], []).append(e["evidence_id"])
+            wrong = []
+            for sentence in re.split(r"(?<=[.!?;])\s+|\n", text_all):
+                if NOT_READ_RX.search(sentence):
+                    wrong += [f"{name} ({', '.join(ids[:3])})" for name, ids in docs.items()
+                              if name in sentence or name.rsplit(".", 1)[0] in sentence]
+            if wrong:
+                raise ToolError("contradicts_evidence", "the result says a document was not read / not found, but this "
+                                "task has evidence from it: " + "; ".join(sorted(set(wrong))[:8]) + ". Use that evidence "
+                                "in the findings or correct the open question.")
+            plan = (self.store.get_task(self.task_id) or {}).get("plan") or []
+            open_steps = [st.get("title") for st in plan if isinstance(st, dict)
+                          and st.get("status") not in ("done", "completed", "skipped")]
+            if open_steps:
+                raise ToolError("plan_open", "close the plan first: update_plan with status done (or skipped, with the "
+                                "reason in the title) for every step: " + "; ".join(str(t) for t in open_steps[:6]))
             if not [q for q in (open_questions or []) if str(q).strip()]:
                 raise ToolError("open_questions_required", "Deep search must return open questions: list what is not "
                                 "confirmed, contradictory or outside the corpus; if everything is confirmed, give one "

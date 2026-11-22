@@ -7,7 +7,7 @@ from harness.budget import Budget, BudgetExhausted
 from harness.config import Limits
 from harness.store import TaskStore
 from harness.tools_research import ResearchTools
-from harness.web import FixtureProvider, HttpFetcher, canonical_url
+from harness.web import FixtureProvider, HttpFetcher, canonical_url, url_key
 from conftest import LAB2
 
 
@@ -300,3 +300,12 @@ def test_token_calibration_survives_restart(cfg, store):
     store.set_meta("token_calibration:T", {"cpt": 3.07, "calibrations": 5})
     b = build_harness_agent(cfg, store, "T", PolicyModel(plan=[]), None, [], InMemorySaver(), 32768, "test")
     assert b.ctx.counter.cpt == 3.07 and b.ctx.counter.calibrations == 5 and "cpt=3.07" in b.ctx.counter.method
+
+
+async def test_queue_only_urls_found_by_search_or_on_a_read_page(store, artifacts, web):
+    """B2 had one source from the model's memory (discovered_by=agent): queueing such a URL is refused now."""
+    base, handler = web
+    rt, budget = mk(store, artifacts, base)
+    sel = j(rt.select_sources([{"url": "https://example.org/remembered", "decision": "queue", "reason": "знаю этот сайт"}]))
+    assert sel["data"]["decisions"][0]["error"] == "not_discovered"
+    assert store.get_url("T", url_key(canonical_url("https://example.org/remembered"))) is None

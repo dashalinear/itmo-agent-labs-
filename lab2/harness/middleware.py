@@ -82,6 +82,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         self._seen: dict[str, tuple[str, int]] = {}
         self._reads_since_evidence = 0
         self._last_budget_left = None
+        self._step_started: dict[str, float] = {}
 
     READ_TOOLS = {"read_lines", "read_pages", "read_artifact", "search_text", "search_artifact"}
     PROGRESS_TOOLS = {"save_evidence", "write_report_section"}
@@ -171,9 +172,27 @@ class ToolRuntimeMiddleware(AgentMiddleware):
                                "(say explicitly what the corpus does not confirm)." + hint)
         return res
 
+    def _step_time(self, request: ToolCallRequest) -> ToolMessage | None:
+        """One time budget for all parallel tool calls of one model step (max_step_seconds, 0 = off): a call that
+        starts after the step's budget is used up is not run."""
+        limit = self.ctx.limits.max_step_seconds
+        if not limit:
+            return None
+        key, _n = OutputGuardMiddleware._step_info(request)
+        t0 = self._step_started.setdefault(key, time.monotonic())
+        used = time.monotonic() - t0
+        if used > limit:
+            self.ctx.emit("guardrail", guard="step_time", tool=request.tool_call["name"], used_s=round(used, 1), limit_s=limit)
+            return _tool_error(request, "step_time_exhausted", f"this model step already ran {used:.0f} s of its {limit} s; "
+                               "the call was not executed - use the results you have or call it in the next step")
+        return None
+
     def _pre(self, request: ToolCallRequest) -> ToolMessage | None:
         ctx = self.ctx
         ctx.crash_check()
+        blocked = self._step_time(request)
+        if blocked:
+            return blocked
         ctrl = ctx.store.get_control(ctx.task_id)
         if ctrl or ctx.stop:
             action = ctrl["action"] if ctrl else ctx.stop["status"]
@@ -395,12 +414,32 @@ class CompactionMiddleware(AgentMiddleware):
                         "Подтверждённые факты (с источниками)", "Прогресс", "Открытые вопросы и следующий шаг",
                         "Артефакты")
 
+    def _state_progress(self) -> str:
+        try:
+            st, tid = self.ctx.store, self.ctx.task_id
+            docs = [f"{d['path']}: {d['pages_read']}/{d['pages']} стр." for d in st.documents_progress(tid)]
+            q = st.url_counts(tid)
+            secs = [s["section_id"] for s in st.sections(tid)]
+            return ("по состоянию harness: " + "; ".join(docs + [f"evidence {len(st.evidence(tid))}",
+                    f"очередь URL {q}" if any(q.values()) else "", f"разделы отчёта: {', '.join(secs) or 'нет'}"]))
+        except Exception:  # noqa: BLE001 - a summary must never fail because of the digest
+            return "по состоянию harness: см. PROGRESS DIGEST"
+
     def _complete_sections(self, text: str, msgs: list[BaseMessage], cut: bool) -> tuple[str, list[str]]:
         """The summary must keep all 7 sections. If the model ran into max_tokens, the unfinished last line is
         dropped; every missing section is then added by rules from the compacted messages (marked as such)."""
         if cut and "\n" in text:
             text = text[: text.rstrip().rfind("\n")].rstrip()
-        have = {h.strip() for h in re.findall(r"^##\s*(.+?)\s*$", text, flags=re.M)}
+        # a heading with nothing under it counts as missing (A1 summary #3 had an empty "Прогресс"): drop it, re-add
+        parts = re.split(r"^(##\s*.+?)\s*$", text, flags=re.M)
+        kept, have = [parts[0]], set()
+        for k in range(1, len(parts) - 1, 2):
+            head, body = parts[k], parts[k + 1]
+            name = re.sub(r"^##\s*", "", head).strip()
+            if body.strip():
+                kept += [head, body]
+                have.add(name)
+        text = "".join(kept).rstrip()
         missing = [h for h in self.SUMMARY_SECTIONS if h not in have]
         if not missing:
             return text, []
@@ -414,8 +453,9 @@ class CompactionMiddleware(AgentMiddleware):
             "Ограничения пользователя": "см. контракт задачи (ограничения [C*] передаются в каждом вызове)",
             "Решения и договорённости": "—",
             "Подтверждённые факты (с источниками)": ("evidence в этом фрагменте: " + ", ".join(evs)) if evs else "—",
-            "Прогресс": (f"в сжатом фрагменте {len(calls)} вызовов tools: "
-                         + ", ".join(f"{n}×{calls.count(n)}" for n in sorted(set(calls)))) if calls else "—",
+            # progress from the harness state (pages, evidence, queue, sections), not from the model's plan
+            "Прогресс": self._state_progress() + ((f"; в сжатом фрагменте {len(calls)} вызовов tools: "
+                         + ", ".join(f"{n}×{calls.count(n)}" for n in sorted(set(calls)))) if calls else ""),
             "Открытые вопросы и следующий шаг": ("невыполненные шаги плана: " + "; ".join(todo)) if todo else "по плану задачи",
             "Артефакты": ", ".join(arts) if arts else "—",
         }
@@ -592,7 +632,11 @@ class CompactionMiddleware(AgentMiddleware):
         ctx.emit("compaction", n=n_comp, before_tokens=est.tokens, after_tokens=est2.tokens, reserve=ctx.reserve,
                  working_limit=ctx.working_limit, removed_messages=len(to_sum), kept_messages=len(keep),
                  method=result["method"], chunks=result["chunks"], cost_input=result["cost_in"],
-                 cost_output=result["cost_out"], note=note, summary=new_summary)
+                 cost_output=result["cost_out"], note=note, summary=new_summary,
+                 # the kept tail as it goes to the model: every tool result has its tool call (pairs are visible here)
+                 kept_tail=[{"type": type(m).__name__,
+                             **({"tool_calls": [tc["id"] for tc in m.tool_calls]} if isinstance(m, AIMessage) and m.tool_calls else {}),
+                             **({"tool_call_id": m.tool_call_id} if isinstance(m, ToolMessage) else {})} for m in keep])
         update: dict[str, Any] = {"messages": [RemoveMessage(id=REMOVE_ALL_MESSAGES), *keep],
                                   "context_summary": new_summary, "compactions": n_comp}
         if est2.tokens + ctx.reserve > ctx.working_limit:

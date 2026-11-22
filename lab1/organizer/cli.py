@@ -222,7 +222,7 @@ async def wait_for_files(settings: Settings, tracer: Tracer, names: list[str], t
         raise ValueError(f"{WAIT_DIRECTIVE}: paths must stay inside workspace/input: {targets}")
     before = _input_files(settings)
     tracer.event("harness_wait", waiting_for=targets or "any new file in input/", timeout_s=timeout_s,
-                 marker=str(marker) if marker else None, pid=os.getpid())
+                 marker=marker.name if marker else None, pid=os.getpid())   # file name only: no user folder in traces
     print(f"  [пауза сценария] жду, пока пользователь добавит файлы в input извне "
           f"({', '.join(targets) or 'любой новый файл'}); этот процесс ничего не копирует", flush=True)
     if marker:

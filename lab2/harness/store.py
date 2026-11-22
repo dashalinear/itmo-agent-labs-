@@ -309,6 +309,14 @@ class TaskStore:
                          [rec.get(c) if c != "created_at" else now_iso() for c in cols])
         return cur.rowcount == 1
 
+    def extend_evidence(self, evidence_id: str, **fields) -> None:
+        """A longer quote of the same place replaces the text of an existing evidence (its id stays)."""
+        allowed = {k: v for k, v in fields.items() if k in ("quote", "claim", "line_start", "line_end", "page_start", "page_end")
+                   and v is not None}
+        if allowed:
+            sets = ", ".join(f"{k}=?" for k in allowed)
+            self._exec(f"UPDATE evidence SET {sets} WHERE evidence_id=?", [*allowed.values(), evidence_id])
+
     def evidence(self, task_id: str) -> list[dict]:
         return self._all("SELECT * FROM evidence WHERE task_id=? ORDER BY created_at, evidence_id", (task_id,))
 

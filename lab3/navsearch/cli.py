@@ -243,6 +243,8 @@ def export_corpus(cfg) -> None:
     shutil.copytree(src, dst)
     if ws.catalog_path.exists():
         shutil.copy2(ws.catalog_path, dst / "catalog.json")
+    # the organised source texts as well, so that L2 fragments (lines) can be opened from the repository alone
+    shutil.copytree(ws.data, dst / "data")
     tree = sorted(p.relative_to(ws.root).as_posix() for p in ws.data.rglob("*") if p.is_file())
     (dst / "data_tree.txt").write_text("\n".join(tree) + "\n", encoding="utf-8")
     # frozen demonstration manifest: document_id, path, title, content hash (+ L1/L2 state) of every corpus document
@@ -370,7 +372,19 @@ async def amain(argv=None) -> int:
             if not t:
                 print(f"нет задачи {args.task_id}")
                 return 1
-            res = await runner.run(args.task_id, overrides=_kv(args.set), label="resume", agent_factory=app.factory(t["kind"]))
+            text = None
+            if t["kind"] == "exhaustive":
+                try:
+                    cov = app.coverage_of(args.task_id)
+                except Exception:  # noqa: BLE001 - area not defined yet
+                    cov = None
+                if cov and not cov.get("complete") and cov.get("resume_cursor"):
+                    # the stored boundary of the registry, not whatever the restored history happens to contain
+                    text = ("[harness: resume] Процесс перезапущен. Реестр покрытия: прочитано "
+                            f"{cov['fragments_read']} из {cov['fragments_total']} фрагментов. Продолжи обход с границы "
+                            f"реестра: area_next(cursor=\"{cov['resume_cursor']}\").")
+            res = await runner.run(args.task_id, user_text=text, overrides=_kv(args.set), label="resume",
+                                   agent_factory=app.factory(t["kind"]))
             return 0 if res.get("status") in ("completed", "paused", "cancelled") else 2
         if args.cmd == "limits":
             if args.set:

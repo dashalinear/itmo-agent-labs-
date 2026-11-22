@@ -31,12 +31,15 @@ Limits are pinned for reproducibility: AGENT_MODEL_CALLS_PER_TURN=25, AGENT_RECU
 #>
 param(
     [switch]$SkipPush,
+    [switch]$Push,
     [switch]$SkipTests,
     [switch]$KeepOldTraces,
     [switch]$DryRun
 )
 
 $ErrorActionPreference = "Stop"
+# git commit + push of the results only on request (-Push); without it the script just records them
+if (-not $Push) { $SkipPush = $true }
 $lab = Split-Path -Parent $PSScriptRoot
 Set-Location $lab
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8

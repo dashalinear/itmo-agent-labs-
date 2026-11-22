@@ -29,6 +29,6 @@ description: Store useful excerpts of organized documents in Elasticsearch throu
 
 ## 6. Search and verify
 - `search_excerpts(query, size=5..10, category=?, path_prefix=?)`. Formulate a lexical query with key terms (Russian morphology is handled by the index analyzer).
-- Answer with: excerpt text (quote), `current_path`, lines `start_line-end_line`, `document_id`. If asked, open the source with `read(current_path)` and point to the lines.
+- Answer with, for every excerpt you mention: its text as a verbatim quote in «» (no paraphrase), `current_path`, lines `start_line-end_line`, `document_id`. If asked, open the source with `read(current_path)` and point to the lines.
 - After writing, run one search for a key term of a written excerpt to verify it is findable.
 - `get_document_excerpts(document_id)` / `index_stats()` show what is stored (useful to prove "no duplicates").

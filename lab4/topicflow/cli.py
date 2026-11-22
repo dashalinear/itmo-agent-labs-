@@ -143,7 +143,7 @@ def status(cfg) -> None:
 
 
 # ------------------------------------------------------------------------------------------ Temporal commands
-async def schedule_cmd(st, action: str, every: str | None, trigger: bool) -> None:
+async def schedule_cmd(st, action: str, every: str | None, trigger: bool, cfg=None) -> None:
     from temporalio.client import (Schedule, ScheduleActionStartWorkflow, ScheduleIntervalSpec, ScheduleOverlapPolicy,
                                    SchedulePolicy, ScheduleSpec, ScheduleState)
     client = await _client(st)
@@ -161,6 +161,13 @@ async def schedule_cmd(st, action: str, every: str | None, trigger: bool) -> Non
                      state=ScheduleState(note="lab 4: periodic whole-corpus topic report")),
             trigger_immediately=trigger)
         print(f"schedule {st.schedule_id}: every {interval}, overlap=SKIP, trigger_immediately={trigger}")
+        if cfg is not None:
+            # the report tells an interval tick from the immediate run and shows the period (see reports.py)
+            meta = cfg.state_dir / "lab4" / "schedule_meta.json"
+            meta.parent.mkdir(parents=True, exist_ok=True)
+            meta.write_text(json.dumps({"schedule_id": st.schedule_id, "created_at": datetime.now(timezone.utc).isoformat(),
+                                        "every_s": int(interval.total_seconds()), "trigger_immediately": trigger},
+                                       ensure_ascii=False), encoding="utf-8")
     elif action == "describe":
         d = await h.describe()
         info = d.info
@@ -370,7 +377,7 @@ async def amain(argv=None) -> int:
     p = sub.add_parser("prepare"); p.add_argument("--reset", action="store_true")
     sub.add_parser("worker")
     p = sub.add_parser("watch"); p.add_argument("--once", action="store_true")
-    p = sub.add_parser("drop"); p.add_argument("--set", required=True, choices=["initial", "arrivals", "new_topic", "late", "new_topic2"])
+    p = sub.add_parser("drop"); p.add_argument("--set", required=True, choices=["initial", "arrivals", "new_topic", "late", "new_topic2", "new_topic3", "late2"])
     p.add_argument("--repeat", action="store_true", help="the same content under another name (duplicate)")
     p.add_argument("--slow", action="store_true", help="write slowly without .part (stability check)")
     p.add_argument("--only", help="only this file name of the set")
@@ -409,7 +416,7 @@ async def amain(argv=None) -> int:
     elif args.cmd == "schedule":
         from temporalio.service import RPCError, RPCStatusCode
         try:
-            await schedule_cmd(st, args.action, args.every, not args.no_trigger)
+            await schedule_cmd(st, args.action, args.every, not args.no_trigger, cfg)
         except RPCError as e:
             if e.status == RPCStatusCode.NOT_FOUND:
                 print(f"schedule {st.schedule_id}: не существует ({e.message})")

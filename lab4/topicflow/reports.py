@@ -126,6 +126,30 @@ def _frozen_at(ws: HarnessWorkspace, run_key: str) -> str:
     return json.loads((run_dir(ws, run_key) / "manifest.json").read_text(encoding="utf-8"))["frozen_at"]
 
 
+def _schedule_kind(ws: HarnessWorkspace, run_key: str) -> tuple[str, str]:
+    """(kind of the run, period) for a Schedule run: an interval tick or the immediate action right after
+    `schedule create`, and the period from the previous Schedule run to this one."""
+    m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
+    if not m or "manual" in run_key:
+        return "ручной запуск topics-now", "—"
+    at = datetime.fromisoformat(m.group(1) + "+00:00")
+    meta_p = ws.service_path("lab4") / "schedule_meta.json"
+    kind = "запуск Schedule"
+    if meta_p.exists():
+        meta = json.loads(meta_p.read_text(encoding="utf-8"))
+        created = datetime.fromisoformat(meta["created_at"])
+        every = meta.get("every_s") or 0
+        if meta.get("trigger_immediately") and abs((at - created).total_seconds()) < 30:
+            kind = "немедленный запуск при создании Schedule"
+        elif at > created:
+            kind = f"тик интервала Schedule (каждые {every // 60} мин)" if every else "тик интервала Schedule"
+    prev = [h["run_key"] for h in load_registry(ws)["history"] if "-run-" in h["run_key"] and h["run_key"] < run_key]
+    pm = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", max(prev)) if prev else None
+    period = (f"{pm.group(1).replace('T', ' ')} UTC → {m.group(1).replace('T', ' ')} UTC (с прошлого запуска Schedule)"
+              if pm else "первый запуск Schedule")
+    return kind, period
+
+
 def _scheduled_label(run_key: str) -> str:
     """The Schedule gives every period the workflow id '<id>-<scheduled time>'; manual runs carry their start time."""
     m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
@@ -177,6 +201,8 @@ def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, ev
           "| поле | значение |", "|---|---|",
           f"| run key (Workflow ID) | `{run_key}` |",
           f"| время запуска по расписанию | {_scheduled_label(run_key)} |",
+          f"| вид запуска | {_schedule_kind(ws, run_key)[0]} |",
+          f"| период | {_schedule_kind(ws, run_key)[1]} |",
           f"| Temporal run ID | `{m['run_id']}` |",
           f"| источник запуска | {meta.get('source', 'schedule')} |",
           f"| список корпуса зафиксирован | {m['frozen_at']} (L0 от {m['l0_generated_at']}) |",

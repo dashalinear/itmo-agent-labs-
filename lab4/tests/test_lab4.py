@@ -307,3 +307,15 @@ async def test_workflows_on_real_temporal_service(lab4env):
         attempts = [e.activity_task_started_event_attributes.attempt for e in hist.events
                     if e.HasField("activity_task_started_event_attributes")]
         assert max(attempts) == 2                                     # publish_report retried once by Temporal
+
+
+def test_report_tells_an_interval_tick_from_the_immediate_run(lab4env):
+    """The report row "вид запуска" uses the Schedule metadata written by `schedule create`."""
+    ws = lab4env.ws
+    meta = ws.service_path("lab4") / "schedule_meta.json"
+    meta.parent.mkdir(parents=True, exist_ok=True)
+    meta.write_text(json.dumps({"schedule_id": "lab4-topics", "created_at": "2026-11-21T10:00:03+00:00",
+                                "every_s": 300, "trigger_immediately": True}), encoding="utf-8")
+    assert rep._schedule_kind(ws, "lab4-topics-run-2026-11-21T10:00:03Z")[0] == "немедленный запуск при создании Schedule"
+    assert rep._schedule_kind(ws, "lab4-topics-run-2026-11-21T10:05:00Z")[0] == "тик интервала Schedule (каждые 5 мин)"
+    assert rep._schedule_kind(ws, "lab4-topics-manual-2026-11-21T10:06:00Z")[0] == "ручной запуск topics-now"

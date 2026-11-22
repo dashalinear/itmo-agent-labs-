@@ -408,7 +408,8 @@ def test_cut_summary_gets_its_missing_sections(cfg):
             ToolMessage(content='{"ok": true, "artifact_id": "art_0123456789abcdef"}', tool_call_id="1")]
     out, added = cm._complete_sections(text, msgs, cut=True)
     assert "стр. 4, 26" not in out and "## Прогресс" in out                 # the cut line is gone
-    assert added == ["Решения и договорённости", "Подтверждённые факты (с источниками)",
+    # "Прогресс" lost its only line to the cut: an empty section counts as missing and is filled from the state
+    assert added == ["Решения и договорённости", "Подтверждённые факты (с источниками)", "Прогресс",
                      "Открытые вопросы и следующий шаг", "Артефакты"]
     assert "найти АС-03" in out and "art_0123456789abcdef" in out
 
@@ -439,3 +440,43 @@ async def test_parallel_report_sections_do_not_collide(cfg):
                 .read_text(encoding="utf-8").splitlines()]
         res = [m for m in hist if m["type"] == "ToolMessage" and m["name"] == "write_report_section"]
         assert len(res) == 6 and all('"ok": true' in m["content"] for m in res)
+
+
+async def test_one_evidence_per_place_and_a_closed_plan_before_completion(cfg):
+    """A shorter cut of an already cited line is the same evidence, a longer one extends it (one id per place);
+    complete_task needs a closed plan."""
+    q_long = "эталонный кластер «Северный» хранит поисковый индекс в 12 первичных шардах"
+    q_short = "хранит поисковый индекс в 12 первичных шардах"
+    plan = [[tc("update_plan", {"steps": [{"title": "найти АС-01", "status": "doing"}]})],
+            [tc("save_evidence", {"claim": "шарды", "kind": "fact", "source": HANDBOOK, "page": 4, "quote": q_short})],
+            [tc("save_evidence", {"claim": "шарды полностью", "kind": "fact", "source": HANDBOOK, "page": 4, "quote": q_long})],
+            [tc("save_evidence", {"claim": "шарды ещё раз", "kind": "fact", "source": HANDBOOK, "page": 4, "quote": q_short})],
+            "done"]
+    async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
+        r.create(spec())
+        await r.run("A")
+        ev = r.store.evidence("A")
+        assert len(ev) == 1 and "Северный" in ev[0]["quote"]                # the longer cut is kept
+        hist = [json.loads(l) for l in (cfg.root / ".harness" / "tasks" / "A" / "history.jsonl")
+                .read_text(encoding="utf-8").splitlines()]
+        st = [json.loads(m["content"])["data"]["status"] for m in hist if m["type"] == "ToolMessage" and m["name"] == "save_evidence"]
+        assert st == ["saved", "extended", "already_saved"]
+
+
+def test_parallel_calls_of_one_step_share_one_time_budget():
+    """max_step_seconds: calls of one step that start after the step's time is used up are not executed."""
+    import time as _time
+    from types import SimpleNamespace
+    from langchain_core.messages import AIMessage
+    from harness.middleware import ToolRuntimeMiddleware
+    events = []
+    mw = ToolRuntimeMiddleware.__new__(ToolRuntimeMiddleware)
+    mw.ctx = SimpleNamespace(limits=SimpleNamespace(max_step_seconds=5), emit=lambda kind, **d: events.append((kind, d)))
+    mw._step_started = {}
+    ai = AIMessage(content="", id="step1", tool_calls=[{"name": "read_pages", "args": {}, "id": f"c{i}"} for i in range(3)])
+    req = lambda i: SimpleNamespace(tool_call={"name": "read_pages", "args": {}, "id": f"c{i}"}, state={"messages": [ai]})
+    assert mw._step_time(req(0)) is None and mw._step_time(req(1)) is None
+    mw._step_started["step1"] = _time.monotonic() - 100            # the step has already run 100 s
+    blocked = mw._step_time(req(2))
+    assert blocked is not None and "step_time_exhausted" in blocked.content
+    assert events and events[0][1]["guard"] == "step_time"

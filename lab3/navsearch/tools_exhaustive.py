@@ -30,6 +30,12 @@ NEXT_MAX = 8
 AREA_GREP_PAGE = 15
 AREA_FT_PAGE = 15
 
+# Lines with requirement / limitation wording need their own decision even inside a fragment that already has a
+# mention: in M9 and EXP5 the line "Трассы ... проверяются ... [L-ST-30]" sat in a fragment with two recorded
+# mentions, so the per-fragment verdict did not make the model look at it again.
+REQUIREMENT_RX = re.compile(r"огранич|должн|обязан|провер|требу|только|нельзя|запрещ|не более|не больше|не менее|"
+                            r"не может|не поддерж|не допуска|не удаля|не архивир|лимит|квот|не превыша", re.I)
+
 
 def _merge_ranges(ranges: list[list[int]]) -> list[list[int]]:
     """Unread line ranges of a document, adjacent/overlapping ones merged (blank lines between fragments)."""
@@ -52,6 +58,9 @@ class NextArgs(BaseModel):
     no_mention: list[str] = Field(default_factory=list, description=(
         "fragment_ids of the PREVIOUS batch that contain no mention (a fragment with a record_mention needs no entry); "
         "every fragment of the previous batch must have one of the two verdicts"))
+    checked_lines: list[str] = Field(default_factory=list, description=(
+        "'fragment_id:line' of lines of the PREVIOUS batch marked as check_lines that you read and found to be NOT a "
+        "mention; a check line covered by a record_mention needs no entry"))
 
 
 class AreaGrepArgs(BaseModel):
@@ -133,7 +142,8 @@ class ExhaustiveTools:
         return idx
 
     # ------------------------------------------------------------------ full reading
-    def area_next(self, cursor: str | None = None, no_mention: list[str] | None = None) -> dict:
+    def area_next(self, cursor: str | None = None, no_mention: list[str] | None = None,
+                  checked_lines: list[str] | None = None) -> dict:
         """A batch counts as READ only when the agent asks for the next one with next_cursor (acknowledgement):
         a batch delivered right before a budget stop / crash is delivered again on resume (cursor=None).
         The acknowledgement needs a verdict for EVERY fragment of that batch: a recorded mention or an entry in
@@ -157,8 +167,26 @@ class ExhaustiveTools:
                                 "fragment_id in no_mention, then call area_next with the same cursor.",
                                 missing=[{"fragment_id": fid, "path": idx[fid].get("path"),
                                           "lines": [idx[fid].get("start_line"), idx[fid].get("end_line")]} for fid in missing])
+            evs = e.store.evidence(e.task_id)
+            said_lines = set(checked_lines or [])
+            open_lines = []
+            for fid in batch:
+                if fid in done:
+                    continue
+                spans = [(ev["line_start"], ev["line_end"]) for ev in evs if ev.get("fragment_id") == fid]
+                for ln, text in self._check_lines(idx[fid]):
+                    if not any(a <= ln <= b for a, b in spans) and f"{fid}:{ln}" not in said_lines:
+                        open_lines.append({"fragment_id": fid, "line": ln, "text": text[:200]})
+            if open_lines:
+                raise ToolError("line_verdict_required",
+                                f"{len(open_lines)} line(s) of the previous batch with requirement or limitation wording "
+                                "have no decision. For each: record_mention if it states a limitation, requirement, check "
+                                "or obligation; otherwise add 'fragment_id:line' to checked_lines. Then call area_next "
+                                "with the same cursor.", lines=open_lines[:20])
             if said_no & set(batch):
                 e.store.event(e.task_id, "no_mention_verdicts", {"fragments": sorted(said_no & set(batch))})
+            if said_lines:
+                e.store.event(e.task_id, "checked_line_verdicts", {"lines": sorted(said_lines)})
             for fid in batch:                                    # acknowledge the previous batch
                 f = idx[fid]
                 e.store.add_range(e.task_id, fid, f["content_hash"], "fragment", f["ordinal"], f["ordinal"])
@@ -175,14 +203,22 @@ class ExhaustiveTools:
                 break
             out.append({"fragment_id": f["fragment_id"], "document_id": f["document_id"], "path": f["path"],
                         "section": f["section_title"], "lines": [f["start_line"], f["end_line"]],
-                        "text": numbered(f["text"], f["start_line"])})
+                        "text": numbered(f["text"], f["start_line"]),
+                        "check_lines": [ln for ln, _t in self._check_lines(idx[ids[i]])]})
             size += len(f["text"])
             i += 1
         return {"done": False, "batch": [pos + 1, i], "of": len(ids), "fragments": out,
                 "next_cursor": enc_cursor({"p": i, "from": pos}), "coverage": self._coverage_short(),
                 "instruction": "Record every mention in this batch with record_mention, then call area_next(next_cursor, "
-                               "no_mention=[fragment_ids of this batch without a mention]); the batch counts as read "
-                               "with that call. done=true comes after the last batch."}
+                               "no_mention=[fragment_ids of this batch without a mention], checked_lines=['fragment_id:line' "
+                               "of check_lines that are not a mention]); the batch counts as read with that call. "
+                               "done=true comes after the last batch."}
+
+    def _check_lines(self, frag: dict) -> list[tuple[int, str]]:
+        """Lines of a fragment with requirement / limitation wording (they need an explicit decision)."""
+        f = self.env.levels.with_text(frag)
+        return [(f["start_line"] + k, line) for k, line in enumerate(f["text"].split("\n"))
+                if line.strip() and REQUIREMENT_RX.search(line)]
 
     # ------------------------------------------------------------------ exhaustive grep / full-text passes
     def area_grep(self, pattern: str, regex: bool = False, ignore_case: bool = True, cursor: str | None = None) -> dict:
@@ -197,7 +233,7 @@ class ExhaustiveTools:
         page = hits[off: off + AREA_GREP_PAGE]
         nxt = off + AREA_GREP_PAGE
         self.env.store.event(self.env.task_id, "area_grep_page", {"pattern": pattern, "page": [off + 1, off + len(page)],
-                                                                  "total": len(hits)})
+                                                                  "total": len(hits), "done": nxt >= len(hits)})
         return {"pattern": pattern, "total": len(hits), "page": [off + 1, off + len(page)], "hits": page,
                 "done": nxt >= len(hits), "next_cursor": enc_cursor({"o": nxt}) if nxt < len(hits) else None,
                 "note": "Read pages until done=true. Grep finds only literal matches: semantic mentions need area_next."}
@@ -212,7 +248,8 @@ class ExhaustiveTools:
                 "path": h["_source"]["path"], "lines": [h["_source"]["start_line"], h["_source"]["end_line"]],
                 "match": " … ".join(h.get("highlight", {}).get("text", []))} for h in hits]
         nxt = hits[-1]["sort"] if len(hits) == AREA_FT_PAGE else None
-        self.env.store.event(self.env.task_id, "area_fulltext_page", {"query": query, "returned": len(out), "total": res["total"]})
+        self.env.store.event(self.env.task_id, "area_fulltext_page", {"query": query, "returned": len(out), "total": res["total"],
+                                                                      "done": nxt is None})
         return {"query": query, "total": res["total"], "hits": out, "order": "path, ordinal (no score, no cut-off)",
                 "done": nxt is None, "next_cursor": enc_cursor({"a": nxt}) if nxt else None}
 

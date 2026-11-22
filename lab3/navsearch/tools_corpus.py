@@ -447,14 +447,19 @@ class CorpusTools:
                 l1 = e.levels.get_l1(d["document_id"]) or {}
                 fields = [("title", None, l1.get("title", "")), ("description", None, l1.get("description", "")),
                           ("summary", None, l1.get("summary", ""))]
+                lines_of = {}
                 for s in l1.get("sections", []):
                     fields += [("section_title", s["section_id"], s["title"]), ("section_summary", s["section_id"], s["summary"])]
+                    lines_of[s["section_id"]] = [s.get("start_line"), s.get("end_line")]
                 for name, sid, text in fields:
                     for m in rx.finditer(text):
                         a = max(m.start() - 80, 0)
+                        # an L1 hit points to the section's source lines, so the agent can go to L2 directly
                         hits.append({"document_id": d["document_id"], "path": d["path"], "field": name, "section_id": sid,
-                                     "offset": m.start(), "match": m.group(0), "context": text[a: m.end() + 100],
-                                     "next": f"get_l1('{d['document_id']}')"})
+                                     "section_lines": lines_of.get(sid), "offset": m.start(), "match": m.group(0),
+                                     "context": text[a: m.end() + 100],
+                                     "next": (f"read_section('{d['document_id']}', '{sid}')" if sid
+                                              else f"get_l1('{d['document_id']}')")})
             else:
                 l2 = e.levels.get_l2(d["document_id"]) or {"fragments": []}
                 _d, _p, lines = e.levels.source(d["document_id"])

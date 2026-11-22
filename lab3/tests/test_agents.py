@@ -80,6 +80,23 @@ def _no_mention(batch: dict) -> list[str]:
     return [f["fragment_id"] for f in batch.get("fragments", []) if not re.search(r"\[L-ST-\d\d\]", f["text"])]
 
 
+def _checked_lines(batch: dict) -> list[str]:
+    """Lines marked check_lines that carry no contract code: the policy decides they are not mentions."""
+    out = []
+    for f in batch.get("fragments", []):
+        by_no = {}
+        for line in f["text"].split("\n"):
+            no, _sep, txt = line.partition(": ")
+            if no.isdigit():
+                by_no[int(no)] = txt
+        out += [f"{f['fragment_id']}:{ln}" for ln in f.get("check_lines", []) if "[L-ST-" not in by_no.get(ln, "")]
+    return out
+
+
+def _ack(batch: dict) -> dict:
+    return {"cursor": batch["next_cursor"], "no_mention": _no_mention(batch), "checked_lines": _checked_lines(batch)}
+
+
 def exhaustive_policy(messages):
     t = last_tool(messages)
     d = t.get("data", {})
@@ -98,13 +115,13 @@ def exhaustive_policy(messages):
             return AIMessage(content="", tool_calls=[call("area_coverage", {})])
         if calls:            # first record the mentions of this batch, then ask for the next one
             return AIMessage(content="", tool_calls=calls)
-        return AIMessage(content="", tool_calls=[call("area_next", {"cursor": d["next_cursor"], "no_mention": _no_mention(d)})])
+        return AIMessage(content="", tool_calls=[call("area_next", _ack(d))])
     if t.get("tool") == "record_mention":
         # continue after the batch these mentions came from
         for m in reversed(messages):
             if isinstance(m, ToolMessage) and m.name == "area_next":
                 b = json.loads(m.content)["data"]
-                return AIMessage(content="", tool_calls=[call("area_next", {"cursor": b["next_cursor"], "no_mention": _no_mention(b)})])
+                return AIMessage(content="", tool_calls=[call("area_next", _ack(b))])
         return AIMessage(content="", tool_calls=[call("area_next", {})])
     if t.get("tool") == "area_coverage":
         if d.get("complete"):
@@ -173,8 +190,12 @@ async def test_area_next_is_deterministic_per_cursor(cfg, env):
     assert no_verdict.value.type == "verdict_required" and len(no_verdict.value.extra["missing"]) == len(b1["fragments"])
     assert ex.area_coverage()["fragments_read"] == 0               # nothing acknowledged by the refused call
     nm = [f["fragment_id"] for f in b1["fragments"]]
-    b2 = ex.area_next(b1["next_cursor"], no_mention=nm)
-    replay = ex.area_next(b1["next_cursor"], no_mention=nm)       # a tools step replayed after a crash
+    with pytest.raises(ToolError) as no_line:                      # lines with requirement wording need a decision
+        ex.area_next(b1["next_cursor"], no_mention=nm)
+    assert no_line.value.type == "line_verdict_required" and no_line.value.extra["lines"]
+    cl = [f"{f['fragment_id']}:{ln}" for f in b1["fragments"] for ln in f["check_lines"]]
+    b2 = ex.area_next(b1["next_cursor"], no_mention=nm, checked_lines=cl)
+    replay = ex.area_next(b1["next_cursor"], no_mention=nm, checked_lines=cl)   # a tools step replayed after a crash
     assert [f["fragment_id"] for f in b2["fragments"]] == [f["fragment_id"] for f in replay["fragments"]]
     assert ex.area_coverage()["fragments_read"] == len(b1["fragments"])      # b2 not acknowledged yet
     again = ex.area_next()                                       # resume without cursor: b2 is delivered again
@@ -501,3 +522,34 @@ async def test_sub_agent_stopped_by_no_progress_gets_one_follow_up(env):
     await SubagentManager(R(), {"exhaustive": None}, "P")._run_sub(env.task_id, "exhaustive")
     assert len(calls) == 2 and "area_grep" in calls[1] and calls[1].endswith(FINISH_NUDGE["exhaustive"])
     assert env.store.get_task(env.task_id)["status"] == "completed"
+
+
+def test_submit_rules_short_ids_unfinished_passes_contradictions_and_open_plan(env):
+    """Checks added after M9: no 8-character fragment ids, started cross-check passes read to the end, no "not read"
+    for a document the sub-agent has cited, and a closed plan for deep."""
+    from navsearch.subagents import SubmitTools
+    from navsearch.tools_corpus import CorpusTools, ToolError
+    ct = CorpusTools(env)
+    hits = ct.search_grep("РС-7", "L2")["hits"]
+    ct.search_fulltext("бэкенд чекпоинтов", "L2")
+    h = hits[0]
+    ev = ct.cite_fragment(h["fragment_id"], h["text"][:60], "РС-7")["evidence_id"]
+    ev2 = ct.cite_fragment(h["fragment_id"], h["text"][:40], "РС-7 коротко")["evidence_id"]
+    name = h["path"].rsplit("/", 1)[-1]
+    deep = SubmitTools(env.store, env.task_id, "deep")
+    with pytest.raises(ToolError) as e1:
+        deep.submit_result(f"PostgreSQL [{ev}] [{ev2}], frag f357c648", ["нет"])
+    assert e1.value.type == "short_ids"
+    with pytest.raises(ToolError) as e2:
+        deep.submit_result(f"PostgreSQL [{ev}] [{ev2}]", [f"{name} не прочитан из-за бюджета"])
+    assert e2.value.type == "contradicts_evidence" and ev in e2.value.message
+    env.store.update_task(env.task_id, plan=[{"title": "найти решение", "status": "doing"}])
+    with pytest.raises(ToolError) as e3:
+        deep.submit_result(f"PostgreSQL [{ev}] [{ev2}]", ["срок перехода не подтверждён"])
+    assert e3.value.type == "plan_open"
+    env.store.event(env.task_id, "area_grep_page", {"pattern": "огранич", "page": [1, 15], "total": 49, "done": False})
+    full = {"complete": True, "fragments_read": 1, "fragments_total": 1, "documents": []}
+    exh = SubmitTools(env.store, env.task_id, "exhaustive", coverage_fn=lambda: full)
+    with pytest.raises(ToolError) as e4:
+        exh.submit_result(f"найдено [{ev}]")
+    assert e4.value.type == "pass_incomplete" and "огранич" in e4.value.message

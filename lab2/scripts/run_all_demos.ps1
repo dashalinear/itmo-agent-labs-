@@ -23,11 +23,14 @@ Scenarios (task ids):
 param(
     [ValidateSet("all", "web", "guard", "b2")][string]$Part = "all",
     [switch]$SkipPush,
+    [switch]$Push,
     [switch]$SkipTests,
     [string]$EnvFile = ".env"
 )
 
 $ErrorActionPreference = "Stop"
+# git commit + push of the results only on request (-Push); without it the script just records them
+if (-not $Push) { $SkipPush = $true }
 $lab = Split-Path -Parent $PSScriptRoot
 Set-Location $lab
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8

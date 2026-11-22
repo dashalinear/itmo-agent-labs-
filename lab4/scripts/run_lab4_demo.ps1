@@ -24,8 +24,9 @@ Scenarios (all automatic, the script only plays the user: it drops files into wo
   E3  a file is added while no watcher runs; the watcher started afterwards picks it up (rescan)
 #>
 param(
-    [ValidateSet("all", "extra", "topic-crash", "growth")][string]$Part = "all",
+    [ValidateSet("all", "extra", "topic-crash", "growth", "ticks")][string]$Part = "all",
     [switch]$SkipPush,
+    [switch]$Push,
     [switch]$SkipTests,
     [string]$Every = "8m",
     [string]$TemporalImage = "temporalio/temporal:1.10.0",
@@ -35,6 +36,8 @@ param(
 )
 
 $ErrorActionPreference = "Continue"     # native tools (docker, python) write progress to stderr; failures are checked by exit codes
+# git commit + push of the results only on request (-Push); without it the script just records them
+if (-not $Push) { $SkipPush = $true }
 $lab = Split-Path -Parent $PSScriptRoot
 Set-Location $lab
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -184,6 +187,70 @@ if ($Part -eq "growth") {
     Step "W4. Commit and push"
     git add traces results corpus
     git commit -m "Lab 4: new-topic file reported by a Schedule tick, replay while running (qwen3.8-27b)"
+    if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
+    git push
+    if ($LASTEXITCODE -ne 0) { throw "git push failed" }
+    Write-Host "`nDone."
+    exit 0
+}
+
+if ($Part -eq "ticks") {
+    # Real interval ticks of one Schedule (no immediate run): a file on a new topic arrives between tick 1 and
+    # tick 2, the worker dies inside the topic agent of tick 2, and a file that arrives after the freeze of tick 2
+    # appears only in tick 3. Corpus of the earlier runs, no reset.
+    Step "K0. Workers and watcher"
+    Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+        Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    TF schedule delete | Out-Null
+    TF-Must fault --clear
+    $w8 = Start-Bg "worker8" $workerArgs
+    $watch8 = Start-Bg "watcher8" "-m topicflow.cli watch"
+    Start-Sleep -Seconds 20
+    if ($w8.HasExited) { throw "worker8 ended at start: see $(Join-Path $logs 'worker8.err.log')" }
+
+    Step "K1. Schedule every $Every without the immediate run: run 1 is an interval tick"
+    $after = (Get-Date).ToUniversalTime().AddSeconds(-5).ToString("yyyy-MM-ddTHH:mm:ssZ")
+    TF-Must schedule create --every $Every --no-trigger
+    TF-Must wait --schedule-runs 1 --after $after --timeout 3600
+    & $py -m topicflow.cli schedule describe | Out-File -Encoding utf8 (Join-Path $results "schedule_ticks_after_tick1.json")
+
+    Step "K2. A file on a new topic between tick 1 and tick 2 (ingested automatically by the watcher)"
+    TF-Must drop --set new_topic3
+    Start-Sleep -Seconds 10
+    TF-Must wait --batches --timeout 1800
+
+    Step "K3. Tick 2 on a worker that dies inside the topic agent; a file arrives after the freeze of tick 2"
+    Stop-One $w8
+    $env:HARNESS_CRASH_AT = "after_tool:6"
+    $w9 = Start-Bg "worker9" $workerArgs
+    Remove-Item Env:HARNESS_CRASH_AT
+    Write-Host "waiting for tick 2 and for worker #9 to die inside its topic agent (after the 6th tool)..."
+    $w9.WaitForExit(3600000) | Out-Null
+    Assert-Crashed $w9 "worker9"
+    TF-Must drop --set late2                  # the crash comes after freeze_corpus: tick 2 must not contain this file
+    $w10 = Start-Bg "worker10" $workerArgs
+    TF-Must wait --schedule-runs 2 --after $after --timeout 3600
+    TF-Must wait --batches --timeout 1800
+
+    Step "K4. Tick 3: the late file is a new document there"
+    TF-Must wait --schedule-runs 3 --after $after --timeout 3600
+    & $py -m topicflow.cli schedule describe | Out-File -Encoding utf8 (Join-Path $results "schedule_ticks_final.json")
+    TF-Must schedule delete
+
+    Step "K5. Traces and results"
+    Stop-Bg
+    TF-Must trace
+    TF-Must export
+    & $py -m topicflow.cli l0 | Out-File -Encoding utf8 (Join-Path $results "l0_view.json")
+    & $py -m topicflow.cli open-report --latest | Out-File -Encoding utf8 (Join-Path $results "open_report_latest.txt")
+    & $py -m topicflow.cli open-report --latest-complete | Out-File -Encoding utf8 (Join-Path $results "open_report_latest_complete.txt")
+    & $py -m topicflow.cli status | Out-File -Encoding utf8 (Join-Path $results "status.txt")
+    Get-Content (Join-Path $results "status.txt")
+    if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
+    Step "K6. Commit and push"
+    git add traces results corpus
+    git commit -m "Lab 4: three interval ticks of one Schedule, new topic between ticks, worker crash in a scheduled run, file after the freeze (qwen3.8-27b)"
     if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
     git push
     if ($LASTEXITCODE -ne 0) { throw "git push failed" }

@@ -155,9 +155,21 @@ class ResearchTools:
             k = url_key(c)
             row = self.store.get_url(self.task_id, k)
             if row is None:
-                origin = f"page:{it['found_on']}" if it.get("found_on") else "agent"
-                self.store.add_url(self.task_id, k, url, c, "found", origin)
-                row = self.store.get_url(self.task_id, k)
+                # every source must come from a search result or from a page the agent has read: a URL from the
+                # model's memory (B2 had one, discovered_by=agent) is refused
+                page = self.store.get_url(self.task_id, url_key(canonical_url(it["found_on"]))) if it.get("found_on") else None
+                if decision != "queue":
+                    # rejecting an unknown URL is harmless: it is recorded as skipped and never read
+                    self.store.add_url(self.task_id, k, url, c, "found", "agent")
+                    row = self.store.get_url(self.task_id, k)
+                elif not page or page["status"] != "done":
+                    done.append({"url": url, "error": "not_discovered",
+                                 "message": "this URL was not returned by web_search and found_on is not a fetched page; "
+                                            "find it with web_search or take it from the links of a fetched page"})
+                    continue
+                else:
+                    self.store.add_url(self.task_id, k, url, c, "found", f"page:{it['found_on']}")
+                    row = self.store.get_url(self.task_id, k)
             if row["status"] in ("running", "done", "error"):
                 done.append({"url": url, "url_key": k, "status": row["status"], "note": "already processed; unchanged"})
                 continue

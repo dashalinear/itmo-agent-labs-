@@ -1,0 +1,20 @@
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'run_topic_agent', 'attempt': 1, 'namespace': 'default', 'task_queue': 'lab4-topics', 'workflow_id': 'lab4-topics-run-2026-11-20T14:37:46Z', 'workflow_run_id': '01a1f964-5cd9-7bff-bf37-9bef906c65bb', 'workflow_type': 'TopicReport'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 324, in run_topic_agent
+    return await _run_agent(env, tid, "topics", create, "topics", req.get("overrides"))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 163, in _run_agent
+    raise ApplicationError(f"agent task {task_id} stopped: {t['status']} - {reason[:300]}", out, type="AgentNotFinished")
+temporalio.exceptions.ApplicationError: AgentNotFinished: agent task TOP-20261120T143746Z stopped: paused - no progress: read_fragment returned the same result 6 times

@@ -1,0 +1,174 @@
+Completing activity as failed ({'activity_id': '3', 'activity_type': 'publish_report', 'attempt': 1, 'namespace': 'default', 'task_queue': 'lab4-topics', 'workflow_id': 'lab4-topics-manual-2026-11-17T20:49:46Z', 'workflow_run_id': '01a1eb45-dd8c-7017-b610-64d54801bc28', 'workflow_type': 'TopicReport'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 338, in publish_report
+    return await asyncio.to_thread(_publish, env, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 324, in _publish
+    res = rep.publish(env.ws, env.corpus_tools(store, tid), run_key, meta, task, evidence,
+                      fault=lambda point: env.faults.check("publish_report", point, att))
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\reports.py", line 234, in publish
+    fault("after_write")                    # simulated crash between writing the file and registering it at L0
+    ~~~~~^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 325, in <lambda>
+    fault=lambda point: env.faults.check("publish_report", point, att))
+                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in publish_report at 'after_write' (attempt 1, fired 1 time(s))
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'stage_batch', 'attempt': 1, 'namespace': 'default', 'task_queue': 'lab4-ingest', 'workflow_id': 'ingest-6341c09670', 'workflow_run_id': '01a1eb47-679e-7bba-8063-6a8d88ffa901', 'workflow_type': 'IngestNewFiles'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 209, in stage_batch
+    return await asyncio.to_thread(_stage_batch, Env.get(), req["batch_id"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 164, in _stage_batch
+    env.faults.check("stage_batch", "before", _attempt())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in stage_batch at 'before' (attempt 1, fired 1 time(s))
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'stage_batch', 'attempt': 2, 'namespace': 'default', 'task_queue': 'lab4-ingest', 'workflow_id': 'ingest-6341c09670', 'workflow_run_id': '01a1eb47-679e-7bba-8063-6a8d88ffa901', 'workflow_type': 'IngestNewFiles'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 209, in stage_batch
+    return await asyncio.to_thread(_stage_batch, Env.get(), req["batch_id"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 164, in _stage_batch
+    env.faults.check("stage_batch", "before", _attempt())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in stage_batch at 'before' (attempt 2, fired 2 time(s))
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'stage_batch', 'attempt': 3, 'namespace': 'default', 'task_queue': 'lab4-ingest', 'workflow_id': 'ingest-6341c09670', 'workflow_run_id': '01a1eb47-679e-7bba-8063-6a8d88ffa901', 'workflow_type': 'IngestNewFiles'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 209, in stage_batch
+    return await asyncio.to_thread(_stage_batch, Env.get(), req["batch_id"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 164, in _stage_batch
+    env.faults.check("stage_batch", "before", _attempt())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in stage_batch at 'before' (attempt 3, fired 3 time(s))
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'stage_batch', 'attempt': 4, 'namespace': 'default', 'task_queue': 'lab4-ingest', 'workflow_id': 'ingest-6341c09670', 'workflow_run_id': '01a1eb47-679e-7bba-8063-6a8d88ffa901', 'workflow_type': 'IngestNewFiles'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 209, in stage_batch
+    return await asyncio.to_thread(_stage_batch, Env.get(), req["batch_id"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 164, in _stage_batch
+    env.faults.check("stage_batch", "before", _attempt())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in stage_batch at 'before' (attempt 4, fired 4 time(s))
+Completing activity as failed ({'activity_id': '2', 'activity_type': 'stage_batch', 'attempt': 5, 'namespace': 'default', 'task_queue': 'lab4-ingest', 'workflow_id': 'ingest-6341c09670', 'workflow_run_id': '01a1eb47-679e-7bba-8063-6a8d88ffa901', 'workflow_type': 'IngestNewFiles'})
+Traceback (most recent call last):
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\temporalio\worker\_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 209, in stage_batch
+    return await asyncio.to_thread(_stage_batch, Env.get(), req["batch_id"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DASHA\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\activities.py", line 164, in _stage_batch
+    env.faults.check("stage_batch", "before", _attempt())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\topicflow\faults.py", line 59, in check
+    raise InjectedFault(f"injected fault in {activity} at '{point}' (attempt {attempt}, fired {f['fired']} time(s))")
+topicflow.faults.InjectedFault: injected fault in stage_batch at 'before' (attempt 5, fired 5 time(s))
