@@ -5,6 +5,8 @@
   6341c09670  completed  wf=ingest-6341c09670 run=01a1eb48-4b63-7e17-938f-d8d582116708 task=None files=1 docs=0 dups=1
   6b93f9adf0  completed  wf=ingest-6b93f9adf0 run=01a1ee88-7d1a-734f-b414-da9cbd1e13d0 task=ING-6b93f9adf0 files=1 docs=1 dups=0
   1362a3c0e5  completed  wf=ingest-1362a3c0e5 run=01a1f963-c315-7816-a1c0-ca81a6e793c8 task=ING-1362a3c0e5 files=1 docs=1 dups=0
+  14c8e725b7  completed  wf=ingest-14c8e725b7 run=01a20472-7538-73e2-90e6-57b3be9c0a0a task=ING-14c8e725b7 files=1 docs=1 dups=0
+  2619a135a3  completed  wf=ingest-2619a135a3 run=01a20473-9042-7a89-ab68-34eac54d2c56 task=ING-2619a135a3 files=1 docs=1 dups=0
 == files
   input/bm25_basics.md                 indexed   batch=4d4e776d7c -> data/search/bm25_basics.md a401ef12-7eb0-4a47-976c-b1d6bead53b9 
   input/checkpoint_postgres.md         indexed   batch=4d4e776d7c -> data/storage/checkpoint_postgres.md bd2ea05b-e77b-44a3-805f-c4e50aa2e667 
@@ -23,6 +25,8 @@
   input/bm25_basics_copy.md            duplicate batch=6341c09670 -> data/search/bm25_basics.md a401ef12-7eb0-4a47-976c-b1d6bead53b9 (same content as data/search/bm25_basics.md: not indexed again, source kept in rejected
   input/latency_budget.md              indexed   batch=6b93f9adf0 -> data/ops/latency_budget.md 7afdfeaf-00a1-4bd7-95ce-fce51749e326 
   input/ui_accessibility.md            indexed   batch=1362a3c0e5 -> data/ops/ui_accessibility.md b130245a-999e-4e19-9c49-04bf86e527af 
+  input/onboarding_engineers.md        indexed   batch=14c8e725b7 -> data/ops/onboarding_engineers.md f2367418-07ce-4390-837c-ab8cd14fe003 
+  input/query_rewrite.md               indexed   batch=2619a135a3 -> data/search/query_rewrite.md f6ac62f7-f7e4-4b26-9e03-5218de1b1589 
 == reports (TopicReport)
   lab4-topics-run-2026-11-17T20:45:20Z             complete  task=TOP-20261117T204520Z frozen=10 -> data/_reports/topics_20261117T204520Z.md
   lab4-topics-run-2026-11-17T20:48:00Z             complete  task=TOP-20261117T204800Z frozen=13 -> data/_reports/topics_20261117T204800Z.md
@@ -31,3 +35,6 @@
   lab4-topics-run-2026-11-18T11:59:36Z             complete  task=TOP-20261118T115936Z frozen=13 -> data/_reports/topics_20261118T115936Z.md
   lab4-topics-manual-2026-11-18T13:20:31.699Z      complete  task=TOP-manual-20261118T132031699Z frozen=14 -> data/_reports/topics_manual-20261118T132031699Z.md
   lab4-topics-run-2026-11-20T14:37:46Z             complete  task=TOP-20261120T143746Z frozen=15 -> data/_reports/topics_20261120T143746Z.md
+  lab4-topics-run-2026-11-22T18:05:00Z             complete  task=TOP-20261122T180500Z frozen=15 -> data/_reports/topics_20261122T180500Z.md
+  lab4-topics-run-2026-11-22T18:10:00Z             complete  task=TOP-20261122T181000Z frozen=16 -> data/_reports/topics_20261122T181000Z.md
+  lab4-topics-run-2026-11-22T18:15:00Z             complete  task=TOP-20261122T181500Z frozen=17 -> data/_reports/topics_20261122T181500Z.md

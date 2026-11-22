@@ -439,6 +439,110 @@
    },
    "created_at": "2026-11-20T14:37:07+00:00",
    "updated_at": "2026-11-20T14:37:43+00:00"
+  },
+  {
+   "batch_id": "14c8e725b7",
+   "workflow_id": "ingest-14c8e725b7",
+   "run_id": "01a20472-7538-73e2-90e6-57b3be9c0a0a",
+   "task_id": "ING-14c8e725b7",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/onboarding_engineers.md",
+     "size": 847,
+     "mtime_ns": 1795370935594478400
+    }
+   ],
+   "result": {
+    "batch_id": "14c8e725b7",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/onboarding_engineers.md",
+      "document_id": "f2367418-07ce-4390-837c-ab8cd14fe003",
+      "current_path": "data/ops/onboarding_engineers.md",
+      "l2_fragments": 3,
+      "es": {
+       "L1": 1,
+       "L2": 3
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 24,
+    "agent": {
+     "attempt": 1,
+     "reason": "Организован 1 файл: input/_batches/14c8e725b7/onboarding_engineers.md -> data/ops/onboarding_engineers.md (документ f2367418). Написан L1 (3 секции), проиндексирован L2 (3 фрагмента), сохранён 1 ключевой excerpt в MCP-индекс (проверен поиском ONB-2026-02). validate_corpus: ok, 24 документа, 193 фраг",
+     "resumed": false,
+     "run_result": "completed",
+     "runs": 1,
+     "status": "completed",
+     "task_id": "ING-14c8e725b7",
+     "usage": {
+      "compactions": 0,
+      "model_calls": 13,
+      "tokens": 131094,
+      "tool_calls": 14
+     }
+    }
+   },
+   "created_at": "2026-11-22T18:08:59+00:00",
+   "updated_at": "2026-11-22T18:09:31+00:00"
+  },
+  {
+   "batch_id": "2619a135a3",
+   "workflow_id": "ingest-2619a135a3",
+   "run_id": "01a20473-9042-7a89-ab68-34eac54d2c56",
+   "task_id": "ING-2619a135a3",
+   "status": "completed",
+   "files": [
+    {
+     "input_path": "input/query_rewrite.md",
+     "size": 544,
+     "mtime_ns": 1795371007419204200
+    }
+   ],
+   "result": {
+    "batch_id": "2619a135a3",
+    "status": "completed",
+    "documents": [
+     {
+      "input_path": "input/query_rewrite.md",
+      "document_id": "f6ac62f7-f7e4-4b26-9e03-5218de1b1589",
+      "current_path": "data/search/query_rewrite.md",
+      "l2_fragments": 2,
+      "es": {
+       "L1": 1,
+       "L2": 2
+      },
+      "ok": true
+     }
+    ],
+    "problems": [],
+    "left_in_staging": [],
+    "duplicates": [],
+    "l0_documents": 25,
+    "agent": {
+     "attempt": 1,
+     "reason": "Один файл из input/_batches/2619a135a3 (query_rewrite.md) перенесён в data/search/ по содержимому (механизм переписывания поисковых запросов, код SRCH-RW-3). L0: каталог с title/description/note; L1: 2 секции (Идея, Ограничение) с summary; L2: 2 фрагмента в Elasticsearch; lab-1 excerpt (строки 3-8) ",
+     "resumed": false,
+     "run_result": "completed",
+     "runs": 1,
+     "status": "completed",
+     "task_id": "ING-2619a135a3",
+     "usage": {
+      "compactions": 0,
+      "model_calls": 12,
+      "tokens": 118204,
+      "tool_calls": 14
+     }
+    }
+   },
+   "created_at": "2026-11-22T18:10:12+00:00",
+   "updated_at": "2026-11-22T18:10:52+00:00"
   }
  ],
  "files": [
@@ -662,6 +766,32 @@
    "current_path": "data/ops/ui_accessibility.md",
    "note": null,
    "updated_at": "2026-11-20T14:37:43+00:00"
+  },
+  {
+   "input_path": "input/onboarding_engineers.md",
+   "size": 847,
+   "mtime_ns": 1795370935594478400,
+   "batch_id": "14c8e725b7",
+   "status": "indexed",
+   "content_hash": "sha256:88a8259fa2492bc073727bd2b9ef6e0f558b7e7a7695d7e360f9fd1f06079519",
+   "staged_path": "input/_batches/14c8e725b7/onboarding_engineers.md",
+   "document_id": "f2367418-07ce-4390-837c-ab8cd14fe003",
+   "current_path": "data/ops/onboarding_engineers.md",
+   "note": null,
+   "updated_at": "2026-11-22T18:09:31+00:00"
+  },
+  {
+   "input_path": "input/query_rewrite.md",
+   "size": 544,
+   "mtime_ns": 1795371007419204200,
+   "batch_id": "2619a135a3",
+   "status": "indexed",
+   "content_hash": "sha256:7eb6b3b335bb93de74e5567a73b54f6c4769d4d3183a9d5c19e07fcc4fd84dfa",
+   "staged_path": "input/_batches/2619a135a3/query_rewrite.md",
+   "document_id": "f6ac62f7-f7e4-4b26-9e03-5218de1b1589",
+   "current_path": "data/search/query_rewrite.md",
+   "note": null,
+   "updated_at": "2026-11-22T18:10:52+00:00"
   }
  ],
  "reports": [
@@ -886,6 +1016,100 @@
    },
    "created_at": "2026-11-20T14:37:46+00:00",
    "updated_at": "2026-11-20T14:40:08+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-22T18:05:00Z",
+   "workflow_id": "lab4-topics-run-2026-11-22T18:05:00Z",
+   "run_id": "01a2046e-cd61-7075-968f-8298d9cd2e9f",
+   "task_id": "TOP-20261122T180500Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261122T180500Z.md",
+   "document_id": "4fa79fa8-3fd8-436d-85a2-9bb37104f91f",
+   "frozen": 15,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-22T18:05:00Z",
+    "workflow_id": "lab4-topics-run-2026-11-22T18:05:00Z",
+    "run_id": "01a2046e-cd61-7075-968f-8298d9cd2e9f",
+    "document_id": "4fa79fa8-3fd8-436d-85a2-9bb37104f91f",
+    "path": "data/_reports/topics_20261122T180500Z.md",
+    "status": "complete",
+    "topics": 6,
+    "documents_frozen": 15,
+    "documents_examined": 15,
+    "frozen_at": "2026-11-22T18:05:00+00:00",
+    "task_id": "TOP-20261122T180500Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [],
+    "report_count": 8
+   },
+   "created_at": "2026-11-22T18:05:00+00:00",
+   "updated_at": "2026-11-22T18:08:54+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-22T18:10:00Z",
+   "workflow_id": "lab4-topics-run-2026-11-22T18:10:00Z",
+   "run_id": "01a20473-6104-745e-8dda-18dff0d19c38",
+   "task_id": "TOP-20261122T181000Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261122T181000Z.md",
+   "document_id": "1426ae02-12e3-4d24-b9b6-2393b68086bc",
+   "frozen": 16,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-22T18:10:00Z",
+    "workflow_id": "lab4-topics-run-2026-11-22T18:10:00Z",
+    "run_id": "01a20473-6104-745e-8dda-18dff0d19c38",
+    "document_id": "1426ae02-12e3-4d24-b9b6-2393b68086bc",
+    "path": "data/_reports/topics_20261122T181000Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 16,
+    "documents_examined": 16,
+    "frozen_at": "2026-11-22T18:10:00+00:00",
+    "task_id": "TOP-20261122T181000Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [
+     "data/ops/onboarding_engineers.md"
+    ],
+    "report_count": 9
+   },
+   "created_at": "2026-11-22T18:10:00+00:00",
+   "updated_at": "2026-11-22T18:12:40+00:00"
+  },
+  {
+   "run_key": "lab4-topics-run-2026-11-22T18:15:00Z",
+   "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+   "run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+   "task_id": "TOP-20261122T181500Z",
+   "status": "complete",
+   "path": "data/_reports/topics_20261122T181500Z.md",
+   "document_id": "4d55f61e-abb3-4340-a717-e96843beb279",
+   "frozen": 17,
+   "result": {
+    "run_key": "lab4-topics-run-2026-11-22T18:15:00Z",
+    "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+    "run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+    "document_id": "4d55f61e-abb3-4340-a717-e96843beb279",
+    "path": "data/_reports/topics_20261122T181500Z.md",
+    "status": "complete",
+    "topics": 4,
+    "documents_frozen": 17,
+    "documents_examined": 17,
+    "frozen_at": "2026-11-22T18:15:00+00:00",
+    "task_id": "TOP-20261122T181500Z",
+    "rewritten": false,
+    "already_published": false,
+    "reasons": [],
+    "new_documents": [
+     "data/search/query_rewrite.md"
+    ],
+    "report_count": 10
+   },
+   "created_at": "2026-11-22T18:15:00+00:00",
+   "updated_at": "2026-11-22T18:17:05+00:00"
   }
  ]
 }

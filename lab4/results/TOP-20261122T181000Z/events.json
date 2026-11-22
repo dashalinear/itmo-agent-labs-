@@ -1,0 +1,1570 @@
+[
+  {
+    "id": 838,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:00+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 839,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:00+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "lab4-topics-run-2026-11-22T18:10:00Z",
+      "workflow_run_id": "01a20473-6104-745e-8dda-18dff0d19c38",
+      "activity_id": "2",
+      "activity_type": "run_topic_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 840,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:01+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "topics-a1"
+    }
+  },
+  {
+    "id": 841,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5323,
+      "reserve": 2048,
+      "total": 7371,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 842,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5323,
+      "reserve": 2048,
+      "total": 7371,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 843,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5323,
+      "actual_input": 3537,
+      "actual_output": 15,
+      "duration_s": 0.68,
+      "calibrated_cpt": 2.979
+    }
+  },
+  {
+    "id": 844,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5668,
+      "reserve": 2048,
+      "total": 7716,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 845,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5668,
+      "reserve": 2048,
+      "total": 7716,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)"
+    }
+  },
+  {
+    "id": 846,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5668,
+      "actual_input": 4570,
+      "actual_output": 34,
+      "duration_s": 0.7,
+      "calibrated_cpt": 3.125
+    }
+  },
+  {
+    "id": 847,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6374,
+      "reserve": 2048,
+      "total": 8422,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 848,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6374,
+      "reserve": 2048,
+      "total": 8422,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)"
+    }
+  },
+  {
+    "id": 849,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6374,
+      "actual_input": 5546,
+      "actual_output": 129,
+      "duration_s": 1.52,
+      "calibrated_cpt": 3.172
+    }
+  },
+  {
+    "id": 850,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6576,
+      "reserve": 2048,
+      "total": 8624,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 851,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6576,
+      "reserve": 2048,
+      "total": 8624,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)"
+    }
+  },
+  {
+    "id": 852,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6576,
+      "actual_input": 5814,
+      "actual_output": 294,
+      "duration_s": 2.61,
+      "calibrated_cpt": 3.198
+    }
+  },
+  {
+    "id": 853,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:07+00:00",
+    "kind": "simulated_crash",
+    "data": {
+      "at": "after_tool:6",
+      "phase": "after",
+      "tool": "examine_document",
+      "count": 6,
+      "usage_at_crash": {
+        "model_calls": 4,
+        "tool_calls": 8,
+        "http_requests": 0,
+        "cache_hits": 0
+      },
+      "evidence_at_crash": 0,
+      "urls_running": []
+    }
+  },
+  {
+    "id": 885,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:36+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "lab4-topics-run-2026-11-22T18:10:00Z",
+      "workflow_run_id": "01a20473-6104-745e-8dda-18dff0d19c38",
+      "activity_id": "2",
+      "activity_type": "run_topic_agent",
+      "attempt": 2,
+      "resumed": true,
+      "status_before": "running",
+      "runs_before": 1
+    }
+  },
+  {
+    "id": 886,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:37+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "topics-a2"
+    }
+  },
+  {
+    "id": 887,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11309,
+      "reserve": 2048,
+      "total": 13357,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 888,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11309,
+      "reserve": 2048,
+      "total": 13357,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 890,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11309,
+      "actual_input": 8772,
+      "actual_output": 295,
+      "duration_s": 3.0,
+      "calibrated_cpt": 2.769
+    }
+  },
+  {
+    "id": 891,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14232,
+      "reserve": 2048,
+      "total": 16280,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 892,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14232,
+      "reserve": 2048,
+      "total": 16280,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 898,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14232,
+      "actual_input": 12086,
+      "actual_output": 292,
+      "duration_s": 4.59,
+      "calibrated_cpt": 2.836
+    }
+  },
+  {
+    "id": 899,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17334,
+      "reserve": 2048,
+      "total": 19382,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 900,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17334,
+      "reserve": 2048,
+      "total": 19382,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 905,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17334,
+      "actual_input": 15301,
+      "actual_output": 60,
+      "duration_s": 2.25,
+      "calibrated_cpt": 2.858
+    }
+  },
+  {
+    "id": 906,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17870,
+      "reserve": 2048,
+      "total": 19918,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 907,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17870,
+      "reserve": 2048,
+      "total": 19918,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)"
+    }
+  },
+  {
+    "id": 909,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17870,
+      "actual_input": 15913,
+      "actual_output": 256,
+      "duration_s": 4.33,
+      "calibrated_cpt": 2.87
+    }
+  },
+  {
+    "id": 910,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:10:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19070,
+      "reserve": 2048,
+      "total": 21118,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 911,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:01+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 19070,
+      "after_tokens": 11446,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 18,
+      "kept_messages": 14,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6441,
+      "cost_output": 1246,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (16 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n*   [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n*   План работы: просмотр L1 всех 16 документов → группировка в 3–8 тем → чтение L2 для цитирования → `topic_upsert`/`merge` → `topics_status`/`submit_report`.\n*   Статус плана: шаг 1 (просмотр L1) в процессе, остальные — todo.\n\n## Подтверждённые факты (с источниками)\n*   Корпус: 16 документов, `run_key`: `lab4-topics-run-2026-11-22T18:10:00Z` (источник: `frozen_documents`).\n*   **M-05** (`data/meetings/meeting_m05.md`): Решения РС-12 (PostgreSQL 16 для чекпоинтов, отв. Мария Белова) и РС-13 (grep для кодов, векторный поиск для перефразов, отв. Анна Ершова). Кэш запросов отложен.\n*   **INC-2026-101** (`data/ops/incident_101.md`): 14.11.2026 сбой записи чекпоинтов (40 мин) из-за SQLite на сетевом диске. Вывод: запрет сетевых дисков в ST-CHK-01, переход на PostgreSQL по РС-12.\n*   **Latency** (`data/ops/latency_budget.md`): Требование LAT-2026-07 — ответ за 8 сек (p95). Бюджет: поиск ≤1.5с, модель ≤5с. Алерт при превышении >10 мин.\n*   **Monitoring** (`data/ops/monitoring.md`): Метрики p95, ошибки tools, токены, очередь. Алерт p95 >1.5с (5 мин). Дашборд обновляется раз в минуту, хранение 14 дней.\n*   **Onboarding** (`data/ops/onboarding_engineers.md`): Программа ONB-2026-02 (3 модуля). Наставник на 30 дней. Доступ к хранилищу — после зачёта по дежурствам.\n*   **Oncall** (`data/ops/oncall.md`): Смена 1 неделя, передача пн 10:00. Ответ на алерт 15 мин. Эскалация Олегу Смирнову через 30 мин. Формат INC-2026-NNN.\n*   **Accessibility** (`data/ops/ui_accessibility.md`): WCAG 2.2 AA (ACC-2026-01). Контраст 4.5:1. Ответственный: Ольга Лебедева.\n*   **BM25** (`data/search/bm25_basics.md`): k1=1.2, b=0.75, snowball. Ограничение: не находит перефразы, коды лучше искать grep.\n*   **Hybrid** (`data/search/hybrid_ranking.md`): RRF, константа 60. Ограничение: учитывает позиции, не score; top-k не для полного перечисления.\n*   *Примечание:* L1-суммаризация не является доказательством, требуется чтение L2.\n\n## Прогресс\n*   Получен список всех 16 документов (2 страницы).\n*   Просмотрены L1-суммаризации 10 документов: M-05, INC-101, inference_energy, latency_budget, monitoring, onboarding, oncall, ui_accessibility, bm25_basics, hybrid_ranking.\n*   Остались L1-просмотры: 6 документов (query_cache, snapshot_policy и др. из папок search/storage).\n*   L2-цитирование не начато.\n\n## Открытые вопросы и следующий шаг\n*   Завершить просмотр L1 оставшихся 6 документов.\n*   Сгруппировать документы в темы (предварительно: Ops/Надежность, Search, Process/People).\n*   Прочитать L2-фрагменты для подтверждения тем цитатами.\n\n## Артефакты\n*   `run_key`: `lab4-topics-run-2026-11-22T18:10:00Z`\n*   `document_id` (просмотренные): `17726e86...`, `5f7faa4a...`, `055181ba...`, `7afdfeaf...`, `526093ff...`, `f2367418...`, `10c4d818...`, `b130245a...`, `a401ef12...`, `bffbf9ae...`\n*   `document_id` (не просмотренные): `baddb9db...` (query_cache), `...` (snapshot_policy и др. из 2-й страницы списка).",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a99f86328743f0d6",
+            "chatcmpl-tool-8e205a9833c083d9",
+            "chatcmpl-tool-8584bb7ef01f4b9c",
+            "chatcmpl-tool-93ac0352ae5c93a2",
+            "chatcmpl-tool-bfce37d0cb63cc64"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a99f86328743f0d6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8e205a9833c083d9"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8584bb7ef01f4b9c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-93ac0352ae5c93a2"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bfce37d0cb63cc64"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a87f894692615c25"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a87f894692615c25"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-89bb330bacc6bb3e",
+            "chatcmpl-tool-b56d29298f7f9af8",
+            "chatcmpl-tool-b0d2b69fe1e1f012",
+            "chatcmpl-tool-a9ab400ea6a918b8"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89bb330bacc6bb3e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b56d29298f7f9af8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b0d2b69fe1e1f012"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a9ab400ea6a918b8"
+        }
+      ]
+    }
+  },
+  {
+    "id": 912,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11446,
+      "reserve": 2048,
+      "total": 13494,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)"
+    }
+  },
+  {
+    "id": 913,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11446,
+      "actual_input": 10071,
+      "actual_output": 718,
+      "duration_s": 6.75,
+      "calibrated_cpt": 2.898
+    }
+  },
+  {
+    "id": 914,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12516,
+      "reserve": 2048,
+      "total": 14564,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.90)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 915,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:08+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12516,
+      "reserve": 2048,
+      "total": 14564,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.90)"
+    }
+  },
+  {
+    "id": 916,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:12+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12516,
+      "actual_input": 11387,
+      "actual_output": 197,
+      "duration_s": 3.22,
+      "calibrated_cpt": 2.885
+    }
+  },
+  {
+    "id": 917,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:12+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13465,
+      "reserve": 2048,
+      "total": 15513,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 918,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:12+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13465,
+      "reserve": 2048,
+      "total": 15513,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.88)"
+    }
+  },
+  {
+    "id": 919,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13465,
+      "actual_input": 12351,
+      "actual_output": 461,
+      "duration_s": 4.47,
+      "calibrated_cpt": 2.861
+    }
+  },
+  {
+    "id": 920,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14403,
+      "reserve": 2048,
+      "total": 16451,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 921,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:16+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14403,
+      "reserve": 2048,
+      "total": 16451,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.86)"
+    }
+  },
+  {
+    "id": 922,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:19+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14403,
+      "actual_input": 13247,
+      "actual_output": 153,
+      "duration_s": 2.59,
+      "calibrated_cpt": 2.833
+    }
+  },
+  {
+    "id": 923,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14840,
+      "reserve": 2048,
+      "total": 16888,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 924,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14840,
+      "reserve": 2048,
+      "total": 16888,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 925,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14840,
+      "actual_input": 13521,
+      "actual_output": 35,
+      "duration_s": 1.77,
+      "calibrated_cpt": 2.815
+    }
+  },
+  {
+    "id": 926,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16057,
+      "reserve": 2048,
+      "total": 18105,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 927,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16057,
+      "reserve": 2048,
+      "total": 18105,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 928,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:23+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16057,
+      "actual_input": 14579,
+      "actual_output": 34,
+      "duration_s": 2.0,
+      "calibrated_cpt": 2.801
+    }
+  },
+  {
+    "id": 929,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:23+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17227,
+      "reserve": 2048,
+      "total": 19275,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 930,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:23+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17227,
+      "reserve": 2048,
+      "total": 19275,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 931,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:26+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17227,
+      "actual_input": 15563,
+      "actual_output": 171,
+      "duration_s": 3.08,
+      "calibrated_cpt": 2.793
+    }
+  },
+  {
+    "id": 932,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17951,
+      "reserve": 2048,
+      "total": 19999,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 933,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:26+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 17951,
+      "reserve": 2048,
+      "total": 19999,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 934,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:30+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 17951,
+      "actual_input": 16274,
+      "actual_output": 296,
+      "duration_s": 3.93,
+      "calibrated_cpt": 2.78
+    }
+  },
+  {
+    "id": 935,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18574,
+      "reserve": 2048,
+      "total": 20622,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 936,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18574,
+      "reserve": 2048,
+      "total": 20622,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 937,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18574,
+      "actual_input": 16864,
+      "actual_output": 165,
+      "duration_s": 3.11,
+      "calibrated_cpt": 2.765
+    }
+  },
+  {
+    "id": 938,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19388,
+      "reserve": 2048,
+      "total": 21436,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 43
+    }
+  },
+  {
+    "id": 939,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:44+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 19388,
+      "after_tokens": 10941,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 26,
+      "kept_messages": 17,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8791,
+      "cost_output": 1390,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (16 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n*   [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n*   План: просмотр L1 всех 16 документов → группировка в 3–8 тем → чтение L2 для цитирования → `topic_upsert`/`merge` → `topics_status`/`submit_report`.\n*   Статус: L1 просмотрен полностью. L2-цитирование начато (7 цитат сохранено).\n\n## Подтверждённые факты (с источниками)\n*   **M-05** (`data/meetings/meeting_m05.md`, L2 lines 7-8, `ev_e69b660a2f33`): РС-12 (PostgreSQL 16, отв. Мария Белова), РС-13 (grep для кодов, векторный поиск для перефразов, отв. Анна Ершова).\n*   **Checkpoint Postgres** (`data/storage/checkpoint_postgres.md`, L2 lines 8-9, `ev_3594ff4b1002`): РС-12, PostgreSQL 16, срок 01.12.2026.\n*   **Checkpoint SQLite** (`data/storage/checkpoint_sqlite.md`, L2 lines 9-10, `ev_fc8add65a311`): ST-CHK-01, один писатель, запрет SMB-дисков, лимит 2 МБ.\n*   **INC-2026-101** (`data/ops/incident_101.md`, L2 lines 12-13, `ev_3023f2afe6a8`): Запрет сетевых дисков, переход на PostgreSQL по РС-12.\n*   **Vector Search** (`data/search/vector_search.md`, L2 lines 4-5, `ev_276bb820c37b`): Embeddings dim=384, kNN косинус.\n*   **Vector Search Limits** (`data/search/vector_search.md`, L2 lines 12-13, `ev_c172054e2838`): Плохо различает коды/версии, смена модели требует перестроения индекса.\n*   **Query Cache** (`data/search/query_cache.md`, L2 line 4, `ev_8ba7719bef97`): SRCH-CACHE-2, введён по итогам M-05.\n*   **Query Cache Details** (`data/search/query_cache.md`, L1): TTL 10 мин, лимит 10 000 запросов, риск устаревших данных после переиндексации.\n*   **Redis Cache** (`data/storage/redis_cache.md`, L1): TTL 24ч, лимит 512 КБ, ключи `agent:{task_id}:step:{n}`.\n*   **Snapshot Policy** (`data/storage/snapshot_policy.md`, L1): Снимки каждые 6 часов, хранение 8 последних, потеря до 6 часов данных при восстановлении.\n*   **Ops/Process** (L1): Latency (LAT-2026-07, p95 8с), Monitoring (алерт p95>1.5с), Onboarding (ONB-2026-02), Oncall (эскалация 30 мин), Accessibility (WCAG 2.2 AA).\n*   **Search Basics** (L1): BM25 (k1=1.2, b=0.75), Hybrid (RRF, k=60).\n\n## Прогресс\n*   Просмотрены L1 всех 16 документов.\n*   Прочитаны L2-фрагменты: M-05, checkpoint_postgres, checkpoint_sqlite, incident_101, vector_search (2 фрагмента), query_cache.\n*   Сохранено 7 цитат (`cite_fragment`).\n*   Осталось: прочитать L2 для Ops (latency, monitoring, oncall, onboarding, accessibility) и Search (bm25, hybrid), создать темы, `submit_report`.\n\n## Открытые вопросы и следующий шаг\n*   Прочитать L2-фрагменты для оставшихся документов (Ops и Search basics).\n*   Сгруппировать в темы: 1) Хранение чекпоинтов (SQLite/Postgres/Redis/Snapshots), 2) Поиск (BM25/Vector/Hybrid/Cache), 3) Ops/Надежность (Latency/Monitoring/Incident), 4) Process/People (Onboarding/Oncall/Accessibility).\n*   Выполнить `topic_upsert` и `submit_report`.\n\n## Артефакты\n*   `run_key`: `lab4-topics-run-2026-11-22T18:10:00Z`\n*   `evidence_id`: `ev_e69b660a2f33`, `ev_3594ff4b1002`, `ev_fc8add65a311`, `ev_3023f2afe6a8`, `ev_276bb820c37b`, `ev_c172054e2838`, `ev_8ba7719bef97`\n*   `document_id` (новые): `baddb9db...` (query_cache), `5b92a5cc...` (vector_search), `bd2ea05b...` (checkpoint_postgres), `63c545d8...` (checkpoint_sqlite), `268f316b...` (redis_cache), `6f16eb41...` (snapshot_policy)",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-93d12ffac4de8c9f",
+            "chatcmpl-tool-a089a42ee6e4e035"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-93d12ffac4de8c9f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a089a42ee6e4e035"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8a26256f69bdee70"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a26256f69bdee70"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-89c2d81f8410d5dd"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89c2d81f8410d5dd"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8eebe7a887053e1d",
+            "chatcmpl-tool-a8b7d73046eeba92"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8eebe7a887053e1d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a8b7d73046eeba92"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-803001acd7281c6e",
+            "chatcmpl-tool-bbc6c2cae362f8f8"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-803001acd7281c6e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bbc6c2cae362f8f8"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ba735ccfecd6b322",
+            "chatcmpl-tool-b3bd77fa5059ba8f"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ba735ccfecd6b322"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3bd77fa5059ba8f"
+        }
+      ]
+    }
+  },
+  {
+    "id": 940,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10941,
+      "reserve": 2048,
+      "total": 12989,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 941,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10941,
+      "actual_input": 9302,
+      "actual_output": 322,
+      "duration_s": 3.09,
+      "calibrated_cpt": 2.829
+    }
+  },
+  {
+    "id": 942,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11255,
+      "reserve": 2048,
+      "total": 13303,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 943,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11255,
+      "reserve": 2048,
+      "total": 13303,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 944,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:49+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11255,
+      "actual_input": 9917,
+      "actual_output": 162,
+      "duration_s": 2.18,
+      "calibrated_cpt": 2.851
+    }
+  },
+  {
+    "id": 945,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:49+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11851,
+      "reserve": 2048,
+      "total": 13899,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 946,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11851,
+      "reserve": 2048,
+      "total": 13899,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 947,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11851,
+      "actual_input": 10644,
+      "actual_output": 316,
+      "duration_s": 3.38,
+      "calibrated_cpt": 2.849
+    }
+  },
+  {
+    "id": 948,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12423,
+      "reserve": 2048,
+      "total": 14471,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 949,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12423,
+      "reserve": 2048,
+      "total": 14471,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 950,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:55+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12423,
+      "actual_input": 11255,
+      "actual_output": 175,
+      "duration_s": 2.47,
+      "calibrated_cpt": 2.836
+    }
+  },
+  {
+    "id": 951,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:55+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13158,
+      "reserve": 2048,
+      "total": 15206,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 952,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:55+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13158,
+      "reserve": 2048,
+      "total": 15206,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 953,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13158,
+      "actual_input": 11977,
+      "actual_output": 277,
+      "duration_s": 3.24,
+      "calibrated_cpt": 2.818
+    }
+  },
+  {
+    "id": 954,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13772,
+      "reserve": 2048,
+      "total": 15820,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 955,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:11:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13772,
+      "reserve": 2048,
+      "total": 15820,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 956,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13772,
+      "actual_input": 12554,
+      "actual_output": 161,
+      "duration_s": 2.62,
+      "calibrated_cpt": 2.797
+    }
+  },
+  {
+    "id": 957,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14604,
+      "reserve": 2048,
+      "total": 16652,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 35
+    }
+  },
+  {
+    "id": 958,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14604,
+      "reserve": 2048,
+      "total": 16652,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 959,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14604,
+      "actual_input": 13308,
+      "actual_output": 359,
+      "duration_s": 3.97,
+      "calibrated_cpt": 2.776
+    }
+  },
+  {
+    "id": 960,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15307,
+      "reserve": 2048,
+      "total": 17355,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 38
+    }
+  },
+  {
+    "id": 961,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15307,
+      "reserve": 2048,
+      "total": 17355,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 962,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:19+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15307,
+      "actual_input": 13963,
+      "actual_output": 1701,
+      "duration_s": 13.54,
+      "calibrated_cpt": 2.754
+    }
+  },
+  {
+    "id": 963,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18168,
+      "reserve": 2048,
+      "total": 20216,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 43
+    }
+  },
+  {
+    "id": 964,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18168,
+      "reserve": 2048,
+      "total": 20216,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 965,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18168,
+      "actual_input": 17239,
+      "actual_output": 30,
+      "duration_s": 2.42,
+      "calibrated_cpt": 2.691
+    }
+  },
+  {
+    "id": 966,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18992,
+      "reserve": 2048,
+      "total": 21040,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.69)",
+      "messages": 45
+    }
+  },
+  {
+    "id": 967,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:33+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 18992,
+      "after_tokens": 10691,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 34,
+      "kept_messages": 11,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 8658,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (16 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n*   [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n*   План: просмотр L1 всех 16 документов → группировка в 3–8 тем → чтение L2 для цитирования → `topic_upsert`/`merge` → `topics_status`/`submit_report`.\n*   Статус: L1 просмотрен полностью. L2-цитирование завершено для всех ключевых документов (15 цитат сохранено).\n\n## Подтверждённые факты (с источниками)\n*   **M-05** (`data/meetings/meeting_m05.md`, L2 lines 7-8, `ev_e69b660a2f33`): РС-12 (PostgreSQL 16, отв. Мария Белова), РС-13 (grep для кодов, векторный поиск для перефразов, отв. Анна Ершова).\n*   **Checkpoint Postgres** (`data/storage/checkpoint_postgres.md`, L2 lines 8-9, `ev_3594ff4b1002`): РС-12, PostgreSQL 16, срок 01.12.2026.\n*   **Checkpoint SQLite** (`data/storage/checkpoint_sqlite.md`, L2 lines 9-10, `ev_fc8add65a311`): ST-CHK-01, один писатель, запрет SMB-дисков, лимит 2 МБ.\n*   **INC-2026-101** (`data/ops/incident_101.md`, L2 lines 12-13, `ev_3023f2afe6a8`): Запрет сетевых дисков, переход на PostgreSQL по РС-12.\n*   **Vector Search** (`data/search/vector_search.md`, L2 lines 4-5, `ev_276bb820c37b`): Embeddings dim=384, kNN косинус.\n*   **Vector Search Limits** (`data/search/vector_search.md`, L2 lines 12-13, `ev_c172054e2838`): Плохо различает коды/версии, смена модели требует перестроения индекса.\n*   **Query Cache** (`data/search/query_cache.md`, L2 line 4, `ev_8ba7719bef97`): SRCH-CACHE-2, введён по итогам M-05.\n*   **Query Cache Details** (`data/search/query_cache.md`, L1): TTL 10 мин, лимит 10 000 запросов, риск устаревших данных после переиндексации.\n*   **Redis Cache** (`data/storage/redis_cache.md`, L2 line 4, `ev_de8ebab708fe`): Кэш промежуточного состояния, приоритет скорости. L1: TTL 24ч, лимит 512 КБ, ключи `agent:{task_id}:step:{n}`.\n*   **Snapshot Policy** (`data/storage/snapshot_policy.md`, L2 lines 4-5, `ev_41e489d1d1ab`): Снимки каждые 6 часов, хранение 8 последних. L1: потеря до 6 часов данных.\n*   **Monitoring** (`data/ops/monitoring.md`, L2 line 4, `ev_fec6a144001f`): Метрики p95 задержки, ошибки tools, токены, очередь индексации.\n*   **Latency Budget** (`data/ops/latency_budget.md`, L2 lines 4-5, `ev_0be67f2c126d`): LAT-2026-07, ответ за 8 секунд для 95% запросов.\n*   **Onboarding** (`data/ops/onboarding_engineers.md`, L2 lines 4-5, `ev_978204523ff5`): ONB-2026-02, три модуля первой недели (harness, корпус L0/L1/L2, дежурства).\n*   **Oncall** (`data/ops/oncall.md`, L2 lines 4-5, `ev_e48d3fcbbf29`): Недельные смены, передача в понедельник 10:00, ответ на алерт за 15 минут.\n*   **Accessibility** (`data/ops/ui_accessibility.md`, L2 lines 4-5, `ev_...`): ACC-2026-01, WCAG 2.2 AA, контраст 4,5:1, клавиатурная доступность.\n*   **Inference Energy** (`data/ops/inference_energy.md`, L2 lines 4-5): 0,9 Вт·ч на запрос (27 млрд параметров), 2,4 кВт на сервер с 4 GPU.\n*   **BM25** (`data/search/bm25_basics.md`, L2 lines 4-5, `ev_62aebbbba379`): Ранжирование по частоте/редкости, параметры k1 и b.\n*   **Hybrid Ranking** (`data/search/hybrid_ranking.md`, L2 lines 4-5, `ev_16991a55ab54`): RRF, константа 60.\n\n## Прогресс\n*   Просмотрены L1 всех 16 документов.\n*   Прочитаны L2-фрагменты: M-05, checkpoint_postgres, checkpoint_sqlite, incident_101, vector_search (2), query_cache, monitoring, latency_budget, onboarding, oncall, bm25, hybrid, redis_cache, snapshot_policy, ui_accessibility, inference_energy.\n*   Сохранено 15 цитат (`cite_fragment`).\n*   Осталось: создать темы, `topic_upsert`, `submit_report`.\n\n## Открытые вопросы и следующий шаг\n*   Сгруппировать в темы: 1) Хранение чекпоинтов (SQLite/Postgres/Redis/Snapshots), 2) Поиск (BM25/Vector/Hybrid/Cache), 3) Ops/Надежность (Latency/Monitoring/Incident/Energy), 4) Process/People (Onboarding/Oncall/Accessibility).\n*   Выполнить `topic_upsert` и `submit_report`.\n\n## Артефакты\n*   `run_key`: `lab4-topics-run-2026-11-22T18:10:00Z`",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8ce40cf7d972b6b8",
+            "chatcmpl-tool-8084a414f34f3084"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8ce40cf7d972b6b8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8084a414f34f3084"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9435b458c33c1698",
+            "chatcmpl-tool-b3dfa59ab4d2847a",
+            "chatcmpl-tool-a0ffd5fbed25fe6d",
+            "chatcmpl-tool-b4fbfb85094422c5"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9435b458c33c1698"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3dfa59ab4d2847a"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a0ffd5fbed25fe6d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b4fbfb85094422c5"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-97a9c36280cd8ffd"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-97a9c36280cd8ffd"
+        }
+      ]
+    }
+  },
+  {
+    "id": 968,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10691,
+      "reserve": 2048,
+      "total": 12739,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.69)"
+    }
+  },
+  {
+    "id": 969,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10691,
+      "actual_input": 9407,
+      "actual_output": 248,
+      "duration_s": 2.98,
+      "calibrated_cpt": 2.718
+    }
+  },
+  {
+    "id": 970,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:36+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "4 topics, 16/16 documents examined"
+    }
+  },
+  {
+    "id": 971,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10979,
+      "reserve": 2048,
+      "total": 13027,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 972,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10979,
+      "reserve": 2048,
+      "total": 13027,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 973,
+    "task_id": "TOP-20261122T181000Z",
+    "ts": "2026-11-22T18:12:39+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10979,
+      "actual_input": 9715,
+      "actual_output": 217,
+      "duration_s": 2.7,
+      "calibrated_cpt": 2.738
+    }
+  }
+]

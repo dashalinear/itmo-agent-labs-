@@ -1,0 +1,588 @@
+[
+  {
+    "id": 854,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:17+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 855,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:17+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "ingest-2619a135a3",
+      "workflow_run_id": "01a20473-9042-7a89-ab68-34eac54d2c56",
+      "activity_id": "3",
+      "activity_type": "run_ingest_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 856,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:18+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "ingest-a1"
+    }
+  },
+  {
+    "id": 857,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11799,
+      "reserve": 2048,
+      "total": 13847,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 858,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11799,
+      "reserve": 2048,
+      "total": 13847,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 859,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:19+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11799,
+      "actual_input": 7254,
+      "actual_output": 67,
+      "duration_s": 1.02,
+      "calibrated_cpt": 3.096
+    }
+  },
+  {
+    "id": 860,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10767,
+      "reserve": 2048,
+      "total": 12815,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 4
+    }
+  },
+  {
+    "id": 861,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10767,
+      "reserve": 2048,
+      "total": 12815,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 862,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10767,
+      "actual_input": 7920,
+      "actual_output": 54,
+      "duration_s": 0.88,
+      "calibrated_cpt": 3.383
+    }
+  },
+  {
+    "id": 863,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10123,
+      "reserve": 2048,
+      "total": 12171,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)",
+      "messages": 6
+    }
+  },
+  {
+    "id": 864,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:20+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10123,
+      "reserve": 2048,
+      "total": 12171,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.38)"
+    }
+  },
+  {
+    "id": 865,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10123,
+      "actual_input": 8230,
+      "actual_output": 25,
+      "duration_s": 0.85,
+      "calibrated_cpt": 3.536
+    }
+  },
+  {
+    "id": 866,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9883,
+      "reserve": 2048,
+      "total": 11931,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 867,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9883,
+      "reserve": 2048,
+      "total": 11931,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 868,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9883,
+      "actual_input": 8437,
+      "actual_output": 57,
+      "duration_s": 1.03,
+      "calibrated_cpt": 3.619
+    }
+  },
+  {
+    "id": 869,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9845,
+      "reserve": 2048,
+      "total": 11893,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)",
+      "messages": 10
+    }
+  },
+  {
+    "id": 870,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:22+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9845,
+      "reserve": 2048,
+      "total": 11893,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.62)"
+    }
+  },
+  {
+    "id": 871,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:24+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9845,
+      "actual_input": 8687,
+      "actual_output": 200,
+      "duration_s": 2.25,
+      "calibrated_cpt": 3.652
+    }
+  },
+  {
+    "id": 872,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:24+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10432,
+      "reserve": 2048,
+      "total": 12480,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 873,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10432,
+      "reserve": 2048,
+      "total": 12480,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.65)"
+    }
+  },
+  {
+    "id": 874,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10432,
+      "actual_input": 9482,
+      "actual_output": 333,
+      "duration_s": 3.21,
+      "calibrated_cpt": 3.639
+    }
+  },
+  {
+    "id": 875,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:30+00:00",
+    "kind": "l1_written",
+    "data": {
+      "document_id": "f6ac62f7-f7e4-4b26-9e03-5218de1b1589",
+      "path": "data/search/query_rewrite.md",
+      "sections": 2,
+      "unchanged": false
+    }
+  },
+  {
+    "id": 876,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:30+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10900,
+      "reserve": 2048,
+      "total": 12948,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 877,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10900,
+      "reserve": 2048,
+      "total": 12948,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.64)"
+    }
+  },
+  {
+    "id": 878,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:32+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10900,
+      "actual_input": 10000,
+      "actual_output": 58,
+      "duration_s": 1.31,
+      "calibrated_cpt": 3.611
+    }
+  },
+  {
+    "id": 879,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:32+00:00",
+    "kind": "l2_indexed",
+    "data": {
+      "document_id": "f6ac62f7-f7e4-4b26-9e03-5218de1b1589",
+      "fragments": 2,
+      "created": 2,
+      "updated": 0,
+      "deleted_stale": 0
+    }
+  },
+  {
+    "id": 880,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:32+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11121,
+      "reserve": 2048,
+      "total": 13169,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 881,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11121,
+      "reserve": 2048,
+      "total": 13169,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.61)"
+    }
+  },
+  {
+    "id": 882,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11121,
+      "actual_input": 10198,
+      "actual_output": 122,
+      "duration_s": 1.92,
+      "calibrated_cpt": 3.584
+    }
+  },
+  {
+    "id": 883,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11632,
+      "reserve": 2048,
+      "total": 13680,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 884,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11632,
+      "reserve": 2048,
+      "total": 13680,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.58)"
+    }
+  },
+  {
+    "id": 889,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11632,
+      "actual_input": 10777,
+      "actual_output": 373,
+      "duration_s": 3.95,
+      "calibrated_cpt": 3.541
+    }
+  },
+  {
+    "id": 893,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12146,
+      "reserve": 2048,
+      "total": 14194,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 894,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12146,
+      "reserve": 2048,
+      "total": 14194,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.54)"
+    }
+  },
+  {
+    "id": 895,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12146,
+      "actual_input": 11308,
+      "actual_output": 47,
+      "duration_s": 2.2,
+      "calibrated_cpt": 3.491
+    }
+  },
+  {
+    "id": 896,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12848,
+      "reserve": 2048,
+      "total": 14896,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.49)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 897,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12848,
+      "reserve": 2048,
+      "total": 14896,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.49)"
+    }
+  },
+  {
+    "id": 901,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12848,
+      "actual_input": 11943,
+      "actual_output": 168,
+      "duration_s": 3.88,
+      "calibrated_cpt": 3.442
+    }
+  },
+  {
+    "id": 902,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Один файл из input/_batches/2619a135a3 (query_rewrite.md) перенесён в data/search/ по содержимому (механизм переписывания поисковых запросов, код SRCH-RW-3). L0: каталог с title/description/note; L1: 2 секции (Идея, Ограничение) с summary; L2: 2 фрагмента в Elasticsearch; lab-1 excerpt (строки 3-8) "
+    }
+  },
+  {
+    "id": 903,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13321,
+      "reserve": 2048,
+      "total": 15369,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.44)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 904,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:47+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13321,
+      "reserve": 2048,
+      "total": 15369,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.44)"
+    }
+  },
+  {
+    "id": 908,
+    "task_id": "ING-2619a135a3",
+    "ts": "2026-11-22T18:10:51+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13321,
+      "actual_input": 12248,
+      "actual_output": 216,
+      "duration_s": 4.49,
+      "calibrated_cpt": 3.409
+    }
+  }
+]

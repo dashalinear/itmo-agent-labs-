@@ -1,0 +1,137 @@
+{
+ "examined": {
+  "17726e86-239d-4df1-ba18-ea8fc736e709": {
+   "path": "data/meetings/meeting_m05.md"
+  },
+  "5f7faa4a-3f52-4033-9251-263a4740361f": {
+   "path": "data/ops/incident_101.md"
+  },
+  "055181ba-a8db-4aa8-95d3-dd0c1e015549": {
+   "path": "data/ops/inference_energy.md"
+  },
+  "526093ff-586a-4f04-a0f6-2558c1c186b0": {
+   "path": "data/ops/monitoring.md"
+  },
+  "7afdfeaf-00a1-4bd7-95ce-fce51749e326": {
+   "path": "data/ops/latency_budget.md"
+  },
+  "10c4d818-a46d-4855-9e3e-dbc9e6d041f4": {
+   "path": "data/ops/oncall.md"
+  },
+  "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5": {
+   "path": "data/search/hybrid_ranking.md"
+  },
+  "b130245a-999e-4e19-9c49-04bf86e527af": {
+   "path": "data/ops/ui_accessibility.md"
+  },
+  "a401ef12-7eb0-4a47-976c-b1d6bead53b9": {
+   "path": "data/search/bm25_basics.md"
+  },
+  "baddb9db-da7e-4fae-a651-6ccd567e2068": {
+   "path": "data/search/query_cache.md"
+  },
+  "bd2ea05b-e77b-44a3-805f-c4e50aa2e667": {
+   "path": "data/storage/checkpoint_postgres.md"
+  },
+  "5b92a5cc-0c13-4f40-97ef-52442f7af415": {
+   "path": "data/search/vector_search.md"
+  },
+  "268f316b-2be7-4d5e-8c39-03d2006f109d": {
+   "path": "data/storage/redis_cache.md"
+  },
+  "6f16eb41-0d6c-4073-826d-cb1e6a3da741": {
+   "path": "data/storage/snapshot_policy.md"
+  },
+  "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0": {
+   "path": "data/storage/checkpoint_sqlite.md"
+  }
+ },
+ "unreadable": {},
+ "topics": {
+  "T1": {
+   "topic_id": "T1",
+   "title": "Поиск и ранжирование документов",
+   "description": "Корпус описывает систему поиска: BM25 (k1=1.2, b=0.75) для точных совпадений, векторный поиск (embeddings 384, kNN косинус) для перефразов, гибридное ранжирование через RRF (константа 60) и кэш запросов (SRCH-CACHE-2). BM25 не находит перефразы; для кодов лучше grep.",
+   "document_ids": [
+    "5b92a5cc-0c13-4f40-97ef-52442f7af415",
+    "a401ef12-7eb0-4a47-976c-b1d6bead53b9",
+    "baddb9db-da7e-4fae-a651-6ccd567e2068",
+    "bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5"
+   ],
+   "evidence_ids": [
+    "ev_e6092852f0b1",
+    "ev_f58bcd5468f6"
+   ]
+  },
+  "T2": {
+   "topic_id": "T2",
+   "title": "Хранение состояния агента",
+   "description": "Документы описывают три уровня хранения: SQLite для локальных чекпоинтов одного процесса (ST-CHK-01), PostgreSQL для общего хранилища с транзакционной записью (РС-12), Redis для промежуточного состояния между шагами. Снимки хранилища каждые 6 часов, хранится 8 последних.",
+   "document_ids": [
+    "268f316b-2be7-4d5e-8c39-03d2006f109d",
+    "63c545d8-6f2a-4bef-8a1b-c2e1144cbcc0",
+    "6f16eb41-0d6c-4073-826d-cb1e6a3da741",
+    "bd2ea05b-e77b-44a3-805f-c4e50aa2e667"
+   ],
+   "evidence_ids": [
+    "ev_36bfd82a0587",
+    "ev_af5a985dcaf3",
+    "ev_e9642f8e17bf",
+    "ev_f13324d1fcd2"
+   ]
+  },
+  "T3": {
+   "topic_id": "T3",
+   "title": "Доступность интерфейса",
+   "description": "Требования к доступности веб-интерфейса платформы агентов: соответствие WCAG 2.2 уровня AA (ACC-2026-01), контраст текста не ниже 4,5:1, все действия доступны с клавиатуры.",
+   "document_ids": [
+    "b130245a-999e-4e19-9c49-04bf86e527af"
+   ],
+   "evidence_ids": [
+    "ev_deaa9a0330e7"
+   ]
+  },
+  "T4": {
+   "topic_id": "T4",
+   "title": "Операционная надёжность и мониторинг",
+   "description": "Корпус описывает операционные процессы: разбор инцидента INC-2026-101 (сбой SQLite на сетевом диске, 40 мин), бюджет задержки (8 сек для 95% запросов, LAT-2026-07), мониторинг (p95, ошибки tools, токены, очередь) и политику дежурств (смена 1 неделя, ответ на алерт 15 мин).",
+   "document_ids": [
+    "10c4d818-a46d-4855-9e3e-dbc9e6d041f4",
+    "526093ff-586a-4f04-a0f6-2558c1c186b0",
+    "5f7faa4a-3f52-4033-9251-263a4740361f",
+    "7afdfeaf-00a1-4bd7-95ce-fce51749e326"
+   ],
+   "evidence_ids": [
+    "ev_5d3a4a2bacfa",
+    "ev_675e68bf82c9",
+    "ev_92918d71a1c4",
+    "ev_bda1f701109a"
+   ]
+  },
+  "T5": {
+   "topic_id": "T5",
+   "title": "Энергопотребление инференса LLM",
+   "description": "Справка об энергопотреблении: 0,9 Вт·ч на запрос к модели 27 млрд параметров, сервер с 4 GPU потребляет ~2,4 кВт. Батчинг снижает расход на 35%. Отчёт EN-2026-11, ответственный Илья Гордеев.",
+   "document_ids": [
+    "055181ba-a8db-4aa8-95d3-dd0c1e015549"
+   ],
+   "evidence_ids": [
+    "ev_e5b5078c3257"
+   ]
+  },
+  "T6": {
+   "topic_id": "T6",
+   "title": "Решения совещания M-05",
+   "description": "Протокол совещания M-05: решение РС-12 — переход на PostgreSQL 16 для общих чекпоинтов (Мария Белова), РС-13 — grep для поиска по кодам и векторный поиск для перефразов (Анна Ершова). Кэш поиска отложен.",
+   "document_ids": [
+    "17726e86-239d-4df1-ba18-ea8fc736e709"
+   ],
+   "evidence_ids": [
+    "ev_3c4eb7a4b34c"
+   ]
+  }
+ },
+ "merges": [],
+ "next_id": 7,
+ "summary": "Корпус из 15 документов описывает платформу агентов: систему поиска (BM25, векторный, гибридное ранжирование RRF, кэш), хранение состояния (SQLite, PostgreSQL, Redis, снимки), операционную надёжность (инцидент, бюджет задержки, мониторинг, дежурства), энергопотребление инференса, доступность интерфейса (WCAG 2.2 AA) и решения совещания M-05. Все 15 документов распределены по 6 темам, каждая подтверждена точными цитатами из L2."
+}

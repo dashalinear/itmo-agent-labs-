@@ -1,0 +1,1314 @@
+[
+  {
+    "id": 976,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:00+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 977,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:00+00:00",
+    "kind": "temporal_attempt",
+    "data": {
+      "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+      "workflow_run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+      "activity_id": "2",
+      "activity_type": "run_topic_agent",
+      "attempt": 1,
+      "resumed": false,
+      "status_before": null,
+      "runs_before": 0
+    }
+  },
+  {
+    "id": 978,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "topics-a1"
+    }
+  },
+  {
+    "id": 979,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5323,
+      "reserve": 2048,
+      "total": 7371,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 980,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5323,
+      "reserve": 2048,
+      "total": 7371,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 981,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5323,
+      "actual_input": 3537,
+      "actual_output": 15,
+      "duration_s": 0.42,
+      "calibrated_cpt": 2.979
+    }
+  },
+  {
+    "id": 982,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5668,
+      "reserve": 2048,
+      "total": 7716,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 983,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5668,
+      "reserve": 2048,
+      "total": 7716,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)"
+    }
+  },
+  {
+    "id": 984,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5668,
+      "actual_input": 4570,
+      "actual_output": 34,
+      "duration_s": 0.7,
+      "calibrated_cpt": 3.125
+    }
+  },
+  {
+    "id": 985,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6372,
+      "reserve": 2048,
+      "total": 8420,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 986,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6372,
+      "reserve": 2048,
+      "total": 8420,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)"
+    }
+  },
+  {
+    "id": 987,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:03+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6372,
+      "actual_input": 5549,
+      "actual_output": 34,
+      "duration_s": 0.83,
+      "calibrated_cpt": 3.172
+    }
+  },
+  {
+    "id": 988,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6534,
+      "reserve": 2048,
+      "total": 8582,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)",
+      "messages": 7
+    }
+  },
+  {
+    "id": 989,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6534,
+      "reserve": 2048,
+      "total": 8582,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)"
+    }
+  },
+  {
+    "id": 990,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6534,
+      "actual_input": 5818,
+      "actual_output": 128,
+      "duration_s": 1.57,
+      "calibrated_cpt": 3.187
+    }
+  },
+  {
+    "id": 991,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 6795,
+      "reserve": 2048,
+      "total": 8843,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)",
+      "messages": 9
+    }
+  },
+  {
+    "id": 992,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 6795,
+      "reserve": 2048,
+      "total": 8843,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)"
+    }
+  },
+  {
+    "id": 993,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 6795,
+      "actual_input": 6083,
+      "actual_output": 294,
+      "duration_s": 2.49,
+      "calibrated_cpt": 3.195
+    }
+  },
+  {
+    "id": 994,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9803,
+      "reserve": 2048,
+      "total": 11851,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 995,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9803,
+      "reserve": 2048,
+      "total": 11851,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.19)"
+    }
+  },
+  {
+    "id": 996,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9803,
+      "actual_input": 9354,
+      "actual_output": 295,
+      "duration_s": 2.98,
+      "calibrated_cpt": 3.121
+    }
+  },
+  {
+    "id": 997,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13237,
+      "reserve": 2048,
+      "total": 15285,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 998,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13237,
+      "reserve": 2048,
+      "total": 15285,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.12)"
+    }
+  },
+  {
+    "id": 999,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:14+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13237,
+      "actual_input": 12669,
+      "actual_output": 290,
+      "duration_s": 3.4,
+      "calibrated_cpt": 3.045
+    }
+  },
+  {
+    "id": 1000,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:14+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16658,
+      "reserve": 2048,
+      "total": 18706,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 1001,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16658,
+      "reserve": 2048,
+      "total": 18706,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.05)"
+    }
+  },
+  {
+    "id": 1002,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16658,
+      "actual_input": 15755,
+      "actual_output": 122,
+      "duration_s": 2.49,
+      "calibrated_cpt": 2.985
+    }
+  },
+  {
+    "id": 1003,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18305,
+      "reserve": 2048,
+      "total": 20353,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.99)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 1004,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:16+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18305,
+      "reserve": 2048,
+      "total": 20353,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.99)"
+    }
+  },
+  {
+    "id": 1005,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18305,
+      "actual_input": 17020,
+      "actual_output": 318,
+      "duration_s": 3.97,
+      "calibrated_cpt": 2.945
+    }
+  },
+  {
+    "id": 1006,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20060,
+      "reserve": 2048,
+      "total": 22108,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)",
+      "messages": 36
+    }
+  },
+  {
+    "id": 1007,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 20060,
+      "after_tokens": 12035,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 20,
+      "kept_messages": 16,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6802,
+      "cost_output": 1489,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (17 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n- [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n- План работы: просмотр L1 всех 17 документов → группировка в 3–8 тем → чтение L2 и сбор цитат → `topic_upsert` + `merge` → `topics_status` и `submit_report`.\n- Статус плана: шаг 1 (просмотр L1) в процессе, остальные — todo.\n\n## Подтверждённые факты (с источниками)\n- Корпус: 17 документов, `run_key: lab4-topics-run-2026-11-22T18:15:00Z`, `frozen_at: 2026-11-22T18:15:00+00:00` (tool: `frozen_documents`).\n- `data/meetings/meeting_m05.md`: решения РС-12 (PostgreSQL 16 для чекпоинтов, отв. Мария Белова) и РС-13 (grep для кодов, векторный поиск для перефразов, отв. Анна Ершова); кэш запросов поиска отложен (L1, doc_id `17726e86-239d-4df1-ba18-ea8fc736e709`).\n- `data/ops/incident_101.md`: инцидент INC-2026-101 (14.11.2026, 40 мин без чекпоинтов, SQLite на сетевом диске); ST-CHK-01 дополнен запретом сетевых дисков (L1, doc_id `5f7faa4a-3f52-4033-9251-263a4740361f`).\n- `data/ops/inference_energy.md`: 0,9 Вт·ч на запрос (модель 27 млрд), сервер 4 GPU ~2,4 кВт; отчёт EN-2026-11, отв. Илья Гордеев (L1, doc_id `055181ba-a8db-4aa8-95d3-dd0c1e015549`).\n- `data/ops/latency_budget.md`: LAT-2026-07 — 8 сек для 95% запросов; бюджет: поиск ≤1,5 с, модель ≤5 с (L1, doc_id `7afdfeaf-00a1-4bd7-95ce-fce51749e326`).\n- `data/ops/monitoring.md`: алерт при p95 >1,5 с (5 мин), очередь >10 мин; дашборд обновляется раз в минуту, хранение 14 дней (L1, doc_id `526093ff-586a-4f04-a0f6-2558c1c186b0`).\n- `data/ops/onboarding_engineers.md`: ONB-2026-02, 3 модуля, наставник 30 дней; доступ к хранилищу после зачёта по дежурствам (L1, doc_id `f2367418-07ce-4390-837c-ab8cd14fe003`).\n- `data/ops/oncall.md`: недельная смена, передача пн 10:00, ответ на алерт 15 мин, эскалация Олегу Смирнову через 30 мин (L1, doc_id `10c4d818-a46d-4855-9e3e-dbc9e6d041f4`).\n- `data/ops/ui_accessibility.md`: ACC-2026-01, WCAG 2.2 AA, контраст ≥4,5:1; отв. Ольга Лебедева (L1, doc_id `b130245a-999e-4e19-9c49-04bf86e527af`).\n- `data/search/bm25_basics.md`: k1=1.2, b=0.75, snowball; BM25 не находит перефразы, коды лучше grep (L1, doc_id `a401ef12-7eb0-4a47-976c-b1d6bead53b9`).\n- `data/search/hybrid_ranking.md`: RRF, константа 60; RRF учитывает позиции, не score (L1, doc_id `bffbf9ae-845d-4b16-9b7d-ae3c6b8757a5`).\n- Остальные 7 документов (страницы 9–17) получены в списке, L1 не просмотрены.\n\n## Прогресс\n- Получен полный список 17 документов (3 страницы `frozen_documents`).\n- Просмотрены L1: 10 из 17 документов (meetings/1, ops/6, search/2, storage/1 — частично).\n- Не просмотрены L1: 7 документов (включая `data/search/query_cache.md`, `data/storage/redis_cache.md`, `data/storage/snapshot_policy.md` и др.).\n- L2 не читался, цитаты не собраны, темы не созданы.\n\n## Открытые вопросы и следующий шаг\n- Просмотреть L1 оставшихся 7 документов.\n- Сгруппировать документы в 3–8 тем.\n- Прочитать L2 по каждой теме, собрать цитаты.\n- Выполнить `topic_upsert`, `merge`, `topics_status`, `submit_report`.\n\n## Артефакты\n- `run_key`: `lab4-topics-run-2026-11-22T18:15:00Z`\n- `task_id`: `TOP-20261122T181500Z`\n- План: 5 шагов (шаг 1 — doing)",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b56e8af59c51f45a",
+            "chatcmpl-tool-896550b1dc9f3a7f",
+            "chatcmpl-tool-ad9d926a5db666ba",
+            "chatcmpl-tool-8c7448d6a2b3ffd6",
+            "chatcmpl-tool-b3510c9486c78f39"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b56e8af59c51f45a"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-896550b1dc9f3a7f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ad9d926a5db666ba"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8c7448d6a2b3ffd6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3510c9486c78f39"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a18334632575c87f",
+            "chatcmpl-tool-a19b9e077c871007"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a18334632575c87f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a19b9e077c871007"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9ce0f72c19f48a97",
+            "chatcmpl-tool-85a4c620f7c9dd42",
+            "chatcmpl-tool-b354f884bdd9c38e",
+            "chatcmpl-tool-ad700f57e18d42f6",
+            "chatcmpl-tool-830a61e3920225dd"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9ce0f72c19f48a97"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-85a4c620f7c9dd42"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b354f884bdd9c38e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ad700f57e18d42f6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-830a61e3920225dd"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1008,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12035,
+      "reserve": 2048,
+      "total": 14083,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)"
+    }
+  },
+  {
+    "id": 1009,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12035,
+      "actual_input": 11154,
+      "actual_output": 291,
+      "duration_s": 3.16,
+      "calibrated_cpt": 2.912
+    }
+  },
+  {
+    "id": 1010,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13292,
+      "reserve": 2048,
+      "total": 15340,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 1011,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13292,
+      "reserve": 2048,
+      "total": 15340,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 1012,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:37+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13292,
+      "actual_input": 12364,
+      "actual_output": 142,
+      "duration_s": 2.39,
+      "calibrated_cpt": 2.873
+    }
+  },
+  {
+    "id": 1013,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:37+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14120,
+      "reserve": 2048,
+      "total": 16168,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 1014,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:37+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14120,
+      "reserve": 2048,
+      "total": 16168,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.87)"
+    }
+  },
+  {
+    "id": 1015,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14120,
+      "actual_input": 13071,
+      "actual_output": 356,
+      "duration_s": 3.74,
+      "calibrated_cpt": 2.838
+    }
+  },
+  {
+    "id": 1016,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15896,
+      "reserve": 2048,
+      "total": 17944,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 31
+    }
+  },
+  {
+    "id": 1017,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15896,
+      "reserve": 2048,
+      "total": 17944,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 1018,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15896,
+      "actual_input": 14801,
+      "actual_output": 149,
+      "duration_s": 2.65,
+      "calibrated_cpt": 2.797
+    }
+  },
+  {
+    "id": 1019,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16811,
+      "reserve": 2048,
+      "total": 18859,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 1020,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:44+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 16811,
+      "reserve": 2048,
+      "total": 18859,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 1021,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 16811,
+      "actual_input": 15530,
+      "actual_output": 903,
+      "duration_s": 7.8,
+      "calibrated_cpt": 2.764
+    }
+  },
+  {
+    "id": 1022,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18552,
+      "reserve": 2048,
+      "total": 20600,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 40
+    }
+  },
+  {
+    "id": 1023,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18552,
+      "reserve": 2048,
+      "total": 20600,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 1024,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:59+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18552,
+      "actual_input": 17175,
+      "actual_output": 754,
+      "duration_s": 7.05,
+      "calibrated_cpt": 2.728
+    }
+  },
+  {
+    "id": 1025,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:15:59+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 20180,
+      "reserve": 2048,
+      "total": 22228,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 46
+    }
+  },
+  {
+    "id": 1026,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:11+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 20180,
+      "after_tokens": 10171,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 30,
+      "kept_messages": 16,
+      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 10355,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (17 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n- [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n- План: L1 всех 17 док. → группировка в 3–8 тем → L2-цитаты → `topic_upsert` + `merge` → `topics_status` + `submit_report`.\n- Статус: шаг 1 (L1) завершён, шаг 2 (L2) в процессе.\n\n## Подтверждённые факты (с источниками)\n- Корпус: 17 док., `run_key: lab4-topics-run-2026-11-22T18:15:00Z`, `frozen_at: 2026-11-22T18:15:00+00:00` (tool: `frozen_documents`).\n- `data/meetings/meeting_m05.md`: РС-12 (PostgreSQL 16, Мария Белова), РС-13 (grep для кодов, векторный для перефразов, Анна Ершова) (L2, frag `5979c9f1-0e91-55e0-aaa6-7938bb8fd807`, lines 6-8).\n- `data/ops/incident_101.md`: INC-2026-101, ST-CHK-01 дополнен запретом сетевых дисков (L2, frag `2d9887ba-ee74-5b34-8322-309cd0778d44`, lines 11-13).\n- `data/storage/checkpoint_postgres.md`: РС-12, PostgreSQL 16, срок 01.12.2026 (L2, frag `16a5d354-ac51-5d86-966f-00d599486d0d`, lines 7-9).\n- `data/storage/checkpoint_sqlite.md`: ST-CHK-01, один писатель, запрет SMB, ≤2 МБ (L2, frag `4930ecf5-950e-5cf8-b390-10213366255d`, lines 8-11).\n- `data/storage/snapshot_policy.md`: снимки каждые 6 ч, хранится 8 последних (L2, frag `29905377-4e64-590b-92fa-55ddf0e9129d`, lines 1-5).\n- `data/search/query_cache.md`: SRCH-CACHE-2, кэш 10 мин, лимит 10 000 запросов (L2, frag `3310f38a-b3e2-5adf-8ab1-683b59250854`, lines 1-4).\n- `data/search/query_rewrite.md`: SRCH-RW-3, переписывание моделью, лимит 300 символов (L2, frag `4958c19a-0f24-59f9-9ac7-85b281c09668`, lines 1-5).\n- `data/search/vector_search.md`: embeddings dim=384, HNSW m=16, ef_construction=100 (L2, frag `8c46b6b9-2fec-51fc-8590-6a2cc06b2c73`, lines 1-5).\n- `data/search/hybrid_ranking.md`: RRF, константа 60 (L2, frag `61f872a1-1ede-58a7-a2d9-ec0d736d63a8`, lines 1-5).\n- `data/search/bm25_basics.md`: BM25, параметры k1, b (L2, frag `76eb41be-dbe6-5663-bf46-3b71d420cecc`, lines 1-5).\n- `data/ops/latency_budget.md`: LAT-2026-07, 8 сек для 95% (L2, frag `ec67f2a4-d120-5971-b666-ad0428e989eb`, lines 1-5).\n- `data/ops/monitoring.md`: метрики p95, ошибки tools, токены (L2, frag `b05d9461-82c0-5ec7-bd7d-f7df653fcfaa`, lines 1-4).\n- `data/ops/inference_energy.md`: 0,9 Вт·ч/запрос, 2,4 кВт сервер (L2, frag `7dc424b5-a893-5de6-84cb-70a20f248bad`, lines 1-5).\n- `data/ops/oncall.md`: смена неделя, ответ 15 мин (L2, frag `fd0e8493-5dce-503f-b8f4-a516b7e7d8ba`, lines 1-5).\n- `data/ops/onboarding_engineers.md`: ONB-2026-02, 3 модуля (L2, frag `5ec2bbfd-a206-51f9-9586-d8daf6caee8a`, lines 1-5).\n- `data/storage/redis_cache.md`: TTL 24 ч, ключи `agent:{task_id}:step:{n}` (L1, doc_id `268f316b-2be7-4d5e-8c39-03d2006f109d`).\n- `data/ops/ui_accessibility.md`: ACC-2026-01, WCAG 2.2 AA (L1, doc_id `b130245a-999e-4e19-9c49-04bf86e527af`).\n\n## Прогресс\n- L1 просмотрено: 17/17 документов.\n- L2 прочитано: 15 фрагментов/секций (покрыты темы: чекпоинты, поиск, мониторинг, онбординг, дежурства, энергия).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Просмотреть L1 всех 17 документов; Сгруппировать в 3-8 тем; Прочитать L2 и собрать цитаты по темам; topic_upsert + merge; topics_status и submit_report\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-914df69eddea465d",
+            "chatcmpl-tool-a5c86d23d766be61"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-914df69eddea465d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a5c86d23d766be61"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-bce18bd308a0646a",
+            "chatcmpl-tool-975cc42da83591f8",
+            "chatcmpl-tool-8b749e2828b5daf8",
+            "chatcmpl-tool-834cee34b0731a71",
+            "chatcmpl-tool-ae64f0fb580cabfe"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bce18bd308a0646a"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-975cc42da83591f8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8b749e2828b5daf8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-834cee34b0731a71"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ae64f0fb580cabfe"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-bf553c73f7e8a3c3",
+            "chatcmpl-tool-b348b5fbfdec0065",
+            "chatcmpl-tool-b6ef317d27053904",
+            "chatcmpl-tool-b2f62188f9691fa7",
+            "chatcmpl-tool-8cdcf41840043b39"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bf553c73f7e8a3c3"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b348b5fbfdec0065"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b6ef317d27053904"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b2f62188f9691fa7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8cdcf41840043b39"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1027,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10171,
+      "reserve": 2048,
+      "total": 12219,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 1028,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10171,
+      "actual_input": 9092,
+      "actual_output": 758,
+      "duration_s": 6.38,
+      "calibrated_cpt": 2.734
+    }
+  },
+  {
+    "id": 1029,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11339,
+      "reserve": 2048,
+      "total": 13387,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 1030,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11339,
+      "reserve": 2048,
+      "total": 13387,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 1031,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11339,
+      "actual_input": 10255,
+      "actual_output": 297,
+      "duration_s": 3.05,
+      "calibrated_cpt": 2.725
+    }
+  },
+  {
+    "id": 1032,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12952,
+      "reserve": 2048,
+      "total": 15000,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 1033,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:21+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12952,
+      "reserve": 2048,
+      "total": 15000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 1034,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12952,
+      "actual_input": 11875,
+      "actual_output": 791,
+      "duration_s": 6.53,
+      "calibrated_cpt": 2.7
+    }
+  },
+  {
+    "id": 1035,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:28+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14486,
+      "reserve": 2048,
+      "total": 16534,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.70)",
+      "messages": 34
+    }
+  },
+  {
+    "id": 1036,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:28+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14486,
+      "reserve": 2048,
+      "total": 16534,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.70)"
+    }
+  },
+  {
+    "id": 1037,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14486,
+      "actual_input": 13384,
+      "actual_output": 352,
+      "duration_s": 3.88,
+      "calibrated_cpt": 2.665
+    }
+  },
+  {
+    "id": 1038,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15307,
+      "reserve": 2048,
+      "total": 17355,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)",
+      "messages": 37
+    }
+  },
+  {
+    "id": 1039,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 15307,
+      "reserve": 2048,
+      "total": 17355,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)"
+    }
+  },
+  {
+    "id": 1040,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 15307,
+      "actual_input": 14042,
+      "actual_output": 1638,
+      "duration_s": 13.26,
+      "calibrated_cpt": 2.638
+    }
+  },
+  {
+    "id": 1041,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 18277,
+      "reserve": 2048,
+      "total": 20325,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)",
+      "messages": 42
+    }
+  },
+  {
+    "id": 1042,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 18277,
+      "reserve": 2048,
+      "total": 20325,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.64)"
+    }
+  },
+  {
+    "id": 1043,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:47+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 18277,
+      "actual_input": 17298,
+      "actual_output": 28,
+      "duration_s": 2.38,
+      "calibrated_cpt": 2.581
+    }
+  },
+  {
+    "id": 1044,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:47+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 19060,
+      "reserve": 2048,
+      "total": 21108,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.58)",
+      "messages": 44
+    }
+  },
+  {
+    "id": 1045,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:59+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 19060,
+      "after_tokens": 10949,
+      "reserve": 2048,
+      "working_limit": 28000,
+      "removed_messages": 33,
+      "kept_messages": 11,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 9487,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nВыделить основные темы зафиксированного корпуса (17 документов), объединить близкие, подтвердить каждую цитатами из L2 и выполнить `submit_report`.\n\n## Ограничения пользователя\n- [C1] Выдели основные темы всего зафиксированного корпуса, объедини близкие темы и подтверди каждую цитатами из L2; затем submit_report.\n\n## Решения и договорённости\n- План: L1 всех 17 док. → группировка в 3–8 тем → L2-цитаты → `topic_upsert` + `merge` → `topics_status` + `submit_report`.\n- Статус: шаг 1 (L1) завершён, шаг 2 (L2) в процессе.\n- При сохранении цитат (`cite_fragment`) требуется дословное совпадение текста с фрагментом; при ошибке `quote_not_found` необходимо перечитать фрагмент (`read_fragment`) и повторить попытку с точным текстом.\n\n## Подтверждённые факты (с источниками)\n- Корпус: 17 док., `run_key: lab4-topics-run-2026-11-22T18:15:00Z`, `frozen_at: 2026-11-22T18:15:00+00:00` (tool: `frozen_documents`).\n- `data/meetings/meeting_m05.md`: РС-12 (PostgreSQL 16, Мария Белова), РС-13 (grep для кодов, векторный для перефразов, Анна Ершова) (L2, frag `5979c9f1-0e91-55e0-aaa6-7938bb8fd807`, lines 6-8, evidence_id `ev_b5b208cfbcf5`).\n- `data/ops/incident_101.md`: INC-2026-101, ST-CHK-01 дополнен запретом сетевых дисков (L2, frag `2d9887ba-ee74-5b34-8322-309cd0778d44`, lines 11-13, evidence_id `ev_55c9d566c00f`).\n- `data/storage/checkpoint_postgres.md`: РС-12, PostgreSQL 16, срок 01.12.2026 (L2, frag `16a5d354-ac51-5d86-966f-00d599486d0d`, lines 7-9, evidence_id `ev_072a619ea9d6`).\n- `data/storage/checkpoint_sqlite.md`: ST-CHK-01, один писатель, запрет SMB, ≤2 МБ (L2, frag `4930ecf5-950e-5cf8-b390-10213366255d`, lines 8-11, evidence_id `ev_e154c4e6aebb`).\n- `data/storage/snapshot_policy.md`: снимки каждые 6 ч, хранится 8 последних (L2, frag `29905377-4e64-590b-92fa-55ddf0e9129d`, lines 1-5, evidence_id `ev_88ba33cec557`).\n- `data/search/query_cache.md`: SRCH-CACHE-2, кэш 10 мин, лимит 10 000 запросов (L2, frag `3310f38a-b3e2-5adf-8ab1-683b59250854`, lines 1-4, evidence_id `ev_a21ed8f4bd34`).\n- `data/search/query_rewrite.md`: SRCH-RW-3, переписывание моделью, лимит 300 символов (L2, frag `4958c19a-0f24-59f9-9ac7-85b281c09668`, lines 1-5, evidence_id `ev_9be1beeda171`).\n- `data/search/vector_search.md`: embeddings dim=384, HNSW m=16, ef_construction=100 (L2, frag `8c46b6b9-2fec-51fc-8590-6a2cc06b2c73`, lines 1-5, evidence_id `ev_afb49cb0ea5f`).\n- `data/search/hybrid_ranking.md`: RRF, константа 60 (L2, frag `61f872a1-1ede-58a7-a2d9-ec0d736d63a8`, lines 1-5, evidence_id `ev_4d27dac37de0`).\n- `data/search/bm25_basics.md`: BM25, параметры k1, b (L2, frag `76eb41be-dbe6-5663-bf46-3b71d420cecc`, lines 1-5, evidence_id `ev_0d29c2772bcd`).\n- `data/ops/latency_budget.md`: LAT-2026-07, 8 сек для 95% (L2, frag `ec67f2a4-d120-5971-b666-ad0428e989eb`, lines 1-5, evidence_id `ev_b928b164a98f`).\n- `data/ops/monitoring.md`: метрики p95, ошибки tools, токены (L2, frag `b05d9461-82c0-5ec7-bd7d-f7df653fcfaa`, lines 1-4, evidence_id `ev_c0430e827364`).\n- `data/ops/inference_energy.md`: 0,9 Вт·ч/запрос, 2,4 кВт сервер (L2, frag `7dc424b5-a893-5de6-84cb-70a20f248bad`, lines 1-5, evidence_id `ev_5c1dfe24d94a`).\n- `data/ops/oncall.md`: смена неделя, ответ 15 мин (L2, frag `fd0e8493-5dce-503f-b8f4-a516b7e7d8ba`, lines 1-5, evidence_id `ev_d789c2f19f56`).\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 17; ; разделы отчёта: нет; в сжатом фрагменте 27 вызовов tools: cite_fragment×20, read_fragment×5, read_section×2\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Просмотреть L1 всех 17 документов; Сгруппировать в 3-8 тем; Прочитать L2 и собрать цитаты по темам; topic_upsert + merge; topics_status и submit_report\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b30e90a250f81d30",
+            "chatcmpl-tool-a943d23785a4d597"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b30e90a250f81d30"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a943d23785a4d597"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a0b493f7b222d4fe",
+            "chatcmpl-tool-8076c3e4fb4a1799",
+            "chatcmpl-tool-88e3d5533ea043b4",
+            "chatcmpl-tool-bd06de005f697a53"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a0b493f7b222d4fe"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8076c3e4fb4a1799"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-88e3d5533ea043b4"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bd06de005f697a53"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-852ca48a6db7bee6"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-852ca48a6db7bee6"
+        }
+      ]
+    }
+  },
+  {
+    "id": 1046,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:16:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10949,
+      "reserve": 2048,
+      "total": 12997,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.58)"
+    }
+  },
+  {
+    "id": 1047,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:17:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10949,
+      "actual_input": 9518,
+      "actual_output": 196,
+      "duration_s": 2.5,
+      "calibrated_cpt": 2.62
+    }
+  },
+  {
+    "id": 1048,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:17:01+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "4 topics, 17/17 documents examined"
+    }
+  },
+  {
+    "id": 1049,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:17:01+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11128,
+      "reserve": 2048,
+      "total": 13176,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.62)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 1050,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:17:01+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11128,
+      "reserve": 2048,
+      "total": 13176,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.62)"
+    }
+  },
+  {
+    "id": 1051,
+    "task_id": "TOP-20261122T181500Z",
+    "ts": "2026-11-22T18:17:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11128,
+      "actual_input": 9774,
+      "actual_output": 226,
+      "duration_s": 2.78,
+      "calibrated_cpt": 2.648
+    }
+  }
+]

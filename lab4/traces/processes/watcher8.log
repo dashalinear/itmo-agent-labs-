@@ -1,0 +1,5 @@
+[watcher] watching D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab4\workspace\input every 2.0s (stable after 3.0s)
+[watcher] new batch 14c8e725b7: ['input/onboarding_engineers.md']
+[watcher] 1 new file(s): started workflow ingest-14c8e725b7 run 01a20472-7538-73e2-90e6-57b3be9c0a0a
+[watcher] new batch 2619a135a3: ['input/query_rewrite.md']
+[watcher] 1 new file(s): started workflow ingest-2619a135a3 run 01a20473-9042-7a89-ab68-34eac54d2c56

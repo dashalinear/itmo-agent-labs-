@@ -1,0 +1,24 @@
+﻿{
+  "schedule_id": "lab4-topics",
+  "paused": false,
+  "every": [
+    "0:05:00"
+  ],
+  "overlap": "SKIP",
+  "num_actions": 1,
+  "skipped_overlap": 0,
+  "running": [],
+  "recent": [
+    {
+      "scheduled": "2026-11-22T18:05:00+00:00",
+      "started": "2026-11-22T18:05:00.143807+00:00",
+      "workflow_id": "lab4-topics-run-2026-11-22T18:05:00Z",
+      "run_id": "01a2046e-cd61-7075-968f-8298d9cd2e9f"
+    }
+  ],
+  "next": [
+    "2026-11-22T18:10:00+00:00",
+    "2026-11-22T18:15:00+00:00",
+    "2026-11-22T18:20:00+00:00"
+  ]
+}

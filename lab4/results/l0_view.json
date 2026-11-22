@@ -1,15 +1,15 @@
 ﻿{
   "totals": {
-    "documents": 22,
-    "with_l1": 22,
-    "fragments": 169,
-    "service_documents": 7
+    "documents": 27,
+    "with_l1": 27,
+    "fragments": 240,
+    "service_documents": 10
   },
   "folders": [
     {
       "folder": "_reports",
-      "documents": 7,
-      "fragments": 124
+      "documents": 10,
+      "fragments": 190
     },
     {
       "folder": "meetings",
@@ -18,13 +18,13 @@
     },
     {
       "folder": "ops",
-      "documents": 6,
-      "fragments": 18
+      "documents": 7,
+      "fragments": 21
     },
     {
       "folder": "search",
-      "documents": 4,
-      "fragments": 12
+      "documents": 5,
+      "fragments": 14
     },
     {
       "folder": "storage",
@@ -124,33 +124,72 @@
         "documents_examined": 15,
         "frozen_at": "2026-11-20T14:37:46+00:00",
         "task_id": "TOP-20261120T143746Z"
+      },
+      {
+        "run_key": "lab4-topics-run-2026-11-22T18:05:00Z",
+        "workflow_id": "lab4-topics-run-2026-11-22T18:05:00Z",
+        "run_id": "01a2046e-cd61-7075-968f-8298d9cd2e9f",
+        "document_id": "4fa79fa8-3fd8-436d-85a2-9bb37104f91f",
+        "path": "data/_reports/topics_20261122T180500Z.md",
+        "status": "complete",
+        "topics": 6,
+        "documents_frozen": 15,
+        "documents_examined": 15,
+        "frozen_at": "2026-11-22T18:05:00+00:00",
+        "task_id": "TOP-20261122T180500Z"
+      },
+      {
+        "run_key": "lab4-topics-run-2026-11-22T18:10:00Z",
+        "workflow_id": "lab4-topics-run-2026-11-22T18:10:00Z",
+        "run_id": "01a20473-6104-745e-8dda-18dff0d19c38",
+        "document_id": "1426ae02-12e3-4d24-b9b6-2393b68086bc",
+        "path": "data/_reports/topics_20261122T181000Z.md",
+        "status": "complete",
+        "topics": 4,
+        "documents_frozen": 16,
+        "documents_examined": 16,
+        "frozen_at": "2026-11-22T18:10:00+00:00",
+        "task_id": "TOP-20261122T181000Z"
+      },
+      {
+        "run_key": "lab4-topics-run-2026-11-22T18:15:00Z",
+        "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+        "run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+        "document_id": "4d55f61e-abb3-4340-a717-e96843beb279",
+        "path": "data/_reports/topics_20261122T181500Z.md",
+        "status": "complete",
+        "topics": 4,
+        "documents_frozen": 17,
+        "documents_examined": 17,
+        "frozen_at": "2026-11-22T18:15:00+00:00",
+        "task_id": "TOP-20261122T181500Z"
       }
     ],
     "latest": {
-      "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
-      "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
-      "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
-      "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
-      "path": "data/_reports/topics_20261120T143746Z.md",
+      "run_key": "lab4-topics-run-2026-11-22T18:15:00Z",
+      "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+      "run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+      "document_id": "4d55f61e-abb3-4340-a717-e96843beb279",
+      "path": "data/_reports/topics_20261122T181500Z.md",
       "status": "complete",
       "topics": 4,
-      "documents_frozen": 15,
-      "documents_examined": 15,
-      "frozen_at": "2026-11-20T14:37:46+00:00",
-      "task_id": "TOP-20261120T143746Z"
+      "documents_frozen": 17,
+      "documents_examined": 17,
+      "frozen_at": "2026-11-22T18:15:00+00:00",
+      "task_id": "TOP-20261122T181500Z"
     },
     "latest_complete": {
-      "run_key": "lab4-topics-run-2026-11-20T14:37:46Z",
-      "workflow_id": "lab4-topics-run-2026-11-20T14:37:46Z",
-      "run_id": "01a1f964-5cd9-7bff-bf37-9bef906c65bb",
-      "document_id": "b011e8a1-e5ef-41d9-9e44-f8266e09abef",
-      "path": "data/_reports/topics_20261120T143746Z.md",
+      "run_key": "lab4-topics-run-2026-11-22T18:15:00Z",
+      "workflow_id": "lab4-topics-run-2026-11-22T18:15:00Z",
+      "run_id": "01a20477-f510-79ed-a796-8544af68e91d",
+      "document_id": "4d55f61e-abb3-4340-a717-e96843beb279",
+      "path": "data/_reports/topics_20261122T181500Z.md",
       "status": "complete",
       "topics": 4,
-      "documents_frozen": 15,
-      "documents_examined": 15,
-      "frozen_at": "2026-11-20T14:37:46+00:00",
-      "task_id": "TOP-20261120T143746Z"
+      "documents_frozen": 17,
+      "documents_examined": 17,
+      "frozen_at": "2026-11-22T18:15:00+00:00",
+      "task_id": "TOP-20261122T181500Z"
     }
   }
 }
