@@ -1,0 +1,53 @@
+[
+  {
+    "evidence_id": "ev_df923f824589",
+    "task_id": "M11",
+    "claim": "Квоты по умолчанию: 2000 вызовов/сутки на команду, 50/минуту, веб-поиск 300/сутки",
+    "kind": "fact",
+    "source_type": "local",
+    "source": "data/agents/agent_tool_quotas.md",
+    "document_id": "c77a305d-cf71-4ff5-8b1d-b752e019de5d",
+    "content_hash": "sha256:3da1f2f93378086a659f9b452562229965fbb1389182fd678edfcc3c0f9803c7",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 8,
+    "line_end": 9,
+    "quote": "Не более 2000 вызовов инструментов в сутки на команду и не более 50 вызовов в минуту. Вызовы веб-поиска считаются отдельно: не более 300 в сутки.",
+    "created_at": "2026-11-22T19:42:03+00:00",
+    "fragment_id": "3bb8a3a0-f854-5968-9308-b53b06d19b57"
+  },
+  {
+    "evidence_id": "ev_1375ef8dae4d",
+    "task_id": "M11",
+    "claim": "Старый ключ отзывается через 7 дней после перешифровки",
+    "kind": "fact",
+    "source_type": "local",
+    "source": "data/ops/runbook_rb12.md",
+    "document_id": "6ece6e18-e403-485e-bdb9-6877f1783728",
+    "content_hash": "sha256:1a4c891488e2d8da90ea184ef241cd13ba7ee97b87fe4372e04260f157f9c136",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 9,
+    "line_end": 9,
+    "quote": "Шаг 3: отозвать старый ключ через 7 дней после перешифровки.",
+    "created_at": "2026-11-22T19:42:20+00:00",
+    "fragment_id": "9223bd60-d071-5fbc-afa8-0024f253794c"
+  },
+  {
+    "evidence_id": "ev_e04fe4d6bddf",
+    "task_id": "M11",
+    "claim": "Журнал событий копируют на резервный том каждые 4 часа",
+    "kind": "fact",
+    "source_type": "local",
+    "source": "data/storage/st_snapshot_policy.md",
+    "document_id": "eff7f142-fe09-4431-a8de-7a274d96e280",
+    "content_hash": "sha256:758a4014863ab642d049bd25eedff75d6e44d063b5bcad21b1cee4a3bfa4de37",
+    "page_start": null,
+    "page_end": null,
+    "line_start": 7,
+    "line_end": 7,
+    "quote": "Снимок журнала событий сохраняют на резервный том каждые четыре часа; полную копию базы - раз в сутки в 03:00.",
+    "created_at": "2026-11-22T19:42:34+00:00",
+    "fragment_id": "a5f5b19c-a7b2-5808-b619-aa1f442fea03"
+  }
+]

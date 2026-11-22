@@ -1,0 +1,3898 @@
+[
+  {
+    "id": 6562,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 6564,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:47+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "deep"
+    }
+  },
+  {
+    "id": 6567,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5221,
+      "reserve": 6144,
+      "total": 11365,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 6568,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:48+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5221,
+      "reserve": 6144,
+      "total": 11365,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 6575,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5221,
+      "actual_input": 3509,
+      "actual_output": 254,
+      "duration_s": 2.73,
+      "calibrated_cpt": 2.963
+    }
+  },
+  {
+    "id": 6584,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:52+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "session state storage memory",
+      "hits": 0
+    }
+  },
+  {
+    "id": 6585,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:52+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "agent state persistence checkpointing",
+      "hits": 0
+    }
+  },
+  {
+    "id": 6586,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5253,
+      "reserve": 6144,
+      "total": 11397,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 6587,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5253,
+      "reserve": 6144,
+      "total": 11397,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.96)"
+    }
+  },
+  {
+    "id": 6592,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:54+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5253,
+      "actual_input": 4043,
+      "actual_output": 74,
+      "duration_s": 1.32,
+      "calibrated_cpt": 3.167
+    }
+  },
+  {
+    "id": 6603,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:56+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "vector",
+      "level": "L1",
+      "query": "how agent state is stored and persisted across sessions",
+      "hits": 8
+    }
+  },
+  {
+    "id": 6605,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 8654,
+      "reserve": 6144,
+      "total": 14798,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)",
+      "messages": 8
+    }
+  },
+  {
+    "id": 6607,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 8654,
+      "reserve": 6144,
+      "total": 14798,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.17)"
+    }
+  },
+  {
+    "id": 6609,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 8654,
+      "actual_input": 8377,
+      "actual_output": 52,
+      "duration_s": 1.65,
+      "calibrated_cpt": 3.082
+    }
+  },
+  {
+    "id": 6610,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10825,
+      "reserve": 6144,
+      "total": 16969,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.08)",
+      "messages": 11
+    }
+  },
+  {
+    "id": 6611,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:41:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10825,
+      "reserve": 6144,
+      "total": 16969,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.08)"
+    }
+  },
+  {
+    "id": 6618,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10825,
+      "actual_input": 10255,
+      "actual_output": 291,
+      "duration_s": 4.17,
+      "calibrated_cpt": 3.023
+    }
+  },
+  {
+    "id": 6619,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14742,
+      "reserve": 6144,
+      "total": 20886,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 6620,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14742,
+      "reserve": 6144,
+      "total": 20886,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.02)"
+    }
+  },
+  {
+    "id": 6634,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14742,
+      "actual_input": 13907,
+      "actual_output": 361,
+      "duration_s": 5.13,
+      "calibrated_cpt": 2.97
+    }
+  },
+  {
+    "id": 6635,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:08+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 17240,
+      "reserve": 6144,
+      "total": 23384,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 6685,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 17240,
+      "after_tokens": 11854,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 10,
+      "kept_messages": 13,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 2936,
+      "cost_output": 1387,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План работы: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия поиска: при пустых результатах fulltext использовать vector search и обзор папок.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   Папка `storage` (10 док.) содержит ключевые документы:\n    *   `e625cae6-6c4f-4673-87db-8839f34f778a` (`st_checkpoint_postgres.md`): Чекпоинты в PostgreSQL (5 L2).\n    *   `63576563-7a76-4186-a023-d168b5d7873b` (`st_checkpoint_sqlite.md`): Чекпоинты в SQLite (6 L2).\n    *   `3bf69284-f264-4f26-bcd4-a4b8e5f13cf0` (`st_encryption_state.md`): Шифрование состояния (упомянуты правила L-ST-27, L-ST-28).\n    *   `st_vector_memory.md`: Векторная память (4 L2).\n*   Папка `projects` (6 док.) содержит документы DocSearch:\n    *   `fd9485e7-df93-44b0-bc1f-b71d77ef235a` (`docsearch_architecture.md`): Архитектура, хранение состояния (4 L2).\n    *   `e7d3f8c9-9c87-4383-9021-3393c028af1a` (`docsearch_risks.md`): Риски потери состояния (3 L2).\n*   Vector search выявил релевантность `116dffe1-2620-4e18-a055-2429b8ee3fc1` (`agents_seminar_react.txt`, sim 0.799) и `3bf69284-f264-4f26-bcd4-a4b8e5f13cf0`.\n\n## Прогресс\n*   Выполнен `update_plan`.\n*   Выполнены `search_fulltext` (2 запроса, 0 результатов).\n*   Выполнен `corpus_overview` (получен список папок и документов).\n*   Выполнен `search_vector` (получены 8 кандидатов).\n*   Выполнены `list_documents` для папок `storage` и `projects`.\n*   **Осталось:** Прочитать L1/L2 фрагменты документов из `storage` и `projects`, извлечь цитаты, сравнить подходы, сформировать отчет.\n\n## Открытые вопросы и следующий шаг\n*   Каков именно выбранный подход для DocSearch (PostgreSQL, SQLite, или иной)?\n*   Какие конкретные ограничения (limitation) указаны в L2 фрагментах?\n*   **Следующий шаг:** Вызвать `get_l1` для `fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `e625cae6-6c4f-4673-87db-8839f34f778a`, `63576563-7a76-4186-a023-d168b5d7873b` и других релевантных документов.\n\n## Артефакты\n*   `task_id`: M11-deep1\n*   `corpus_id`: itmo-lab3\n*   Ключевые `document_id`:\n    *   `fd9485e7-df93-44b0-bc1f-b71d77ef235a` (DocSearch Arch)\n    *   `e625cae6-6c4f-4673-87db-8839f34f778a` (PG Checkpoints)\n    *   `63576563-7a76-4186-a023-d168b5d7873b` (SQLite Checkpoints)\n    *   `3bf69284-f264-4f26-bcd4-a4b8e5f13cf0` (Encryption)\n    *   `e7d3f8c9-9c87-4383-9021-3393c028af1a` (DocSearch Risks)",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ac1a3336d26638de",
+            "chatcmpl-tool-b3ea69c39bb493b5",
+            "chatcmpl-tool-a093d8e1faefe01a",
+            "chatcmpl-tool-aedce56ad083fe98",
+            "chatcmpl-tool-aa58382fb9b1e039"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ac1a3336d26638de"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3ea69c39bb493b5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a093d8e1faefe01a"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aedce56ad083fe98"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa58382fb9b1e039"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a28eec39b46f1e6b",
+            "chatcmpl-tool-97f662347b69175e",
+            "chatcmpl-tool-9fbc9528dcdc4d64",
+            "chatcmpl-tool-825f3e2c739400ee",
+            "chatcmpl-tool-86d2288f95758eb0"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a28eec39b46f1e6b"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-97f662347b69175e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9fbc9528dcdc4d64"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-825f3e2c739400ee"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-86d2288f95758eb0"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6686,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11854,
+      "reserve": 6144,
+      "total": 17998,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.97)"
+    }
+  },
+  {
+    "id": 6694,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11854,
+      "actual_input": 10900,
+      "actual_output": 698,
+      "duration_s": 8.23,
+      "calibrated_cpt": 2.947
+    }
+  },
+  {
+    "id": 6695,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13253,
+      "reserve": 6144,
+      "total": 19397,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 6696,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13253,
+      "reserve": 6144,
+      "total": 19397,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.95)"
+    }
+  },
+  {
+    "id": 6697,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:44+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13253,
+      "actual_input": 12338,
+      "actual_output": 332,
+      "duration_s": 3.74,
+      "calibrated_cpt": 2.908
+    }
+  },
+  {
+    "id": 6698,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:44+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "РС-7",
+      "hits": 3
+    }
+  },
+  {
+    "id": 6699,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:42:44+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15742,
+      "reserve": 6144,
+      "total": 21886,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 6710,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:00+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 15742,
+      "after_tokens": 9982,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 13,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 6443,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План работы: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия поиска: при пустых результатах fulltext использовать vector search и обзор папок.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L1: Локальное хранение одного процесса. WAL: читатели не блокируют писателя, один писатель [L-ST-01].\n    *   L1: `ERR_LOCK_TIMEOUT` при блокировке >5с (тикет CKPT-7731), бесконечный таймаут недопустим [L-ST-02]. Сетевые диски не поддерживают блокировки [L-ST-03].\n    *   L1: Бэкап через backup API, лимит 2 ГБ [L-ST-04].\n    *   L2 (s01, frag `2fa6174e...`, lines 1-9): \"SQLite используют для локального хранения чекпоинтов одного процесса\".\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L1: Общее хранилище для нескольких процессов. JSONB < 1 МБ [L-ST-05]. Пул 20 соединений/процесс [L-ST-06]. Миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n    *   L2 (s01, frag `f357c648...`, lines 1-9): \"PostgreSQL выбирают, когда несколько рабочих процессов пишут состояние в общее хранилище\".\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L1: Кэш состояния. Без AOF/RDB потеря при перезапуске, `appendfsync everysec` допускает потерю 1с [L-ST-08]. Данные в RAM [L-ST-09], `noeviction` [L-ST-10].\n    *   L2 (s01, frag `95c85e6c...`, lines 1-9): \"Redis используют как быстрый кэш состояния между шагами агента\".\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n    *   L1: Журнал событий, восстановление проигрыванием. Линейный рост времени восстановления, периодические снимки [L-ST-11]. Старые форматы неизменяемы [L-ST-12], обработчик читает все версии [L-ST-13].\n    *   L2 (s01, frag `e605d668...`, lines 1-9): \"Вместо снимков состояния хранится журнал событий\".\n*   **DocSearch** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `docsearch_architecture.md`):\n    *   L1: Выбор бэкенда утверждён решением РС-7 (протокол M-12).\n    *   L2 (s03, frag `af6eaa33...`, lines 13-19): \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12)\".\n\n## Прогресс\n*   Выполнены `get_l1` для 5 документов (SQLite, PG, Redis, Event Sourcing, DocSearch Arch).\n*   Выполнены `read_section` (L2) для s01 (SQLite, PG, Redis, Event Sourcing) и s03 (DocSearch Arch).\n*   Получены тексты L2 для цитирования.\n*   **Осталось:** Вызвать `cite_fragment` для ключевых строк, прочитать протокол M-12 (если доступен) для подтверждения выбора, сформировать финальный отчет.\n\n## Открытые вопросы и следующий шаг\n*   Какой именно бэкенд выбран решением РС-7? (В текущих L2 фрагментах DocSearch Arch только ссылка на протокол M-12, без прямого указания \"PostgreSQL\" или \"SQLite\").\n*   **Следующий шаг:** Найти и прочитать документ протокола совещания M-12 или решение РС-7 в корпусе, чтобы подтвердить выбранный бэкенд. Затем вызвать `cite_fragment` и `submit_result`.\n\n## Артефакты\n*   `task_id`: M11-deep1\n*   `corpus_id`: itmo-lab3\n*   Ключевые `document_id`:\n    *   `fd9485e7-df93-44b0-bc1f-b71d77ef235a` (DocSearch Arch)\n    *   `e625cae6-6c4f-4673-87db-8839f34f778a` (PG Checkpoints)",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-aa83a264ce3bf6da",
+            "chatcmpl-tool-b44a920b6caa5328",
+            "chatcmpl-tool-b10d4f8f582c98c4",
+            "chatcmpl-tool-832e55b68fccfe4b",
+            "chatcmpl-tool-ac9d1693c0c7e4d8"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa83a264ce3bf6da"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b44a920b6caa5328"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b10d4f8f582c98c4"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-832e55b68fccfe4b"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ac9d1693c0c7e4d8"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ab03d85710fb8241",
+            "chatcmpl-tool-89f861a315a419b7",
+            "chatcmpl-tool-9ad8cbbefe8af09d",
+            "chatcmpl-tool-81dd80cc3c343ff0",
+            "chatcmpl-tool-89a717b02a56342d"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ab03d85710fb8241"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89f861a315a419b7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9ad8cbbefe8af09d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-81dd80cc3c343ff0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89a717b02a56342d"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6711,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9982,
+      "reserve": 6144,
+      "total": 16126,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 6715,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9982,
+      "actual_input": 8975,
+      "actual_output": 113,
+      "duration_s": 1.73,
+      "calibrated_cpt": 2.91
+    }
+  },
+  {
+    "id": 6717,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10787,
+      "reserve": 6144,
+      "total": 16931,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 6718,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10787,
+      "reserve": 6144,
+      "total": 16931,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 6719,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:11+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10787,
+      "actual_input": 9835,
+      "actual_output": 985,
+      "duration_s": 8.47,
+      "calibrated_cpt": 2.894
+    }
+  },
+  {
+    "id": 6720,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:11+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12574,
+      "reserve": 6144,
+      "total": 18718,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.89)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 6721,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:11+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12574,
+      "reserve": 6144,
+      "total": 18718,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.89)"
+    }
+  },
+  {
+    "id": 6722,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12574,
+      "actual_input": 11714,
+      "actual_output": 149,
+      "duration_s": 2.69,
+      "calibrated_cpt": 2.852
+    }
+  },
+  {
+    "id": 6723,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:13+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "WAL",
+      "hits": 2
+    }
+  },
+  {
+    "id": 6724,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:13+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "vector",
+      "level": "L2",
+      "query": "почему выбрали PostgreSQL для хранения состояния агента, преимущества перед другими вариантами",
+      "hits": 6
+    }
+  },
+  {
+    "id": 6725,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14537,
+      "reserve": 6144,
+      "total": 20681,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 6726,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:14+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14537,
+      "reserve": 6144,
+      "total": 20681,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 6727,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:16+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14537,
+      "actual_input": 13582,
+      "actual_output": 115,
+      "duration_s": 2.58,
+      "calibrated_cpt": 2.808
+    }
+  },
+  {
+    "id": 6728,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:16+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15530,
+      "reserve": 6144,
+      "total": 21674,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 6737,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 15530,
+      "after_tokens": 11101,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 15,
+      "kept_messages": 14,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 6570,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План работы: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия поиска: при пустых результатах fulltext использовать vector search и обзор папок.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L1: Локальное хранение одного процесса. WAL: читатели не блокируют писателя, один писатель [L-ST-01].\n    *   L1: `ERR_LOCK_TIMEOUT` при блокировке >5с (тикет CKPT-7731), бесконечный таймаут недопустим [L-ST-02]. Сетевые диски не поддерживают блокировки [L-ST-03].\n    *   L1: Бэкап через backup API, лимит 2 ГБ [L-ST-04].\n    *   L2 (s01, frag `2fa6174e...`, lines 1-9): \"SQLite используют для локального хранения чекпоинтов одного процесса\".\n    *   L2 (s03, frag `7245ffda...`, lines 23-31): \"Ошибка ERR_LOCK_TIMEOUT возникает, если блокировка не освобождается за 5 секунд; тикет CKPT-7731 описывает воспроизведение.\"\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L1: Общее хранилище для нескольких процессов. JSONB < 1 МБ [L-ST-05]. Пул 20 соединений/процесс [L-ST-06]. Миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n    *   L2 (s01, frag `f357c648...`, lines 1-9): \"PostgreSQL выбирают, когда несколько рабочих процессов пишут состояние в общее хранилище\".\n    *   L2 (s03, frag `6225b442...`, lines 23-31): \"Пул соединений ограничивают 20 соединениями на рабочий процесс.\"\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L1: Кэш состояния. Без AOF/RDB потеря при перезапуске, `appendfsync everysec` допускает потерю 1с [L-ST-08]. Данные в RAM [L-ST-09], `noeviction` [L-ST-10].\n    *   L2 (s01, frag `95c85e6c...`, lines 1-9): \"Redis используют как быстрый кэш состояния между шагами агента\".\n    *   L2 (s02, frag `cd5c7e49...`, lines 13-21): \"Без включённых AOF или снимков RDB состояние теряется при перезапуске сервера.\"\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n    *   L1: Журнал событий, восстановление проигрыванием. Линейный рост времени восстановления, периодические снимки [L-ST-11]. Старые форматы неизменяемы [L-ST-12], обработчик читает все версии [L-ST-13].\n    *   L2 (s01, frag `e605d668...`, lines 1-9): \"Вместо снимков состояния хранится журнал событий\".\n    *   L2 (s02, frag `98898177...`, lines 13-21): \"Каждое событие имеет порядковый номер и идемпотентный ключ.\"\n*   **DocSearch** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `docsearch_architecture.md`):\n    *   L1: Выбор бэкенда утверждён решением РС-7 (протокол M-12).\n    *   L2 (s03, frag `af6eaa33...`, lines 13-19): \"Выбор бэкенда хранения чекпоинтов утверждён решением РС-7 (см. протокол совещания M-12)\".\n*   **Протокол M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `meeting_m12.md`):\n    *   L2 (s02, frag `a0ce2e93...`, lines 13-21): \"Решение РС-7: бэкенд хранения чекпоинтов DocSearch — PostgreSQL 16; ответственный — Ирина Ковалёва; срок перехода — 20.11.2026.\"\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 11; ; разделы отчёта: нет; в сжатом фрагменте 12 вызовов tools: cite_fragment×5, read_fragment×2, read_section×4, search_grep×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-86ee8951ae3243b1",
+            "chatcmpl-tool-92ae068d279e4b79",
+            "chatcmpl-tool-9ed64e3571ab2bff",
+            "chatcmpl-tool-bd69fd18b5568cf3",
+            "chatcmpl-tool-8baaa3ba57f2467f",
+            "chatcmpl-tool-95813e4ea84d5d5b"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-86ee8951ae3243b1"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-92ae068d279e4b79"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9ed64e3571ab2bff"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bd69fd18b5568cf3"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8baaa3ba57f2467f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-95813e4ea84d5d5b"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-be2cbedb1e2cfcbe",
+            "chatcmpl-tool-ae84b81c5aba02e5"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-be2cbedb1e2cfcbe"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ae84b81c5aba02e5"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a99cdb369a580728",
+            "chatcmpl-tool-9955ba8a636e6910"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a99cdb369a580728"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9955ba8a636e6910"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6738,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11101,
+      "reserve": 6144,
+      "total": 17245,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6743,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11101,
+      "actual_input": 9833,
+      "actual_output": 117,
+      "duration_s": 2.33,
+      "calibrated_cpt": 2.827
+    }
+  },
+  {
+    "id": 6744,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11762,
+      "reserve": 6144,
+      "total": 17906,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 17
+    }
+  },
+  {
+    "id": 6745,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11762,
+      "reserve": 6144,
+      "total": 17906,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6746,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11762,
+      "actual_input": 10594,
+      "actual_output": 599,
+      "duration_s": 5.91,
+      "calibrated_cpt": 2.826
+    }
+  },
+  {
+    "id": 6747,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12902,
+      "reserve": 6144,
+      "total": 19046,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 6748,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12902,
+      "reserve": 6144,
+      "total": 19046,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6749,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12902,
+      "actual_input": 11796,
+      "actual_output": 123,
+      "duration_s": 2.83,
+      "calibrated_cpt": 2.806
+    }
+  },
+  {
+    "id": 6750,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13271,
+      "reserve": 6144,
+      "total": 19415,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 6751,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13271,
+      "reserve": 6144,
+      "total": 19415,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6752,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13271,
+      "actual_input": 12076,
+      "actual_output": 119,
+      "duration_s": 2.97,
+      "calibrated_cpt": 2.791
+    }
+  },
+  {
+    "id": 6753,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:43:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14943,
+      "reserve": 6144,
+      "total": 21087,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 6767,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:02+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 14943,
+      "after_tokens": 10329,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 13,
+      "kept_messages": 15,
+      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5615,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s02, frag `d1af8d09...`, lines 13-21): WAL: читатели не блокируют писателя; один писатель [L-ST-01].\n    *   L2 (s03, frag `7245ffda...`, lines 23-31): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03].\n    *   L1: Бэкап через backup API, лимит 2 ГБ [L-ST-04].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648...`, lines 1-9): Выбор при нескольких рабочих процессах; атомарность записи.\n    *   L2 (s03, frag `6225b442...`, lines 23-31): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06].\n    *   L1: JSONB < 1 МБ [L-ST-05]; миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c...`, lines 1-9): Кэш состояния между шагами.\n    *   L2 (s02, frag `cd5c7e49...`, lines 13-21): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08].\n    *   L1: Данные в RAM [L-ST-09], `noeviction` [L-ST-10].\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n    *   L2 (s01, frag `e605d668...`, lines 1-9): Журнал событий вместо снимков.\n    *   L2 (s02, frag `98898177...`, lines 13-21): Линейный рост времени восстановления, нужны снимки [L-ST-11]; идемпотентные ключи.\n    *   L1: Старые форматы неизменяемы [L-ST-12], обработчик читает все версии [L-ST-13].\n*   **DocSearch** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `docsearch_architecture.md`):\n    *   L2 (s03, frag `af6eaa33...`, lines 13-19): Выбор бэкенда утверждён решением РС-7 (протокол M-12).\n*   **Протокол M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `meeting_m12.md`):\n    *   L2 (s02, frag `a0ce2e93...`, lines 13-21): Решение РС-7: PostgreSQL 16; ответственный Ирина Ковалёва; срок 20.11.2026.\n*   **Созвон 05.11.2026** (`cef37733-7c48-42f0-b8a0-a13b40dd1413`, `call_transcript_2026-11-05.txt`):\n    *   L2 (frag `f95e7ee8...`, line 4): Переход на PostgreSQL идёт по плану, тестовый стенд готов.\n*   **Инцидент 031** (`79d31160-a5c6-4f3e-bbfa-39daa43da191`, `incident_031.md`):\n    *   L2 (s03, frag `8f6c5c4e...`, lines 21-27): Восстановление по runbook RB-09; переход на PostgreSQL ускорен.\n\n## Прогресс\n*   Прочитаны L2-фрагменты всех 4 подходов (SQLite, Postgres, Redis, Event Sourcing).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9e2f01025e96d6de",
+            "chatcmpl-tool-9d0d6e628001eb08"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9e2f01025e96d6de"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d0d6e628001eb08"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ba5e54eac751abc5",
+            "chatcmpl-tool-afe82666d2dc8b2d",
+            "chatcmpl-tool-8971d66b17b73367",
+            "chatcmpl-tool-9194138fd836d8fe"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ba5e54eac751abc5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-afe82666d2dc8b2d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8971d66b17b73367"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9194138fd836d8fe"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a3fede060ea5285f",
+            "chatcmpl-tool-a595bc0a71a857f0"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a3fede060ea5285f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a595bc0a71a857f0"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a63d0a439fe8b181",
+            "chatcmpl-tool-8ee95b5d56970d3a"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a63d0a439fe8b181"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8ee95b5d56970d3a"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6768,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10329,
+      "reserve": 6144,
+      "total": 16473,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6769,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10329,
+      "actual_input": 8947,
+      "actual_output": 121,
+      "duration_s": 1.77,
+      "calibrated_cpt": 2.834
+    }
+  },
+  {
+    "id": 6770,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10903,
+      "reserve": 6144,
+      "total": 17047,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 6771,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10903,
+      "reserve": 6144,
+      "total": 17047,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6772,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:08+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10903,
+      "actual_input": 9682,
+      "actual_output": 396,
+      "duration_s": 4.27,
+      "calibrated_cpt": 2.847
+    }
+  },
+  {
+    "id": 6773,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12235,
+      "reserve": 6144,
+      "total": 18379,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 6774,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:09+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12235,
+      "reserve": 6144,
+      "total": 18379,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 6775,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12235,
+      "actual_input": 11104,
+      "actual_output": 466,
+      "duration_s": 4.76,
+      "calibrated_cpt": 2.834
+    }
+  },
+  {
+    "id": 6776,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13792,
+      "reserve": 6144,
+      "total": 19936,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 6777,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13792,
+      "reserve": 6144,
+      "total": 19936,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6783,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:20+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13792,
+      "actual_input": 12628,
+      "actual_output": 453,
+      "duration_s": 6.17,
+      "calibrated_cpt": 2.811
+    }
+  },
+  {
+    "id": 6784,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:20+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15303,
+      "reserve": 6144,
+      "total": 21447,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 6785,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:31+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 5,
+      "before_tokens": 15303,
+      "after_tokens": 10874,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 17,
+      "kept_messages": 15,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5918,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 1-9): Локальное хранение чекпоинтов одного процесса; история сообщений, результаты инструментов, счётчики.\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 13-21): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda...`, lines 23-31): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03].\n    *   L1: Бэкап через backup API, лимит 2 ГБ [L-ST-04].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 1-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s03, frag `6225b442...`, lines 23-31): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06].\n    *   L1: JSONB < 1 МБ [L-ST-05]; миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 1-9): Кэш состояния между шагами; метрики задержки, размера, неудачных транзакций.\n    *   L2 (s02, frag `cd5c7e49...`, lines 13-21): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08].\n    *   L1: Данные в RAM [L-ST-09], `noeviction` [L-ST-10].\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n    *   L2 (s01, frag `e605d668...`, lines 1-9): Журнал событий вместо снимков.\n    *   L2 (s02, frag `98898177...`, lines 13-21): Линейный рост времени восстановления, нужны снимки [L-ST-11]; идемпотентные ключи.\n    *   L1: Старые форматы неизменяемы [L-ST-12], обработчик читает все версии [L-ST-13].\n*   **DocSearch** (`fd9485e7-df93-44b0-bc1f-b71d77ef235a`, `docsearch_architecture.md`):\n    *   L2 (s03, frag `af6eaa33...`, lines 13-19): Выбор бэкенда утверждён решением РС-7 (протокол M-12).\n*   **Протокол M-12** (`9af1414d-b416-4d6f-9dc6-d11dd3396bed`, `meeting_m12.md`):\n    *   L2 (s02, frag `a0ce2e93...`, lines 13-21): Решение РС-7: PostgreSQL 16; ответственный Ирина Ковалёва; срок 20.11.2026.\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 18; ; разделы отчёта: нет; в сжатом фрагменте 12 вызовов tools: cite_fragment×4, get_l1×2, read_fragment×6\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b8c98533ebd4829b",
+            "chatcmpl-tool-b75ad221c0e2ae28",
+            "chatcmpl-tool-95ca09b23bbf439b",
+            "chatcmpl-tool-8fd3bac723bd4ea1"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b8c98533ebd4829b"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b75ad221c0e2ae28"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-95ca09b23bbf439b"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8fd3bac723bd4ea1"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ba49958340c3db6d",
+            "chatcmpl-tool-b4892023f336b7bc",
+            "chatcmpl-tool-a65883f9c166689c",
+            "chatcmpl-tool-9852b13e6ff014ce"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ba49958340c3db6d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b4892023f336b7bc"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a65883f9c166689c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9852b13e6ff014ce"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9d9fa7eff04b2b35",
+            "chatcmpl-tool-a28d6855cd335bf8",
+            "chatcmpl-tool-b3eeebf322b1a992"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d9fa7eff04b2b35"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a28d6855cd335bf8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3eeebf322b1a992"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6786,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10874,
+      "reserve": 6144,
+      "total": 17018,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6787,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:33+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10874,
+      "actual_input": 9539,
+      "actual_output": 175,
+      "duration_s": 2.16,
+      "calibrated_cpt": 2.84
+    }
+  },
+  {
+    "id": 6788,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:33+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11967,
+      "reserve": 6144,
+      "total": 18111,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 6789,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:33+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11967,
+      "reserve": 6144,
+      "total": 18111,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 6790,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11967,
+      "actual_input": 10764,
+      "actual_output": 566,
+      "duration_s": 5.01,
+      "calibrated_cpt": 2.84
+    }
+  },
+  {
+    "id": 6791,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13388,
+      "reserve": 6144,
+      "total": 19532,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 6792,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13388,
+      "reserve": 6144,
+      "total": 19532,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 6793,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:41+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13388,
+      "actual_input": 12119,
+      "actual_output": 226,
+      "duration_s": 3.05,
+      "calibrated_cpt": 2.83
+    }
+  },
+  {
+    "id": 6794,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13890,
+      "reserve": 6144,
+      "total": 20034,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 6795,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13890,
+      "reserve": 6144,
+      "total": 20034,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6796,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13890,
+      "actual_input": 12577,
+      "actual_output": 59,
+      "duration_s": 1.78,
+      "calibrated_cpt": 2.82
+    }
+  },
+  {
+    "id": 6797,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14796,
+      "reserve": 6144,
+      "total": 20940,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 6798,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14796,
+      "reserve": 6144,
+      "total": 20940,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 6799,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:46+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14796,
+      "actual_input": 13380,
+      "actual_output": 177,
+      "duration_s": 2.65,
+      "calibrated_cpt": 2.81
+    }
+  },
+  {
+    "id": 6800,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:46+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16118,
+      "reserve": 6144,
+      "total": 22262,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 33
+    }
+  },
+  {
+    "id": 6801,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:57+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 6,
+      "before_tokens": 16118,
+      "after_tokens": 10521,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 18,
+      "kept_messages": 15,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 7249,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 13-21): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 1-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s03, frag `6225b442...`, lines 23-31): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06].\n    *   L1: JSONB < 1 МБ [L-ST-05]; миграции до запуска, откат невозможен без потери чекпоинтов [L-ST-07].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 7-7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n    *   L2 (s03, frag `856ded03-45ee-5db6-82cd-c5abf5597616`, lines 25-27): Данные в RAM [L-ST-09]; `noeviction` [L-ST-10, ev_9d87c705c5b3].\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n    *   L2 (s01, frag `e605d668-bca8-58a8-97c7-70ce8164c35b`, lines 7-9): Журнал событий вместо снимков; восстановление проигрыванием.\n    *   L2 (s02, frag `98898177-8535-5f92-9970-ab57ebacc367`, lines 15-21): Линейный рост времени восстановления, нужны снимки [L-ST-11]; идемпотентные ключи; атомарность записи.\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 21; ; разделы отчёта: нет; в сжатом фрагменте 14 вызовов tools: cite_fragment×6, get_l1×1, read_fragment×7\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a736373d3c866282",
+            "chatcmpl-tool-90e58e0c2e0a13ba",
+            "chatcmpl-tool-8c63f14f2f6594a5",
+            "chatcmpl-tool-9599b298383d02da"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a736373d3c866282"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-90e58e0c2e0a13ba"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8c63f14f2f6594a5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9599b298383d02da"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b8f8e11e6ee503cf",
+            "chatcmpl-tool-b667764186140d81"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b8f8e11e6ee503cf"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b667764186140d81"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9a66f46211248ad8"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9a66f46211248ad8"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b5c9e60b465f5bfe",
+            "chatcmpl-tool-9ac345880132d8c9",
+            "chatcmpl-tool-b22e379e406c727a"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b5c9e60b465f5bfe"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9ac345880132d8c9"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b22e379e406c727a"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6802,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:44:57+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10521,
+      "reserve": 6144,
+      "total": 16665,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6803,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10521,
+      "actual_input": 9204,
+      "actual_output": 528,
+      "duration_s": 4.79,
+      "calibrated_cpt": 2.843
+    }
+  },
+  {
+    "id": 6804,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11655,
+      "reserve": 6144,
+      "total": 17799,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 6805,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11655,
+      "reserve": 6144,
+      "total": 17799,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 6806,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11655,
+      "actual_input": 10528,
+      "actual_output": 183,
+      "duration_s": 2.41,
+      "calibrated_cpt": 2.836
+    }
+  },
+  {
+    "id": 6807,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12421,
+      "reserve": 6144,
+      "total": 18565,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 6808,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:04+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12421,
+      "reserve": 6144,
+      "total": 18565,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.84)"
+    }
+  },
+  {
+    "id": 6809,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12421,
+      "actual_input": 11279,
+      "actual_output": 230,
+      "duration_s": 2.82,
+      "calibrated_cpt": 2.823
+    }
+  },
+  {
+    "id": 6810,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13268,
+      "reserve": 6144,
+      "total": 19412,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 6811,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13268,
+      "reserve": 6144,
+      "total": 19412,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 6812,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13268,
+      "actual_input": 12061,
+      "actual_output": 233,
+      "duration_s": 2.9,
+      "calibrated_cpt": 2.808
+    }
+  },
+  {
+    "id": 6813,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14111,
+      "reserve": 6144,
+      "total": 20255,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 6814,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14111,
+      "reserve": 6144,
+      "total": 20255,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6815,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14111,
+      "actual_input": 12798,
+      "actual_output": 215,
+      "duration_s": 2.88,
+      "calibrated_cpt": 2.795
+    }
+  },
+  {
+    "id": 6816,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15005,
+      "reserve": 6144,
+      "total": 21149,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 32
+    }
+  },
+  {
+    "id": 6817,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:24+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 7,
+      "before_tokens": 15005,
+      "after_tokens": 10921,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 14,
+      "kept_messages": 18,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5652,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 13-21): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, lines 13-21): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, lines 23-31): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, lines 33-41): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 7-7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n    *   L2 (s03, frag `856ded03-45ee-5db6-82cd-c5abf5597616`, lines 25-27): Данные в RAM [L-ST-09]; `noeviction` [L-ST-10, ev_9d87c705c5b3].\n*   **Event Sourcing** (`d4611c67-c357-4667-9cbc-adaa03fa6450`, `st_event_sourcing.md`):\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 24; ; разделы отчёта: нет; в сжатом фрагменте 10 вызовов tools: cite_fragment×4, get_l1×1, read_fragment×5\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a1cf380075e61b2c",
+            "chatcmpl-tool-8f082bf549caa55d",
+            "chatcmpl-tool-8976b3200ceaa72f",
+            "chatcmpl-tool-838dbf38f3702cdf"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a1cf380075e61b2c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8f082bf549caa55d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8976b3200ceaa72f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-838dbf38f3702cdf"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8633b9fdfa2775fe",
+            "chatcmpl-tool-88f6b160a0688960"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8633b9fdfa2775fe"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-88f6b160a0688960"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b9713b86e77799e8",
+            "chatcmpl-tool-b3db61fc20665a67"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b9713b86e77799e8"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b3db61fc20665a67"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-90f6343141ceb0c7",
+            "chatcmpl-tool-a6bd5cb1774f2c49"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-90f6343141ceb0c7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a6bd5cb1774f2c49"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-81ab3371054364a7",
+            "chatcmpl-tool-be518338c3de868c"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-81ab3371054364a7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-be518338c3de868c"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6818,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10921,
+      "reserve": 6144,
+      "total": 17065,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6819,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10921,
+      "actual_input": 9675,
+      "actual_output": 213,
+      "duration_s": 2.54,
+      "calibrated_cpt": 2.811
+    }
+  },
+  {
+    "id": 6820,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11720,
+      "reserve": 6144,
+      "total": 17864,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 6821,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11720,
+      "reserve": 6144,
+      "total": 17864,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6822,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:31+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11720,
+      "actual_input": 10500,
+      "actual_output": 286,
+      "duration_s": 4.04,
+      "calibrated_cpt": 2.813
+    }
+  },
+  {
+    "id": 6823,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:31+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12583,
+      "reserve": 6144,
+      "total": 18727,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 6824,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:31+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12583,
+      "reserve": 6144,
+      "total": 18727,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6825,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:35+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12583,
+      "actual_input": 11333,
+      "actual_output": 222,
+      "duration_s": 3.82,
+      "calibrated_cpt": 2.809
+    }
+  },
+  {
+    "id": 6826,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:35+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13362,
+      "reserve": 6144,
+      "total": 19506,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 6827,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:35+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13362,
+      "reserve": 6144,
+      "total": 19506,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.81)"
+    }
+  },
+  {
+    "id": 6828,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13362,
+      "actual_input": 12062,
+      "actual_output": 207,
+      "duration_s": 2.92,
+      "calibrated_cpt": 2.801
+    }
+  },
+  {
+    "id": 6829,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:38+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "fulltext",
+      "level": "L1",
+      "query": "DocSearch выбор хранилища состояния",
+      "hits": 26
+    }
+  },
+  {
+    "id": 6830,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15864,
+      "reserve": 6144,
+      "total": 22008,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 6831,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:49+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 8,
+      "before_tokens": 15864,
+      "after_tokens": 10566,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 20,
+      "kept_messages": 10,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 7142,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, lines 17-17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, lines 27-27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, lines 37-37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 7-7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n    *   L2 (s03, frag `856ded03-45ee-5db6-82cd-c5abf5597616`, lines 25-27): Данные в RAM [L-ST-09]; `noeviction` [L-ST-10, ev_9d87c705c5b3].\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 24; ; разделы отчёта: нет; в сжатом фрагменте 14 вызовов tools: cite_fragment×8, read_fragment×6\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b84557f02f39a924",
+            "chatcmpl-tool-9d00896d12b64421"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b84557f02f39a924"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d00896d12b64421"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9be94ffc1c7a5703",
+            "chatcmpl-tool-8f78ead4d0979efe"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9be94ffc1c7a5703"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8f78ead4d0979efe"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-856801d6f50276e3",
+            "chatcmpl-tool-95ed13041efb3eb0"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-856801d6f50276e3"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-95ed13041efb3eb0"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6832,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:49+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10566,
+      "reserve": 6144,
+      "total": 16710,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 6833,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10566,
+      "actual_input": 9277,
+      "actual_output": 99,
+      "duration_s": 1.62,
+      "calibrated_cpt": 2.833
+    }
+  },
+  {
+    "id": 6834,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:51+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "РС-7",
+      "hits": 8
+    }
+  },
+  {
+    "id": 6835,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:51+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12784,
+      "reserve": 6144,
+      "total": 18928,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 6836,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:51+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12784,
+      "reserve": 6144,
+      "total": 18928,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.83)"
+    }
+  },
+  {
+    "id": 6837,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:53+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12784,
+      "actual_input": 11689,
+      "actual_output": 112,
+      "duration_s": 2.15,
+      "calibrated_cpt": 2.818
+    }
+  },
+  {
+    "id": 6838,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:53+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13994,
+      "reserve": 6144,
+      "total": 20138,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 6839,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:53+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13994,
+      "reserve": 6144,
+      "total": 20138,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 6840,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13994,
+      "actual_input": 12867,
+      "actual_output": 213,
+      "duration_s": 3.06,
+      "calibrated_cpt": 2.796
+    }
+  },
+  {
+    "id": 6841,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:45:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14860,
+      "reserve": 6144,
+      "total": 21004,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 6842,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:07+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 9,
+      "before_tokens": 14860,
+      "after_tokens": 10793,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 9,
+      "kept_messages": 10,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 4522,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n*   Избегать повторного чтения фрагментов (note_repeat), использовать только cite_fragment.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, lines 17-17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, lines 27-27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, lines 37-37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 7-7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n    *   L2 (s03, frag `856ded03-45ee-5db6-82cd-c5abf5597616`, lines 25-27): Данные в RAM [L-ST-09]; `noeviction` [L-ST-10, ev_9d87c705c5b3].\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 24; ; разделы отчёта: нет; в сжатом фрагменте 6 вызовов tools: cite_fragment×3, read_fragment×2, search_fulltext×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-986cc50540d0ccf6",
+            "chatcmpl-tool-863f600c6af59af9"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-986cc50540d0ccf6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-863f600c6af59af9"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8baa8cc76aa167b0",
+            "chatcmpl-tool-858abcd0f8c916ec"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8baa8cc76aa167b0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-858abcd0f8c916ec"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-bced1acf4390fcd7",
+            "chatcmpl-tool-a86337dbe9830504"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bced1acf4390fcd7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a86337dbe9830504"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6843,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10793,
+      "reserve": 6144,
+      "total": 16937,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 6844,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10793,
+      "actual_input": 9687,
+      "actual_output": 271,
+      "duration_s": 2.78,
+      "calibrated_cpt": 2.803
+    }
+  },
+  {
+    "id": 6845,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:10+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "PostgreSQL",
+      "hits": 1
+    }
+  },
+  {
+    "id": 6846,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:10+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11373,
+      "reserve": 6144,
+      "total": 17517,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 6847,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11373,
+      "reserve": 6144,
+      "total": 17517,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 6848,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11373,
+      "actual_input": 10341,
+      "actual_output": 222,
+      "duration_s": 3.4,
+      "calibrated_cpt": 2.794
+    }
+  },
+  {
+    "id": 6849,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:13+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "vector",
+      "level": "L2",
+      "query": "почему выбрали PostgreSQL для хранения чекпоинтов агента, аргументы выбора бэкенда состояния",
+      "hits": 6
+    }
+  },
+  {
+    "id": 6850,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13200,
+      "reserve": 6144,
+      "total": 19344,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 6851,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:13+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13200,
+      "reserve": 6144,
+      "total": 19344,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6852,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:15+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13200,
+      "actual_input": 12162,
+      "actual_output": 109,
+      "duration_s": 1.95,
+      "calibrated_cpt": 2.769
+    }
+  },
+  {
+    "id": 6853,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:15+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14023,
+      "reserve": 6144,
+      "total": 20167,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 6854,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14023,
+      "reserve": 6144,
+      "total": 20167,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 6855,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14023,
+      "actual_input": 12877,
+      "actual_output": 263,
+      "duration_s": 3.26,
+      "calibrated_cpt": 2.748
+    }
+  },
+  {
+    "id": 6856,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14679,
+      "reserve": 6144,
+      "total": 20823,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 6857,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14679,
+      "reserve": 6144,
+      "total": 20823,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 6858,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:21+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14679,
+      "actual_input": 13441,
+      "actual_output": 54,
+      "duration_s": 2.31,
+      "calibrated_cpt": 2.729
+    }
+  },
+  {
+    "id": 6859,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:21+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L1",
+      "query": "состояние",
+      "hits": 7
+    }
+  },
+  {
+    "id": 6860,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:21+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 16108,
+      "reserve": 6144,
+      "total": 22252,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 6861,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:32+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 10,
+      "before_tokens": 16108,
+      "after_tokens": 11119,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 12,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5522,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n*   Избегать повторного чтения фрагментов (note_repeat), использовать только cite_fragment.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, lines 17-17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, lines 27-27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, lines 37-37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, lines 7-7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n    *   L2 (s03, frag `856ded03-45ee-5db6-82cd-c5abf5597616`, lines 25-27): Данные в RAM [L-ST-09]; `noeviction` [L-ST-10, ev_9d87c705c5b3].\n*   **Выбор для DocSearch**:\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 25; ; разделы отчёта: нет; в сжатом фрагменте 8 вызовов tools: cite_fragment×2, get_l1×2, read_fragment×2, search_grep×2\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ba743d5b9283b280",
+            "chatcmpl-tool-838962663befcdf7"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ba743d5b9283b280"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-838962663befcdf7"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-aa7124945fbe7553",
+            "chatcmpl-tool-ac3fa075bb81d2d7"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa7124945fbe7553"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ac3fa075bb81d2d7"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-84b5ccd2988051c0",
+            "chatcmpl-tool-aa6e9d1865c7ae03"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-84b5ccd2988051c0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa6e9d1865c7ae03"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-973d43f9db3b3e6f"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-973d43f9db3b3e6f"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6862,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:32+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11119,
+      "reserve": 6144,
+      "total": 17263,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 6863,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:34+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11119,
+      "actual_input": 9710,
+      "actual_output": 112,
+      "duration_s": 1.69,
+      "calibrated_cpt": 2.765
+    }
+  },
+  {
+    "id": 6864,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:34+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "repeated_call",
+      "tool": "get_l1",
+      "repeats": 3
+    }
+  },
+  {
+    "id": 6865,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:34+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12143,
+      "reserve": 6144,
+      "total": 18287,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 6866,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12143,
+      "reserve": 6144,
+      "total": 18287,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 6867,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12143,
+      "actual_input": 10712,
+      "actual_output": 116,
+      "duration_s": 2.06,
+      "calibrated_cpt": 2.788
+    }
+  },
+  {
+    "id": 6868,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12854,
+      "reserve": 6144,
+      "total": 18998,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 6869,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12854,
+      "reserve": 6144,
+      "total": 18998,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6870,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12854,
+      "actual_input": 11519,
+      "actual_output": 309,
+      "duration_s": 3.65,
+      "calibrated_cpt": 2.794
+    }
+  },
+  {
+    "id": 6871,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:40+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13406,
+      "reserve": 6144,
+      "total": 19550,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 6872,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:40+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13406,
+      "reserve": 6144,
+      "total": 19550,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6873,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13406,
+      "actual_input": 12123,
+      "actual_output": 84,
+      "duration_s": 2.04,
+      "calibrated_cpt": 2.787
+    }
+  },
+  {
+    "id": 6874,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:42+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "журнал событий",
+      "hits": 1
+    }
+  },
+  {
+    "id": 6875,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13761,
+      "reserve": 6144,
+      "total": 19905,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)",
+      "messages": 23
+    }
+  },
+  {
+    "id": 6876,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13761,
+      "reserve": 6144,
+      "total": 19905,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.79)"
+    }
+  },
+  {
+    "id": 6877,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13761,
+      "actual_input": 12441,
+      "actual_output": 59,
+      "duration_s": 3.0,
+      "calibrated_cpt": 2.781
+    }
+  },
+  {
+    "id": 6878,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14252,
+      "reserve": 6144,
+      "total": 20396,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 6879,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14252,
+      "reserve": 6144,
+      "total": 20396,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 6880,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14252,
+      "actual_input": 12865,
+      "actual_output": 191,
+      "duration_s": 2.75,
+      "calibrated_cpt": 2.775
+    }
+  },
+  {
+    "id": 6881,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14864,
+      "reserve": 6144,
+      "total": 21008,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 6882,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:58+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 11,
+      "before_tokens": 14864,
+      "after_tokens": 10508,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 11,
+      "kept_messages": 17,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 4765,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n*   Избегать повторного чтения фрагментов (note_repeat), использовать только cite_fragment.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s01, frag `4d5acea0-da69-5afe-a695-e0ebc5d873db`, line 11): Чекпоинт фиксирует состояние после завершённого шага; восстановление с границы шага [ev_2b3bd7605033].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, line 17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, line 27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, line 37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, line 7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 27; ; разделы отчёта: нет; в сжатом фрагменте 7 вызовов tools: cite_fragment×3, read_fragment×2, search_grep×1, search_vector×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-be6b21fa3164926f",
+            "chatcmpl-tool-8e04e4272f87f8a9"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-be6b21fa3164926f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8e04e4272f87f8a9"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-bf37b5b0c2da87bc",
+            "chatcmpl-tool-81a507ab03fd4bb1"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bf37b5b0c2da87bc"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-81a507ab03fd4bb1"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9e86788f1b6e42e5",
+            "chatcmpl-tool-a9843a9ca9295fdd"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9e86788f1b6e42e5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a9843a9ca9295fdd"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-92f8e78b256bd87c"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-92f8e78b256bd87c"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8fbfa958165f0ef4"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8fbfa958165f0ef4"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ab0fe700f07e9e3d",
+            "chatcmpl-tool-b1f7c7f1aece18cb"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ab0fe700f07e9e3d"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b1f7c7f1aece18cb"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6883,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:46:58+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10508,
+      "reserve": 6144,
+      "total": 16652,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 6884,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:00+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10508,
+      "actual_input": 9047,
+      "actual_output": 57,
+      "duration_s": 1.48,
+      "calibrated_cpt": 2.824
+    }
+  },
+  {
+    "id": 6885,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:00+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 10824,
+      "reserve": 6144,
+      "total": 16968,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 19
+    }
+  },
+  {
+    "id": 6886,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:00+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10824,
+      "reserve": 6144,
+      "total": 16968,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 6887,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:02+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10824,
+      "actual_input": 9529,
+      "actual_output": 203,
+      "duration_s": 2.52,
+      "calibrated_cpt": 2.846
+    }
+  },
+  {
+    "id": 6888,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:03+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11511,
+      "reserve": 6144,
+      "total": 17655,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 6889,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:03+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11511,
+      "reserve": 6144,
+      "total": 17655,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 6890,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:05+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11511,
+      "actual_input": 10284,
+      "actual_output": 206,
+      "duration_s": 2.83,
+      "calibrated_cpt": 2.851
+    }
+  },
+  {
+    "id": 6891,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:05+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "DocSearch",
+      "hits": 0
+    }
+  },
+  {
+    "id": 6892,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:05+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11955,
+      "reserve": 6144,
+      "total": 18099,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 6893,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:05+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11955,
+      "reserve": 6144,
+      "total": 18099,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 6894,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11955,
+      "actual_input": 10732,
+      "actual_output": 41,
+      "duration_s": 1.47,
+      "calibrated_cpt": 2.849
+    }
+  },
+  {
+    "id": 6895,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:07+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "DocSearch",
+      "hits": 18
+    }
+  },
+  {
+    "id": 6896,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13753,
+      "reserve": 6144,
+      "total": 19897,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 6897,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13753,
+      "reserve": 6144,
+      "total": 19897,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.85)"
+    }
+  },
+  {
+    "id": 6898,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:09+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13753,
+      "actual_input": 12859,
+      "actual_output": 115,
+      "duration_s": 2.23,
+      "calibrated_cpt": 2.802
+    }
+  },
+  {
+    "id": 6899,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:09+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14804,
+      "reserve": 6144,
+      "total": 20948,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)",
+      "messages": 30
+    }
+  },
+  {
+    "id": 6900,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 14804,
+      "reserve": 6144,
+      "total": 20948,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.80)"
+    }
+  },
+  {
+    "id": 6901,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:13+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 14804,
+      "actual_input": 13704,
+      "actual_output": 252,
+      "duration_s": 3.52,
+      "calibrated_cpt": 2.767
+    }
+  },
+  {
+    "id": 6902,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:13+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "PostgreSQL",
+      "hits": 0
+    }
+  },
+  {
+    "id": 6903,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:13+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15471,
+      "reserve": 6144,
+      "total": 21615,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)",
+      "messages": 33
+    }
+  },
+  {
+    "id": 6904,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:24+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 12,
+      "before_tokens": 15471,
+      "after_tokens": 11060,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 18,
+      "kept_messages": 15,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5874,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n*   Избегать повторного чтения фрагментов (note_repeat), использовать только cite_fragment.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s01, frag `4d5acea0-da69-5afe-a695-e0ebc5d873db`, line 11): Чекпоинт фиксирует состояние после завершённого шага; восстановление с границы шага [ev_2b3bd7605033].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, line 17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, line 27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, line 37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, line 7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n*   **Snapshot Policy** (`eff7f142-fe09-4431-a8de-7a274d96e280`, `st_snapshot_policy.md`):\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 28; ; разделы отчёта: нет; в сжатом фрагменте 11 вызовов tools: cite_fragment×3, get_l1×2, read_fragment×5, search_grep×1\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) невыполненные шаги плана: Найти документы о хранении состояния агентов (L1: state/persistence/checkpoint/memory); Прочитать L2-фрагменты каждого подхода, зафиксировать суть/ограничения/плюсы; Найти выбранный подход для DocSearch и аргументы выбора; Составить отчет с цитатами и открытыми вопросами\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b4d36742bb30c2e3",
+            "chatcmpl-tool-958467d53fea7438"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b4d36742bb30c2e3"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-958467d53fea7438"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b1988348d26fddf5",
+            "chatcmpl-tool-a1e5bb44094a5611"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b1988348d26fddf5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a1e5bb44094a5611"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b82748c48f2671ae"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b82748c48f2671ae"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-89e44f735fb1e9d2",
+            "chatcmpl-tool-98c61a8a70ef6d6d"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89e44f735fb1e9d2"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-98c61a8a70ef6d6d"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8a70c61b50be85da",
+            "chatcmpl-tool-a1b47262b219540a"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a70c61b50be85da"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a1b47262b219540a"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6905,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:24+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11060,
+      "reserve": 6144,
+      "total": 17204,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.77)"
+    }
+  },
+  {
+    "id": 6906,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:27+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11060,
+      "actual_input": 10004,
+      "actual_output": 166,
+      "duration_s": 2.57,
+      "calibrated_cpt": 2.762
+    }
+  },
+  {
+    "id": 6907,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:27+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "PostgreSQL",
+      "hits": 1
+    }
+  },
+  {
+    "id": 6908,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:27+00:00",
+    "kind": "corpus_search",
+    "data": {
+      "kind": "grep",
+      "level": "L2",
+      "query": "чекпоинт",
+      "hits": 1
+    }
+  },
+  {
+    "id": 6909,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:27+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11865,
+      "reserve": 6144,
+      "total": 18009,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 6910,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:27+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11865,
+      "reserve": 6144,
+      "total": 18009,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.76)"
+    }
+  },
+  {
+    "id": 6911,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:29+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11865,
+      "actual_input": 10750,
+      "actual_output": 140,
+      "duration_s": 2.33,
+      "calibrated_cpt": 2.754
+    }
+  },
+  {
+    "id": 6912,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:29+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12278,
+      "reserve": 6144,
+      "total": 18422,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 20
+    }
+  },
+  {
+    "id": 6913,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:29+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12278,
+      "reserve": 6144,
+      "total": 18422,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 6914,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:43+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12278,
+      "actual_input": 11039,
+      "actual_output": 1745,
+      "duration_s": 13.73,
+      "calibrated_cpt": 2.753
+    }
+  },
+  {
+    "id": 6915,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:43+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13913,
+      "reserve": 6144,
+      "total": 20057,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 6916,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:43+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13913,
+      "reserve": 6144,
+      "total": 20057,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.75)"
+    }
+  },
+  {
+    "id": 6917,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:56+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13913,
+      "actual_input": 12899,
+      "actual_output": 1737,
+      "duration_s": 12.94,
+      "calibrated_cpt": 2.72
+    }
+  },
+  {
+    "id": 6918,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:56+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "## Подходы к хранению состояния агентов в корпусе (папка storage)\n\n**1. SQLite** — `63576563-7a76-4186-a023-d168b5d7873b` (st_checkpoint_sqlite.md)\n- Суть: локальный файл БД для чекпоинтов одного проц"
+    }
+  },
+  {
+    "id": 6919,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:47:56+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15594,
+      "reserve": 6144,
+      "total": 21738,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 6920,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:48:07+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 13,
+      "before_tokens": 15594,
+      "after_tokens": 10937,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 14,
+      "kept_messages": 10,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 5279,
+      "cost_output": 1600,
+      "note": "",
+      "summary": "## Цель\nИсследовать в корпусе подходы к хранению состояния агентов (state/persistence/checkpointing/memory). Для каждого: локация (doc/frag/строки), суть, ограничения, плюсы. Определить выбранный подход для DocSearch с аргументами. Составить отчет с цитатами L2 и открытыми вопросами.\n\n## Ограничения пользователя\n*   Исследовать в корпусе все описанные подходы к хранению состояния агентов (agent state / state storage / persistence / checkpointing / memory / session state).\n*   Для каждого подхода: 1) где описан (document_id, fragment_id, строки), 2) суть подхода, 3) ограничения (limitation/limit/консервация/недостатки), 4) плюсы.\n*   Затем: какой подход выбран именно для DocSearch (аргументы выбора, цитаты).\n*   Отчет: список подходов с цитатами L2 (cite_fragment), сравнение по ограничениям, выбранный подход для DocSearch с доказательствами, открытые вопросы (что в корпусе не подтверждено).\n\n## Решения и договорённости\n*   План: 1) Поиск L1, 2) Чтение L2, 3) Анализ выбора для DocSearch, 4) Отчет.\n*   Стратегия: при пустых fulltext использовать vector search.\n*   Требование harness: вызвать `cite_fragment` для прочитанных строк перед `submit_result`.\n*   При ошибке `unknown_fragment` использовать `get_l1` для получения актуальных `first_fragment_id`.\n*   Избегать повторного чтения фрагментов (note_repeat), использовать только cite_fragment.\n\n## Подтверждённые факты (с источниками)\n*   Корпус `itmo-lab3`: 59 документов, 332 фрагмента.\n*   **SQLite** (`63576563-7a76-4186-a023-d168b5d7873b`, `st_checkpoint_sqlite.md`):\n    *   L2 (s01, frag `2fa6174e-01ab-511e-94b9-519931824d3e`, lines 7-9): Локальный файл базы для чекпоинтов одного процесса; полная история для отладки [ev_4b6bcbc0d795].\n    *   L2 (s02, frag `d1af8d09-2a42-55af-b3ef-6ec0e76d4764`, lines 15-17): WAL: читатели не блокируют писателя; один писатель [L-ST-01, ev_b28f34fd5e31].\n    *   L2 (s03, frag `7245ffda-7741-58a4-8ba0-520c881b3903`, lines 25-29): `ERR_LOCK_TIMEOUT` >5с (CKPT-7731); сетевые диски не поддерживают блокировки [L-ST-02, L-ST-03, ev_80505987e312].\n    *   L2 (s04, frag `5871bd63-e50a-5b10-a295-7a49f9652074`, lines 37-39): Бэкап через backup API; лимит 2 ГБ [L-ST-04, ev_e314adfb451a].\n*   **PostgreSQL** (`e625cae6-6c4f-4673-87db-8839f34f778a`, `st_checkpoint_postgres.md`):\n    *   L2 (s01, frag `f357c648-616d-5ba2-8a2c-68b76bb8ac01`, lines 7-9): Выбор при нескольких рабочих процессах; атомарность записи [ev_815ae4e9165c].\n    *   L2 (s01, frag `4d5acea0-da69-5afe-a695-e0ebc5d873db`, line 11): Чекпоинт фиксирует состояние после завершённого шага; восстановление с границы шага [ev_2b3bd7605033].\n    *   L2 (s02, frag `11b79fd6-a645-51b4-96a1-c5f246253d5d`, line 17): Таблица `checkpoints` (ключ `thread_id`, `checkpoint_id`); JSONB < 1 МБ [L-ST-05, ev_8b407268d60e].\n    *   L2 (s03, frag `6225b442-1f05-58f6-aa83-4f682be3559f`, line 27): Пул 20 соединений/процесс; риск таймаута при исчерпании [L-ST-06, ev_1ae7168e9a86].\n    *   L2 (s04, frag `ed0f165c-9e68-559a-b05e-5d40afaf1d0a`, line 37): Миграции до запуска; откат невозможен без потери чекпоинтов [L-ST-07, ev_3399526fa2f0].\n*   **Redis** (`72c0b078-4913-4a81-bdeb-794740e421f9`, `st_redis_state.md`):\n    *   L2 (s01, frag `95c85e6c-d413-51f0-871f-1501376c150d`, line 7): Быстрый кэш состояния между шагами [ev_7fb9517aae93].\n    *   L2 (s02, frag `cd5c7e49-b02e-50c2-8c6e-e67a2d4685d0`, lines 15-17): Потеря состояния без AOF/RDB; `appendfsync everysec` допускает потерю 1с [L-ST-08, ev_8f12f52c5bac].\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 28; ; разделы отчёта: нет; в сжатом фрагменте 9 вызовов tools: cite_fragment×3, read_fragment×3, search_grep×3\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) по плану задачи\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b7581e6fcd103ff7",
+            "chatcmpl-tool-89ae600455906a33"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b7581e6fcd103ff7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-89ae600455906a33"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-a1706f55f7f394a2"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a1706f55f7f394a2"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-87037ab68e00c238"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-87037ab68e00c238"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-94b1bda30af61916"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-94b1bda30af61916"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6921,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:48:07+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10937,
+      "reserve": 6144,
+      "total": 17081,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.72)"
+    }
+  },
+  {
+    "id": 6922,
+    "task_id": "M11-deep1",
+    "ts": "2026-11-22T19:48:10+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10937,
+      "actual_input": 9883,
+      "actual_output": 235,
+      "duration_s": 3.27,
+      "calibrated_cpt": 2.719
+    }
+  }
+]

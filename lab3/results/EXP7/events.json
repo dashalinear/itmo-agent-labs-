@@ -1,0 +1,1516 @@
+[
+  {
+    "id": 6972,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:40+00:00",
+    "kind": "status",
+    "data": {
+      "status": "queued"
+    }
+  },
+  {
+    "id": 6974,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:41+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "exhaustive"
+    }
+  },
+  {
+    "id": 6975,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 3783,
+      "reserve": 6144,
+      "total": 9927,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 1
+    }
+  },
+  {
+    "id": 6976,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 3783,
+      "reserve": 6144,
+      "total": 9927,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 6977,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 3783,
+      "actual_input": 2507,
+      "actual_output": 27,
+      "duration_s": 0.67,
+      "calibrated_cpt": 2.982
+    }
+  },
+  {
+    "id": 6978,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "area_defined",
+    "data": {
+      "folder": "storage",
+      "documents": 10,
+      "fragments": 47
+    }
+  },
+  {
+    "id": 6979,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 3925,
+      "reserve": 6144,
+      "total": 10069,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)",
+      "messages": 3
+    }
+  },
+  {
+    "id": 6980,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 3925,
+      "reserve": 6144,
+      "total": 10069,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.98)"
+    }
+  },
+  {
+    "id": 6981,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 3925,
+      "actual_input": 3232,
+      "actual_output": 15,
+      "duration_s": 0.43,
+      "calibrated_cpt": 3.097
+    }
+  },
+  {
+    "id": 6982,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 5715,
+      "reserve": 6144,
+      "total": 11859,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)",
+      "messages": 5
+    }
+  },
+  {
+    "id": 6983,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:42+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 5715,
+      "reserve": 6144,
+      "total": 11859,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.10)"
+    }
+  },
+  {
+    "id": 6984,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:50+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 5715,
+      "actual_input": 5202,
+      "actual_output": 934,
+      "duration_s": 7.28,
+      "calibrated_cpt": 3.086
+    }
+  },
+  {
+    "id": 6985,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:50+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 7420,
+      "reserve": 6144,
+      "total": 13564,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)",
+      "messages": 13
+    }
+  },
+  {
+    "id": 6986,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:50+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 7420,
+      "reserve": 6144,
+      "total": 13564,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.09)"
+    }
+  },
+  {
+    "id": 6987,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:52+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 7420,
+      "actual_input": 7187,
+      "actual_output": 167,
+      "duration_s": 1.9,
+      "calibrated_cpt": 2.996
+    }
+  },
+  {
+    "id": 6988,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:52+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "2fa6174e-01ab-511e-94b9-519931824d3e",
+        "4d5acea0-da69-5afe-a695-e0ebc5d873db",
+        "665b046f-6e32-5841-8a58-a29f5aead7f0"
+      ]
+    }
+  },
+  {
+    "id": 6989,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:52+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 9607,
+      "reserve": 6144,
+      "total": 15751,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.00)",
+      "messages": 15
+    }
+  },
+  {
+    "id": 6990,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:49:52+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 9607,
+      "reserve": 6144,
+      "total": 15751,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=3.00)"
+    }
+  },
+  {
+    "id": 6991,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:01+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 9607,
+      "actual_input": 9286,
+      "actual_output": 1275,
+      "duration_s": 9.63,
+      "calibrated_cpt": 2.912
+    }
+  },
+  {
+    "id": 6992,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:02+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12349,
+      "reserve": 6144,
+      "total": 18493,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 6993,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:02+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12349,
+      "reserve": 6144,
+      "total": 18493,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.91)"
+    }
+  },
+  {
+    "id": 6994,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:04+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12349,
+      "actual_input": 12033,
+      "actual_output": 138,
+      "duration_s": 2.42,
+      "calibrated_cpt": 2.818
+    }
+  },
+  {
+    "id": 6995,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:04+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "56c9da4b-e928-591b-b0d6-f23faa368741",
+        "8639e04e-c0f3-56af-978f-ed8275a28170"
+      ]
+    }
+  },
+  {
+    "id": 6996,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:04+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14920,
+      "reserve": 6144,
+      "total": 21064,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)",
+      "messages": 28
+    }
+  },
+  {
+    "id": 6997,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:10+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 1,
+      "before_tokens": 14920,
+      "after_tokens": 11092,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 12,
+      "kept_messages": 16,
+      "method": "llm",
+      "chunks": 1,
+      "cost_input": 3254,
+      "cost_output": 812,
+      "note": "",
+      "summary": "## Цель\nЭкстрагировать все упоминания ограничений из документов папки `storage` с указанием источников (документ, fragment_id, строки).\n\n## Ограничения пользователя\n- Просмотри все документы папки storage и перечисли все упоминания ограничений с источниками (документ, fragment_id, строки).\n\n## Решения и договорённости\n- Использовать инструменты `area_define`, `area_next`, `record_mention` для последовательного обхода фрагментов.\n- Фиксировать каждое упоминание ограничения через `record_mention` с цитатой и комментарием.\n\n## Подтверждённые факты (с источниками)\n- **st_checkpoint_postgres.md** (doc: `e625cae6...`):\n  - Атомарность записи состояния (строка 9, frag: `f357c648...`, ev: `ev_3dd9d53c48e5`).\n  - Ограничение размера JSONB < 1 МБ, код [L-ST-05] (строка 17, frag: `11b79fd6...`, ev: `ev_d97237f31a37`).\n  - Пул соединений: 20 на процесс (строка 25, frag: `6225b442...`, ev: `ev_d7ca14ee1dba`).\n  - Исчерпание пула → таймаут, код [L-ST-06] (строка 27, frag: `6225b442...`, ev: `ev_476e2a97cd3b`).\n  - Невозможность отката миграции без потери чекпоинтов, код [L-ST-07] (строка 37, frag: `ed0f165c...`, ev: `ev_cf6f073152f8`).\n  - Обязательная проверка состояния на копии данных (строка 41, frag: `ed0f165c...`, ev: `ev_136b65e0d29b`).\n- **st_checkpoint_sqlite.md** (doc: `63576563...`):\n  - Ограничение: один писатель одновременно, код [L-ST-01] (строка 17, frag: `d1af8d09...`, ev: `ev_459f233dab2e`).\n\n## Прогресс\n- Определена область: 10 документов, 47 фрагментов в `data/storage/`.\n- Прочитан батч 1 из 47 (фрагменты 1–8).\n- Зафиксировано 7 упоминаний ограничений.\n- Осталось обработать фрагменты 9–47.\n\n## Открытые вопросы и следующий шаг\n- Продолжить обход с `area_next` для получения следующего батча фрагментов.\n- Проверить оставшиеся 8 документов на наличие ограничений.\n\n## Артефакты\n- `ev_3dd9d53c48e5`, `ev_d97237f31a37`, `ev_d7ca14ee1dba`, `ev_476e2a97cd3b`, `ev_cf6f073152f8`, `ev_136b65e0d29b`, `ev_459f233dab2e`.",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b11ca8121a18a40f"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b11ca8121a18a40f"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b0f0a3aa1698fb7f",
+            "chatcmpl-tool-98c2d79fce844549",
+            "chatcmpl-tool-a34a7690b7e6827b",
+            "chatcmpl-tool-982889bb18c522f7",
+            "chatcmpl-tool-895a4180f74d48a6",
+            "chatcmpl-tool-99f6b027e53d4986",
+            "chatcmpl-tool-a63da660157a95b0",
+            "chatcmpl-tool-92c29af358e71b8f",
+            "chatcmpl-tool-aa9d2a8b024cc9aa",
+            "chatcmpl-tool-ba0505c50e4f7388"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b0f0a3aa1698fb7f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-98c2d79fce844549"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a34a7690b7e6827b"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-982889bb18c522f7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-895a4180f74d48a6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-99f6b027e53d4986"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a63da660157a95b0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-92c29af358e71b8f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa9d2a8b024cc9aa"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ba0505c50e4f7388"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-94f9698e4adcf5b3"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-94f9698e4adcf5b3"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6998,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:10+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11092,
+      "reserve": 6144,
+      "total": 17236,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.82)"
+    }
+  },
+  {
+    "id": 6999,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:19+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11092,
+      "actual_input": 10316,
+      "actual_output": 1036,
+      "duration_s": 8.19,
+      "calibrated_cpt": 2.782
+    }
+  },
+  {
+    "id": 7000,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:19+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13340,
+      "reserve": 6144,
+      "total": 19484,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 7001,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:19+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13340,
+      "reserve": 6144,
+      "total": 19484,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.78)"
+    }
+  },
+  {
+    "id": 7002,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:22+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13340,
+      "actual_input": 12528,
+      "actual_output": 206,
+      "duration_s": 3.17,
+      "calibrated_cpt": 2.732
+    }
+  },
+  {
+    "id": 7003,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:22+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "1a4251e7-c282-5331-ace8-a59c58b750fa",
+        "3c373d24-8d4b-5bbb-a026-a1e7dee54599",
+        "6197c555-f5bb-57c0-ae4a-b44296a58f75",
+        "e605d668-bca8-58a8-97c7-70ce8164c35b"
+      ]
+    }
+  },
+  {
+    "id": 7004,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:22+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15560,
+      "reserve": 6144,
+      "total": 21704,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)",
+      "messages": 27
+    }
+  },
+  {
+    "id": 7005,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:30+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 2,
+      "before_tokens": 15560,
+      "after_tokens": 11131,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 13,
+      "kept_messages": 14,
+      "method": "llm+rules(sections Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 4297,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nЭкстрагировать все упоминания ограничений из документов папки `storage` с указанием источников (документ, fragment_id, строки).\n\n## Ограничения пользователя\n- Просмотри все документы папки storage и перечисли все упоминания ограничений с источниками (документ, fragment_id, строки).\n\n## Решения и договорённости\n- Использовать инструменты `area_define`, `area_next`, `record_mention` для последовательного обхода фрагментов.\n- Фиксировать каждое упоминание ограничения через `record_mention` с цитатой и комментарием.\n\n## Подтверждённые факты (с источниками)\n- **st_checkpoint_postgres.md** (doc: `e625cae6...`):\n  - Атомарность записи состояния (строка 9, frag: `f357c648...`, ev: `ev_3dd9d53c48e5`).\n  - Ограничение размера JSONB < 1 МБ, код [L-ST-05] (строка 17, frag: `11b79fd6...`, ev: `ev_d97237f31a37`).\n  - Пул соединений: 20 на процесс (строка 25, frag: `6225b442...`, ev: `ev_d7ca14ee1dba`).\n  - Исчерпание пула → таймаут, код [L-ST-06] (строка 27, frag: `6225b442...`, ev: `ev_476e2a97cd3b`).\n  - Невозможность отката миграции без потери чекпоинтов, код [L-ST-07] (строка 37, frag: `ed0f165c...`, ev: `ev_cf6f073152f8`).\n  - Обязательная проверка состояния на копии данных (строка 41, frag: `ed0f165c...`, ev: `ev_136b65e0d29b`).\n- **st_checkpoint_sqlite.md** (doc: `63576563...`):\n  - Ограничение: один писатель одновременно, код [L-ST-01] (строка 17, frag: `d1af8d09...`, ev: `ev_459f233dab2e`).\n  - Таймаут блокировки не бесконечный, код [L-ST-02] (строка 27, frag: `7245ffda...`, ev: `ev_879ead1e2250`).\n  - База только на локальном диске, код [L-ST-03] (строка 29, frag: `7245ffda...`, ev: `ev_d3a664a63a9f`).\n  - Размер базы ≤ 2 ГБ, код [L-ST-04] (строка 39, frag: `5871bd63...`, ev: `ev_155be32738fc`).\n  - Проверка состояния на копии перед выкаткой (строка 43, frag: `5871bd63...`, ev: `ev_8216e4143987`).\n- **st_encryption_state.md** (doc: `3bf69284...`):\n  - Проверка состояния на копии перед выкаткой (строка 9, frag: `41d07f0d...`, ev: `ev_1b5d12644aff`).\n  - Атомарность записи состояния (строка 11, frag: `3a94a829...`, ev: `ev_63be5bc9f63a`).\n  - Ключ шифрования не в директории базы, код [L-ST-27] (строка 17, frag: `f4aa4b3e...`, ev: `ev_6c0c5d464599`).\n  - Доступ только у сервисной роли агента, код [L-ST-28] (строка 25, frag: `6f53f38e...`, ev: `ev_cb1989fd0cb0`).\n  - Токены/пароли не записываются, код [L-ST-29] (строка 27, frag: `6f53f38e...`, ev: `ev_fda5501ef7b3`).\n  - Автопроверка трасс на утечку секретов, код [L-ST-30] (строка 29, frag: `6f53f38e...`, ev: `ev_3bde3abfa264`).\n\n## Прогресс\n- Определена область: 10 документов, 47 фрагментов в `data/storage/`.\n- Прочитаны батчи 1–2 (фрагменты 1–16).\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) по плану задачи\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-94f9698e4adcf5b3"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-94f9698e4adcf5b3"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b7b193783b8786f7",
+            "chatcmpl-tool-a80b2095584042c5",
+            "chatcmpl-tool-afc40976d3a79fb6",
+            "chatcmpl-tool-8a217e8407fac33f",
+            "chatcmpl-tool-8a7410115df79e2f",
+            "chatcmpl-tool-bb5c9c86d6a9dfaa",
+            "chatcmpl-tool-95589f591d8f7cd4",
+            "chatcmpl-tool-95d2e980bffd2e6d"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b7b193783b8786f7"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a80b2095584042c5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-afc40976d3a79fb6"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a217e8407fac33f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8a7410115df79e2f"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bb5c9c86d6a9dfaa"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-95589f591d8f7cd4"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-95d2e980bffd2e6d"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-90f3dfbf92fa0b45"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-90f3dfbf92fa0b45"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7006,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:30+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11131,
+      "reserve": 6144,
+      "total": 17275,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.73)"
+    }
+  },
+  {
+    "id": 7007,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:30+00:00",
+    "kind": "guardrail",
+    "data": {
+      "guard": "token_budget",
+      "resource": "model_calls",
+      "needed": 1,
+      "remaining": 0,
+      "limit": 8
+    }
+  },
+  {
+    "id": 7008,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:30+00:00",
+    "kind": "status",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 8)"
+    }
+  },
+  {
+    "id": 7009,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:30+00:00",
+    "kind": "task_stopped",
+    "data": {
+      "status": "paused",
+      "reason": "budget exhausted before the call (model_calls: needed 1, remaining 0 of 8)"
+    }
+  },
+  {
+    "id": 7010,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:37+00:00",
+    "kind": "limits_changed",
+    "data": {
+      "by": "user",
+      "changes": {
+        "max_model_calls": "120"
+      }
+    }
+  },
+  {
+    "id": 7011,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:38+00:00",
+    "kind": "status",
+    "data": {
+      "status": "running",
+      "reason": "resume"
+    }
+  },
+  {
+    "id": 7012,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11860,
+      "reserve": 6144,
+      "total": 18004,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 7013,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11860,
+      "reserve": 6144,
+      "total": 18004,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.60)"
+    }
+  },
+  {
+    "id": 7014,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:40+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11860,
+      "actual_input": 10230,
+      "actual_output": 212,
+      "duration_s": 2.74,
+      "calibrated_cpt": 2.646
+    }
+  },
+  {
+    "id": 7015,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:41+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13704,
+      "reserve": 6144,
+      "total": 19848,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 18
+    }
+  },
+  {
+    "id": 7016,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:41+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13704,
+      "reserve": 6144,
+      "total": 19848,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 7017,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13704,
+      "actual_input": 12227,
+      "actual_output": 809,
+      "duration_s": 7.17,
+      "calibrated_cpt": 2.656
+    }
+  },
+  {
+    "id": 7018,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:48+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 15322,
+      "reserve": 6144,
+      "total": 21466,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 7019,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:56+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 3,
+      "before_tokens": 15322,
+      "after_tokens": 10870,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 11,
+      "kept_messages": 14,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 4242,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nЭкстрагировать все упоминания ограничений из документов папки `storage` с указанием источников (документ, fragment_id, строки).\n\n## Ограничения пользователя\n- Просмотри все документы папки storage и перечисли все упоминания ограничений с источниками (документ, fragment_id, строки).\n\n## Решения и договорённости\n- Использовать инструменты `area_define`, `area_next`, `record_mention` для последовательного обхода фрагментов.\n- Фиксировать каждое упоминание ограничения через `record_mention` с цитатой и комментарием.\n\n## Подтверждённые факты (с источниками)\n- **st_checkpoint_postgres.md** (doc: `e625cae6...`):\n  - Атомарность записи состояния (строка 9, frag: `f357c648...`, ev: `ev_3dd9d53c48e5`).\n  - Ограничение размера JSONB < 1 МБ, код [L-ST-05] (строка 17, frag: `11b79fd6...`, ev: `ev_d97237f31a37`).\n  - Пул соединений: 20 на процесс (строка 25, frag: `6225b442...`, ev: `ev_d7ca14ee1dba`).\n  - Исчерпание пула → таймаут, код [L-ST-06] (строка 27, frag: `6225b442...`, ev: `ev_476e2a97cd3b`).\n  - Невозможность отката миграции без потери чекпоинтов, код [L-ST-07] (строка 37, frag: `ed0f165c...`, ev: `ev_cf6f073152f8`).\n  - Обязательная проверка состояния на копии данных (строка 41, frag: `ed0f165c...`, ev: `ev_136b65e0d29b`).\n- **st_checkpoint_sqlite.md** (doc: `63576563...`):\n  - Ограничение: один писатель одновременно, код [L-ST-01] (строка 17, frag: `d1af8d09...`, ev: `ev_459f233dab2e`).\n  - Таймаут блокировки не бесконечный, код [L-ST-02] (строка 27, frag: `7245ffda...`, ev: `ev_879ead1e2250`).\n  - База только на локальном диске, код [L-ST-03] (строка 29, frag: `7245ffda...`, ev: `ev_d3a664a63a9f`).\n  - Размер базы ≤ 2 ГБ, код [L-ST-04] (строка 39, frag: `5871bd63...`, ev: `ev_155be32738fc`).\n  - Проверка состояния на копии перед выкаткой (строка 43, frag: `5871bd63...`, ev: `ev_8216e4143987`).\n- **st_encryption_state.md** (doc: `3bf69284...`):\n  - Проверка состояния на копии перед выкаткой (строка 9, frag: `41d07f0d...`, ev: `ev_1b5d12644aff`).\n  - Атомарность записи состояния (строка 11, frag: `3a94a829...`, ev: `ev_63be5bc9f63a`).\n  - Ключ шифрования не в директории базы, код [L-ST-27] (строка 17, frag: `f4aa4b3e...`, ev: `ev_6c0c5d464599`).\n  - Доступ только у сервисной роли агента, код [L-ST-28] (строка 25, frag: `6f53f38e...`, ev: `ev_cb1989fd0cb0`).\n  - Токены/пароли не записываются, код [L-ST-29] (строка 27, frag: `6f53f38e...`, ev: `ev_fda5501ef7b3`).\n  - Автопроверка трасс на утечку секретов, код [L-ST-30] (строка 29, frag: `6f53f38e...`, ev: `ev_3bde3abfa264`).\n- **st_event_sourcing.md** (doc: `d4611c67...`):\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 31; ; разделы отчёта: нет; в сжатом фрагменте 9 вызовов tools: area_next×1, record_mention×8\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) по плану задачи\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-90f3dfbf92fa0b45"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-90f3dfbf92fa0b45"
+        },
+        {
+          "type": "AIMessage"
+        },
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-9c5779c8793e0a6d"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9c5779c8793e0a6d"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-840589f4e92ac589",
+            "chatcmpl-tool-9d42b0f09495f9a5",
+            "chatcmpl-tool-bdabadd83a61416c",
+            "chatcmpl-tool-8b4d8a07049ed5ab",
+            "chatcmpl-tool-a015c56c04436e93",
+            "chatcmpl-tool-994c259dd66a1b75"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-840589f4e92ac589"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d42b0f09495f9a5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bdabadd83a61416c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8b4d8a07049ed5ab"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a015c56c04436e93"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-994c259dd66a1b75"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7020,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:56+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10870,
+      "reserve": 6144,
+      "total": 17014,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)"
+    }
+  },
+  {
+    "id": 7021,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:58+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10870,
+      "actual_input": 9611,
+      "actual_output": 211,
+      "duration_s": 2.5,
+      "calibrated_cpt": 2.676
+    }
+  },
+  {
+    "id": 7022,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:58+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "95c85e6c-d413-51f0-871f-1501376c150d",
+        "a102b944-65e8-59d3-a4f3-79c458839500",
+        "c0e7dc8d-0d25-560c-ad81-2cbd9eb2beb5",
+        "d5ecf6db-0f3a-52a8-99d0-b1e3b90b959f"
+      ]
+    }
+  },
+  {
+    "id": 7023,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:58+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12808,
+      "reserve": 6144,
+      "total": 18952,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.68)",
+      "messages": 16
+    }
+  },
+  {
+    "id": 7024,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:50:59+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12808,
+      "reserve": 6144,
+      "total": 18952,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.68)"
+    }
+  },
+  {
+    "id": 7025,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:07+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12808,
+      "actual_input": 11612,
+      "actual_output": 1048,
+      "duration_s": 8.71,
+      "calibrated_cpt": 2.669
+    }
+  },
+  {
+    "id": 7026,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:07+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14983,
+      "reserve": 6144,
+      "total": 21127,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)",
+      "messages": 25
+    }
+  },
+  {
+    "id": 7027,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:15+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 4,
+      "before_tokens": 14983,
+      "after_tokens": 10812,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 6,
+      "kept_messages": 19,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 3052,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nЭкстрагировать все упоминания ограничений из документов папки `storage` с указанием источников (документ, fragment_id, строки).\n\n## Ограничения пользователя\n- Просмотри все документы папки storage и перечисли все упоминания ограничений с источниками (документ, fragment_id, строки).\n\n## Решения и договорённости\n- Использовать инструменты `area_define`, `area_next`, `record_mention` для последовательного обхода фрагментов.\n- Фиксировать каждое упоминание ограничения через `record_mention` с цитатой и комментарием.\n\n## Подтверждённые факты (с источниками)\n- **st_checkpoint_postgres.md** (doc: `e625cae6...`):\n  - Атомарность записи состояния (строка 9, frag: `f357c648...`, ev: `ev_3dd9d53c48e5`).\n  - Ограничение размера JSONB < 1 МБ, код [L-ST-05] (строка 17, frag: `11b79fd6...`, ev: `ev_d97237f31a37`).\n  - Пул соединений: 20 на процесс (строка 25, frag: `6225b442...`, ev: `ev_d7ca14ee1dba`).\n  - Исчерпание пула → таймаут, код [L-ST-06] (строка 27, frag: `6225b442...`, ev: `ev_476e2a97cd3b`).\n  - Невозможность отката миграции без потери чекпоинтов, код [L-ST-07] (строка 37, frag: `ed0f165c...`, ev: `ev_cf6f073152f8`).\n  - Обязательная проверка состояния на копии данных (строка 41, frag: `ed0f165c...`, ev: `ev_136b65e0d29b`).\n- **st_checkpoint_sqlite.md** (doc: `63576563...`):\n  - Ограничение: один писатель одновременно, код [L-ST-01] (строка 17, frag: `d1af8d09...`, ev: `ev_459f233dab2e`).\n  - Таймаут блокировки не бесконечный, код [L-ST-02] (строка 27, frag: `7245ffda...`, ev: `ev_879ead1e2250`).\n  - База только на локальном диске, код [L-ST-03] (строка 29, frag: `7245ffda...`, ev: `ev_d3a664a63a9f`).\n  - Размер базы ≤ 2 ГБ, код [L-ST-04] (строка 39, frag: `5871bd63...`, ev: `ev_155be32738fc`).\n  - Проверка состояния на копии перед выкаткой (строка 43, frag: `5871bd63...`, ev: `ev_8216e4143987`).\n- **st_encryption_state.md** (doc: `3bf69284...`):\n  - Проверка состояния на копии перед выкаткой (строка 9, frag: `41d07f0d...`, ev: `ev_1b5d12644aff`).\n  - Атомарность записи состояния (строка 11, frag: `3a94a829...`, ev: `ev_63be5bc9f63a`).\n  - Ключ шифрования не в директории базы, код [L-ST-27] (строка 17, frag: `f4aa4b3e...`, ev: `ev_6c0c5d464599`).\n  - Доступ только у сервисной роли агента, код [L-ST-28] (строка 25, frag: `6f53f38e...`, ev: `ev_cb1989fd0cb0`).\n  - Токены/пароли не записываются, код [L-ST-29] (строка 27, frag: `6f53f38e...`, ev: `ev_fda5501ef7b3`).\n  - Автопроверка трасс на утечку секретов, код [L-ST-30] (строка 29, frag: `6f53f38e...`, ev: `ev_3bde3abfa264`).\n- **st_event_sourcing.md** (doc: `d4611c67...`):\n  - (Данные из предыдущего сжатия не сохранены в текущем фрагменте, требуется проверка).\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 39; ; разделы отчёта: нет; в сжатом фрагменте 2 вызовов tools: area_next×2\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) по плану задачи\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-840589f4e92ac589",
+            "chatcmpl-tool-9d42b0f09495f9a5",
+            "chatcmpl-tool-bdabadd83a61416c",
+            "chatcmpl-tool-8b4d8a07049ed5ab",
+            "chatcmpl-tool-a015c56c04436e93",
+            "chatcmpl-tool-994c259dd66a1b75"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-840589f4e92ac589"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-9d42b0f09495f9a5"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-bdabadd83a61416c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8b4d8a07049ed5ab"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-a015c56c04436e93"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-994c259dd66a1b75"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-8e6a8b65912ecee1"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8e6a8b65912ecee1"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ac2eb6a39684303c",
+            "chatcmpl-tool-ae71e9b492cbc885",
+            "chatcmpl-tool-87122b8d4b45882c",
+            "chatcmpl-tool-be7aa15d9b33a49e",
+            "chatcmpl-tool-87abf62b01632d88",
+            "chatcmpl-tool-93ccf131d8bf31f0",
+            "chatcmpl-tool-8dca47d35e16c657",
+            "chatcmpl-tool-aee6c5fb2d4401db"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ac2eb6a39684303c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ae71e9b492cbc885"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-87122b8d4b45882c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-be7aa15d9b33a49e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-87abf62b01632d88"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-93ccf131d8bf31f0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8dca47d35e16c657"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aee6c5fb2d4401db"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7028,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:15+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 10812,
+      "reserve": 6144,
+      "total": 16956,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.67)"
+    }
+  },
+  {
+    "id": 7029,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:18+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 10812,
+      "actual_input": 9791,
+      "actual_output": 173,
+      "duration_s": 2.26,
+      "calibrated_cpt": 2.66
+    }
+  },
+  {
+    "id": 7030,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:18+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "35eafb58-15c9-5cd3-967e-fc1bee02bac5",
+        "7a58ee2f-c7b1-5682-bc6f-3f477e102890"
+      ]
+    }
+  },
+  {
+    "id": 7031,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:18+00:00",
+    "kind": "checked_line_verdicts",
+    "data": {
+      "lines": [
+        "2ac0e174-fa05-572c-808e-e416a94b0132:13"
+      ]
+    }
+  },
+  {
+    "id": 7032,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:18+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12971,
+      "reserve": 6144,
+      "total": 19115,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)",
+      "messages": 21
+    }
+  },
+  {
+    "id": 7033,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:18+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12971,
+      "reserve": 6144,
+      "total": 19115,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)"
+    }
+  },
+  {
+    "id": 7034,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:25+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12971,
+      "actual_input": 11781,
+      "actual_output": 915,
+      "duration_s": 7.59,
+      "calibrated_cpt": 2.649
+    }
+  },
+  {
+    "id": 7035,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:26+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 14943,
+      "reserve": 6144,
+      "total": 21087,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 29
+    }
+  },
+  {
+    "id": 7036,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:34+00:00",
+    "kind": "compaction",
+    "data": {
+      "n": 5,
+      "before_tokens": 14943,
+      "after_tokens": 11201,
+      "reserve": 6144,
+      "working_limit": 28000,
+      "removed_messages": 9,
+      "kept_messages": 20,
+      "method": "llm+rules(sections Прогресс, Открытые вопросы и следующий шаг, Артефакты)",
+      "chunks": 1,
+      "cost_input": 3903,
+      "cost_output": 1200,
+      "note": "",
+      "summary": "## Цель\nЭкстрагировать все упоминания ограничений из документов папки `storage` с указанием источников (документ, fragment_id, строки).\n\n## Ограничения пользователя\n- Просмотри все документы папки storage и перечисли все упоминания ограничений с источниками (документ, fragment_id, строки).\n\n## Решения и договорённости\n- Использовать инструменты `area_define`, `area_next`, `record_mention` для последовательного обхода фрагментов.\n- Фиксировать каждое упоминание ограничения через `record_mention` с цитатой и комментарием.\n\n## Подтверждённые факты (с источниками)\n- **st_checkpoint_postgres.md** (doc: `e625cae6...`):\n  - Атомарность записи состояния (строка 9, frag: `f357c648...`, ev: `ev_3dd9d53c48e5`).\n  - Ограничение размера JSONB < 1 МБ, код [L-ST-05] (строка 17, frag: `11b79fd6...`, ev: `ev_d97237f31a37`).\n  - Пул соединений: 20 на процесс (строка 25, frag: `6225b442...`, ev: `ev_d7ca14ee1dba`).\n  - Исчерпание пула → таймаут, код [L-ST-06] (строка 27, frag: `6225b442...`, ev: `ev_476e2a97cd3b`).\n  - Невозможность отката миграции без потери чекпоинтов, код [L-ST-07] (строка 37, frag: `ed0f165c...`, ev: `ev_cf6f073152f8`).\n  - Обязательная проверка состояния на копии данных (строка 41, frag: `ed0f165c...`, ev: `ev_136b65e0d29b`).\n- **st_checkpoint_sqlite.md** (doc: `63576563...`):\n  - Ограничение: один писатель одновременно, код [L-ST-01] (строка 17, frag: `d1af8d09...`, ev: `ev_459f233dab2e`).\n  - Таймаут блокировки не бесконечный, код [L-ST-02] (строка 27, frag: `7245ffda...`, ev: `ev_879ead1e2250`).\n  - База только на локальном диске, код [L-ST-03] (строка 29, frag: `7245ffda...`, ev: `ev_d3a664a63a9f`).\n  - Размер базы ≤ 2 ГБ, код [L-ST-04] (строка 39, frag: `5871bd63...`, ev: `ev_155be32738fc`).\n  - Проверка состояния на копии перед выкаткой (строка 43, frag: `5871bd63...`, ev: `ev_8216e4143987`).\n- **st_encryption_state.md** (doc: `3bf69284...`):\n  - Проверка состояния на копии перед выкаткой (строка 9, frag: `41d07f0d...`, ev: `ev_1b5d12644aff`).\n  - Атомарность записи состояния (строка 11, frag: `3a94a829...`, ev: `ev_63be5bc9f63a`).\n  - Ключ шифрования не в директории базы, код [L-ST-27] (строка 17, frag: `f4aa4b3e...`, ev: `ev_6c0c5d464599`).\n  - Доступ только у сервисной роли агента, код [L-ST-28] (строка 25, frag: `6f53f38e...`, ev: `ev_cb1989fd0cb0`).\n  - Токены/пароли не записываются, код [L-ST-29] (строка 27, frag: `6f53f38e...`, ev: `ev_fda5501ef7b3`).\n  - Автопроверка трасс на утечку секретов, код [L-ST-30] (строка 29, frag: `6f53f38e...`, ev: `ev_3bde3abfa264`).\n- **st_redis_state.md** (doc: `72c0b078...`):\n\n## Прогресс\n(дополнено правилами: модель не дописала раздел) по состоянию harness: evidence 46; ; разделы отчёта: нет; в сжатом фрагменте 7 вызовов tools: area_next×1, record_mention×6\n\n## Открытые вопросы и следующий шаг\n(дополнено правилами: модель не дописала раздел) по плану задачи\n\n## Артефакты\n(дополнено правилами: модель не дописала раздел) —",
+      "kept_tail": [
+        {
+          "type": "HumanMessage"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-ac2eb6a39684303c",
+            "chatcmpl-tool-ae71e9b492cbc885",
+            "chatcmpl-tool-87122b8d4b45882c",
+            "chatcmpl-tool-be7aa15d9b33a49e",
+            "chatcmpl-tool-87abf62b01632d88",
+            "chatcmpl-tool-93ccf131d8bf31f0",
+            "chatcmpl-tool-8dca47d35e16c657",
+            "chatcmpl-tool-aee6c5fb2d4401db"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ac2eb6a39684303c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ae71e9b492cbc885"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-87122b8d4b45882c"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-be7aa15d9b33a49e"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-87abf62b01632d88"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-93ccf131d8bf31f0"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8dca47d35e16c657"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aee6c5fb2d4401db"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-b57b0f22fe630246"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-b57b0f22fe630246"
+        },
+        {
+          "type": "AIMessage",
+          "tool_calls": [
+            "chatcmpl-tool-935769d39fe47612",
+            "chatcmpl-tool-8386d464f7b03e2a",
+            "chatcmpl-tool-8ff1e8daa09c9f52",
+            "chatcmpl-tool-85881eada13f1187",
+            "chatcmpl-tool-82f5fbcf9ae2bd17",
+            "chatcmpl-tool-aa3a5dc7686ac744",
+            "chatcmpl-tool-ab81fe23f0507f61"
+          ]
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-935769d39fe47612"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8386d464f7b03e2a"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-8ff1e8daa09c9f52"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-85881eada13f1187"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-82f5fbcf9ae2bd17"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-aa3a5dc7686ac744"
+        },
+        {
+          "type": "ToolMessage",
+          "tool_call_id": "chatcmpl-tool-ab81fe23f0507f61"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7037,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:34+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11201,
+      "reserve": 6144,
+      "total": 17345,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 7038,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:36+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11201,
+      "actual_input": 9992,
+      "actual_output": 177,
+      "duration_s": 2.37,
+      "calibrated_cpt": 2.656
+    }
+  },
+  {
+    "id": 7039,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:36+00:00",
+    "kind": "no_mention_verdicts",
+    "data": {
+      "fragments": [
+        "5d73b93c-4e11-5416-90f9-777e3e173efb",
+        "a5f5b19c-a7b2-5808-b619-aa1f442fea03"
+      ]
+    }
+  },
+  {
+    "id": 7040,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:36+00:00",
+    "kind": "checked_line_verdicts",
+    "data": {
+      "lines": [
+        "8ce4810f-c43d-5616-8f52-f0661e9043e7:23"
+      ]
+    }
+  },
+  {
+    "id": 7041,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:36+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 11413,
+      "reserve": 6144,
+      "total": 17557,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)",
+      "messages": 22
+    }
+  },
+  {
+    "id": 7042,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:36+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 11413,
+      "reserve": 6144,
+      "total": 17557,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.66)"
+    }
+  },
+  {
+    "id": 7043,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:38+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 11413,
+      "actual_input": 10254,
+      "actual_output": 15,
+      "duration_s": 1.31,
+      "calibrated_cpt": 2.654
+    }
+  },
+  {
+    "id": 7044,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:38+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 12343,
+      "reserve": 6144,
+      "total": 18487,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 24
+    }
+  },
+  {
+    "id": 7045,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:38+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 12343,
+      "reserve": 6144,
+      "total": 18487,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 7046,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:45+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 12343,
+      "actual_input": 11159,
+      "actual_output": 836,
+      "duration_s": 7.78,
+      "calibrated_cpt": 2.646
+    }
+  },
+  {
+    "id": 7047,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:45+00:00",
+    "kind": "status",
+    "data": {
+      "status": "completed",
+      "reason": "Полный обход папки storage завершён: 10 документов, 47/47 фрагментов прочитаны, зафиксировано 46 упоминаний ограничений (evidence).\n\nПо документам:\n1. st_checkpoint_postgres.md (5 упоминаний): атомарн"
+    }
+  },
+  {
+    "id": 7048,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:45+00:00",
+    "kind": "context_check",
+    "data": {
+      "estimated_input": 13339,
+      "reserve": 6144,
+      "total": 19483,
+      "trigger": 21000,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)",
+      "messages": 26
+    }
+  },
+  {
+    "id": 7049,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:45+00:00",
+    "kind": "model_call_plan",
+    "data": {
+      "estimated_input": 13339,
+      "reserve": 6144,
+      "total": 19483,
+      "working_limit": 28000,
+      "window": 262144,
+      "method": "heuristic(cpt=2.65)"
+    }
+  },
+  {
+    "id": 7050,
+    "task_id": "EXP7",
+    "ts": "2026-11-22T19:51:48+00:00",
+    "kind": "model_call_done",
+    "data": {
+      "estimated_input": 13339,
+      "actual_input": 12043,
+      "actual_output": 63,
+      "duration_s": 2.36,
+      "calibrated_cpt": 2.639
+    }
+  }
+]

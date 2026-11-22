@@ -1,0 +1,101 @@
+{
+  "fragments_read": 47,
+  "fragments_total": 47,
+  "complete": true,
+  "documents_total": 10,
+  "documents_done": 10,
+  "documents": [
+    {
+      "document_id": "e625cae6-6c4f-4673-87db-8839f34f778a",
+      "path": "data/storage/st_checkpoint_postgres.md",
+      "fragments": 5,
+      "read": 5,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "63576563-7a76-4186-a023-d168b5d7873b",
+      "path": "data/storage/st_checkpoint_sqlite.md",
+      "fragments": 6,
+      "read": 6,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "3bf69284-f264-4f26-bcd4-a4b8e5f13cf0",
+      "path": "data/storage/st_encryption_state.md",
+      "fragments": 5,
+      "read": 5,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "d4611c67-c357-4667-9cbc-adaa03fa6450",
+      "path": "data/storage/st_event_sourcing.md",
+      "fragments": 4,
+      "read": 4,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "a2eb3b8d-4b50-4f96-ac59-2efd432e77cf",
+      "path": "data/storage/st_memory_longterm.md",
+      "fragments": 5,
+      "read": 5,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "72c0b078-4913-4a81-bdeb-794740e421f9",
+      "path": "data/storage/st_redis_state.md",
+      "fragments": 4,
+      "read": 4,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "92e89981-2af9-4410-bef8-998a60b843dc",
+      "path": "data/storage/st_retention_policy.txt",
+      "fragments": 5,
+      "read": 5,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "2958d309-1cc8-443e-b7ee-53f93c31140a",
+      "path": "data/storage/st_schema_migrations.md",
+      "fragments": 5,
+      "read": 5,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "eff7f142-fe09-4431-a8de-7a274d96e280",
+      "path": "data/storage/st_snapshot_policy.md",
+      "fragments": 4,
+      "read": 4,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    },
+    {
+      "document_id": "16d4daa9-314f-410a-adde-e71eb59ea17e",
+      "path": "data/storage/st_vector_memory.md",
+      "fragments": 4,
+      "read": 4,
+      "status": "done",
+      "unread_lines": [],
+      "has_l2": true
+    }
+  ],
+  "mentions_recorded": 46,
+  "resume_cursor": null
+}

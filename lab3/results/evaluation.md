@@ -22,7 +22,7 @@
 | ING2 | ingest | completed | — | 1 | 9 | 21 | 100325 | 0 | 13710 | 0 | 3 / 3 | 0 |
 | ING3 | ingest | completed | — | 1 | 5 | 6 | 39894 | 0 | 8467 | 0 | 0 / 0 | 0 |
 | M1 | main | paused | — | 17 | 200 | 191 | 2664404 | 9 | 16989 | 5 | 0 / 0 | 0 |
-| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 2161889 | 0 | 0 | 0 | 0 / 0 | 0 |
+| CLI | main | parent of CLI sub-agents | — | 0 | 0 | 0 | 2365497 | 0 | 0 | 0 | 0 / 0 | 0 |
 | EXP1 | exhaustive | paused | CLI | 2 | 62 | 94 | 690043 | 5 | 16885 | 38 | 0 / 0 | 0 |
 | M2 | main | paused | — | 17 | 55 | 44 | 1392548 | 4 | 16698 | 4 | 0 / 0 | 0 |
 | M2-deep1 | deep | paused | M2 | 1 | 30 | 44 | 388140 | 2 | 16961 | 9 | 0 / 0 | 0 |
@@ -41,18 +41,18 @@
 | EXP3 | exhaustive | completed | CLI | 2 | 30 | 61 | 370104 | 4 | 17525 | 38 | 0 / 0 | 0 |
 | M6 | main | paused | — | 8 | 35 | 29 | 1166278 | 3 | 16312 | 1 | 0 / 0 | 0 |
 | M6-deep1 | deep | completed | M6 | 1 | 56 | 88 | 757363 | 4 | 16961 | 17 | 0 / 0 | 0 |
-| M10 | main | paused | — | 8 | 47 | 49 | 1712180 | 5 | 17503 | 6 | 0 / 0 | 0 |
-| M10-deep1 | deep | completed | M10 | 1 | 57 | 102 | 713242 | 11 | 13759 | 30 | 0 / 0 | 0 |
-| M10-exhaustive1 | exhaustive | completed | M10 | 1 | 31 | 59 | 380748 | 9 | 13674 | 36 | 0 / 0 | 0 |
-| EXP6 | exhaustive | completed | CLI | 2 | 18 | 55 | 203998 | 5 | 12911 | 44 | 0 / 0 | 0 |
+| M11 | main | paused | — | 8 | 33 | 27 | 1351352 | 3 | 15887 | 3 | 0 / 0 | 0 |
+| M11-deep1 | deep | completed | M11 | 1 | 58 | 135 | 744878 | 13 | 13907 | 28 | 0 / 0 | 0 |
+| M11-exhaustive1 | exhaustive | completed | M11 | 1 | 18 | 45 | 198801 | 3 | 13172 | 34 | 0 / 0 | 0 |
+| EXP7 | exhaustive | completed | CLI | 2 | 18 | 57 | 203608 | 5 | 12528 | 46 | 0 / 0 | 0 |
 
 ## Шесть поисковых сочетаний (вызовы основного и deep-агента)
 
 | поиск | L1 | L2 |
 |---|---|---|
-| fulltext | 21 | 13 |
-| grep | 12 | 237 |
-| vector | 7 | 5 |
+| fulltext | 21 | 10 |
+| grep | 14 | 238 |
+| vector | 6 | 6 |
 
 ## Exhaustive: покрытие и контрольные упоминания
 
@@ -64,5 +64,5 @@
 | M4-exhaustive1 | completed | 1 | 47/47 | 10/10 | 39 | 35/36 | 9/10 | L-ST-30 |
 | M5-exhaustive1 | completed | 1 | 47/47 | 10/10 | 42 | 35/36 | 9/10 | L-ST-30 |
 | EXP3 | completed | 2 | 47/47 | 10/10 | 38 | 36/36 | 10/10 | — |
-| M10-exhaustive1 | completed | 1 | 47/47 | 10/10 | 36 | 33/36 | 7/10 | L-ST-10, L-ST-21, L-ST-36 |
-| EXP6 | completed | 2 | 47/47 | 10/10 | 44 | 33/36 | 7/10 | L-ST-16, L-ST-21, L-ST-36 |
+| M11-exhaustive1 | completed | 1 | 47/47 | 10/10 | 34 | 33/36 | 7/10 | L-ST-16, L-ST-30, L-ST-36 |
+| EXP7 | completed | 2 | 47/47 | 10/10 | 46 | 35/36 | 9/10 | L-ST-36 |
