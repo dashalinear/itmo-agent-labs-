@@ -1,9 +1,9 @@
 """Conversation-history checks and repair.
 
 History lives in the LangGraph checkpointer (thread_id = CLI session id):
-each user turn sends ONLY the new HumanMessage; the ``messages`` reducer
-(add_messages) appends model and tool messages. These helpers verify the
-invariants required by the assignment.
+each user turn sends only the new HumanMessage; the ``messages`` reducer
+(add_messages) appends model and tool messages. These helpers check that ids
+are unique and every tool call has exactly one result.
 """
 from __future__ import annotations
 

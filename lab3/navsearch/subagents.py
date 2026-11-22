@@ -37,8 +37,8 @@ MAX_RESULT_WAIT_S = 20
 
 DEFAULT_SUB_LIMITS = {
     # sub-agents work in one run until they submit: no per-turn cap (that cap is for the dialog of the main agent)
-    # response_reserve_tokens = max_tokens of a call: with 2048 the final submit_result of M7-deep1 was cut off
-    # (output_tokens 2048, arguments came empty or without open_questions), so sub-agents get more room for it
+    # response_reserve_tokens = max_tokens of a call: submit_result needs more output room than a dialog answer,
+    # with 2048 its arguments can be cut off and arrive empty or without open_questions
     "deep": {"max_total_tokens": 1_200_000, "max_model_calls": 60, "max_tool_calls": 240, "max_model_calls_per_run": 0,
              "response_reserve_tokens": 6144},
     "exhaustive": {"max_total_tokens": 700_000, "max_model_calls": 70, "max_tool_calls": 300, "max_model_calls_per_run": 0,
@@ -181,15 +181,15 @@ class SubagentManager:
                        "subagent_status(task_id) and fetch subagent_result(task_id) later.")
 
     async def _run_sub(self, tid: str, kind: str) -> dict:
-        """One run of the sub-agent. If it stopped without submit_result (the model just ended its turn, as
-        M7-exhaustive1 with the whole area read, or the no_progress guard stopped a loop), it gets ONE follow-up
+        """One run of the sub-agent. If it stopped without submit_result (the model just ended its turn,
+        for example with the whole area read, or the no_progress guard stopped a loop), it gets ONE follow-up
         message in the same task. A second stop is final: the result is then the explicit partial one."""
         res = await self.runner.run(tid, label=kind, agent_factory=self.factories[kind], verbose=False)
         t = self.store.get_task(tid)
         reason = t["status_reason"] or ""
         if t["status"] == "paused" and ("without complete_task" in reason or reason.startswith("no progress")):
-            # also after the no_progress guard (M7-deep2 / M7-exhaustive2 repeated one grep 6 times with the
-            # whole area already read): the follow-up names the loop, the repeat counter starts anew in the new run
+            # also after the no_progress guard (for example one grep repeated 6 times with the whole area already
+            # read): the follow-up names the loop, the repeat counter starts anew in the new run
             text = FINISH_NUDGE[kind]
             if reason.startswith("no progress"):
                 text = (f"Харнесс остановил тебя: {reason}. Не повторяй этот вызов. " + text)
@@ -282,7 +282,7 @@ class SubmitTools:
         cited = set(re.findall(r"\bev_[0-9a-f]{12}\b", findings))
         unknown = sorted(set(re.findall(r"\bev_[0-9a-f]+", findings)) - known)
         if unknown:
-            # M8 chat6 relayed "ev_7245ffda" (a fragment id prefix): only real evidence ids may be cited
+            # only evidence ids of this task may be cited, not a prefix of a fragment id or an invented id
             raise ToolError("unknown_evidence", "findings cite evidence ids that do not exist in this task: "
                             + ", ".join(unknown[:10]) + ". Use only evidence_id values returned by record_mention / "
                             "cite_fragment.", known=sorted(known)[:40])
@@ -292,7 +292,7 @@ class SubmitTools:
             raise ToolError("short_ids", "fragment_id must be given in full (36 characters, as the tools returned it), "
                             "not cut to 8 characters: " + ", ".join(short[:8]))
         if self.kind == "exhaustive":
-            # a cross-check pass that was started must be read to the end (EXP5 stopped area_grep at 30 of 49 hits)
+            # a cross-check pass that was started must be read to the end, otherwise its last hits stay unchecked
             unfinished = []
             for kind, key in (("area_grep_page", "pattern"), ("area_fulltext_page", "query")):
                 runs: dict[str, bool] = {}
@@ -322,7 +322,8 @@ class SubmitTools:
                 raise ToolError("evidence_refs_required", f"findings must refer to the evidence: cite at least {need} "
                                 "evidence_id values next to the conclusions they confirm; a conclusion without an "
                                 "evidence_id goes to open_questions as unconfirmed", known=sorted(known)[:40])
-            # after many compactions M9-deep1 wrote "Redis ... не прочитан" while it had cited Redis itself
+            # the text must not call a cited document unread or not found (after many compactions the model
+            # can lose track of what it has cited)
             docs = {}
             for e in ev:
                 docs.setdefault(e["source"].rsplit("/", 1)[-1], []).append(e["evidence_id"])
@@ -347,7 +348,7 @@ class SubmitTools:
                                 "item that says so and why")
         if self.kind == "exhaustive":
             # counts per document are taken from the evidence by code, not from the model's text
-            # (M8-exhaustive1 wrote "3" for SQLite with 5 recorded mentions and left 4 documents without a count)
+            # (the model can miscount or leave documents without a count)
             by_doc: dict[str, list[str]] = {}
             for e in ev:
                 by_doc.setdefault(e["source"], []).append(e["evidence_id"])

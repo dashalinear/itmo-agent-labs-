@@ -2,7 +2,7 @@
 
     python scripts/export_index.py
 Produces results/index_export.jsonl, results/catalog.json, results/data_tree.txt.
-(Direct ES access is fine here: this is an admin script, not the agent.)
+This admin script reads Elasticsearch directly; the agent goes only through MCP.
 """
 import json
 import shutil

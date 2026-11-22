@@ -342,9 +342,17 @@ def comparison_md() -> str | None:
         return None
     h, b = e["harness"], e["baseline"]
     lim = ((jload("A1", "status.json", {}) or {}).get("task") or {}).get("limits") or {}
+    # the baseline limit is read from its own trace (session_start.max_model_calls)
+    base_lim = "?"
+    for f in sorted(TR.glob("A_base_*.jsonl")):
+        m = re.search(r'"max_model_calls": (\d+)', f.read_text(encoding="utf-8", errors="replace"))
+        if m:
+            base_lim = m.group(1)
+    same = str(base_lim) == str(lim.get("max_model_calls"))
     return "\n".join([
         "| Показатель (задача A, qwen3.8-27b) | Исходный агент (лаба 1) | Harness (A1) |", "|---|---|---|",
-        f"| Лимит вызовов модели (разный!) | **40** (`baseline --max-model-calls 40`), использовано {b['model_calls']} | "
+        f"| Лимит вызовов модели{' (одинаковый)' if same else ' (разный!)'} | **{base_lim}** (`baseline --max-model-calls "
+        f"{base_lim}`), использовано {b['model_calls']} | "
         f"**{lim.get('max_model_calls', '?')}** (`max_model_calls` задачи A), использовано {h['model_calls']} |",
         f"| Успешность | нет: лимит вызовов исчерпан, итогового ответа нет | {'да' if h['success'] else 'нет'} ({h['status']}) |",
         f"| Пик контекста (вход, токены) | {b['peak_input_tokens']} | {h['peak_input_tokens']} (рабочий лимит {h['working_limit']}) |",

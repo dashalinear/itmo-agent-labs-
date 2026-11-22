@@ -56,7 +56,7 @@ class SkillRegistry:
         for p in sorted(root.glob("*/SKILL.md")):
             s = parse_skill(p)
             self.skills[s.name] = s
-        self.loaded: list[str] = []  # audit trail of on-demand loads
+        self.loaded: list[str] = []  # skills loaded so far, in order
 
     def metadata_block(self) -> str:
         lines = [f"- {s.name}: {s.description}" for s in self.skills.values()]

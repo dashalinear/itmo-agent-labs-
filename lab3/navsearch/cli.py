@@ -109,14 +109,24 @@ EV_RX = re.compile(r"\bev_[0-9a-f]+\b")
 SHORT_FRAG_RX = re.compile(r"(?:fragment_id|fragment|frag)[\s:=`'\"]{0,4}([0-9a-f]{8})(?![0-9a-f-])", re.I)
 
 
-def answer_issue(app: Lab3, answer: str) -> str | None:
-    """Deterministic check of a main-agent answer before the next user turn (see the main prompt):
-    an empty/unreadable answer, or document paths that do not exist in L0, are returned to the agent once."""
+def answer_issue(app: Lab3, answer: str, task_id: str | None = None) -> str | None:
+    """Deterministic check of a main-agent answer before the next user turn (see the main prompt).
+    Returned to the agent once: an empty or unreadable answer, an answer cut at the output limit (the last
+    model call used the whole response reserve), evidence ids that exist in no task, fragment ids cut to
+    8 characters, document paths that do not exist in L0."""
     text = (answer or "").strip()
     letters = sum(ch.isalnum() for ch in text)
     if not text or letters < 0.3 * len(text) or letters < 5:
         return ("Предыдущий ответ пустой или нечитаемый. Ответь на последний вопрос пользователя заново, по-русски, "
                 "опираясь на результаты инструментов; если нужных данных нет, вызови инструменты.")
+    if task_id and getattr(app, "runner", None) is not None:
+        st = app.runner.store
+        calls = [c for c in st.model_calls(task_id) if c.get("kind") == "agent" and c.get("status") == "ok"]
+        # the reserve of the call itself is its max_tokens
+        reserve = int((calls[-1].get("reserve") or 0) if calls else 0)
+        if calls and reserve and int(calls[-1].get("actual_output") or 0) >= reserve - 8:
+            return ("Предыдущий ответ оборвался на лимите вывода модели. Повтори ответ короче: сначала главное "
+                    "(выводы и открытые вопросы, если речь о результате субагента), подробности - кратким списком.")
     evs = set(EV_RX.findall(text))
     if evs and getattr(app, "runner", None) is not None:
         st = app.runner.store
@@ -184,7 +194,7 @@ async def chat(app: Lab3, task_id: str, script: Path | None) -> None:
             await asyncio.sleep(sec)
             continue
         res = await runner.run(task_id, user_text=text, label="chat", agent_factory=factory)
-        issue = answer_issue(app, (res or {}).get("answer") or "")
+        issue = answer_issue(app, (res or {}).get("answer") or "", task_id)
         if issue and (res or {}).get("status") not in ("cancelled",):
             print(f"  [harness check] {issue[:160]}")
             await runner.run(task_id, user_text=f"[проверка harness] {issue}", label="chat-recheck", agent_factory=factory)

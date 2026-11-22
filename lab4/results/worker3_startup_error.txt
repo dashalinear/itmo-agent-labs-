@@ -1,4 +1,4 @@
-traces/processes/worker3.err.log (последние строки; *.err.log в .gitignore). Worker #3 упал при старте: Elasticsearch открыл порт, но ещё не отвечал.
+traces/processes/worker3.err.log (последние строки, снято вручную 18.11). Worker #3 упал при старте: Elasticsearch открыл порт, но ещё не отвечал.
 
     )
   File "D:\загрузки\AI in production & MLOps\itmo-agent-labs\lab3\.venv\Lib\site-packages\elastic_transport\_node\_http_urllib3.py", line 187, in perform_request

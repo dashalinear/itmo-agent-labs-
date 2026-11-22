@@ -1,6 +1,6 @@
 """Manual user action during an open CLI session: drop the two prepared files into input/.
 
-Run in a SECOND terminal while `python -m organizer.cli` is running
+Run in a second terminal while `python -m organizer.cli` is running
 (or copy fixtures/late/* to workspace/input/ in Explorer).
 """
 import shutil

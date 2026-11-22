@@ -40,8 +40,8 @@ class _AnyArgs(BaseModel):
 
 
 class _UpsertArgs(_AnyArgs):
-    # required like in the real server: in mcp_down (20.11) the model called the stub with no arguments at all,
-    # so the catalog could not tell which document failed; Any, because a JSON string is accepted too
+    # same required arguments as the real server, otherwise the catalog cannot tell which document failed;
+    # Any, because the model sometimes sends the list as a JSON string
     excerpts: Any = Field(..., description="excerpts built by build_excerpts")
     mode: str = "replace"
 

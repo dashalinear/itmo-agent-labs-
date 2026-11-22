@@ -329,8 +329,8 @@ class FlakyNetworkModel(PolicyModel):
 
 
 async def test_unreachable_llm_is_waited_for_and_costs_nothing(cfg):
-    """Connection errors (the ITMO endpoint dropped out for a few minutes during a campus run) do not use up the
-    3 ordinary attempts: the harness keeps retrying for llm_unreachable_wait_s and charges no tokens for them."""
+    """Connection errors (the server is not reachable) do not use up the 3 ordinary attempts: the harness keeps
+    retrying for llm_unreachable_wait_s and charges no tokens for them."""
     model = FlakyNetworkModel(plan=reading_plan(range(2, 6)) + ["done"], drops=5)
     async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
         r.create(spec(), overrides={"llm_unreachable_wait_s": "60", "backoff_base_s": "0.01"})
@@ -364,8 +364,8 @@ async def test_unreachable_llm_pauses_after_the_wait(cfg):
 
 
 async def test_reading_without_evidence_gets_a_strategy_hint(cfg):
-    """A1 on campus: 212 read_lines in a row and no save_evidence. After N reads without evidence the harness
-    attaches harness_hint to the result and writes a guardrail event; the counter restarts after save_evidence."""
+    """After N reads in a row without evidence the harness attaches harness_hint to the result and writes a
+    guardrail event; the counter restarts after save_evidence."""
     plan = [[tc("read_lines", {"path": HANDBOOK, "start_line": 1 + 10 * i, "end_line": 8 + 10 * i})] for i in range(7)]
     plan.append("done")
     async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
@@ -380,8 +380,8 @@ async def test_reading_without_evidence_gets_a_strategy_hint(cfg):
 
 
 async def test_line_reads_count_as_partly_read_pages(cfg):
-    """A1 read the handbook with read_lines only, and the progress showed 0 pages: now the pages of the lines
-    count as partly read (unit page_part) in task_progress, the digest, the report and status.json."""
+    """The pages of lines read with read_lines count as partly read (unit page_part) in task_progress, the digest,
+    the report and status.json."""
     plan = [[tc("read_lines", {"path": HANDBOOK, "start_line": 1, "end_line": 8})],
             [tc("read_lines", {"path": HANDBOOK, "start_line": 300, "end_line": 305})], "done"]
     async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=plan), summarizer=None) as r:
@@ -415,7 +415,7 @@ def test_cut_summary_gets_its_missing_sections(cfg):
 
 
 async def test_few_model_calls_left_puts_a_budget_hint_into_tool_results(cfg):
-    """B4: all model calls went to reading. With budget_hint_calls=N the last N calls see harness_budget."""
+    """With budget_hint_calls=N, the tool results of the last N model calls carry harness_budget."""
     model = PolicyModel(plan=reading_plan(range(2, 40, 2)))
     async with TaskRunner(cfg, verbose=False, use_mcp=False, model=model, summarizer=None) as r:
         r.create(spec(), overrides={"max_model_calls": "8", "budget_hint_calls": "3"})
@@ -428,8 +428,8 @@ async def test_few_model_calls_left_puts_a_budget_hint_into_tool_results(cfg):
 
 
 async def test_parallel_report_sections_do_not_collide(cfg):
-    """A1 (20.11): two write_report_section calls of one step failed with permission_denied (WinError 32) because both
-    replaced the same report file. The rendering is serialised now: all parallel sections are written."""
+    """Parallel write_report_section calls of one step all succeed and all sections end up in report.md (the
+    rendering is serialised per task)."""
     step = [tc("write_report_section", {"section_id": f"s{i}", "title": f"Раздел {i}", "body": "текст " * 200})
             for i in range(6)]
     async with TaskRunner(cfg, verbose=False, use_mcp=False, model=PolicyModel(plan=[step, "done"]), summarizer=None) as r:

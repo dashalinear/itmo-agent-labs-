@@ -88,8 +88,8 @@ class ToolRuntimeMiddleware(AgentMiddleware):
     PROGRESS_TOOLS = {"save_evidence", "write_report_section"}
 
     def _budget_hint(self, res: ToolMessage) -> ToolMessage:
-        """B4 on 20.11 spent all 120 model calls on reading and never wrote the report: when only a few calls are
-        left, every tool result says so (once per result, the run itself is not stopped)."""
+        """When few model calls remain, every tool result says: stop reading, write the report (the run itself
+        is not stopped)."""
         K = self.ctx.limits.budget_hint_calls
         if not K:
             return res
@@ -114,9 +114,8 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         return ToolMessage(content=content, tool_call_id=res.tool_call_id, name=res.name, status=res.status)
 
     def _evidence_guard(self, request: ToolCallRequest, res):
-        """Reading without progress: in one A1 run the model read the 2000-line handbook in 8-line steps
-        (212 read_lines) and never saved a single quote. After N reads in a row with no saved evidence the
-        harness attaches a hint to the result (a bounded change of strategy, the run itself goes on)."""
+        """N reads in a row without new evidence -> attach a strategy hint to the result (save the quotes found,
+        write the sections that are ready); the run itself goes on."""
         N = self.ctx.limits.reads_without_evidence_hint
         name = request.tool_call["name"]
         if not isinstance(res, ToolMessage):
@@ -173,9 +172,8 @@ class ToolRuntimeMiddleware(AgentMiddleware):
         return res
 
     def _reading_blocked(self, request: ToolCallRequest) -> ToolMessage | None:
-        """Second stage of the reads-without-evidence detector: hints alone did not help in A1 of 22.11 (four hints,
-        112 reads, 3 evidence). After 2N reads in a row without progress, reading tools are not run until the agent
-        saves evidence or writes a report section (a bounded change of strategy, the task goes on)."""
+        """After 2N reads without evidence, reading tools are refused until evidence or a section is saved
+        (the task goes on)."""
         N = self.ctx.limits.reads_without_evidence_hint
         if not N or request.tool_call["name"] not in self.READ_TOOLS or self._reads_since_evidence < 2 * N:
             return None
@@ -214,7 +212,7 @@ class ToolRuntimeMiddleware(AgentMiddleware):
             ctx.budget.check_deadline()
         except BudgetExhausted as e:
             ctx.emit("guardrail", guard="deadline", tool=request.tool_call["name"], **e.as_dict())
-            # the reason keeps the "budget exhausted" prefix of earlier versions (lab 4 treats it as a final stop)
+            # keep the 'budget exhausted' prefix: callers match on it
             ctx.request_stop("paused", f"budget exhausted: task deadline reached ({e})")
             return _tool_error(request, "budget_exhausted", f"task deadline reached: {e}", **e.as_dict())
         try:
@@ -443,7 +441,7 @@ class CompactionMiddleware(AgentMiddleware):
         dropped; every missing section is then added by rules from the compacted messages (marked as such)."""
         if cut and "\n" in text:
             text = text[: text.rstrip().rfind("\n")].rstrip()
-        # a heading with nothing under it counts as missing (A1 summary #3 had an empty "Прогресс"): drop it, re-add
+        # a heading with nothing under it counts as missing: drop it, the section is re-added below
         parts = re.split(r"^(##\s*.+?)\s*$", text, flags=re.M)
         kept, have = [parts[0]], set()
         for k in range(1, len(parts) - 1, 2):
@@ -481,8 +479,7 @@ class CompactionMiddleware(AgentMiddleware):
         if ctx.summarizer is None:
             return {"summary": self._rules_summary(prev, msgs, cap_chars), "method": "rules(no summarizer)",
                     "chunks": 0, "cost_in": 0, "cost_out": 0}
-        # Russian text costs about 2.5-3 tokens per word on qwen; with 0.6 words per token almost every summary
-        # hit max_tokens and lost its last sections (audit of 20.11: 38 of 39 summaries ended mid-sentence)
+        # about 2.5-3 tokens per Russian word: 0.3 words per summary token so all 7 sections fit
         sys_text = SUMMARIZER_PROMPT.format(words=int(L.summary_max_tokens * 0.3))
         limit_in = min(ctx.working_limit, ctx.window) - L.summary_max_tokens
         rendered = [_render_for_summary(m, L.summary_tool_clip_chars) for m in msgs]
@@ -748,9 +745,9 @@ class ModelGuardMiddleware(AgentMiddleware):
                 raise
             except RETRYABLE as e:
                 last_error = f"{type(e).__name__}: {e}"[:300]
-                # "Connection error" = the request never reached the server (the ITMO endpoint drops out for a few
-                # minutes now and then). Such a call costs nothing and is retried until llm_unreachable_wait_s runs
-                # out; the ordinary retry counter is kept for errors the server actually answered with.
+                # "Connection error" = the request never reached the server. Such a call costs nothing and is
+                # retried until llm_unreachable_wait_s runs out; the ordinary retry counter is kept for errors
+                # the server actually answered with.
                 unreachable = isinstance(e, openai.APIConnectionError) and not isinstance(e, openai.APITimeoutError)
                 ctx.budget.fail(res_id, 0 if unreachable else est.tokens)
                 if unreachable:

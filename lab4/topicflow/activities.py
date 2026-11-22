@@ -1,14 +1,7 @@
 """Temporal activities: every side effect of lab 4 (files, Elasticsearch/MCP, LLM agents) runs here.
 
-Only ids and small metadata go back to the workflows; texts, reports and agent histories stay in the workspace,
-the harness store (state.db, checkpoints.db) and artifacts.
-
-Agent activities reuse the lab 2 TaskRunner with the lab 3 agent factories:
-  * the harness task id is derived from the batch / run key, so a retried attempt (after a worker crash or an
-    error) RESUMES the same task from its checkpoint with its accumulated budget instead of starting from zero;
-  * a heartbeat every 10 s lets Temporal detect a dead worker (heartbeat timeout) and retry on a live one;
-  * budget exhaustion and the agent's own stop_partial are final (no retry, the result is marked partial);
-    other pauses/failures (LLM server unreachable, ...) raise a retryable error, bounded by the retry policy.
+Agent activities run the lab 3 agents in the lab 2 TaskRunner under a task id derived from the batch / run key, so a
+retry resumes the same harness task; a heartbeat every 10 s lets Temporal move the attempt off a dead worker.
 """
 from __future__ import annotations
 
@@ -156,7 +149,7 @@ async def _run_agent(env: Env, task_id: str, kind: str, create, label: str, over
         return out
     if t["status"] == "paused" and (reason.startswith("partial:") or "budget exhausted" in reason):
         out["status"] = "partial" if reason.startswith("partial:") else "budget_exhausted"
-        return out                                            # final: retrying cannot add budget
+        return out                                            # final: a retry cannot add budget
     if t["status"] == "cancelled":
         out["status"] = "cancelled"
         return out
@@ -182,9 +175,8 @@ def _stage_batch(env: Env, batch_id: str) -> dict:
             dups.append(rel_in)
             continue
         if f["status"] in ("staged", "indexed", "failed") and f["content_hash"]:
-            # taken by an earlier attempt / earlier run of this batch: it is in the batch folder or already moved into
-            # data/ by the agent. It stays part of the batch, so a restarted batch runs the agent again (resumed task)
-            # and verify_batch checks it, instead of the file being treated as missing.
+            # the file was taken by an earlier run of this batch (it is in the batch folder or already in data/):
+            # keep it so the agent and verify_batch run again
             staged.append(rel_in)
             continue
         if not src.exists():

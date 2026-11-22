@@ -206,8 +206,8 @@ class DocTools:
             raise ToolError("invalid_argument", f"Document has {len(doc.lines)} lines")
         end_line = min(end_line, len(doc.lines))
         new = self.store.add_range(self.task_id, doc.rel, doc.content_hash, "line", start_line, end_line)
-        # the pages these lines belong to count in the progress as partly read ("page_part"); before, progress
-        # counted only read_pages and showed 0 pages for A1, where the agent read the handbook by lines
+        # the pages these lines belong to count in the progress as partly read ("page_part"), so a document
+        # read by lines does not show 0 read pages
         self.store.add_range(self.task_id, doc.rel, doc.content_hash, "page_part",
                              doc.page_of_line(start_line), doc.page_of_line(end_line))
         return {"path": doc.rel, "document_id": doc_id, "content_hash": doc.content_hash,

@@ -1,4 +1,4 @@
-"""Export the ACTUAL compiled graph of the prebuilt agent (Mermaid) to docs/graph.mmd.
+"""Export the compiled graph of the prebuilt agent (Mermaid) to docs/graph.mmd.
 
 The graph topology does not depend on the LLM, so a scripted model is used.
     python scripts/export_graph.py

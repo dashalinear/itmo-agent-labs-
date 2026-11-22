@@ -1,4 +1,4 @@
-"""Worker for a DRY RUN of the whole lab 4 scenario without the ITMO LLM (NOT the demonstration).
+"""Worker for a dry run of the whole lab 4 scenario without the ITMO LLM (the model is not checked here).
 
 The agents get the deterministic test policies from tests/fake_llm.py instead of qwen; everything else is real:
 Temporal service, Schedule, workflows, activities, harness, Elasticsearch. Use another namespace, task root and

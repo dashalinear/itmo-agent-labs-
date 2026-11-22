@@ -10,7 +10,7 @@
     python -m harness.cli report   --task-id A1
     python -m harness.cli artifact --task-id A1 --id art_... [--start 1 --lines 40]
     python -m harness.cli chat     --task-id G1 [--script demo/dialog_guard_ru.txt]
-    python -m harness.cli baseline --spec demo/task_a_local.json --task-id A_base [--max-model-calls 40]
+    python -m harness.cli baseline --spec demo/task_a_local.json --task-id A_base [--max-model-calls 90]
     python -m harness.cli list | export --task-id A1
 
 Global: --env FILE, --root DIR (task root), --no-mcp, --quiet, --provider ddgs|fixture.

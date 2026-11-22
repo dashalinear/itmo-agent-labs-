@@ -30,9 +30,8 @@ NEXT_MAX = 8
 AREA_GREP_PAGE = 15
 AREA_FT_PAGE = 15
 
-# Lines with requirement / limitation wording need their own decision even inside a fragment that already has a
-# mention: in M9 and EXP5 the line "Трассы ... проверяются ... [L-ST-30]" sat in a fragment with two recorded
-# mentions, so the per-fragment verdict did not make the model look at it again.
+# A line with requirement / limitation wording needs its own verdict even inside a fragment that already has a
+# mention: a verdict per fragment does not make the model look at the other lines of that fragment.
 REQUIREMENT_RX = re.compile(r"огранич|должн|обязан|провер|требу|только|нельзя|запрещ|не более|не больше|не менее|"
                             r"не может|не поддерж|не допуска|не удаля|не архивир|лимит|квот|не превыша", re.I)
 
@@ -147,7 +146,7 @@ class ExhaustiveTools:
         """A batch counts as READ only when the agent asks for the next one with next_cursor (acknowledgement):
         a batch delivered right before a budget stop / crash is delivered again on resume (cursor=None).
         The acknowledgement needs a verdict for EVERY fragment of that batch: a recorded mention or an entry in
-        no_mention. Without it the model could skim a batch and move on (M8/EXP4 missed L-ST-30 this way)."""
+        no_mention. Without it the model can skim a batch and move on."""
         e = self.env
         a = self.area()
         ids = a["fragment_ids"]

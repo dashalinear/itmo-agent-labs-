@@ -1,6 +1,6 @@
 <#
-Re-records ONLY the lab 2 scenarios changed after the audit, with the real ITMO model, then commits
-lab2/traces, lab2/results and the regenerated README blocks, and pushes.
+Records the lab 2 scenarios with the real ITMO model. With -Push it then commits lab2/traces, lab2/results
+and the regenerated README blocks, and pushes.
 Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker Desktop running:
 
     powershell -ExecutionPolicy Bypass -File scripts\run_final_lab2.ps1                 # everything (about 30-40 min)
@@ -269,8 +269,8 @@ try {
         Run-Py scripts\artifact_after_restart.py --task-id G2
     }
 
-    # the scenarios first recorded on 16.11 with older code, re-recorded with the current one on request
-    # (-Only A_base,T1,C1,G1); A_base now gets the same task A and the same 90 model calls as A1
+    # these scenarios are recorded only on request (-Only A_base,T1,C1,G1);
+    # A_base gets the same task A and the same 90 model calls as A1
     if ($Only -contains "A_base") {
         Step "12a. A_base: the lab 1 agent without harness on the same task A and the same call limit as A1"
         Harness baseline --spec demo\task_a_local.json --task-id A_base --max-model-calls 90 | Out-Null
@@ -341,7 +341,7 @@ if ($SkipPush) { Write-Host "`nDone (git skipped)."; exit 0 }
 
 Step "16. Commit and push (only lab2/traces, lab2/results, regenerated README blocks)"
 git add -A -- traces results README.md
-git commit -m "Lab 2: re-recorded $($ids -join ', ') with qwen3.8-27b after the audit"
+git commit -m "Lab 2: recorded $($ids -join ', ') with qwen3.8-27b"
 if ($LASTEXITCODE -ne 0) { throw "git commit failed (nothing to commit?)" }
 git push
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }

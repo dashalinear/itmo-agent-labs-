@@ -1,4 +1,4 @@
-"""Deterministic stand-ins for the LLM (tests and scripts/dry_run_worker.py). NOT a demonstration of the model.
+"""Deterministic stand-ins for the LLM (tests and scripts/dry_run_worker.py). not a demonstration of the model.
 
 The policies decide the next tool calls from the CURRENT message history only, like the real agent does, so they
 continue correctly after a worker crash (the harness resumes the checkpointed history). They work in small steps

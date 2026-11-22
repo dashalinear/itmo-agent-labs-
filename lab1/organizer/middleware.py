@@ -1,7 +1,7 @@
 """Agent middleware (LangChain v1 ``wrap_tool_call`` hooks; no graph rewiring).
 
 ToolGuardMiddleware   - outermost: per-tool timeout, exception -> error
-                        observation, bounded output size (local AND MCP tools).
+                        observation, bounded output size (local and MCP tools).
 CatalogSyncMiddleware - around MCP index tools: validates excerpts against the
                         source file before the write, and records the outcome
                         (indexed / error / pending_sync) in catalog.json after it.
@@ -124,7 +124,7 @@ class CatalogSyncMiddleware(AgentMiddleware):
             by_doc: dict[str, list[dict]] = {}
             items_in = args.get("excerpts", None) or []
             if isinstance(items_in, str):
-                # the stub tool has a free schema, and qwen once passed the list as a JSON string (mcp_down, 20.11)
+                # the model sometimes sends the list as a JSON string
                 try:
                     items_in = json.loads(items_in)
                 except ValueError:
@@ -169,8 +169,7 @@ class CatalogSyncMiddleware(AgentMiddleware):
     def _pre(self, request: ToolCallRequest):
         name = request.tool_call["name"]
         if (getattr(request.tool, "metadata", None) or {}).get("mcp_unavailable"):
-            # MCP server is down: the stub must answer mcp_unavailable right away. Otherwise the agent
-            # keeps fixing excerpts that could not be written anyway (seen in the mcp_down demo session).
+            # MCP is down: answer at once, without validating excerpts; they cannot be written anyway
             return None
         if name == "upsert_excerpts":
             problems = self._validate(list(request.tool_call["args"].get("excerpts", [])))

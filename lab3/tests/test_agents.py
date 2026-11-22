@@ -364,7 +364,7 @@ def test_submit_result_without_findings_is_composed_from_evidence(env):
     ct.cite_fragment(hit["fragment_id"], hit["text"][:60], "РС-7")
     full = {"complete": True, "fragments_read": 1, "fragments_total": 1, "documents": []}
     st = SubmitTools(env.store, env.task_id, "exhaustive", coverage_fn=lambda: full)
-    res = st.submit_result()                                   # the model called submit_result({})
+    res = st.submit_result()                                   # submit_result({}) without findings
     assert res["status"] == "completed"
     t = env.store.get_task(env.task_id)
     assert "Найдено подтверждений: 1" in t["completion"]["findings"]
@@ -417,7 +417,7 @@ def test_answer_check_flags_invented_paths_and_unreadable_answers(cfg, corpus):
     ws = HarnessWorkspace(corpus["root"])
     real = Levels(ws, Catalog(ws)).l0()["documents"][3]["path"]
     assert answer_issue(app, f"Документ найден: `{real}`, строка 12.") is None
-    # fragment ids cut to 8 characters (M6 chat4, M8 chat6) are returned to the agent; full ids pass
+    # fragment ids cut to 8 characters are returned to the agent; full ids pass
     short = answer_issue(app, f"`{real}`, frag `f357c648`, строки 7-9")
     assert short and "f357c648" in short
     full = "3bb8a3a0-f854-5968-9308-b53b06d19b57"
@@ -472,8 +472,8 @@ def test_unknown_section_lists_real_sections_and_error_streak_is_pointed_out(env
 
 
 def test_deep_submit_with_cut_off_arguments_gets_a_clear_error(env):
-    """M7-deep1: submit_result came as {} because the answer hit max_tokens=2048. The error now says so (instead of
-    'open_questions_required'), and the schema puts open_questions first."""
+    """submit_result with no arguments (cut off at max_tokens) gets empty_arguments, which names max_tokens,
+    instead of open_questions_required; the schema puts open_questions first."""
     from navsearch.subagents import SubmitArgs, SubmitTools
     from navsearch.tools_corpus import ToolError
     st = SubmitTools(env.store, env.task_id, "deep")
@@ -484,8 +484,8 @@ def test_deep_submit_with_cut_off_arguments_gets_a_clear_error(env):
 
 
 async def test_sub_agent_that_stops_without_submit_gets_one_follow_up(env):
-    """M7-exhaustive1 read 47/47 fragments and ended its turn without submit_result: the manager sends ONE
-    follow-up message in the same task; a second silent stop is left as it is (bounded)."""
+    """A sub-agent that ends its turn without submit_result gets ONE follow-up message in the same task;
+    a second silent stop is left as it is (bounded)."""
     from navsearch.subagents import FINISH_NUDGE, SubagentManager
 
     class FakeRunner:
@@ -525,8 +525,8 @@ async def test_sub_agent_stopped_by_no_progress_gets_one_follow_up(env):
 
 
 def test_submit_rules_short_ids_unfinished_passes_contradictions_and_open_plan(env):
-    """Checks added after M9: no 8-character fragment ids, started cross-check passes read to the end, no "not read"
-    for a document the sub-agent has cited, and a closed plan for deep."""
+    """submit_result rejects 8-character fragment ids, a started cross-check pass not read to the end, "not read"
+    about a document the sub-agent has cited, and (for deep) a plan with open steps."""
     from navsearch.subagents import SubmitTools
     from navsearch.tools_corpus import CorpusTools, ToolError
     ct = CorpusTools(env)
@@ -553,3 +553,20 @@ def test_submit_rules_short_ids_unfinished_passes_contradictions_and_open_plan(e
     with pytest.raises(ToolError) as e4:
         exh.submit_result(f"найдено [{ev}]")
     assert e4.value.type == "pass_incomplete" and "огранич" in e4.value.message
+
+
+def test_answer_cut_at_the_output_limit_is_sent_back(env):
+    """An answer whose last model call used the whole output reserve is returned to the agent once, to be
+    given again, shorter."""
+    from navsearch.cli import answer_issue
+
+    class App:
+        class runner:
+            store = env.store
+        cfg = None
+    reserve = int(env.store.get_task(env.task_id)["limits"].get("response_reserve_tokens") or 2048)
+    cid = env.store.add_model_call(env.task_id, kind="agent", estimated_input=1000, reserve=reserve,
+                                   working_limit=28000, window_tokens=262144, method="t", status="started")
+    env.store.update_model_call(cid, status="ok", actual_input=1000, actual_output=reserve)
+    issue = answer_issue(App, "Выводы: ... - Соз", env.task_id)
+    assert issue and "оборвался" in issue

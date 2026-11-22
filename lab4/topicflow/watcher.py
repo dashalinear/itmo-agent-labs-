@@ -4,7 +4,7 @@ Periodic scan every LAB4_WATCH_INTERVAL_S seconds:
   * ignored while being written: names ending .part/.tmp/.crdownload/.partial, starting with '.' or '~';
     the demo writes '<name>.part' and renames it when done (atomic on the same disk);
   * stability check for everything else: size and mtime unchanged for LAB4_STABLE_S seconds;
-  * stable files that are not yet registered form ONE batch per scan: the batch and its files are written to the
+  * stable files that are not yet registered form one batch per scan: the batch and its files are written to the
     registry first, then the workflow 'ingest-<batch_id>' is started (id conflict policy USE_EXISTING, so a
     repeated start for the same batch never creates a second execution).
 

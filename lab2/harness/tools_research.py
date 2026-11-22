@@ -11,7 +11,9 @@ only keeps the durable queue and enforces the limits:
                               be queued with found_on = page URL
   web_fetch(url)           -> reads the full page (not the snippet): running -> done | error;
                               material copy saved as an artifact (original/final URL, hash);
-                              an already fetched unchanged page is a cache hit (no HTTP)
+                              an already fetched unchanged page is a cache hit (no HTTP);
+                              a URL that is neither in the queue nor a link of a fetched page
+                              is refused (not_discovered)
   queue_status()           -> counters found / selected / read / error / skipped and items
 """
 from __future__ import annotations
@@ -55,7 +57,7 @@ class SelectSourcesArgs(BaseModel):
 
 
 class WebFetchArgs(BaseModel):
-    url: str = Field(description="URL to read (normally a queued source)")
+    url: str = Field(description="URL to read: a queued source, a search result or a link of a fetched page")
     force: bool = Field(False, description="Re-download even if the page is already stored (needs a reason)")
 
 
@@ -156,7 +158,7 @@ class ResearchTools:
             row = self.store.get_url(self.task_id, k)
             if row is None:
                 # every source must come from a search result or from a page the agent has read: a URL from the
-                # model's memory (B2 had one, discovered_by=agent) is refused
+                # model's memory is refused
                 page = self.store.get_url(self.task_id, url_key(canonical_url(it["found_on"]))) if it.get("found_on") else None
                 if decision != "queue":
                     # rejecting an unknown URL is harmless: it is recorded as skipped and never read
@@ -189,8 +191,20 @@ class ResearchTools:
         c = canonical_url(url)
         k = url_key(c)
         row = self.store.get_url(self.task_id, k)
+        kind = (self.store.get_task(self.task_id) or {}).get("kind")
+        if row is None and kind != "web":
+            # a dialog / local task: the user names the URL in the chat (e.g. the HTTP cases of the guard dialog)
+            self.store.add_url(self.task_id, k, url, c, "pending", "user", reason="URL given by the user")
+            row = self.store.get_url(self.task_id, k)
         if row is None:
-            self.store.add_url(self.task_id, k, url, c, "pending", "agent", reason="fetched directly")
+            # web research: only URLs from web_search results or from the links of a fetched page may be read
+            page = self._fetched_page_linking_to(c)
+            if page is None:
+                return err(name, "not_discovered", "this URL was not returned by web_search and is not a link of a "
+                           "fetched page; find it with web_search or take it from the links of a fetched page",
+                           url=url, url_key=k)
+            self.store.add_url(self.task_id, k, url, c, "pending", f"page:{page}", reason="link of a fetched page")
+            self.store.event(self.task_id, "link_followed", {"url": url, "url_key": k, "found_on": page})
             row = self.store.get_url(self.task_id, k)
         if row["status"] == "done" and row.get("artifact_id") and not force:
             try:
@@ -267,6 +281,16 @@ class ResearchTools:
             f"Page text: first {{n}} of {len(text)} chars below; the FULL page is artifact_id {art['artifact_id']}. Find "
             "exact quotes with search_artifact(artifact_id, term); cite with save_evidence(source=<url>, quote=<exact text>). "
             "Useful links of the page are in 'links' (queue them with found_on=<this url>).")
+
+    def _fetched_page_linking_to(self, canonical: str) -> str | None:
+        """URL of a fetched (done) page whose stored links contain this canonical URL, or None."""
+        for page in self.store.urls(self.task_id, "done"):
+            if not page.get("artifact_id"):
+                continue
+            meta = (self.store.artifact(page["artifact_id"]) or {}).get("meta") or {}
+            if any(canonical_url(l.get("url", "")) == canonical for l in meta.get("links") or []):
+                return page["url"]
+        return None
 
     def _answer(self, fields: dict, links: list[dict], head: str, note: str) -> str:
         """The answer must fit the single-result limit, so the model sees the PAGE artifact_id directly

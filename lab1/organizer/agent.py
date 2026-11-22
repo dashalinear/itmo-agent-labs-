@@ -1,8 +1,9 @@
 """Assemble the prebuilt LangGraph ReAct agent (langchain.agents.create_agent).
 
-We do NOT implement nodes, edges, reducers or the loop: create_agent builds the
-graph  START -> model -> (tools -> model)* -> END  and the middleware only adds
-hooks (before_model limit check, wrap_tool_call guards).
+The nodes, edges, reducer and loop come from create_agent, which builds the
+graph  START -> model -> (tools -> model)* -> END . This module only passes the
+model, the tools and the middleware hooks (before_model limit check,
+wrap_tool_call guards).
 """
 from __future__ import annotations
 

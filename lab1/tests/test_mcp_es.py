@@ -78,8 +78,8 @@ def test_mcp_upsert_idempotent_search_and_path_update(settings, fs, ws, catalog,
 
 
 def test_update_path_without_category_follows_folder(settings, fs, ws, catalog, clean_index):
-    """Regression (audit finding 1): update_document_path called WITHOUT category after a move
-    used to leave the old category in ES (catalog: projects, index: courses)."""
+    """update_document_path called without category after a move must not leave the old
+    category in ES (catalog: projects, index: courses)."""
     d = json.loads(run_tool("move", fs.move, "input/search_quality_thoughts.md", "data/courses/"))["data"]
     recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 3}])["excerpts"]
     assert recs[0]["category"] == "courses"

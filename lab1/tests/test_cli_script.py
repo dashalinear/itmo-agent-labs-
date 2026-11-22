@@ -1,4 +1,4 @@
-"""CLI script mode: files added to input/ from ANOTHER process during an open session,
+"""CLI script mode: files added to input/ from another process during an open session,
 execution-limit marking in the trace, and the default limit relationship.
 
 No LLM: the CLI runs with --dry-run-model / ScriptedChatModel.
@@ -147,7 +147,7 @@ def test_cli_commands_traced_and_end_of_script(tmp_path):
 
 
 def test_mcp_server_unavailable_session(tmp_path):
-    """MCP server cannot start (bad MCP_COMMAND, as in the demo session mcp_down): index tools answer
+    """MCP server cannot start (bad MCP_COMMAND): index tools answer
     mcp_unavailable, the catalog records `error`, a move still works."""
     from organizer.config import load_settings
     from organizer.mcp_client import MCPConnection
@@ -165,7 +165,7 @@ def test_mcp_server_unavailable_session(tmp_path):
     def upsert(messages):
         last = [m for m in messages if getattr(m, "name", None) == "build_excerpts"][-1]
         return AIMessage(content="", tool_calls=[call("upsert_excerpts",
-                                                      # as a JSON string, like qwen did in the mcp_down session
+                                                      # the list sent as a JSON string
                                                       {"excerpts": json.dumps(json.loads(last.content)["data"]["excerpts"],
                                                                               ensure_ascii=False)}, "u")])
     steps = [AIMessage(content="", tool_calls=[call("move", {"source": "input/howto_git_branches.txt",
@@ -256,7 +256,7 @@ def test_default_limits_let_model_call_limit_fire_first(settings):
 
 
 def test_empty_model_answer_gets_a_note():
-    """The model ends a turn with empty text (seen with qwen when the output budget goes to reasoning):
+    """The model ends a turn with empty text (qwen can spend the output budget on reasoning):
     the CLI prints a note with the failed tools instead of an empty answer."""
     from organizer.cli import empty_answer_note
     produced = [AIMessage(content="", tool_calls=[call("upsert_excerpts", {}, "u")]),
@@ -280,7 +280,7 @@ def test_failed_tool_result_has_error_status():
 
 
 def test_mcp_stub_requires_excerpts():
-    """With the server down the model once called upsert_excerpts with no arguments: the stub now requires them."""
+    """The upsert_excerpts stub requires the same arguments as the real server."""
     from organizer.mcp_client import unavailable_tools
     up = next(t for t in unavailable_tools("X") if t.name == "upsert_excerpts")
     import pydantic

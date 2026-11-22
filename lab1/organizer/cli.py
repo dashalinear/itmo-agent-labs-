@@ -5,12 +5,12 @@
 
 In a script, '@wait_for_files input/a.md input/b.md' pauses the session until
 those files are added to input/ by another process (second terminal, Explorer,
-scripts/run_all_demos.ps1); the CLI itself copies nothing.
+scripts/run_all_demos.ps1); the CLI only waits for them.
 
 History: one LangGraph thread per CLI session (InMemorySaver checkpointer).
-Each turn passes ONLY the new HumanMessage; the graph's add_messages reducer
-appends AI/tool messages with their tool_call_id, so nothing is lost or
-duplicated. Commands: /help /history /check /catalog /graph /exit.
+Each turn passes only the new HumanMessage; the graph's add_messages reducer
+appends AI/tool messages with their tool_call_id, so the history keeps every
+message exactly once. Commands: /help /history /check /catalog /graph /exit.
 """
 from __future__ import annotations
 
@@ -208,10 +208,10 @@ def _input_files(settings: Settings) -> dict[str, int]:
 
 async def wait_for_files(settings: Settings, tracer: Tracer, names: list[str], timeout_s: float = 600.0,
                          marker: Path | None = None, poll_s: float = 0.5) -> list[str]:
-    """Script pause: wait until files appear in input/ — added by SOMEONE ELSE (a second terminal,
-    Explorer, or the demo PowerShell script). This process copies nothing; it only checks that the
-    files exist and their size is stable, then logs what appeared. The agent itself still discovers
-    them with a fresh ``ls`` on the next user turn.
+    """Script pause: wait until files appear in input/. They are added from outside the CLI (a second
+    terminal, Explorer or the demo PowerShell script); this function checks that the files exist and
+    their size is stable, then logs what appeared. The agent finds them with a new ``ls`` on the next
+    user turn.
 
     ``names``: workspace-relative paths (``input/x.md``) or bare file names; empty = any new file.
     ``marker``: optional file written while waiting, so an external script knows when to add files.
@@ -222,7 +222,7 @@ async def wait_for_files(settings: Settings, tracer: Tracer, names: list[str], t
         raise ValueError(f"{WAIT_DIRECTIVE}: paths must stay inside workspace/input: {targets}")
     before = _input_files(settings)
     tracer.event("harness_wait", waiting_for=targets or "any new file in input/", timeout_s=timeout_s,
-                 marker=marker.name if marker else None, pid=os.getpid())   # file name only: no user folder in traces
+                 marker=marker.name if marker else None, pid=os.getpid())
     print(f"  [пауза сценария] жду, пока пользователь добавит файлы в input извне "
           f"({', '.join(targets) or 'любой новый файл'}); этот процесс ничего не копирует", flush=True)
     if marker:
@@ -260,8 +260,8 @@ async def wait_for_files(settings: Settings, tracer: Tracer, names: list[str], t
 
 
 def add_late_files(settings: Settings, tracer: Tracer) -> list[str]:
-    """Legacy shortcut ('@add_late_files'): THIS process copies fixtures/late/* into input/.
-    The demo uses '@wait_for_files' instead, where the files are added from outside the CLI."""
+    """Older shortcut ('@add_late_files'): copy fixtures/late/* into input/ from the CLI process.
+    The demo scripts use '@wait_for_files' instead, where the files are added from outside the CLI."""
     src = PROJECT_ROOT / "fixtures" / "late"
     copied = []
     for f in sorted(src.glob("*")):
@@ -285,7 +285,7 @@ async def amain(argv: list[str] | None = None) -> int:
     ap.add_argument("--wait-timeout", type=float, default=600.0, help="seconds '@wait_for_files' waits (default 600)")
     ap.add_argument("--dry-run-model", action="store_true",
                     help="use a deterministic stand-in model instead of the LLM (checks scripts/plumbing only; "
-                         "NOT valid for demo traces)")
+                         "not for demo traces)")
     args = ap.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")

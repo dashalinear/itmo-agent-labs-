@@ -380,7 +380,7 @@ class MultiProvider(SearchProvider):
 
     General web engines (ddgs backends) come first; the public search APIs (Wikipedia, arXiv,
     Hacker News, Stack Overflow, GitHub) complement them and keep the research going when the
-    general engines are unreachable (e.g. from a university network). An engine that failed twice
+    general engines are unreachable from the current network. An engine that failed twice
     is skipped for the rest of the process (circuit breaker). The report of the last call
     (engines ok / failed / skipped) is returned to the agent and stored with the search.
     """

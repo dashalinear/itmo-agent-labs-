@@ -3,7 +3,7 @@
 Rules:
 * Paths are interpreted relative to the workspace root; absolute paths are
   accepted only if they resolve inside the workspace.
-* The path is normalized and symlinks are resolved (Path.resolve) BEFORE the
+* The path is normalized and symlinks are resolved (Path.resolve) before the
   containment check, so both ``../`` and symlink escapes are rejected.
 * The service catalog (catalog.json) is protected from generic write/move.
 """
@@ -67,7 +67,7 @@ class Workspace:
         return resolved
 
     def lexical(self, path: str) -> Path:
-        """Normalized path WITHOUT resolving symlinks (to inspect the link itself)."""
+        """Normalized path without resolving symlinks (to inspect the link itself)."""
         raw = str(path).strip().replace("\\", "/")
         candidate = Path(raw)
         if not candidate.is_absolute():

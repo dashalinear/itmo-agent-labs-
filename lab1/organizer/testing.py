@@ -1,7 +1,7 @@
 """Deterministic scripted chat model for offline tests, graph export and dry runs.
 
-It is NOT an LLM: it replays a fixed list of AIMessages (optionally computed
-from the conversation so far). Real demo traces must use the real model.
+It replays a fixed list of AIMessages (optionally computed from the
+conversation so far) instead of calling the LLM.
 """
 from __future__ import annotations
 
@@ -55,7 +55,7 @@ class DryRunChatModel(BaseChatModel):
     """Stand-in model for `python -m organizer.cli --dry-run-model` (plumbing checks of the demo
     scripts without the ITMO LLM). Per user turn it calls `ls input` once and then answers with a
     fixed text; for a turn that asks to re-check input "again and again" it keeps calling `ls`
-    forever, so the execution limit has to stop it. It is NOT an LLM and organizes nothing."""
+    until the execution limit stops it. It does not organize anything."""
 
     calls: int = 0
 

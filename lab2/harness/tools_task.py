@@ -134,9 +134,9 @@ class TaskTools:
         return self.ws.service_path("tasks", self.task_id, "report.md")
 
     def render(self) -> str:
-        """Re-render report.md. Parallel write_report_section calls of one step run in threads: in A1 (20.11) two of
-        them wrote the same .tmp and os.replace failed with WinError 32. Now one lock per task serialises the
-        rendering, and a replace that hits a file still held by a reader is retried briefly."""
+        """Re-render report.md. Parallel write_report_section calls of one step run in threads and would write the
+        same .tmp file, so one lock per task serialises the rendering; an os.replace that hits a file still held by
+        a reader (WinError 32) is retried briefly."""
         path = self.report_path()
         path.parent.mkdir(parents=True, exist_ok=True)
         with _RENDER_LOCKS.setdefault(self.task_id, threading.Lock()):
@@ -196,9 +196,9 @@ class TaskTools:
             rec.update(source_type="local", source=rel, document_id=entry["document_id"] if entry else None,
                        content_hash=doc.content_hash, page_start=doc.page_of_line(pos[0]),
                        page_end=doc.page_of_line(pos[1]), line_start=pos[0], line_end=pos[1])
-        # the same place quoted twice (a shorter / longer cut of one line) is one piece of evidence: in A1 and B4
-        # each decision line was saved twice. A quote inside an existing one is already saved; a longer quote that
-        # contains an existing one replaces its text and keeps its evidence_id (references stay valid).
+        # the same place quoted twice (a shorter / longer cut of one line) is one piece of evidence. A quote inside
+        # an existing one is already saved; a longer quote that contains an existing one replaces its text and keeps
+        # its evidence_id (references stay valid).
         nq = _norm(q)
         for old in self.store.evidence(self.task_id):
             if old["source"] != rec["source"] or (old["content_hash"] or "") != (rec["content_hash"] or ""):
@@ -358,16 +358,16 @@ class TaskTools:
         if missing:
             raise ToolError("criteria_not_met", "Completion criteria are not met; continue the work or call stop_partial",
                             missing=missing)
-        # the plan must describe what was really done (A1, B4, C1 ended "completed" with steps still todo/doing)
+        # the plan must describe what was really done: no "completed" with steps still todo/doing
         task = self.store.get_task(self.task_id) or {}
         plan = task.get("plan") or []
         open_steps = [s.get("title") for s in plan if isinstance(s, dict) and s.get("status") not in ("done", "skipped")]
-        # only for the research tasks of lab 2 (local / web); the agents of labs 3-4 that reuse this tool keep
-        # their own completion rules
+        # only for the research task kinds local / web; other kinds that reuse this tool keep their own
+        # completion rules
         if open_steps and task.get("kind") in ("local", "web"):
             raise ToolError("plan_open", "Close the plan first: update_plan with done (or skipped) for every step",
                             open_steps=open_steps[:8])
-        # "Непроверенное" must not call a page unread that the harness has fetched (B4 said so about MemGPT)
+        # "Непроверенное" must not call a page unread that the harness has fetched
         wrong = self._unverified_contradictions()
         if wrong:
             raise ToolError("unverified_contradicts_queue", "The section 'unverified' says these sources were not read, "

@@ -303,8 +303,7 @@ def _event_name(e) -> str:
 
 
 def summarize_histories(out: Path) -> int:
-    """summary.md from ALL saved histories in traces/temporal (not only what the server still keeps: the dev
-    server drops closed executions after its retention period, and on 20.11 the summary shrank to 2 of 14)."""
+    """Build summary.md from all saved histories in traces/temporal: the dev server deletes closed executions."""
     execs = []
     for f in sorted(out.glob("*__*.json")):
         ev = json.loads(f.read_text(encoding="utf-8-sig")).get("events", [])
@@ -388,7 +387,7 @@ async def amain(argv=None) -> int:
     sub.add_parser("status")
     sub.add_parser("l0")
     p = sub.add_parser("open-report"); p.add_argument("--latest", action="store_true"); p.add_argument("--run-key")
-    p.add_argument("--latest-complete", action="store_true", help="the latest COMPLETE report (reports.latest_complete)")
+    p.add_argument("--latest-complete", action="store_true", help="the latest complete report (reports.latest_complete)")
     p = sub.add_parser("fault"); p.add_argument("--activity"); p.add_argument("--point", default="before")
     p.add_argument("--times", default="1"); p.add_argument("--clear", action="store_true")
     p = sub.add_parser("wait"); p.add_argument("--batches", action="store_true"); p.add_argument("--workflow-id")
@@ -458,9 +457,7 @@ def main() -> None:
         code = asyncio.run(amain())
     except KeyboardInterrupt:
         code = 130
-    # On Windows a short-lived command that used the Temporal client occasionally did not terminate after printing
-    # its result (observed once for topics-now under a PowerShell pipe). All work is done and committed to the
-    # server at this point, so flush and leave the process explicitly.
+    # on Windows the process may hang after using the Temporal client, so exit explicitly
     sys.stdout.flush()
     sys.stderr.flush()
     os._exit(code or 0)

@@ -35,8 +35,8 @@ def test_crash_after_effects_then_resume_in_new_process(cfg, web):
     base, handler = web
     page_hits = lambda: sum(1 for h in handler.hits if h.startswith("/p/checkpoint-1"))  # noqa: E731
     before_hits = page_hits()
-    p1 = _run_helper(cfg, base, "after_tool:4", create=True)
-    assert p1.returncode == 137, p1.stdout + p1.stderr            # killed right after the 4th tool finished
+    p1 = _run_helper(cfg, base, "after_tool:5", create=True)
+    assert p1.returncode == 137, p1.stdout + p1.stderr            # killed right after the 5th tool finished
     s = TaskStore(cfg.root / ".harness" / "state.db")
     assert s.get_task("R")["status"] == "running"                 # died mid-run: not completed, not paused
     assert len(s.evidence("R")) == 1 and page_hits() == before_hits + 1
@@ -232,7 +232,7 @@ async def test_mcp_outputs_are_bounded_and_offloaded(cfg, web):
 
 @pytest.mark.parametrize("mode,expected_src", [("tokenize", "POST /tokenize"), ("error", "rejection message")])
 def test_window_detected_without_models_field(mode, expected_src):
-    """/models without max_model_len (like the ITMO server): /tokenize or the rejection message reveals the window."""
+    """/models without max_model_len (the server does not report the window): /tokenize or the rejection message reveals the window."""
     class H(BaseHTTPRequestHandler):
         def log_message(self, *a):
             pass

@@ -107,7 +107,7 @@ def test_grep_page_fits_single_result_limit_and_invented_cursor_is_rejected(env)
     assert len(envelope) < 6000 and r["next_cursor"]                # not offloaded: next_cursor visible to the model
     unpadded = r["next_cursor"].rstrip("=")
     assert ct.search_grep("Ограничение", "L2", folder="storage", cursor=unpadded)["page"] ==         ct.search_grep("Ограничение", "L2", folder="storage", cursor=r["next_cursor"])["page"]
-    invented = base64.urlsafe_b64encode(b'{"offset":16}').decode()  # what the model made up in run M3
+    invented = base64.urlsafe_b64encode(b'{"offset":16}').decode()  # a cursor the tool never returned
     with pytest.raises(ToolError) as e:
         ct.search_grep("Ограничение", "L2", folder="storage", cursor=invented)
     assert e.value.type == "invalid_cursor"

@@ -231,7 +231,7 @@ def test_junction_escape_blocked_windows(fs, ws, tmp_path):
     assert entry["type"] == "symlink" and entry["path"] is None
     g = call(fs, "grep", pattern="secret", path="input", recursive=True)["data"]
     assert g["total_matches"] == 0
-    # the junction itself is reported, the names of files behind it are not (guard demo of 20.11 listed them)
+    # the junction itself is reported, the names of files behind it are not
     assert {"path": "input/junction", "reason": "link_outside_workspace"} in g["skipped"]
     assert not any("secret.txt" in str(x["path"]) for x in g["skipped"])
     # the same escape written as an absolute path through the junction, as an absolute path to the

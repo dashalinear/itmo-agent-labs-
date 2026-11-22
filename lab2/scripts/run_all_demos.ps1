@@ -11,7 +11,7 @@ Run INSIDE the ITMO network (the LLM server is not reachable outside), Docker De
 Scenarios (task ids):
   A1     long local analysis of data/search (520-page handbook): simulated crash after a durable checkpoint
          (HARNESS_CRASH_AT=after_tool:30), then resume in a NEW process until completed
-  A_base the lab 1 agent (no harness) on task A (recorded 16.11 with the older request: no ES/MCP part, 40 calls)
+  A_base the lab 1 agent (no harness) on task A
   D1     tiny token budget -> paused with a partial result; user raises the limit; resume keeps the spent counters
   T1     LLM timeout 1 s -> finite retries -> paused
   E1     cancel from another process while the task is running

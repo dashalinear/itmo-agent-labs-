@@ -1,32 +1,32 @@
 <#
-Re-records ALL lab 1 demo traces and results with the real ITMO model, from a clean workspace and an
-empty index, as ONE chain of CLI sessions, with -Push it then commits and pushes only lab1/traces and lab1/results.
-Run INSIDE the ITMO network (the LLM server is not reachable outside), from any directory:
+Records all lab 1 demo traces and results with the ITMO model, from a clean workspace and an empty
+index, as one chain of CLI sessions. With -Push it then commits and pushes only lab1/traces and lab1/results.
+Run inside the ITMO network (the LLM server is not reachable outside), from any directory:
 
     powershell -ExecutionPolicy Bypass -File lab1\scripts\run_all_demos.ps1
     ... -Push            # also git commit + push of traces and results (without it: record only)
     ... -SkipTests       # do not run pytest first
     ... -KeepOldTraces   # do not delete the traces that existed before this run
-    ... -DryRun          # plumbing check WITHOUT the LLM (deterministic stand-in model); only on a copy of
+    ... -DryRun          # plumbing check without the LLM (deterministic stand-in model); only on a copy of
                          # lab1 outside the git repository; never commits, verify failures are not fatal
 
 Chain (the order matters: every session continues from the workspace/index state of the previous one):
   1 main    demo/dialog_ru.txt        organize, browse, move, index, search, re-index, move indexed file,
-                                      PAUSE -> this script copies fixtures/late/* into workspace/input from a
-                                      separate PowerShell process -> "new files" turn, error turns
-            -> scripts/verify.py -> results/verify_report_main.json
-  2 limit   demo/dialog_limit_ru.txt  a genuinely looping request, stopped by the execution limit
-  3 guard   demo/dialog_guard_ru.txt  tool errors through real tool calls; junction pointing outside;
+                                      pause: this script copies fixtures/late/* into workspace/input from a
+                                      separate PowerShell process; then the "new files" turn and error turns;
+                                      afterwards scripts/verify.py writes results/verify_report_main.json
+  2 limit   demo/dialog_limit_ru.txt  a looping request, stopped by the execution limit
+  3 guard   demo/dialog_guard_ru.txt  every turn asks for a tool call: bad arguments, a junction pointing outside,
                                       web_fetch against a local fixture server (200, 404, timeout) + closed port
-  4 errors  demo/dialog_errors_ru.txt Elasticsearch STOPPED: upsert fails (error), move of an indexed doc
+  4 errors  demo/dialog_errors_ru.txt Elasticsearch is stopped: upsert fails (error), move of an indexed doc
                                       (pending_sync)
   5 mcp_down demo/dialog_mcp_down_ru.txt  the MCP server itself cannot start (MCP_COMMAND points to a missing
-                                      program): indexing -> mcp_unavailable (error), a move still works
-  6 retry   demo/dialog_retry_ru.txt  MCP and Elasticsearch back: sync and indexing fix everything
+                                      program): indexing gives mcp_unavailable (error), a move still works
+  6 retry   demo/dialog_retry_ru.txt  MCP and Elasticsearch are back: path sync and indexing
   Before the chain: pytest, and the symlink/junction escape tests saved to results/symlink_test.txt
-  (the real-symlink test runs only if Windows Developer Mode is on; otherwise it is recorded as skipped).
-  then verify, index export, graph export, results/RUN_SUMMARY.md, secret scan,
-  deletion of the traces from earlier runs (they do not belong to this chain), git commit + push with -Push.
+  (the symlink test runs only if Windows Developer Mode is on; otherwise it is recorded as skipped).
+  After the chain: verify, index export, graph export, results/RUN_SUMMARY.md, secret scan,
+  deletion of the traces from earlier runs, and git commit + push with -Push.
 Limits are pinned for reproducibility: AGENT_MODEL_CALLS_PER_TURN=25, AGENT_RECURSION_LIMIT=110.
 #>
 param(

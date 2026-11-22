@@ -1,5 +1,5 @@
 ﻿<#
-Records all lab 3 traces with the real ITMO model and publishes the results.
+Records all lab 3 traces with the real ITMO model; with -Push it also commits and pushes the results.
 Run INSIDE the ITMO network, Docker Desktop running:
 
     powershell -ExecutionPolicy Bypass -File scripts\run_all_demos.ps1                  # everything
@@ -11,7 +11,8 @@ Run INSIDE the ITMO network, Docker Desktop running:
     ... -SkipTests                   # add -Push to commit and push the results
 
 Steps (task ids):
-  ING1  ingestion AGENT over workspace\input (53 files): simulated crash after the 80th tool, resume in a new process
+  ING1  ingestion AGENT over workspace\input (53 files); the first process is killed after its 80th tool call
+        (HARNESS_CRASH_AT) if it gets that far, then resume in new processes until the corpus is complete
   ING2  user adds 3 new files to input\new_files; CLI ingestion of that folder only
   ING3  re-run on the unchanged corpus: nothing re-indexed, no duplicates
   probe six search combinations without LLM (control queries from corpus\manifest.json)
@@ -100,7 +101,9 @@ if ($Part -eq "all") {
     Step "5. Fresh task root and empty indices"
     Run-Py -m navsearch.cli prepare --reset
 
-    Step "6. ING1: ingestion agent over input (simulated crash after the 80th tool call)"
+    # the first process is killed after its 80th tool call; if it pauses earlier (for example the LLM server
+    # is unavailable), the crash point is not reached and step 7 continues the paused task
+    Step "6. ING1: ingestion agent over input (crash point after the 80th tool call)"
     $env:HARNESS_CRASH_AT = "after_tool:80"
     $code = Nav ingest --folder input --task-id ING1
     Remove-Item Env:HARNESS_CRASH_AT
@@ -189,9 +192,9 @@ if ($Part -eq "deep") {
 }
 
 if ($Part -eq "final2") {
-    # A repeated run must start a NEW dialog task: on 20.11 the second run continued the old M7 and the main
-    # agent mixed up the sub-agents of both runs. So the first free id from M8 on is taken, and the traces and
-    # results of the earlier final2 attempts (M7, M8, ... with their sub-agents) are removed from the repository.
+    # a repeated run starts a new dialog task (first free id from M8 on): continuing an old task would mix up
+    # the sub-agents of both runs. Traces and results of earlier final2 attempts (M7, M8, ... with their
+    # sub-agents) are removed, so only the last attempt is kept
     $f2 = $null
     for ($i = 8; $i -lt 100 -and -not $f2; $i++) {
         & $py -m navsearch.cli status --task-id "M$i" | Out-Null
@@ -203,7 +206,7 @@ if ($Part -eq "final2") {
     Step "G1. ${f2}: deep and exhaustive in parallel, the main agent answers meanwhile and uses both results"
     Nav chat --task-id $f2 --script demo\dialog_final2_ru.txt | Out-Null
 
-    # the same for the partial -> resume demo: a new id from EXP5 on, earlier final2 attempts (EXP4, ...) removed
+    # the same for the partial -> resume demo: first free id from EXP5 on, earlier attempts (EXP4, ...) removed
     $exp = $null
     for ($i = 5; $i -lt 100 -and -not $exp; $i++) {
         & $py -m navsearch.cli status --task-id "EXP$i" | Out-Null

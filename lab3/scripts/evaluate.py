@@ -64,7 +64,7 @@ def main() -> None:
         if t["kind"] == "probe":            # deterministic search probe, not an agent task
             continue
         if t["runs"] and not any(TRACES.glob(f"{t['task_id']}_*.jsonl")):
-            # superseded attempt: its traces were removed by run_all_demos.ps1 (final2 keeps only the last run),
+            # a superseded attempt: run_all_demos.ps1 -Part final2 removes its traces and keeps only the last one;
             # the task is still in the local state.db but does not belong to the results
             continue
         task = store.get_task(t["task_id"])

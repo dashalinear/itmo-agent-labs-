@@ -94,7 +94,7 @@ def test_catalog_sync_validates_and_records(fs, ws, catalog):
 
 
 def test_catalog_sync_checks_category_after_path_update(fs, ws, catalog):
-    """Regression (audit finding 1): a successful update_document_path must not mark the document
+    """A successful update_document_path must not mark the document
     `indexed` when the index category differs from the catalog category."""
     d = mv(fs, "input/search_quality_thoughts.md", "data/courses/")
     recs = CatalogTools(ws, catalog).build_excerpts(d["document_id"], [{"start_line": 1, "end_line": 3}])["excerpts"]
@@ -121,7 +121,7 @@ def test_catalog_sync_checks_category_after_path_update(fs, ws, catalog):
 
 
 def test_store_update_path_derives_category_offline():
-    """Regression (audit finding 1), no Elasticsearch needed: the update script sent by the MCP
+    """No Elasticsearch needed: the update script sent by the MCP
     server sets category from data/<cat>/ even when the caller omits it."""
     from mcp_es.schema import category_from_path
     from mcp_es.store import ExcerptStore

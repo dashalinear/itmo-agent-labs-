@@ -22,6 +22,13 @@ def j(s):
     return json.loads(s)
 
 
+def seed(store, *urls):
+    """Put URLs into the queue as search results, so web_fetch may read them."""
+    for u in urls:
+        c = canonical_url(u)
+        store.add_url("T", url_key(c), u, c, "found", "search:test")
+
+
 def test_canonical_url_dedup():
     a = canonical_url("HTTP://Example.com:80/p/x/?utm_source=a&b=2&a=1#frag")
     assert a == "http://example.com/p/x?a=1&b=2"
@@ -80,6 +87,7 @@ async def test_select_fetch_cache_and_links(store, artifacts, web):
 async def test_http_errors_are_counted(store, artifacts, web, path, error, requests):
     base, _ = web
     rt, budget = mk(store, artifacts, base)
+    seed(store, base + path)
     r = j(await rt.web_fetch(base + path))
     assert r["ok"] is False and r["error"]["type"] == error
     assert store.usage("T")["http_requests"] == requests
@@ -90,6 +98,7 @@ async def test_http_errors_are_counted(store, artifacts, web, path, error, reque
 async def test_redirect_chain_and_flaky_retry(store, artifacts, web):
     base, _ = web
     rt, budget = mk(store, artifacts, base)
+    seed(store, f"{base}/go2/durable-2", f"{base}/flaky/2/idempotency-3")
     r = j(await rt.web_fetch(f"{base}/go2/durable-2"))
     assert r["ok"] and r["data"]["final_url"].endswith("/p/durable-2") and len(r["data"]["redirects"]) == 2
     assert store.usage("T")["http_requests"] == 3
@@ -101,6 +110,7 @@ async def test_redirect_chain_and_flaky_retry(store, artifacts, web):
 async def test_timeout_retries_and_large_response(store, artifacts, web):
     base, _ = web
     rt, budget = mk(store, artifacts, base, http_timeout_s=0.5, http_retries=1, max_fetch_bytes=200_000)
+    seed(store, f"{base}/slow", f"{base}/large")
     t = j(await rt.web_fetch(f"{base}/slow"))
     assert t["error"]["type"] == "timeout_retries_exhausted" and store.usage("T")["http_requests"] == 2
     big = j(await rt.web_fetch(f"{base}/large"))
@@ -202,6 +212,7 @@ async def test_fetch_interrupted_by_tool_timeout_is_not_left_running(store, arti
     import asyncio
     base, _ = web
     rt, budget = mk(store, artifacts, base, http_timeout_s=30.0)
+    seed(store, f"{base}/slow")
     with pytest.raises(asyncio.TimeoutError):
         await asyncio.wait_for(rt.web_fetch(f"{base}/slow"), timeout=0.5)
     row = store.urls("T")[0]
@@ -211,6 +222,7 @@ async def test_fetch_interrupted_by_tool_timeout_is_not_left_running(store, arti
 async def test_web_fetch_answer_fits_single_limit_and_shows_page_artifact(store, artifacts, web):
     base, _ = web
     rt, budget = mk(store, artifacts, base, max_fetch_bytes=3_000_000)
+    seed(store, base + "/large", base + "/p/checkpoint-3")
     for path in ("/large", "/p/checkpoint-3"):
         raw = await rt.web_fetch(base + path)
         r = j(raw)
@@ -264,6 +276,7 @@ async def test_failed_url_is_not_fetched_again_and_arxiv_versions_are_one_source
     rt, budget = mk(store, artifacts, base)
     hits = lambda: sum(1 for h in handler.hits if h.startswith("/down"))  # noqa: E731
     h0 = hits()
+    seed(store, f"{base}/down")
     first = j(await rt.web_fetch(f"{base}/down"))
     assert first["error"]["type"] == "http_error_retries_exhausted" and hits() - h0 == 3
     http = store.usage("T")["http_requests"]
@@ -303,9 +316,41 @@ def test_token_calibration_survives_restart(cfg, store):
 
 
 async def test_queue_only_urls_found_by_search_or_on_a_read_page(store, artifacts, web):
-    """B2 had one source from the model's memory (discovered_by=agent): queueing such a URL is refused now."""
+    """select_sources refuses to queue a URL that came neither from web_search nor from a fetched page."""
     base, handler = web
     rt, budget = mk(store, artifacts, base)
     sel = j(rt.select_sources([{"url": "https://example.org/remembered", "decision": "queue", "reason": "знаю этот сайт"}]))
     assert sel["data"]["decisions"][0]["error"] == "not_discovered"
     assert store.get_url("T", url_key(canonical_url("https://example.org/remembered"))) is None
+
+
+async def test_web_fetch_reads_only_discovered_urls(store, artifacts, web):
+    """In a web research task web_fetch refuses a URL that is neither in the queue nor a link of a fetched page;
+    known URLs, links of fetched pages and cache hits still work. In a dialog / local task the user names the URL
+    in the chat, and it is read."""
+    base, handler = web
+    rt, budget = mk(store, artifacts, base)
+    given = f"{base}/p/backends-7"
+    r0 = j(await rt.web_fetch(given))                          # local task: a URL given by the user
+    assert r0["ok"] and store.get_url("T", url_key(canonical_url(given)))["discovered_by"] == "user"
+    store._exec("UPDATE tasks SET kind='web' WHERE task_id='T'")
+    unknown = f"{base}/p/memory-3"
+    hits0 = len(handler.hits)
+    r = j(await rt.web_fetch(unknown))
+    assert r["ok"] is False and r["error"]["type"] == "not_discovered"
+    assert store.get_url("T", url_key(canonical_url(unknown))) is None
+    assert len(handler.hits) == hits0                                              # no HTTP request
+    await rt.web_search("чекпоинты графа", 5)
+    page = f"{base}/p/checkpoint-2"
+    first = j(await rt.web_fetch(page))                       # a search result, not selected: allowed
+    assert first["ok"]
+    fresh = [l["url"] for l in first["data"]["links"] if store.get_url("T", url_key(canonical_url(l["url"]))) is None]
+    assert fresh, "the page links to sources not found by the search"
+    linked = j(await rt.web_fetch(fresh[0]))                  # a link of a fetched page: allowed
+    assert linked["ok"]
+    row = store.get_url("T", url_key(canonical_url(fresh[0])))
+    assert row["status"] == "done" and row["discovered_by"] == f"page:{page}"
+    assert any(e["data"]["url_key"] == row["url_key"] for e in store.events("T", "link_followed"))
+    assert j(await rt.web_fetch(page + "?utm_source=x"))["data"]["from_cache"] is True
+    if canonical_url(unknown) not in {canonical_url(l["url"]) for l in first["data"]["links"] + linked["data"]["links"]}:
+        assert j(await rt.web_fetch(unknown))["error"]["type"] == "not_discovered"

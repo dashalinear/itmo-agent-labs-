@@ -80,7 +80,7 @@ async def test_watcher_survives_temporal_outage_and_rescans_after_restart(lab4en
     client.down = False
     await w.recover(unstarted_only=True)                          # periodic retry of never-started batches
     assert client.started == [f"ingest-{b1['batch_id']}"] and lab4env.registry.batch(b1["batch_id"])["status"] == "started"
-    # the watcher is stopped; meanwhile the user adds a file; a NEW watcher process picks it up on its first scan
+    # the watcher is stopped; meanwhile the user adds a file; a new watcher process picks it up on its first scan
     (inp / "b.md").write_text("файл b", encoding="utf-8")
     w2 = Watcher(client=client, cfg=lab4env.cfg, st=st, registry=lab4env.registry, log=lambda *a: None)
     await w2.recover()                                            # b1 is running: not started again
@@ -284,7 +284,7 @@ async def test_workflows_on_real_temporal_service(lab4env):
     files = put(env, "initial", {"checkpoint_postgres.md", "vector_search.md"})
     bid = batch_id_for(files)
     env.registry.add_batch(bid, files)
-    # duplicate detection event WHILE the workflow is running (no worker yet): the same execution is returned
+    # duplicate detection event while the workflow is running (no worker yet): the same execution is returned
     from temporalio.common import WorkflowIDConflictPolicy, WorkflowIDReusePolicy
     iwid = f"test-ingest-{bid}-{q}"
     starts = [await client.start_workflow("IngestNewFiles", {"batch_id": bid}, id=iwid, task_queue=q,
@@ -319,3 +319,32 @@ def test_report_tells_an_interval_tick_from_the_immediate_run(lab4env):
     assert rep._schedule_kind(ws, "lab4-topics-run-2026-11-21T10:00:03Z")[0] == "немедленный запуск при создании Schedule"
     assert rep._schedule_kind(ws, "lab4-topics-run-2026-11-21T10:05:00Z")[0] == "тик интервала Schedule (каждые 5 мин)"
     assert rep._schedule_kind(ws, "lab4-topics-manual-2026-11-21T10:06:00Z")[0] == "ручной запуск topics-now"
+
+
+def test_period_of_the_first_tick_starts_at_the_creation_of_the_current_schedule(lab4env):
+    """A run of an earlier, deleted Schedule in the report history is not the start of the period."""
+    ws = lab4env.ws
+    meta = ws.service_path("lab4") / "schedule_meta.json"
+    meta.parent.mkdir(parents=True, exist_ok=True)
+    meta.write_text(json.dumps({"schedule_id": "lab4-topics", "created_at": "2026-11-22T18:00:30.250000+00:00",
+                                "every_s": 300, "trigger_immediately": False}), encoding="utf-8")
+    reg = ws.service_path("corpus") / "reports.json"
+    reg.parent.mkdir(parents=True, exist_ok=True)
+    old = {"run_key": "lab4-topics-run-2026-11-20T14:37:46Z", "frozen_at": "2026-11-20T14:37:47+00:00"}
+    manual = {"run_key": "lab4-topics-manual-2026-11-22T18:02:00.000Z", "frozen_at": "2026-11-22T18:02:01+00:00"}
+    reg.write_text(json.dumps({"history": [old, manual], "latest": manual}), encoding="utf-8")
+    t1, t2 = "lab4-topics-run-2026-11-22T18:05:00Z", "lab4-topics-run-2026-11-22T18:10:00Z"
+    kind, period = rep._schedule_kind(ws, t1)
+    assert kind == "тик интервала Schedule (каждые 5 мин)"
+    assert period == "2026-11-22 18:00:30 UTC → 2026-11-22 18:05:00 UTC (с создания Schedule)"
+    tick1 = {"run_key": t1, "frozen_at": "2026-11-22T18:05:01+00:00"}
+    reg.write_text(json.dumps({"history": [old, manual, tick1], "latest": tick1}), encoding="utf-8")
+    assert rep._schedule_kind(ws, t1)[1] == period                 # a later run does not change an earlier period
+    assert rep._schedule_kind(ws, t2)[1] == "2026-11-22 18:05:00 UTC → 2026-11-22 18:10:00 UTC (с прошлого запуска Schedule)"
+
+
+def test_scheduled_time_row_shows_only_the_time(lab4env):
+    """The kind of the run is in its own row, so the time row has no suffix that could contradict it."""
+    assert rep._scheduled_label("lab4-topics-run-2026-11-22T18:05:00Z") == "2026-11-22 18:05:00 UTC"
+    assert rep._scheduled_label("lab4-topics-manual-2026-11-18T13:20:31.699Z") == "2026-11-18 13:20:31 UTC"
+    assert rep._scheduled_label("lab4-topics-run") == "—"

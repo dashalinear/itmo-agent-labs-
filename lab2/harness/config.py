@@ -39,7 +39,7 @@ class Limits:
     compaction_trigger: float = 0.70     # compact when input+reserve > trigger * working limit
     compaction_target: float = 0.45      # keep the recent tail within target * working limit
     compaction_min_gain: float = 0.05    # compact only if >= this share of the working limit can be removed
-    summary_max_tokens: int = 1600     # 1200 was too little for 7 sections in Russian
+    summary_max_tokens: int = 1600       # room for all 7 summary sections in Russian
     summary_tool_clip_chars: int = 1200  # how much of each tool result the summarizer sees
     max_compaction_chunks: int = 4       # LLM chunks per compaction, then rule-based fallback
     # --- tool outputs

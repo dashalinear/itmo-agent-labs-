@@ -1,13 +1,7 @@
-"""Temporal workflows of lab 4 (deterministic coordination only; activities are referenced by name).
+"""Temporal workflows of lab 4: deterministic coordination only, activities are referenced by name.
 
-IngestNewFiles(batch)   record_batch -> stage_batch -> run_ingest_agent -> verify_batch
-                        (record_batch again with status 'failed' if staging exhausts its retries)
-TopicReport(params)     freeze_corpus -> run_topic_agent -> publish_report
-
-Retry policy: every activity has a start-to-close timeout and a FINITE number of attempts; agent activities also
-have a heartbeat timeout (dead worker -> retry on a live one, which resumes the same harness task). Errors that a
-retry cannot fix are non-retryable. When the agent activity finally fails, the workflow still verifies / publishes
-what exists and marks the result incomplete / partial instead of claiming success.
+IngestNewFiles(batch): record_batch -> stage_batch -> run_ingest_agent -> verify_batch.
+TopicReport(params):   freeze_corpus -> run_topic_agent -> publish_report (published as partial if the agent failed).
 """
 from __future__ import annotations
 

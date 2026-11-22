@@ -1,9 +1,9 @@
-"""DRY RUN ONLY: scripted stand-ins for the LLM, used by ``run_final_lab2.ps1 -DryRun``.
+"""Scripted stand-ins for the LLM, used only by ``run_final_lab2.ps1 -DryRun``.
 
-The harness loads this file when HARNESS_SCRIPTED_MODEL points to it (TaskRunner._models). It lets the campus
-scenario script run end to end offline: the same CLI commands, specs, crash points, cancel/deadline/HTTP limits and
-post-processing scripts, but the model follows a fixed plan (tests/policy.PolicyModel). The traces of a dry run go
-to a temporary folder and are never committed; session_start of such a trace has "dry_run_scripted_model".
+The harness loads this file when HARNESS_SCRIPTED_MODEL points to it (TaskRunner._models). The scenario script then
+runs end to end offline: the same CLI commands, specs, crash points, cancel/deadline/HTTP limits and post-processing
+scripts, but the model follows a fixed plan (tests/policy.PolicyModel). A dry run writes its traces to the folder
+given by -WorkDir; session_start of such a trace has "dry_run_scripted_model".
 
     build(task_id, limits) -> (model, summarizer)
 """
@@ -121,7 +121,8 @@ def _fixture_quote(slug: str) -> str:
 
 def web_crash_plan() -> list:
     """I1: two parallel fetches per step, evidence right after reading (crash points hit fetches and evidence)."""
-    slugs = ["checkpoint-1", "idempotency-1", "durable-1", "checkpoint-2", "idempotency-2", "durable-2"]
+    # all pages come from the two searches below: web_fetch reads only discovered URLs
+    slugs = ["checkpoint-1", "idempotency-1", "durable-1", "checkpoint-2", "checkpoint-3", "durable-2"]
     u = [f"{BASE}/p/{s}" for s in slugs]
     plan = [
         [tc("web_search", {"query": "чекпоинты графа агента thread_id"})],
@@ -147,8 +148,9 @@ def _ev_web(url: str, slug: str):
 
 
 def http_limit_plan() -> list:
-    slugs = ["checkpoint-1", "checkpoint-2", "backends-1", "backends-2", "memory-1", "memory-2", "durable-1",
-             "durable-2", "schema-1", "security-1"]
+    # all pages come from the three searches below: web_fetch reads only discovered URLs
+    slugs = ["checkpoint-1", "checkpoint-2", "backends-1", "backends-2", "memory-1", "memory-2", "checkpoint-3",
+             "backends-3", "memory-3", "checkpoint-4"]
     u = [f"{BASE}/p/{s}" for s in slugs]
     plan = [[tc("web_search", {"query": q})] for q in
             ("чекпоинты графа агента", "бэкенды хранения состояния sqlite postgres", "долговременная память агента")]

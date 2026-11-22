@@ -13,7 +13,7 @@ Features required by the assignment:
   * paraphrased facts (question wording differs from the text);
   * multi-hop links (project doc -> meeting protocol, incident -> runbook);
   * finite area for the exhaustive search: topic "storage", 10 documents, 36 numbered limitation mentions
-    [L-ST-01] ... [L-ST-36]; 9 of them are phrased WITHOUT the word "Ограничение" (needs reading, not only grep).
+    [L-ST-01] ... [L-ST-36]; 10 of them are phrased WITHOUT the word "Ограничение" (needs reading, not only grep).
 
     python scripts/generate_corpus.py
 """

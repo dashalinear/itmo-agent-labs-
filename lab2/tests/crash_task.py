@@ -27,7 +27,8 @@ QUOTE = "эталонный кластер «Северный» хранит п�
 def plan(base: str) -> list:
     return [
         [tc("doc_info", {"path": HANDBOOK})],
-        [tc("search_text", {"query": "АС-01", "path": "data/search"})],
+        [tc("search_text", {"query": "АС-01", "path": "data/search"}),
+         tc("web_search", {"query": "чекпоинты идемпотентность"})],     # web_fetch reads only discovered URLs
         # step 2: two side effects in one step; the crash happens after both finished,
         # before the checkpoint of this tools step is written
         [tc("save_evidence", {"claim": "АС-01: 12 шардов", "kind": "decision", "source": HANDBOOK, "page": 4, "quote": QUOTE}),

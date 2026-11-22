@@ -9,7 +9,7 @@ Checks
  3. Catalog: unique document_id, current_path exists, content_hash matches,
     category == first folder under data/, no unregistered data files.
  4. Elasticsearch through the MCP server: for every indexed document the
-    stored excerpts point to the catalog current_path AND category, their text equals the
+    stored excerpts point to the catalog current_path and category, their text equals the
     source lines and the hash matches; no duplicate (document, range) keys;
     count equals the catalog excerpt list. >= 3 indexed documents.
 Writes results/verify_report.json.

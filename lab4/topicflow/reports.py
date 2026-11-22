@@ -1,18 +1,8 @@
 """Corpus freeze and report publication (deterministic code, called from activities).
 
-Run identity: run_key = Temporal workflow id of the TopicReport run (a Schedule gives every period its own id,
-'<schedule workflow id>-<scheduled time>'). Everything derived from it is stable:
-
-  workspace/.harness/lab4/runs/<slug>/manifest.json   frozen L0 document list (written once per run_key)
-  workspace/.harness/lab4/runs/<slug>/topics.json     the agent's topic map (topics.py)
-  harness task TOP-<slug>                             the agent task (budget, checkpoints, evidence)
-  workspace/data/_reports/topics_<slug>.md            the report document (one per run_key)
-  .harness/corpus/reports.json -> L0 'reports'        history of all reports + pointer to the latest
-
-Publication is idempotent: the Markdown is rendered only from saved state (no 'now()'), written atomically to a
-path derived from the run key, registered in the catalog by path (same document_id on every retry), its L1/L2 are
-rebuilt with stable ids, and the history entry is keyed by run_key. A retried publish therefore rewrites the same
-bytes into the same document instead of creating a second report.
+run_key is the Temporal workflow id of the TopicReport run; the manifest, the harness task TOP-<slug>, the report
+path and the history entry are all derived from it, so a retried publish writes into the same document. The text
+is the same bytes as long as schedule_meta.json and the report history have not changed in between.
 """
 from __future__ import annotations
 
@@ -21,7 +11,7 @@ from . import _paths  # noqa: F401  (labs 1-3 on sys.path)
 import json
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from organizer.catalog import Catalog
@@ -126,15 +116,23 @@ def _frozen_at(ws: HarnessWorkspace, run_key: str) -> str:
     return json.loads((run_dir(ws, run_key) / "manifest.json").read_text(encoding="utf-8"))["frozen_at"]
 
 
+def _run_time(run_key: str) -> datetime | None:
+    m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
+    return datetime.fromisoformat(m.group(1) + "+00:00") if m else None
+
+
+def _utc(t: datetime) -> str:
+    return t.strftime("%Y-%m-%d %H:%M:%S") + " UTC"
+
+
 def _schedule_kind(ws: HarnessWorkspace, run_key: str) -> tuple[str, str]:
     """(kind of the run, period) for a Schedule run: an interval tick or the immediate action right after
-    `schedule create`, and the period from the previous Schedule run to this one."""
-    m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
-    if not m or "manual" in run_key:
+    `schedule create`, and the period from the previous run of the same Schedule (or from its creation)."""
+    at = _run_time(run_key)
+    if at is None or "manual" in run_key:
         return "ручной запуск topics-now", "—"
-    at = datetime.fromisoformat(m.group(1) + "+00:00")
     meta_p = ws.service_path("lab4") / "schedule_meta.json"
-    kind = "запуск Schedule"
+    kind, created = "запуск Schedule", None
     if meta_p.exists():
         meta = json.loads(meta_p.read_text(encoding="utf-8"))
         created = datetime.fromisoformat(meta["created_at"])
@@ -143,22 +141,23 @@ def _schedule_kind(ws: HarnessWorkspace, run_key: str) -> tuple[str, str]:
             kind = "немедленный запуск при создании Schedule"
         elif at > created:
             kind = f"тик интервала Schedule (каждые {every // 60} мин)" if every else "тик интервала Schedule"
-    prev = [h["run_key"] for h in load_registry(ws)["history"] if "-run-" in h["run_key"] and h["run_key"] < run_key]
-    pm = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", max(prev)) if prev else None
-    period = (f"{pm.group(1).replace('T', ' ')} UTC → {m.group(1).replace('T', ' ')} UTC (с прошлого запуска Schedule)"
-              if pm else "первый запуск Schedule")
-    return kind, period
+    # only runs of the current Schedule: a run of an earlier, deleted Schedule is not the start of this period
+    # (the immediate run may carry a time a few seconds before created_at, hence the 30 s margin)
+    since = created - timedelta(seconds=30) if created else None
+    prev = [t for t in (_run_time(h["run_key"]) for h in load_registry(ws)["history"] if "-run-" in h["run_key"])
+            if t is not None and t < at and (since is None or t >= since)]
+    if prev:
+        return kind, f"{_utc(max(prev))} → {_utc(at)} (с прошлого запуска Schedule)"
+    if created and at - created > timedelta(seconds=30):
+        return kind, f"{_utc(created)} → {_utc(at)} (с создания Schedule)"
+    return kind, "первый запуск Schedule"
 
 
 def _scheduled_label(run_key: str) -> str:
-    """The Schedule gives every period the workflow id '<id>-<scheduled time>'; manual runs carry their start time."""
-    m = re.search(r"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{3})?Z", run_key)
-    if not m:
-        return "—"
-    # a Schedule run is either an interval tick or the immediate action right after `schedule create`; the run key
-    # alone does not tell them apart, so the label says only that the Schedule started it
-    return (m.group(1).replace("T", " ") + " UTC") + (" (ручной запуск topics-now)" if "manual" in run_key
-                                                      else " (запуск Schedule)")
+    """The Schedule gives every period the workflow id '<id>-<scheduled time>'; manual runs carry their start time.
+    Only the time: the kind of the run is a separate row of the report."""
+    at = _run_time(run_key)
+    return _utc(at) if at else "—"
 
 
 def render(ws: HarnessWorkspace, run_key: str, meta: dict, task: dict | None, evidence: list[dict]) -> tuple[str, dict]:

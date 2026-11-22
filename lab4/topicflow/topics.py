@@ -10,7 +10,7 @@ checkpoints, artifacts) and only adds a system prompt and these tools:
   topic_upsert / topic_merge     the agent's topic map (persisted in the run directory, survives restarts)
   mark_unreadable                a frozen document the agent could not analyse, with the reason
   topics_status                  coverage: examined / not examined / unassigned / topics without L2 evidence
-  submit_report                  completion rule checked in code; stop_partial for an honest partial result
+  submit_report                  completion rule checked in code; stop_partial for a partial report
 
 Generated reports (data/_reports) are never part of the frozen list, so reports are not analysed.
 """

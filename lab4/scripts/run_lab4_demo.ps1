@@ -1,27 +1,16 @@
 <#
-Records all lab 4 scenarios with the real ITMO model, the real Temporal service and the lab 3 agents/harness.
-Run INSIDE the ITMO network, Docker Desktop running (Elasticsearch from lab 1, Temporal dev server in Docker):
+Records the lab 4 scenarios with the itmo model, the temporal dev server in docker and elasticsearch from lab 1.
+Run it inside the itmo network with docker desktop running; add -Push to commit and push the results, -DryRun to
+rehearse without the model (test policies, own namespace and folder).
 
-    powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1
-    powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -SkipTests -Every 8m   # add -Push to commit and push
+    powershell -ExecutionPolicy Bypass -File scripts\run_lab4_demo.ps1 -Every 8m
 
-Scenarios (all automatic, the script only plays the user: it drops files into workspace\input):
-  1  automatic ingestion: 10 files -> watcher -> IngestNewFiles; worker #1 is killed DURING the ingestion agent
-     (HARNESS_CRASH_AT), worker #2 continues: Temporal retries the activity, the harness task is resumed
-  2  duplicate event: the same batch is started again (Temporal: same workflow id) + the same content under
-     another name (rejected by content hash, no second document)
-  3  Schedule: run 1 -> report 1 at L0
-  4  corpus growth: schedule paused, 2 files + 1 file on a new topic dropped and ingested automatically,
-     schedule unpaused -> run 2 -> report 2 covers the new document/topic, report 1 kept
-  5  failures: publish_report fails after writing the file (retry, no duplicate report); budget exhaustion
-     (partial report); stage_batch always fails (bounded retries, file not lost), then the watcher restart
-     picks the batch up again
-  6  traces (Temporal histories + harness), results, L0 view, opening the latest report from L0
-
--Part extra (on the corpus of a full run, no reset):
-  E1  worker killed DURING the topic-analysis agent of a scheduled run; the retry resumes the same harness task
-  E2  overlap: the schedule is triggered while that run is unfinished -> skipped by the SKIP policy
-  E3  a file is added while no watcher runs; the watcher started afterwards picks it up (rescan)
+Parts (-Part):
+  all          fresh workspace: ingestion with a worker crash, duplicate events, schedule runs, corpus growth, failures
+  extra        e1 run again (worker #3 dies in the topic agent of a scheduled run), then e2 overlap skip, e3 rescan
+  topic-crash  e1: worker killed inside the topic agent of a topics-now run, the retry resumes the same harness task
+  growth       a file on a new topic, the detection event repeated while running, a report by the schedule
+  ticks        three interval ticks of one schedule, a file between ticks, a crash in tick 2, a file after its freeze
 #>
 param(
     [ValidateSet("all", "extra", "topic-crash", "growth", "ticks")][string]$Part = "all",
@@ -36,7 +25,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"     # native tools (docker, python) write progress to stderr; failures are checked by exit codes
-# git commit + push of the results only on request (-Push); without it the script just records them
+# git commit + push of the results only with -Push; -SkipPush is kept so that old command lines still work
 if (-not $Push) { $SkipPush = $true }
 $lab = Split-Path -Parent $PSScriptRoot
 Set-Location $lab
@@ -140,7 +129,7 @@ if (-not $SkipTests) {
 }
 
 if ($Part -eq "growth") {
-    Step "W0. Corpus growth with a file on a NEW topic, reported by a Schedule tick (corpus of the main run, no reset)"
+    Step "W0. Corpus growth with a file on a new topic, reported by a Schedule tick (corpus of the main run, no reset)"
     Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
         Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
         ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
@@ -151,7 +140,7 @@ if ($Part -eq "growth") {
     Start-Sleep -Seconds 20
     if ($w7.HasExited) { throw "worker7 ended at start: see $(Join-Path $logs 'worker7.err.log')" }
 
-    Step "W1. The user drops a file on a new topic; the same detection event is repeated WHILE the workflow runs"
+    Step "W1. The user drops a file on a new topic; the same detection event is repeated while the workflow runs"
     TF-Must drop --set new_topic2
     $bid = $null
     for ($i = 0; $i -lt 60 -and -not $bid; $i++) {
@@ -168,7 +157,7 @@ if ($Part -eq "growth") {
     Get-Content (Join-Path $results "replay_while_running.txt")
     TF-Must wait --batches --timeout 1800
 
-    Step "W2. Next report by the Schedule: the new document must appear as a NEW topic; earlier reports stay"
+    Step "W2. Next report by the Schedule: the new document must appear as a new topic; earlier reports stay"
     $after = (Get-Date).ToUniversalTime().AddSeconds(-5).ToString("yyyy-MM-ddTHH:mm:ssZ")
     TF-Must schedule create --every 30m
     TF-Must wait --schedule-runs 1 --after $after --timeout 3600
@@ -259,7 +248,7 @@ if ($Part -eq "ticks") {
 }
 
 if ($Part -eq "topic-crash") {
-    Step "T0. Worker killed DURING the topic-analysis agent (corpus of the main run, no reset)"
+    Step "T0. Worker killed inside the topic-analysis agent (corpus of the main run, no reset)"
     Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
         Where-Object { $_.CommandLine -match "topicflow\.cli (worker|watch)|dry_run_worker" } |
         ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
@@ -307,7 +296,7 @@ if ($Part -eq "extra") {
     TF-Must fault --clear
     TF-Must status
 
-    Step "E1. Worker #3 will be killed DURING the topic-analysis agent of a scheduled run"
+    Step "E1. Worker #3 will be killed inside the topic-analysis agent of a scheduled run"
     $env:HARNESS_CRASH_AT = "after_tool:6"
     $w3 = Start-Bg "worker3" $workerArgs
     Remove-Item Env:HARNESS_CRASH_AT

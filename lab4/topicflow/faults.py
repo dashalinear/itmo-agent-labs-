@@ -5,7 +5,7 @@
   python -m topicflow.cli fault --clear
 
 The file is re-read on every check, so faults are switched on/off without restarting the worker. The counter is
-decremented and saved BEFORE raising, so a retried attempt sees the fault already consumed.
+decremented and saved before raising, so a retried attempt sees the fault already consumed.
 """
 from __future__ import annotations
 

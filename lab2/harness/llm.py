@@ -1,6 +1,6 @@
 """Chat models for the harness: the agent model and the compaction summarizer.
 
-Both are ChatOpenAI clients of the same OpenAI-compatible endpoint (ITMO vLLM).
+Both are ChatOpenAI clients of the same OpenAI-compatible endpoint (vLLM).
 Client-side retries are DISABLED (max_retries=0): the harness retries itself in
 ModelGuardMiddleware, so every attempt is visible and charged to the budget.
 max_tokens of the agent model equals the response reserve used in the window check.

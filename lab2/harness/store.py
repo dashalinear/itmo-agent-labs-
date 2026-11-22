@@ -18,7 +18,7 @@ harness itself must not lose on restart:
   artifacts      offloaded tool outputs and web material copies
   compactions    compaction log (size before/after, method, cost)
   model_calls    window accounting of every model call (estimate, reserve, limits, actual)
-  events         audit log (guardrail blocks, budget stops, status changes)
+  events         event log (guardrail blocks, budget stops, status changes)
 
 Every write is one short transaction (WAL mode), so the database is always at a
 consistent boundary; see README "Окна сбоя".
@@ -148,8 +148,8 @@ class TaskStore:
                 raise
 
     def _one(self, sql: str, params: Iterable = ()) -> dict | None:
-        # fetch under the same lock: with the connection shared between threads, a fetch outside the lock could read
-        # the cursor of a parallel query (lab 3, M10: subagent_status of an existing task answered unknown_task)
+        # fetch under the lock: the connection is shared by threads, and a fetch outside the lock could read
+        # the cursor of a parallel query
         with self._lock:
             row = self.db.execute(sql, tuple(params)).fetchone()
         return dict(row) if row else None

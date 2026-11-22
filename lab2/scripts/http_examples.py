@@ -47,6 +47,8 @@ async def main() -> None:
 
     async def case(name: str, expected: str, url: str, task: str, rt: ResearchTools, note: str = ""):
         before = dict(store.usage(task))
+        c = canonical_url(url)
+        store.add_url(task, url_key(c), url, c, "found", "http_examples")   # web_fetch reads only queued URLs
         res = json.loads(await rt.web_fetch(url))
         after = store.usage(task)
         d = res.get("data") or res.get("error") or {}

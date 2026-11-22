@@ -116,8 +116,8 @@ class TaskRunner:
             return self._model, self._summarizer
         scripted = os.getenv("HARNESS_SCRIPTED_MODEL")
         if scripted:
-            # DRY RUN ONLY (scripts/run_final_lab2.ps1 -DryRun): deterministic scripted models instead of the LLM,
-            # to verify the scenario scripts offline. Never set for recorded traces (session_start shows it).
+            # dry run (scripts/run_final_lab2.ps1 -DryRun): deterministic scripted models instead of the LLM,
+            # so the scenario scripts run offline; session_start of such a trace marks it
             import importlib.util
             spec = importlib.util.spec_from_file_location("harness_scripted_models", scripted)
             mod = importlib.util.module_from_spec(spec)
